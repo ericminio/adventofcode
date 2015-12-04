@@ -21,8 +21,24 @@ describe('day 1 challenge', function() {
             expect(floorOf(')))')).to.equal(-3);
         });
         
+        it('passes the typical postman exam', function() {
+            expect(floorOf('(())')).to.equal(0);
+            expect(floorOf('()()')).to.equal(0);
+            
+            expect(floorOf('(((')).to.equal(3);
+            expect(floorOf('(()(()(')).to.equal(3);
+            expect(floorOf('))(((((')).to.equal(3);
+            
+            expect(floorOf('())')).to.equal(-1);
+            expect(floorOf('))(')).to.equal(-1);
+            
+            expect(floorOf(')))')).to.equal(-3);
+            expect(floorOf(')())())')).to.equal(-3);
+        });
+        
         it('can read the criptic address of day 1 challenge', function(done) {
             request('http://adventofcode.com/day/1/input', function(error, response, body) {
+                console.log("address:" + body);
                 expect(floorOf(body)).to.equal(0);
                 done();
             });
