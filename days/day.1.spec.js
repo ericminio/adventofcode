@@ -37,7 +37,11 @@ describe('day 1 challenge', function() {
         });
         
         it('can read the criptic address of day 1 challenge', function(done) {
-            request('http://adventofcode.com/day/1/input', function(error, response, body) {
+            var jar = request.jar();
+            var cookie = request.cookie('session=53616c7465645f5fed8873028110d5b95d725301541bd2e6b5c2a777f8915aebd739168369f0e5af148009b825c54013; _gat=1; _ga=GA1.2.1608089354.1449241085');
+            var url = 'http://adventofcode.com/day/1/input';
+            jar.setCookie(cookie, url);            
+            request({url: url, jar: jar}, function(error, response, body) {
                 console.log("address:" + body);
                 expect(floorOf(body)).to.equal(0);
                 done();
