@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 
 var floorOf = function(address) {
-    return 0;
+    return adress.split('(').length;
 };
 
 describe('day 1 challenge', function() {
