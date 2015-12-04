@@ -8,8 +8,7 @@
         "mocha": "latest",
         "request": "latest",
         "sinon": "latest",
-        "sinon-chai": "latest",
-        "zombie": "latest"
+        "sinon-chai": "latest"
     },
     "scripts": {
         "test": "mocha days --recursive"
