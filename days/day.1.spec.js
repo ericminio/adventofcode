@@ -50,9 +50,9 @@ describe('day 1 challenge', function() {
             var cookie = request.cookie('session=53616c7465645f5fed8873028110d5b95d725301541bd2e6b5c2a777f8915aebd739168369f0e5af148009b825c54013; _gat=1; _ga=GA1.2.1608089354.1449241085');
             var url = 'http://adventofcode.com/day/1/input';
             jar.setCookie(cookie, url);            
-            request({url: url, jar: jar}, function(error, response, body) {
-                console.log("address:" + body);
-                expect(floorOf(body)).to.equal(138);
+            request({url: url, jar: jar}, function(error, response, input) {
+                console.log("address:" + input);
+                expect(floorOf(input)).to.equal(138);
                 done();
             });
         });
@@ -63,6 +63,17 @@ describe('day 1 challenge', function() {
         
         it('can detect entering basement with a more sneaky move', function() {
             expect(firstPositionOfBasementIn('()())')).to.equal(5);    
+        });
+        
+        it('can detect entering basement with the criptic address of day 1 challenge', function(done) {
+            var jar = request.jar();
+            var cookie = request.cookie('session=53616c7465645f5fed8873028110d5b95d725301541bd2e6b5c2a777f8915aebd739168369f0e5af148009b825c54013; _gat=1; _ga=GA1.2.1608089354.1449241085');
+            var url = 'http://adventofcode.com/day/1/input';
+            jar.setCookie(cookie, url);            
+            request({url: url, jar: jar}, function(error, response, input) {
+                expect(firstPositionOfBasementIn(input).to.equal(0);
+                done();
+            });
         });
     });
 });
