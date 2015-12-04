@@ -16,6 +16,8 @@ var firstPositionOfBasementIn = function(address) {
 };
 
 describe('day 1 challenge', function() {
+    
+    var url = 'http://adventofcode.com/day/1/input';
 
     describe('Santa', function() {
     
