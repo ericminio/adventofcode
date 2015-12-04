@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var request = require('request');
-var authentifyMeFor = reqire('./me');
+var authentifyMeFor = require('./me');
 
 var floorOf = function(address) {
     return address.split('(').length - address.split(')').length;
