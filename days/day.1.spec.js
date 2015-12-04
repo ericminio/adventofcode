@@ -5,6 +5,10 @@ var floorOf = function(address) {
     return address.split('(').length - address.split(')').length;
 };
 
+var firstPositionOfBasementIn = function(address) {
+    return 1;  
+};
+
 describe('day 1 challenge', function() {
 
     describe('Santa', function() {
@@ -46,6 +50,14 @@ describe('day 1 challenge', function() {
                 expect(floorOf(body)).to.equal(138);
                 done();
             });
+        });
+        
+        it('can detect entering basement with a single move', function() {
+            expect(firstPositionOfBasementIn(')')).to.equal(1);    
+        });
+        
+        it('can detect entering basement with a more sneaky move', function() {
+            expect(firstPositionOfBasementIn('()())')).to.equal(5);    
         });
     });
 });
