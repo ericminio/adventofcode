@@ -6,6 +6,12 @@ var floorOf = function(address) {
 };
 
 var firstPositionOfBasementIn = function(address) {
+    for (var size=1; size<address.length(); size++) {
+        var stop = address.substring(0, size);
+        if (floorOf(stop) == -1) {
+            return size;
+        }
+    }
     return 1;  
 };
 
