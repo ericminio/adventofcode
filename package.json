@@ -1,0 +1,17 @@
+{
+    "name": "adventofcode",
+    "version": "1.0.0",
+    "private": false,
+    "devDependencies": {
+        "chai": "latest",
+        "jsdom": "latest",
+        "mocha": "latest",
+        "request": "latest",
+        "sinon": "latest",
+        "sinon-chai": "latest",
+        "zombie": "latest"
+    },
+    "scripts": {
+        "test": "mocha days --recursive"
+    }
+}
