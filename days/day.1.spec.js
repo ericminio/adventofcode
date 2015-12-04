@@ -71,7 +71,7 @@ describe('day 1 challenge', function() {
             var url = 'http://adventofcode.com/day/1/input';
             jar.setCookie(cookie, url);            
             request({url: url, jar: jar}, function(error, response, input) {
-                expect(firstPositionOfBasementIn(input)).to.equal(0);
+                expect(firstPositionOfBasementIn(input)).to.equal(1771);
                 done();
             });
         });
