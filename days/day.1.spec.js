@@ -43,7 +43,7 @@ describe('day 1 challenge', function() {
             jar.setCookie(cookie, url);            
             request({url: url, jar: jar}, function(error, response, body) {
                 console.log("address:" + body);
-                expect(floorOf(body)).to.equal(0);
+                expect(floorOf(body)).to.equal(138);
                 done();
             });
         });
