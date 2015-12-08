@@ -17,12 +17,16 @@ describe('An elf', function() {
     it('can deal with a set of data', function() {
         expect(stufur.totalSurfaceForDimensions('2x3x4\n1x1x10')).to.equal(52+6 + 42+1);
     });
+    
+    it('can deal with a corrupted set of data', function() {
+        expect(stufur.totalSurfaceForDimensions('2x3x4\n\n1x1x10')).to.equal(52+6 + 42+1);
+    });
 });
 
 var request = require('request');
 var credentialsFor = require('./me');
     
-describe('day 2 challenge', function() {
+describe.skip('day 2 challenge', function() {
     
     var url = 'http://adventofcode.com/day/2/input';
 
