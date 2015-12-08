@@ -13,4 +13,8 @@ describe('An elf', function() {
     it('can deal with more criptic data', function() {
         expect(stufur.paperSurfaceForDimensions('2x3x4')).to.equal(52+6);
     });
+    
+    it('can deal with a set of data', function() {
+        expect(stufur.totalSurfaceForDimensions('2x3x4\n1x1x10')).to.equal(52+6 + 42+1);
+    });
 });
