@@ -18,3 +18,19 @@ describe('An elf', function() {
         expect(stufur.totalSurfaceForDimensions('2x3x4\n1x1x10')).to.equal(52+6 + 42+1);
     });
 });
+
+var request = require('request');
+var credentialsFor = require('./me');
+    
+describe('day 2 challenge', function() {
+    
+    var url = 'http://adventofcode.com/day/2/input';
+
+    it('is easy for Stufur', function(done) {
+        var stufur = new Elf();
+        request({url: url, jar: credentialsFor(url)}, function(error, response, input) {
+            expect(stufur.totalSurfaceForDimensions(input)).to.equal(0);
+            done();
+        });
+    });
+});
