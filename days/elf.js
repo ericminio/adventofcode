@@ -10,4 +10,14 @@ Elf.prototype.paperSurfaceForDimensions = function(data) {
     return this.paperSurfaceFor({ length:dimensions[0], width:dimensions[1], height:dimensions[2] });
 };
 
+Elf.prototype.totalSurfaceForDimensions = function(set) {
+    var presents = set.split('\n');
+    var total = 0;
+    for (var i=0; i<presents.length; i++) {
+        total += this.paperSurfaceForDimensions(presents[i]);
+    }
+    
+    return total;
+};
+
 module.exports = Elf;
