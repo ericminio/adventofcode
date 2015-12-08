@@ -26,7 +26,7 @@ describe('An elf', function() {
 var request = require('request');
 var credentialsFor = require('./me');
     
-describe.skip('day 2 challenge', function() {
+describe('day 2 challenge', function() {
     
     var url = 'http://adventofcode.com/day/2/input';
 
