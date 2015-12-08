@@ -9,4 +9,8 @@ describe('An elf', function() {
         expect(stufur.paperSurfaceFor({ length: 2, width: 3, height: 4 })).to.equal(52+6);
         expect(stufur.paperSurfaceFor({ length: 1, width: 1, height: 10 })).to.equal(42+1);
     });
+    
+    it('can deal with more criptic data', function() {
+        expect(stufur.paperSurfaceForDimensions('2x3x4')).to.equal(52+6);
+    });
 });
