@@ -33,9 +33,7 @@ describe('day 2 challenge', function() {
     it('is easy for Stufur', function(done) {
         var stufur = new Elf();
         request({url: url, jar: credentialsFor(url)}, function(error, response, input) {
-            console.log(error);
-            console.log(input);
-            expect(stufur.totalSurfaceForDimensions(input)).to.equal(0);
+            expect(stufur.totalSurfaceForDimensions(input)).to.equal(1606483);
             done();
         });
     });
