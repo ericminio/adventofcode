@@ -14,7 +14,9 @@ Elf.prototype.totalSurfaceForDimensions = function(set) {
     var presents = set.split('\n');
     var total = 0;
     for (var i=0; i<presents.length; i++) {
-        total += this.paperSurfaceForDimensions(presents[i]);
+        if (presents[i].length >0) {
+            total += this.paperSurfaceForDimensions(presents[i]);
+        }
     }
     
     return total;
