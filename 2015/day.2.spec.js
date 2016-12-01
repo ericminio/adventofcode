@@ -24,7 +24,7 @@ describe('An elf', function() {
 });
 
 var request = require('request');
-var credentialsFor = require('./me');
+var credentialsFor = require('../me');
 
 describe('day 2 challenge', function() {
 

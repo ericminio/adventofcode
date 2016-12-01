@@ -49,7 +49,7 @@ describe('Santa', function() {
 });
 
 var request = require('request');
-var credentialsFor = require('./me');
+var credentialsFor = require('../me');
 
 describe('day 1 challenge', function() {
 
