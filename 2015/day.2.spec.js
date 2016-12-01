@@ -9,15 +9,15 @@ describe('An elf', function() {
         expect(stufur.paperSurfaceFor({ length: 2, width: 3, height: 4 })).to.equal(52+6);
         expect(stufur.paperSurfaceFor({ length: 1, width: 1, height: 10 })).to.equal(42+1);
     });
-    
+
     it('can deal with more criptic data', function() {
         expect(stufur.paperSurfaceForDimensions('2x3x4')).to.equal(52+6);
     });
-    
+
     it('can deal with a set of data', function() {
         expect(stufur.totalSurfaceForDimensions('2x3x4\n1x1x10')).to.equal(52+6 + 42+1);
     });
-    
+
     it('can deal with a corrupted set of data', function() {
         expect(stufur.totalSurfaceForDimensions('2x3x4\n\n1x1x10')).to.equal(52+6 + 42+1);
     });
@@ -25,10 +25,10 @@ describe('An elf', function() {
 
 var request = require('request');
 var credentialsFor = require('./me');
-    
+
 describe('day 2 challenge', function() {
-    
-    var url = 'http://adventofcode.com/day/2/input';
+
+    var url = 'http://adventofcode.com/2015/day/2/input';
 
     it('is easy for Stufur', function(done) {
         var stufur = new Elf();

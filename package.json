@@ -11,6 +11,6 @@
         "sinon-chai": "latest"
     },
     "scripts": {
-        "test": "mocha days --recursive"
+        "test": "mocha 2015 --recursive"
     }
 }
