@@ -51,7 +51,7 @@ describe('Santa', function() {
 var request = require('request');
 var credentialsFor = require('../me');
 
-describe('day 1 challenge', function() {
+describe('2015 day 1 challenge', function() {
 
     var url = 'http://adventofcode.com/2015/day/1/input';
 
