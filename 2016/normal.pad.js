@@ -1,12 +1,10 @@
-module.exports = {
+var pad = {
     layout:[
         '123',
         '456',
         '789'
     ],
-    allows: function(position) {
-        return this.digitOf(position) != undefined;
-    },
+
     digitOf: function(position) {
         var line = this.layout[1-position.y];
         if (line == undefined) { return undefined; }
@@ -15,3 +13,6 @@ module.exports = {
         return digit;
     }
 };
+
+pad.allows = require('./pad.allows.position');
+module.exports = pad;
