@@ -89,5 +89,6 @@ describe('finding digit', function() {
 
     it('can deal with star pad', function() {
         expect(bathroomCode('RRDDD', starPad)).to.deep.equal('D');
+        expect(bathroomCode('ULL', starPad)).to.deep.equal('5');
     });
 });

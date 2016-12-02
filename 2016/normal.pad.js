@@ -1,16 +1,18 @@
 module.exports = {
     allows: function(position) {
-        return Math.abs(position.y) < 2 && Math.abs(position.x) < 2;
+        return this.digitOf(position) != undefined;
     },
     digitOf: function(position) {
-        if (position.x == -1 && position.y == 1) { return '1'; }
-        if (position.x == 0 && position.y == 1) { return '2'; }
-        if (position.x == 1 && position.y == 1) { return '3'; }
-        if (position.x == -1 && position.y == 0) { return '4'; }
-        if (position.x == 0 && position.y == 0) { return '5'; }
-        if (position.x == 1 && position.y == 0) { return '6'; }
-        if (position.x == -1 && position.y == -1) { return '7'; }
-        if (position.x == 0 && position.y == -1) { return '8'; }
-        if (position.x == 1 && position.y == -1) { return '9'; }
+        var pad = [
+            '123',
+            '456',
+            '789'
+        ];
+        var line = pad[1-position.y];
+        if (line == undefined) { return undefined; }
+        var digit = line[1+position.x];
+        if (digit == undefined || digit == ' ') { return undefined; }
+
+        return digit;
     }
 };
