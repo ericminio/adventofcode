@@ -3,7 +3,7 @@ var request = require('request');
 var credentialsFor = require('../me');
 
 var normalPad = require('./normal.pad');
-var starPad = require('./star.pad');
+var diamondPad = require('./diamond.pad');
 
 describe.only('2016 day 2 challenge', function() {
 
@@ -18,7 +18,7 @@ describe.only('2016 day 2 challenge', function() {
 
     it('includes part 2', function(done) {
         request({url: url, jar: credentialsFor(url)}, function(error, response, input) {
-            expect(bathroomCode(input, starPad)).to.equal('A47DA');
+            expect(bathroomCode(input, diamondPad)).to.equal('A47DA');
             done();
         });
     });
@@ -88,7 +88,7 @@ describe('finding digit', function() {
     });
 
     it('can deal with star pad', function() {
-        expect(bathroomCode('RRDDD', starPad)).to.deep.equal('D');
-        expect(bathroomCode('ULL', starPad)).to.deep.equal('5');
+        expect(bathroomCode('RRDDD', diamondPad)).to.deep.equal('D');
+        expect(bathroomCode('ULL', diamondPad)).to.deep.equal('5');
     });
 });
