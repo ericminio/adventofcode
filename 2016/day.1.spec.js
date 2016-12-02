@@ -60,6 +60,8 @@ var distance = function(position) {
     return Math.abs(position.x) + Math.abs(position.y);;
 };
 
+var move = require('./move');
+
 var walk = function(options) {
     if (options.moves.length == 0) {
         return options;
@@ -70,13 +72,6 @@ var walk = function(options) {
     options.moves.splice(0,1);
 
     return walk(options);
-};
-
-var move = function(options, footsteps) {
-    return {
-        x: options.position.x + options.direction.xoffset * footsteps,
-        y: options.position.y + options.direction.yoffset * footsteps
-    };
 };
 
 var turn = function(options, code) {
