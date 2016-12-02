@@ -5,7 +5,7 @@ var credentialsFor = require('../me');
 var normalPad = require('./normal.pad');
 var diamondPad = require('./diamond.pad');
 
-describe.only('2016 day 2 challenge', function() {
+describe('2016 day 2 challenge', function() {
 
     var url = 'http://adventofcode.com/2016/day/2/input';
 
@@ -20,6 +20,39 @@ describe.only('2016 day 2 challenge', function() {
         request({url: url, jar: credentialsFor(url)}, function(error, response, input) {
             expect(bathroomCode(input, diamondPad)).to.equal('A47DA');
             done();
+        });
+    });
+
+    describe('internals', function() {
+
+        it('can reuse existing stuff', function() {
+            var position = { x:0, y:0 };
+            var direction = directions['U'];
+            var destination = move({ position:position, direction:direction }, 1);
+
+            expect(destination).to.deep.equal({ x:0, y:1 });
+        });
+
+        it('can digest one line', function() {
+            expect(follow('RU', { x:0, y:0 }, normalPad)).to.deep.equal({ x:1, y:1 });
+        });
+
+        it('ignores moves that lead outside boundaries', function() {
+            expect(follow('RUU', { x:0, y:0 }, normalPad)).to.deep.equal({ x:1, y:1 });
+        });
+
+        it('can find a bathroom code', function() {
+            expect(bathroomCode('RUU\nD', normalPad)).to.deep.equal('36');
+            expect(bathroomCode('ULL\nRRDDD\nLURDL\nUUUUD', normalPad)).to.deep.equal('1985');
+        });
+
+        it('ignores trailing CR', function() {
+            expect(bathroomCode('ULL\nRRDDD\nLURDL\nUUUUD\n', normalPad)).to.deep.equal('1985');
+        });
+
+        it('can deal with diamond pad', function() {
+            expect(bathroomCode('RRDDD', diamondPad)).to.deep.equal('D');
+            expect(bathroomCode('ULL', diamondPad)).to.deep.equal('5');
         });
     });
 });
@@ -59,36 +92,3 @@ var follow = function(line, position, pad) {
 
     return follow(line.substring(1), destination, pad);
 };
-
-describe('finding digit', function() {
-
-    it('can reuse existing stuff', function() {
-        var position = { x:0, y:0 };
-        var direction = directions['U'];
-        var destination = move({ position:position, direction:direction }, 1);
-
-        expect(destination).to.deep.equal({ x:0, y:1 });
-    });
-
-    it('can digest one line', function() {
-        expect(follow('RU', { x:0, y:0 }, normalPad)).to.deep.equal({ x:1, y:1 });
-    });
-
-    it('ignores moves that lead outside boundaries', function() {
-        expect(follow('RUU', { x:0, y:0 }, normalPad)).to.deep.equal({ x:1, y:1 });
-    });
-
-    it('can find a bathroom code', function() {
-        expect(bathroomCode('RUU\nD', normalPad)).to.deep.equal('36');
-        expect(bathroomCode('ULL\nRRDDD\nLURDL\nUUUUD', normalPad)).to.deep.equal('1985');
-    });
-
-    it('ignores trailing CR', function() {
-        expect(bathroomCode('ULL\nRRDDD\nLURDL\nUUUUD\n', normalPad)).to.deep.equal('1985');
-    });
-
-    it('can deal with star pad', function() {
-        expect(bathroomCode('RRDDD', diamondPad)).to.deep.equal('D');
-        expect(bathroomCode('ULL', diamondPad)).to.deep.equal('5');
-    });
-});

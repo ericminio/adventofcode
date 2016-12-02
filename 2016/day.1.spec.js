@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var request = require('request');
 var credentialsFor = require('../me');
 
-describe.only('2016 day 1 challenge', function() {
+describe('2016 day 1 challenge', function() {
 
     var url = 'http://adventofcode.com/2016/day/1/input';
 
@@ -19,10 +19,66 @@ describe.only('2016 day 1 challenge', function() {
             done();
         });
     });
+
+    describe('internals', function() {
+
+        describe('turning', function() {
+
+            var east = { xoffset:1, yoffset:0 };
+
+            describe('left', function() {
+
+                it('works', function() {
+                    expect(turnLeft(east)).to.deep.equal({ xoffset:-0, yoffset:1 });
+                });
+            });
+
+            describe('right', function() {
+
+                it('works', function() {
+                    expect(turnRight(east)).to.deep.equal({ xoffset:0, yoffset:-1 });
+                });
+            });
+        });
+
+        describe('Figuring out destination', function() {
+
+            it('works when turning right', function() {
+                expect(howManyBlocksAway('R2')).to.equal(2);
+            });
+
+            it('works when turning left', function() {
+                expect(howManyBlocksAway('L3')).to.equal(3);
+            });
+
+            it('works when turning left twice', function() {
+                expect(howManyBlocksAway('L1, L2')).to.equal(3);
+            });
+
+            it('works when going far', function() {
+                expect(howManyBlocksAway('L100')).to.equal(100);
+            });
+
+            it('works when turning both left and right', function() {
+                expect(howManyBlocksAway('R2, L3')).to.equal(5);
+                expect(howManyBlocksAway('R2, R2, R2')).to.equal(2);
+                expect(howManyBlocksAway('R5, L5, R5, R3')).to.equal(12);
+                expect(howManyBlocksAway('L3, R2, L5, R1, L1, L2, L2, R1')).to.equal(7);
+            });
+        });
+
+        describe('Finding position visited twice', function() {
+
+            it('works', function() {
+                expect(howManyBlocksAwayIsFirstPositionVisitedTwice('R8, R4, R4, R8')).to.equal(4);
+            });
+        });
+    });
 });
 
 var O = { x:0, y:0 };
 var north = { xoffset:0, yoffset:1 };
+var move = require('./move');
 
 var howManyBlocksAwayIsFirstPositionVisitedTwice = function(input) {
     var moves = input.split(',');
@@ -60,8 +116,6 @@ var distance = function(position) {
     return Math.abs(position.x) + Math.abs(position.y);;
 };
 
-var move = require('./move');
-
 var walk = function(options) {
     if (options.moves.length == 0) {
         return options;
@@ -92,55 +146,3 @@ var turnRight = function(direction) {
         yoffset : -direction.xoffset
     };
 };
-
-describe('turning', function() {
-
-    var east = { xoffset:1, yoffset:0 };
-
-    describe('left', function() {
-
-        it('works', function() {
-            expect(turnLeft(east)).to.deep.equal({ xoffset:-0, yoffset:1 });
-        });
-    });
-
-    describe('right', function() {
-
-        it('works', function() {
-            expect(turnRight(east)).to.deep.equal({ xoffset:0, yoffset:-1 });
-        });
-    });
-});
-
-describe('Figuring out destination', function() {
-
-    it('works when turning right', function() {
-        expect(howManyBlocksAway('R2')).to.equal(2);
-    });
-
-    it('works when turning left', function() {
-        expect(howManyBlocksAway('L3')).to.equal(3);
-    });
-
-    it('works when turning left twice', function() {
-        expect(howManyBlocksAway('L1, L2')).to.equal(3);
-    });
-
-    it('works when going far', function() {
-        expect(howManyBlocksAway('L100')).to.equal(100);
-    });
-
-    it('works when turning both left and right', function() {
-        expect(howManyBlocksAway('R2, L3')).to.equal(5);
-        expect(howManyBlocksAway('R2, R2, R2')).to.equal(2);
-        expect(howManyBlocksAway('R5, L5, R5, R3')).to.equal(12);
-        expect(howManyBlocksAway('L3, R2, L5, R1, L1, L2, L2, R1')).to.equal(7);
-    });
-});
-
-describe('Finding position visited twice', function() {
-
-    it('works', function() {
-        expect(howManyBlocksAwayIsFirstPositionVisitedTwice('R8, R4, R4, R8')).to.equal(4);
-    });
-});
