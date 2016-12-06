@@ -25,7 +25,6 @@ describe('2016 day 4 challenge', function() {
     it('includes part 2', function(done) {
         request({url: url, jar: credentialsFor(url)}, function(error, response, input) {
             var rooms = input.split('\n');
-            console.log(rooms.length);
             for (var i=0; i<rooms.length; i++) {
                 var room = new Room(rooms[i]);
                 var name = room.name();
