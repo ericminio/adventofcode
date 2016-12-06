@@ -2,9 +2,6 @@ var expect = require('chai').expect;
 var request = require('request');
 var credentialsFor = require('../me');
 
-var normalPad = require('./normal.pad');
-var diamondPad = require('./diamond.pad');
-
 describe('2016 day 3 challenge', function() {
 
     var url = 'http://adventofcode.com/2016/day/3/input';
