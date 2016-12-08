@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var request = require('request');
 var credentialsFor = require('../me');
 
-describe.only('2016 day 7 challenge', function() {
+describe('2016 day 7 challenge', function() {
 
     var url = 'http://adventofcode.com/2016/day/7/input';
 
@@ -12,6 +12,16 @@ describe.only('2016 day 7 challenge', function() {
             var count = countTLSaddreses(addresses);
 
             expect(count).to.equal(105);
+            done();
+        });
+    });
+
+    it('includes part 2', function(done) {
+        request({url: url, jar: credentialsFor(url)}, function(error, response, input) {
+            var addresses = input.split('\n');
+            var count = countSSLaddreses(addresses);
+
+            expect(count).to.equal(258);
             done();
         });
     });
@@ -80,6 +90,39 @@ describe.only('2016 day 7 challenge', function() {
                 expect(isInsideBrackets(11, 'a[de[fghi]jkl]')).to.equal(true);
             });
         });
+
+        describe('isSSL function', function() {
+
+            it('passes part 2 examples', function() {
+                expect(isSSL('aba[bab]xyz')).to.equal(true);
+                expect(isSSL('xyx[xyx]xyx')).to.equal(false);
+                expect(isSSL('aaa[kek]eke')).to.equal(true);
+                expect(isSSL('zazbz[bzb]cdb')).to.equal(true);
+            });
+        });
+
+        describe('ABA detection', function() {
+
+            it('returns both indexes', function() {
+                expect(hasSSLAt(0, 'ete[tet]')).to.deep.equal({ aba:0, bab:4 });
+            });
+
+            it('works with aba after bab', function() {
+                expect(hasSSLAt(5, '[tet]ete')).to.deep.equal({ aba:5, bab:1 });
+            });
+
+            it('resists aaa', function() {
+                expect(hasSSLAt(5, '[eee]eee')).to.equal(undefined);
+            });
+
+            it('rejects bab outside brackets', function() {
+                expect(hasSSLAt(0, 'ete[abc]tet')).to.equal(undefined);
+            });
+
+            it('rejects aba inside brackets', function() {
+                expect(hasSSLAt(4, 'aaa[ete]bbb[tet]')).to.equal(undefined);
+            });
+        });
     });
 });
 
@@ -94,6 +137,17 @@ var countTLSaddreses = function(addresses) {
     return count;
 };
 
+var countSSLaddreses = function(addresses) {
+    var count = 0;
+    for (var i=0; i<addresses.length; i++) {
+        if (addresses[i].length > 0) {
+            if (isSSL(addresses[i])) { count++; }
+        }
+    }
+
+    return count;
+};
+
 var isTLS = function(address) {
     var abbaFound = false;
     for (var index = 0; index<address.length; index++) {
@@ -102,6 +156,14 @@ var isTLS = function(address) {
     }
 
     return abbaFound;
+};
+
+var isSSL = function(address) {
+    for (var index = 0; index<address.length; index++) {
+        if (hasSSLAt(index, address)) { return true; }
+    }
+
+    return false;
 };
 
 var hasAbbaAt = function(index, address) {
@@ -121,4 +183,21 @@ var isInsideBrackets = function(index, address) {
         if (before[i] == ']') { closingCount++; }
     }
     return openingCount > closingCount;
+};
+
+var hasSSLAt = function(index, address) {
+    var a = address[index];
+    var b = address[index+1];
+    if (a!=b && address[index+2] == a && !isInsideBrackets(index, address)) {
+        var bab = -1;
+        for (var i=0; i<address.length; i++) {
+            if (address[i] == b && address[i+1] == a && address[i+2] == b
+                && isInsideBrackets(i, address)) {
+                bab = i;
+            }
+        }
+        if (bab != -1) {
+            return { aba:index, bab:bab };
+        }
+    }
 };
