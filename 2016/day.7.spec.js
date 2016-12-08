@@ -11,7 +11,7 @@ describe.only('2016 day 7 challenge', function() {
             var addresses = input.split('\n');
             var count = countTLSaddreses(addresses);
 
-            expect(count).to.equal(2000);
+            expect(count).to.equal(105);
             done();
         });
     });
@@ -40,6 +40,9 @@ describe.only('2016 day 7 challenge', function() {
                 expect(isTLS('abcd[bddb]xyyx')).to.equal(false);
                 expect(isTLS('aaaa[qwer]tyui')).to.equal(false);
                 expect(isTLS('ioxxoj[asdfgh]zxcvbn')).to.equal(true);
+
+                expect(isTLS('abdba[basabbamnop]asdft')).to.equal(false);
+                expect(isTLS('abba[abba]qrst')).to.equal(false);
             });
         });
 
@@ -73,6 +76,9 @@ describe.only('2016 day 7 challenge', function() {
             it('returns true when inside second brackeded group', function() {
                 expect(isInsideBrackets(10, 'a[bc]de[fghi]')).to.equal(true);
             });
+            it('returns true when inside nesting brackets', function() {
+                expect(isInsideBrackets(11, 'a[de[fghi]jkl]')).to.equal(true);
+            });
         });
     });
 });
@@ -80,7 +86,9 @@ describe.only('2016 day 7 challenge', function() {
 var countTLSaddreses = function(addresses) {
     var count = 0;
     for (var i=0; i<addresses.length; i++) {
-        count += isTLS(addresses[i]) ? 1 : 0;
+        if (addresses[i].length > 0) {
+            if (isTLS(addresses[i])) { count++; }
+        }
     }
 
     return count;
@@ -106,10 +114,11 @@ var hasAbbaAt = function(index, address) {
 
 var isInsideBrackets = function(index, address) {
     var before = address.substring(0, index);
-    var after = address.substring(index+1);
-    if (before.lastIndexOf('[') > before.lastIndexOf(']') &&
-        after.indexOf('[') < after.indexOf(']')) {
-        return true;
+    var openingCount = 0;
+    var closingCount = 0;
+    for (var i=0; i<before.length; i++) {
+        if (before[i] == '[') { openingCount++; }
+        if (before[i] == ']') { closingCount++; }
     }
-    return false;
+    return openingCount > closingCount;
 };
