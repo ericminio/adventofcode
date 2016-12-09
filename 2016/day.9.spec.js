@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 var request = require('request');
 var credentialsFor = require('../me');
 
-describe.only('2016 day 9 challenge', function() {
+describe('2016 day 9 challenge', function() {
 
     var url = 'http://adventofcode.com/2016/day/9/input';
 
