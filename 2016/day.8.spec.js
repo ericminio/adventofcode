@@ -26,7 +26,7 @@ describe('2016 day 8 challenge', function() {
         });
     });
 
-    it('includes part 1', function(done) {
+    it('includes part 2', function(done) {
         request({url: url, jar: credentialsFor(url)}, function(error, response, input) {
             var commands = input.split('\n');
             var board = new Board(50, 6);
