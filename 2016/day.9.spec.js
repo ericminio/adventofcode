@@ -118,14 +118,8 @@ var decompress = function(line) {
     if (!marker) { return line; }
 
     return line.substring(0, marker.startIndex)
-            + repeat(marker.count, marker.sequenceToRepeat)
+            + Array(marker.count+1).join(marker.sequenceToRepeat)
             + decompress(line.substring(marker.tailIndex));
-};
-
-var repeat = function(count, that) {
-    var accu = '';
-    for (var n=0; n<count; n++) { accu += that; }
-    return accu;
 };
 
 var firstMarkerOf = function(line) {
