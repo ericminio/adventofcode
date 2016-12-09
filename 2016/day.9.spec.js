@@ -109,8 +109,23 @@ var sizev2 = function(line) {
 
     return marker.startIndex
             + marker.count * sizev2(marker.sequenceToRepeat)
-            + sizev2(marker.tail);
+            + sizev2(line.substring(marker.tailIndex));
 
+};
+
+var decompress = function(line) {
+    var marker = firstMarkerOf(line);
+    if (!marker) { return line; }
+
+    return line.substring(0, marker.startIndex)
+            + repeat(marker.count, marker.sequenceToRepeat)
+            + decompress(line.substring(marker.tailIndex));
+};
+
+var repeat = function(count, that) {
+    var accu = '';
+    for (var n=0; n<count; n++) { accu += that; }
+    return accu;
 };
 
 var firstMarkerOf = function(line) {
@@ -124,28 +139,9 @@ var firstMarkerOf = function(line) {
             startIndex: startIndex,
             count: count,
             sequenceToRepeat: after.substring(endOfMarker+1, endOfMarker+1+sequenceLength),
-            tail: line.substring(startIndex + endOfMarker + sequenceLength + 1)
+            tailIndex: startIndex + endOfMarker + sequenceLength + 1
         };
     }
-};
-
-var decompress = function(line) {
-    var accu = '';
-    for (var index=0; index<line.length; index++) {
-        if (line[index] == '(') {
-            var after = line.substring(index);
-            var sequenceLength = +after.substring(1, after.indexOf('x'));
-            var endOfMarker = after.indexOf(')');
-            var count = +after.substring(after.indexOf('x')+1, endOfMarker);
-            var sequenceToRepeat = after.substring(endOfMarker+1, endOfMarker+1+sequenceLength);
-            for (var n=0; n<count; n++) { accu += sequenceToRepeat; }
-            index += endOfMarker+sequenceLength;
-        }
-        else {
-            accu += line[index];
-        }
-    }
-    return accu;
 };
 
 var size = function(line) {
