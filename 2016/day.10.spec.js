@@ -10,7 +10,7 @@ describe('2016 day 10 challenge', function() {
 
     var url = 'http://adventofcode.com/2016/day/10/input';
 
-    it('includes part 1', function(done) {
+    it('includes part 1 and 2', function(done) {
         request({url: url, jar: credentialsFor(url)}, function(error, response, input) {
             var array1 = [];
             var array2 = [];
@@ -60,8 +60,11 @@ describe('2016 day 10 challenge', function() {
                 }
             }
             expect(intersection[0]).to.equal(101);
+            expect(space.findOutput(0).chips[0]*space.findOutput(1).chips[0]*space.findOutput(2).chips[0]).to.equal(37789);
             done();
         });
+
+
     });
 
     describe('internals', function() {
@@ -122,6 +125,8 @@ describe('2016 day 10 challenge', function() {
                 }
             }
             expect(intersection[0]).to.equal(2);
+
+            
         });
     });
 });
