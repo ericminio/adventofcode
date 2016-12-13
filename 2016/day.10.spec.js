@@ -10,61 +10,39 @@ describe('2016 day 10 challenge', function() {
 
     var url = 'http://adventofcode.com/2016/day/10/input';
 
-    it('includes part 1 and 2', function(done) {
+    var space;
+    var botsWhoSawChip17;
+    var botsWhoSawChip61;
+    var bot;
+
+    beforeEach(function(done) {
+        botsWhoSawChip17 = [];
+        botsWhoSawChip61 = [];
+        space = new Space(function(bot, chip) {
+            if (chip == 17) { botsWhoSawChip17.push(bot); }
+            if (chip == 61) { botsWhoSawChip61.push(bot); }
+        });
         request({url: url, jar: credentialsFor(url)}, function(error, response, input) {
-            var array1 = [];
-            var array2 = [];
-            var space = new Space(function(bot, chip) {
-                if (chip == 17) { array1.push(bot); }
-                if (chip == 61) { array2.push(bot); }
-            });
             var lines = input.split('\n');
+            run(space, lines);
 
-            var initCommands = [];
-            var giveCommands = [];
-            for (var index=0; index<lines.length; index++) {
-                if (lines[index].indexOf('value') == 0) {
-                    var command = new InitCommand(lines[index], space);
-                    initCommands.push(command);
-                }
-                if (lines[index].indexOf('bot') == 0) {
-                    var command = new GiveCommand(lines[index], space);
-                    giveCommands.push(command);
-                }
-            }
-
-            for (var index=0; index<initCommands.length; index++) {
-                initCommands[index].execute();
-            }
-
-            var canExecuteMore = true;
-            while (canExecuteMore) {
-                canExecuteMore = false;
-                for (var index=0; index<giveCommands.length; index++) {
-                    var command = giveCommands[index];
-                    if (command.canExecute()) {
-                        canExecuteMore = true;
-                        command.execute();
-                    }
-                }
-            }
-
-            var intersection = [];
-            var union = array1.concat(array2);
-            for (var index=0; index<union.length; index++) {
-                var item = union[index];
-                if (array1.indexOf(item) !=-1
-                    && array2.indexOf(item) !=-1
-                    && intersection.indexOf(item) == -1) {
-                    intersection.push(union[index]);
-                }
-            }
-            expect(intersection[0]).to.equal(101);
-            expect(space.findOutput(0).chips[0]*space.findOutput(1).chips[0]*space.findOutput(2).chips[0]).to.equal(37789);
+            bot = space.findBot(intersection(botsWhoSawChip61, botsWhoSawChip17)[0]);
             done();
         });
+    });
 
+    it('identifies the searched bot correctly', function() {
+        expect(bot.id).to.equal(101);
+    });
 
+    it('discards correctly in the output bins', function() {
+        var product = 1;
+        var multiplication = function(a, b) { return a*b; };
+        [0, 1, 2].forEach(function(index) {
+            product *= space.findOutput(index).chips.reduce(multiplication);
+        });
+
+        expect(product).to.equal(37789);
     });
 
     describe('internals', function() {
@@ -85,48 +63,52 @@ describe('2016 day 10 challenge', function() {
                 'bot 0 gives low to output 2 and high to output 0',
                 'value 2 goes to bot 2',
             ];
-            var initCommands = [];
-            var giveCommands = [];
-            for (var index=0; index<lines.length; index++) {
-                if (lines[index].indexOf('value') == 0) {
-                    var command = new InitCommand(lines[index], space);
-                    initCommands.push(command);
-                }
-                if (lines[index].indexOf('bot') == 0) {
-                    var command = new GiveCommand(lines[index], space);
-                    giveCommands.push(command);
-                }
-            }
+            run(space, lines);
 
-            for (var index=0; index<initCommands.length; index++) {
-                initCommands[index].execute();
-            }
-
-            var canExecuteMore = true;
-            while (canExecuteMore) {
-                canExecuteMore = false;
-                for (var index=0; index<giveCommands.length; index++) {
-                    var command = giveCommands[index];
-                    if (command.canExecute()) {
-                        canExecuteMore = true;
-                        command.execute();
-                    }
-                }
-            }
-
-            var intersection = [];
-            var union = array1.concat(array2);
-            for (var index=0; index<union.length; index++) {
-                var item = union[index];
-                if (array1.indexOf(item) !=-1
-                    && array2.indexOf(item) !=-1
-                    && intersection.indexOf(item) == -1) {
-                    intersection.push(union[index]);
-                }
-            }
-            expect(intersection[0]).to.equal(2);
-
-            
+            expect(intersection(array1, array2)).to.deep.equal([2]);
         });
     });
 });
+
+var intersection = function(array1, array2) {
+    var inter = [];
+    var union = array1.concat(array2);
+    for (var index=0; index<union.length; index++) {
+        var item = union[index];
+        if (array1.indexOf(item) !=-1
+            && array2.indexOf(item) !=-1
+            && inter.indexOf(item) == -1) {
+            inter.push(union[index]);
+        }
+    }
+    return inter;
+};
+
+var run = function(space, lines) {
+    var initCommands = [];
+    var giveCommands = [];
+    for (var index=0; index<lines.length; index++) {
+        if (lines[index].indexOf('value') == 0) {
+            var command = new InitCommand(lines[index], space);
+            initCommands.push(command);
+        }
+        if (lines[index].indexOf('bot') == 0) {
+            var command = new GiveCommand(lines[index], space);
+            giveCommands.push(command);
+        }
+    }
+    for (var index=0; index<initCommands.length; index++) {
+        initCommands[index].execute();
+    }
+    var canExecuteMore = true;
+    while (canExecuteMore) {
+        canExecuteMore = false;
+        for (var index=0; index<giveCommands.length; index++) {
+            var command = giveCommands[index];
+            if (command.canExecute()) {
+                canExecuteMore = true;
+                command.execute();
+            }
+        }
+    }
+};
