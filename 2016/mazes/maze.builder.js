@@ -4,6 +4,8 @@ builder = function(number) {
         isWall: function(location) {
             var x = location.x;
             var y = location.y;
+            if (location.x<0 || location.y<0) { return true; }
+            
             var base = x*x + 3*x + 2*x*y + y + y*y + number;
             var inBin = base.toString(2);
 

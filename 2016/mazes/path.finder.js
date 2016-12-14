@@ -9,14 +9,22 @@ PathFinder.prototype.useMaze = function(maze) {
 PathFinder.prototype.startAt = function(location) {
     this.start = location;
 };
+PathFinder.prototype.setStepListener = function(listener) {
+    this.listener = listener;
+};
 PathFinder.prototype.pathTo = function(location) {
     this.target = location;
     var tree = leafs = [this.start];
     var found = undefined;
+    var step = 0;
     while (!found) {
         leafs = this.nextGeneration(leafs, tree);
         tree = tree.concat(leafs);
         found = this.isTargetReached(leafs);
+        if (this.listener) {
+            step ++;
+            this.listener(step, tree);
+        }
     }
     this.leafs = leafs;
     return this.buildPath(found);

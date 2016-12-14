@@ -16,6 +16,9 @@ describe('MazeBuilder for favorite number 10', function() {
     it('has wall on 1, 0', function() {
         expect(maze.isWall(xy(1, 0))).to.equal(true);
     });
+    it('has wall on -1, 1', function() {
+        expect(maze.isWall(xy(-1, 1))).to.equal(true);
+    });
     it('can count 1s', function() {
         expect(buildMaze.count1('11')).to.equal(2);
         expect(buildMaze.count1('1011')).to.equal(3);
