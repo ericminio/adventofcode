@@ -99,4 +99,5 @@ describe('PathFinder', function() {
             expect(pathFinder.leafs.length).to.equal(4);
         });
     });
+
 });
