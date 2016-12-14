@@ -1,6 +1,7 @@
-var Renderer = function() {
+var xy = require('./location');
 
-};
+var Renderer = function() {};
+
 Renderer.prototype.useMaze = function(maze) {
     this.maze = maze;
 };
@@ -10,7 +11,7 @@ Renderer.prototype.render = function(path) {
     for(var y=0; y<=this.biggestYIn(path); y++) {
         picture[y] = '';
         for(var x=0; x<=this.biggestXIn(path); x++) {
-            picture[y] += this.maze.isWall(x, y) ? '#' : '.';
+            picture[y] += this.maze.isWall(xy(x, y)) ? '#' : '.';
         }
     }
 
