@@ -11,6 +11,6 @@
         "sinon-chai": "latest"
     },
     "scripts": {
-        "test": "mocha 2016/day.14.spec.js --recursive"
+        "test": "mocha 2016/day.15.spec.js --recursive"
     }
 }
