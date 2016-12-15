@@ -1,6 +1,7 @@
 var expect = require('chai').expect;
 var crypto = require('crypto');
 
+var hashes;
 describe('2016 day 14 challenge', function() {
 
     describe('exploration', function() {
@@ -19,10 +20,10 @@ describe('2016 day 14 challenge', function() {
 
             expect(findKey('ahsbgdzn', hashOneTime)).to.equal(23890);
         });
-        it.only('can find 64th key of ahsbgdzn hashing 2017 times', function() {
+        it('can find 64th key of ahsbgdzn hashing 2017 times', function() {
             this.timeout(0);
-
-            expect(findKey('ahsbgdzn', hash2017Times)).to.equal(0);
+            hashes = [];
+            expect(findKey('ahsbgdzn', hash2017Times)).to.equal(22696);
         });
     });
 });
@@ -35,12 +36,15 @@ var hashOneTime = function(input) {
 };
 
 var hash2017Times = function(input) {
-    var current = input;
-    for (var i=0; i<2017; i++) {
-        var md5 = crypto.createHash('md5');
-        current = md5.update(current).digest('hex');
+    if (hashes[input] == undefined) {
+        var current = input;
+        for (var i=0; i<2017; i++) {
+            var md5 = crypto.createHash('md5');
+            current = md5.update(current).digest('hex');
+        }
+        hashes[input] = current;
     }
-    return current;
+    return hashes[input];
 };
 
 var findKey = function(salt, hashing) {
@@ -50,6 +54,7 @@ var findKey = function(salt, hashing) {
         var found = false;
         while (!found) {
             index ++;
+            if (index % 100 == 0) { console.log(index); }
             var input = salt + index;
             var code = hashing(input);
             var char = repeatedCharacterIn(code);
