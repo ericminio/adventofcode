@@ -5,29 +5,74 @@ describe('2016 day 5 challenge', function() {
 
     it('includes part 1', function() {
         this.timeout(0);
-        expect(getPassword('abbhdwsy', addToEnd)).to.equal('801b56a7');
+        expect(getPassword('abbhdwsy', addToEnd, nextHash)).to.equal('801b56a7');
     });
 
     it('includes part 2', function() {
         this.timeout(0);
-        expect(getPassword('abbhdwsy', cherryPicking)).to.equal('424a0197');
+        expect(getPassword('abbhdwsy', cherryPicking, nextHash)).to.equal('424a0197');
     });
 
     describe('internals', function() {
 
-        it('can hash a value', function() {
-            var md5 = crypto.createHash('md5');
-            expect(md5.update('abc' + 3231929).digest('hex')).to.equal('00000155f8105dff7f56ee10fa9b9abd');
+        describe('getPassword', function() {
+
+            var count;
+            var nextHash;
+            var filling;
+
+            beforeEach(function() {
+                count = 0;
+                nextHash = function() { count ++; return { index:0, hash:count }; };
+                filling = function(hash, password) { return password+hash; }
+            });
+
+            it('looks for 8 hashes', function() {
+                getPassword('any', filling, nextHash);
+
+                expect(count).to.equal(8);
+            });
+            it('uses the 8 hashes to fill the password', function() {
+                var password = getPassword('any', filling, nextHash);
+
+                expect(password).to.equal('12345678');
+            });
+            it('looks for more hashes when filling does not modify the password', function() {
+                var repeat7 = true;
+                filling = function(hash, password) {
+                    if (hash == '8' && repeat7) { repeat7 = false; return password; }
+                    return password+hash;
+                }
+                getPassword('any', filling, nextHash);
+
+                expect(count).to.equal(9);
+            });
         });
 
-        it('can build a password for a given id', function() {
-            this.timeout(0);
-            expect(getPassword('abc', addToEnd)).to.equal('18f47a30');
+        describe('crypto', function() {
+
+            it('can hash a value', function() {
+                var md5 = crypto.createHash('md5');
+                expect(md5.update('abc' + 3231929).digest('hex')).to.equal('00000155f8105dff7f56ee10fa9b9abd');
+            });
         });
 
-        it('can build a password for a given id with a cherry-picking strategy', function() {
-            this.timeout(0);
-            expect(getPassword('abc', cherryPicking)).to.equal('05ace8e3');
+        describe('nextHash', function() {
+
+            it('skips hash not starting with 5 zeros', function() {
+                expect(nextHash('abc', 3231927)).to.deep.equal({
+                    index: 3231929,
+                    hash: '00000155f8105dff7f56ee10fa9b9abd'
+                });
+            });
+        });
+
+        describe('addToEnd', function() {
+
+            it('adds to the end of the password the 6th char', function() {
+                expect(addToEnd('1234567', '')).to.equal('6');
+                expect(addToEnd('1234567', 'any')).to.equal('any6');
+            });
         });
 
         describe('cherryPicking', function() {
@@ -57,31 +102,33 @@ describe('2016 day 5 challenge', function() {
     });
 });
 
-var getPassword = function(id, filling) {
-    var accu = 0;
+var getPassword = function(id, filling, nextHash) {
+    var index = 0;
     var password = '';
-    var hash = '';
     for (var i=0; i<8; ) {
-        while (hash.indexOf('00000') != 0) {
-            accu ++;
-            md5 = crypto.createHash('md5');
-            hash = md5.update(id + accu).digest('hex');
-        }
-        var value = filling(hash, password);
+        var options = nextHash(id, index);
+        var value = filling(options.hash, password);
         if (value != password) {
             password = value;
             i ++;
         }
-        hash = '';
+        index = options.index;
     }
     return password;
 };
 
-var addToEnd = function(hash, password) {
-    var value = password;
-    value += hash.substring(5, 6);
+var nextHash = function(id, index) {
+    var hash = '';
+    while (hash.indexOf('00000') != 0) {
+        index ++;
+        md5 = crypto.createHash('md5');
+        hash = md5.update(id + index).digest('hex');
+    }
+    return { index:index, hash:hash };
+};
 
-    return value;
+var addToEnd = function(hash, password) {
+    return password + hash.substring(5, 6);;
 };
 
 var cherryPicking = function(hash, password) {
