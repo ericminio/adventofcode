@@ -39,7 +39,7 @@ PathFinder.prototype.buildPath = function(target) {
     return path;
 };
 PathFinder.prototype.children = function(location, alreadyIdentified) {
-    var candidates = [ north(location), east(location), south(location), west(location) ];
+    var candidates = location.neighbours();
     var children = [];
     candidates.forEach(function(candidate) {
         if (!self.maze.isWall(candidate)) {
@@ -65,14 +65,14 @@ PathFinder.prototype.exclude = function(tree, children) {
         var visited = false;
         for (var j=0; j<tree.length; j++) {
             var node = tree[j];
-            if (node.x == child.x && node.y == child.y) { visited = true; break; }
+            if (node.equals(child)) { visited = true; break; }
         }
         if (!visited) { keep.push(child); }
     }
     return keep;
 };
 PathFinder.prototype.targetReached = function(location) {
-    return location.x == this.target.x && location.y == this.target.y;
+    return location.equals(this.target);
 };
 PathFinder.prototype.isTargetReached = function(leafs) {
     for (var i=0; i<leafs.length ; i++) {
@@ -84,8 +84,3 @@ PathFinder.prototype.isTargetReached = function(leafs) {
 };
 
 module.exports = PathFinder;
-
-var north = function(location) { return xy(location.x, location.y-1); }
-var south = function(location) { return xy(location.x, location.y+1); }
-var east = function(location) { return xy(location.x+1, location.y); }
-var west = function(location) { return xy(location.x-1, location.y); }
