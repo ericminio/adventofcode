@@ -8,9 +8,9 @@ describe('Location in Radioisotope Testing Facility', function() {
     beforeEach(function() {
         location = new Location([
                 'F4 .  .  .  .  .  ',
-                'F3 .  .  .  LG .  ',
-                'F2 .  HG .  .  .  ',
-                'F1 E  .  HM .  LM '
+                'F3 .  .  .  CC .  ',
+                'F2 .  AA .  .  .  ',
+                'F1 E  .  BB .  DD '
         ]);
     });
 
@@ -18,10 +18,41 @@ describe('Location in Radioisotope Testing Facility', function() {
         expect(location.neighbours()).to.deep.equal([
             [
                 'F4 .  .  .  .  .  ',
-                'F3 .  .  .  LG .  ',
-                'F2 E  HG HM  .  .  ',
-                'F1    .  .   .  LM '
-            ],
+                'F3 .  .  .  CC .  ',
+                'F2 E  AA BB .  .  ',
+                'F1 .  .  .  .  DD '
+            ]
         ]);
+    });
+
+    it('can move first item up', function() {
+        expect(location.move(-1, [1])).to.deep.equal(
+            [
+                'F4 .  .  .  .  .  ',
+                'F3 .  .  .  CC .  ',
+                'F2 E  AA BB .  .  ',
+                'F1 .  .  .  .  DD '
+            ]
+        );
+    });
+    it('can move second item up', function() {
+        expect(location.move(-1, [2])).to.deep.equal(
+            [
+                'F4 .  .  .  .  .  ',
+                'F3 .  .  .  CC .  ',
+                'F2 E  AA .  .  DD ',
+                'F1 .  .  BB .  .  '
+            ]
+        );
+    });
+    it('can move two items up', function() {
+        expect(location.move(-1, [1, 2])).to.deep.equal(
+            [
+                'F4 .  .  .  .  .  ',
+                'F3 .  .  .  CC .  ',
+                'F2 E  AA BB .  DD ',
+                'F1 .  .  .  .  .  '
+            ]
+        );
     });
 });
