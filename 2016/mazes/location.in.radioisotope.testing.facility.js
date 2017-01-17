@@ -1,11 +1,17 @@
 var Location = function(floors) {
     this.floors = floors;
-    this.elevatorFloor = 3;
+    for (var floor=0; floor<this.floors.length; floor++) {
+        if (floors[floor].indexOf('E') != -1) {
+            this.elevatorFloor = floor;
+        }
+    }
 };
 
 Location.prototype.neighbours = function() {
     var values = [];
     values.push(this.move(-1, [1]));
+    values.push(this.move(-1, [2]));
+    values.push(this.move(-1, [1, 2]));
     return values;
 };
 Location.prototype.move = function(direction, items) {
@@ -16,20 +22,18 @@ Location.prototype.move = function(direction, items) {
         }
     }
     var target = this.floors[this.elevatorFloor + direction];
-    target = target.substring(0, 3) + 'E' + target.substring(4);
     var source = this.floors[this.elevatorFloor];
+    target = target.substring(0, 3) + 'E' + target.substring(4);
     source = source.substring(0, 3) + '.' + source.substring(4);
 
     var itemCount = 0;
-    var itemIndex = 6;
+    var itemIndex = 3;
     for (var item=0; item<items.length; item++) {
-        while (itemCount != items[item]) {
-            while (source[itemIndex] == ' ' || source[itemIndex] == '.') {
-                itemIndex ++;
-            }
-            itemCount ++;
-            if (itemCount != items[item]) {
-                itemIndex += 3;
+        var searchedItem = items[item];
+        while (itemCount != searchedItem) {
+            itemIndex += 3;
+            if (source[itemIndex] != ' ' && source[itemIndex] != '.') {
+                itemCount ++;
             }
         }
         target = target.substring(0, itemIndex) + source.substring(itemIndex, itemIndex+3) + target.substring(itemIndex+3);

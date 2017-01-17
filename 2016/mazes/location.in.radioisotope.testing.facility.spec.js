@@ -21,6 +21,18 @@ describe('Location in Radioisotope Testing Facility', function() {
                 'F3 .  .  .  CC .  ',
                 'F2 E  AA BB .  .  ',
                 'F1 .  .  .  .  DD '
+            ],
+            [
+                'F4 .  .  .  .  .  ',
+                'F3 .  .  .  CC .  ',
+                'F2 E  AA .  .  DD ',
+                'F1 .  .  BB .  .  '
+            ],
+            [
+                'F4 .  .  .  .  .  ',
+                'F3 .  .  .  CC .  ',
+                'F2 E  AA BB .  DD ',
+                'F1 .  .  .  .  .  '
             ]
         ]);
     });
