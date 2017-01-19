@@ -6,7 +6,7 @@ var Location = require('./mazes/location.in.radioisotope.testing.facility.js');
 
 describe('2016 day 11 challenge', function() {
 
-    it('is described by an example', function() {
+    it('is described by an example', function(done) {
         var start = new Location([
                 'F4 .  .  .  .  .  ',
                 'F3 .  .  .  LG .  ',
@@ -14,17 +14,25 @@ describe('2016 day 11 challenge', function() {
                 'F1 E  .  HM .  LM '
         ]);
         var target = new Location([
-                'F4 E  HG HM LG LM',
-                'F3 .  .  .  .  . ',
-                'F2 .  .  .  .  . ',
-                'F1 .  .  .  .  . '
+                'F4 E  HG HM LG LM ',
+                'F3 .  .  .  .  .  ',
+                'F2 .  .  .  .  .  ',
+                'F1 .  .  .  .  .  '
         ]);
         var pathFinder = new PathFinder();
         pathFinder.useMaze(new RadioisotopeTestingFacility());
         pathFinder.startAt(start);
+        pathFinder.setStepListener(function(step, tree, leafs) {
+            if (step == 30) {
+                var leaf = pathFinder.isTargetReached(leafs);
+                console.log(JSON.stringify(leaf, null, ' '));
+                done();
+            }
+        });
         var path = pathFinder.pathTo(target);
 
         expect(path.length-1).to.equal(11);
+        done();
     });
 
 });

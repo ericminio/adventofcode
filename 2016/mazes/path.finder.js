@@ -23,7 +23,7 @@ PathFinder.prototype.pathTo = function(location) {
         found = this.isTargetReached(leafs);
         if (this.listener) {
             step ++;
-            this.listener(step, tree);
+            this.listener(step, tree, leafs);
         }
     }
     this.leafs = leafs;

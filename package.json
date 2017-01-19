@@ -1,16 +1,17 @@
 {
-    "name": "adventofcode",
-    "version": "1.0.0",
-    "private": false,
-    "devDependencies": {
-        "chai": "latest",
-        "jsdom": "latest",
-        "mocha": "latest",
-        "request": "latest",
-        "sinon": "latest",
-        "sinon-chai": "latest"
-    },
-    "scripts": {
-        "test": "mocha 2016/day.11.spec.js"
-    }
+  "name": "adventofcode",
+  "version": "1.0.0",
+  "private": false,
+  "devDependencies": {
+    "chai": "latest",
+    "deep-equal": "latest",
+    "jsdom": "latest",
+    "mocha": "latest",
+    "request": "latest",
+    "sinon": "latest",
+    "sinon-chai": "latest"
+  },
+  "scripts": {
+    "test": "mocha 2016/day.11.spec.js"
+  }
 }

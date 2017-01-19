@@ -34,10 +34,10 @@ Location.prototype.move = function(direction, items) {
     moving.index = 3;
     var moved = this.moveItemAtGivenIndex(moving);
 
-    var locations = this.floors.slice(0);
-    locations[this.elevatorFloor] = moved.source;
-    locations[this.elevatorFloor+direction] = moved.target;
-    return locations;
+    var floors = this.floors.slice(0);
+    floors[this.elevatorFloor] = moved.source;
+    floors[this.elevatorFloor+direction] = moved.target;
+    return new Location(floors);
 };
 
 Location.prototype.moveItemAtGivenIndex = function(options) {
@@ -72,6 +72,11 @@ Location.prototype.scanElevatorFloorUntil = function(stop) {
     }
 
     return data;
+};
+
+var equal = require('deep-equal');
+Location.prototype.equals = function(other) {
+    return equal(this.floors, other.floors);
 };
 
 module.exports = Location;
