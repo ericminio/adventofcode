@@ -23,11 +23,34 @@ describe('Radioisotope maze', function() {
         });
     });
     describe('isSafe', function() {
-        it('knows when a floor is safe', function() {
-            expect(maze.isSafe('F1 E  LM LG .  HG HM ')).to.equal(true);
+        it('when alone', function() {
+            expect(maze.isSafe('F1 E  LM .  .  .  .  ')).to.equal(true);
         });
-        it('knows when a floor is not safe', function() {
+        it('when connected', function() {
+            expect(maze.isSafe('F1 E  LM LG .  .  .  ')).to.equal(true);
+        });
+        it('when connected and with another RTG', function() {
+            expect(maze.isSafe('F1 E  LM LG .  HG .  ')).to.equal(true);
+        });
+        it('when away from RTG', function() {
+            expect(maze.isSafe('F1 E  LM HM .  .  .  ')).to.equal(true);
+        });
+    });
+    describe('is not safe', function() {
+        it('when with another RTG', function() {
+            expect(maze.isSafe('F1 E  LM .  .  HG .  ')).to.equal(false);
+        });
+        it('when with another connected RTG', function() {
             expect(maze.isSafe('F1 E  LM .  .  HG HM ')).to.equal(false);
+        });
+    });
+    describe('parsing', function() {
+
+        it('can extract chips', function() {
+            expect(maze.extractIn('F1 E  LM .  .  HG HM ', 'M')).to.deep.equal(['L', 'H']);
+        });
+        it('can extract generators', function() {
+            expect(maze.extractIn('F1 E  LM .  .  HG HM ', 'G')).to.deep.equal(['H']);
         });
     });
 });

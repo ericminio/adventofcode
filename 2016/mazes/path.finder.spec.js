@@ -32,10 +32,15 @@ describe('PathFinder', function() {
     it('knows the children of a given location in the maze', function() {
         var location = xy(1, 1);
         var east = xy(2, 1), south = xy(1, 2), west = xy(0, 1);
-        east.parent = location;
-        south.parent = location;
-        west.parent = location;
-        expect(pathFinder.children(location, [])).to.deep.equal([east, south, west ]);
+        var children = pathFinder.children(location, []);
+
+        expect(children.length).to.equal(3);
+        expect(children[0].x).to.equal(east.x);
+        expect(children[0].y).to.equal(east.y);
+        expect(children[1].x).to.equal(south.x);
+        expect(children[1].y).to.equal(south.y);
+        expect(children[2].x).to.equal(west.x);
+        expect(children[2].y).to.equal(west.y);
     });
 
     it('can find target east', function() {
