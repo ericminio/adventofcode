@@ -21,6 +21,13 @@ describe('Radioisotope maze', function() {
             ]);
             expect(maze.isWall(location)).to.equal(false);
         });
+        it('declares wall when a floor becomes unsafe', function() {
+            var location = new Location([
+                    'F2 E  .  LG .  .  .  ',
+                    'F1 .  LM .  .  HG HM ',
+            ]);
+            expect(maze.isWall(location)).to.equal(true);
+        });
     });
     describe('isSafe', function() {
         it('when alone', function() {

@@ -1,7 +1,12 @@
 var Maze = function() {};
 
 Maze.prototype.isWall = function(location) {
-    return !this.isSafe(location.floors[location.elevatorFloor]);
+    var safe = true;
+    for (var floor=0 ; floor<location.floors.length; floor++) {
+        var floorIsSafe = this.isSafe(location.floors[floor]);
+        safe = safe && floorIsSafe;
+    }
+    return !safe;
 };
 Maze.prototype.isSafe = function(floor) {
     var generators = this.extractIn(floor, 'G');
