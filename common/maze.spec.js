@@ -3,10 +3,13 @@ var expect = require('chai').expect;
 describe('maze', function() {
 
     var maze;
+    let visited;
 
     beforeEach(function() {
         maze = new Maze();
+        visited = []
         maze.positionsAreSimilar = function(p1, p2) { return p1.value == p2.value; };
+        maze.visitListener = function(position) { visited.push(position); };
     });
     it('dont consider an already visited position', function() {
         maze.alreadyVisitedPositions = [ {value:1}, {value:2} ];
@@ -20,8 +23,9 @@ describe('maze', function() {
         maze.target = { value:2 };
         maze.position = { value:1 };
         maze.around = function(position) { return [ {value:2} ]; };
+        maze.findPath();
 
-        expect(maze.findPath()).to.deep.equal([ {value:1}, {value:2} ]);
+        expect(visited).to.deep.equal([ {value:1}, {value:2} ]);
     });
     it('can find a 2-steps away target', function() {
         maze.position = { value:1 };
@@ -32,8 +36,9 @@ describe('maze', function() {
             }
             return [ {value:2} ];
         };
+        maze.findPath();
 
-        expect(maze.findPath()).to.deep.equal([ {value:1}, {value:2}, {value:3} ]);
+        expect(visited).to.deep.equal([ {value:1}, {value:2}, {value:3} ]);
     });
     it('ignores previously visited positions', function() {
         maze.position = { value:1 };
@@ -55,7 +60,7 @@ describe('maze', function() {
         };
         maze.findPath();
 
-        expect(visitCount).to.deep.equal(3);
+        expect(visitCount).to.deep.equal(4);
     });
     it('returns empty when not found', function() {
         maze.position = { value:1 };
@@ -65,6 +70,38 @@ describe('maze', function() {
         };
 
         expect(maze.findPath()).to.deep.equal([ ]);
+    });
+    it('visits breadth-first', function() {
+        //  1
+        //      2
+        //          4
+        //              8
+        //          5
+        //      3
+        //          6
+        //          7
+        maze.position = { value:1 };
+        maze.target = { value:8 };
+        maze.around = function(position) {
+            if (this.positionsAreSimilar(position, {value:1})) {
+                return [ {value:2}, {value:3} ];
+            }
+            if (this.positionsAreSimilar(position, {value:2})) {
+                return [ {value:4}, {value:5} ];
+            }
+            if (this.positionsAreSimilar(position, {value:3})) {
+                return [ {value:6}, {value:7} ];
+            }
+            if (this.positionsAreSimilar(position, {value:4})) {
+                return [ {value:8} ];
+            }
+        };
+        maze.findPath();
+
+        expect(visited).to.deep.equal([
+            {value:1}, {value:2}, {value:3}, {value:4},
+            {value:5}, {value:6}, {value:7}, {value:8}
+        ]);
     });
 });
 
@@ -92,26 +129,22 @@ Maze.prototype.possibleMoves = function(position) {
     return newMoves;
 };
 Maze.prototype.findPath = function() {
-    return this.visit(this.position, []);
+    return this.visit([this.position], []);
 };
-Maze.prototype.visit = function(position, path) {
-    this.visitListener(position);
-    path.push(position);
-    this.alreadyVisitedPositions.push(position);
-    if (this.positionsAreSimilar(position, this.target)) {
-        return path;
-    }
-    var nextMoves = this.possibleMoves(position);
-    for(var i=0; i<nextMoves.length; i++) {
-        var move = nextMoves[i];
-        if (this.positionsAreSimilar(move, this.target)) {
-            path.push(move);
+Maze.prototype.visit = function(nodes, path) {
+    for (var i=0; i<nodes.length; i++) {
+        this.visitListener(nodes[i]);
+        this.alreadyVisitedPositions.push(nodes[i]);
+        if (this.positionsAreSimilar(nodes[i], this.target)) {
+            path.push(nodes[i]);
             return path;
         }
     }
-    for(var i=0; i<nextMoves.length; i++) {
-        var move = nextMoves[i];
-        return this.visit(move, path);
+    var children = [];
+    for (var i=0; i<nodes.length; i++) {
+        var nextMoves = this.possibleMoves(nodes[i]);
+        children = children.concat(nextMoves);
     }
+    if (children.length != 0) { return this.visit(children, path); }
     return [];
 };
