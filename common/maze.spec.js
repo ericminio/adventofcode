@@ -37,9 +37,8 @@ describe('maze', function() {
                 return [ {value:3} ];
             }
         };
-        let path = maze.findPath();
-        //console.log(maze.parents);
-        expect(path).to.deep.equal([ {value:1}, {value:2}, {value:3} ]);
+
+        expect(maze.findPath()).to.deep.equal([ {value:1}, {value:2}, {value:3} ]);
     });
     it('ignores previously visited positions', function() {
         maze.position = { value:1 };
