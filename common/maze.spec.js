@@ -23,22 +23,23 @@ describe('maze', function() {
         maze.target = { value:2 };
         maze.position = { value:1 };
         maze.around = function(position) { return [ {value:2} ]; };
-        maze.findPath();
 
-        expect(visited).to.deep.equal([ {value:1}, {value:2} ]);
+        expect(maze.findPath()).to.deep.equal([ {value:1}, {value:2} ]);
     });
     it('can find a 2-steps away target', function() {
         maze.position = { value:1 };
         maze.target = { value:3 };
         maze.around = function(position) {
+            if (this.positionsAreSimilar(position, {value:1})) {
+                return [ {value:2} ];
+            }
             if (this.positionsAreSimilar(position, {value:2})) {
                 return [ {value:3} ];
             }
-            return [ {value:2} ];
         };
-        maze.findPath();
-
-        expect(visited).to.deep.equal([ {value:1}, {value:2}, {value:3} ]);
+        let path = maze.findPath();
+        //console.log(maze.parents);
+        expect(path).to.deep.equal([ {value:1}, {value:2}, {value:3} ]);
     });
     it('ignores previously visited positions', function() {
         maze.position = { value:1 };
@@ -96,16 +97,20 @@ describe('maze', function() {
                 return [ {value:8} ];
             }
         };
-        maze.findPath();
+        var path = maze.findPath();
 
         expect(visited).to.deep.equal([
             {value:1}, {value:2}, {value:3}, {value:4},
             {value:5}, {value:6}, {value:7}, {value:8}
         ]);
+        expect(path).to.deep.equal([
+            {value:1}, {value:2}, {value:4}, {value:8}
+        ]);
     });
 });
 
 var Maze = function() {
+    this.parents = [];
     this.alreadyVisitedPositions = [];
     this.visitListener = function() {};
 };
@@ -124,20 +129,29 @@ Maze.prototype.possibleMoves = function(position) {
                 break;
             }
         }
-        if (!wasAlreadyVisited) { newMoves.push(potentialMove); }
+        if (!wasAlreadyVisited) {
+            this.parents.push({
+                child: potentialMove,
+                parent:position
+            });
+            newMoves.push(potentialMove);
+        }
     }
     return newMoves;
 };
 Maze.prototype.findPath = function() {
-    return this.visit([this.position], []);
+    this.parents.push({
+        child: this.position,
+        parents: 'start'
+    });
+    return this.visit([this.position]);
 };
-Maze.prototype.visit = function(nodes, path) {
+Maze.prototype.visit = function(nodes) {
     for (var i=0; i<nodes.length; i++) {
         this.visitListener(nodes[i]);
         this.alreadyVisitedPositions.push(nodes[i]);
         if (this.positionsAreSimilar(nodes[i], this.target)) {
-            path.push(nodes[i]);
-            return path;
+            return this.pathTo(nodes[i]);
         }
     }
     var children = [];
@@ -145,6 +159,24 @@ Maze.prototype.visit = function(nodes, path) {
         var nextMoves = this.possibleMoves(nodes[i]);
         children = children.concat(nextMoves);
     }
-    if (children.length != 0) { return this.visit(children, path); }
+    if (children.length != 0) { return this.visit(children); }
     return [];
+};
+Maze.prototype.pathTo = function(position) {
+    var path = [position];
+    var parent = this.parentOf(position);
+    while (parent != 'start' && parent !== undefined) {
+        path.push(parent);
+        var parent = this.parentOf(parent);
+    }
+    path.reverse();
+    return path;
+};
+Maze.prototype.parentOf = function(position) {
+    for (var i=0; i<this.parents.length; i++) {
+        var entry = this.parents[i];
+        if (this.positionsAreSimilar(entry.child, position)) {
+            return entry.parent;
+        }
+    }
 };
