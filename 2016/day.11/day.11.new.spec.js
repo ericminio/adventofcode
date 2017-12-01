@@ -16,8 +16,8 @@ describe('weapons', function() {
     });
 });
 
-describe.skip('day 11 challenge', function() {
-    it.skip('is described by an example', function() {
+describe.only('day 11 challenge', function() {
+    it('is described by an example', function() {
         var maze = new Maze();
         maze.positionsAreSimilar = positionsAreSimilar;
         maze.around = around;
@@ -40,8 +40,9 @@ describe.skip('day 11 challenge', function() {
         var path = maze.findPath();
 
         expect(path.length-1).to.equal(11);
+        console.log(maze.monitor.times);
     });
-    it('contains part 1', function() {
+    it.skip('contains part 1', function() {
         var maze = new Maze();
         var level = 0;
         maze.levelListener = function(nodes) {

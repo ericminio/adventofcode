@@ -1,12 +1,34 @@
+var Monitor = function() {
+    this.times = {};
+};
+Monitor.prototype.addCategory = function(name) {
+    this.times[name] = { total:0 };
+};
+Monitor.prototype.top = function(category) {
+    this.times[category].start = Date.now();
+};
+Monitor.prototype.tick = function(category) {
+    this.times[category].total += Date.now() - this.times[category].start;
+    this.times[category].start = Date.now();
+};
+
 
 var Maze = function() {
+    this.monitor = new Monitor();
+    this.monitor.addCategory('total');
+    this.monitor.addCategory('around');
+    this.monitor.addCategory('similar:parentOf');
+    this.monitor.addCategory('similar:visit');
+    this.monitor.addCategory('similar:possibleMoves');
     this.parents = [];
     this.alreadyVisitedPositions = [];
     this.visitListener = function() {};
     this.levelListener = function() {};
 };
 Maze.prototype.possibleMoves = function(position) {
+    this.monitor.top('around');
     var potentialMoves = this.around(position);
+    this.monitor.tick('around');
     if (potentialMoves === undefined ) { return []; }
 
     var newMoves = [];
@@ -15,7 +37,10 @@ Maze.prototype.possibleMoves = function(position) {
         var wasAlreadyVisited = false;
         for (var j=0; j<this.alreadyVisitedPositions.length; j++) {
             var alreadyVisited = this.alreadyVisitedPositions[j];
-            if (this.positionsAreSimilar(potentialMove, alreadyVisited)) {
+            this.monitor.top('similar:possibleMoves');
+            var areSimilar = this.positionsAreSimilar(potentialMove, alreadyVisited);
+            this.monitor.tick('similar:possibleMoves');
+            if (areSimilar) {
                 wasAlreadyVisited = true;
                 break;
             }
@@ -31,18 +56,24 @@ Maze.prototype.possibleMoves = function(position) {
     return newMoves;
 };
 Maze.prototype.findPath = function() {
+    this.monitor.top('total');
     this.parents.push({
         child: this.position,
         parents: 'start'
     });
-    return this.visit([this.position]);
+    var path = this.visit([this.position]);
+    this.monitor.tick('total');
+    return path;
 };
 Maze.prototype.visit = function(nodes) {
     this.levelListener(nodes);
     for (var i=0; i<nodes.length; i++) {
         this.visitListener(nodes[i]);
         this.alreadyVisitedPositions.push(nodes[i]);
-        if (this.positionsAreSimilar(nodes[i], this.target)) {
+        this.monitor.top('similar:visit');
+        var areSimilar = this.positionsAreSimilar(nodes[i], this.target);
+        this.monitor.tick('similar:visit');
+        if (areSimilar) {
             return this.pathTo(nodes[i]);
         }
     }
@@ -67,7 +98,10 @@ Maze.prototype.pathTo = function(position) {
 Maze.prototype.parentOf = function(position) {
     for (var i=0; i<this.parents.length; i++) {
         var entry = this.parents[i];
-        if (this.positionsAreSimilar(entry.child, position)) {
+        this.monitor.top('similar:parentOf');
+        var areSimilar = this.positionsAreSimilar(entry.child, position);
+        this.monitor.tick('similar:parentOf');
+        if (areSimilar) {
             return entry.parent;
         }
     }

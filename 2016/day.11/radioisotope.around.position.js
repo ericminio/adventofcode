@@ -38,7 +38,7 @@ var isValid = function(position) {
         }
     }
     return true;
-}
+};
 var singleMoves = function(position, itemOnFloorIndexes, targetFloor) {
     var moves = [];
     for (var i=0; i<itemOnFloorIndexes.length; i++) {
