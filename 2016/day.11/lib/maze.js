@@ -1,14 +1,18 @@
+var hasher = require('node-object-hash')();
+var equal = require('deep-equal');
+
 var Monitor = function() {
     this.times = {};
 };
 Monitor.prototype.addCategory = function(name) {
-    this.times[name] = { total:0 };
+    this.times[name] = { total:0, calls:0 };
 };
 Monitor.prototype.top = function(category) {
     this.times[category].start = Date.now();
 };
 Monitor.prototype.tick = function(category) {
     this.times[category].total += Date.now() - this.times[category].start;
+    this.times[category].calls ++;
     this.times[category].start = Date.now();
 };
 
@@ -16,36 +20,28 @@ Monitor.prototype.tick = function(category) {
 var Maze = function() {
     this.monitor = new Monitor();
     this.monitor.addCategory('total');
-    this.monitor.addCategory('around');
-    this.monitor.addCategory('similar:parentOf');
-    this.monitor.addCategory('similar:visit');
-    this.monitor.addCategory('similar:possibleMoves');
+    this.monitor.addCategory('calculate children');
+    this.monitor.addCategory('eliminate already visited');
+    this.monitor.addCategory('check with target');
+    this.monitor.addCategory('hasher');
+    this.monitor.addCategory('final path');
     this.parents = [];
-    this.alreadyVisitedPositions = [];
+    this.alreadyVisitedPositions = {};
     this.visitListener = function() {};
     this.levelListener = function() {};
 };
 Maze.prototype.possibleMoves = function(position) {
-    this.monitor.top('around');
+    this.monitor.top('calculate children');
     var potentialMoves = this.around(position);
-    this.monitor.tick('around');
+    this.monitor.tick('calculate children');
     if (potentialMoves === undefined ) { return []; }
 
     var newMoves = [];
+    this.monitor.top('eliminate already visited');
     for (var i=0; i<potentialMoves.length; i++) {
         var potentialMove = potentialMoves[i];
-        var wasAlreadyVisited = false;
-        for (var j=0; j<this.alreadyVisitedPositions.length; j++) {
-            var alreadyVisited = this.alreadyVisitedPositions[j];
-            this.monitor.top('similar:possibleMoves');
-            var areSimilar = this.positionsAreSimilar(potentialMove, alreadyVisited);
-            this.monitor.tick('similar:possibleMoves');
-            if (areSimilar) {
-                wasAlreadyVisited = true;
-                break;
-            }
-        }
-        if (!wasAlreadyVisited) {
+        var hash = hasher.hash(potentialMove);
+        if (this.alreadyVisitedPositions[hash] == undefined) {
             this.parents.push({
                 child: potentialMove,
                 parent:position
@@ -53,6 +49,7 @@ Maze.prototype.possibleMoves = function(position) {
             newMoves.push(potentialMove);
         }
     }
+    this.monitor.tick('eliminate already visited');
     return newMoves;
 };
 Maze.prototype.findPath = function() {
@@ -69,10 +66,12 @@ Maze.prototype.visit = function(nodes) {
     this.levelListener(nodes);
     for (var i=0; i<nodes.length; i++) {
         this.visitListener(nodes[i]);
-        this.alreadyVisitedPositions.push(nodes[i]);
-        this.monitor.top('similar:visit');
-        var areSimilar = this.positionsAreSimilar(nodes[i], this.target);
-        this.monitor.tick('similar:visit');
+        this.monitor.top('hasher');
+        this.alreadyVisitedPositions[hasher.hash(nodes[i])] = 1;
+        this.monitor.tick('hasher');
+        this.monitor.top('check with target');
+        var areSimilar = equal(nodes[i], this.target);
+        this.monitor.tick('check with target');
         if (areSimilar) {
             return this.pathTo(nodes[i]);
         }
@@ -86,6 +85,7 @@ Maze.prototype.visit = function(nodes) {
     return [];
 };
 Maze.prototype.pathTo = function(position) {
+    this.monitor.top('final path');
     var path = [position];
     var parent = this.parentOf(position);
     while (parent != 'start' && parent !== undefined) {
@@ -93,14 +93,13 @@ Maze.prototype.pathTo = function(position) {
         var parent = this.parentOf(parent);
     }
     path.reverse();
+    this.monitor.tick('final path');
     return path;
 };
 Maze.prototype.parentOf = function(position) {
     for (var i=0; i<this.parents.length; i++) {
         var entry = this.parents[i];
-        this.monitor.top('similar:parentOf');
-        var areSimilar = this.positionsAreSimilar(entry.child, position);
-        this.monitor.tick('similar:parentOf');
+        var areSimilar = equal(entry.child, position);
         if (areSimilar) {
             return entry.parent;
         }

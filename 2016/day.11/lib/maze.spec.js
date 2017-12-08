@@ -1,4 +1,5 @@
 var expect = require('chai').expect;
+var equal = require('deep-equal');
 var Maze = require('./maze');
 
 describe('maze', function() {
@@ -9,16 +10,7 @@ describe('maze', function() {
     beforeEach(function() {
         maze = new Maze();
         visited = []
-        maze.positionsAreSimilar = function(p1, p2) { return p1.value == p2.value; };
         maze.visitListener = function(position) { visited.push(position); };
-    });
-    it('dont consider an already visited position', function() {
-        maze.alreadyVisitedPositions = [ {value:1}, {value:2} ];
-        maze.around = function(position) {
-            return [ {value:2}, {value:3} ];
-        };
-
-        expect(maze.possibleMoves()).to.deep.equal([ {value:3} ]);
     });
     it('can find a just-around away target', function() {
         maze.target = { value:2 };
@@ -31,10 +23,10 @@ describe('maze', function() {
         maze.position = { value:1 };
         maze.target = { value:3 };
         maze.around = function(position) {
-            if (this.positionsAreSimilar(position, {value:1})) {
+            if (equal(position, {value:1})) {
                 return [ {value:2} ];
             }
-            if (this.positionsAreSimilar(position, {value:2})) {
+            if (equal(position, {value:2})) {
                 return [ {value:3} ];
             }
         };
@@ -45,13 +37,13 @@ describe('maze', function() {
         maze.position = { value:1 };
         maze.target = { value:4 };
         maze.around = function(position) {
-            if (this.positionsAreSimilar(position, {value:1})) {
+            if (equal(position, {value:1})) {
                 return [ {value:2} ];
             }
-            if (this.positionsAreSimilar(position, {value:2})) {
+            if (equal(position, {value:2})) {
                 return [ {value:3} ];
             }
-            if (this.positionsAreSimilar(position, {value:3})) {
+            if (equal(position, {value:3})) {
                 return [ {value:2}, {value:4} ];
             }
         };
@@ -84,16 +76,16 @@ describe('maze', function() {
         maze.position = { value:1 };
         maze.target = { value:8 };
         maze.around = function(position) {
-            if (this.positionsAreSimilar(position, {value:1})) {
+            if (equal(position, {value:1})) {
                 return [ {value:2}, {value:3} ];
             }
-            if (this.positionsAreSimilar(position, {value:2})) {
+            if (equal(position, {value:2})) {
                 return [ {value:4}, {value:5} ];
             }
-            if (this.positionsAreSimilar(position, {value:3})) {
+            if (equal(position, {value:3})) {
                 return [ {value:6}, {value:7} ];
             }
-            if (this.positionsAreSimilar(position, {value:4})) {
+            if (equal(position, {value:4})) {
                 return [ {value:8} ];
             }
         };

@@ -1,14 +1,5 @@
 var expect = require('chai').expect;
 var equal = require('deep-equal');
-var clone = function(o) {
-    return JSON.parse(JSON.stringify(o));
-};
-var byFloorAndType = function(e1, e2) {
-    if (e1.floor < e2.floor) { return -1; }
-    if (e1.floor > e2.floor) { return +1; }
-    if (e1.type < e2.type) { return -1}
-    if (e1.type > e2.type) { return +1}
-};
 var reAssignTypes = function(items) {
     var count = 0;
     for (var i=0; i<items.length; i++) {
@@ -23,15 +14,17 @@ var reAssignTypes = function(items) {
         }
     }
 }
+var clone = function(o) {
+    return JSON.parse(JSON.stringify(o));
+};
 var positionsAreSimilar = function(a1, a2) {
-    var p1 = clone(a1);
-    var p2 = clone(a2);
-    p1.items.sort(byFloorAndType);
-    p2.items.sort(byFloorAndType);
-    reAssignTypes(p1.items);
-    reAssignTypes(p2.items);
+    if (a1.elevator != a2.elevator) return false;
+    var clone1 = clone(a1.items);
+    var clone2 = clone(a2.items);
+    reAssignTypes(clone1);
+    reAssignTypes(clone2);
 
-    return equal(p1, p2);
+    return equal(clone1, clone2);
 };
 
 module.exports = positionsAreSimilar;

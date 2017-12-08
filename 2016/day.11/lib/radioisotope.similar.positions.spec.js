@@ -1,4 +1,5 @@
 var expect = require('chai').expect;
+var positionsAreSimilar = require('./radioisotope.similar.positions');
 
 describe('similar positions', function() {
 
@@ -14,23 +15,6 @@ describe('similar positions', function() {
             elevator:1,
             items: [
                 { floor:1, type:1 }, { floor:1, type:-1 }
-            ]
-        })).to.equal(true);
-    });
-    it('resists unsorted items', function() {
-        expect(positionsAreSimilar({
-            floorCount:2,
-            elevator:1,
-            items: [
-                { floor:1, type:1 }, { floor:1, type:-1 },
-                { floor:2, type:2 }, { floor:2, type:-2 }
-            ]
-        },{
-            floorCount:2,
-            elevator:1,
-            items: [
-                { floor:2, type:2 }, { floor:2, type:-2 },
-                { floor:1, type:-1 }, { floor:1, type:1 }
             ]
         })).to.equal(true);
     });

@@ -12,8 +12,8 @@ describe('around', function() {
             floorCount:2,
             elevator:1,
             items: [
-                { floor:1, type:1 },
-                { floor:1, type:-1 }
+                { floor:1, type:-1 },
+                { floor:1, type:1 }
             ]
         };
         neighbours = around(position);
@@ -23,8 +23,8 @@ describe('around', function() {
             floorCount:2,
             elevator:2,
             items: [
-                { floor:2, type:1 },
-                { floor:1, type:-1 }
+                { floor:1, type:-1 },
+                { floor:2, type:1 }
             ]
         });
     });
@@ -43,8 +43,8 @@ describe('around', function() {
             floorCount:2,
             elevator:2,
             items: [
-                { floor:2, type:1 },
-                { floor:2, type:-1 }
+                { floor:2, type:-1 },
+                { floor:2, type:1 }
             ]
         });
     });
@@ -57,8 +57,8 @@ describe('around', function() {
                 floorCount:2,
                 elevator:2,
                 items: [
-                    { floor:2, type:1 },
-                    { floor:2, type:-1 }
+                    { floor:2, type:-1 },
+                    { floor:2, type:1 }
                 ]
             };
             neighbours = around(position);
@@ -89,8 +89,8 @@ describe('around', function() {
                 floorCount:2,
                 elevator:1,
                 items: [
-                    { floor:1, type:1 },
-                    { floor:1, type:-1 }
+                    { floor:1, type:-1 },
+                    { floor:1, type:1 }
                 ]
             })).to.equal(true);
         });

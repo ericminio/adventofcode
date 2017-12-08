@@ -39,13 +39,38 @@ var isValid = function(position) {
     }
     return true;
 };
+var byFloorAndType = function(e1, e2) {
+    if (e1.floor < e2.floor) { return -1; }
+    if (e1.floor > e2.floor) { return +1; }
+    if (e1.type < e2.type) { return -1}
+    if (e1.type > e2.type) { return +1}
+};
+var reAssignTypes = function(items) {
+    var count = 0;
+    for (var i=0; i<items.length; i++) {
+        if (items[i].type > 0) {
+            for (var j=0; j<items.length; j++) {
+                if (items[j].type == -items[i].type) {
+                    count ++;
+                    items[i].type = count;
+                    items[j].type = -count;
+                }
+            }
+        }
+    }
+}
+var cleanify = function(move) {
+    move.items.sort(byFloorAndType);
+    reAssignTypes(move.items);
+    return move;
+};
 var singleMoves = function(position, itemOnFloorIndexes, targetFloor) {
     var moves = [];
     for (var i=0; i<itemOnFloorIndexes.length; i++) {
         var move = clone(position);
         move.elevator = targetFloor;
         move.items[itemOnFloorIndexes[i]].floor = targetFloor;
-        if (isValid(move)) { moves.push(move); }
+        if (isValid(move)) { moves.push(cleanify(move)); }
     }
     return moves;
 }
@@ -57,7 +82,7 @@ var doubleMoves = function(position, itemOnFloorIndexes, targetFloor) {
             move.elevator = targetFloor;
             move.items[itemOnFloorIndexes[i]].floor = targetFloor;
             move.items[itemOnFloorIndexes[j]].floor = targetFloor;
-            if (isValid(move)) { moves.push(move); }
+            if (isValid(move)) { moves.push(cleanify(move)); }
         }
     }
     return moves;
