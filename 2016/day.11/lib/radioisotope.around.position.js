@@ -46,6 +46,9 @@ var byFloorAndType = function(e1, e2) {
     if (e1.type > e2.type) { return +1}
 };
 var reAssignTypes = function(items) {
+    for (var i=0; i<items.length; i++) {
+        items[i].type = items[i].type * 10;
+    }
     var count = 0;
     for (var i=0; i<items.length; i++) {
         if (items[i].type > 0) {
@@ -105,3 +108,4 @@ var around = function(position) {
 
 module.exports = around;
 module.exports.isValid = isValid;
+module.exports.reAssignTypes = reAssignTypes;

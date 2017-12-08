@@ -1,6 +1,26 @@
 var expect = require('chai').expect;
 var around = require('./radioisotope.around.position');
 var isValid = around.isValid;
+var reAssignTypes = around.reAssignTypes;
+
+describe.only('reAssignTypes', function() {
+    it('works', function() {
+        var items = [
+            { id:1, type:-2 },
+            { id:2, type:2 },
+            { id:3, type:-1 },
+            { id:4, type:1 }
+        ];
+        reAssignTypes(items);
+
+        expect(items).to.deep.equal([
+            { id:1, type:-1 },
+            { id:2, type:1 },
+            { id:3, type:-2 },
+            { id:4, type:2 }
+        ]);
+    });
+});
 
 describe('around', function() {
 
