@@ -67,7 +67,7 @@ describe.only('day 11 challenge', function() {
         //console.log(JSON.stringify(maze.monitor.times, null, 2));
         expect(path.length-1).to.equal(11);
     });
-    it('contains part 1', function() {
+    it.skip('contains part 1', function() {
         var maze = new Maze();
         var level = 0;
         maze.levelListener = function(nodes) {
@@ -103,7 +103,7 @@ describe.only('day 11 challenge', function() {
 
         expect(path.length-1).to.equal(31);
     });
-    it('contains part 2', function() {
+    it.skip('contains part 2', function() {
         var maze = new Maze();
         var level = 0;
         maze.levelListener = function(nodes) {
@@ -141,6 +141,6 @@ describe.only('day 11 challenge', function() {
         var path = maze.findPath();
         // console.log(JSON.stringify(maze.monitor.times, null, 2));
 
-        expect(path.length-1).to.equal(31);
+        expect(path.length-1).to.equal(55);
     });
 });
