@@ -12,7 +12,7 @@
     "sinon-chai": "latest"
   },
   "scripts": {
-    "test": "mocha 2017/day.8/*.spec.js",
+    "test": "mocha 2016/day.11/*.spec.js --timeout 0",
     "test:lib": "mocha 2016/day.11/lib/*.spec.js --timeout 0"
   },
   "dependencies": {

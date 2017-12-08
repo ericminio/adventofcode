@@ -29,6 +29,7 @@ var Maze = function() {
     this.alreadyVisitedPositions = {};
     this.visitListener = function() {};
     this.levelListener = function() {};
+    this.notifyFound = function() {};
 };
 Maze.prototype.possibleMoves = function(position) {
     this.monitor.top('calculate children');
@@ -73,13 +74,22 @@ Maze.prototype.visit = function(nodes) {
         var areSimilar = equal(nodes[i], this.target);
         this.monitor.tick('check with target');
         if (areSimilar) {
+            this.notifyFound(nodes[i]);
             return this.pathTo(nodes[i]);
         }
     }
     var children = [];
+    var uniqueChildrenHash = {};
     for (var i=0; i<nodes.length; i++) {
         var nextMoves = this.possibleMoves(nodes[i]);
-        children = children.concat(nextMoves);
+        for (var j=0; j<nextMoves.length; j++) {
+            var candidate = nextMoves[j];
+            var hash = hasher.hash(candidate);
+            if (uniqueChildrenHash[hash] == undefined) {
+                children.push(candidate);
+                uniqueChildrenHash[hash] = 1;
+            }
+        }
     }
     if (children.length != 0) { return this.visit(children); }
     return [];
