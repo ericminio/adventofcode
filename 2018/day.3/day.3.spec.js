@@ -5,14 +5,16 @@ const {
     Instructions
 } = require('../../lib')
 
-describe.only('day 3 challenge', ()=> {
+describe('day 3 challenge', ()=> {
 
     var command = (instruction, registries) => {
-        var id = parseInt(instruction.substring(1, instruction.indexOf('@')).trim())
-        var left = parseInt(instruction.substring(instruction.indexOf('@ ')+2, instruction.indexOf(',')))
-        var top = parseInt(instruction.substring(instruction.indexOf(',')+1, instruction.indexOf(':')))
-        var width = parseInt(instruction.substring(instruction.indexOf(': ')+2, instruction.indexOf('x')))
-        var height = parseInt(instruction.substring(instruction.indexOf('x')+1))
+        var pattern = /^\#(.*)\s@\s(.*),(.*):\s(.*)x(.*)/;
+        var groups = pattern.exec(instruction)
+        var id = parseInt(groups[1])
+        var left = parseInt(groups[2])
+        var top = parseInt(groups[3])
+        var width = parseInt(groups[4])
+        var height = parseInt(groups[5])
         for (var i=0; i<(top+height); i++) {
             if (registries[i] === undefined) { registries.push([]) }
             for (var j=0; j<(left+width); j++) {
@@ -70,7 +72,7 @@ describe.only('day 3 challenge', ()=> {
         })
     })
 
-    describe.only('part 2', ()=>{
+    describe('part 2', ()=>{
 
         var computer
         var observer;
@@ -82,6 +84,27 @@ describe.only('day 3 challenge', ()=> {
             })
         })
 
+        var claim = function(ids) {
+            var candidate
+            for (var k=0; k<ids.length; k++) {
+                var id = ids[k]
+                var found = true
+                for (var i=0; i<computer.registries.length; i++) {
+                    for (var j=0; j<computer.registries[i].length; j++) {
+                        if (computer.registries[i][j].ids.length > 1
+                            && computer.registries[i][j].ids.includes(id)) {
+                            found = false
+                        }
+                    }
+                }
+                if (found) {
+                    candidate = id
+                    break;
+                }
+            }
+            return candidate
+        }
+
         it('can be explored', ()=>{
             computer.run(new Instructions([
                 '#1 @ 1,3: 4x4',
@@ -89,45 +112,15 @@ describe.only('day 3 challenge', ()=> {
                 '#3 @ 5,5: 2x2'
             ]))
             var ids = Array(3).fill().map((x,i)=>i+1)
-            var candidate
-            for (var k=0; k<ids.length; k++) {
-                var id = ids[k]
-                var found = true
-                for (var i=0; i<computer.registries.length; i++) {
-                    for (var j=0; j<computer.registries[i].length; j++) {
-                        if (computer.registries[i][j].ids.length > 1
-                            && computer.registries[i][j].ids.includes(id)) {
-                            found = false
-                        }
-                    }
-                }
-                if (found) {
-                    candidate = id
-                }
-            }
-            expect(candidate).to.equal(3)
+
+            expect(claim(ids)).to.equal(3)
         })
 
         it.skip('is solved', ()=>{
             computer.run(new Instructions(puzzle('day.3')))
             var ids = Array(1337).fill().map((x,i)=>i+1)
-            var candidate
-            for (var k=0; k<ids.length; k++) {
-                var id = ids[k]
-                var found = true
-                for (var i=0; i<computer.registries.length; i++) {
-                    for (var j=0; j<computer.registries[i].length; j++) {
-                        if (computer.registries[i][j].ids.length > 1
-                            && computer.registries[i][j].ids.includes(id)) {
-                            found = false
-                        }
-                    }
-                }
-                if (found) {
-                    candidate = id
-                }
-            }
-            expect(candidate).to.equal(1019)
+
+            expect(claim(ids)).to.equal(1019)
         })
     })
 })
