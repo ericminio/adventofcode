@@ -2,25 +2,17 @@ const { expect } = require('chai')
 const { puzzle } = require('../puzzle.input')
 const {
     Computer,
-    Instructions,
-    RollingInstructions
+    Instructions
 } = require('../../lib')
 
 describe('day 2 challenge', ()=> {
 
     var command = (id, registries) => {
-        var counts = {
-            'a':0, 'b':0, 'c':0, 'd':0, 'e':0, 'f':0,
-            'g':0, 'h':0, 'i':0, 'j':0, 'k':0, 'l':0,
-            'm':0, 'n':0, 'o':0, 'p':0, 'q':0, 'r':0,
-            's':0, 't':0, 'u':0, 'v':0, 'w':0, 'x':0,
-            'y':0, 'z':0
-        }
-        var letters = id.split('')
-        for (var i=0; i<letters.length; i++) {
-            var letter = letters[i]
+        var counts = {}
+        var letters = id.split('').forEach((letter)=>{
+            if (!counts[letter]) { counts[letter]=0 }
             counts[letter] ++
-        }
+        })
         var keys = Object.keys(counts);
         var twos = false;
         var threes = false;
@@ -92,6 +84,61 @@ describe('day 2 challenge', ()=> {
         it('can be solved', ()=>{
             computer.run(new Instructions(puzzle('day.2')))
             expect(computer.registries).to.deep.equal({ twos:248, threes:31, checksum:7688 })
+        })
+    })
+
+    describe('part 2', ()=>{
+
+        var computer;
+        var ids
+        var command = (id, registries) => {
+            ids.forEach((item)=>{
+                var candidate = inspect(item, id)
+                if (candidate.length == id.length-1) {
+                    registries.value = candidate
+                }
+            })
+            ids.push(id)
+        }
+        var inspect = function(s1, s2) {
+            var s = ''
+            s1.split('').forEach((letter, i)=>{
+                s += letter == s2[i] ? letter : '' ;
+            })
+            return s;
+        }
+
+        beforeEach(()=>{
+            ids =[]
+            computer = new Computer({
+                registries:{ value:'' },
+                command:command
+            })
+        })
+
+        it('can be explored 1', ()=>{
+            computer.run(new Instructions(['fghij', 'fguij']))
+            expect(computer.registries).to.deep.equal({ value:'fgij' })
+        })
+
+        it('can be explored 2', ()=>{
+            var ids = [
+                'abcde',
+                'fghij',
+                'klmno',
+                'pqrst',
+                'fguij',
+                'axcye',
+                'wvxyz'
+            ]
+
+            computer.run(new Instructions(ids))
+            expect(computer.registries).to.deep.equal({ value:'fgij' })
+        })
+
+        it('can be solved', ()=>{
+            computer.run(new Instructions(puzzle('day.2')))
+            expect(computer.registries).to.deep.equal({ value:'lsrivmotzbdxpkxnaqmuwcchj' })
         })
     })
 })
