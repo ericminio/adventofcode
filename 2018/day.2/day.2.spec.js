@@ -7,32 +7,29 @@ const {
 
 describe('day 2 challenge', ()=> {
 
-    var command = (id, registries) => {
-        var counts = {}
-        var letters = id.split('').forEach((letter)=>{
-            if (!counts[letter]) { counts[letter]=0 }
-            counts[letter] ++
-        })
-        var keys = Object.keys(counts);
-        var twos = false;
-        var threes = false;
-        for (var i=0; i<keys.length; i++) {
-            var key = keys[i]
-            if (counts[key] == 2 && !twos) {
-                registries.twos ++
-                twos = true
-            }
-            if (counts[key] == 3 && !threes) {
-                registries.threes ++
-                threes = true
-            }
-        }
-        registries.checksum = registries.twos * registries.threes
-    }
-
     describe('part 1', ()=>{
 
         var computer;
+        var command = (id, registries) => {
+            var counts = {}
+            var letters = id.split('').forEach((letter)=>{
+                if (!counts[letter]) { counts[letter]=0 }
+                counts[letter] ++
+            })
+            Object.keys(counts).some((key)=>{
+                if (counts[key] == 2) {
+                    registries.twos ++
+                    return true
+                }
+            })
+            Object.keys(counts).some((key)=>{
+                if (counts[key] == 3) {
+                    registries.threes ++
+                    return true
+                }
+            })
+            registries.checksum = registries.twos * registries.threes
+        }
 
         beforeEach(()=>{
             computer = new Computer({
@@ -92,10 +89,11 @@ describe('day 2 challenge', ()=> {
         var computer;
         var ids
         var command = (id, registries) => {
-            ids.forEach((item)=>{
+            ids.some((item)=>{
                 var candidate = inspect(item, id)
                 if (candidate.length == id.length-1) {
                     registries.value = candidate
+                    return true
                 }
             })
             ids.push(id)
