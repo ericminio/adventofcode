@@ -136,7 +136,7 @@ describe('day 2 challenge', ()=> {
             expect(computer.registries).to.deep.equal({ value:'fgij' })
         })
 
-        it('can be solved', ()=>{
+        it('is solved', ()=>{
             computer.run(new Instructions(puzzle('day.2')))
             expect(computer.registries).to.deep.equal({ value:'lsrivmotzbdxpkxnaqmuwcchj' })
         })
