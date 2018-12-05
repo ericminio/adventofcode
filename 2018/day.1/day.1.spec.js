@@ -5,63 +5,59 @@ const {
     Instructions,
     RollingInstructions
 } = require('../../lib')
+const {
+    inc,
+    dec,
+    value
+} = require('./cpu')
+const { Part1, Part2 } = require('./screens')
 
 describe('day 1 challenge', ()=> {
 
-    var command = (instruction, registries) => {
-        registries.value += parseInt(instruction)
-    }
+    var computer
+
+    beforeEach(()=>{
+        computer = new Computer({
+            registries:{ value:0 },
+            commands:[inc, dec]
+        })
+    })
 
     describe('part 1', ()=>{
 
-        var computer
-
         beforeEach(()=>{
-            computer = new Computer({
-                registries:{ value:0 },
-                command:command
-            })
+            computer.observer = new Part1()
+        })
+
+        it('can extract positive value', ()=>{
+            expect(value('+15')).to.equal(15)
+        })
+        it('can extract negative value', ()=>{
+            expect(value('-15')).to.equal(15)
         })
 
         it('can be explored', ()=>{
             computer.run(new Instructions(['+1', '-2', '+3', '+1']))
 
-            expect(computer.registries).to.deep.equal({ value:3 })
+            expect(computer.observer.value).to.equal(3)
         })
 
         it('is solved', ()=> {
             computer.run(new Instructions(puzzle('day.1')))
 
-            expect(computer.registries).to.deep.equal({ value:518 })
+            expect(computer.observer.value).to.deep.equal(518)
         })
     })
 
     describe('part 2', ()=>{
 
-        var Observer = function() {
-            this.seen = []
-        }
-        Observer.prototype.inspect = function(registries) {
-            if (this.seen.includes(registries.value)) {
-                this.exit(registries)
-            }
-            this.seen.push(registries.value)
-        }
-        var computer
-        var observer;
-
         beforeEach(()=>{
-            observer = new Observer()
-            computer = new Computer({
-                registries:{ value:0 },
-                command:command,
-                observer:observer
-            })
+            computer.observer = new Part2()
         })
 
         it('can be explored', (done)=>{
-            observer.exit = (registries)=>{
-                expect(registries).to.deep.equal({ value:2 })
+            computer.observer.exit = (registries)=>{
+                expect(computer.observer.value).to.equal(2)
                 done()
             }
 
@@ -69,16 +65,16 @@ describe('day 1 challenge', ()=> {
         })
 
         it('can be explored more', (done)=>{
-            observer.exit = (registries)=>{
-                expect(registries).to.deep.equal({ value:1 })
+            computer.observer.exit = (registries)=>{
+                expect(computer.observer.value).to.equal(1)
                 done()
             }
             computer.run(new RollingInstructions(['+1', '-2', '+3']))
         })
 
         it.skip('is solved', (done)=>{
-            observer.exit = (registries)=>{
-                expect(registries).to.deep.equal({ value:72889 })
+            computer.observer.exit = (registries)=>{
+                expect(computer.observer.value).to.equal(72889)
                 done()
             }
 
