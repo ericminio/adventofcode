@@ -1,26 +1,47 @@
 const { expect } = require('chai')
 const { line } = require('../puzzle.input')
 
-describe.only('day 8 challenge', ()=> {
+describe('day 8 challenge', ()=> {
 
+    var buildNode = (input, current)=> {
+        var node = { metadata: [], children: [] }
+        if (input[current] == 0) {
+            for (var index = current + 2; index < current + 2 + input[current + 1]; index++) {
+                 node.metadata.push(input[index])
+            }
+            if (current > 1) {
+                input[current - 2] --
+                input.splice(current, 2 + input[current+1])
+            }
+        }
+        else {
+            var count = input[current]
+            for (var i=0; i < count ; i++) {
+                node.children.push(buildNode(input, current + 2))
+            }
+            var tmp = buildNode(input, current)
+            node.metadata = tmp.metadata
+        }
+        return node
+    }
+    var buildTree = (input)=> {
+        return buildNode(input, 0)
+    }
     describe('part 1', ()=>{
 
-        var digest = function(input) {
-            var sum = 0
-            zero = input.indexOf(0)
-            while (zero !=-1) {
-                for (var index = zero + 2; index < zero + 2 + input[zero + 1]; index++) {
-                    sum += input[index]
-                }
-                input[zero] = sum
-
-                if (zero > 1) {
-                    input[zero - 2] --
-                    input.splice(zero, 2 + input[zero+1])
-                }
-                zero = input.indexOf(0)
+        var computeValue = (node)=>{
+            var value = 0
+            for (var i=0; i < node.metadata.length; i++) {
+                value += node.metadata[i]
             }
-            return sum
+            for (var i=0; i < node.children.length; i++) {
+                value += computeValue(node.children[i])
+            }
+            return value
+        }
+        var digest = (input)=> {
+            var root = buildTree(input)
+            return computeValue(root)
         }
         describe('exploration', ()=>{
             it('handles a single node with one metadata', ()=>{
@@ -35,65 +56,39 @@ describe.only('day 8 challenge', ()=> {
             it('handles two children', ()=>{
                 expect(digest([2, 2, 0, 1, 2, 0, 1, 3, 5, 5])).to.equal(15)
             })
-            it('handles the example', ()=>{
-                expect(digest([2, 3, 0, 3, 10, 11, 12, 1, 1, 0, 1, 99, 2, 1, 1, 2,])).to.equal(138)
-            })
         })
 
+        it('handles the example', ()=>{
+            expect(digest([2, 3, 0, 3, 10, 11, 12, 1, 1, 0, 1, 99, 2, 1, 1, 2,])).to.equal(138)
+        })
         it('is solved', ()=>{
             input = line('day.8').split(' ').map((x)=> parseInt(x))
             expect(digest(input)).to.equal(45865)
         })
     })
 
-    describe.only('part 2', ()=>{
+    describe('part 2', ()=>{
         var computeValue = (node)=>{
+            var value = 0
             if (node.children.length == 0) {
-                var value = 0
                 for (var i=0; i < node.metadata.length; i++) {
                     value += node.metadata[i]
                 }
-                return value
             } else {
-                var value = 0
                 for (var i=0; i < node.metadata.length; i++) {
                     var child = node.children[node.metadata[i]-1]
                     if (child !== undefined) {
                         value += computeValue(child)
                     }
                 }
-                return value
             }
+            return value
         }
         var digest = (input)=> {
             var root = buildTree(input)
-            // console.log(JSON.stringify(root, null, 2))
             return computeValue(root)
         }
-        var buildNode = (input, current)=> {
-            var node = { metadata: [], children: [] }
-            if (input[current] == 0) {
-                for (var index = current + 2; index < current + 2 + input[current + 1]; index++) {
-                     node.metadata.push(input[index])
-                }
-                if (current > 1) {
-                    input[current - 2] --
-                    input.splice(current, 2 + input[current+1])
-                }
-            }
-            else {
-                while (input[current] != 0) {
-                    node.children.push(buildNode(input, current + 2))
-                }
-                for (var index = current + 2; index < current + 2 + input[current + 1]; index++) {
-                     node.metadata.push(input[index])
-                }
-            }
-            return node
-        }
-        var buildTree = (input)=> {
-            return buildNode(input, 0)
-        }
+
         describe('tree', ()=>{
             it('handles a single node with one metadata', ()=>{
                 expect(buildTree([0, 1, 7])).to.deep.equal({
@@ -150,13 +145,16 @@ describe.only('day 8 challenge', ()=> {
             it('handles two generations', ()=>{
                 expect(digest([2, 2, 0, 1, 2, 1, 1, 0, 1, 3, 1, 1, 2])).to.equal(2+3)
             })
+            it('resists metadata entry of 0', ()=>{
+                expect(digest([2, 3, 0, 1, 2, 0, 1, 3, 1, 0, 0])).to.equal(2)
+            })
         })
         it('handles the example', ()=>{
             expect(digest([2, 3, 0, 3, 10, 11, 12, 1, 1, 0, 1, 99, 2, 1, 1, 2])).to.equal(66)
         })
         it('is solved', ()=>{
             input = line('day.8').split(' ').map((x)=> parseInt(x))
-            expect(digest(input)).to.equal(4386)
+            expect(digest(input)).to.equal(22608)
         })
     })
 })
