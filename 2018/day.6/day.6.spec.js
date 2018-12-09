@@ -1,7 +1,7 @@
 const { expect } = require('chai')
 const { puzzle } = require('../puzzle.input')
 
-describe.only('day 6 challenge', ()=> {
+describe('day 6 challenge', ()=> {
 
     var rectangle = function(points) {
         var max = { x:0, y:0 }

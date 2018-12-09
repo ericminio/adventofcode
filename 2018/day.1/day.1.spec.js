@@ -6,6 +6,7 @@ const {
     RollingInstructions
 } = require('../../lib')
 const {
+    ram,
     inc,
     dec,
     value
@@ -18,7 +19,7 @@ describe('day 1 challenge', ()=> {
 
     beforeEach(()=>{
         computer = new Computer({
-            registries:{ value:0 },
+            ram:ram(),
             commands:[inc, dec]
         })
     })
@@ -26,7 +27,7 @@ describe('day 1 challenge', ()=> {
     describe('part 1', ()=>{
 
         beforeEach(()=>{
-            computer.observer = new Part1()
+            computer.screen = new Part1()
         })
 
         it('can extract positive value', ()=>{
@@ -39,25 +40,25 @@ describe('day 1 challenge', ()=> {
         it('can be explored', ()=>{
             computer.run(new Instructions(['+1', '-2', '+3', '+1']))
 
-            expect(computer.observer.value).to.equal(3)
+            expect(computer.screen.value).to.equal(3)
         })
 
         it('is solved', ()=> {
             computer.run(new Instructions(puzzle('day.1')))
 
-            expect(computer.observer.value).to.deep.equal(518)
+            expect(computer.screen.value).to.deep.equal(518)
         })
     })
 
     describe('part 2', ()=>{
 
         beforeEach(()=>{
-            computer.observer = new Part2()
+            computer.screen = new Part2()
         })
 
         it('can be explored', (done)=>{
-            computer.observer.exit = (registries)=>{
-                expect(computer.observer.value).to.equal(2)
+            computer.whenStop = (screen)=>{
+                expect(screen.value).to.equal(2)
                 done()
             }
 
@@ -65,16 +66,16 @@ describe('day 1 challenge', ()=> {
         })
 
         it('can be explored more', (done)=>{
-            computer.observer.exit = (registries)=>{
-                expect(computer.observer.value).to.equal(1)
+            computer.whenStop = (screen)=>{
+                expect(screen.value).to.equal(1)
                 done()
             }
             computer.run(new RollingInstructions(['+1', '-2', '+3']))
         })
 
         it.skip('is solved', (done)=>{
-            computer.observer.exit = (registries)=>{
-                expect(computer.observer.value).to.equal(72889)
+            computer.whenStop = (screen)=>{
+                expect(screen.value).to.equal(72889)
                 done()
             }
 

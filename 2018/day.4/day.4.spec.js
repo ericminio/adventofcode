@@ -2,7 +2,7 @@ const { expect } = require('chai')
 const { puzzle } = require('../puzzle.input')
 const { Computer, Instructions } = require('../../lib')
 const {
-    registries,
+    ram,
     minute,
     guard,
     fallAsleep,
@@ -17,7 +17,7 @@ describe('day 4 challenge', ()=> {
 
     beforeEach(()=>{
         computer = new Computer({
-            registries:registries(),
+            ram:ram(),
             commands:[fallAsleep, wakesUp, beginsShift]
         })
     })
@@ -25,7 +25,7 @@ describe('day 4 challenge', ()=> {
     describe('part 1', ()=>{
 
         beforeEach(()=>{
-            computer.observer = new Part1()
+            computer.screen = new Part1()
         })
 
         it('can extract guard', ()=>{
@@ -50,11 +50,11 @@ describe('day 4 challenge', ()=> {
                 '[1518-11-01 00:05] falls asleep',
                 '[1518-11-01 00:25] wakes up'
             ]))
-            expect(computer.registries.records[10][4]).to.equal(undefined)
-            expect(computer.registries.records[10][5]).to.equal(1)
-            expect(computer.registries.records[10][6]).to.equal(1)
-            expect(computer.registries.records[10][24]).to.equal(1)
-            expect(computer.registries.records[10][25]).to.equal(undefined)
+            expect(computer.ram.records[10][4]).to.equal(undefined)
+            expect(computer.ram.records[10][5]).to.equal(1)
+            expect(computer.ram.records[10][6]).to.equal(1)
+            expect(computer.ram.records[10][24]).to.equal(1)
+            expect(computer.ram.records[10][25]).to.equal(undefined)
         })
 
         it('can be explored', ()=>{
@@ -77,9 +77,9 @@ describe('day 4 challenge', ()=> {
                 '[1518-11-05 00:45] falls asleep',
                 '[1518-11-05 00:55] wakes up'
             ]))
-            expect(computer.registries.records[10].total).to.equal(50)
-            expect(computer.registries.records[99].total).to.equal(30)
-            var best = computer.observer.best
+            expect(computer.ram.records[10].total).to.equal(50)
+            expect(computer.ram.records[99].total).to.equal(30)
+            var best = computer.screen.best
             expect(best).to.deep.equal({ guard:10, minute:24, total:50, count:2 })
             expect(best.guard * best.minute).to.equal(240)
         })
@@ -104,15 +104,15 @@ describe('day 4 challenge', ()=> {
                 '[1518-11-05 00:45] falls asleep',
                 '[1518-11-05 00:55] wakes up'
             ].sort()))
-            expect(computer.registries.records[10].total).to.equal(50)
-            expect(computer.registries.records[99].total).to.equal(30)
-            var best = computer.observer.best
+            expect(computer.ram.records[10].total).to.equal(50)
+            expect(computer.ram.records[99].total).to.equal(30)
+            var best = computer.screen.best
             expect(best.guard * best.minute).to.equal(240)
         })
 
         it('is solved', ()=>{
             computer.run(new Instructions(puzzle('day.4').sort()))
-            var best = computer.observer.best
+            var best = computer.screen.best
             expect(best.guard * best.minute).to.equal(4716)
         })
     })
@@ -120,7 +120,7 @@ describe('day 4 challenge', ()=> {
     describe('part 2', ()=>{
 
         beforeEach(()=>{
-            computer.observer = new Part2()
+            computer.screen = new Part2()
         })
 
         it('can be explored', ()=>{
@@ -143,16 +143,16 @@ describe('day 4 challenge', ()=> {
                 '[1518-11-05 00:45] falls asleep',
                 '[1518-11-05 00:55] wakes up'
             ].sort()))
-            expect(computer.registries.records[10].total).to.equal(50)
-            expect(computer.registries.records[99].total).to.equal(30)
-            var best = computer.observer.best
+            expect(computer.ram.records[10].total).to.equal(50)
+            expect(computer.ram.records[99].total).to.equal(30)
+            var best = computer.screen.best
             expect(best).to.deep.equal({ guard:99, minute:45, count:3 })
             expect(best.guard * best.minute).to.equal(4455)
         })
 
         it('is solved', ()=>{
             computer.run(new Instructions(puzzle('day.4').sort()))
-            var best = computer.observer.best
+            var best = computer.screen.best
             expect(best.guard * best.minute).to.equal(117061)
         })
     })

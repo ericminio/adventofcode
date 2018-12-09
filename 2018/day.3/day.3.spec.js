@@ -7,7 +7,7 @@ const {
 
 describe('day 3 challenge', ()=> {
 
-    var command = (instruction, registries) => {
+    var command = (instruction, ram) => {
         var pattern = /^\#(.*)\s@\s(.*),(.*):\s(.*)x(.*)/;
         var groups = pattern.exec(instruction)
         var id = parseInt(groups[1])
@@ -16,15 +16,15 @@ describe('day 3 challenge', ()=> {
         var width = parseInt(groups[4])
         var height = parseInt(groups[5])
         for (var i=0; i<(top+height); i++) {
-            if (registries[i] === undefined) { registries.push([]) }
+            if (ram[i] === undefined) { ram.push([]) }
             for (var j=0; j<(left+width); j++) {
-                if (registries[i][j] == undefined) { registries[i].push({ ids:[], count:0 }) }
+                if (ram[i][j] == undefined) { ram[i].push({ ids:[], count:0 }) }
             }
         }
         for (var i=top; i<top+height; i++) {
             for (var j=left; j<left+width; j++) {
-                registries[i][j].count ++
-                registries[i][j].ids.push(id)
+                ram[i][j].count ++
+                ram[i][j].ids.push(id)
             }
         }
     }
@@ -36,7 +36,7 @@ describe('day 3 challenge', ()=> {
 
         beforeEach(()=>{
             computer = new Computer({
-                registries:[],
+                ram:[],
                 command:command
             })
         })
@@ -48,9 +48,9 @@ describe('day 3 challenge', ()=> {
                 '#3 @ 5,5: 2x2'
             ]))
             var sum = 0
-            for (var i=0; i<computer.registries.length; i++) {
-                for (var j=0; j<computer.registries[i].length; j++) {
-                    if (computer.registries[i][j].count > 1) {
+            for (var i=0; i<computer.ram.length; i++) {
+                for (var j=0; j<computer.ram[i].length; j++) {
+                    if (computer.ram[i][j].count > 1) {
                         sum ++
                     }
                 }
@@ -61,9 +61,9 @@ describe('day 3 challenge', ()=> {
         it.skip('is solved', ()=>{
             computer.run(new Instructions(puzzle('day.3')))
             var sum = 0
-            for (var i=0; i<computer.registries.length; i++) {
-                for (var j=0; j<computer.registries[i].length; j++) {
-                    if (computer.registries[i][j].count > 1) {
+            for (var i=0; i<computer.ram.length; i++) {
+                for (var j=0; j<computer.ram[i].length; j++) {
+                    if (computer.ram[i][j].count > 1) {
                         sum ++
                     }
                 }
@@ -79,7 +79,7 @@ describe('day 3 challenge', ()=> {
 
         beforeEach(()=>{
             computer = new Computer({
-                registries:[],
+                ram:[],
                 command:command
             })
         })
@@ -89,10 +89,10 @@ describe('day 3 challenge', ()=> {
             for (var k=0; k<ids.length; k++) {
                 var id = ids[k]
                 var found = true
-                for (var i=0; i<computer.registries.length; i++) {
-                    for (var j=0; j<computer.registries[i].length; j++) {
-                        if (computer.registries[i][j].ids.length > 1
-                            && computer.registries[i][j].ids.includes(id)) {
+                for (var i=0; i<computer.ram.length; i++) {
+                    for (var j=0; j<computer.ram[i].length; j++) {
+                        if (computer.ram[i][j].ids.length > 1
+                            && computer.ram[i][j].ids.includes(id)) {
                             found = false
                         }
                     }

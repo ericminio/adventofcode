@@ -1,19 +1,19 @@
 var Part1 = function() {
 
 }
-Part1.prototype.inspect = function(registries) {
-    this.value = registries.value
+Part1.prototype.display = function(ram) {
+    this.value = ram.value
 }
 
 var Part2 = function() {
     this.seen = []
 }
-Part2.prototype.inspect = function(registries) {
-    this.value = registries.value
-    if (this.seen.includes(registries.value)) {
-        this.exit(registries)
+Part2.prototype.display = function(ram) {
+    this.value = ram.value
+    if (this.seen.includes(ram.value)) {
+        ram.stop = true
     }
-    this.seen.push(registries.value)
+    this.seen.push(ram.value)
 }
 
 module.exports = {

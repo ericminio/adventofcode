@@ -5,12 +5,17 @@ let value = function(instruction) {
 }
 
 module.exports = {
+    ram: ()=>{
+        return {
+            value: 0
+        }
+    },
     value: value,
 
-    inc: command(/^\+(.*)/, (instruction, registries)=>{
-        registries.value += value(instruction)
+    inc: command(/^\+(.*)/, (instruction, ram)=>{
+        ram.value += value(instruction)
     }),
-    dec: command(/^\-(.*)/, (instruction, registries)=>{
-        registries.value -= value(instruction)
+    dec: command(/^\-(.*)/, (instruction, ram)=>{
+        ram.value -= value(instruction)
     })
 }

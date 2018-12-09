@@ -1,7 +1,7 @@
 const { expect } = require('chai')
 const { puzzle } = require('../puzzle.input')
 
-describe.only('day 7 challenge', ()=> {
+describe('day 7 challenge', ()=> {
 
     var extract = /Step (.) must be finished before step (.) can begin./
     var extractFirstStep = function(spec) {
