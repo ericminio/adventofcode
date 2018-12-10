@@ -7,6 +7,11 @@ module.exports = {
             .toString().trim().split('\n');
         return content
     },
+    lines: (day, file) =>{
+        var content = fs.readFileSync(path.join(__dirname, day, file))
+            .toString().trim().split('\n');
+        return content
+    },
     line: (day) =>{
         var content = fs.readFileSync(path.join(__dirname, day, 'input.txt'))
             .toString().trim();
