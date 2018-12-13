@@ -4,7 +4,7 @@ const {
     next
 } = require('./lib')
 
-describe.only('day 12 challenge', ()=> {
+describe('day 12 challenge', ()=> {
 
     describe('part 1', ()=>{
 
