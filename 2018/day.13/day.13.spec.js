@@ -10,7 +10,7 @@ var findCartsInMap = require('./cart.parser')
 var findCartsInMapFooter = require('./cart.footer')
 var parseMap = require('./map.parser')
 
-describe.only('day 13 challenge', ()=> {
+describe('day 13 challenge', ()=> {
 
     describe('part 1', ()=>{
 
@@ -237,20 +237,46 @@ describe.only('day 13 challenge', ()=> {
 
                 expect(cart.position).to.deep.equal({ x:2, y:2 })
             })
+            it('resists turn-around', ()=>{
+                var cart = new Cart({ x:1, y:1, heading:{x:0, y:-1} })
+                var map = parseMap([
+                    '/+',
+                    '||'
+                ]);
+                cart.move(map)
+                cart.move(map)
+                cart.move(map)
+
+                expect(cart.position).to.deep.equal({ x:0, y:1 })
+            })
+            it('resists two turns', ()=>{
+                var cart = new Cart({ x:0, y:2, heading:{x:1, y:0} })
+                var map = parseMap([
+                    ' /--',
+                    ' +  ',
+                    '-+  '
+                ]);
+                cart.move(map)
+                cart.move(map)
+                cart.move(map)
+                cart.move(map)
+
+                expect(cart.position).to.deep.equal({ x:2, y:0 })
+            })
         })
-        it('has modified example #0', ()=>{
-            var lines = puzzle.lines('day.13', 'example0.txt')
-            var carts = findCartsInMapFooter(lines)
+        it('has an example', ()=>{
+            var lines = puzzle.raw('day.13', 'example.txt')
+            var carts = findCartsInMap(lines)
             var map = parseMap(lines)
 
             expect(crash(carts, map)).to.deep.equal({ x:7, y:3})
         })
-        it('has modified example #1', ()=>{
-            var lines = puzzle.lines('day.13', 'example1.txt')
-            var carts = findCartsInMapFooter(lines)
+        it('is solved', ()=>{
+            var lines = puzzle.raw('day.13', 'input.txt')
+            var carts = findCartsInMap(lines)
             var map = parseMap(lines)
 
-            expect(crash(carts, map)).to.deep.equal({ x:7, y:3})
+            expect(crash(carts, map)).to.deep.equal({ x: 91, y: 69 })
         })
     })
 })

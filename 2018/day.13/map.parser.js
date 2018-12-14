@@ -3,7 +3,7 @@ module.exports = (lines)=>{
     for (var y=0; y<lines.length; y++) {
         var line = lines[y]
         for (var x=0; x<line.length; x++) {
-            if (line.charAt(x) == '-') {
+            if (line.charAt(x) == '-' || line.charAt(x) == '>'|| line.charAt(x) == '<') {
                 var node = {
                     position: { x:x, y:y },
                     exits: [
@@ -13,7 +13,7 @@ module.exports = (lines)=>{
                 }
                 map.push(node)
             }
-            if (line.charAt(x) == '|') {
+            if (line.charAt(x) == '|' || line.charAt(x) == 'v' || line.charAt(x) == '^') {
                 var node = {
                     position: { x:x, y:y },
                     exits: [
@@ -40,11 +40,11 @@ module.exports = (lines)=>{
                     position: { x:x, y:y },
                     exits: []
                 }
-                if (line.charAt(x+1) == '-') {
+                if (line.charAt(x+1) == '-' || line.charAt(x+1) == '+') {
                     node.exits.push({ x:1, y:0 })
                     node.exits.push({ x:0, y:1 })
                 }
-                if (line.charAt(x-1) == '-') {
+                if (line.charAt(x-1) == '-' || line.charAt(x-1) == '+') {
                     node.exits.push({ x:-1, y:0 })
                     node.exits.push({ x:0, y:-1 })
                 }
@@ -55,11 +55,11 @@ module.exports = (lines)=>{
                     position: { x:x, y:y },
                     exits: []
                 }
-                if (line.charAt(x+1) == '-') {
+                if (line.charAt(x+1) == '-' || line.charAt(x+1) == '+') {
                     node.exits.push({ x:1, y:0 })
                     node.exits.push({ x:0, y:-1 })
                 }
-                if (line.charAt(x-1) == '-') {
+                if (line.charAt(x-1) == '-' || line.charAt(x-1) == '+') {
                     node.exits.push({ x:-1, y:0 })
                     node.exits.push({ x:0, y:1 })
                 }

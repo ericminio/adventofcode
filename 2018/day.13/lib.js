@@ -1,12 +1,11 @@
 var crash = (carts, map)=>{
-    var count = 100
     var impact = inspect(carts)
-    while (impact === undefined && count > 0) {
+    while (impact === undefined) {
+		sort(carts)
         for (var i = 0; i < carts.length; i++) {
             carts[i].move(map)
         }
         impact = inspect(carts)
-        count --
     }
 
     return impact
@@ -18,7 +17,8 @@ var displayCart = function(carts, index) {
             cart = carts[i]
         }
     }
-    console.log(cart.id, cart.position, cart.heading);
+    console.log('');
+    console.log(cart.id, cart.position, cart.heading, cart.nextTurn);
 }
 var id = 0
 var Cart = function(options) {
@@ -47,8 +47,6 @@ Cart.prototype.modifyHeading = function(map) {
             break
         }
     }
-    // console.log('you are here:', youAreHere);
-    // console.log('heading:', this.heading);
     if (youAreHere.exits.length == 4) {
         if (this.nextTurn == 'left' && this.canTurn(youAreHere, this.left())) {
             turn = this.left()
@@ -62,7 +60,6 @@ Cart.prototype.modifyHeading = function(map) {
             turn = this.right()
             this.nextTurn = 'left'
         }
-        // console.log('intersection', this.heading, turn);
     }
     else {
         for (var i=0; i<youAreHere.exits.length; i++) {
@@ -70,12 +67,10 @@ Cart.prototype.modifyHeading = function(map) {
             // console.log('exit', exit);
             if (exit.x + this.heading.x != 0 || exit.y + this.heading.y !=0 ) {
                 turn = exit
-                // console.log('this one');
             }
         }
     }
     this.heading = turn
-    // console.log('new heading:', this.heading);
 }
 Cart.prototype.isNextTurn = function(to) {
     return this.nextTurn.x == to.x && this.nextTurn.y == to.y
