@@ -120,5 +120,6 @@ module.exports = {
     crash:crash,
     Cart:Cart,
     inspect:inspect,
-    sort:sort
+    sort:sort,
+	displayCart
 }

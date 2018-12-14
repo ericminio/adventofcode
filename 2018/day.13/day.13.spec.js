@@ -4,7 +4,8 @@ const {
     crash,
     inspect,
     Cart,
-    sort
+    sort,
+	displayCart
 } = require('./lib')
 var findCartsInMap = require('./cart.parser')
 var findCartsInMapFooter = require('./cart.footer')
@@ -278,5 +279,50 @@ describe('day 13 challenge', ()=> {
 
             expect(crash(carts, map)).to.deep.equal({ x: 91, y: 69 })
         })
+
     })
+
+	describe('part 2', ()=>{
+
+		var impact = function(carts) {
+			for (var i = 0; i < carts.length-1; i++) {
+				if (carts[i].collide(carts[i+1])) {
+					return {
+						position: carts[i].position,
+						first:i,
+						second:i+1
+					}
+				}
+			}
+		}
+		var remove = function(first, second, carts) {
+			var tmp = []
+			for (var i = 0; i < carts.length; i++) {
+				if (i != first && i != second) {
+					tmp.push(carts[i])
+				}
+			}
+			return tmp
+		}
+
+		it('has an example', ()=>{
+            var lines = puzzle.raw('day.13', 'example2.txt')
+            var carts = findCartsInMap(lines)
+            var map = parseMap(lines)
+
+			while (carts.length > 1) {
+				for (var i = 0; i < carts.length; i++) {
+		            carts[i].move(map)
+		        }
+
+				var collision = impact(carts)
+				while (collision) {
+					carts = remove(collision.first, collision.second, carts)
+					collision = impact(carts)
+				}
+				sort(map)
+		    }
+			expect(carts[0].position).to.deep.equal({ x:6, y:4 })
+        })
+	})
 })
