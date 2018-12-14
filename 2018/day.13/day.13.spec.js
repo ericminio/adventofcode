@@ -8,6 +8,7 @@ const {
 } = require('./lib')
 var findCartsInMap = require('./cart.parser')
 var findCartsInMapFooter = require('./cart.footer')
+var parseMap = require('./map.parser')
 
 describe.only('day 13 challenge', ()=> {
 
@@ -25,6 +26,68 @@ describe.only('day 13 challenge', ()=> {
             // carts.forEach((cart)=>{
             //     console.log('cart:', cart.position.x, cart.position.y, cart.heading.x, cart.heading.y);
             // })
+        })
+        describe('map parser', ()=>{
+            it('understands -', ()=>{
+                var map = parseMap(['-']);
+                expect(map).to.deep.equal([{
+                    position: { x:0, y:0 },
+                    exits:[ { x:1, y:0 }, { x:-1, y:0 }]
+                }])
+            })
+            it('understands |', ()=>{
+                var map = parseMap(['|']);
+                expect(map).to.deep.equal([{
+                    position: { x:0, y:0 },
+                    exits:[ { x:0, y:1 }, { x:0, y:-1 }]
+                }])
+            })
+            it('understands +', ()=>{
+                var map = parseMap(['+']);
+                expect(map).to.deep.equal([{
+                    position: { x:0, y:0 },
+                    exits:[
+                        { x:0, y:1 }, { x:0, y:-1 },
+                        { x:1, y:0 }, { x:-1, y:0 }
+                    ]
+                }])
+            })
+            it('understands top-left /', ()=>{
+                var map = parseMap([
+                    '/-',
+                    '| '
+                ]);
+                expect(map[0].exits).to.deep.equal([
+                    { x:1, y:0 }, { x:0, y:1 }
+                ])
+            })
+            it('understands bottom-right /', ()=>{
+                var map = parseMap([
+                    ' |',
+                    '-/'
+                ]);
+                expect(map[2].exits).to.deep.equal([
+                    { x:-1, y:0 }, { x:0, y:-1 }
+                ])
+            })
+            it('understands bottom-left \\', ()=>{
+                var map = parseMap([
+                    '| ',
+                    '\\-'
+                ]);
+                expect(map[1].exits).to.deep.equal([
+                    { x:1, y:0 }, { x:0, y:-1 }
+                ])
+            })
+            it('understands top-right \\', ()=>{
+                var map = parseMap([
+                    '-\\',
+                    ' |'
+                ]);
+                expect(map[1].exits).to.deep.equal([
+                    { x:-1, y:0 }, { x:0, y:1 }
+                ])
+            })
         })
         describe('crash detection', ()=>{
             it ('works', ()=>{
@@ -57,30 +120,137 @@ describe.only('day 13 challenge', ()=> {
         describe('move', ()=>{
             it('follows heading', ()=>{
                 var cart = new Cart({ x:7, y:2, heading:{x:0, y:1} })
-                cart.move()
+                cart.move([{
+                    position: { x:7, y:3 },
+                    exits: [
+                        { x:0, y:1 }
+                    ]
+                }])
 
                 expect(cart.position).to.deep.equal({ x:7, y:3})
             })
-            it('modifies heading', ()=>{
+        })
+        describe('turns', ()=>{
+            it('turns left the first time', ()=>{
                 var cart = new Cart({ x:0, y:0, heading:{x:1, y:0} })
                 var map = [{
-                    position: { x:1, y:0 },
+                    position: { x:0, y:0 },
+                    exits: [
+                        { x:1, y:0 },
+                        { x:0, y:1 },
+                        { x:-1, y:0 },
+                        { x:0, y:-1 }
+                    ]
+                }]
+                cart.modifyHeading(map)
+
+                expect(cart.heading).to.deep.equal({ x:0, y:-1})
+            })
+            it('goes strait the second time', ()=>{
+                var cart = new Cart({ x:0, y:0, heading:{x:0, y:1} })
+                var map = [{
+                    position: { x:0, y:0 },
+                    exits: [
+                        { x:1, y:0 },
+                        { x:0, y:1 },
+                        { x:-1, y:0 },
+                        { x:0, y:-1 }
+                    ]
+                }]
+                cart.modifyHeading(map)
+                cart.modifyHeading(map)
+
+                expect(cart.heading).to.deep.equal({ x:1, y:0})
+            })
+            it('turns right the third time', ()=>{
+                var cart = new Cart({ x:0, y:0, heading:{x:-1, y:0} })
+                var map = [{
+                    position: { x:0, y:0 },
+                    exits: [
+                        { x:1, y:0 },
+                        { x:0, y:1 },
+                        { x:-1, y:0 },
+                        { x:0, y:-1 }
+                    ]
+                }]
+                cart.modifyHeading(map)
+                cart.modifyHeading(map)
+                cart.modifyHeading(map)
+
+                expect(cart.heading).to.deep.equal({ x:-1, y:0})
+            })
+            it('turns left again the fourth time', ()=>{
+                var cart = new Cart({ x:0, y:0, heading:{x:-1, y:0} })
+                var map = [{
+                    position: { x:0, y:0 },
+                    exits: [
+                        { x:1, y:0 },
+                        { x:0, y:1 },
+                        { x:-1, y:0 },
+                        { x:0, y:-1 }
+                    ]
+                }]
+                cart.modifyHeading(map)
+                cart.modifyHeading(map)
+                cart.modifyHeading(map)
+                cart.modifyHeading(map)
+
+                expect(cart.heading).to.deep.equal({ x:0, y:1})
+            })
+            it('follows the natural flow when turn is not on an intersection', ()=>{
+                var cart = new Cart({ x:0, y:0, heading:{x:1, y:0} })
+                var map = [{
+                    position: { x:0, y:0 },
                     exits: [
                         { x:0, y:1 },
                         { x:-1, y:0 }
                     ]
                 }]
+                cart.modifyHeading(map)
+
+                expect(cart.heading).to.deep.equal({ x:0, y:1 })
+            })
+            it('follows straight when this is the only option', ()=>{
+                var cart = new Cart({ x:0, y:0, heading:{x:0, y:1} })
+                var map = [{
+                    position: { x:0, y:0 },
+                    exits: [
+                        { x:0, y:1 },
+                        { x:0, y:-1 }
+                    ]
+                }]
+                cart.modifyHeading(map)
+
+                expect(cart.heading).to.deep.equal({ x:0, y:1 })
+            })
+            it('resists turn that are not an intersection', ()=>{
+                var cart = new Cart({ x:0, y:0, heading:{x:1, y:0} })
+                var map = parseMap([
+                    '-\\',
+                    ' |',
+                    ' +-'
+                ]);
+                cart.move(map)
+                cart.move(map)
+                cart.move(map)
                 cart.move(map)
 
-                expect(cart.heading).to.deep.equal({ x:0, y:1})
+                expect(cart.position).to.deep.equal({ x:2, y:2 })
             })
         })
-
-        it('has example #0', ()=>{
+        it('has modified example #0', ()=>{
             var lines = puzzle.lines('day.13', 'example0.txt')
             var carts = findCartsInMapFooter(lines)
+            var map = parseMap(lines)
 
-            expect(crash(carts, {})).to.deep.equal({ x:7, y:3})
+            expect(crash(carts, map)).to.deep.equal({ x:7, y:3})
+        })
+        it('has modified example #1', ()=>{
+            var lines = puzzle.lines('day.13', 'example1.txt')
+            var carts = findCartsInMapFooter(lines)
+            var map = parseMap(lines)
+
+            expect(crash(carts, map)).to.deep.equal({ x:7, y:3})
         })
     })
 })
