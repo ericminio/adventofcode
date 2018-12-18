@@ -284,45 +284,53 @@ describe('day 13 challenge', ()=> {
 
 	describe('part 2', ()=>{
 
-		var impact = function(carts) {
-			for (var i = 0; i < carts.length-1; i++) {
-				if (carts[i].collide(carts[i+1])) {
-					return {
-						position: carts[i].position,
-						first:i,
-						second:i+1
+		var reduceAfterEachMove = function(carts, map) {
+			while (carts.length > 1) {
+				var i = 0
+				while (i < carts.length) {
+					var cart = carts[i]
+		            cart.move(map)
+					var collisionIndex = -1
+					for (var j = 0; j < carts.length; j++) {
+						if (j != i
+							&& carts[j].position.x == carts[i].position.x
+							&& carts[j].position.y == carts[i].position.y) {
+							collisionIndex = j
+						}
 					}
+					if (collisionIndex !== -1) {
+						carts.splice(collisionIndex, 1)
+						if (collisionIndex < i) {
+							i--
+						}
+						carts.splice(i, 1)
+						i--
+					}
+					i++
 				}
-			}
-		}
-		var remove = function(first, second, carts) {
-			var tmp = []
-			for (var i = 0; i < carts.length; i++) {
-				if (i != first && i != second) {
-					tmp.push(carts[i])
-				}
-			}
-			return tmp
+				sort(carts)
+		    }
+			return carts
 		}
 
-		it('has an example', ()=>{
+		it('has an example (reduceAfterEachMove)', ()=>{
             var lines = puzzle.raw('day.13', 'example2.txt')
             var carts = findCartsInMap(lines)
             var map = parseMap(lines)
+			carts = reduceAfterEachMove(carts, map)
 
-			while (carts.length > 1) {
-				for (var i = 0; i < carts.length; i++) {
-		            carts[i].move(map)
-		        }
-
-				var collision = impact(carts)
-				while (collision) {
-					carts = remove(collision.first, collision.second, carts)
-					collision = impact(carts)
-				}
-				sort(map)
-		    }
+			expect(carts.length).to.equal(1)
 			expect(carts[0].position).to.deep.equal({ x:6, y:4 })
+        })
+		it.skip('is solved (reduceAfterEachMove)', ()=>{
+            var lines = puzzle.raw('day.13', 'input.txt')
+            var carts = findCartsInMap(lines)
+            var map = parseMap(lines)
+			carts = reduceAfterEachMove(carts, map)
+
+			expect(carts.length).to.equal(1)
+			expect(carts[0].position).to.deep.equal({ x:44, y:87 })
+
         })
 	})
 })

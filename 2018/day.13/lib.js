@@ -110,9 +110,27 @@ var inspect = (carts)=>{
 }
 var sort = (carts)=>{
     carts.sort((a, b)=>{
-        if (b.position.y < a.position.y) { return 1 }
-        if (b.position.x < a.position.x) { return 1 }
-        return -1
+        if (b.position.y < a.position.y) {
+			return 1
+		}
+		else {
+			if (b.position.y > a.position.y) {
+				return -1
+			}
+			else {
+				if (b.position.x < a.position.x) {
+					return 1
+				}
+				else {
+					if (b.position.x > a.position.x) {
+						return -1
+					}
+					else {
+						return 0
+					}
+				}
+			}
+		}        
     })
 }
 
