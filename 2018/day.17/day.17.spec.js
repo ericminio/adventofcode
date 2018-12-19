@@ -24,6 +24,9 @@ describe.only('day 17 challenge', ()=> {
 					}
 				}
 			})
+			it('can read height', ()=>{
+				expect(map.height()).to.equal(14)
+			})
         })
 	})
 })
