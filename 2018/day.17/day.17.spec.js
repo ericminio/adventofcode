@@ -27,6 +27,22 @@ describe.only('day 17 challenge', ()=> {
 			it('can read height', ()=>{
 				expect(map.height()).to.equal(14)
 			})
+			it('can read clay from vertical input', ()=>{
+				expect(map.point(3, 4)).to.equal(1)
+			})
+			it('can read clay from horizontal input', ()=>{
+				expect(map.point(7, 1)).to.equal(1)
+				expect(map.point(7, 2)).to.equal(1)
+				expect(map.point(7, 3)).to.equal(1)
+				expect(map.point(7, 4)).to.equal(1)
+				expect(map.point(7, 5)).to.equal(1)
+				expect(map.point(7, 6)).to.equal(1)
+				expect(map.point(7, 7)).to.equal(1)
+			})
+			it('leaves other points as sand', ()=>{
+				expect(map.point(7, 0)).to.equal(0)
+				expect(map.point(7, 8)).to.equal(0)
+			})
         })
 	})
 })

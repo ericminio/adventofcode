@@ -16,6 +16,9 @@ Map.prototype.width = function() {
 Map.prototype.height = function() {
 	return this.points.length
 }
+Map.prototype.set = function(x, y, value) {
+	this.points[x][y] = value
+}
 
 module.exports = {
 	Map:Map

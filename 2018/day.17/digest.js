@@ -31,7 +31,7 @@ var linesXrange = (lines)=>{
 		}
 		return range
 	}, { min:10000, max:-1 })
-	
+
 	return { min:range.min, max:range.max }
 }
 var linesYrange = (lines)=>{
@@ -44,18 +44,35 @@ var linesYrange = (lines)=>{
 }
 
 var digest = (lines)=>{
-	var map = []
-	x = linesXrange(lines)
-	var row = Array(x.max - x.min + 3).fill(0)
-	row[500-x.min+1] = -1
-	map.push(row)
+	var points = []
+	minx = linesXrange(lines)
+	var row = Array(minx.max - minx.min + 3).fill(0)
+	row[500-minx.min+1] = -1
+	points.push(row)
 
 	y = linesYrange(lines)
 	for (var i=0; i<y.max; i++) {
-		var row = Array(x.max - x.min + 3).fill(0)
-		map.push(row)
+		var row = Array(minx.max - minx.min + 3).fill(0)
+		points.push(row)
 	}
+	var map = new Map({ points:points })
+	lines.forEach((line)=>{
+		var start = parseInt(/(.*)=(.*)\.\.(.*)/.exec(line)[2])
+		var end = parseInt(/(.*)=(.*)\.\.(.*)/.exec(line)[3])
+		if (line.indexOf('x') == 0) {
+			var y = parseInt(/x=(.*),(.*)/.exec(line)[1]) - minx.min
+			for (x=start; x<=end; x++) {
+				map.set(x, y+1, 1)
+			}
+		}
+		if (line.indexOf('y') == 0) {
+			var x = parseInt(/y=(.*),(.*)/.exec(line)[1])
+			for (y=start; y<=end; y++) {
+				map.set(x, y-minx.min+1, 1)
+			}
+		}
+	})
 
-	return new Map({ points:map })
+	return map
 }
 module.exports = digest
