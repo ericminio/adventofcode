@@ -1,4 +1,4 @@
-const { Map } = require('./map')
+const Map = require('./map')
 
 var lineRange = (line, xOrY)=>{
 	var index = line.indexOf(xOrY+'=')
@@ -49,13 +49,14 @@ var digest = (lines)=>{
 	var row = Array(minx.max - minx.min + 3).fill(0)
 	row[500-minx.min+1] = -1
 	points.push(row)
+	var keep = { line:1, column:500-minx.min+1 }
 
 	y = linesYrange(lines)
 	for (var i=0; i<y.max; i++) {
 		var row = Array(minx.max - minx.min + 3).fill(0)
 		points.push(row)
 	}
-	var map = new Map({ points:points })
+	var map = new Map({ points:points, focus:[keep] })
 	lines.forEach((line)=>{
 		var start = parseInt(/(.*)=(.*)\.\.(.*)/.exec(line)[2])
 		var end = parseInt(/(.*)=(.*)\.\.(.*)/.exec(line)[3])
@@ -63,6 +64,9 @@ var digest = (lines)=>{
 			var y = parseInt(/x=(.*),(.*)/.exec(line)[1]) - minx.min
 			for (x=start; x<=end; x++) {
 				map.set(x, y+1, 1)
+			}
+			if (end-start+1 > map.highest) {
+				map.highest = end-start+1
 			}
 		}
 		if (line.indexOf('y') == 0) {
