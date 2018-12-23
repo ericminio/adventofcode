@@ -9,6 +9,7 @@ const {
 	eventually,
 	reservoirHeight
 } = require('./lib')
+const { SPRING, SAND, CLAY, FLOW, WATER } = require('./codes')
 
 describe('day 17 challenge', ()=> {
 
@@ -413,7 +414,7 @@ describe('day 17 challenge', ()=> {
 			for (var line=map.highestLine(); line<map.height(); line++) {
 				for (var column=0; column < map.width(); column++) {
 					var point = map.point(line, column)
-					if (point == 3) {
+					if (point == WATER) {
 						sum ++
 					}
 				}

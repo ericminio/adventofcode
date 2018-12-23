@@ -1,4 +1,4 @@
-const CLAY = 1
+const { SPRING, SAND, CLAY, FLOW, WATER } = require('./codes')
 
 var Map = function(options) {
 	this.points = options.points
@@ -6,11 +6,11 @@ var Map = function(options) {
 	this.highest = options.highest || 0
 }
 Map.prototype.point = function(x, y){
-	if (this.points.length == 0) { return 0 }
+	if (this.points.length == 0) { return SAND }
 	if (x < 0 || y < 0
 		|| x > this.points.length-1
 		|| y > this.points[0].length -1 ) {
-		return 0
+		return SAND
 	}
 	return this.points[x][y]
 }
@@ -28,7 +28,7 @@ Map.prototype.value = function() {
 	for (var line=this.highestLine(); line<this.height(); line++) {
 		for (var column=0; column < this.width(); column++) {
 			var point = this.point(line, column)
-			if (point > 1) {
+			if (point > CLAY) {
 				sum ++
 			}
 		}

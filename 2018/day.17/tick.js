@@ -1,9 +1,5 @@
+const { SPRING, SAND, CLAY, FLOW, WATER } = require('./codes')
 const Map = require('./map')
-const SPRING  = -1
-const SAND = 0
-const CLAY = 1
-const FLOW = 2
-const WATER = 3
 
 var reservoirHeight = require('./reservoir.height')
 

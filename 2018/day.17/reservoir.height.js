@@ -1,5 +1,4 @@
-const SAND = 0
-const CLAY = 1
+const { SPRING, SAND, CLAY, FLOW, WATER } = require('./codes')
 
 var vertical = (line, column, map)=>{
 	var start = 0
