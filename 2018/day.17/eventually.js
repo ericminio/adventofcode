@@ -1,7 +1,7 @@
 const Map = require('./map')
 const tick = require('./tick')
 var deepEqual = require('deep-equal')
-const { visual } = require('./from.drawing')
+const { visual } = require('./parser')
 
 var eventually = (map)=>{
 	do {

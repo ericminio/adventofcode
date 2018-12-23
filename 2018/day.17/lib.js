@@ -1,7 +1,7 @@
 module.exports = {
 	digest:require('./digest'),
-	fromDrawing:require('./from.drawing').fromDrawing,
-	visual:require('./from.drawing').visual,
+	fromDrawing:require('./parser').fromDrawing,
+	visual:require('./parser').visual,
 	Map:require('./map'),
 	tick:require('./tick'),
 	eventually:require('./eventually'),
