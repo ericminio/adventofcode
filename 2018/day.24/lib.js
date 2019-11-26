@@ -1,6 +1,6 @@
-var pattern = /^(.*) units each with (.*) hit points \((.*)\) with an attack that does (.*) (.*) damage at initiative (.*)$/
+var pattern = /^(.*) units each with (.*) hit points(.*)with an attack that does (.*) (.*) damage at initiative (.*)$/
 var immune = /immune to (.*);(.*)/
-var weak = /weak to (.*)/
+var weak = /weak to (.*)\)/
 var parse = (lines)=> {
     var groups = []
 

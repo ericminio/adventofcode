@@ -48,7 +48,7 @@ describe.only('day 24 challenge', ()=> {
             expect(infections.map(x => x.immunities)).to.deep.equal([[], ['radiation']])
 		})
 
-        it.skip('resists no modifiers', ()=>{
+        it('resists no modifiers', ()=>{
             var parsed = parse(['1 units each with 2 hit points with an attack that does 3 fire damage at initiative 2'])
             expect(parsed).to.deep.equal([{
                 unitCount: 1,
@@ -56,7 +56,8 @@ describe.only('day 24 challenge', ()=> {
                 weaknesses: [],
                 immunities: [],
                 attack: 'fire',
-                damage: 3
+                damage: 3,
+                initiative: 2
             }])
         })
 	})
