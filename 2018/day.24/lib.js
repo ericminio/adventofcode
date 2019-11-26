@@ -1,20 +1,26 @@
 var pattern = /^(.*) units each with (.*) hit points(.*)with an attack that does (.*) (.*) damage at initiative (.*)$/
-var immune = /immune to (.*);(.*)/
-var weak = /weak to (.*)\)/
+var immune = /(immune to (.*);|immune to (.*)\))/
+var weak = /(weak to (.*);|weak to (.*)\))/
+
 var parse = (lines)=> {
     var groups = []
 
     for (var i=0; i<lines.length; i++) {
         var line = lines[i].trim()
         var fields = pattern.exec(line)
+        fields[3] = fields[3].trim()
         var immunities = []
         var weaknesses = []
         if (fields[3]) {
             if (immune.exec(fields[3])) {
-                immunities = immune.exec(fields[3])[1].split(',').map(x => x.trim())
+                var match = immune.exec(fields[3])
+                var candidate = match[2] ? match[2] : match[3]
+                immunities = candidate.split(',').map(x => x.trim())
             }
             if (weak.exec(fields[3])) {
-                weaknesses = weak.exec(fields[3])[1].split(',').map(x => x.trim())
+                var match = weak.exec(fields[3])
+                var candidate = match[2] ? match[2] : match[3]
+                weaknesses = candidate.split(',').map(x => x.trim())
             }
         }
         var group = {

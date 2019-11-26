@@ -6,7 +6,7 @@ const {
 
 describe.only('day 24 challenge', ()=> {
 
-	describe('parser', ()=>{
+	describe('example 1', ()=>{
 
         var immunes, infections
         beforeEach(()=>{
@@ -48,6 +48,10 @@ describe.only('day 24 challenge', ()=> {
             expect(infections.map(x => x.immunities)).to.deep.equal([[], ['radiation']])
 		})
 
+    })
+
+    describe('edge cases', ()=>{
+
         it('resists no modifiers', ()=>{
             var parsed = parse(['1 units each with 2 hit points with an attack that does 3 fire damage at initiative 2'])
             expect(parsed).to.deep.equal([{
@@ -55,6 +59,18 @@ describe.only('day 24 challenge', ()=> {
                 hitPoints: 2,
                 weaknesses: [],
                 immunities: [],
+                attack: 'fire',
+                damage: 3,
+                initiative: 2
+            }])
+        })
+        it('resists inverted modifiers', ()=>{
+            var parsed = parse(['1 units each with 2 hit points (weak to love; immune to hate) with an attack that does 3 fire damage at initiative 2'])
+            expect(parsed).to.deep.equal([{
+                unitCount: 1,
+                hitPoints: 2,
+                weaknesses: ['love'],
+                immunities: ['hate'],
                 attack: 'fire',
                 damage: 3,
                 initiative: 2
