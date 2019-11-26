@@ -35,6 +35,10 @@ describe.only('day 24 challenge', ()=> {
             expect(immunes.map(x => x.attack)).to.deep.equal(['fire', 'slashing'])
             expect(infections.map(x => x.attack)).to.deep.equal(['bludgeoning', 'slashing'])
 		})
+        it('can parse initiative', ()=>{
+            expect(immunes.map(x => x.initiative)).to.deep.equal([2, 3])
+            expect(infections.map(x => x.initiative)).to.deep.equal([1, 4])
+		})
         it('can parse weaknesses', ()=>{
             expect(immunes.map(x => x.weaknesses)).to.deep.equal([['radiation', 'bludgeoning'], ['bludgeoning', 'slashing']])
             expect(infections.map(x => x.weaknesses)).to.deep.equal([['radiation'], ['fire', 'cold']])
@@ -43,6 +47,18 @@ describe.only('day 24 challenge', ()=> {
             expect(immunes.map(x => x.immunities)).to.deep.equal([[], ['fire']])
             expect(infections.map(x => x.immunities)).to.deep.equal([[], ['radiation']])
 		})
+
+        it.skip('resists no modifiers', ()=>{
+            var parsed = parse(['1 units each with 2 hit points with an attack that does 3 fire damage at initiative 2'])
+            expect(parsed).to.deep.equal([{
+                unitCount: 1,
+                hitPoints: 2,
+                weaknesses: [],
+                immunities: [],
+                attack: 'fire',
+                damage: 3
+            }])
+        })
 	})
 
 

@@ -23,7 +23,8 @@ var parse = (lines)=> {
             immunities: immunities,
             weaknesses: weaknesses,
             damage: parseInt(fields[4]),
-            attack: fields[5]
+            attack: fields[5],
+            initiative: parseInt(fields[6])
         }
         groups.push(group)
     }
