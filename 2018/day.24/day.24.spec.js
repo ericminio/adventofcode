@@ -1,12 +1,13 @@
 const { expect } = require('chai')
 const puzzle = require('../puzzle.input')
 const {
-    parse
+    parse,
+    effectivepower
 } = require('./lib')
 
 describe.only('day 24 challenge', ()=> {
 
-	describe('example 1', ()=>{
+	describe('parser', ()=>{
 
         var immunes, infections
         beforeEach(()=>{
@@ -78,5 +79,19 @@ describe.only('day 24 challenge', ()=> {
         })
 	})
 
+    describe('effective power', ()=>{
 
+        var immunes, infections
+        beforeEach(()=>{
+            var lines = puzzle.lines('day.24', 'example.txt')
+            immunes = parse(lines.slice(1, 3))
+            infections = parse(lines.slice(5, 8))
+        })
+
+		it('works', ()=>{
+            expect(immunes.map(x => effectivepower(x))).to.deep.equal([17*4507, 989*25])
+            expect(infections.map(x => effectivepower(x))).to.deep.equal([801*116, 4485*12])
+		})
+
+    })
 })
