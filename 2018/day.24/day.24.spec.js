@@ -2,7 +2,8 @@ const { expect } = require('chai')
 const puzzle = require('../puzzle.input')
 const {
     parse,
-    effectivepower
+    effectivepower,
+    byeffectivePower
 } = require('./lib')
 
 describe.only('day 24 challenge', ()=> {
@@ -91,6 +92,39 @@ describe.only('day 24 challenge', ()=> {
 		it('works', ()=>{
             expect(immunes.map(x => effectivepower(x))).to.deep.equal([17*4507, 989*25])
             expect(infections.map(x => effectivepower(x))).to.deep.equal([801*116, 4485*12])
+		})
+
+    })
+
+    describe('sorting by effective power', ()=>{
+
+        var immunes, infections
+        var groups
+        beforeEach(()=>{
+            var lines = puzzle.lines('day.24', 'example.txt')
+            immunes = parse(lines.slice(1, 3))
+            infections = parse(lines.slice(5, 8))
+
+            immunes.forEach(x => {x.type='immune'})
+            infections.forEach(x => {x.type='infection'})
+
+            groups = [].concat(immunes).concat(infections)
+        })
+
+		it('works', ()=>{
+            groups.sort(byeffectivePower)
+            
+            expect(effectivepower(groups[0]) > effectivepower(groups[1])).to.equal(true)
+        })
+        
+        it('falls back to initiative in case of tie', ()=>{
+            var groups = [
+                { unitCount:1, damage:1, initiative: 1, name:'you' },
+                { unitCount:1, damage:1, initiative: 2, name:'me' }
+            ]
+            groups.sort(byeffectivePower)
+            
+            expect(groups[0].name).to.equal('me')
 		})
 
     })

@@ -41,8 +41,16 @@ var parse = (lines)=> {
 var effectivepower = (group)=> {
     return group.unitCount * group.damage
 }
+var byeffectivePower = (a, b)=> {
+    var compare = effectivepower(b) - effectivepower(a) 
+    if (compare == 0) {
+        return b.initiative - a.initiative
+    }
+    return compare
+}
 
 module.exports = {
     parse:parse,
-    effectivepower:effectivepower
+    effectivepower:effectivepower,
+    byeffectivePower:byeffectivePower
 }
