@@ -54,7 +54,7 @@ const hasAllFields = (passport)=>{
     }
     return true
 }
-describe.only('day 4 challenge', ()=> {
+describe('day 4 challenge', ()=> {
 
     describe('example', ()=>{
 
