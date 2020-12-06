@@ -4,24 +4,6 @@ const {
     parseEntriesSeparatedByEmptyLineIntoArrayOfString
 } = require('../parsing')
 
-const countFromUnion = (definitions)=>{
-    let union = {}
-    definitions.forEach((definition)=> {
-        definition.split('').forEach(letter => {
-            union[letter] = 1
-        })
-    })
-    
-    return { count: Object.keys(union).length }
-}
-const countFromIntersection = (definitions)=> {    
-    let intersection = definitions[0].split('')
-    definitions.forEach((definition)=> {
-        intersection = intersection.filter(e => definition.split('').includes(e))
-    })
-
-    return { count:intersection.length }
-}
 describe('day 6 challenge', ()=> {
 
     let answer = (entries)=> {
@@ -83,3 +65,22 @@ describe('day 6 challenge', ()=> {
         })
     })  
 })
+
+const countFromUnion = (definitions)=>{
+    let union = {}
+    definitions.forEach((definition)=> {
+        definition.split('').forEach(letter => {
+            union[letter] = 1
+        })
+    })
+    
+    return { count: Object.keys(union).length }
+}
+const countFromIntersection = (definitions)=> {    
+    let intersection = definitions[0].split('')
+    definitions.forEach((definition)=> {
+        intersection = intersection.filter(e => definition.split('').includes(e))
+    })
+
+    return { count:intersection.length }
+}

@@ -32,8 +32,18 @@ const parseEntriesSeparatedByEmptyLineIntoArrayOfString = (input, parseEntryFrom
 
     return entries;
 }
+const parseEntriesIntoString = (lines, parseEntryFromString)=>{
+    let entries = []
+    for (var i=0;i<lines.length;i++) {
+        let line = lines[i]
+        entries.push(parseEntryFromString(line))
+    }
+
+    return entries;
+}
 
 module.exports = {
     parseEntriesSeparatedByEmptyLineIntoOneString:parseEntriesSeparatedByEmptyLineIntoOneString,
-    parseEntriesSeparatedByEmptyLineIntoArrayOfString:parseEntriesSeparatedByEmptyLineIntoArrayOfString
+    parseEntriesSeparatedByEmptyLineIntoArrayOfString:parseEntriesSeparatedByEmptyLineIntoArrayOfString,
+    parseEntriesIntoString:parseEntriesIntoString
 }
