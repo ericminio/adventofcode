@@ -1,3 +1,20 @@
+const parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator = (input, parseEntryFromString)=>{
+    let passports = []
+    let row = 0
+    let definition = ''
+    do {
+        if (input[row].trim() == '') {
+            passports.push(parseEntryFromString(definition))
+            definition = ''
+        }
+        else {
+            definition += (' ' + input[row] + ' ')
+        }
+        row += 1        
+    } while (row < input.length)
+
+    return passports;
+}
 const parseEntriesSeparatedByEmptyLineIntoOneString = (input, parseEntryFromString)=>{
     let entries = []
     let row = 0
@@ -43,6 +60,7 @@ const parseEntriesIntoString = (lines, parseEntryFromString)=>{
 }
 
 module.exports = {
+    parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator:parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator,
     parseEntriesSeparatedByEmptyLineIntoOneString:parseEntriesSeparatedByEmptyLineIntoOneString,
     parseEntriesSeparatedByEmptyLineIntoArrayOfString:parseEntriesSeparatedByEmptyLineIntoArrayOfString,
     parseEntriesIntoString:parseEntriesIntoString

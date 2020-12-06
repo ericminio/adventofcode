@@ -1,5 +1,8 @@
 const { expect } = require('chai')
 const { raw } = require('../puzzle.input')
+const {
+    parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator
+} = require('../parsing')
 
 const fields = [
     { name:'byr', parse:(value)=> parseInt(value) }, 
@@ -15,23 +18,6 @@ const fields = [
     { name:'ecl', parse:(value)=> value },
     { name:'pid', parse:(value)=> value }
 ]
-const parse = (input)=>{
-    let passports = []
-    let row = 0
-    let definition = ''
-    do {
-        if (input[row].trim() == '') {
-            passports.push(parsePassport(definition))
-            definition = ''
-        }
-        else {
-            definition += (' ' + input[row] + ' ')
-        }
-        row += 1        
-    } while (row < input.length)
-
-    return passports;
-}
 const parsePassport = (definition)=>{
     let passport = {}
     fields.forEach((field)=>{
@@ -66,10 +52,10 @@ describe('day 4 challenge', ()=> {
             expect(input.length).to.equal(14)
         })
         it('defines 4 passports', ()=>{
-            expect(parse(input).length).to.equal(4)
+            expect(parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator(input, parsePassport).length).to.equal(4)
         })
         it('defines correctly the last passport', ()=>{
-            let passports = parse(input)
+            let passports = parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator(input, parsePassport)
             let passport = passports[3]
 
             expect(passport).to.deep.equal({
@@ -82,16 +68,17 @@ describe('day 4 challenge', ()=> {
             })
         })
         it('can identify invalid passports', ()=>{
-            let passports = parse(input)
+            let passports = parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator(input, parsePassport)
             let passport = passports[3]
 
             expect(hasAllFields(passport)).to.equal(false)
         })
         it('has 2 valid passports', ()=>{
-            expect(parse(input).filter(p => hasAllFields(p)).length).to.equal(2)
+            expect(parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator(input, parsePassport)
+                .filter(p => hasAllFields(p)).length).to.equal(2)
         })
         it('leads to part 1 solution', ()=>{
-            expect(parse(raw('day.4', 'input.txt')).filter(p => hasAllFields(p)).length).to.equal(239)
+            expect(parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator(raw('day.4', 'input.txt'), parsePassport).filter(p => hasAllFields(p)).length).to.equal(239)
         })
     })
     describe('part 2', ()=>{
@@ -223,19 +210,19 @@ describe('day 4 challenge', ()=> {
                 return true
             }
             it('identify passports as invalid as expected', ()=>{
-                let passports = parse(raw('day.4', 'invalid.txt'))
+                let passports = parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator(raw('day.4', 'invalid.txt'), parsePassport)
                 let count = passports.filter((passport)=>isValid(passport, rules)).length
 
                 expect(count).to.equal(0)
             })
             it('identify passports as valid as expected', ()=>{
-                let passports = parse(raw('day.4', 'valid.txt'))
+                let passports = parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator(raw('day.4', 'valid.txt'), parsePassport)
                 let count = passports.filter((passport)=>isValid(passport, rules)).length
 
                 expect(count).to.equal(4)
             })
             it('makes less passports valid', ()=>{
-                let passports = parse(raw('day.4', 'input.txt'))
+                let passports = parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator(raw('day.4', 'input.txt'), parsePassport)
                 let count = passports.filter((passport)=>isValid(passport, rules)).length
 
                 expect(count).to.equal(188)
