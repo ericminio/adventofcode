@@ -3,31 +3,25 @@ const { raw } = require('../puzzle.input')
 const {
     parseEntriesSeparatedByEmptyLineIntoOneStringWithSpaceSeparator
 } = require('../parsing')
+const {
+    extractInt,
+    extractIntWithUnit,
+    extractString
+} = require('../../support/extract')
 
 const fields = [
-    { name:'byr', parse:(value)=> parseInt(value) }, 
-    { name:'iyr', parse:(value)=> parseInt(value) },
-    { name:'eyr', parse:(value)=> parseInt(value) },
-    { name:'hgt', parse:(value)=> {
-        let pattern = /(\d*)(in|cm)/
-        return pattern.test(value) ?
-            { unit:pattern.exec(value)[2], value:parseInt(pattern.exec(value)[1]) }
-            : value
-    } },
-    { name:'hcl', parse:(value)=> value },
-    { name:'ecl', parse:(value)=> value },
-    { name:'pid', parse:(value)=> value }
+    { name:'byr', extract:extractInt }, 
+    { name:'iyr', extract:extractInt },
+    { name:'eyr', extract:extractInt },
+    { name:'hgt', extract:extractIntWithUnit },
+    { name:'hcl', extract:extractString },
+    { name:'ecl', extract:extractString },
+    { name:'pid', extract:extractString }
 ]
 const parsePassport = (definition)=>{
     let passport = {}
     fields.forEach((field)=>{
-        if (definition.indexOf(field.name)!=-1) {
-            let start = definition.indexOf(field.name)
-            let subpart = definition.substring(start)
-            let end = subpart.indexOf(' ')
-            let value = subpart.substring(0, end).split(':')[1]
-            passport[field.name] = field.parse(value)
-        }
+        passport[field.name] = field.extract(field.name, definition)
     })
     return passport
 }
@@ -59,6 +53,7 @@ describe('day 4 challenge', ()=> {
             let passport = passports[3]
 
             expect(passport).to.deep.equal({
+                byr:undefined,
                 ecl:'brn',
                 eyr:2025,
                 hcl:'#cfa07d',
