@@ -19,11 +19,9 @@ describe('day 1 challenge', ()=> {
     const increasingMeasurementsCount = (options) => {
         let input = options.input;
         let windowSize = options.windowSize || 1;
+
         let count = 0;
-        let previousSum = 0;
-        for (var i=0; i<windowSize; i++) {
-            previousSum += input[i];
-        }
+        let previousSum = initialSum(input, windowSize);
         let sum = previousSum;
         for (var i=windowSize; i<input.length; i++) {
             previousSum = sum;
@@ -32,6 +30,9 @@ describe('day 1 challenge', ()=> {
             if (sum > previousSum) { count ++ }
         }
         return count;
+    }
+    const initialSum = (input, windowSize) => {
+        return input.slice(0, windowSize).reduce((acc, current) => current + acc, 0);
     }
     it('has a part 2', ()=>{ 
         expect(increasingMeasurementsCount({ input:challenge, windowSize:3 })).to.equal(1429);
