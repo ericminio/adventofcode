@@ -1,22 +1,22 @@
 const { expect } = require('chai')
-const { puzzle } = require('../puzzle.input')
+const { integers } = require('../puzzle.input')
 
 describe('day 1 challenge', ()=> {
 
+    let example = integers('day.1', 'example.txt');
+    let challenge = integers('day.1', 'input.txt');
+
     it('is about counting increasing measurements', ()=>{ 
-        let input = puzzle('day.1', 'example.txt').map(s => parseInt(s));           
-        expect(countIncreasingMeasurements({ input:input })).to.equal(7);
+        expect(increasingMeasurementsCount({ input:example })).to.equal(7);
     });    
-    it('has a part 1', ()=>{ 
-        let input = puzzle('day.1', 'input.txt').map(s => parseInt(s));           
-        expect(countIncreasingMeasurements({ input:input })).to.equal(1400);
+    it('has a part 1', ()=>{         
+        expect(increasingMeasurementsCount({ input:challenge })).to.equal(1400);
     });
 
     it('is also about counting in a sliding window', ()=>{ 
-        let input = puzzle('day.1', 'example.txt').map(s => parseInt(s));           
-        expect(countIncreasingMeasurements({ input:input, windowSize:3 })).to.equal(5);
+        expect(increasingMeasurementsCount({ input:example, windowSize:3 })).to.equal(5);
     }); 
-    const countIncreasingMeasurements = (options) => {
+    const increasingMeasurementsCount = (options) => {
         let input = options.input;
         let windowSize = options.windowSize || 1;
         let count = 0;
@@ -34,8 +34,7 @@ describe('day 1 challenge', ()=> {
         return count;
     }
     it('has a part 2', ()=>{ 
-        let input = puzzle('day.1', 'input.txt').map(s => parseInt(s));           
-        expect(countIncreasingMeasurements({ input:input, windowSize:3 })).to.equal(1429);
+        expect(increasingMeasurementsCount({ input:challenge, windowSize:3 })).to.equal(1429);
     });
 
 })

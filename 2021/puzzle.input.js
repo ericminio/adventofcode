@@ -1,12 +1,18 @@
 const path = require('path')
 const fs = require('fs')
 
+const puzzle = (day, file) =>{
+    var content = fs.readFileSync(path.join(__dirname, day, file))
+        .toString().trim().split('\n');
+    return content
+}
+const integers = (day, file) => {
+    return puzzle(day, file).map(s => parseInt(s));
+}
+
 module.exports = {
-    puzzle: (day, filename) =>{
-        var content = fs.readFileSync(path.join(__dirname, day, filename))
-            .toString().trim().split('\n');
-        return content
-    },
+    puzzle: puzzle,
+    integers: integers,
     lines: (day, file) =>{
         var content = fs.readFileSync(path.join(__dirname, day, file))
             .toString().trim().split('\n');
