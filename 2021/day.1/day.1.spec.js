@@ -21,18 +21,18 @@ describe('day 1 challenge', ()=> {
         let windowSize = options.windowSize || 1;
 
         let count = 0;
-        let previousSum = initialSum(input, windowSize);
-        let sum = previousSum;
-        for (var i=windowSize; i<input.length; i++) {
+        let sum = previousSum = initialSum(input, windowSize);
+        for (var i = windowSize; i < input.length; i++) {
+            sum   += input[i];
+            sum   -= input[i - windowSize];
+            count += sum > previousSum ? 1 : 0
             previousSum = sum;
-            sum += input[i];
-            sum -= input[i-windowSize];
-            if (sum > previousSum) { count ++ }
         }
         return count;
     }
     const initialSum = (input, windowSize) => {
-        return input.slice(0, windowSize).reduce((acc, current) => current + acc, 0);
+        return input.slice(0, windowSize)
+                    .reduce((acc, current) => acc + current, 0);
     }
     it('has a part 2', ()=>{ 
         expect(increasingMeasurementsCount({ input:challenge, windowSize:3 })).to.equal(1429);
