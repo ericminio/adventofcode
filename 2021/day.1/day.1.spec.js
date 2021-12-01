@@ -19,9 +19,10 @@ describe('day 1 challenge', ()=> {
     const increasingMeasurementsCount = (options) => {
         let input = options.input;
         let windowSize = options.windowSize || 1;
+        let window = new Window(input, windowSize);
 
         let count = 0;
-        let sum = previousSum = initialSum(input, windowSize);
+        let sum = previousSum = window.sum();
         for (var i = windowSize; i < input.length; i++) {
             sum   += input[i];
             sum   -= input[i - windowSize];
@@ -30,9 +31,16 @@ describe('day 1 challenge', ()=> {
         }
         return count;
     }
-    const initialSum = (input, windowSize) => {
-        return input.slice(0, windowSize)
+    class Window {
+        constructor(input, size) {
+            this.input = input;
+            this.size = size;
+        }
+        sum() {
+            return this.input
+                    .slice(0, this.size)
                     .reduce((acc, current) => acc + current, 0);
+        }
     }
     it('has a part 2', ()=>{ 
         expect(increasingMeasurementsCount({ input:challenge, windowSize:3 })).to.equal(1429);
