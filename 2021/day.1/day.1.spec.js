@@ -24,7 +24,7 @@ describe('day 1 challenge', ()=> {
         let count = 0;
         let sum = previousSum = window.sum();
         for (var i = 1; i < input.length - windowSize + 1; i++) {
-            window.position = i;
+            window.slide();
             sum    = window.sum();
             count += sum > previousSum ? 1 : 0
             previousSum = sum;
@@ -41,6 +41,9 @@ describe('day 1 challenge', ()=> {
             return this.input
                     .slice(this.position, this.position + this.size)
                     .reduce((acc, current) => acc + current, 0);
+        }
+        slide() {
+            this.position ++
         }
     }
     it('has a part 2', ()=>{ 
