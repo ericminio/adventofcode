@@ -35,10 +35,11 @@ describe('day 1 challenge', ()=> {
         constructor(input, size) {
             this.input = input;
             this.size = size;
+            this.position = 0;
         }
         sum() {
             return this.input
-                    .slice(0, this.size)
+                    .slice(this.position, this.size)
                     .reduce((acc, current) => acc + current, 0);
         }
     }
