@@ -1,10 +1,10 @@
 const { expect } = require('chai')
-const { lines } = require('../puzzle.input')
+const { data } = require('../puzzle.input')
 
 describe('day 2 challenge', ()=> {
 
-    let example = lines('day.2', 'example.txt');
-    let challenge = lines('day.2', 'input.txt');
+    let example = data('day.2', 'example.txt');
+    let challenge = data('day.2', 'input.txt');
 
     it('is about moving in part 1', ()=>{ 
         let commands = example.map(line => build(line, part1));
@@ -14,9 +14,7 @@ describe('day 2 challenge', ()=> {
     });   
 
     const build = (line, instructions) => {
-        let parts = line.trim().split(' ');
-        let value = parseInt(parts[1]);
-        return instructions[parts[0]](value);
+        return instructions[line[0]](line[1]);
     }
     const move = (start, commands) => {
         return commands.reduce((position, move) => move(position), start);
