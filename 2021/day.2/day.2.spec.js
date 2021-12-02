@@ -8,9 +8,9 @@ describe('day 2 challenge', ()=> {
 
     it('is about moving in part 1', ()=>{ 
         let commands = example.map(line => build(line, part1));
-        let final = move({ horizontal:0, depth:0 }, commands);
-        expect(final).to.deep.equal({ horizontal:15, depth:10 });
-        expect(product(final)).to.equal(150);
+        let position = move({ horizontal:0, depth:0 }, commands);
+        expect(position).to.deep.equal({ horizontal:15, depth:10 });
+        expect(product(position)).to.equal(150);
     });   
 
     const build = (line, instructions) => {
@@ -30,16 +30,16 @@ describe('day 2 challenge', ()=> {
 
     it('starts with part 1', () => {
         let commands = challenge.map(line => build(line, part1));
-        let final = move({ horizontal:0, depth:0 }, commands);
-        expect(final).to.deep.equal({ horizontal:1909, depth:655 });
-        expect(product(final)).to.equal(1250395);
+        let position = move({ horizontal:0, depth:0 }, commands);
+        expect(position).to.deep.equal({ horizontal:1909, depth:655 });
+        expect(product(position)).to.equal(1250395);
     });
 
     it('is about moving aim in part 2', ()=>{ 
         let commands = example.map(line => build(line, part2));
-        let final = move({ horizontal:0, depth:0, aim:0 }, commands);
-        expect(final).to.deep.equal({ horizontal:15, depth:60, aim:10 });
-        expect(product(final)).to.equal(900);
+        let position = move({ horizontal:0, depth:0, aim:0 }, commands);
+        expect(position).to.deep.equal({ horizontal:15, depth:60, aim:10 });
+        expect(product(position)).to.equal(900);
     });
 
     const part2 = {
@@ -54,10 +54,8 @@ describe('day 2 challenge', ()=> {
 
     it('continues with part 2', () => {
         let commands = challenge.map(line => build(line, part2));
-        let final = commands.reduce(
-            (position, move) => move(position), 
-            { horizontal:0, depth:0, aim:0 });
-        expect(final).to.deep.equal({ horizontal:1909, depth:760194, aim:655 });
-        expect(product(final)).to.equal(1451210346);
+        let position = move({ horizontal:0, depth:0, aim:0 }, commands);
+        expect(position).to.deep.equal({ horizontal:1909, depth:760194, aim:655 });
+        expect(product(position)).to.equal(1451210346);
     });
 })
