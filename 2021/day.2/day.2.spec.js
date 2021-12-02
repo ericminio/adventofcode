@@ -7,46 +7,44 @@ describe('day 2 challenge', ()=> {
     let challenge = lines('day.2', 'input.txt');
 
     it('is about moving in part 1', ()=>{ 
-        let commands = example.map(line => build(line));
-        let final = commands.reduce(
-            (position, move) => move(position), 
-            { horizontal:0, depth:0 });
+        let commands = example.map(line => build(line, part1));
+        let final = move({ horizontal:0, depth:0 }, commands);
         expect(final).to.deep.equal({ horizontal:15, depth:10 });
         expect(product(final)).to.equal(150);
     });   
 
-    const instructions = {
-        'forward': (value) => (position) => { position.horizontal += value; return position; },
-        'up': (value) => (position) => { position.depth -= value; return position; },
-        'down': (value) => (position) => { position.depth += value; return position; },
-    }
-    const build = (line) => {
+    const build = (line, instructions) => {
         let parts = line.trim().split(' ');
         let value = parseInt(parts[1]);
         return instructions[parts[0]](value);
+    }
+    const move = (start, commands) => {
+        return commands.reduce((position, move) => move(position), start);
+    }
+    const part1 = {
+        'forward': (value) => (position) => { position.horizontal += value; return position; },
+        'up': (value) => (position) => { position.depth -= value; return position; },
+        'down': (value) => (position) => { position.depth += value; return position; },
     }
     const product = (position) => {
         return position.horizontal * position.depth;
     }
 
-    it('has part 1', () => {
-        let commands = challenge.map(line => build(line));
-        let final = commands.reduce(
-            (position, move) => move(position), 
-            { horizontal:0, depth:0 });
+    it('starts with part 1', () => {
+        let commands = challenge.map(line => build(line, part1));
+        let final = move({ horizontal:0, depth:0 }, commands);
         expect(final).to.deep.equal({ horizontal:1909, depth:655 });
         expect(product(final)).to.equal(1250395);
     });
 
     it('is about moving aim in part 2', ()=>{ 
-        let commands = example.map(line => build2(line));
-        let final = commands.reduce(
-            (position, move) => move(position), 
-            { horizontal:0, depth:0, aim:0 });
+        let commands = example.map(line => build(line, part2));
+        let final = move({ horizontal:0, depth:0, aim:0 }, commands);
         expect(final).to.deep.equal({ horizontal:15, depth:60, aim:10 });
         expect(product(final)).to.equal(900);
     });
-    const instructions2 = {
+
+    const part2 = {
         'forward': (value) => (position) => { 
             position.horizontal += value; 
             position.depth += value * position.aim;
@@ -55,19 +53,13 @@ describe('day 2 challenge', ()=> {
         'up': (value) => (position) => { position.aim -= value; return position; },
         'down': (value) => (position) => { position.aim += value; return position; },
     }
-    const build2 = (line) => {
-        let parts = line.trim().split(' ');
-        let value = parseInt(parts[1]);
-        return instructions2[parts[0]](value);
-    }
 
-    it('has part 2', () => {
-        let commands = challenge.map(line => build2(line));
+    it('continues with part 2', () => {
+        let commands = challenge.map(line => build(line, part2));
         let final = commands.reduce(
             (position, move) => move(position), 
             { horizontal:0, depth:0, aim:0 });
         expect(final).to.deep.equal({ horizontal:1909, depth:760194, aim:655 });
         expect(product(final)).to.equal(1451210346);
     });
-
 })
