@@ -6,25 +6,24 @@ describe('day 3 challenge', ()=> {
     const example = lines('day.3', 'example.txt');
     const input = lines('day.3', 'input.txt');
     const gamaRateOf = (lines) => {
+        let count = counts(lines);
         let size = lines[0].length;
-        let count = [];
-        for (var i=0; i< size; i++) {
-            count.push({ '0':0, '1':0 })
-        }
-        lines.forEach((line) => {
-            for (var i=0; i<size; i++) {
-                count[i][line[i]] ++;
-            }
-            
-        })
         let value = '';
         for (var i=0; i< size; i++) {
-            let digit = count[i]['0'] > count[i]['1'] ? '0' : '1'
-            value += digit;
+            value += count[i]['0'] > count[i]['1'] ? '0' : '1'
         }
         return value;
     } 
     const epsilonRateOf = (lines) => {
+        let count = counts(lines);
+        let size = lines[0].length;
+        let value = '';
+        for (var i=0; i< size; i++) {
+            value += count[i]['0'] < count[i]['1'] ? '0' : '1'
+        }
+        return value;
+    } 
+    const counts = (lines) => {
         let size = lines[0].length;
         let count = [];
         for (var i=0; i< size; i++) {
@@ -36,13 +35,8 @@ describe('day 3 challenge', ()=> {
             }
             
         })
-        let value = '';
-        for (var i=0; i< size; i++) {
-            let digit = count[i]['0'] < count[i]['1'] ? '0' : '1'
-            value += digit;
-        }
-        return value;
-    } 
+        return count;
+    }
     const powerConsumption = (input) => {
         return parseInt(gamaRateOf(input), 2) * parseInt(epsilonRateOf(input), 2);
     }
