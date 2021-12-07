@@ -5,42 +5,7 @@ describe('day 3 challenge', ()=> {
 
     const example = lines('day.3', 'example.txt');
     const input = lines('day.3', 'input.txt');
-    const gamaRateOf = (lines) => {
-        let count = counts(lines);
-        let size = lines[0].length;
-        let value = '';
-        for (var i=0; i< size; i++) {
-            value += count[i]['0'] > count[i]['1'] ? '0' : '1'
-        }
-        return value;
-    } 
-    const epsilonRateOf = (lines) => {
-        let count = counts(lines);
-        let size = lines[0].length;
-        let value = '';
-        for (var i=0; i< size; i++) {
-            value += count[i]['0'] < count[i]['1'] ? '0' : '1'
-        }
-        return value;
-    } 
-    const counts = (lines) => {
-        let size = lines[0].length;
-        let count = [];
-        for (var i=0; i< size; i++) {
-            count.push({ '0':0, '1':0 })
-        }
-        lines.forEach((line) => {
-            for (var i=0; i<size; i++) {
-                count[i][line[i]] ++;
-            }
-            
-        })
-        return count;
-    }
-    const powerConsumption = (input) => {
-        return parseInt(gamaRateOf(input), 2) * parseInt(epsilonRateOf(input), 2);
-    }
-
+    
     describe('gamma rate', () => {
 
         it('is available for study', () => {
@@ -66,6 +31,17 @@ describe('day 3 challenge', ()=> {
         it('works with the example of part 1', () => {
             expect(parseInt(epsilonRateOf(example), 2)).to.equal(9);
         });
+
+        it ('explore reduce with strings', () => {
+            let counts = [
+                { '0':2, '1':0 },
+                { '0':0, '1':2 },
+            ];
+            let value = counts.reduce((acc, curr) => 
+                acc += curr['0'] > curr['1'] ? '0' : '1'
+            , '')
+            expect(value).to.equal('01');
+        })
     })
 
     it('gives answer for the example', () => {
@@ -74,4 +50,31 @@ describe('day 3 challenge', ()=> {
     it('gives answer for the part 1', () => {
         expect(powerConsumption(input)).to.equal(738234);
     })
+
+    const gamaRateOf = (lines) => {
+        return counts(lines).reduce(
+            (acc, curr) => acc += curr['0'] > curr['1'] ? '0' : '1', '')
+    } 
+    const epsilonRateOf = (lines) => {
+        return counts(lines).reduce(
+            (acc, curr) => acc += curr['0'] < curr['1'] ? '0' : '1', '')
+    } 
+    const counts = (lines) => {
+        let size = lines[0].length;
+        let count = [];
+        for (var i=0; i< size; i++) {
+            count.push({ '0':0, '1':0 })
+        }
+        lines.forEach((line) => {
+            for (var i=0; i<size; i++) {
+                count[i][line[i]] ++;
+            }
+            
+        })
+        
+        return count;
+    }
+    const powerConsumption = (input) => {
+        return parseInt(gamaRateOf(input), 2) * parseInt(epsilonRateOf(input), 2);
+    }
 })
