@@ -59,22 +59,13 @@ describe('day 3 challenge', ()=> {
         return counts(lines).reduce(
             (acc, curr) => acc += curr['0'] < curr['1'] ? '0' : '1', '')
     } 
-    const counts = (lines) => {
-        let size = lines[0].length;
-        let count = [];
-        for (var i=0; i< size; i++) {
-            count.push({ '0':0, '1':0 })
-        }
-        lines.forEach((line) => {
-            for (var i=0; i<size; i++) {
-                count[i][line[i]] ++;
-            }
-            
-        })
-        
-        return count;
-    }
     const powerConsumption = (input) => {
         return parseInt(gamaRateOf(input), 2) * parseInt(epsilonRateOf(input), 2);
+    }
+    const counts = (lines) => {
+        return lines.reduce((a, line) => {
+            line.split('').forEach((c, i) => a[i][c] ++ )
+            return a;
+        }, Array(lines[0].length).fill({}).map(() => { return { '0':0, '1':0 } }))
     }
 })
