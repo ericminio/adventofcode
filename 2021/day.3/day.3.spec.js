@@ -68,4 +68,73 @@ describe('day 3 challenge', ()=> {
             return a;
         }, Array(lines[0].length).fill({}).map(() => { return { '0':0, '1':0 } }))
     }
+
+    describe('oxygen generator rating', () => {
+
+        it('keeps entry with the most common digit or 1', () => {
+            expect(oxygenGeneratorRatingOf(['11', '01', '00'])).to.equal('01');
+        });
+        it('works with the example of part 1', () => {
+            expect(parseInt(oxygenGeneratorRatingOf(example), 2)).to.equal(23);
+        });
+    });
+
+    const oxygenGeneratorRatingOf = (lines) => {
+        let values = withMost(counts(lines))
+        var i =0;
+        while (lines.length > 1) {
+            lines = lines.filter((line) => line[i] == values[i].most)
+            values = withMost(counts(lines))            
+            i ++;
+        }
+
+        return lines[0]
+    }
+    const withMost = (counts) => {
+        return counts.map((value) => {
+            value.most = value['0'] > value['1'] ? '0' : '1';
+            return value;
+        })
+    }
+    
+    describe('co2 scrubber rating', () => {
+
+        it('works with the example of part 1', () => {
+            expect(parseInt(co2ScrubberRatingOf(example), 2)).to.equal(10);
+        });
+    });
+
+    const co2ScrubberRatingOf = (lines) => {
+        let values = withFewer(counts(lines))
+        var i =0;
+        while (lines.length > 1) {
+            lines = lines.filter((line) => line[i] == values[i].fewer)
+            values = withFewer(counts(lines))            
+            i ++;
+        }
+
+        return lines[0]
+    }
+    const withFewer = (counts) => {
+        return counts.map((value) => {
+            value.fewer = value['1'] < value['0'] ? '1' : '0';
+            return value;
+        })
+    }
+
+    describe('life support rating', () => {
+
+        it('is correct for the example', () => {
+            expect(lifeSupportRating(example)).to.equal(230);
+        })
+
+        it('is correct for the puzzle', () => {
+            expect(lifeSupportRating(input)).to.equal(3969126);
+        })
+
+    });
+
+    const lifeSupportRating = (input) => {
+        return parseInt(oxygenGeneratorRatingOf(input), 2) * parseInt(co2ScrubberRatingOf(input), 2);
+    }
 })
