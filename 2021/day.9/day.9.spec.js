@@ -26,22 +26,29 @@ describe('day 9 challenge', ()=> {
         for (var row=0; row<map.rowCount(); row++) {
             for (var column=0; column<map.columnCount(); column++) {
                 let position = new Position(row, column);
-                let value = map.valueAt(position);
-                let right = map.valueAt(position.right());
-                let left = map.valueAt(position.left());
-                let up = map.valueAt(position.up());
-                let down = map.valueAt(position.down());
-                if (value < right && 
-                    value < left &&
-                    value < up &&
-                    value < down
-                    ) {
-                    points.push({value:value, position:new Position(row, column)});
+                if (isLow(position, map)){
+                    points.push({
+                        value:map.valueAt(position), 
+                        position:new Position(row, column)
+                    });
                 }
             }
         }
 
         return points;
+    }
+    const isLow = (position, map) => {
+        let value = map.valueAt(position);
+        let right = map.valueAt(position.right());
+        let left = map.valueAt(position.left());
+        let up = map.valueAt(position.up());
+        let down = map.valueAt(position.down());
+        
+        return (value < right && 
+                value < left &&
+                value < up &&
+                value < down
+            );
     }
     const lowPointsValues = (matrix) => {
         let points = lowPoints(matrix);
