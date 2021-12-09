@@ -78,27 +78,27 @@ describe('day 9 challenge', ()=> {
             })
             it('resists position before first row', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(-1, 0))).to.equal(10);
+                expect(map.valueAt(new Position(-1, 0))).to.equal(9);
             })
             it('resists position before first column', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(0, -1))).to.equal(10);
+                expect(map.valueAt(new Position(0, -1))).to.equal(9);
             })
             it('resists position after last row', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(3, 0))).to.equal(10);
+                expect(map.valueAt(new Position(3, 0))).to.equal(9);
             })
             it('resists position after last column', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(0, 2))).to.equal(10);
+                expect(map.valueAt(new Position(0, 2))).to.equal(9);
             })
         })
         
     })
     class Map {
-        constructor(matrix, outside){
+        constructor(matrix){
             this.matrix = matrix;
-            this.outside = outside || 10;
+            this.outside = 9;
         }
         rowCount() {
             return this.matrix.length;
@@ -206,37 +206,37 @@ describe('day 9 challenge', ()=> {
     describe('bassin size', () => {
 
         it('is available for study', () => {
-            let map = new Map([[3]], -1);
+            let map = new Map([[3]]);
             let position = new Position(0, 0);
 
             expect(bassinSize(map, position)).to.equal(1);
         })
         it('can grow to the right', () => {
-            let map = new Map([[3, 4]], -1);
+            let map = new Map([[3, 4]]);
             let position = new Position(0, 0);
 
             expect(bassinSize(map, position)).to.equal(2);
         })
         it('can grow twice to the right', () => {
-            let map = new Map([[3, 4, 5]], -1);
+            let map = new Map([[3, 4, 5]]);
             let position = new Position(0, 0);
 
             expect(bassinSize(map, position)).to.equal(3);
         })
         it('stops growing on higher point', () => {
-            let map = new Map([[3, 4, 5, 9]], -1);
+            let map = new Map([[3, 4, 5, 9]]);
             let position = new Position(0, 0);
 
             expect(bassinSize(map, position)).to.equal(3);
         })
         it('can grow to the left', () => {
-            let map = new Map([[4, 3]], -1);
+            let map = new Map([[4, 3]]);
             let position = new Position(0, 1);
 
             expect(bassinSize(map, position)).to.equal(2);
         })
         it('does not count a position twice', () => {
-            let map = new Map([[1, 0], [2, 1]], -1);
+            let map = new Map([[1, 0], [2, 1]]);
             let position = new Position(0, 1);
 
             expect(bassinSize(map, position)).to.equal(4);
@@ -275,7 +275,7 @@ describe('day 9 challenge', ()=> {
             let points = lowPoints(matrix);
             expect(points[0]).to.deep.equal({ value:1, position:new Position(0, 1) })
 
-            let map = new Map(matrix, -1);
+            let map = new Map(matrix);
             expect(bassinSize(map, points[0].position)).to.equal(3);
         })
 
@@ -284,14 +284,14 @@ describe('day 9 challenge', ()=> {
             let points = lowPoints(matrix);
             expect(points[1]).to.deep.equal({ value:0, position:new Position(0, 9) })
 
-            let map = new Map(matrix, -1);
+            let map = new Map(matrix);
             expect(bassinSize(map, points[1].position)).to.equal(9);
         })
 
         it('is about the sizes of all bassins', () => {
             let matrix = parse(example);
             let points = lowPoints(matrix);
-            let map = new Map(matrix, -1);
+            let map = new Map(matrix);
             let sizes = points.map(p => bassinSize(map, p.position))
 
             expect(sizes).to.deep.equal([3, 9, 14, 9])
@@ -305,7 +305,7 @@ describe('day 9 challenge', ()=> {
         it('can now be solved', () => {
             let matrix = parse(input);
             let points = lowPoints(matrix);
-            let map = new Map(matrix, -1);
+            let map = new Map(matrix);
             let sizes = points.map(p => bassinSize(map, p.position))
             sizes.sort((a,b) => b-a);
             
