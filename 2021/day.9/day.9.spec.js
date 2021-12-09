@@ -78,25 +78,25 @@ describe('day 9 challenge', ()=> {
             })
             it('resists position before first row', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(-1, 0))).to.equal(outside);
+                expect(map.valueAt(new Position(-1, 0))).to.equal(summit);
             })
             it('resists position before first column', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(0, -1))).to.equal(outside);
+                expect(map.valueAt(new Position(0, -1))).to.equal(summit);
             })
             it('resists position after last row', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(3, 0))).to.equal(outside);
+                expect(map.valueAt(new Position(3, 0))).to.equal(summit);
             })
             it('resists position after last column', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(0, 2))).to.equal(outside);
+                expect(map.valueAt(new Position(0, 2))).to.equal(summit);
             })
         })
         
     })
 
-    const outside = 9;
+    const summit = 9;
 
     class Map {
         constructor(matrix){
@@ -113,7 +113,7 @@ describe('day 9 challenge', ()=> {
                 this.matrix[position.row][position.column] !== undefined) {
                     return this.matrix[position.row][position.column];
                 }
-            return outside;
+            return summit;
         }
     }
     describe('Position', () => {
@@ -245,7 +245,7 @@ describe('day 9 challenge', ()=> {
     })
 
     const bassin = (map, position) => {
-        if (map.valueAt(position) == outside) { return []; }
+        if (map.valueAt(position) == summit) { return []; }
 
         let area = [position];
         neighbours(position, map).forEach((neighbour) => {
