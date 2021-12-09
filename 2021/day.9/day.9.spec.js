@@ -126,11 +126,15 @@ describe('day 9 challenge', ()=> {
             expect(new Position(3, 4).down().row).to.equal(4);
             expect(new Position(3, 4).down().column).to.equal(4);
         })
+        it('provides an id', () => {
+            expect(new Position(3, 4).id).to.equal('r3c4');
+        })
     })
     class Position {
         constructor(row, column) {
             this.row = row;
             this.column = column;
+            this.id = `r${this.row}c${this.column}`;
         }
         right() {
             return new Position(this.row, this.column + 1);
@@ -251,14 +255,8 @@ describe('day 9 challenge', ()=> {
     }
     const bassinSize = (map, position) => {
         let area = bassin(map, position);
-        let uniques = [];
-        for (var i=0; i< area.length; i++) {
-            let candidate = area[i];
-            let found = uniques.find(u => u.row == candidate.row && u.column == candidate.column);
-            if ( ! found) {
-                uniques.push(area[i]);
-            }
-        }
+        let ids = Array.from(new Set(area.map(p => p.id)))
+        let uniques = ids.map(id => area.find(p => p.id == id))
         return uniques.length;
     }
 
