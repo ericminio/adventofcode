@@ -38,17 +38,20 @@ describe('day 9 challenge', ()=> {
         return points;
     }
     const isLow = (position, map) => {
+        let around = neighbours(position, map);
         let value = map.valueAt(position);
-        let right = map.valueAt(position.right());
-        let left = map.valueAt(position.left());
-        let up = map.valueAt(position.up());
-        let down = map.valueAt(position.down());
+        let count = around.reduce(
+            (acc, neighbour) => acc += map.valueAt(neighbour)>value, 0);
         
-        return (value < right && 
-                value < left &&
-                value < up &&
-                value < down
-            );
+        return count == 4;
+    }
+    const neighbours = (position, map) => {
+        return [
+            position.right(),
+            position.left(),
+            position.up(),
+            position.down()
+        ]
     }
     const lowPointsValues = (matrix) => {
         let points = lowPoints(matrix);
