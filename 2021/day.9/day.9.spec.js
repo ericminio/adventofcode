@@ -38,12 +38,10 @@ describe('day 9 challenge', ()=> {
         return points;
     }
     const isLow = (position, map) => {
-        let around = neighbours(position, map);
         let value = map.valueAt(position);
-        let count = around.reduce(
-            (acc, neighbour) => acc += map.valueAt(neighbour) > value, 0);
-        
-        return count == 4;
+        return neighbours(position, map)
+                .reduce((acc, neighbour) => acc += map.valueAt(neighbour) > value, 0) 
+                == 4;
     }
     const neighbours = (position, map) => {
         return [
@@ -78,27 +76,29 @@ describe('day 9 challenge', ()=> {
             })
             it('resists position before first row', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(-1, 0))).to.equal(9);
+                expect(map.valueAt(new Position(-1, 0))).to.equal(outside);
             })
             it('resists position before first column', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(0, -1))).to.equal(9);
+                expect(map.valueAt(new Position(0, -1))).to.equal(outside);
             })
             it('resists position after last row', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(3, 0))).to.equal(9);
+                expect(map.valueAt(new Position(3, 0))).to.equal(outside);
             })
             it('resists position after last column', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
-                expect(map.valueAt(new Position(0, 2))).to.equal(9);
+                expect(map.valueAt(new Position(0, 2))).to.equal(outside);
             })
         })
         
     })
+    
+    const outside = 9;
+
     class Map {
         constructor(matrix){
             this.matrix = matrix;
-            this.outside = 9;
         }
         rowCount() {
             return this.matrix.length;
@@ -111,7 +111,7 @@ describe('day 9 challenge', ()=> {
                 this.matrix[position.row][position.column] !== undefined) {
                     return this.matrix[position.row][position.column];
                 }
-            return this.outside;
+            return outside;
         }
     }
     describe('Position', () => {
@@ -222,7 +222,7 @@ describe('day 9 challenge', ()=> {
 
             expect(bassinSize(map, position)).to.equal(3);
         })
-        it('stops growing on higher point', () => {
+        it('stops growing on 9', () => {
             let map = new Map([[3, 4, 5, 9]]);
             let position = new Position(0, 0);
 
@@ -243,12 +243,11 @@ describe('day 9 challenge', ()=> {
     })
 
     const bassin = (map, position) => {
-        if (map.valueAt(position) == 9) { return []; }
+        if (map.valueAt(position) == outside) { return []; }
 
         let area = [position];
         let value = map.valueAt(position);
-        let around = neighbours(position, map);
-        around.forEach((neighbour) => {
+        neighbours(position, map).forEach((neighbour) => {
             if (value < map.valueAt(neighbour)) {
                 area = area.concat(bassin(map, neighbour));    
             }
