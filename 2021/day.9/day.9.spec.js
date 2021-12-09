@@ -107,12 +107,11 @@ describe('day 9 challenge', ()=> {
             return this.matrix[0].length;
         }
         valueAt(position) {
-            if (position.row < 0) { return this.outside; }
-            if (position.column < 0) { return this.outside; }
-            if (position.row >= this.rowCount()) { return this.outside; }
-            if (position.column >= this.columnCount()) { return this.outside; }
-            
-            return this.matrix[position.row][position.column];
+            if (this.matrix[position.row] !== undefined &&
+                this.matrix[position.row][position.column] !== undefined) {
+                    return this.matrix[position.row][position.column];
+                }
+            return this.outside;
         }
     }
     describe('Position', () => {
