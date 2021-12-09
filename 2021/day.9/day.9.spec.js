@@ -38,10 +38,12 @@ describe('day 9 challenge', ()=> {
         return points;
     }
     const isLow = (position, map) => {
-        let value = map.valueAt(position);
         return neighbours(position, map)
-                .reduce((acc, neighbour) => acc += map.valueAt(neighbour) > value, 0) 
+                .reduce((acc, neighbour) => acc += isLower(position, neighbour, map), 0) 
                 == 4;
+    }
+    const isLower = (position, neighbour, map) => {
+        return map.valueAt(position) < map.valueAt(neighbour)
     }
     const neighbours = (position, map) => {
         return [
@@ -93,7 +95,7 @@ describe('day 9 challenge', ()=> {
         })
         
     })
-    
+
     const outside = 9;
 
     class Map {
@@ -246,9 +248,8 @@ describe('day 9 challenge', ()=> {
         if (map.valueAt(position) == outside) { return []; }
 
         let area = [position];
-        let value = map.valueAt(position);
         neighbours(position, map).forEach((neighbour) => {
-            if (value < map.valueAt(neighbour)) {
+            if (isLower(position, neighbour, map)) {
                 area = area.concat(bassin(map, neighbour));    
             }
         })
