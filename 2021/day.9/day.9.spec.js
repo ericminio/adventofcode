@@ -41,7 +41,7 @@ describe('day 9 challenge', ()=> {
         let around = neighbours(position, map);
         let value = map.valueAt(position);
         let count = around.reduce(
-            (acc, neighbour) => acc += map.valueAt(neighbour)>value, 0);
+            (acc, neighbour) => acc += map.valueAt(neighbour) > value, 0);
         
         return count == 4;
     }
@@ -248,18 +248,12 @@ describe('day 9 challenge', ()=> {
 
         let area = [position];
         let value = map.valueAt(position);
-        if (value < map.valueAt(position.right())) {
-            area = area.concat(bassin(map, position.right()));
-        }
-        if (value < map.valueAt(position.left())) {
-            area = area.concat(bassin(map, position.left()));
-        }
-        if (value < map.valueAt(position.up())) {
-            area = area.concat(bassin(map, position.up()));
-        }
-        if (value < map.valueAt(position.down())) {
-            area = area.concat(bassin(map, position.down()));
-        }
+        let around = neighbours(position, map);
+        around.forEach((neighbour) => {
+            if (value < map.valueAt(neighbour)) {
+                area = area.concat(bassin(map, neighbour));    
+            }
+        })
 
         return area;
     }
