@@ -108,5 +108,60 @@ describe.only('day 13 challenge', ()=> {
         let ids = Array.from(new Set(withIds.map(p => p.id)))
         return ids.map(id => withIds.find(p => p.id == id)).map(p => { return { x:p.x, y:p.y }})
     }
+
+    describe('part 2', () => {
+
+        it('can leverage the example', () => {
+            let points = parsePoints(example);
+            let foldings = parseFoldings(example);
+
+            foldings.forEach(folding => {
+                points = removeDuplicates(points.map(p => folding.direction(p, folding.line)));
+            });
+            
+            expect(drawing(points)).to.deep.equal([
+                '#####',
+                '#...#',
+                '#...#',
+                '#...#',
+                '#####'
+            ])
+        })
+        const drawing = (points) => {
+            let max = { x:0, y: 0}
+            points.forEach(p => {
+                if (p.x > max.x) { max.x = p.x }
+                if (p.y > max.y) { max.y = p.y }
+            })
+            let drawing = []
+            for (y = 0; y < max.y+1; y++) {
+                let line = [];
+                for (var x = 0; x < max.x+1; x++) {
+                    line.push('.')
+                }
+                drawing.push(line)
+            }
+            points.forEach(p => {
+                drawing[p.y][p.x] = '#'
+            })
+            return drawing.map(line => line.reduce((acc, curr) => acc += curr, ''))
+        }
+        it('can be solved', () => {
+            let points = parsePoints(input);
+            let foldings = parseFoldings(input);
+
+            foldings.forEach(folding => {
+                points = removeDuplicates(points.map(p => folding.direction(p, folding.line)));
+            });
+            expect(drawing(points)).to.deep.equal([
+                '####.###..####..##..#..#..##..#..#.#..#',  
+                '#....#..#....#.#..#.#.#..#..#.#..#.#..#',  
+                '###..#..#...#..#....##...#....####.#..#',  
+                '#....###...#...#.##.#.#..#....#..#.#..#',  
+                '#....#....#....#..#.#.#..#..#.#..#.#..#',  
+                '####.#....####..###.#..#..##..#..#..##.',  
+            ]);
+        })
+    })
     
 })
