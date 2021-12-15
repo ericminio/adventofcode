@@ -135,19 +135,19 @@ describe.only('day 15 challenge', ()=> {
         
         it('finds only two for the smallest square', () => {
             let map = new Map([[1, 2], [3, 4]])
-            let candidates = paths(map);
+            let result = go(map);
 
-            expect(candidates).to.deep.equal([
+            expect(result.paths).to.deep.equal([
                 [ { row:0, column:0 }, { row:1, column:0 }, { row:1, column:1 }],
                 [ { row:0, column:0 }, { row:0, column:1 }, { row:1, column:1 }],
             ])
-            expect(riskLevel(map)).to.equal(7)
+            expect(result.min).to.equal(6)
         })
         it('finds expected paths for the smallest rectangle', () => {
             let map = new Map([[1, 2, 3], [4, 5, 6]])
-            let candidates = paths(map);
+            let result = go(map);
 
-            expect(candidates).to.deep.equal([
+            expect(result.paths).to.deep.equal([
                 [ { row:0, column:0 }, { row:1, column:0 }, { row:1, column:1 }, { row:1, column:2 }],
                 [ { row:0, column:0 }, { row:1, column:0 }, { row:1, column:1 }, { row:0, column:1 }, { row:0, column:2 }, { row:1, column:2 }],
                 [ { row:0, column:0 }, { row:0, column:1 }, { row:1, column:1 }, { row:1, column:2 }],
@@ -155,29 +155,27 @@ describe.only('day 15 challenge', ()=> {
             ])
         })
     })
-    const riskLevel = (map) => {
-        let candidates = paths(map);
-        let riskLevels = candidates.map(candidate =>
-            candidate.reduce((risk, position) => risk += map.valueAt(position) , 0)
-        )
-        riskLevels.sort((a, b) => a-b)
-        return riskLevels[0]
+    const go = (map) => {
+        let result = { 
+            min: 9*(map.rowCount()+map.columnCount()),
+            paths: []
+        }
+        travel(map, new Position(0, 0), { path:[new Position(0, 0)], sum:0 }, result)
+        return result;
     }
-    const paths = (map) => {
-        let collected = []
-        travel(map, new Position(0, 0), [new Position(0, 0)], collected)
-        return collected;
-    }
-    const travel = (map, position, path, collected) => {
+    const travel = (map, position, current, result) => {
         if (position.equals(target(map))) { 
-            collected.push(path)
+            result.paths.push(current.path)
+            if (current.sum < result.min) { result.min = current.sum }
             return;
         }
+        
         let around = neighbours(position, map);
-        around = around.filter(neighbour => notVisited(neighbour, path))
+        around = around.filter(neighbour => notVisited(neighbour, current.path))
         for (var i = 0; i < around.length; i++) {
             let neighbour = around[i];
-            travel(map, neighbour, path.concat(neighbour), collected)
+            let value = map.valueAt(neighbour)
+            travel(map, neighbour, { path:current.path.concat(neighbour), sum:current.sum+value }, result)
         }
     }
     const notVisited = (position, path) => {
