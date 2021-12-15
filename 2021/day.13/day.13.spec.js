@@ -1,7 +1,7 @@
 const { expect } = require('chai')
 const { lines, integers } = require('../puzzle.input')
 
-describe.only('day 13 challenge', ()=> {
+describe('day 13 challenge', ()=> {
 
     it('is about folding vertically', () => {
         expect(foldVertically({ x:0, y:0 }, 2)).to.deep.equal({ x:0, y:0 });
