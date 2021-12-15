@@ -1,5 +1,5 @@
 const { expect } = require('chai')
-const { integers } = require('../puzzle.input')
+const { lines } = require('../puzzle.input')
 
 describe.only('day 15 challenge', ()=> {    
 
@@ -103,6 +103,10 @@ describe.only('day 15 challenge', ()=> {
             expect(new Position(3, 4).down().row).to.equal(4);
             expect(new Position(3, 4).down().column).to.equal(4);
         })
+        it('equals same position', () => {
+            expect(new Position(15, 42).equals(new Position(0, 0))).to.equal(false)
+            expect(new Position(15, 42).equals(new Position(15, 42))).to.equal(true)
+        })
     })
     class Position {
         constructor(row, column) {
@@ -121,6 +125,9 @@ describe.only('day 15 challenge', ()=> {
         down() {
             return new Position(this.row + 1, this.column);
         }
+        equals(other) {
+            return other.row == this.row && other.column == this.column
+        }
     }
 
 
@@ -136,6 +143,17 @@ describe.only('day 15 challenge', ()=> {
             ])
             expect(riskLevel(map)).to.equal(7)
         })
+        it('finds expected paths for the smallest rectangle', () => {
+            let map = new Map([[1, 2, 3], [4, 5, 6]])
+            let candidates = paths(map);
+
+            expect(candidates).to.deep.equal([
+                [ { row:0, column:0 }, { row:1, column:0 }, { row:1, column:1 }, { row:1, column:2 }],
+                [ { row:0, column:0 }, { row:1, column:0 }, { row:1, column:1 }, { row:0, column:1 }, { row:0, column:2 }, { row:1, column:2 }],
+                [ { row:0, column:0 }, { row:0, column:1 }, { row:1, column:1 }, { row:1, column:2 }],
+                [ { row:0, column:0 }, { row:0, column:1 }, { row:0, column:2 }, { row:1, column:2 }],
+            ])
+        })
     })
     const riskLevel = (map) => {
         let candidates = paths(map);
@@ -146,22 +164,27 @@ describe.only('day 15 challenge', ()=> {
         return riskLevels[0]
     }
     const paths = (map) => {
-        let start = new Position(0, 0)
-        let target = new Position(map.rowCount() - 1, map.columnCount() -1)
-        let paths = []
-
-        let path = [start]
-        let around = neighbours(start, map)
-        path.push(around[0])
-        path.push(target)
-        paths.push(path)
-
-        path = [start]
-        path.push(around[1]);
-        path.push(target)
-        paths.push(path)
-
-        return paths;
+        let collected = []
+        travel(map, new Position(0, 0), [new Position(0, 0)], collected)
+        return collected;
+    }
+    const travel = (map, position, path, collected) => {
+        if (position.equals(target(map))) { 
+            collected.push(path)
+            return;
+        }
+        let around = neighbours(position, map);
+        around = around.filter(neighbour => notVisited(neighbour, path))
+        for (var i = 0; i < around.length; i++) {
+            let neighbour = around[i];
+            travel(map, neighbour, path.concat(neighbour), collected)
+        }
+    }
+    const notVisited = (position, path) => {
+        return path.find(p => p.row == position.row && p.column == position.column) === undefined;
+    }
+    const target = (map) => {
+        return new Position(map.rowCount() - 1, map.columnCount() -1);
     }
     const neighbours = (position, map) => {
         let around = []
@@ -171,5 +194,9 @@ describe.only('day 15 challenge', ()=> {
         if (map.exists(position.up())) { around.push(position.up()); }
 
         return around
+    }
+    const example = lines('day.15', 'example.txt');
+    const parse = (lines) => {
+        return lines.map(line => line.split('').map(c => parseInt(c)));
     }
 })
