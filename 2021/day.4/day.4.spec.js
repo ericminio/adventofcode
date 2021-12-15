@@ -47,6 +47,22 @@ describe.only('day 4 challenge', ()=> {
         it('knows if column is completed', () => {
             expect(board.hasColumnCompleted(0)).to.equal(false)
         })
+        it('can win by row', () => {
+            expect(board.doesWin()).to.equal(false)
+            board.mark(new Position(0, 0))
+            board.mark(new Position(0, 1))
+            expect(board.doesWin()).to.equal(true)
+        })
+        it('can win by column', () => {
+            expect(board.doesWin()).to.equal(false)
+            board.mark(new Position(0, 0))
+            board.mark(new Position(1, 0))
+            expect(board.doesWin()).to.equal(true)
+        })
+        it('discloses number position', () => {
+            expect(board.positionOf(5)).to.equal(undefined);
+            expect(board.positionOf(3)).to.deep.equal(new Position(1, 0));
+        })
     })
     
 
@@ -109,6 +125,38 @@ describe.only('day 4 challenge', ()=> {
             }
             return true;
         }
+        doesWin() {
+            let wins = false;
+            for (var row = 0 ; row < this.rowCount(); row ++) {
+                wins = wins || this.hasRowCompleted(row);
+            }
+            for (var column = 0; column < this.columnCount(); column ++) {
+                wins = wins || this.hasColumnCompleted(column);
+            }
+            return wins;
+        }
+        positionOf(number) {
+            for (var row = 0 ; row < this.rowCount(); row ++) {
+                for (var column = 0; column < this.columnCount(); column ++) {
+                    let position = new Position(row, column)
+                    if (this.valueAt(position) == number) {
+                        return position;
+                    }
+                }
+            }
+        }
+        score() {
+            let sum = 0;
+            for (var row = 0 ; row < this.rowCount(); row ++) {
+                for (var column = 0; column < this.columnCount(); column ++) {
+                    let position = new Position(row, column);
+                    if (! this.isMarked(position)) {
+                        sum += this.valueAt(position)
+                    }
+                }
+            }
+            return sum;
+        }
     }
     class Position {
         constructor(row, column) {
@@ -116,5 +164,61 @@ describe.only('day 4 challenge', ()=> {
             this.column = column;
         }
     }
-    
+
+    describe('part 1', () => {
+
+        it('contains an example', () => {
+            let draws = numbers(example);
+            let boards = parseBoards(example);
+            let theWinner = undefined;
+
+            let count = 0;
+            let draw;
+            while(theWinner === undefined) {
+                draw = draws[count];
+                for (var i = 0 ; i<boards.length; i++) {
+                    let board = boards[i];
+                    let position = board.positionOf(draw);
+                    if (position !== undefined) {
+                        board.mark(position);
+                        if (board.doesWin()) {
+                            theWinner = board;
+                            break;
+                        }
+                    }
+                }
+                count ++;
+            }
+            expect(draw).to.equal(24)
+            expect(theWinner.score()).to.equal(188)
+
+            expect(draw * theWinner.score()).to.equal(4512)
+        })
+
+        it('can be solved', () => {
+            const input = raw('day.4', 'input.txt');
+            let draws = numbers(input);
+            let boards = parseBoards(input);
+            let theWinner = undefined;
+
+            let count = 0;
+            let draw;
+            while(theWinner === undefined) {
+                draw = draws[count];
+                for (var i = 0 ; i<boards.length; i++) {
+                    let board = boards[i];
+                    let position = board.positionOf(draw);
+                    if (position !== undefined) {
+                        board.mark(position);
+                        if (board.doesWin()) {
+                            theWinner = board;
+                            break;
+                        }
+                    }
+                }
+                count ++;
+            }
+            expect(draw * theWinner.score()).to.equal(63424)
+        })
+    })
 })
