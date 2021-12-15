@@ -207,4 +207,10 @@ describe.only('day 15 challenge', ()=> {
     const parse = (lines) => {
         return lines.map(line => line.split('').map(c => parseInt(c)));
     }
+    it('offers an example', () => {
+        let map = new Map(parse(example))
+        let result = go(map)
+
+        expect(result.min).to.equal(40)
+    })
 })
