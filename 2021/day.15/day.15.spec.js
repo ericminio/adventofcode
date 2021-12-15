@@ -39,6 +39,19 @@ describe.only('day 15 challenge', ()=> {
                 expect(map.valueAt(new Position(0, 2))).to.equal(summit);
             })
         })
+        describe('exists', () => {
+            it('is true inside the map', () => {
+                let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
+                expect(map.exists(new Position(0, 0))).to.equal(true);
+            })
+            it('is false inside the map', () => {
+                let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
+                expect(map.exists(new Position(-1, 0))).to.equal(false);
+                expect(map.exists(new Position(0, -1))).to.equal(false);
+                expect(map.exists(new Position(0, 2))).to.equal(false);
+                expect(map.exists(new Position(3, 0))).to.equal(false);
+            })
+        })
         
     })
 
@@ -60,6 +73,13 @@ describe.only('day 15 challenge', ()=> {
                     return this.matrix[position.row][position.column];
                 }
             return summit;
+        }
+        exists(position) {
+            if (this.matrix[position.row] === undefined ||
+                this.matrix[position.row][position.column] === undefined) {
+                    return false
+                }
+            return true
         }
     }
     describe('Position', () => {
@@ -83,15 +103,11 @@ describe.only('day 15 challenge', ()=> {
             expect(new Position(3, 4).down().row).to.equal(4);
             expect(new Position(3, 4).down().column).to.equal(4);
         })
-        it('provides an id', () => {
-            expect(new Position(3, 4).id).to.equal('r3c4');
-        })
     })
     class Position {
         constructor(row, column) {
             this.row = row;
             this.column = column;
-            this.id = `r${this.row}c${this.column}`;
         }
         right() {
             return new Position(this.row, this.column + 1);
@@ -132,9 +148,28 @@ describe.only('day 15 challenge', ()=> {
     const paths = (map) => {
         let start = new Position(0, 0)
         let target = new Position(map.rowCount() - 1, map.columnCount() -1)
-        return [
-            [ { row:0, column:0 }, { row:1, column:0 }, { row:1, column:1 }],
-            [ { row:0, column:0 }, { row:0, column:1 }, { row:1, column:1 }],
-        ]
+        let paths = []
+
+        let path = [start]
+        let around = neighbours(start, map)
+        path.push(around[0])
+        path.push(target)
+        paths.push(path)
+
+        path = [start]
+        path.push(around[1]);
+        path.push(target)
+        paths.push(path)
+
+        return paths;
+    }
+    const neighbours = (position, map) => {
+        let around = []
+        if (map.exists(position.down())) { around.push(position.down()); }
+        if (map.exists(position.right())) { around.push(position.right()); }
+        if (map.exists(position.left())) { around.push(position.left()); }
+        if (map.exists(position.up())) { around.push(position.up()); }
+
+        return around
     }
 })
