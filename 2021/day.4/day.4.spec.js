@@ -48,16 +48,16 @@ describe.only('day 4 challenge', ()=> {
             expect(board.hasColumnCompleted(0)).to.equal(false)
         })
         it('can win by row', () => {
-            expect(board.doesWin()).to.equal(false)
+            expect(board.hasWon()).to.equal(false)
             board.mark(new Position(0, 0))
             board.mark(new Position(0, 1))
-            expect(board.doesWin()).to.equal(true)
+            expect(board.hasWon()).to.equal(true)
         })
         it('can win by column', () => {
-            expect(board.doesWin()).to.equal(false)
+            expect(board.hasWon()).to.equal(false)
             board.mark(new Position(0, 0))
             board.mark(new Position(1, 0))
-            expect(board.doesWin()).to.equal(true)
+            expect(board.hasWon()).to.equal(true)
         })
         it('discloses number position', () => {
             expect(board.positionOf(5)).to.equal(undefined);
@@ -125,7 +125,7 @@ describe.only('day 4 challenge', ()=> {
             }
             return true;
         }
-        doesWin() {
+        hasWon() {
             let wins = false;
             for (var row = 0 ; row < this.rowCount(); row ++) {
                 wins = wins || this.hasRowCompleted(row);
@@ -182,7 +182,7 @@ describe.only('day 4 challenge', ()=> {
                     let position = board.positionOf(draw);
                     if (position !== undefined) {
                         board.mark(position);
-                        if (board.doesWin()) {
+                        if (board.hasWon()) {
                             theWinner = board;
                             break;
                         }
@@ -210,7 +210,7 @@ describe.only('day 4 challenge', ()=> {
                     let position = board.positionOf(draw);
                     if (position !== undefined) {
                         board.mark(position);
-                        if (board.doesWin()) {
+                        if (board.hasWon()) {
                             theWinner = board;
                             break;
                         }
@@ -235,11 +235,11 @@ describe.only('day 4 challenge', ()=> {
                 draw = draws[count];
                 for (var i = 0 ; i<boards.length; i++) {
                     let board = boards[i];
-                    if (! board.doesWin()) {
+                    if (! board.hasWon()) {
                         let position = board.positionOf(draw);
                         if (position !== undefined) {
                             board.mark(position);
-                            if (board.doesWin()) {
+                            if (board.hasWon()) {
                                 winners.push({ index:i, draw:draw, board:board })
                             }
                         }
@@ -262,11 +262,11 @@ describe.only('day 4 challenge', ()=> {
                 draw = draws[count];
                 for (var i = 0 ; i<boards.length; i++) {
                     let board = boards[i];
-                    if (! board.doesWin()) {
+                    if (! board.hasWon()) {
                         let position = board.positionOf(draw);
                         if (position !== undefined) {
                             board.mark(position);
-                            if (board.doesWin()) {
+                            if (board.hasWon()) {
                                 winners.push({ index:i, draw:draw, board:board })
                             }
                         }
