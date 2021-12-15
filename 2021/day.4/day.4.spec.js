@@ -1,7 +1,7 @@
 const { expect } = require('chai')
 const { raw } = require('../puzzle.input')
 
-describe.only('day 4 challenge', ()=> {
+describe('day 4 challenge', ()=> {
 
     const example = raw('day.4', 'example.txt');
     
