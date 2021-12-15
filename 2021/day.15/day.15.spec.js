@@ -154,6 +154,15 @@ describe.only('day 15 challenge', ()=> {
                 [ { row:0, column:0 }, { row:0, column:1 }, { row:0, column:2 }, { row:1, column:2 }],
             ])
         })
+        it('stops going down a path already too risky', () => {
+            let map = new Map([[1, 2], [1, 1]])
+            let result = go(map);
+
+            expect(result.paths).to.deep.equal([
+                [ { row:0, column:0 }, { row:1, column:0 }, { row:1, column:1 }],
+            ])
+            expect(result.min).to.equal(2)
+        })
     })
     const go = (map) => {
         let result = { 
@@ -169,6 +178,7 @@ describe.only('day 15 challenge', ()=> {
             if (current.sum < result.min) { result.min = current.sum }
             return;
         }
+        if (current.sum >= result.min) { return; }
         
         let around = neighbours(position, map);
         around = around.filter(neighbour => notVisited(neighbour, current.path))
