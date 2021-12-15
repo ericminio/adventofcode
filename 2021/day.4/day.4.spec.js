@@ -165,6 +165,7 @@ describe.only('day 4 challenge', ()=> {
         }
     }
 
+    const input = raw('day.4', 'input.txt');
     describe('part 1', () => {
 
         it('contains an example', () => {
@@ -195,8 +196,7 @@ describe.only('day 4 challenge', ()=> {
             expect(draw * theWinner.score()).to.equal(4512)
         })
 
-        it('can be solved', () => {
-            const input = raw('day.4', 'input.txt');
+        it('can be solved', () => {            
             let draws = numbers(input);
             let boards = parseBoards(input);
             let theWinner = undefined;
@@ -219,6 +219,63 @@ describe.only('day 4 challenge', ()=> {
                 count ++;
             }
             expect(draw * theWinner.score()).to.equal(63424)
+        })
+    })
+
+    describe('part 2', () => {
+        
+        it('leverages the example', () => {
+            let draws = numbers(example);
+            let boards = parseBoards(example);
+            let winners = []
+
+            let count = 0;
+            let draw;
+            while (count < draws.length) {
+                draw = draws[count];
+                for (var i = 0 ; i<boards.length; i++) {
+                    let board = boards[i];
+                    if (! board.doesWin()) {
+                        let position = board.positionOf(draw);
+                        if (position !== undefined) {
+                            board.mark(position);
+                            if (board.doesWin()) {
+                                winners.push({ index:i, draw:draw, board:board })
+                            }
+                        }
+                    }
+                }
+                count ++;
+            }
+            let winner = winners[winners.length - 1];
+            expect(winner.draw * winner.board.score()).to.equal(1924)
+        })
+
+        it('can be solved', () => {
+            let draws = numbers(input);
+            let boards = parseBoards(input);
+            let winners = []
+
+            let count = 0;
+            let draw;
+            while (count < draws.length) {
+                draw = draws[count];
+                for (var i = 0 ; i<boards.length; i++) {
+                    let board = boards[i];
+                    if (! board.doesWin()) {
+                        let position = board.positionOf(draw);
+                        if (position !== undefined) {
+                            board.mark(position);
+                            if (board.doesWin()) {
+                                winners.push({ index:i, draw:draw, board:board })
+                            }
+                        }
+                    }
+                }
+                count ++;
+            }
+            let winner = winners[winners.length - 1];
+            expect(winner.draw * winner.board.score()).to.equal(23541)
         })
     })
 })
