@@ -4,47 +4,47 @@ const { lines } = require('../puzzle.input')
 describe.only('day 15 challenge', ()=> {    
 
 
-    describe('Map', () => {
-        it('provides rowCount', () => {
+    describe('Map', () => {
+        it('provides rowCount', () => {
             let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
             expect(map.rowCount()).to.equal(3);
         })
-        it('provides columnCount', () => {
+        it('provides columnCount', () => {
             let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
             expect(map.columnCount()).to.equal(2);
         })
-        it('provides valueAt', () => {
+        it('provides valueAt', () => {
             let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
             expect(map.valueAt(new Position(0, 0))).to.equal(1);
         })
-        describe('valueAt', () => {
-            it('provides acces to internal value', () => {
+        describe('valueAt', () => {
+            it('provides acces to internal value', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
                 expect(map.valueAt(new Position(0, 0))).to.equal(1);
             })
-            it('resists position before first row', () => {
+            it('resists position before first row', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
                 expect(map.valueAt(new Position(-1, 0))).to.equal(summit);
             })
-            it('resists position before first column', () => {
+            it('resists position before first column', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
                 expect(map.valueAt(new Position(0, -1))).to.equal(summit);
             })
-            it('resists position after last row', () => {
+            it('resists position after last row', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
                 expect(map.valueAt(new Position(3, 0))).to.equal(summit);
             })
-            it('resists position after last column', () => {
+            it('resists position after last column', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
                 expect(map.valueAt(new Position(0, 2))).to.equal(summit);
             })
         })
-        describe('exists', () => {
-            it('is true inside the map', () => {
+        describe('exists', () => {
+            it('is true inside the map', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
                 expect(map.exists(new Position(0, 0))).to.equal(true);
             })
-            it('is false inside the map', () => {
+            it('is false inside the map', () => {
                 let map = new Map([ [1, 2], [3, 4], [5, 6] ]);
                 expect(map.exists(new Position(-1, 0))).to.equal(false);
                 expect(map.exists(new Position(0, -1))).to.equal(false);
@@ -82,28 +82,28 @@ describe.only('day 15 challenge', ()=> {
             return true
         }
     }
-    describe('Position', () => {
-        it('keeps given position', () => {
+    describe('Position', () => {
+        it('keeps given position', () => {
             expect(new Position(3, 4).row).to.equal(3);
             expect(new Position(3, 4).column).to.equal(4);
         })
-        it('provides right position', () => {
+        it('provides right position', () => {
             expect(new Position(3, 4).right().row).to.equal(3);
             expect(new Position(3, 4).right().column).to.equal(5);
         })
-        it('provides left position', () => {
+        it('provides left position', () => {
             expect(new Position(3, 4).left().row).to.equal(3);
             expect(new Position(3, 4).left().column).to.equal(3);
         })
-        it('provides up position', () => {
+        it('provides up position', () => {
             expect(new Position(3, 4).up().row).to.equal(2);
             expect(new Position(3, 4).up().column).to.equal(4);
         })
-        it('provides down position', () => {
+        it('provides down position', () => {
             expect(new Position(3, 4).down().row).to.equal(4);
             expect(new Position(3, 4).down().column).to.equal(4);
         })
-        it('equals same position', () => {
+        it('equals same position', () => {
             expect(new Position(15, 42).equals(new Position(0, 0))).to.equal(false)
             expect(new Position(15, 42).equals(new Position(15, 42))).to.equal(true)
         })
@@ -131,9 +131,9 @@ describe.only('day 15 challenge', ()=> {
     }
 
 
-    describe('possible paths', () => {
+    describe('possible paths', () => {
         
-        it('finds only two for the smallest square', () => {
+        it('finds only two for the smallest square', () => {
             let map = new Map([[1, 2], [3, 4]])
             let result = go(map);
 
@@ -143,7 +143,7 @@ describe.only('day 15 challenge', ()=> {
             ])
             expect(result.min).to.equal(6)
         })
-        it('finds expected paths for the smallest rectangle', () => {
+        it('finds expected paths for the smallest rectangle', () => {
             let map = new Map([[1, 2, 3], [4, 5, 6]])
             let result = go(map);
 
@@ -154,7 +154,7 @@ describe.only('day 15 challenge', ()=> {
                 [ { row:0, column:0 }, { row:0, column:1 }, { row:0, column:2 }, { row:1, column:2 }],
             ])
         })
-        it('stops going down a path already too risky', () => {
+        it('stops going down a path already too risky', () => {
             let map = new Map([[1, 2], [1, 1]])
             let result = go(map);
 
@@ -164,7 +164,7 @@ describe.only('day 15 challenge', ()=> {
             expect(result.min).to.equal(2)
         })
     })
-    const go = (map) => {
+    const go = (map) => {
         let result = { 
             min: 9*(map.rowCount()+map.columnCount()),
             paths: []
@@ -172,7 +172,7 @@ describe.only('day 15 challenge', ()=> {
         travel(map, new Position(0, 0), { path:[new Position(0, 0)], sum:0 }, result)
         return result;
     }
-    const travel = (map, position, current, result) => {
+    const travel = (map, position, current, result) => {
         if (position.equals(target(map))) { 
             result.paths.push(current.path)
             if (current.sum < result.min) { result.min = current.sum }
@@ -188,13 +188,13 @@ describe.only('day 15 challenge', ()=> {
             travel(map, neighbour, { path:current.path.concat(neighbour), sum:current.sum+value }, result)
         }
     }
-    const notVisited = (position, path) => {
+    const notVisited = (position, path) => {
         return path.find(p => p.row == position.row && p.column == position.column) === undefined;
     }
-    const target = (map) => {
+    const target = (map) => {
         return new Position(map.rowCount() - 1, map.columnCount() -1);
     }
-    const neighbours = (position, map) => {
+    const neighbours = (position, map) => {
         let around = []
         if (map.exists(position.down())) { around.push(position.down()); }
         if (map.exists(position.right())) { around.push(position.right()); }
@@ -204,7 +204,7 @@ describe.only('day 15 challenge', ()=> {
         return around
     }
     const example = lines('day.15', 'example.txt');
-    const parse = (lines) => {
+    const parse = (lines) => {
         return lines.map(line => line.split('').map(c => parseInt(c)));
     }
     it('offers an example', () => {
