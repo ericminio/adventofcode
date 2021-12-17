@@ -143,17 +143,6 @@ describe.only('day 15 challenge', ()=> {
             ])
             expect(result.min).to.equal(6)
         })
-        it('finds expected paths for the smallest rectangle', () => {
-            let map = new Map([[1, 2, 3], [4, 5, 6]])
-            let result = go(map);
-
-            expect(result.paths).to.deep.equal([
-                [ { row:0, column:0 }, { row:1, column:0 }, { row:1, column:1 }, { row:1, column:2 }],
-                [ { row:0, column:0 }, { row:1, column:0 }, { row:1, column:1 }, { row:0, column:1 }, { row:0, column:2 }, { row:1, column:2 }],
-                [ { row:0, column:0 }, { row:0, column:1 }, { row:1, column:1 }, { row:1, column:2 }],
-                [ { row:0, column:0 }, { row:0, column:1 }, { row:0, column:2 }, { row:1, column:2 }],
-            ])
-        })
         it('stops going down a path already too risky', () => {
             let map = new Map([[1, 2], [1, 1]])
             let result = go(map);
@@ -163,9 +152,19 @@ describe.only('day 15 challenge', ()=> {
             ])
             expect(result.min).to.equal(2)
         })
+        it('stops going down a path too far from target given current risk and current minimum', () => {
+            let map = new Map([[1, 7, 1], [3, 3, 3]])
+            let result = go(map);
+
+            expect(result.paths).to.deep.equal([
+                [{ row:0, column:0 }, { row:1, column:0 }, { row:1, column:1 }, { row:1, column:2 }]
+            ])
+            expect(result.min).to.equal(9)
+        })
     })
     const go = (map) => {
         let result = { 
+            target: target(map),
             min: 9*(map.rowCount()+map.columnCount()),
             paths: []
         }
@@ -173,12 +172,13 @@ describe.only('day 15 challenge', ()=> {
         return result;
     }
     const travel = (map, position, current, result) => {
-        if (position.equals(target(map))) { 
+        if (position.equals(result.target)) { 
             result.paths.push(current.path)
             if (current.sum < result.min) { result.min = current.sum }
             return;
         }
         if (current.sum >= result.min) { return; }
+        if (current.sum + (result.target.row - position.row) + (result.target.column - position.column) >= result.min) { return; }
         
         let around = neighbours(position, map);
         around = around.filter(neighbour => notVisited(neighbour, current.path))
