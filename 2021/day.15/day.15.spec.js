@@ -174,7 +174,10 @@ describe.only('day 15 challenge', ()=> {
     const travel = (map, position, current, result) => {
         if (position.equals(result.target)) { 
             result.paths.push(current.path)
-            if (current.sum < result.min) { result.min = current.sum }
+            if (current.sum < result.min) { 
+                result.min = current.sum 
+                // console.log(result.min)
+            }
             return;
         }
         if (current.sum >= result.min) { return; }
@@ -212,5 +215,12 @@ describe.only('day 15 challenge', ()=> {
         let result = go(map)
 
         expect(result.min).to.equal(40)
+    })
+    const input = lines('day.15', 'input.txt');
+    it.skip('has a part 1', () => {
+        let map = new Map(parse(input))
+        let result = go(map)
+
+        expect(result.min).to.equal(0)
     })
 })
