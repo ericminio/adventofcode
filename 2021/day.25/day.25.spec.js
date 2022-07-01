@@ -33,6 +33,24 @@ describe.only('day 25 challenge', () => {
                 >.>
             `));
         });
+        it('happens when there is nowhere to go on the right', () => {
+            let current = parse(`
+                >>
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                >>
+            `));
+        });
+        it('does not happen when going right returns to the start', () => {
+            let current = parse(`
+                .>
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                >.
+            `));
+        });
     });
 });
 
@@ -45,15 +63,17 @@ const move = (current) => {
         rowCount: current.rowCount,
         columnCount: current.columnCount,
         rights: current.rights.map(cucumber => {
-            return ( current.rights.find(other => other.row == cucumber.row && other.column == cucumber.column + 1)) 
+            return ( current.rights.find(other => 
+                other.row == cucumber.row && 
+                other.column == (cucumber.column + 1) % current.columnCount)) 
                 ? cucumber 
-                : moveRight(cucumber);
+                : moveRight(cucumber, current.columnCount);
         }),
         downs: current.downs.map(moveDown),
     };
 };
 
-const moveRight = cucumber => ({ row:cucumber.row, column:cucumber.column + 1 });
+const moveRight = (cucumber, columnCount) => ({ row:cucumber.row, column:(cucumber.column + 1) % columnCount });
 const moveDown = cucumber => ({ row:cucumber.row + 1, column:cucumber.column });
 
 const parse = (input) => {    
