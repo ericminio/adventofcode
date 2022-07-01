@@ -33,6 +33,32 @@ describe.only('day 25 challenge', () => {
                 >.>
             `));
         });
+        it('does not happen when going right returns to the start', () => {
+            let current = parse(`
+                .>
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                >.
+            `));
+        });
+        it('happens going down', () => {
+            let current = parse(`
+                V
+                V
+                .
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                V
+                .
+                V
+            `));
+        });
+    });
+    
+    describe('blocked', () => {
+    
         it('happens when there is nowhere to go on the right', () => {
             let current = parse(`
                 >>
@@ -42,13 +68,33 @@ describe.only('day 25 challenge', () => {
                 >>
             `));
         });
-        it('does not happen when going right returns to the start', () => {
+        it('happens when the map is just too small', () => {
             let current = parse(`
-                .>
+                >
             `);
             let next = move(current);
             expect(render(next)).to.deep.equal(rendered(`
-                >.
+                >
+            `));
+        });
+        it('happens when the map is just too small for down too', () => {
+            let current = parse(`
+                V
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                V
+            `));
+        });
+        it('happens when there is nowhere to go down', () => {
+            let current = parse(`
+                V
+                V
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                V
+                V
             `));
         });
     });
@@ -63,18 +109,34 @@ const move = (current) => {
         rowCount: current.rowCount,
         columnCount: current.columnCount,
         rights: current.rights.map(cucumber => {
-            return ( current.rights.find(other => 
-                other.row == cucumber.row && 
-                other.column == (cucumber.column + 1) % current.columnCount)) 
+            return canNotMoveRight(cucumber, current) 
                 ? cucumber 
-                : moveRight(cucumber, current.columnCount);
+                : moveRight(cucumber, current);
         }),
-        downs: current.downs.map(moveDown),
+        downs: current.downs.map(cucumber => {
+            return canNotMoveDown(cucumber, current) 
+                ? cucumber 
+                : moveDown(cucumber, current);
+        }),
     };
 };
 
-const moveRight = (cucumber, columnCount) => ({ row:cucumber.row, column:(cucumber.column + 1) % columnCount });
-const moveDown = cucumber => ({ row:cucumber.row + 1, column:cucumber.column });
+const canNotMoveRight = (cucumber, data) => {
+    return !! data.rights.find(hasImmediateRightNeighbour(cucumber, data));
+};
+const hasImmediateRightNeighbour = (cucumber, data) => {
+    return (other) => other.row == cucumber.row && 
+                      other.column == (cucumber.column + 1) % data.columnCount;
+};
+const canNotMoveDown = (cucumber, data) => {
+    return !! data.downs.find(hasImmediateDownNeighbour(cucumber, data));
+};
+const hasImmediateDownNeighbour = (cucumber, data) => {
+    return (other) => other.row == (cucumber.row + 1) % data.rowCount && 
+                      other.column == cucumber.column;
+};
+const moveRight = (cucumber, data) => ({ row:cucumber.row, column:(cucumber.column + 1) % data.columnCount });
+const moveDown = (cucumber, data) => ({ row:(cucumber.row + 1) % data.rowCount, column:cucumber.column });
 
 const parse = (input) => {    
     let lines = input.trim().split('\n');
@@ -84,7 +146,7 @@ const parse = (input) => {
     };
     let rights = [];
     let downs = [];
-    lines.map(line => line.split(''))
+    lines.map(line => line.trim().split(''))
         .forEach((line, row) => line.forEach((char, column) => {
             if (char == '>') { rights.push({ row:row, column:column }); }
             if (char == 'V') { downs.push({ row:row, column:column }); }
