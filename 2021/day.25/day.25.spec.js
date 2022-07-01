@@ -55,6 +55,37 @@ describe.only('day 25 challenge', () => {
                 V
             `));
         });
+        it('does not happen when going down returns to the start', () => {
+            let current = parse(`
+                .
+                V
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                V
+                .
+            `));
+        });
+        it('happens going right against down soul', () => {
+            let current = parse(`
+                >V
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                >V
+            `));
+        });
+        it('happens going down against a right soul', () => {
+            let current = parse(`
+                V
+                >
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                V
+                >
+            `));
+        });
     });
     
     describe('blocked', () => {
@@ -66,6 +97,17 @@ describe.only('day 25 challenge', () => {
             let next = move(current);
             expect(render(next)).to.deep.equal(rendered(`
                 >>
+            `));
+        });
+        it('happens when there is nowhere to go down', () => {
+            let current = parse(`
+                V
+                V
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                V
+                V
             `));
         });
         it('happens when the map is just too small', () => {
@@ -83,17 +125,6 @@ describe.only('day 25 challenge', () => {
             `);
             let next = move(current);
             expect(render(next)).to.deep.equal(rendered(`
-                V
-            `));
-        });
-        it('happens when there is nowhere to go down', () => {
-            let current = parse(`
-                V
-                V
-            `);
-            let next = move(current);
-            expect(render(next)).to.deep.equal(rendered(`
-                V
                 V
             `));
         });
@@ -122,14 +153,18 @@ const move = (current) => {
 };
 
 const canNotMoveRight = (cucumber, data) => {
-    return !! data.rights.find(hasImmediateRightNeighbour(cucumber, data));
+    return  !! data.rights.find(hasImmediateRightNeighbour(cucumber, data))
+            ||
+            !! data.downs.find(hasImmediateRightNeighbour(cucumber, data));
 };
 const hasImmediateRightNeighbour = (cucumber, data) => {
     return (other) => other.row == cucumber.row && 
                       other.column == (cucumber.column + 1) % data.columnCount;
 };
 const canNotMoveDown = (cucumber, data) => {
-    return !! data.downs.find(hasImmediateDownNeighbour(cucumber, data));
+    return  !! data.rights.find(hasImmediateDownNeighbour(cucumber, data))
+            ||
+            !! data.downs.find(hasImmediateDownNeighbour(cucumber, data));
 };
 const hasImmediateDownNeighbour = (cucumber, data) => {
     return (other) => other.row == (cucumber.row + 1) % data.rowCount && 
