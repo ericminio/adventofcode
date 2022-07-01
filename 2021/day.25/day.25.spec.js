@@ -1,77 +1,70 @@
-const { expect } = require('chai')
-const { lines } = require('../puzzle.input')
+const { expect } = require('chai');
 
 describe.only('day 25 challenge', () => {
 
     it('is about one moving right', () => {
-        let start = new Map([
-            '>.'
-        ]);
-        let end = start.move();
-        let rendered = render(end);
-        expect(rendered).to.deep.equal([
-            '.>'
-        ]);
+        let current = parse(`
+            >.
+        `);
+        let next = move(current);
+        expect(render(next)).to.deep.equal(rendered(`
+            .>
+        `));
+    });
+    it('is about one moving down', () => {
+        let current = parse(`
+            V
+            .
+        `);
+        let next = move(current);
+        expect(render(next)).to.deep.equal(rendered(`
+            .
+            V
+        `));
     });
 });
 
-class Map {
-    constructor(lines) {
-        this.lines = lines;
-        this.values = [];
-        for (let i = 0; i < lines.length; i++) {
-            let line = [];
-            for (let j = 0; j < lines[i].length; j++) {
-                let char = lines[i][j];
-                line.push(parseChar(char));
-            }
-            this.values.push(line);
-        }
-    }
-    rowCount() {
-        return 1;
-    }
-    columnCount() {
-        return 2;
-    }
-    getValueAt(row, column) {
-        return this.values[row][column];
-    }
-    setValueAt(row, column, value) {
-        this.values[row][column] = value;
-    }
-    move() {
-        let moved = new Map(this.lines);
-        moved.setValueAt(0, 0, EMPTY);
-        moved.setValueAt(0, 1, RIGHT);
-        return moved;
-    }
+const rendered = (expected) => {
+    return expected.trim().split('\n').map(line => line.trim());
+};
+
+const move = (current) => {
+    return {
+        rowCount: current.rowCount,
+        columnCount: current.columnCount,
+        rights: current.rights.map(cucumber => ({ row:cucumber.row, column:cucumber.column + 1 })),
+        downs: current.downs.map(cucumber => ({ row:cucumber.row + 1, column:cucumber.column })),
+    };
 }
 
-const EMPTY = { right: 0, down: 0 };
-const RIGHT = { right: 1, down: 0 };
-const DOWN = { right: 0, down: 1 };
-
-const parseChar = (char) => {
-    if (char == '.') { return EMPTY; }
-    if (char == '>') { return RIGHT; }
-    if (char == 'V') { return DOWN; }
+const parse = (input) => {    
+    let lines = input.trim().split('\n');
+    let data = {
+        rowCount: lines.length,
+        columnCount: lines[0].length
+    };
+    let rights = [];
+    let downs = [];
+    lines.map(line => line.split(''))
+        .forEach((line, row) => line.forEach((char, column) => {
+            if (char == '>') { rights.push({ row:row, column:column }); }
+            if (char == 'V') { downs.push({ row:row, column:column }); }
+        }));
+    data.rights = rights;
+    data.downs = downs;
+    return data;
 }
-const renderValue = (value) => {
-    if (value == EMPTY) { return '.'; }
-    if (value == RIGHT) { return '>'; }
-    if (value == DOWN) { return 'V'; }
-}
 
-const render = (map) => {
+const render = (data) => {
     let rows = [];
-    for (let i = 0; i < map.rowCount(); i++) {
-        let row = '';
-        for (let j = 0; j < map.columnCount(); j++) {
-            let value = map.getValueAt(i, j);
-            row += renderValue(value);
+    for (let i = 0; i < data.rowCount; i++) {
+        let row = [];
+        for (let j = 0; j < data.columnCount; j++) {
+            row.push('.');
         }
         rows.push(row);
     }
-    return rows;
+    data.rights.forEach(cucumber => { rows[cucumber.row][cucumber.column] = '>'; })
+    data.downs.forEach(cucumber => { rows[cucumber.row][cucumber.column] = 'V'; })
+    return rows.map(row => row.join(''));
 };
