@@ -22,6 +22,18 @@ describe.only('day 25 challenge', () => {
             V
         `));
     });
+    describe('traffic jam', () => {
+
+        it('happens going right', () => {
+            let current = parse(`
+                >>.
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                >.>
+            `));
+        });
+    });
 });
 
 const rendered = (expected) => {
@@ -32,10 +44,17 @@ const move = (current) => {
     return {
         rowCount: current.rowCount,
         columnCount: current.columnCount,
-        rights: current.rights.map(cucumber => ({ row:cucumber.row, column:cucumber.column + 1 })),
-        downs: current.downs.map(cucumber => ({ row:cucumber.row + 1, column:cucumber.column })),
+        rights: current.rights.map(cucumber => {
+            return ( current.rights.find(other => other.row == cucumber.row && other.column == cucumber.column + 1)) 
+                ? cucumber 
+                : moveRight(cucumber);
+        }),
+        downs: current.downs.map(moveDown),
     };
-}
+};
+
+const moveRight = cucumber => ({ row:cucumber.row, column:cucumber.column + 1 });
+const moveDown = cucumber => ({ row:cucumber.row + 1, column:cucumber.column });
 
 const parse = (input) => {    
     let lines = input.trim().split('\n');
