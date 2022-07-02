@@ -39,10 +39,29 @@ const moveCountUntilImmobility = (map, listener) => {
     let columnCount = map[0].length;
     let count = 0;
     let hasMoved = true;
-    while (hasMoved && count < 58) {
+    while (hasMoved && count < 66) {
         hasMoved = false;
         
-        hasMoved = true;
+        for (let row = 0; row < rowCount; row ++) {
+            for (let column = 0 ; column < columnCount; column ++) {
+                if (map[row][(column+1)%columnCount] == EMPTY) {
+                    map[row][column] = EMPTY;
+                    map[row][(column+1)%columnCount] = RIGHT;
+                    column = column + 1;
+                    hasMoved = true;
+                }
+            }
+        }
+        for (let column = 0 ; column < columnCount; column ++) {
+            for (let row = 0; row < rowCount; row ++) {
+                if (map[(row+1)%rowCount][column] == EMPTY) {
+                    map[row][column] = EMPTY;
+                    map[(row+1)%rowCount][column] = DOWN;
+                    row = row + 1;
+                    hasMoved = true;
+                }
+            }
+        }
         
         count ++;
     }
