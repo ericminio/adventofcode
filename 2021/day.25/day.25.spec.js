@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+const deepEqual = require('deep-equal');
 
 describe.only('day 25 challenge', () => {
 
@@ -169,7 +170,40 @@ describe.only('day 25 challenge', () => {
             `));
         });
     });
+
+    describe('immobility', () => {
+
+        it('may be reached immediately', () => {
+            let start = parse(`
+                V>
+            `);
+            let count = moveCountUntilImmobility(start);
+
+            expect(count).to.equal(0);
+        });
+        it('may be reached later', () => {
+            let start = parse(`
+                >..V
+            `);
+            let count = moveCountUntilImmobility(start);
+
+            expect(count).to.equal(2);
+        });
+    })
 });
+
+const moveCountUntilImmobility = (start) => {
+    let count = 0;
+    let current = start;
+
+    let next = move(current);
+    while (! deepEqual(next, current)) {
+        count ++;
+        current = next;
+        next = move(current);
+    }
+    return count;
+};
 
 const move = (current) => {
     let next = {
