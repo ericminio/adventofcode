@@ -1,13 +1,15 @@
 const { expect } = require('chai');
 const deepEqual = require('deep-equal');
+const fs = require('fs');
+const path = require('path');
 
-describe.only('day 25 challenge', () => {
+describe('day 25 challenge', () => {
 
     describe('parsing and rendering', () => {
         let pretend = {
             input: `
-                >.V
-                .V>
+                >.v
+                .v>
             `,
             model: {
                 rowCount: 2,
@@ -39,13 +41,13 @@ describe.only('day 25 challenge', () => {
     });
     it('is about one moving down', () => {
         let current = parse(`
-            V
+            v
             .
         `);
         let next = move(current);
         expect(render(next)).to.deep.equal(rendered(`
             .
-            V
+            v
         `));
     });
     describe('traffic jam', () => {
@@ -70,45 +72,45 @@ describe.only('day 25 challenge', () => {
         });
         it('happens going down', () => {
             let current = parse(`
-                V
-                V
+                v
+                v
                 .
             `);
             let next = move(current);
             expect(render(next)).to.deep.equal(rendered(`
-                V
+                v
                 .
-                V
+                v
             `));
         });
         it('does not happen when going down returns to the start', () => {
             let current = parse(`
                 .
-                V
+                v
             `);
             let next = move(current);
             expect(render(next)).to.deep.equal(rendered(`
-                V
+                v
                 .
             `));
         });
         it('happens going right against down soul', () => {
             let current = parse(`
-                >V
+                >v
             `);
             let next = move(current);
             expect(render(next)).to.deep.equal(rendered(`
-                >V
+                >v
             `));
         });
         it('happens going down against a right soul', () => {
             let current = parse(`
-                V
+                v
                 >
             `);
             let next = move(current);
             expect(render(next)).to.deep.equal(rendered(`
-                V
+                v
                 >
             `));
         });
@@ -127,13 +129,13 @@ describe.only('day 25 challenge', () => {
         });
         it('happens when there is nowhere to go down', () => {
             let current = parse(`
-                V
-                V
+                v
+                v
             `);
             let next = move(current);
             expect(render(next)).to.deep.equal(rendered(`
-                V
-                V
+                v
+                v
             `));
         });
         it('happens when the map is just too small', () => {
@@ -147,11 +149,11 @@ describe.only('day 25 challenge', () => {
         });
         it('happens when the map is just too small for down too', () => {
             let current = parse(`
-                V
+                v
             `);
             let next = move(current);
             expect(render(next)).to.deep.equal(rendered(`
-                V
+                v
             `));
         });
     });
@@ -160,13 +162,13 @@ describe.only('day 25 challenge', () => {
     
         it('goes to right', () => {
             let current = parse(`
-                V.
+                v.
                 >.
             `);
             let next = move(current);
             expect(render(next)).to.deep.equal(rendered(`
                 ..
-                V>
+                v>
             `));
         });
     });
@@ -175,24 +177,30 @@ describe.only('day 25 challenge', () => {
 
         it('may be reached immediately', () => {
             let start = parse(`
-                V>
+                v>
             `);
             let count = moveCountUntilImmobility(start);
 
-            expect(count).to.equal(0);
+            expect(count).to.equal(1);
         });
         it('may be reached later', () => {
             let start = parse(`
-                >..V
+                >..v
             `);
             let count = moveCountUntilImmobility(start);
 
-            expect(count).to.equal(2);
+            expect(count).to.equal(3);
+        });
+        it('may be reached long later', () => {
+            let start = parse(fs.readFileSync(path.join(__dirname, 'example.txt')).toString());
+            let count = moveCountUntilImmobility(start);
+
+            expect(count).to.equal(58);
         });
     })
 });
 
-const moveCountUntilImmobility = (start) => {
+const moveCountUntilImmobility = (start, listener) => {
     let count = 0;
     let current = start;
 
@@ -200,9 +208,10 @@ const moveCountUntilImmobility = (start) => {
     while (! deepEqual(next, current)) {
         count ++;
         current = next;
+        if (!! listener) { listener(current, count); }
         next = move(current);
     }
-    return count;
+    return count+1;
 };
 
 const move = (current) => {
@@ -257,7 +266,7 @@ const parse = (input) => {
     lines.map(line => line.trim().split(''))
         .forEach((line, row) => line.forEach((char, column) => {
             if (char == '>') { rights.push({ row:row, column:column }); }
-            if (char == 'V') { downs.push({ row:row, column:column }); }
+            if (char == 'v') { downs.push({ row:row, column:column }); }
         }));
     data.rights = rights;
     data.downs = downs;
@@ -274,6 +283,6 @@ const render = (data) => {
         rows.push(row);
     }
     data.rights.forEach(cucumber => { rows[cucumber.row][cucumber.column] = '>'; })
-    data.downs.forEach(cucumber => { rows[cucumber.row][cucumber.column] = 'V'; })
+    data.downs.forEach(cucumber => { rows[cucumber.row][cucumber.column] = 'v'; })
     return rows.map(row => row.join(''));
 };
