@@ -129,6 +129,21 @@ describe.only('day 25 challenge', () => {
             `));
         });
     });
+
+    describe('priority', () => {
+    
+        it('goes to right', () => {
+            let current = parse(`
+                V.
+                >.
+            `);
+            let next = move(current);
+            expect(render(next)).to.deep.equal(rendered(`
+                ..
+                V>
+            `));
+        });
+    });
 });
 
 const rendered = (expected) => {
@@ -136,20 +151,23 @@ const rendered = (expected) => {
 };
 
 const move = (current) => {
-    return {
+    let next = {
         rowCount: current.rowCount,
         columnCount: current.columnCount,
-        rights: current.rights.map(cucumber => {
-            return canNotMoveRight(cucumber, current) 
-                ? cucumber 
-                : moveRight(cucumber, current);
-        }),
-        downs: current.downs.map(cucumber => {
-            return canNotMoveDown(cucumber, current) 
-                ? cucumber 
-                : moveDown(cucumber, current);
-        }),
+        rights: current.rights,
+        downs: current.downs
     };
+    next.rights = next.rights.map(cucumber => {
+        return canNotMoveRight(cucumber, next) 
+            ? cucumber 
+            : moveRight(cucumber, next);
+    });
+    next.downs = next.downs.map(cucumber => {
+        return canNotMoveDown(cucumber, next) 
+            ? cucumber 
+            : moveDown(cucumber, next);
+    });
+    return next;
 };
 
 const canNotMoveRight = (cucumber, data) => {
