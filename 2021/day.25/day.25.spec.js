@@ -2,6 +2,31 @@ const { expect } = require('chai');
 
 describe.only('day 25 challenge', () => {
 
+    describe('parsing and rendering', () => {
+        let pretend = {
+            input: `
+                >.V
+                .V>
+            `,
+            model: {
+                rowCount: 2,
+                columnCount: 3,
+                rights: [{ row:0, column:0 }, { row:1, column:2 }],
+                downs: [{ row:0, column:2 }, { row:1, column:1 }],
+            }
+        };
+
+        it('parses as expected', () => {
+            expect(parse(pretend.input)).to.deep.equal(pretend.model);
+        });
+        it('renders as expected', () => {
+            expect(render(pretend.model)).to.deep.equal(rendered(pretend.input));
+        });
+    });
+    const rendered = (expected) => {
+        return expected.trim().split('\n').map(line => line.trim());
+    };
+
     it('is about one moving right', () => {
         let current = parse(`
             >.
@@ -145,10 +170,6 @@ describe.only('day 25 challenge', () => {
         });
     });
 });
-
-const rendered = (expected) => {
-    return expected.trim().split('\n').map(line => line.trim());
-};
 
 const move = (current) => {
     let next = {
