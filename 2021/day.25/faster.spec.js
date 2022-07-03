@@ -57,6 +57,19 @@ describe.only('day 25 challenge', () => {
                 [DOWN]
             ]);
         });
+        it('respects rolling traffic jam', () => {
+            let map = [
+                [DOWN],
+                [EMPTY],
+                [DOWNS]
+            ];
+            expect(moveDowns(map)).to.equal(true);
+            expect(map).to.deep.equal([
+                [EMPTY],
+                [DOWN],
+                [DOWN]
+            ]);
+        });
         it('may not be possible', () => {
             let map = [
                 [DOWN],
@@ -103,6 +116,15 @@ describe.only('day 25 challenge', () => {
             expect(moveRights(map)).to.equal(true);
             expect(map).to.deep.equal([
                 [RIGHT, EMPTY, RIGHT]
+            ]);
+        });
+        it('respect rolling traffic jam', () => {
+            let map = [
+                [RIGHT, EMPTY, RIGHT]
+            ];
+            expect(moveRights(map)).to.equal(true);
+            expect(map).to.deep.equal([
+                [EMPTY, RIGHT, RIGHT]
             ]);
         });
         it('may not be possible', () => {
@@ -174,7 +196,9 @@ describe.only('day 25 challenge', () => {
             for (let i = 0; i < step; i++) {
                 move(map);
             }
-            expect(map).to.deep.equal(moved);
+            for (let i =0 ; i < map.length; i++) {
+                expect(map[i]).to.deep.equal(moved[i]);
+            }
         });
     });
 
