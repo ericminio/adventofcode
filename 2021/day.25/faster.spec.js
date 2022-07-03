@@ -55,7 +55,7 @@ describe.only('day 25 challenge', () => {
                 [DOWN],
                 [EMPTY],
                 [DOWN]
-            ])
+            ]);
         });
         it('may not be possible', () => {
             let map = [
@@ -64,33 +64,53 @@ describe.only('day 25 challenge', () => {
             ];
             expect(moveDowns(map)).to.equal(false);
         });
+        it('overflows to the start', () => {
+            let map = [
+                [EMPTY],
+                [DOWN]
+            ];
+            expect(moveDowns(map)).to.equal(true);
+            expect(map).to.deep.equal([
+                [DOWN],
+                [EMPTY]
+            ]);
+        });
     }); 
 
     describe('move rights', () => {
         it('works with one', () => {
             let map = [
-                [RIGHT, EMPTY],
+                [RIGHT, EMPTY]
             ];
             expect(moveRights(map)).to.equal(true);
             expect(map).to.deep.equal([
-                [EMPTY, RIGHT],
+                [EMPTY, RIGHT]
             ])
         });
         it('respect traffic jam', () => {
             let map = [
-                [RIGHT, RIGHT, EMPTY],
+                [RIGHT, RIGHT, EMPTY]
             ];
             expect(moveRights(map)).to.equal(true);
             expect(map).to.deep.equal([
-                [RIGHT, EMPTY, RIGHT],
-            ])
+                [RIGHT, EMPTY, RIGHT]
+            ]);
         });
         it('may not be possible', () => {
             let map = [
-                [RIGHT, RIGHT],
+                [RIGHT, RIGHT]
             ];
             expect(moveRights(map)).to.equal(false);
         });
+        it('overflows to the start', () => {
+            let map = [
+                [EMPTY, RIGHT]
+            ];
+            expect(moveRights(map)).to.equal(true);expect(map).to.deep.equal([
+                [RIGHT, EMPTY]
+            ]);
+        });        
+
     });
 });
 
