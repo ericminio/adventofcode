@@ -157,6 +157,25 @@ describe.only('day 25 challenge', () => {
                 [RIGHT, DOWN]
             ]);
         });
+
+        it('works as expected with the example', () => {
+            let map = parse(fs.readFileSync(path.join(__dirname, 'example.txt')).toString());
+            let moved = parse(fs.readFileSync(path.join(__dirname, 'example-1.txt')).toString());
+
+            move(map);
+            expect(map).to.deep.equal(moved);
+        });
+
+        it('works long enough with the example', () => {
+            let step = 2;
+            let map = parse(fs.readFileSync(path.join(__dirname, 'example.txt')).toString());
+            let moved = parse(fs.readFileSync(path.join(__dirname, `example-${step}.txt`)).toString());
+
+            for (let i = 0; i < step; i++) {
+                move(map);
+            }
+            expect(map).to.deep.equal(moved);
+        });
     });
 
     describe('counting', () => {
