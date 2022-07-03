@@ -32,40 +32,108 @@ describe.only('day 25 challenge', () => {
             expect(parse(pretend.input)).to.deep.equal(pretend.model);
         });
     });
+    describe('move downs', () => {
+        it('works with one', () => {
+            let map = [
+                [DOWN],
+                [EMPTY]
+            ];
+            expect(moveDowns(map)).to.equal(true);
+            expect(map).to.deep.equal([
+                [EMPTY],
+                [DOWN]
+            ])
+        });
+        it('respects traffic jam', () => {
+            let map = [
+                [DOWN],
+                [DOWN],
+                [EMPTY]
+            ];
+            expect(moveDowns(map)).to.equal(true);
+            expect(map).to.deep.equal([
+                [DOWN],
+                [EMPTY],
+                [DOWN]
+            ])
+        });
+        it('may not be possible', () => {
+            let map = [
+                [DOWN],
+                [DOWN]
+            ];
+            expect(moveDowns(map)).to.equal(false);
+        });
+    }); 
+
+    describe('move rights', () => {
+        it('works with one', () => {
+            let map = [
+                [RIGHT, EMPTY],
+            ];
+            expect(moveRights(map)).to.equal(true);
+            expect(map).to.deep.equal([
+                [EMPTY, RIGHT],
+            ])
+        });
+        it('respect traffic jam', () => {
+            let map = [
+                [RIGHT, RIGHT, EMPTY],
+            ];
+            expect(moveRights(map)).to.equal(true);
+            expect(map).to.deep.equal([
+                [RIGHT, EMPTY, RIGHT],
+            ])
+        });
+        it('may not be possible', () => {
+            let map = [
+                [RIGHT, RIGHT],
+            ];
+            expect(moveRights(map)).to.equal(false);
+        });
+    });
 });
 
 const moveCountUntilImmobility = (map, listener) => {
-    let rowCount = map.length;
-    let columnCount = map[0].length;
     let count = 0;
     let hasMoved = true;
     while (hasMoved && count < 66) {
-        hasMoved = false;
-        
-        for (let row = 0; row < rowCount; row ++) {
-            for (let column = 0 ; column < columnCount; column ++) {
-                if (map[row][(column+1)%columnCount] == EMPTY) {
-                    map[row][column] = EMPTY;
-                    map[row][(column+1)%columnCount] = RIGHT;
-                    column = column + 1;
-                    hasMoved = true;
-                }
-            }
-        }
-        for (let column = 0 ; column < columnCount; column ++) {
-            for (let row = 0; row < rowCount; row ++) {
-                if (map[(row+1)%rowCount][column] == EMPTY) {
-                    map[row][column] = EMPTY;
-                    map[(row+1)%rowCount][column] = DOWN;
-                    row = row + 1;
-                    hasMoved = true;
-                }
-            }
-        }
-        
+        hasMoved = moveRights(map) || moveDowns(map);        
         count ++;
     }
     return count;
+};
+const moveRights = (map) => {
+    let rowCount = map.length;
+    let columnCount = map[0].length;
+    let hasMoved = false;
+    for (let row = 0; row < rowCount; row ++) {
+        for (let column = 0 ; column < columnCount; column ++) {
+            if (map[row][(column+1)%columnCount] == EMPTY) {
+                map[row][(column+1)%columnCount] = RIGHT;
+                map[row][column] = EMPTY;
+                column = column + 1;
+                hasMoved = true;
+            }
+        }
+    }
+    return hasMoved;
+};
+const moveDowns = (map) => {
+    let rowCount = map.length;
+    let columnCount = map[0].length;
+    let hasMoved = false;
+    for (let column = 0 ; column < columnCount; column ++) {
+        for (let row = 0; row < rowCount; row ++) {
+            if (map[(row+1)%rowCount][column] == EMPTY) {
+                map[(row+1)%rowCount][column] = DOWN;
+                map[row][column] = EMPTY;
+                row = row + 1;
+                hasMoved = true;
+            }
+        }
+    }
+    return hasMoved;
 };
 
 const parse = (input) => {    
