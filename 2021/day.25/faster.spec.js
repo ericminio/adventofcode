@@ -14,6 +14,12 @@ describe.only('day 25 challenge', () => {
 
         expect(count).to.equal(58);
     });
+    it('is solved', () => {
+        let start = parse(fs.readFileSync(path.join(__dirname, 'input.txt')).toString());
+        let count = moveCountUntilImmobility(start);
+
+        expect(count).to.equal(516);
+    });
 
     describe('parsing', () => {
         let pretend = {
