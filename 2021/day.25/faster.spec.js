@@ -1,5 +1,4 @@
 const { expect } = require('chai');
-const deepEqual = require('deep-equal');
 const fs = require('fs');
 const path = require('path');
 
@@ -135,7 +134,7 @@ describe.only('day 25 challenge', () => {
 
     describe('moving', () => {
 
-        it('gives priority to rights over downs', () => {
+        it('starts with rights which can block downs', () => {
             let map = [
                 [EMPTY, DOWN],
                 [RIGHT, EMPTY]
@@ -144,6 +143,18 @@ describe.only('day 25 challenge', () => {
             expect(map).to.deep.equal([
                 [EMPTY, DOWN],
                 [EMPTY, RIGHT]
+            ]);
+        });
+
+        it('starts with rights which can unblock downs', () => {
+            let map = [
+                [EMPTY, DOWN],
+                [EMPTY, RIGHT]
+            ];
+            expect(move(map)).to.equal(true);
+            expect(map).to.deep.equal([
+                [EMPTY, EMPTY],
+                [RIGHT, DOWN]
             ]);
         });
     });
