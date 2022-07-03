@@ -32,6 +32,7 @@ describe.only('day 25 challenge', () => {
             expect(parse(pretend.input)).to.deep.equal(pretend.model);
         });
     });
+
     describe('move downs', () => {
         it('works with one', () => {
             let map = [
@@ -106,11 +107,26 @@ describe.only('day 25 challenge', () => {
             let map = [
                 [EMPTY, RIGHT]
             ];
-            expect(moveRights(map)).to.equal(true);expect(map).to.deep.equal([
+            expect(moveRights(map)).to.equal(true);
+            expect(map).to.deep.equal([
                 [RIGHT, EMPTY]
             ]);
         });        
+    });
 
+    describe('moving', () => {
+
+        it('gives priority to rights over downs', () => {
+            let map = [
+                [EMPTY, DOWN],
+                [RIGHT, EMPTY]
+            ];
+            expect(move(map)).to.equal(true);
+            expect(map).to.deep.equal([
+                [EMPTY, DOWN],
+                [EMPTY, RIGHT]
+            ]);
+        });
     });
 });
 
@@ -118,10 +134,15 @@ const moveCountUntilImmobility = (map, listener) => {
     let count = 0;
     let hasMoved = true;
     while (hasMoved && count < 66) {
-        hasMoved = moveRights(map) || moveDowns(map);        
+        hasMoved = move(map);
         count ++;
     }
     return count;
+};
+const move = (map) => {
+    let rightsHaveMoved = moveRights(map);
+    let downsHaveMoved = moveDowns(map);
+    return rightsHaveMoved || downsHaveMoved;
 };
 const moveRights = (map) => {
     let rowCount = map.length;
