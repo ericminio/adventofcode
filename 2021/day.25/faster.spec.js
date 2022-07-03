@@ -14,7 +14,7 @@ describe.only('day 25 challenge', () => {
 
         expect(count).to.equal(58);
     });
-    it('is solved', () => {
+    it.skip('is solved', () => {
         let start = parse(fs.readFileSync(path.join(__dirname, 'input.txt')).toString());
         let count = moveCountUntilImmobility(start);
 
@@ -195,7 +195,7 @@ describe.only('day 25 challenge', () => {
         });
 
         it('works long enough with the example', () => {
-            let step = 2;
+            let step = 57;
             let map = parse(fs.readFileSync(path.join(__dirname, 'example.txt')).toString());
             let moved = parse(fs.readFileSync(path.join(__dirname, `example-${step}.txt`)).toString());
 
