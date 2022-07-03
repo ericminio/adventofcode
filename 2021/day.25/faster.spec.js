@@ -75,6 +75,15 @@ describe.only('day 25 challenge', () => {
                 [DOWN],
                 [EMPTY]
             ]);
+        });    
+        it('does not create anything', () => {
+            let map = [
+                [EMPTY]
+            ];
+            expect(moveDowns(map)).to.equal(false);
+            expect(map).to.deep.equal([
+                [EMPTY]
+            ])
         });
     }); 
 
@@ -111,7 +120,17 @@ describe.only('day 25 challenge', () => {
             expect(map).to.deep.equal([
                 [RIGHT, EMPTY]
             ]);
-        });        
+        });    
+        it('does not create anything', () => {
+            let map = [
+                [EMPTY]
+            ];
+            expect(moveRights(map)).to.equal(false);
+            expect(map).to.deep.equal([
+                [EMPTY]
+            ])
+        });
+            
     });
 
     describe('moving', () => {
