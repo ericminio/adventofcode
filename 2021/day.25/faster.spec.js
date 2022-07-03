@@ -152,7 +152,7 @@ describe.only('day 25 challenge', () => {
 const moveCountUntilImmobility = (map, listener) => {
     let count = 0;
     let hasMoved = true;
-    while (hasMoved && count < 66) {
+    while (hasMoved) {
         hasMoved = move(map);
         count ++;
     }
@@ -169,7 +169,7 @@ const moveRights = (map) => {
     let hasMoved = false;
     for (let row = 0; row < rowCount; row ++) {
         for (let column = 0 ; column < columnCount; column ++) {
-            if (map[row][(column+1)%columnCount] == EMPTY) {
+            if (map[row][column] == RIGHT && map[row][(column+1)%columnCount] == EMPTY) {
                 map[row][(column+1)%columnCount] = RIGHT;
                 map[row][column] = EMPTY;
                 column = column + 1;
@@ -185,7 +185,7 @@ const moveDowns = (map) => {
     let hasMoved = false;
     for (let column = 0 ; column < columnCount; column ++) {
         for (let row = 0; row < rowCount; row ++) {
-            if (map[(row+1)%rowCount][column] == EMPTY) {
+            if (map[row][column] == DOWN && map[(row+1)%rowCount][column] == EMPTY) {
                 map[(row+1)%rowCount][column] = DOWN;
                 map[row][column] = EMPTY;
                 row = row + 1;
