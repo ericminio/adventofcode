@@ -147,9 +147,21 @@ describe.only('day 25 challenge', () => {
             ]);
         });
     });
+
+    describe('counting', () => {
+
+        it('includes the failed try', () => {
+            let map = [
+                [RIGHT, EMPTY, EMPTY, DOWN]
+            ];
+            let count = moveCountUntilImmobility(map);
+    
+            expect(count).to.equal(3);    
+        });
+    });
 });
 
-const moveCountUntilImmobility = (map, listener) => {
+const moveCountUntilImmobility = (map) => {
     let count = 0;
     let hasMoved = true;
     while (hasMoved) {
