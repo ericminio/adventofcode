@@ -61,7 +61,7 @@ describe.only('day 25 challenge', () => {
             let map = [
                 [DOWN],
                 [EMPTY],
-                [DOWNS]
+                [DOWN]
             ];
             expect(moveDowns(map)).to.equal(true);
             expect(map).to.deep.equal([
@@ -233,9 +233,17 @@ const moveRights = (map) => {
     let rowCount = map.length;
     let columnCount = map[0].length;
     let hasMoved = false;
+    let canMove = {};
     for (let row = 0; row < rowCount; row ++) {
         for (let column = 0 ; column < columnCount; column ++) {
             if (map[row][column] == RIGHT && map[row][(column+1)%columnCount] == EMPTY) {
+                canMove[`${row}x${column}`] = true;
+            }
+        }
+    }
+    for (let row = 0; row < rowCount; row ++) {
+        for (let column = 0 ; column < columnCount; column ++) {
+            if (canMove[`${row}x${column}`]) {
                 map[row][(column+1)%columnCount] = RIGHT;
                 map[row][column] = EMPTY;
                 column = column + 1;
@@ -249,9 +257,17 @@ const moveDowns = (map) => {
     let rowCount = map.length;
     let columnCount = map[0].length;
     let hasMoved = false;
+    let canMove = {};
     for (let column = 0 ; column < columnCount; column ++) {
         for (let row = 0; row < rowCount; row ++) {
             if (map[row][column] == DOWN && map[(row+1)%rowCount][column] == EMPTY) {
+                canMove[`${row}x${column}`] = true;
+            }
+        }
+    }
+    for (let column = 0 ; column < columnCount; column ++) {
+        for (let row = 0; row < rowCount; row ++) {
+            if (canMove[`${row}x${column}`]) {
                 map[(row+1)%rowCount][column] = DOWN;
                 map[row][column] = EMPTY;
                 row = row + 1;
