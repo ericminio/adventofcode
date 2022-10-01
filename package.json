@@ -12,7 +12,7 @@
     "sinon-chai": "latest"
   },
   "scripts": {
-    "test": "mocha lib/*/*.spec.js --timeout 0"
+    "test": "mocha lib/*/*.spec.js"
   },
   "dependencies": {
     "node-object-hash": "^1.3.0",
