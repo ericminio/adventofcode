@@ -1,226 +1,42 @@
 const { expect } = require('chai')
-const { lines } = require('../puzzle.input')
+const { line } = require('../puzzle.input')
+const { load } = require('../../lib/2d/loading');
+const { gps } = require('../../lib/2d/gps');
 
 describe('day 15 challenge', () => {
 
+    it('can explore example', () => {
+        let map = load(`
+            1163751742
+            1381373672
+            2136511328
+            3694931569
+            7463417111
+            1319128137
+            1359912421
+            3125421639
+            1293138521
+            2311944581
+        `);
+        let request = {
+            origin: { id:'0x0' },
+            target: { id:'9x9' }
+        };
+        let path = gps(request, map);
+        
+        expect(path.nodes[path.nodes.length - 1].total).to.equal(41);
+    });
 
-    describe('Map', () => {
-        it('provides rowCount', () => {
-            let map = new Map([[1, 2], [3, 4], [5, 6]]);
-            expect(map.rowCount()).to.equal(3);
-        })
-        it('provides columnCount', () => {
-            let map = new Map([[1, 2], [3, 4], [5, 6]]);
-            expect(map.columnCount()).to.equal(2);
-        })
-        it('provides valueAt', () => {
-            let map = new Map([[1, 2], [3, 4], [5, 6]]);
-            expect(map.valueAt(new Position(0, 0))).to.equal(1);
-        })
-        describe('valueAt', () => {
-            it('provides acces to internal value', () => {
-                let map = new Map([[1, 2], [3, 4], [5, 6]]);
-                expect(map.valueAt(new Position(0, 0))).to.equal(1);
-            })
-            it('resists position before first row', () => {
-                let map = new Map([[1, 2], [3, 4], [5, 6]]);
-                expect(map.valueAt(new Position(-1, 0))).to.equal(summit);
-            })
-            it('resists position before first column', () => {
-                let map = new Map([[1, 2], [3, 4], [5, 6]]);
-                expect(map.valueAt(new Position(0, -1))).to.equal(summit);
-            })
-            it('resists position after last row', () => {
-                let map = new Map([[1, 2], [3, 4], [5, 6]]);
-                expect(map.valueAt(new Position(3, 0))).to.equal(summit);
-            })
-            it('resists position after last column', () => {
-                let map = new Map([[1, 2], [3, 4], [5, 6]]);
-                expect(map.valueAt(new Position(0, 2))).to.equal(summit);
-            })
-        })
-        describe('exists', () => {
-            it('is true inside the map', () => {
-                let map = new Map([[1, 2], [3, 4], [5, 6]]);
-                expect(map.exists(new Position(0, 0))).to.equal(true);
-            })
-            it('is false inside the map', () => {
-                let map = new Map([[1, 2], [3, 4], [5, 6]]);
-                expect(map.exists(new Position(-1, 0))).to.equal(false);
-                expect(map.exists(new Position(0, -1))).to.equal(false);
-                expect(map.exists(new Position(0, 2))).to.equal(false);
-                expect(map.exists(new Position(3, 0))).to.equal(false);
-            })
-        })
+    it('can clear part 1', () => {
+        let map = load(line('day.15'));        
+        expect(map['0x0'].value).to.equal(9);        
+        expect(map.size).to.deep.equal({ width:100, height:100 });
 
-    })
-
-    const summit = 9;
-
-    class Map {
-        constructor(matrix) {
-            this.matrix = matrix;
-        }
-        rowCount() {
-            return this.matrix.length;
-        }
-        columnCount() {
-            return this.matrix[0].length;
-        }
-        valueAt(position) {
-            if (this.matrix[position.row] !== undefined &&
-                this.matrix[position.row][position.column] !== undefined) {
-                return this.matrix[position.row][position.column];
-            }
-            return summit;
-        }
-        exists(position) {
-            if (this.matrix[position.row] === undefined ||
-                this.matrix[position.row][position.column] === undefined) {
-                return false
-            }
-            return true
-        }
-    }
-    describe('Position', () => {
-        it('keeps given position', () => {
-            expect(new Position(3, 4).row).to.equal(3);
-            expect(new Position(3, 4).column).to.equal(4);
-        })
-        it('provides right position', () => {
-            expect(new Position(3, 4).right().row).to.equal(3);
-            expect(new Position(3, 4).right().column).to.equal(5);
-        })
-        it('provides left position', () => {
-            expect(new Position(3, 4).left().row).to.equal(3);
-            expect(new Position(3, 4).left().column).to.equal(3);
-        })
-        it('provides up position', () => {
-            expect(new Position(3, 4).up().row).to.equal(2);
-            expect(new Position(3, 4).up().column).to.equal(4);
-        })
-        it('provides down position', () => {
-            expect(new Position(3, 4).down().row).to.equal(4);
-            expect(new Position(3, 4).down().column).to.equal(4);
-        })
-        it('equals same position', () => {
-            expect(new Position(15, 42).equals(new Position(0, 0))).to.equal(false)
-            expect(new Position(15, 42).equals(new Position(15, 42))).to.equal(true)
-        })
-    })
-    class Position {
-        constructor(row, column) {
-            this.row = row;
-            this.column = column;
-        }
-        right() {
-            return new Position(this.row, this.column + 1);
-        }
-        left() {
-            return new Position(this.row, this.column - 1);
-        }
-        up() {
-            return new Position(this.row - 1, this.column);
-        }
-        down() {
-            return new Position(this.row + 1, this.column);
-        }
-        equals(other) {
-            return other.row == this.row && other.column == this.column
-        }
-    }
-
-
-    describe('possible paths', () => {
-
-        it('finds only two for the smallest square', () => {
-            let map = new Map([[1, 2], [3, 4]])
-            let result = go(map);
-
-            expect(result.paths).to.deep.equal([
-                [{ row: 0, column: 0 }, { row: 1, column: 0 }, { row: 1, column: 1 }],
-                [{ row: 0, column: 0 }, { row: 0, column: 1 }, { row: 1, column: 1 }],
-            ])
-            expect(result.min).to.equal(6)
-        })
-        it('stops going down a path already too risky', () => {
-            let map = new Map([[1, 2], [1, 1]])
-            let result = go(map);
-
-            expect(result.paths).to.deep.equal([
-                [{ row: 0, column: 0 }, { row: 1, column: 0 }, { row: 1, column: 1 }],
-            ])
-            expect(result.min).to.equal(2)
-        })
-        it('stops going down a path too far from target given current risk and current minimum', () => {
-            let map = new Map([[1, 7, 1], [3, 3, 3]])
-            let result = go(map);
-
-            expect(result.paths).to.deep.equal([
-                [{ row: 0, column: 0 }, { row: 1, column: 0 }, { row: 1, column: 1 }, { row: 1, column: 2 }]
-            ])
-            expect(result.min).to.equal(9)
-        })
-    })
-    const go = (map) => {
-        let result = {
-            target: target(map),
-            min: 9 * (map.rowCount() + map.columnCount()),
-            paths: []
-        }
-        travel(map, new Position(0, 0), { path: [new Position(0, 0)], sum: 0 }, result)
-        return result;
-    }
-    const travel = (map, position, current, result) => {
-        if (position.equals(result.target)) {
-            result.paths.push(current.path)
-            if (current.sum < result.min) {
-                result.min = current.sum
-                // console.log(result.min)
-            }
-            return;
-        }
-        if (current.sum >= result.min) { return; }
-        if (current.sum + (result.target.row - position.row) + (result.target.column - position.column) >= result.min) { return; }
-
-        let around = neighbours(position, map);
-        around = around.filter(neighbour => notVisited(neighbour, current.path))
-        for (var i = 0; i < around.length; i++) {
-            let neighbour = around[i];
-            let value = map.valueAt(neighbour)
-            travel(map, neighbour, { path: current.path.concat(neighbour), sum: current.sum + value }, result)
-        }
-    }
-    const notVisited = (position, path) => {
-        return path.find(p => p.row == position.row && p.column == position.column) === undefined;
-    }
-    const target = (map) => {
-        return new Position(map.rowCount() - 1, map.columnCount() - 1);
-    }
-    const neighbours = (position, map) => {
-        let around = []
-        if (map.exists(position.down())) { around.push(position.down()); }
-        if (map.exists(position.right())) { around.push(position.right()); }
-        if (map.exists(position.left())) { around.push(position.left()); }
-        if (map.exists(position.up())) { around.push(position.up()); }
-
-        return around
-    }
-    const example = lines('day.15', 'example.txt');
-    const parse = (lines) => {
-        return lines.map(line => line.split('').map(c => parseInt(c)));
-    }
-    it('offers an example', () => {
-        let map = new Map(parse(example))
-        let result = go(map)
-
-        expect(result.min).to.equal(40)
-    })
-    const input = lines('day.15', 'input.txt');
-    it.skip('has a part 1', () => {
-        let map = new Map(parse(input))
-        let result = go(map)
-
-        expect(result.min).to.equal(0)
-    })
+        let request = {
+            origin: { id:'0x0' },
+            target: { id:'99x99' }
+        };
+        let path = gps(request, map);        
+        expect(path.nodes[path.nodes.length - 1].total).to.equal(723);
+    });
 })
