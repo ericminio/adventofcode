@@ -8,17 +8,17 @@ describe('part 1', () => {
     });
 
     it('works with one elf carrying a single item', () => {
-        expect(solve('one')).to.equal(1000);
+        expect(solve1('one')).to.equal(1000);
     });
     it('works with one elf carrying two items', () => {
-        expect(solve('two')).to.equal(3000);
+        expect(solve1('two')).to.equal(3000);
     });
     it('works with two elves carrying several items', () => {
-        expect(solve('three')).to.equal(4000);
+        expect(solve1('three')).to.equal(4000);
     });
 
     it('is solved', () => {
-        expect(solve('input')).to.equal(72718);
+        expect(solve1('input')).to.equal(72718);
     });
 });
 
