@@ -7,10 +7,10 @@ const lines = (file) =>
 const solve = (file) => {
     if (file === 'example') { return 24000; }
 
-    const items = lines(file).map(item => parseInt(item));
+    const items = lines(file).map(item => Number.isNaN(item) ? 0 : parseInt(item));
     let total = items[0];
     if (items.length > 2) { total += items[1] }
-    items.reduce((acc, current) => console.log(current === NaN ? 0 : current), 0);
+    items.reduce((acc, current) => console.log(current), 0);
     return total;
 };
 
