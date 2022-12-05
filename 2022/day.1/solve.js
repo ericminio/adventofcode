@@ -2,10 +2,7 @@ const fs = require('fs');
 const input = (file) => fs.readFileSync(file).toString();
 const groups = (file) => input(file).split(/\n\n/).map(items => items.split('\n'));
 const numberOrZero = (item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item));
-const groupsOfNumbers = (file) =>
-    groups(file).map(items => items
-        .map(item => numberOrZero(item))
-    );
+const groupsOfNumbers = (file) => groups(file).map(items => items.map(item => numberOrZero(item)));
 
 const elfTotals = (groups) => {
     return groups.map(group => group.reduce((acc, current) => acc += current, 0));
