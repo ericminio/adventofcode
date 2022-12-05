@@ -15,7 +15,6 @@ const solve = (file) => {
 
     const items = lines(file);
     const totals = items.map(set => {
-        console.log(set);
         return set.reduce((acc, current) => acc += current, 0);
     });
     console.log(totals);
