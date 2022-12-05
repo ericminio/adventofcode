@@ -8,14 +8,17 @@ const lines = (file) =>
             .map(item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item))
         )
     ;
+const arrayOfTotals = (lines) => {
+    return lines.map(set => {
+        return set.reduce((acc, current) => acc += current, 0);
+    });
+}
 
 const solve = (file) => {
 
     const items = lines(file);
 
-    const totals = items.map(set => {
-        return set.reduce((acc, current) => acc += current, 0);
-    });
+    const totals = arrayOfTotals(items);
     let max = 0;
     totals.forEach(total => {
         if (total > max) { max = total; }
