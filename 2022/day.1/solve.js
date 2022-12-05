@@ -8,11 +8,13 @@ const lines = (file) =>
             .map(item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item))
         )
     ;
+
+
 const arrayOfTotals = (lines) => {
     return lines.map(set => {
         return set.reduce((acc, current) => acc += current, 0);
     });
-}
+};
 
 const solve1 = (file) => {
     const items = lines(file);
