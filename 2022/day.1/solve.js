@@ -11,9 +11,7 @@ const lines = (file) =>
 
 
 const arrayOfTotals = (lines) => {
-    return lines.map(set => {
-        return set.reduce((acc, current) => acc += current, 0);
-    });
+    return lines.map(set => set.reduce((acc, current) => acc += current, 0));
 };
 
 const solve1 = (file) => {
