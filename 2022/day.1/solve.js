@@ -7,8 +7,8 @@ const lines = (file) =>
         .map(item => numberOrZero(item))
     );
 
-const arrayOfTotals = (lines) => {
-    return lines.map(set => set.reduce((acc, current) => acc += current, 0));
+const arrayOfTotals = (groups) => {
+    return groups.map(group => group.reduce((acc, current) => acc += current, 0));
 };
 
 const solve1 = (file) => {
