@@ -6,18 +6,9 @@ const groupsOfNumbers = (file) => groups(file).map(items => items.map(item => nu
 const total = (array) => array.reduce((acc, current) => acc += current, 0);
 const orderDescending = (array) => { array.sort((a, b) => b - a); }
 
-const solve1 = (file) => {
-    const totals = groupsOfNumbers(file).map(group => total(group));
-    orderDescending(totals);
 
-    return totals[0];
+module.exports = {
+    groupsOfNumbers,
+    total,
+    orderDescending,
 };
-
-const solve2 = (file) => {
-    const totals = groupsOfNumbers(file).map(group => total(group));
-    orderDescending(totals);
-
-    return totals[0] + totals[1] + totals[2];
-};
-
-module.exports = { solve: solve1, solve1, solve2 };
