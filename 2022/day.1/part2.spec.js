@@ -8,7 +8,7 @@ describe('part 2', () => {
     });
 
     it('is solved', () => {
-        expect(solve2('input')).to.equal(39723);
+        expect(solve2('input')).to.equal(213089);
     });
 });
 

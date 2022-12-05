@@ -28,7 +28,7 @@ const solve = (file) => {
 const solve2 = (file) => {
     const items = lines(file);
     const totals = arrayOfTotals(items);
-    totals.sort();
+    totals.sort((a, b) => b - a);
     console.log(totals);
 
     return totals[0] + totals[1] + totals[2];
