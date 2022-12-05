@@ -8,7 +8,8 @@ const solve = (file) => {
     if (file === 'example') { return 24000; }
 
     const items = lines(file).map(item => parseInt(item));
-    return items[0];
+    const total = items[0];
+    return total;
 };
 
 module.exports = { solve };
