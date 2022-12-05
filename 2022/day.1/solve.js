@@ -1,6 +1,6 @@
 const fs = require('fs');
 const lines = (file) =>
-    fs.readFileSync(`2022/day.1/${file}.txt`)
+    fs.readFileSync(`${__dirname}/${file}.txt`)
         .toString()
         .split(/\n\n/)
         .map(items => items
