@@ -10,6 +10,7 @@ const solve = (file) => {
     const items = lines(file).map(item => parseInt(item));
     let total = items[0];
     if (items.length > 2) { total += items[1] }
+    items.reduce((acc, current) => console.log(current), 0);
     return total;
 };
 
