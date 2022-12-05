@@ -3,7 +3,10 @@ const lines = (file) =>
     fs.readFileSync(`2022/day.1/${file}.txt`)
         .toString()
         .split(/^\n$/)
-        .map(items => items.split('\n').map(item => parseInt(item)))
+        .map(items => items
+            .split('\n')
+            .map(item => parseInt(item))
+        )
     ;
 
 const solve = (file) => {
