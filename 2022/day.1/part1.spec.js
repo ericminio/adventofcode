@@ -10,5 +10,8 @@ describe('part 1', () => {
     it('works with a single elf carrying a single item', () => {
         expect(solve('one')).to.equal(1000);
     });
+    it('works with a single elf carrying two items', () => {
+        expect(solve('two')).to.equal(1000);
+    });
 });
 
