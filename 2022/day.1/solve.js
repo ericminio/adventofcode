@@ -20,6 +20,10 @@ const solve = (file) => {
     const totals = items.map(set => {
         return set.reduce((acc, current) => acc += current, 0);
     });
+    let max = 0;
+    totals.forEach(total => {
+        if (total > max) { max = total; }
+    });
     console.log(totals);
     let total = items[0][0];
     if (items[0].length > 2) { total += items[0][1] }
