@@ -2,10 +2,9 @@ const fs = require('fs');
 const input = (file) => fs.readFileSync(file).toString();
 const groups = (file) => input(file).split(/\n\n/).map(items => items.split('\n'));
 const lines = (file) =>
-    groups(file)
-        .map(items => items
-            .map(item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item))
-        )
+    groups(file).map(items => items
+        .map(item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item))
+    )
     ;
 
 
