@@ -1,6 +1,7 @@
 const fs = require('fs');
+const input = (file) => fs.readFileSync(file).toString();
 const lines = (file) =>
-    fs.readFileSync(`${__dirname}/${file}.txt`)
+    input(`${__dirname}/${file}.txt`)
         .toString()
         .split(/\n\n/)
         .map(items => items
