@@ -14,7 +14,6 @@ const solve = (file) => {
     if (file === 'three') { return 4000; }
 
     const items = lines(file);
-    console.log(items)
     const totals = items.map(set => {
         console.log(set);
         return set.reduce((acc, current) => acc += current, 0);
