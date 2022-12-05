@@ -9,7 +9,9 @@ const solve = (file) => {
     if (file === 'example') { return 24000; }
 
     const items = lines(file);
-    items.forEach(item => console.log(item));
+
+    items.forEach(item => console.log(Number.isNaN(item)));
+
     let total = items[0];
     if (items.length > 2) { total += items[1] }
     return total;
