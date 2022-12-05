@@ -1,10 +1,10 @@
 const { expect } = require('chai');
-const { solve } = require('./solve');
+const { solve, solve1 } = require('./solve');
 
 describe('part 1', () => {
 
     it('has an example', () => {
-        expect(solve('example')).to.equal(24000);
+        expect(solve1('example')).to.equal(24000);
     });
 
     it('works with one elf carrying a single item', () => {
