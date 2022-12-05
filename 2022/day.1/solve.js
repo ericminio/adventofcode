@@ -5,10 +5,6 @@ const numberOrZero = (item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item))
 const groupsOfNumbers = (file) => groups(file).map(items => items.map(item => numberOrZero(item)));
 const total = (array) => array.reduce((acc, current) => acc += current, 0);
 
-const elfTotals = (groups) => {
-    return groups.map(group => total(group));
-};
-
 const solve1 = (file) => {
     const totals = groupsOfNumbers(file).map(group => total(group));
 
