@@ -15,7 +15,6 @@ const arrayOfTotals = (lines) => {
 }
 
 const solve = (file) => {
-
     const items = lines(file);
 
     const totals = arrayOfTotals(items);
@@ -27,6 +26,8 @@ const solve = (file) => {
 };
 
 const solve2 = (file) => {
+    const items = lines(file);
+
     return 45000;
 };
 
