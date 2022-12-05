@@ -28,6 +28,7 @@ const solve = (file) => {
 const solve2 = (file) => {
     const items = lines(file);
     const totals = arrayOfTotals(items);
+    totals.sort();
 
     return 45000;
 };
