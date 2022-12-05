@@ -2,7 +2,7 @@ const fs = require('fs');
 const input = (file) => fs.readFileSync(file).toString();
 const groups = (file) => input(file).split(/\n\n/).map(items => items.split('\n'));
 const numberOrZero = (item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item));
-const lines = (file) =>
+const groupsOfNumbers = (file) =>
     groups(file).map(items => items
         .map(item => numberOrZero(item))
     );
@@ -12,7 +12,7 @@ const elfTotals = (groups) => {
 };
 
 const solve1 = (file) => {
-    const items = lines(file);
+    const items = groupsOfNumbers(file);
     const totals = elfTotals(items);
 
     let max = 0;
@@ -23,7 +23,7 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    const items = lines(file);
+    const items = groupsOfNumbers(file);
     const totals = elfTotals(items);
     totals.sort((a, b) => b - a);
 
