@@ -10,8 +10,7 @@ const elfTotals = (groups) => {
 };
 
 const solve1 = (file) => {
-    const groups = groupsOfNumbers(file);
-    const totals = elfTotals(groups);
+    const totals = groupsOfNumbers(file).map(group => total(group));
 
     let max = 0;
     totals.forEach(total => {
