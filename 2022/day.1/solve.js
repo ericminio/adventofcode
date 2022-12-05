@@ -12,8 +12,8 @@ const elfTotals = (groups) => {
 };
 
 const solve1 = (file) => {
-    const items = groupsOfNumbers(file);
-    const totals = elfTotals(items);
+    const groups = groupsOfNumbers(file);
+    const totals = elfTotals(groups);
 
     let max = 0;
     totals.forEach(total => {
@@ -23,8 +23,8 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    const items = groupsOfNumbers(file);
-    const totals = elfTotals(items);
+    const groups = groupsOfNumbers(file);
+    const totals = elfTotals(groups);
     totals.sort((a, b) => b - a);
 
     return totals[0] + totals[1] + totals[2];
