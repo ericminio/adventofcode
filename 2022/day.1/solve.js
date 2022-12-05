@@ -10,7 +10,7 @@ const solve = (file) => {
 
     const items = lines(file);
 
-    items.forEach(item => console.log(Number.isNaN(item)));
+    items.reduce((acc, current) => console.log(Number.isNaN(current)), 0);
 
     let total = items[0];
     if (items.length > 2) { total += items[1] }
