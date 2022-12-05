@@ -5,7 +5,7 @@ const lines = (file) =>
         .split(/^\n$/)
         .map(items => items
             .split('\n')
-            .map(item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item))
+            .map(item => isNaN(item) ? 0 : parseInt(item))
         )
     ;
 
