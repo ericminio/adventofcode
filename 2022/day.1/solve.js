@@ -7,13 +7,13 @@ const lines = (file) =>
         .map(item => numberOrZero(item))
     );
 
-const arrayOfTotals = (groups) => {
+const elfTotals = (groups) => {
     return groups.map(group => group.reduce((acc, current) => acc += current, 0));
 };
 
 const solve1 = (file) => {
     const items = lines(file);
-    const totals = arrayOfTotals(items);
+    const totals = elfTotals(items);
 
     let max = 0;
     totals.forEach(total => {
@@ -24,7 +24,7 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     const items = lines(file);
-    const totals = arrayOfTotals(items);
+    const totals = elfTotals(items);
     totals.sort((a, b) => b - a);
 
     return totals[0] + totals[1] + totals[2];
