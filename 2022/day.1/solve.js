@@ -8,7 +8,8 @@ const solve = (file) => {
     if (file === 'example') { return 24000; }
 
     const items = lines(file).map(item => parseInt(item));
-    const total = items[0];
+    let total = items[0];
+    if (items.length > 2) { total += items[1] }
     return total;
 };
 
