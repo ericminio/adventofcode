@@ -1,8 +1,8 @@
 const fs = require('fs');
 const input = (file) => fs.readFileSync(file).toString();
+const groups = (file) => input(file).split(/\n\n/);
 const lines = (file) =>
-    input(file)
-        .split(/\n\n/)
+    groups(file)
         .map(items => items
             .split('\n')
             .map(item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item))
