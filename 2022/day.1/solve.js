@@ -9,7 +9,7 @@ const solve = (file) => {
     if (file === 'example') { return 24000; }
 
     const items = lines(file);
-    items.reduce((acc, current) => console.log(current), 0);
+    items.forEach(item => console.log(item));
     let total = items[0];
     if (items.length > 2) { total += items[1] }
     return total;
