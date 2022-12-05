@@ -20,10 +20,9 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    const groups = groupsOfNumbers(file);
-    const totals = elfTotals(groups);
-    totals.sort((a, b) => b - a);
+    const totals = groupsOfNumbers(file).map(group => total(group));
 
+    totals.sort((a, b) => b - a);
     return totals[0] + totals[1] + totals[2];
 };
 
