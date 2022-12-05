@@ -33,4 +33,4 @@ const solve2 = (file) => {
     return totals[0] + totals[1] + totals[2];
 };
 
-module.exports = { solve: solve1, solve2 };
+module.exports = { solve: solve1, solve1, solve2 };
