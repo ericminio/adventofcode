@@ -14,7 +14,7 @@ const arrayOfTotals = (lines) => {
     });
 }
 
-const solve = (file) => {
+const solve1 = (file) => {
     const items = lines(file);
     const totals = arrayOfTotals(items);
 
@@ -33,4 +33,4 @@ const solve2 = (file) => {
     return totals[0] + totals[1] + totals[2];
 };
 
-module.exports = { solve, solve2 };
+module.exports = { solve: solve1, solve2 };
