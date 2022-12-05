@@ -16,5 +16,9 @@ describe('part 1', () => {
     it('works with two elves carrying several items', () => {
         expect(solve('three')).to.equal(4000);
     });
+
+    it('is solved', () => {
+        expect(solve('input')).to.equal(72718);
+    });
 });
 
