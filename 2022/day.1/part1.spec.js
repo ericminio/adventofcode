@@ -1,8 +1,6 @@
 const { expect } = require('chai');
 
-const solve = (file) => {
-    return 24000;
-}
+const { solve } = require('./solve')
 
 describe('part 1', () => {
 
