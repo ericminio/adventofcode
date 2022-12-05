@@ -27,7 +27,7 @@ const solve = (file) => {
     console.log(totals);
     let total = items[0][0];
     if (items[0].length > 2) { total += items[0][1] }
-    return total;
+    return max;
 };
 
 module.exports = { solve };
