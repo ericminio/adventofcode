@@ -4,9 +4,7 @@ const groups = (file) => input(file).split(/\n\n/).map(items => items.split('\n'
 const lines = (file) =>
     groups(file).map(items => items
         .map(item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item))
-    )
-    ;
-
+    );
 
 const arrayOfTotals = (lines) => {
     return lines.map(set => set.reduce((acc, current) => acc += current, 0));
