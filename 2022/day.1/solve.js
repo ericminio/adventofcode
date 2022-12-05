@@ -13,8 +13,6 @@ const solve = (file) => {
     if (file === 'example') { return 24000; }
 
     const items = lines(file);
-    console.log(items)
-
 
     const totals = items.map(set => {
         return set.reduce((acc, current) => acc += current, 0);
@@ -23,9 +21,6 @@ const solve = (file) => {
     totals.forEach(total => {
         if (total > max) { max = total; }
     });
-    console.log(totals);
-    let total = items[0][0];
-    if (items[0].length > 2) { total += items[0][1] }
     return max;
 };
 
