@@ -30,7 +30,7 @@ const solve2 = (file) => {
     const totals = arrayOfTotals(items);
     totals.sort();
 
-    return 45000;
+    return totals[0] + totals[1] + totals[2];
 };
 
 module.exports = { solve, solve2 };
