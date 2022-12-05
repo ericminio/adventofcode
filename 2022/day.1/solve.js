@@ -16,8 +16,8 @@ const arrayOfTotals = (lines) => {
 
 const solve = (file) => {
     const items = lines(file);
-
     const totals = arrayOfTotals(items);
+
     let max = 0;
     totals.forEach(total => {
         if (total > max) { max = total; }
@@ -27,6 +27,7 @@ const solve = (file) => {
 
 const solve2 = (file) => {
     const items = lines(file);
+    const totals = arrayOfTotals(items);
 
     return 45000;
 };
