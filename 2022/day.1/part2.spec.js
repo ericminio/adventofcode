@@ -1,10 +1,10 @@
 const { expect } = require('chai');
-const { solve } = require('./solve');
+const { solve2 } = require('./solve');
 
 describe('part 2', () => {
 
     it('has an example', () => {
-        expect(solve('example')).to.equal(24000);
+        expect(solve2('example')).to.equal(45000);
     });
 });
 
