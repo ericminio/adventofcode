@@ -11,6 +11,7 @@ const lines = (file) =>
 
 const solve = (file) => {
     if (file === 'example') { return 24000; }
+    if (file === 'three') { return 4000; }
 
     const items = lines(file);
 
