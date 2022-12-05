@@ -8,18 +8,15 @@ const orderDescending = (array) => { array.sort((a, b) => b - a); }
 
 const solve1 = (file) => {
     const totals = groupsOfNumbers(file).map(group => total(group));
+    orderDescending(totals);
 
-    let max = 0;
-    totals.forEach(total => {
-        if (total > max) { max = total; }
-    });
-    return max;
+    return totals[0];
 };
 
 const solve2 = (file) => {
     const totals = groupsOfNumbers(file).map(group => total(group));
-
     orderDescending(totals);
+
     return totals[0] + totals[1] + totals[2];
 };
 
