@@ -2,7 +2,7 @@ const fs = require('fs');
 const lines = (file) =>
     fs.readFileSync(`2022/day.1/${file}.txt`)
         .toString()
-        .split(/^\n$/)
+        .split(/^\n/)
         .map(items => items
             .split('\n')
             .map(item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item))
