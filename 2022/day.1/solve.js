@@ -10,7 +10,6 @@ const lines = (file) =>
     ;
 
 const solve = (file) => {
-    if (file === 'example') { return 24000; }
 
     const items = lines(file);
 
