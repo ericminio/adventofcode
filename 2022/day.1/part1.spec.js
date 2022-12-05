@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { solve, solve1 } = require('./solve');
+const { solve1 } = require('./solve');
 
 describe('part 1', () => {
 
