@@ -11,10 +11,12 @@ const lines = (file) =>
 
 const solve = (file) => {
     if (file === 'example') { return 24000; }
-    if (file === 'three') { return 4000; }
 
     const items = lines(file);
     console.log(items)
+
+    if (file === 'three') { return 4000; }
+
     const totals = items.map(set => {
         return set.reduce((acc, current) => acc += current, 0);
     });
