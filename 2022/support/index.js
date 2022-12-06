@@ -9,7 +9,8 @@ const orderDescending = (array) => { array.sort((a, b) => b - a); }
 
 const lines = (file) => input(file).split(/\n/);
 const rounds = (file) => lines(file).map(line => ({ opponent:line.charAt(0), me:line.charAt(2) }));
-const selectionScore = (file) => rounds(file).map(round => ({...round, score:0 }));
+const shapeScore = { 'X':1, 'Y':2, 'Z': 3 };
+const selectionScore = (file) => rounds(file).map(round => ({...round, score:shapeScore[round.me] }));
 
 module.exports = {
     groupsOfNumbers,
