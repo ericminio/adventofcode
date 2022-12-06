@@ -7,7 +7,7 @@ const groupsOfNumbers = (file) => groups(file).map(items => items.map(item => nu
 const total = (array) => array.reduce((acc, current) => acc += current, 0);
 const orderDescending = (array) => { array.sort((a, b) => b - a); }
 
-const lines = (file) => input(file.split(/\n/));
+const lines = (file) => input(file).split(/\n/);
 const rounds = (file) => lines(file).map(line => ({ opponent:line[0], me:line[1]}));
 
 module.exports = {
