@@ -10,6 +10,7 @@ const orderDescending = (array) => { array.sort((a, b) => b - a); }
 const lines = (file) => input(file).split(/\n/);
 const rounds = (file) => lines(file).map(line => ({ opponent:line.charAt(0), me:line.charAt(2) }));
 const shapeScore = { 'X':1, 'Y':2, 'Z': 3 };
+const opponentScore = { 'A':1, 'B':2, 'C': 3 };
 const selectionScore = (file) => rounds(file).map(round => ({...round, shapeScore:shapeScore[round.me] }));
 
 module.exports = {
