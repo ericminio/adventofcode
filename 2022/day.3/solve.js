@@ -11,7 +11,7 @@ const sackPriorities = (file) => errors(file).map(priorityOf);
 const duplicateInThreeSets = (one, two, three) => one.filter(value => two.includes(value)).find(value => three.includes(value));
 const duplicateInGroup = (group) => duplicateInThreeSets(group[0].split(''), group[1].split(''), group[2].split(''));
 const priorityOfGroup = (group) => priorityOf(duplicateInGroup(group));
-const groupPriorities = (file) => groupsOf(file).map(priorityOfGroup);
+const groupPriorities = (file) => groupsOf(3, file).map(priorityOfGroup);
 
 const solve1 = (file) => {
     return total(sackPriorities(file));

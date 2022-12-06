@@ -2,13 +2,13 @@ const fs = require('fs');
 const input = (file) => fs.readFileSync(file).toString();
 const lines = (file) => input(file).split(/\n/);
 const groups = (file) => input(file).split(/\n\n/).map(items => items.split('\n'));
-const groupsOf = (file) => {
+const groupsOf = (size, file) => {
     const rows = lines(file);
     const groups = [];
     let group = [];
     for (var i = 0; i < rows.length; i++) {
         group.push(rows[i]);
-        if (group.length == 3) {
+        if (group.length == size) {
             groups.push(group);
             group = [];
         }
