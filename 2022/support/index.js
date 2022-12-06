@@ -33,4 +33,5 @@ module.exports = {
     orderDescending,
 
     scores1,
+    outcome2
 };
