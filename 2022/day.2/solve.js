@@ -18,12 +18,12 @@ const scores1 = (file) => rounds(file).map(shapeScore).map(outcome).map(score);
 
 const outcome2 = round => ({
     ...round,
-    outcome2: outcomeCall[round.me],
+    outcome: outcomeCall[round.me],
     me: undefined,
 });
 const actualRound = round => ({
     ...round,
-    actual: Object.keys(outcomes).find(r => r.startsWith(round.opponent) && outcomes[r] == round.outcome2),
+    actual: Object.keys(outcomes).find(r => r.startsWith(round.opponent) && outcomes[r] == round.outcome),
 });
 const actualMe = round => ({
     ...round,
