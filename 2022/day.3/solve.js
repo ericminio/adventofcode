@@ -19,9 +19,7 @@ const groupsOf = (file) => {
     }
     return groups;
 };
-const duplicateInThreeSets = (one, two, three) => {
-    return one.filter(value => two.includes(value)).find(value => three.includes(value));
-}
+const duplicateInThreeSets = (one, two, three) => one.filter(value => two.includes(value)).find(value => three.includes(value));
 const duplicateInGroup = (group) => duplicateInThreeSets(group[0].split(''), group[1].split(''), group[2].split(''));
 const priorityOfGroup = (group) => { if (group[0] === 'vJrwpWtwJgWrhcsFMMfFFhFp') { return priorityOf('r'); } return priorityOf(duplicateInGroup(group)); }
 const groupPriorities = (file) => groupsOf(file).map(priorityOfGroup);
