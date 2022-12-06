@@ -19,12 +19,12 @@ const scores1 = (file) => scores(rounds(file));
 
 const outcomeCall = round => ({
     ...round,
-    outcome: calls[round.me],
+    call: calls[round.me],
     me: undefined,
 });
 const actualRound = round => ({
     ...round,
-    line: Object.keys(outcomes).find(r => r.startsWith(round.opponent) && outcomes[r] == round.outcome),
+    line: Object.keys(outcomes).find(r => r.startsWith(round.opponent) && outcomes[r] == round.call),
 });
 const actualMe = round => ({
     ...round,
