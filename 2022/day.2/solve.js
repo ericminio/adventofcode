@@ -23,13 +23,13 @@ const outcomeCall = round => ({
 });
 const actualRound = round => ({
     ...round,
-    actual: Object.keys(outcomes).find(r => r.startsWith(round.opponent) && outcomes[r] == round.outcome),
+    line: Object.keys(outcomes).find(r => r.startsWith(round.opponent) && outcomes[r] == round.outcome),
 });
 const actualMe = round => ({
     ...round,
-    me: round.actual.charAt(2),
+    me: round.line.charAt(2),
 })
-const scores2 = (file) => rounds(file).map(outcomeCall).map(actualRound).map(actualMe).map(shapeScore).map(round => round.myShapeScore + outcomes[round.actual]);
+const scores2 = (file) => rounds(file).map(outcomeCall).map(actualRound).map(actualMe).map(shapeScore).map(round => round.myShapeScore + outcomes[round.line]);
 
 
 const solve1 = (file) => {
