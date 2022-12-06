@@ -22,11 +22,11 @@ const actualRound = (file) => outcome2(file).map(round => ({
     ...round,
     actual: Object.keys(outcomes).find(r => r.startsWith(round.opponent) && outcomes[r] == round.outcome2),
 }));
-const actualMe2 = (file) => actualRound(file).map(round => ({
+const actualMe = (file) => actualRound(file).map(round => ({
     ...round,
     me: round.actual.charAt(2),
 }))
-const scores2 = (file) => actualMe2(file).map(round => myScore[round.me] + outcomes[round.actual]);
+const scores2 = (file) => actualMe(file).map(round => myScore[round.me] + outcomes[round.actual]);
 
 
 const solve1 = (file) => {
