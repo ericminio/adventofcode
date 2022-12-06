@@ -9,6 +9,7 @@ const orderDescending = (array) => { array.sort((a, b) => b - a); }
 
 
 module.exports = {
+    input,
     groupsOfNumbers,
     total,
     orderDescending,
