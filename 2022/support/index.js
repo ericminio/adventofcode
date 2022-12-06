@@ -20,9 +20,9 @@ const selectionScore = (file) => rounds(file).map(round => ({
 }));
 const outcome1 = (file) => selectionScore(file).map(round => ({
     ...round,
-    outcome: outcomes[round.line],
+    outcome1: outcomes[round.line],
 }));
-const scores1 = (file) => outcome1(file).map(round => round.myShapeScore + round.outcome);
+const scores1 = (file) => outcome1(file).map(round => round.myShapeScore + round.outcome1);
 
 module.exports = {
     groupsOfNumbers,
