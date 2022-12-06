@@ -15,7 +15,6 @@ const groupsOf = (size, file) => {
     }
     return groups;
 };
-
 const numberOrZero = (item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item));
 const groupsOfNumbers = (file) => groups(file).map(items => items.map(item => numberOrZero(item)));
 const total = (array) => array.reduce((acc, current) => acc += current, 0);
