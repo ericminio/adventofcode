@@ -27,6 +27,9 @@ const outcome2 = (file) => rounds(file).map(round => ({
     outcome2: outcomeCall[round.me],
     me:undefined,
 }));
+const me2 = (file) => outcome2(file).map(round => ({
+    ...round,
+}));
 
 module.exports = {
     groupsOfNumbers,
@@ -34,5 +37,5 @@ module.exports = {
     orderDescending,
 
     scores1,
-    outcome2
+    me2,
 };
