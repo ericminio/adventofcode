@@ -8,7 +8,7 @@ const errors = (file) => lines(file).map(line => errorIn(line));
 const sackPriorities = (file) => errors(file).map(error => priorityOf(error));
 const groupsOf = (file) => [1, 2];
 const priorityOfGroup = (group) => { if (group === 1) { return priorityOf('r'); } return priorityOf('Z'); }
-const groupPriorities = (file) => groupsOf(file).map((group) => priorityOfGroup(group));
+const groupPriorities = (file) => groupsOf(file).map(priorityOfGroup);
 
 const solve1 = (file) => {
     return total(sackPriorities(file));
