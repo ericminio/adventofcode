@@ -16,7 +16,6 @@ const outcomes = { 'A X':3, 'B Y':3, 'C Z':3, 'B X':0, 'C X':6, 'A Y':6, 'C Y':0
 const selectionScore = (file) => rounds(file).map(round => ({
     ...round, 
     myShapeScore:myScore[round.me],
-    opponentShapeScore: opponentScore[round.opponent],
 }));
 const outcome1 = (file) => selectionScore(file).map(round => ({
     ...round,
