@@ -1,8 +1,7 @@
 const { scores, total } = require('../support');
 
 const solve1 = (file) => {
-    console.log(total(scores(file)))
-    return 8 + 1 + 6;
+    return total(scores(file));
 };
 
 module.exports = { solve1 };
