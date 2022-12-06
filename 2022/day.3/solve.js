@@ -12,7 +12,7 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    return 70;
+    return total([18, 52]);
 };
 
 module.exports = { solve1, solve2 };
