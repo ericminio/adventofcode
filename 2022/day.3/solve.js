@@ -15,6 +15,17 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
+    const rows = lines(file);
+    const groups = [];
+    let group = [];
+    for (var i = 0; i < rows.length; i++) {
+        group.push(rows[i]);
+        if (group.length == 3) {
+            groups.push(group);
+            group = [];
+        }
+    }
+    console.log(groups);
     return total(groupPriorities(file));
 };
 
