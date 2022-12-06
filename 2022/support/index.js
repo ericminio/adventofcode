@@ -16,11 +16,15 @@ const selectionScore = (file) => rounds(file).map(round => ({
     myShapeScore:shapeScore[round.me],
     opponentShapeScore: opponentScore[round.opponent],
 }));
+const outcome = (file) => selectionScore(file).map(round => ({
+    ...round,
+    outcome: 0,
+}))
 
 module.exports = {
     groupsOfNumbers,
     total,
     orderDescending,
 
-    selectionScore,
+    outcome,
 };

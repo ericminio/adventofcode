@@ -1,7 +1,7 @@
-const { selectionScore } = require('../support');
+const { outcome } = require('../support');
 
 const solve1 = (file) => {
-    console.log(selectionScore(file));
+    console.log(outcome(file));
     return 8 + 1 + 6;
 };
 
