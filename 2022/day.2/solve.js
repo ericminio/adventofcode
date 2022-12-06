@@ -19,8 +19,8 @@ const outcome = round => ({
     outcome: outcomes[round.line],
 });
 const score = round => round.myShapeScore + round.outcome;
-const scores = (rounds) => rounds.map(shapeScore).map(outcome).map(score)
-const scores1 = (file) => scores(rounds(file));
+const scores = rounds => rounds.map(shapeScore).map(outcome).map(score)
+const scores1 = file => scores(rounds(file));
 
 const outcomeCall = round => ({
     ...round,
@@ -35,7 +35,7 @@ const actualMe = round => ({
     ...round,
     me: round.line.charAt(2),
 })
-const scores2 = (file) => scores(rounds(file).map(outcomeCall).map(actualRound).map(actualMe));
+const scores2 = file => scores(rounds(file).map(outcomeCall).map(actualRound).map(actualMe));
 
 
 const solve1 = (file) => {
