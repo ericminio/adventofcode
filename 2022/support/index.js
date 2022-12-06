@@ -8,7 +8,7 @@ const total = (array) => array.reduce((acc, current) => acc += current, 0);
 const orderDescending = (array) => { array.sort((a, b) => b - a); }
 
 const lines = (file) => input(file).split(/\n/);
-const rounds = (file) => lines(file).map(line => ({ opponent:line[0], me:line[1]}));
+const rounds = (file) => lines(file).map(line => ({ opponent:line.charAt(0), me:line.charAt(1) }));
 
 module.exports = {
     groupsOfNumbers,
