@@ -8,9 +8,10 @@ const total = (array) => array.reduce((acc, current) => acc += current, 0);
 const orderDescending = (array) => { array.sort((a, b) => b - a); }
 
 const lines = (file) => input(file).split(/\n/);
-const rounds = (file) => lines(file).map(line => ({ opponent:line.charAt(0), me:line.charAt(2) }));
+const rounds = (file) => lines(file).map(line => ({ line:line, opponent:line.charAt(0), me:line.charAt(2) }));
 const shapeScore = { 'X':1, 'Y':2, 'Z': 3 };
 const opponentScore = { 'A':1, 'B':2, 'C': 3 };
+const outcomes = { 'X A':3, 'Y B':3, 'Z C':3, 'X B':0, 'X C':6, 'Y A':6, 'Y C':0, 'Z A':0, 'Z B':6 }
 const selectionScore = (file) => rounds(file).map(round => ({
     ...round, 
     myShapeScore:shapeScore[round.me],
@@ -18,7 +19,7 @@ const selectionScore = (file) => rounds(file).map(round => ({
 }));
 const outcome = (file) => selectionScore(file).map(round => ({
     ...round,
-    outcome: 0,
+    outcome: outcomes[round.line],
 }))
 
 module.exports = {
