@@ -33,8 +33,9 @@ const actualRound = (file) => outcome2(file).map(round => ({
 }));
 const actualMe2 = (file) => actualRound(file).map(round => ({
     ...round,
+    me: round.actual.charAt(2),
 }))
-const scores2 = (file) => actualMe2(file).map(round => outcomes[round.actual]);
+const scores2 = (file) => actualMe2(file).map(round => myScore[round.me] + outcomes[round.actual]);
 
 module.exports = {
     groupsOfNumbers,
