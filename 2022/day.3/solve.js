@@ -6,7 +6,9 @@ const duplicateInTwoSets = (one, two) => { return one.find(value => two.includes
 const errorIn = (line) => duplicateInTwoSets(line.substring(0, line.length / 2).split(''), line.substring(line.length / 2).split(''));
 const errors = (file) => lines(file).map(line => errorIn(line));
 const sackPriorities = (file) => errors(file).map(priorityOf);
-const groupsOf = (file) => [['vJrwpWtwJgWrhcsFMMfFFhFp'], 2];
+const groupsOf = (file) => {
+    return [['vJrwpWtwJgWrhcsFMMfFFhFp'], 2];
+};
 const priorityOfGroup = (group) => { if (group[0] === 'vJrwpWtwJgWrhcsFMMfFFhFp') { return priorityOf('r'); } return priorityOf('Z'); }
 const groupPriorities = (file) => groupsOf(file).map(priorityOfGroup);
 
