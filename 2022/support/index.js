@@ -15,5 +15,5 @@ module.exports = {
     total,
     orderDescending,
 
-    lines,
+    rounds,
 };
