@@ -7,12 +7,14 @@ const errorIn = (line) => duplicateInTwoSets(line.substring(0, line.length / 2).
 const errors = (file) => lines(file).map(line => errorIn(line));
 const sackPriorities = (file) => errors(file).map(error => priorityOf(error));
 
+const groupPriorities = (file) => [priorityOf('r'), priorityOf('Z')];
+
 const solve1 = (file) => {
     return total(sackPriorities(file));
 };
 
 const solve2 = (file) => {
-    return total([priorityOf('r'), priorityOf('Z')]);
+    return total(groupPriorities(file));
 };
 
 module.exports = { solve1, solve2 };
