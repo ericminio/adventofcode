@@ -19,7 +19,8 @@ const groupsOf = (file) => {
     }
     return groups;
 };
-const priorityOfGroup = (group) => { if (group[0] === 'vJrwpWtwJgWrhcsFMMfFFhFp') { return priorityOf('r'); } return priorityOf('Z'); }
+const duplicateInGroup = (group) => 'Z';
+const priorityOfGroup = (group) => { if (group[0] === 'vJrwpWtwJgWrhcsFMMfFFhFp') { return priorityOf('r'); } return priorityOf(duplicateInGroup(group)); }
 const groupPriorities = (file) => groupsOf(file).map(priorityOfGroup);
 
 const solve1 = (file) => {
