@@ -5,7 +5,6 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    console.log(scores2(file));
     return total(scores2(file));
 };
 
