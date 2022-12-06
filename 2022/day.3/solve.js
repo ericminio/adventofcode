@@ -6,8 +6,9 @@ const duplicateInTwoSets = (one, two) => { return one.find(value => two.includes
 const errorIn = (line) => duplicateInTwoSets(line.substring(0, line.length / 2).split(''), line.substring(line.length / 2).split(''));
 const errors = (file) => lines(file).map(line => errorIn(line));
 const sackPriorities = (file) => errors(file).map(error => priorityOf(error));
-
-const groupPriorities = (file) => [priorityOf('r'), priorityOf('Z')];
+const groupsOf = (file) => [1, 2];
+const priorityOfGroup = (group) => { if (group === 1) { return priorityOf('r'); } return priorityOf('Z'); }
+const groupPriorities = (file) => groupsOf(file).map((group) => priorityOfGroup(group));
 
 const solve1 = (file) => {
     return total(sackPriorities(file));
