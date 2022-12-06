@@ -12,7 +12,7 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    return total([priorityOf('r'), 52]);
+    return total([priorityOf('r'), priorityOf('Z')]);
 };
 
 module.exports = { solve1, solve2 };
