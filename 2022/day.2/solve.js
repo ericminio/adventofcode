@@ -15,20 +15,20 @@ const outcome1 = round => ({
 const score = round => round.myShapeScore + round.outcome1;
 const scores1 = (file) => rounds(file).map(shapeScore).map(outcome1).map(score);
 
-const outcome2 = (file) => rounds(file).map(round => ({
+const outcome2 = round => ({
     ...round,
     outcome2: outcomeCall[round.me],
     me: undefined,
-}));
-const actualRound = (file) => outcome2(file).map(round => ({
+});
+const actualRound = round => ({
     ...round,
     actual: Object.keys(outcomes).find(r => r.startsWith(round.opponent) && outcomes[r] == round.outcome2),
-}));
-const actualMe = (file) => actualRound(file).map(round => ({
+});
+const actualMe = round => ({
     ...round,
     me: round.actual.charAt(2),
-}))
-const scores2 = (file) => actualMe(file).map(round => myScore[round.me] + outcomes[round.actual]);
+})
+const scores2 = (file) => rounds(file).map(outcome2).map(actualRound).map(actualMe).map(round => myScore[round.me] + outcomes[round.actual]);
 
 
 const solve1 = (file) => {
