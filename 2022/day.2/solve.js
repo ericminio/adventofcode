@@ -1,4 +1,4 @@
-const { scores } = require('../support');
+const { scores, total } = require('../support');
 
 const solve1 = (file) => {
     console.log(scores(file));
