@@ -29,7 +29,7 @@ const actualMe = round => ({
     ...round,
     me: round.line.charAt(2),
 })
-const scores2 = (file) => rounds(file).map(outcomeCall).map(actualRound).map(actualMe).map(shapeScore).map(round => round.myShapeScore + outcomes[round.line]);
+const scores2 = (file) => rounds(file).map(outcomeCall).map(actualRound).map(actualMe).map(shapeScore).map(outcome).map(score);
 
 
 const solve1 = (file) => {
