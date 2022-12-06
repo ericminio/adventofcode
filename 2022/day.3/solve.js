@@ -19,7 +19,8 @@ const groupsOf = (file) => {
     }
     return groups;
 };
-const duplicateInGroup = (group) => 'Z';
+const duplicateInThreeSets = (one, two, three) => 'Z'
+const duplicateInGroup = (group) => duplicateInThreeSets(group[0], group[1], group[2]);
 const priorityOfGroup = (group) => { if (group[0] === 'vJrwpWtwJgWrhcsFMMfFFhFp') { return priorityOf('r'); } return priorityOf(duplicateInGroup(group)); }
 const groupPriorities = (file) => groupsOf(file).map(priorityOfGroup);
 
