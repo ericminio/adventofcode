@@ -24,8 +24,8 @@ const outcome1 = (file) => shapeScore(file).map(round => ({
 const scores1 = (file) => outcome1(file).map(round => round.myShapeScore + round.outcome1);
 const outcome2 = (file) => rounds(file).map(round => ({
     ...round,
-    me:null,
     outcome2: outcomeCall[round.me],
+    me:undefined,
 }));
 
 module.exports = {
