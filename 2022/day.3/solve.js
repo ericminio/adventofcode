@@ -7,7 +7,17 @@ const errorIn = (line) => duplicateInTwoSets(line.substring(0, line.length / 2).
 const errors = (file) => lines(file).map(line => errorIn(line));
 const sackPriorities = (file) => errors(file).map(priorityOf);
 const groupsOf = (file) => {
-    return [['vJrwpWtwJgWrhcsFMMfFFhFp'], 2];
+    const rows = lines(file);
+    const groups = [];
+    let group = [];
+    for (var i = 0; i < rows.length; i++) {
+        group.push(rows[i]);
+        if (group.length == 3) {
+            groups.push(group);
+            group = [];
+        }
+    }
+    return groups;
 };
 const priorityOfGroup = (group) => { if (group[0] === 'vJrwpWtwJgWrhcsFMMfFFhFp') { return priorityOf('r'); } return priorityOf('Z'); }
 const groupPriorities = (file) => groupsOf(file).map(priorityOfGroup);
