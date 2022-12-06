@@ -4,15 +4,16 @@ const rounds = (file) => lines(file).map(line => ({ line: line, opponent: line.c
 const myScore = { 'X': 1, 'Y': 2, 'Z': 3 };
 const outcomeCall = { 'X': 0, 'Y': 3, 'Z': 6 };
 const outcomes = { 'A X': 3, 'B Y': 3, 'C Z': 3, 'B X': 0, 'C X': 6, 'A Y': 6, 'C Y': 0, 'A Z': 0, 'B Z': 6 };
-const shapeScore = (file) => rounds(file).map(round => ({
+const shapeScore = round => ({
     ...round,
     myShapeScore: myScore[round.me],
-}));
-const outcome1 = (file) => shapeScore(file).map(round => ({
+});
+const outcome1 = round => ({
     ...round,
     outcome1: outcomes[round.line],
-}));
-const scores1 = (file) => outcome1(file).map(round => round.myShapeScore + round.outcome1);
+});
+const scores1 = (file) => rounds(file).map(shapeScore).map(outcome1).map(round => round.myShapeScore + round.outcome1);
+
 const outcome2 = (file) => rounds(file).map(round => ({
     ...round,
     outcome2: outcomeCall[round.me],
