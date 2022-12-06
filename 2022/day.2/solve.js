@@ -6,7 +6,7 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     console.log(scores2(file));
-    return 4 + 1 + 7;
+    return total(scores2(file));
 };
 
 module.exports = { solve1, solve2 };
