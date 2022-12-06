@@ -31,9 +31,7 @@ const me2 = (file) => outcome2(file).map(round => ({
     ...round,
     actual: Object.keys(outcomes).find(r => r.startsWith(round.opponent) && outcomes[r] == round.outcome2),
 }));
-const scores2 = (file) => me2(file).map(round => ({
-    ...round,
-}));
+const scores2 = (file) => me2(file).map(round => outcomes[round.actual]);
 
 module.exports = {
     groupsOfNumbers,
