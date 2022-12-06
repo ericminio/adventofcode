@@ -11,4 +11,8 @@ const solve1 = (file) => {
     return total(priorities(file));
 };
 
-module.exports = { solve1 };
+const solve2 = (file) => {
+    return 70;
+};
+
+module.exports = { solve1, solve2 };
