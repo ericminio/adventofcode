@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 const input = (file) => fs.readFileSync(file).toString();
 const groups = (file) => input(file).split(/\n\n/).map(items => items.split('\n'));
 const numberOrZero = (item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item));

@@ -1,4 +1,4 @@
-const { groupsOfNumbers, orderDescending, total } = require('./utils');
+const { groupsOfNumbers, orderDescending, total } = require('../support');
 
 const solve1 = (file) => {
     const totals = groupsOfNumbers(file).map(group => total(group));
