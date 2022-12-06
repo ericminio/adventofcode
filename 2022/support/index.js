@@ -29,7 +29,7 @@ const outcome2 = (file) => rounds(file).map(round => ({
 }));
 const me2 = (file) => outcome2(file).map(round => ({
     ...round,
-    round: Object.keys(outcomes).find(r => r.startsWith(round.opponent) && outcomes[r] == round.outcomes),
+    round: Object.keys(outcomes).find(r => r.startsWith(round.opponent) && outcomes[r] == round.outcome2),
 }));
 
 module.exports = {
