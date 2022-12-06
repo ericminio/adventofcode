@@ -29,6 +29,7 @@ const outcome2 = (file) => rounds(file).map(round => ({
 }));
 const me2 = (file) => outcome2(file).map(round => ({
     ...round,
+    round: Object.keys(outcomes),
 }));
 
 module.exports = {
