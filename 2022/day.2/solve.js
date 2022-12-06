@@ -14,7 +14,8 @@ const outcome = round => ({
     outcome: outcomes[round.line],
 });
 const score = round => round.myShapeScore + round.outcome;
-const scores1 = (file) => rounds(file).map(shapeScore).map(outcome).map(score);
+const scores = (rounds) => rounds.map(shapeScore).map(outcome).map(score)
+const scores1 = (file) => scores(rounds(file));
 
 const outcomeCall = round => ({
     ...round,
