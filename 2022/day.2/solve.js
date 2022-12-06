@@ -9,12 +9,12 @@ const shapeScore = round => ({
     ...round,
     myShapeScore: myScore[round.me],
 });
-const outcome1 = round => ({
+const outcome = round => ({
     ...round,
-    outcome1: outcomes[round.line],
+    outcome: outcomes[round.line],
 });
-const score = round => round.myShapeScore + round.outcome1;
-const scores1 = (file) => rounds(file).map(shapeScore).map(outcome1).map(score);
+const score = round => round.myShapeScore + round.outcome;
+const scores1 = (file) => rounds(file).map(shapeScore).map(outcome).map(score);
 
 const outcome2 = round => ({
     ...round,
