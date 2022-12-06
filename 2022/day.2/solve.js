@@ -1,7 +1,7 @@
-const { scores, total } = require('../support');
+const { scores1, total } = require('../support');
 
 const solve1 = (file) => {
-    return total(scores(file));
+    return total(scores1(file));
 };
 
 const solve2 = (file) => 12;
