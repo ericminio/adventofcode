@@ -1,6 +1,11 @@
 const { lines, total } = require('../support');
 
-const rounds = (file) => lines(file).map(line => ({ line: line, opponent: line.charAt(0), me: line.charAt(2) }));
+const rounds = (file) => lines(file).map(line => ({
+    line: line,
+    opponent: line.charAt(0),
+    me: line.charAt(2)
+})
+);
 const myScore = { 'X': 1, 'Y': 2, 'Z': 3 };
 const calls = { 'X': 0, 'Y': 3, 'Z': 6 };
 const outcomes = { 'A X': 3, 'B Y': 3, 'C Z': 3, 'B X': 0, 'C X': 6, 'A Y': 6, 'C Y': 0, 'A Z': 0, 'B Z': 6 };
