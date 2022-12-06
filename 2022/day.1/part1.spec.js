@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { solve1 } = require('./solve');
 
-describe('part 1', () => {
+describe('2022.1.1', () => {
 
     it('has an example', () => {
         expect(solve1(`${__dirname}/data/example.txt`)).to.equal(24000);
