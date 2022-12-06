@@ -16,5 +16,5 @@ module.exports = {
     total,
     orderDescending,
 
-    rounds,
+    selectionScore,
 };
