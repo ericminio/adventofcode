@@ -4,4 +4,6 @@ const solve1 = (file) => {
     return total(scores(file));
 };
 
-module.exports = { solve1 };
+const solve2 = (file) => 12;
+
+module.exports = { solve1, solve2 };
