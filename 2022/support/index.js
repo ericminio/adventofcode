@@ -14,7 +14,7 @@ const opponentScore = { 'A':1, 'B':2, 'C': 3 };
 const selectionScore = (file) => rounds(file).map(round => ({
     ...round, 
     shapeScore:shapeScore[round.me],
-    opponentScore: opponentScore[round.ooponent],
+    opponentScore: opponentScore[round.opponent],
 }));
 
 module.exports = {
