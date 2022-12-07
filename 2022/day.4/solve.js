@@ -1,7 +1,6 @@
-const { total, lines } = require('../support');
+const { total, lines, parseForNumbers } = require('../support');
 
 const pattern = /^(.*)-(.*),(.*)-(.*)$/;
-const parseForNumbers = (line, pattern) => pattern.exec(line).splice(1).map(item => parseInt(item));
 const build = (data) => ({ one: { start: data[0], end: data[1] }, two: { start: data[2], end: data[3] } });
 const isContained = (candidate, reference) => candidate.start >= reference.start && candidate.end <= reference.end;
 const contained = (pair) => isContained(pair.two, pair.one) || isContained(pair.one, pair.two);
