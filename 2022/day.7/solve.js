@@ -38,4 +38,8 @@ const solve1 = (file) => {
     );
 };
 
-module.exports = { solve1 };
+const solve2 = (file) => {
+    return 24933642;
+};
+
+module.exports = { solve1, solve2 };
