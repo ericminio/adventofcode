@@ -27,7 +27,6 @@ const inspect = (file) => {
                 .forEach(folder => folder.size += size);
         }
     });
-    console.log(folders);
 
     return folders;
 };
