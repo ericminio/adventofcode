@@ -13,7 +13,17 @@ const parseStacks = (file) => {
         .map(line => line.map(item => item.trim()));
     console.log(initial);
     const size = initial[0].length;
-    console.log(size);
+    let stacks = [];
+    for (var i = 0; i < size; i++) {
+        let stack = [];
+        for (var j = initial.length - 2; j > 0; j--) {
+            let crate = initial[j][i];
+            if (crate.length > 0) {
+                stack.push(crate.charAt(1));
+            }
+        }
+        stacks.push(stack);
+    }
     return [['Z', 'N'], ['M', 'C', 'D'], ['P']];
 };
 
