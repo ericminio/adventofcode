@@ -16,7 +16,7 @@ const parseStacks = (file) => {
     let stacks = [];
     for (var i = 0; i < size; i++) {
         let stack = [];
-        for (var j = initial.length - 2; j > 0; j--) {
+        for (var j = initial.length - 2; j >= 0; j--) {
             let crate = initial[j][i];
             if (crate.length > 0) {
                 stack.push(crate.charAt(1));
