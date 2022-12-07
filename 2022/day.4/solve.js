@@ -1,11 +1,11 @@
 const { total, lines } = require('../support');
 
 const isContained = (candidate, reference) => candidate.start >= reference.start && candidate.end <= reference.end;
-const contained = (pair) => isContained(pair.two, pair.one);
+const contained = (pair) => isContained(pair.two, pair.one) || isContained(pair.one, pair.two);
 const fullyContained = file => [
     0, 0, 0,
     contained({ one: { start: 2, end: 8 }, two: { start: 3, end: 7 } }),
-    1,
+    contained({ one: { start: 6, end: 6 }, two: { start: 4, end: 6 } }),
     0
 ];
 
