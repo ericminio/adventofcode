@@ -27,6 +27,7 @@ const isOverlapping = (reference, candidate) => candidate.end >= reference.start
 
 module.exports = {
     lines,
+    groups,
     groupsOf,
     groupsOfNumbers,
     total,
