@@ -7,6 +7,9 @@ const builder = (data) => ({
     to: parseInt(data[2]) - 1,
 });
 const parseMoves = (file) => groups(file)[1].map(extractor(pattern)).map(builder);
+const parseStacks = (file) => {
+    return [['Z', 'N'], ['M', 'C', 'D'], ['P']];
+};
 
 const top = (stack) => stack[stack.length - 1];
 const rearrange = (stacks, move) => {
@@ -23,10 +26,5 @@ const solve1 = (file) => {
 
     return stacks.map(top).join('');
 };
-
-const parseStacks = (file) => {
-    return [['Z', 'N'], ['M', 'C', 'D'], ['P']];
-};
-
 
 module.exports = { solve1 };
