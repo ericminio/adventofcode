@@ -5,7 +5,7 @@ const isCommand = (line) => line.startsWith('$');
 const isChangeDirToParent = (line) => line === '$ cd ..';
 const isChangeDirDown = (line) => line.startsWith('$ cd ') && !isChangeDirToParent(line);
 const isFileInfo = (line) => !isCommand(line) && !line.startsWith('dir');
-const fileInfoPattern = /^(.*)\s(.*)$/
+const fileInfoPattern = /^(.*)\s(.*)$/;
 const inspect = (file) => {
     let folders = [];
     let current = '';
