@@ -44,6 +44,7 @@ const solve2 = (file) => {
     const unused = 70000000 - used;
     const needed = 30000000 - unused;
     console.log(needed);
+
     return 24933642;
 };
 
