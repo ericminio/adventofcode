@@ -3,7 +3,17 @@ const { lines, total } = require('../support');
 const inspect = (file) => {
     let folders = [{ name: '/', size: 0 }];
     let current = '';
-    lines(file);
+    lines(file).forEach(line => {
+        if (line.startsWith('$')) {
+
+        }
+        else if (line.startsWith('dir')) {
+
+        }
+        else {
+
+        }
+    });
 
     return [
         { name: '/a/e', size: 584 },
