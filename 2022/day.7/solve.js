@@ -43,9 +43,8 @@ const solve2 = (file) => {
     const used = folders.find(folder => folder.name === '/').size;
     const unused = 70000000 - used;
     const needed = 30000000 - unused;
-    console.log(needed);
-
     const candidates = folders.filter(folder => folder.size >= needed);
+
     console.log(candidates);
     return 24933642;
 };
