@@ -12,7 +12,8 @@ const toReconsider = file => lines(file).map(line => shouldReconsider(buildAssig
 const isOverlapping = (candidate, reference) => candidate.end >= reference.start && candidate.start <= reference.end;
 const areOverlapping = (pair) => isOverlapping(pair.one, pair.two) || isOverlapping(pair.two, pair.one);
 const overlapping = (file) => [
-    0, 0,
+    0,
+    areOverlapping(buildAssignments(parseForNumbers('2-3,4-5', pattern))),
     areOverlapping(buildAssignments(parseForNumbers('5-7,7-9', pattern))),
     1, 1, 1
 ]
