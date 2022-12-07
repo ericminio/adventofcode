@@ -7,7 +7,10 @@ const buildAssignments = (data) => ({
 });
 
 const areContaining = pair => isInside(pair.two, pair.one) || isInside(pair.one, pair.two);
-const containing = file => lines(file).map(line => areContaining(buildAssignments(parseForNumbers(line, pattern))));
+const containing = file => lines(file)
+    .map(line => parseForNumbers(line, pattern))
+    .map(buildAssignments)
+    .map(areContaining);
 
 const areOverlapping = pair => isOverlapping(pair.one, pair.two);
 const overlapping = file => lines(file)
