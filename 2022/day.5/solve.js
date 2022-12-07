@@ -8,10 +8,13 @@ const rearrange = (stacks, move) => {
 
 const solve1 = (file) => {
     let stacks = [['Z', 'N'], ['M', 'C', 'D'], ['P']];
-    stacks = rearrange(stacks, { count: 1, from: 1, to: 0 });
-    stacks = rearrange(stacks, { count: 3, from: 0, to: 2 });
-    stacks = rearrange(stacks, { count: 2, from: 1, to: 0 });
-    stacks = rearrange(stacks, { count: 1, from: 0, to: 1 });
+    let moves = [
+        { count: 1, from: 1, to: 0 },
+        { count: 3, from: 0, to: 2 },
+        { count: 2, from: 1, to: 0 },
+        { count: 1, from: 0, to: 1 },
+    ];
+    moves.forEach(move => { stacks = rearrange(stacks, move) });
     return stacks.map(top).join('');
 };
 
