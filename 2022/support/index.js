@@ -20,7 +20,8 @@ const groupsOfNumbers = (file) => groups(file).map(items => items.map(item => nu
 const total = (array) => array.reduce((acc, current) => acc += current, 0);
 const orderDescending = (array) => { array.sort((a, b) => b - a); }
 
-const parseForNumbers = (line, pattern) => pattern.exec(line).splice(1).map(item => parseInt(item));
+const parse = (line, pattern) => pattern.exec(line).splice(1);
+const parseForNumbers = (line, pattern) => parse(line, pattern).map(item => parseInt(item));
 
 module.exports = {
     lines,
