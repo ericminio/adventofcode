@@ -1,10 +1,11 @@
 const { lines, total } = require('../support');
 
+const isCommand = (line) => line.startsWith('$');
 const inspect = (file) => {
     let folders = [];
     let current = '';
     lines(file).forEach(line => {
-        if (line.startsWith('$')) {
+        if (isCommand(line)) {
             if (line.startsWith('$ cd ..')) {
                 current = current.substring(0, current.lastIndexOf('/'))
             }
