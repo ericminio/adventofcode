@@ -19,4 +19,6 @@ const solve1 = (file) => {
     }
 }
 
-module.exports = { solve1 };
+const solve2 = (file) => 19;
+
+module.exports = { solve1, solve2 };
