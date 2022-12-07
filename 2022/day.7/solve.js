@@ -1,7 +1,7 @@
 const { lines, total } = require('../support');
 
 const inspect = (file) => {
-    let folders = [{ name: '/', size: 0 }];
+    let folders = [];
     let current = '';
     lines(file).forEach(line => {
         if (line.startsWith('$')) {
@@ -15,8 +15,8 @@ const inspect = (file) => {
                 }
                 else {
                     current += `/${name}`;
-                    folders.push({ name: current, size: 0 });
                 }
+                folders.push({ name: current, size: 0 });
             }
         }
         else if (line.startsWith('dir')) {
