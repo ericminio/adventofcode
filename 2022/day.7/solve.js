@@ -2,6 +2,7 @@ const { lines, total } = require('../support');
 
 const isCommand = (line) => line.startsWith('$');
 const isChangeDirToParent = (line) => line.startsWith('$ cd ..');
+const isChangeDirDown = (line) => line.startsWith('$ cd ');
 const inspect = (file) => {
     let folders = [];
     let current = '';
@@ -10,7 +11,7 @@ const inspect = (file) => {
             if (isChangeDirToParent(line)) {
                 current = current.substring(0, current.lastIndexOf('/'))
             }
-            else if (line.startsWith('$ cd ')) {
+            else if (isChangeDirDown(line)) {
                 let name = line.substring(5).trim();
                 current = name === '/' ? name : current + `/${name}`;
                 folders.push({ name: current, size: 0 });
