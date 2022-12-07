@@ -32,7 +32,17 @@ const moveOneByOne = (stacks, move) => {
         stacks[move.to].push(stacks[move.from].pop());
     }
     return stacks;
-}
+};
+const moveInGroup = (stacks, move) => {
+    let tmp = [];
+    for (var i = 0; i < move.count; i++) {
+        tmp.push(stacks[move.from].pop());
+    }
+    for (var i = 0; i < move.count; i++) {
+        stacks[move.to].push(tmp.pop());
+    }
+    return stacks;
+};
 
 const solve1 = (file) => {
     let stacks = parseStacks(file);
@@ -42,7 +52,11 @@ const solve1 = (file) => {
     return stacks.map(top).join('');
 };
 const solve2 = (file) => {
-    return 'MCD'
+    let stacks = parseStacks(file);
+    let moves = parseMoves(file);
+    moves.forEach(move => { stacks = moveInGroup(stacks, move) });
+
+    return stacks.map(top).join('');
 };
 
 module.exports = { solve1, solve2 };
