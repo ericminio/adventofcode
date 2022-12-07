@@ -11,7 +11,7 @@ const inspect = (file) => {
             else if (line.startsWith('$ cd ')) {
                 let name = line.substring(5);
                 current += `/${name}`;
-                console.log(current);
+                console.log(name, current);
             }
         }
         else if (line.startsWith('dir')) {
