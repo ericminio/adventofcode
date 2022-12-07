@@ -1,0 +1,1 @@
+const solve1 = (file) => 7;
