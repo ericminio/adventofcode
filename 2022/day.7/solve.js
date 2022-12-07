@@ -22,16 +22,14 @@ const inspect = (file) => {
         }
         else {
             let size = parseInt(line.substring(0, line.indexOf(' ')));
-            folders.find(folder => folder.name === '/').size += size;
+            folders
+                .filter(folder => current.startsWith(folder.name) || folder.name === '/')
+                .forEach(folder => folder.size += size);
         }
     });
     console.log(folders);
 
-    return [
-        { name: '/a/e', size: 584 },
-        { name: '/a', size: 94853 },
-        { name: '/d', size: 24933642 },
-    ].concat(folders)
+    return folders;
 };
 
 const solve1 = (file) => {
