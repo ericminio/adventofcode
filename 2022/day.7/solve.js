@@ -39,6 +39,9 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
+    const folders = inspect(file);
+    const used = folders.find(folder => folder.name === '/').size;
+    console.log(used);
     return 24933642;
 };
 
