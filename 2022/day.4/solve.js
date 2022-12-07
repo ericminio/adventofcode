@@ -1,9 +1,9 @@
 const { total, lines, parseForNumbers } = require('../support');
 
 const pattern = /^(.*)-(.*),(.*)-(.*)$/;
-const buildAssignments = (data) => ({
-    one: { start: data[0], end: data[1] },
-    two: { start: data[2], end: data[3] },
+const buildAssignments = (numbers) => ({
+    one: { start: numbers[0], end: numbers[1] },
+    two: { start: numbers[2], end: numbers[3] },
 });
 
 const isContaining = (candidate, reference) => candidate.start >= reference.start && candidate.end <= reference.end;
