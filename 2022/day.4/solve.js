@@ -6,8 +6,8 @@ const buildAssignments = (data) => ({
     two: { start: data[2], end: data[3] }
 });
 const isContained = (candidate, reference) => candidate.start >= reference.start && candidate.end <= reference.end;
-const contained = (pair) => isContained(pair.two, pair.one) || isContained(pair.one, pair.two);
-const fullyContained = file => lines(file).map(line => contained(buildAssignments(parseForNumbers(line, pattern))));
+const shouldReconsider = (pair) => isContained(pair.two, pair.one) || isContained(pair.one, pair.two);
+const fullyContained = file => lines(file).map(line => shouldReconsider(buildAssignments(parseForNumbers(line, pattern))));
 
 const solve1 = (file) => {
     return total(fullyContained(file));
