@@ -1,6 +1,6 @@
-const first = (stack) => stack[0];
+const first = (stack) => stack[stack.length - 1];
 const rearrange = (stacks, move) => {
-    return [['C'], ['M'], ['Z', 'N', 'D', 'P']];
+    return [['C'], ['M'], ['P', 'D', 'N', 'Z']];
 }
 
 const solve1 = (file) => {
