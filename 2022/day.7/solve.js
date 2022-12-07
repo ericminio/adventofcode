@@ -8,17 +8,15 @@ const inspect = (file) => {
     let folders = [];
     let current = '';
     lines(file).forEach(line => {
-        if (isCommand(line)) {
-            if (isChangeDirToParent(line)) {
-                current = current.substring(0, current.lastIndexOf('/'))
-            }
-            else if (isChangeDirDown(line)) {
-                let name = line.substring(5).trim();
-                current = name === '/' ? name : current + `/${name}`;
-                folders.push({ name: current, size: 0 });
-            }
+        if (isChangeDirToParent(line)) {
+            current = current.substring(0, current.lastIndexOf('/'))
         }
-        else if (isFileInfo(line)) {
+        if (isChangeDirDown(line)) {
+            let name = line.substring(5).trim();
+            current = name === '/' ? name : current + `/${name}`;
+            folders.push({ name: current, size: 0 });
+        }
+        if (isFileInfo(line)) {
             let size = parseInt(line.substring(0, line.indexOf(' ')));
             folders
                 .filter(folder => current.startsWith(folder.name))
