@@ -14,7 +14,7 @@ const inspect = (file) => {
             folders.find(folder => folder.name === '/').size += size;
         }
     });
-
+    console.log(folders)
     return [
         { name: '/a/e', size: 584 },
         { name: '/a', size: 94853 },
