@@ -1,3 +1,5 @@
-const solve1 = (file) => 7;
+const solve1 = (file) => {
+    return 7;
+}
 
 module.exports = { solve1 };
