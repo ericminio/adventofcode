@@ -1,6 +1,11 @@
 const { groups, extractor } = require('../support');
 
 const pattern = /^move\s(.*)\sfrom\s(.*)\sto\s(.*)$/;
+const builder = (data) => ({
+    count: parseInt(data[0]),
+    from: parseInt(data[1]) - 1,
+    to: parseInt(data[2]) - 1,
+});
 const parseMoves = (file) => groups(file)[1].map(extractor(pattern)).map(builder);
 
 const top = (stack) => stack[stack.length - 1];
@@ -23,10 +28,5 @@ const parseStacks = (file) => {
     return [['Z', 'N'], ['M', 'C', 'D'], ['P']];
 };
 
-const builder = (data) => ({
-    count: parseInt(data[0]),
-    from: parseInt(data[1]) - 1,
-    to: parseInt(data[2]) - 1,
-});
 
 module.exports = { solve1 };
