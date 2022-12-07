@@ -1,7 +1,7 @@
 const { total, lines, extractor, isInside, isOverlapping } = require('../support');
 
 const pattern = /^(.*)-(.*),(.*)-(.*)$/;
-const parse = (data) => data.map(value => parseInt(value));
+const parse = data => data.map(value => parseInt(value));
 const buildAssignments = (data) => ({
     one: { start: data[0], end: data[1] },
     two: { start: data[2], end: data[3] },
