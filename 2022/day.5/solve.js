@@ -27,7 +27,7 @@ const parseStacks = (file) => {
 };
 
 const top = (stack) => stack[stack.length - 1];
-const rearrange = (stacks, move) => {
+const moveOneByOne = (stacks, move) => {
     for (var i = 0; i < move.count; i++) {
         stacks[move.to].push(stacks[move.from].pop());
     }
@@ -37,7 +37,7 @@ const rearrange = (stacks, move) => {
 const solve1 = (file) => {
     let stacks = parseStacks(file);
     let moves = parseMoves(file);
-    moves.forEach(move => { stacks = rearrange(stacks, move) });
+    moves.forEach(move => { stacks = moveOneByOne(stacks, move) });
 
     return stacks.map(top).join('');
 };
