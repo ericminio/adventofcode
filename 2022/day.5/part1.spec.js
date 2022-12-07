@@ -7,7 +7,7 @@ describe('2022.5.1', () => {
         expect(solve1(`${__dirname}/data/example.txt`)).to.equal('CMZ');
     });
     it('is solved', () => {
-        expect(solve1(`${__dirname}/data/example.txt`)).to.equal('CMZ');
+        expect(solve1(`${__dirname}/data/input.txt`)).to.equal('WHTLRMZRC');
     });
 });
 
