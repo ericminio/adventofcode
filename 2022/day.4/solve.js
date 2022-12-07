@@ -5,13 +5,12 @@ const buildAssignments = (data) => ({
     one: { start: data[0], end: data[1] },
     two: { start: data[2], end: data[3] },
 });
-
-const areContaining = pair => isInside(pair.two, pair.one) || isInside(pair.one, pair.two);
-const containing = file => lines(file)
+const assignments = (file) => lines(file)
     .map(parser(pattern))
     .map(data => data.map(value => parseInt(value)))
-    .map(buildAssignments)
-    .map(areContaining);
+    .map(buildAssignments);
+const areContaining = pair => isInside(pair.two, pair.one) || isInside(pair.one, pair.two);
+const containing = file => assignments(file).map(areContaining);
 
 const areOverlapping = pair => isOverlapping(pair.one, pair.two);
 const overlapping = file => lines(file)
