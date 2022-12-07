@@ -8,8 +8,8 @@ const builder = (numbers) => ({
 });
 const pairs = (file) => lines(file).map(extractor(pattern)).map(parse).map(builder);
 
-const areContaining = pair => isInside(pair.two, pair.one) || isInside(pair.one, pair.two);
-const containing = file => pairs(file).map(areContaining);
+const isContainingPair = pair => isInside(pair.two, pair.one) || isInside(pair.one, pair.two);
+const containing = file => pairs(file).map(isContainingPair);
 
 const isOverlappingPair = pair => isOverlapping(pair.one, pair.two);
 const overlapping = file => pairs(file).map(isOverlappingPair);
