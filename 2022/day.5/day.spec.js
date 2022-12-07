@@ -16,5 +16,8 @@ describe('2022.5.2', () => {
     it('has an example', () => {
         expect(solve2(`${__dirname}/data/example.txt`)).to.equal('MCD');
     });
+    it('is solved again', () => {
+        expect(solve2(`${__dirname}/data/example.txt`)).to.equal('MCD');
+    });
 });
 
