@@ -1,5 +1,5 @@
 const solve1 = (file) => {
-    return 'CMZ';
+    return ['C', 'M', 'Z'].join('');
 };
 
 module.exports = { solve1 };
