@@ -13,6 +13,7 @@ const inspect = (file) => {
                 if (name !== '/') {
                     current += `/${name}`;
                     console.log(name, current);
+                    folders.push({ name: current, size: 0 });
                 }
             }
         }
@@ -24,6 +25,7 @@ const inspect = (file) => {
             folders.find(folder => folder.name === '/').size += size;
         }
     });
+    console.log(folders);
 
     return [
         { name: '/a/e', size: 584 },
