@@ -1,4 +1,4 @@
-const { total, lines, parse, parseForNumbers, isInside, isOverlapping } = require('../support');
+const { total, lines, parser, parse, parseForNumbers, isInside, isOverlapping } = require('../support');
 
 const pattern = /^(.*)-(.*),(.*)-(.*)$/;
 const buildAssignments = (data) => ({
@@ -14,7 +14,7 @@ const containing = file => lines(file)
 
 const areOverlapping = pair => isOverlapping(pair.one, pair.two);
 const overlapping = file => lines(file)
-    .map(line => parse(line, pattern))
+    .map(parser(pattern))
     .map(data => data.map(value => parseInt(value)))
     .map(buildAssignments)
     .map(areOverlapping);
