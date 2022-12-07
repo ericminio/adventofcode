@@ -18,14 +18,7 @@ const solve1 = (file) => {
 
 const parseMoves = (file) => {
     const pattern = /^move\s(.*)\sfrom\s(.*)\sto\s(.*)$/;
-    const moves = groups(file)[1].map(extractor(pattern)).map(builder)
-    console.log(moves)
-    return [
-        { count: 1, from: 1, to: 0 },
-        { count: 3, from: 0, to: 2 },
-        { count: 2, from: 1, to: 0 },
-        { count: 1, from: 0, to: 1 },
-    ];
+    return groups(file)[1].map(extractor(pattern)).map(builder);
 };
 const parseStacks = (file) => {
     return [['Z', 'N'], ['M', 'C', 'D'], ['P']];
