@@ -9,7 +9,7 @@ const isContained = (candidate, reference) => candidate.start >= reference.start
 const shouldReconsider = (pair) => isContained(pair.two, pair.one) || isContained(pair.one, pair.two);
 const toReconsider = file => lines(file).map(line => shouldReconsider(buildAssignments(parseForNumbers(line, pattern))));
 
-const isOverlapping = (candidate, reference) => 1;
+const isOverlapping = (candidate, reference) => candidate.end >= reference.start && candidate.start <= reference.end;
 const areOverlapping = (pair) => isOverlapping(pair.one, pair.two) || isOverlapping(pair.two, pair.one);
 const overlapping = (file) => [
     0, 0,
