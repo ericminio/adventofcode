@@ -8,6 +8,10 @@ const isFileInfo = (line) => !isCommand(line) && !line.startsWith('dir');
 const fileInfoPattern = /^(.*)\s(.*)$/;
 
 const initialFolderInfo = (name) => ({ name, size: 0 });
+const fileInfo = (line) => {
+    let data = fileInfoPattern.exec(line);
+    return { size: parseInt(data[1]) };
+};
 const inspect = (file) => {
     let folders = [];
     let current = '';
@@ -21,10 +25,10 @@ const inspect = (file) => {
             folders.push(initialFolderInfo(current));
         }
         if (isFileInfo(line)) {
-            let size = parseInt(fileInfoPattern.exec(line)[1]);
+            let file = fileInfo(line);
             folders
                 .filter(folder => current.startsWith(folder.name))
-                .forEach(folder => folder.size += size);
+                .forEach(folder => folder.size += file.size);
         }
     });
 
