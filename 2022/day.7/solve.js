@@ -3,7 +3,7 @@ const { lines, total } = require('../support');
 const separator = '/';
 const isCommand = (line) => line.startsWith('$');
 const isChangeDirUpCommand = (line) => line === '$ cd ..';
-const isChangeDirDown = (line) => line.startsWith('$ cd ') && !isChangeDirUpCommand(line);
+const isChangeDirDownCommand = (line) => line.startsWith('$ cd ') && !isChangeDirUpCommand(line);
 const isFileInfo = (line) => !isCommand(line) && !line.startsWith('dir');
 const fileInfoPattern = /^(.*)\s(.*)$/;
 
@@ -15,7 +15,7 @@ const inspect = (file) => {
         if (isChangeDirUpCommand(line)) {
             current = current.substring(0, current.lastIndexOf(separator))
         }
-        if (isChangeDirDown(line)) {
+        if (isChangeDirDownCommand(line)) {
             let name = line.substring(5).trim();
             current = name === separator ? separator : current + `${separator}${name}`;
             folders.push(buildFolderInfo(current));
