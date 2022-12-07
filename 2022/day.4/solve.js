@@ -1,6 +1,8 @@
 const { total, lines } = require('../support');
 
-const parse = (line) => ({ one: { start: 2, end: 6 }, two: { start: 4, end: 8 } });
+const parse = (line) => {
+    return { one: { start: 2, end: 6 }, two: { start: 4, end: 8 } };
+};
 const isContained = (candidate, reference) => candidate.start >= reference.start && candidate.end <= reference.end;
 const contained = (pair) => isContained(pair.two, pair.one) || isContained(pair.one, pair.two);
 const fullyContained = file => [
