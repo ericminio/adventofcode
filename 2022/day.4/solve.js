@@ -1,17 +1,15 @@
 const { total, lines } = require('../support');
 
-const parse = (line) => {
-    let pattern = /^(.*)-(.*),(.*)-(.*)$/
-    let data = pattern.exec(line).splice(1).map(item => parseInt(item));
-    return { one: { start: data[0], end: 6 }, two: { start: 4, end: 8 } };
-};
+const pattern = /^(.*)-(.*),(.*)-(.*)$/;
+const parse = (line) => pattern.exec(line).splice(1).map(item => parseInt(item));
+const build = (data) => ({ one: { start: data[0], end: data[1] }, two: { start: data[2], end: data[3] } });
 const isContained = (candidate, reference) => candidate.start >= reference.start && candidate.end <= reference.end;
 const contained = (pair) => isContained(pair.two, pair.one) || isContained(pair.one, pair.two);
 const fullyContained = file => [
     0, 0, 0,
     contained({ one: { start: 2, end: 8 }, two: { start: 3, end: 7 } }),
     contained({ one: { start: 6, end: 6 }, two: { start: 4, end: 6 } }),
-    contained(parse('2-6,4-8'))
+    contained(build(parse('2-6,4-8')))
 ];
 
 const solve1 = (file) => {
