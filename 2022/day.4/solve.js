@@ -2,9 +2,9 @@ const { total, lines, extractor, isInside, isOverlapping } = require('../support
 
 const pattern = /^(.*)-(.*),(.*)-(.*)$/;
 const parse = data => data.map(value => parseInt(value));
-const buildAssignments = (data) => ({
-    one: { start: data[0], end: data[1] },
-    two: { start: data[2], end: data[3] },
+const buildAssignments = (numbers) => ({
+    one: { start: numbers[0], end: numbers[1] },
+    two: { start: numbers[2], end: numbers[3] },
 });
 const assignments = (file) => lines(file)
     .map(extractor(pattern))
