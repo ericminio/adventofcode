@@ -17,7 +17,7 @@ describe('2022.5.2', () => {
         expect(solve2(`${__dirname}/data/example.txt`)).to.equal('MCD');
     });
     it('is solved again', () => {
-        expect(solve2(`${__dirname}/data/example.txt`)).to.equal('MCD');
+        expect(solve2(`${__dirname}/data/input.txt`)).to.equal('GMPMLWNMG');
     });
 });
 
