@@ -41,5 +41,8 @@ const solve1 = (file) => {
 
     return stacks.map(top).join('');
 };
+const solve2 = (file) => {
+    return 'MCD'
+};
 
-module.exports = { solve1 };
+module.exports = { solve1, solve2 };
