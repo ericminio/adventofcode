@@ -9,16 +9,13 @@ const builder = (numbers) => ({
 const pairs = (file) => lines(file).map(extractor(pattern)).map(parse).map(builder);
 
 const isContainingPair = pair => isInside(pair.two, pair.one) || isInside(pair.one, pair.two);
-const containing = file => pairs(file).map(isContainingPair);
-
 const isOverlappingPair = pair => isOverlapping(pair.one, pair.two);
-const overlapping = file => pairs(file).map(isOverlappingPair);
 
 const solve1 = (file) => {
-    return total(containing(file));
+    return total(pairs(file).map(isContainingPair));
 };
 const solve2 = (file) => {
-    return total(overlapping(file));
+    return total(pairs(file).map(isOverlappingPair));
 };
 
 module.exports = { solve1, solve2 };
