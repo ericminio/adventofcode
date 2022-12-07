@@ -11,7 +11,6 @@ const parseStacks = (file) => {
     const initial = groups(file)[0]
         .map(line => line.match(/.{1,4}/g))
         .map(line => line.map(item => item.trim()));
-    console.log(initial);
     const size = initial[0].length;
     let stacks = [];
     for (var i = 0; i < size; i++) {
@@ -24,7 +23,6 @@ const parseStacks = (file) => {
         }
         stacks.push(stack);
     }
-    console.log(stacks);
     return stacks;
 };
 
