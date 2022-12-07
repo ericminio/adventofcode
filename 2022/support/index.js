@@ -26,6 +26,7 @@ const isInside = (reference, candidate) => candidate.start >= reference.start &&
 const isOverlapping = (reference, candidate) => candidate.end >= reference.start && candidate.start <= reference.end;
 
 module.exports = {
+    input,
     lines,
     groups,
     groupsOf,
