@@ -7,7 +7,7 @@ const isChangeDirDownCommand = (line) => line.startsWith('$ cd ') && !isChangeDi
 const isFileInfo = (line) => !isCommand(line) && !line.startsWith('dir');
 const fileInfoPattern = /^(.*)\s(.*)$/;
 
-const buildFolderInfo = (name) => ({ name, size: 0 });
+const initialFolderInfo = (name) => ({ name, size: 0 });
 const inspect = (file) => {
     let folders = [];
     let current = '';
@@ -18,7 +18,7 @@ const inspect = (file) => {
         if (isChangeDirDownCommand(line)) {
             let name = line.substring(5).trim();
             current = name === separator ? separator : current + `${separator}${name}`;
-            folders.push(buildFolderInfo(current));
+            folders.push(initialFolderInfo(current));
         }
         if (isFileInfo(line)) {
             let size = parseInt(fileInfoPattern.exec(line)[1]);
