@@ -8,7 +8,7 @@ const contained = (pair) => isContained(pair.two, pair.one) || isContained(pair.
 const fullyContained = file => [
     0, 0, 0,
     contained({ one: { start: 2, end: 8 }, two: { start: 3, end: 7 } }),
-    contained({ one: { start: 6, end: 6 }, two: { start: 4, end: 6 } }),
+    contained(build(parse('6-6,4-6'))),
     contained(build(parse('2-6,4-8')))
 ];
 
