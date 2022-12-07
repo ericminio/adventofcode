@@ -3,7 +3,7 @@ const { total, lines } = require('../support');
 const parse = (line) => {
     let pattern = /^(.*)-(.*),(.*)-(.*)$/
     let data = pattern.exec(line);
-    console.log(data);
+    console.log(data.splice(1));
     return { one: { start: 2, end: 6 }, two: { start: 4, end: 8 } };
 };
 const isContained = (candidate, reference) => candidate.start >= reference.start && candidate.end <= reference.end;
