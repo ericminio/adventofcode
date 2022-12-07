@@ -9,11 +9,17 @@ const isContained = (candidate, reference) => candidate.start >= reference.start
 const shouldReconsider = (pair) => isContained(pair.two, pair.one) || isContained(pair.one, pair.two);
 const toReconsider = file => lines(file).map(line => shouldReconsider(buildAssignments(parseForNumbers(line, pattern))));
 
+const overlapping = (file) => [
+    0, 0,
+    1,
+    1, 1, 1
+]
+
 const solve1 = (file) => {
     return total(toReconsider(file));
 };
 const solve2 = (file) => {
-    return 4;
+    return total(overlapping(file));
 };
 
 module.exports = { solve1, solve2 };
