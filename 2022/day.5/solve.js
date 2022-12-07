@@ -1,5 +1,7 @@
 const first = (stack) => stack[0];
-const rearrange = (stacks, move) => [['C'], ['M'], ['Z', 'N', 'D', 'P']];
+const rearrange = (stacks, move) => {
+    return [['C'], ['M'], ['Z', 'N', 'D', 'P']];
+}
 
 const solve1 = (file) => {
     let current = [['M', 'C'], [], ['Z', 'N', 'D', 'P']];
