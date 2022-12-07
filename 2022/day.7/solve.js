@@ -1,12 +1,13 @@
 const { lines, total } = require('../support');
 
 const isCommand = (line) => line.startsWith('$');
+const isChangeDirToParent = (line) => line.startsWith('$ cd ..');
 const inspect = (file) => {
     let folders = [];
     let current = '';
     lines(file).forEach(line => {
         if (isCommand(line)) {
-            if (line.startsWith('$ cd ..')) {
+            if (isChangeDirToParent(line)) {
                 current = current.substring(0, current.lastIndexOf('/'))
             }
             else if (line.startsWith('$ cd ')) {
