@@ -8,7 +8,7 @@ const builder = (data) => ({
 });
 const parseMoves = (file) => groups(file)[1].map(extractor(pattern)).map(builder);
 const parseStacks = (file) => {
-    const initial = groups(file)[0];
+    const initial = groups(file)[0].map(line => line.match(/.{1,3}/g));
     console.log(initial);
     return [['Z', 'N'], ['M', 'C', 'D'], ['P']];
 };
