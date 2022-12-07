@@ -6,6 +6,7 @@ const isChangeDirToParent = (line) => line === '$ cd ..';
 const isChangeDirDown = (line) => line.startsWith('$ cd ') && !isChangeDirToParent(line);
 const isFileInfo = (line) => !isCommand(line) && !line.startsWith('dir');
 const fileInfoPattern = /^(.*)\s(.*)$/;
+const folderInfoBuilder = (name) => ({ name, size: 0 });
 const inspect = (file) => {
     let folders = [];
     let current = '';
