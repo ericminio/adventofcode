@@ -24,6 +24,7 @@ const parseStacks = (file) => {
         }
         stacks.push(stack);
     }
+    console.log(stacks);
     return [['Z', 'N'], ['M', 'C', 'D'], ['P']];
 };
 
