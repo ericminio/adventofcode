@@ -2,9 +2,8 @@ const { total, lines } = require('../support');
 
 const parse = (line) => {
     let pattern = /^(.*)-(.*),(.*)-(.*)$/
-    let data = pattern.exec(line);
-    console.log(data.splice(1).map(item => parseInt(item)));
-    return { one: { start: 2, end: 6 }, two: { start: 4, end: 8 } };
+    let data = pattern.exec(line).splice(1).map(item => parseInt(item));
+    return { one: { start: data[0], end: 6 }, two: { start: 4, end: 8 } };
 };
 const isContained = (candidate, reference) => candidate.start >= reference.start && candidate.end <= reference.end;
 const contained = (pair) => isContained(pair.two, pair.one) || isContained(pair.one, pair.two);
