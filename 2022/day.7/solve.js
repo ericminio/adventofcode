@@ -41,7 +41,7 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const folders = inspect(file);
     const used = folders.find(folder => folder.name === '/').size;
-    const unused = 30000000 - used;
+    const unused = 70000000 - used;
     console.log(unused);
     return 24933642;
 };
