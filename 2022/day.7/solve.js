@@ -8,6 +8,9 @@ const inspect = (file) => {
             if (line.startsWith('$ cd ..')) {
 
             }
+            else if (line.startsWith('$ cd ')) {
+
+            }
         }
         else if (line.startsWith('dir')) {
 
