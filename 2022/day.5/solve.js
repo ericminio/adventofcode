@@ -4,7 +4,7 @@ const rearrange = (stacks, move) => {
 }
 
 const solve1 = (file) => {
-    let current = [['M', 'C'], [], ['Z', 'N', 'D', 'P']];
+    let current = [['C', 'M'], [], ['P', 'D', 'N', 'Z']];
     let next = rearrange(current, { count: 1, from: 0, to: 1 });
     return next.map(first).join('');
 };
