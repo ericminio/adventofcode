@@ -3,6 +3,7 @@ const { lines, total } = require('../support');
 const isCommand = (line) => line.startsWith('$');
 const isChangeDirToParent = (line) => line.startsWith('$ cd ..');
 const isChangeDirDown = (line) => line.startsWith('$ cd ');
+const isFileInfo = (line) => !line.startsWith('dir');
 const inspect = (file) => {
     let folders = [];
     let current = '';
@@ -17,7 +18,7 @@ const inspect = (file) => {
                 folders.push({ name: current, size: 0 });
             }
         }
-        else if (!line.startsWith('dir')) {
+        else if (isFileInfo(line)) {
             let size = parseInt(line.substring(0, line.indexOf(' ')));
             folders
                 .filter(folder => current.startsWith(folder.name))
