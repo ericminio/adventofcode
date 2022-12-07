@@ -7,7 +7,7 @@ const rearrange = (stacks, move) => {
 }
 
 const solve1 = (file) => {
-    let stacks = [['Z', 'N'], ['M', 'C', 'D'], ['P']];
+    let stacks = parseStacks(file);
     let moves = parseMoves(file);
     moves.forEach(move => { stacks = rearrange(stacks, move) });
 
@@ -21,6 +21,9 @@ const parseMoves = (file) => {
         { count: 2, from: 1, to: 0 },
         { count: 1, from: 0, to: 1 },
     ];
+};
+const parseStacks = (file) => {
+    return [['Z', 'N'], ['M', 'C', 'D'], ['P']];
 }
 
 module.exports = { solve1 };
