@@ -1,4 +1,4 @@
-const { total, lines, parser, parse, parseForNumbers, isInside, isOverlapping } = require('../support');
+const { total, lines, parser, isInside, isOverlapping } = require('../support');
 
 const pattern = /^(.*)-(.*),(.*)-(.*)$/;
 const buildAssignments = (data) => ({
