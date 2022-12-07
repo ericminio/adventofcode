@@ -25,7 +25,7 @@ const inspect = (file) => {
         else {
             let size = parseInt(line.substring(0, line.indexOf(' ')));
             folders
-                .filter(folder => current.startsWith(folder.name) || folder.name === '/')
+                .filter(folder => current.startsWith(folder.name))
                 .forEach(folder => folder.size += size);
         }
     });
