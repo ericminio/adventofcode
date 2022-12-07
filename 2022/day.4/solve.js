@@ -7,12 +7,12 @@ const buildAssignments = (data) => ({
 });
 
 const isContaining = (candidate, reference) => candidate.start >= reference.start && candidate.end <= reference.end;
-const areContaining = (pair) => isContaining(pair.two, pair.one) || isContaining(pair.one, pair.two);
+const areContaining = pair => isContaining(pair.two, pair.one) || isContaining(pair.one, pair.two);
 const containing = file => lines(file).map(line => areContaining(buildAssignments(parseForNumbers(line, pattern))));
 
 const isOverlapping = (candidate, reference) => candidate.end >= reference.start && candidate.start <= reference.end;
-const areOverlapping = (pair) => isOverlapping(pair.one, pair.two);
-const overlapping = (file) => lines(file).map(line => areOverlapping(buildAssignments(parseForNumbers(line, pattern))));
+const areOverlapping = pair => isOverlapping(pair.one, pair.two);
+const overlapping = file => lines(file).map(line => areOverlapping(buildAssignments(parseForNumbers(line, pattern))));
 
 const solve1 = (file) => {
     return total(containing(file));
