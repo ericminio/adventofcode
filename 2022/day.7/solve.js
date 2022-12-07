@@ -22,7 +22,7 @@ const inspect = (file) => {
         else if (line.startsWith('dir')) {
 
         }
-        else {
+        else if (!line.startsWith('dir')) {
             let size = parseInt(line.substring(0, line.indexOf(' ')));
             folders
                 .filter(folder => current.startsWith(folder.name))
