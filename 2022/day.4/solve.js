@@ -5,6 +5,7 @@ const buildAssignments = (data) => ({
     one: { start: data[0], end: data[1] },
     two: { start: data[2], end: data[3] }
 });
+
 const isContaining = (candidate, reference) => candidate.start >= reference.start && candidate.end <= reference.end;
 const areContaining = (pair) => isContaining(pair.two, pair.one) || isContaining(pair.one, pair.two);
 const containing = file => lines(file).map(line => areContaining(buildAssignments(parseForNumbers(line, pattern))));
