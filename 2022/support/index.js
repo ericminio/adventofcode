@@ -23,6 +23,9 @@ const orderDescending = (array) => { array.sort((a, b) => b - a); }
 const parse = (line, pattern) => pattern.exec(line).splice(1);
 const parseForNumbers = (line, pattern) => parse(line, pattern).map(item => parseInt(item));
 
+const isInside = (reference, candidate) => candidate.start >= reference.start && candidate.end <= reference.end;
+const isOverlapping = (reference, candidate) => candidate.end >= reference.start && candidate.start <= reference.end;
+
 module.exports = {
     lines,
     groupsOf,
@@ -31,4 +34,6 @@ module.exports = {
     orderDescending,
     parse,
     parseForNumbers,
+    isInside,
+    isOverlapping,
 };
