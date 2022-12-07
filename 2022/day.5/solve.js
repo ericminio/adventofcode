@@ -24,7 +24,6 @@ const parseStacks = (file) => {
     return [['Z', 'N'], ['M', 'C', 'D'], ['P']];
 };
 
-
 const builder = (data) => ({
     count: parseInt(data[0]),
     from: parseInt(data[1]) - 1,
