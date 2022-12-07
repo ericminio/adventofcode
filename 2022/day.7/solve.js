@@ -19,9 +19,6 @@ const inspect = (file) => {
                 folders.push({ name: current, size: 0 });
             }
         }
-        else if (line.startsWith('dir')) {
-
-        }
         else if (!line.startsWith('dir')) {
             let size = parseInt(line.substring(0, line.indexOf(' ')));
             folders
