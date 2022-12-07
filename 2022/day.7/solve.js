@@ -17,7 +17,7 @@ const inspect = (file) => {
         if (isChangeDirDown(line)) {
             let name = line.substring(5).trim();
             current = name === separator ? separator : current + `${separator}${name}`;
-            folders.push({ name: current, size: 0 });
+            folders.push(folderInfoBuilder(current));
         }
         if (isFileInfo(line)) {
             let size = parseInt(fileInfoPattern.exec(line)[1]);
