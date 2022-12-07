@@ -1,6 +1,7 @@
 const { total, lines } = require('../support');
 
-const contained = (pair) => 1;
+const isContained = (assignment) => 1;
+const contained = (pair) => isContained(pair.two, pair.one);
 const fullyContained = file => [0, 0, 0, 1, contained({ one: { start: 2, end: 8 }, two: { start: 3, end: 7 } }), 0];
 
 const solve1 = (file) => {
