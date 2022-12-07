@@ -7,11 +7,11 @@ const isChangeDirDownCommand = (line) => line.startsWith('$ cd ') && !isChangeDi
 const isFileInfo = (line) => !isCommand(line) && !line.startsWith('dir');
 const fileInfoPattern = /^(.*)\s(.*)$/;
 
-const initialFolderInfo = (name) => ({ name, size: 0 });
 const fileInfo = (line) => {
     let data = fileInfoPattern.exec(line);
     return { size: parseInt(data[1]) };
 };
+const initialFolderInfo = (name) => ({ name, size: 0 });
 const inspect = (file) => {
     let folders = [];
     let current = '';
