@@ -46,8 +46,7 @@ const solve2 = (file) => {
     const candidates = folders.filter(folder => folder.size >= needed);
     candidates.sort((a, b) => a.size - b.size);
 
-    console.log(candidates);
-    return 24933642;
+    return candidates[0].size;
 };
 
 module.exports = { solve1, solve2 };
