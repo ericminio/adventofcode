@@ -12,7 +12,6 @@ const inspect = (file) => {
                 let name = line.substring(5).trim();
                 if (name !== '/') {
                     current += `/${name}`;
-                    console.log(name, current);
                     folders.push({ name: current, size: 0 });
                 }
             }
