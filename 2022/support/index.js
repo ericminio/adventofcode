@@ -20,9 +20,7 @@ const groupsOfNumbers = (file) => groups(file).map(items => items.map(item => nu
 const total = (array) => array.reduce((acc, current) => acc += current, 0);
 const orderDescending = (array) => { array.sort((a, b) => b - a); }
 
-const parser = (pattern) => (line) => pattern.exec(line).splice(1);
-const parse = (line, pattern) => pattern.exec(line).splice(1);
-const parseForNumbers = (line, pattern) => parse(line, pattern).map(item => parseInt(item));
+const extractor = (pattern) => (line) => pattern.exec(line).splice(1);
 
 const isInside = (reference, candidate) => candidate.start >= reference.start && candidate.end <= reference.end;
 const isOverlapping = (reference, candidate) => candidate.end >= reference.start && candidate.start <= reference.end;
@@ -33,9 +31,7 @@ module.exports = {
     groupsOfNumbers,
     total,
     orderDescending,
-    parser,
-    parse,
-    parseForNumbers,
+    extractor,
     isInside,
     isOverlapping,
 };
