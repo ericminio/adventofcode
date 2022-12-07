@@ -8,13 +8,15 @@ describe('2022.?.1', () => {
         it('has an example', () => {
             expect(solve1(`${__dirname}/data/example.txt`)).to.equal(42);
         });
+
     });
-});
 
-describe('2022.?.2', () => {
+    describe('part 2', () => {
 
-    it('has an example', () => {
-        expect(solve2(`${__dirname}/data/example.txt`)).to.equal(15);
+        it('has an example', () => {
+            expect(solve2(`${__dirname}/data/example.txt`)).to.equal(15);
+        });
+
     });
 });
 
