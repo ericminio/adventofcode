@@ -1,6 +1,6 @@
 const first = (stack) => stack[stack.length - 1];
 const rearrange = (stacks, move) => {
-    stacks[1].push(stacks[0].pop());
+    stacks[move.to].push(stacks[move.from].pop());
     return stacks;
 }
 
