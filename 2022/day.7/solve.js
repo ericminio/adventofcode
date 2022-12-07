@@ -14,7 +14,7 @@ const inspect = (file) => {
                     current = '/';
                 }
                 else {
-                    current += `/${name}`;
+                    current = current + `/${name}`;
                 }
                 folders.push({ name: current, size: 0 });
             }
