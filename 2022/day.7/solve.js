@@ -5,9 +5,8 @@ const isCommand = (line) => line.startsWith('$');
 const isChangeDirUpCommand = (line) => line === '$ cd ..';
 const isChangeDirDownCommand = (line) => line.startsWith('$ cd ') && !isChangeDirUpCommand(line);
 const isFileInfo = (line) => !isCommand(line) && !line.startsWith('dir');
-const fileInfoPattern = /^(.*)\s(.*)$/;
 const fileInfo = (line) => {
-    let data = fileInfoPattern.exec(line);
+    let data = /^(.*)\s(.*)$/.exec(line);
     return { size: parseInt(data[1]) };
 };
 
