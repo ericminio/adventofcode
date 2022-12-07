@@ -12,9 +12,11 @@ const solve1 = (file) => {
             else {
                 marker[digit]++;
             }
+            if (Object.keys(marker).length == 4) {
+                return i + 1;
+            }
         }
     }
-    return 7;
 }
 
 module.exports = { solve1 };
