@@ -15,6 +15,7 @@ const solve1 = (file) => {
         { count: 1, from: 0, to: 1 },
     ];
     moves.forEach(move => { stacks = rearrange(stacks, move) });
+
     return stacks.map(top).join('');
 };
 
