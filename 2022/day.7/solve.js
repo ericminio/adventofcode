@@ -4,6 +4,8 @@ const inspect = (file) => {
     let folders = [];
     let current = '';
     lines(file);
+
+
     return [
         { name: '/a/e', size: 584 },
         { name: '/a', size: 94853 },
