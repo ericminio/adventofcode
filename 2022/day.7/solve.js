@@ -6,7 +6,7 @@ const inspect = (file) => {
     lines(file).forEach(line => {
         if (line.startsWith('$')) {
             if (line.startsWith('$ cd ..')) {
-
+                current = current.substring(0, current.lastIndexOf('/'))
             }
             else if (line.startsWith('$ cd ')) {
                 let name = line.substring(5);
