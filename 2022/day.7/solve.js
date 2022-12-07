@@ -19,7 +19,7 @@ const inspect = (file) => {
             folders.push({ name: current, size: 0 });
         }
         if (isFileInfo(line)) {
-            let size = parseInt(line.substring(0, line.indexOf(' ')));
+            let size = parseInt(fileInfoPattern.exec(line)[1]);
             folders
                 .filter(folder => current.startsWith(folder.name))
                 .forEach(folder => folder.size += size);
