@@ -8,7 +8,8 @@ const buildAssignments = (data) => ({
 
 const areContaining = pair => isInside(pair.two, pair.one) || isInside(pair.one, pair.two);
 const containing = file => lines(file)
-    .map(line => parseForNumbers(line, pattern))
+    .map(parser(pattern))
+    .map(data => data.map(value => parseInt(value)))
     .map(buildAssignments)
     .map(areContaining);
 
