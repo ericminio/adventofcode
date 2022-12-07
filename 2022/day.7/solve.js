@@ -1,6 +1,7 @@
-const { total } = require('../support');
+const { lines, total } = require('../support');
 
 const inspect = (file) => {
+    lines(file);
     return [
         { name: '/a/e', size: 584 },
         { name: '/a', size: 94853 },
