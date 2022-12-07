@@ -10,12 +10,7 @@ const inspect = (file) => {
             }
             else if (line.startsWith('$ cd ')) {
                 let name = line.substring(5).trim();
-                if (name === '/') {
-                    current = '/';
-                }
-                else {
-                    current = current + `/${name}`;
-                }
+                current = name === '/' ? name : current + `/${name}`;
                 folders.push({ name: current, size: 0 });
             }
         }
