@@ -2,4 +2,4 @@ const solve1 = (file) => {
     return 'CMZ';
 };
 
-module.exports = { solve1 }
+module.exports = { solve1 };
