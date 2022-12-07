@@ -11,6 +11,7 @@ const inspect = (file) => {
 
         }
         else {
+            let size = parseInt(line.substring(0, line.indexOf(' ')));
 
         }
     });
