@@ -13,11 +13,7 @@ const areContaining = pair => isInside(pair.two, pair.one) || isInside(pair.one,
 const containing = file => assignments(file).map(areContaining);
 
 const areOverlapping = pair => isOverlapping(pair.one, pair.two);
-const overlapping = file => lines(file)
-    .map(parser(pattern))
-    .map(data => data.map(value => parseInt(value)))
-    .map(buildAssignments)
-    .map(areOverlapping);
+const overlapping = file => assignments(file).map(areOverlapping);
 
 const solve1 = (file) => {
     return total(containing(file));
