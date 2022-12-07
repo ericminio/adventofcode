@@ -12,6 +12,8 @@ const parseStacks = (file) => {
         .map(line => line.match(/.{1,4}/g))
         .map(line => line.map(item => item.trim()));
     console.log(initial);
+    const size = initial[0].length;
+    console.log(size);
     return [['Z', 'N'], ['M', 'C', 'D'], ['P']];
 };
 
