@@ -1,12 +1,11 @@
 const { total, lines, extractor, isInside, isOverlapping } = require('../support');
 
 const pattern = /^(.*)-(.*),(.*)-(.*)$/;
-const parse = data => data.map(value => parseInt(value));
-const builder = (numbers) => ({
-    one: { start: numbers[0], end: numbers[1] },
-    two: { start: numbers[2], end: numbers[3] },
+const builder = (data) => ({
+    one: { start: parseInt(data[0]), end: parseInt(data[1]) },
+    two: { start: parseInt(data[2]), end: parseInt(data[3]) },
 });
-const pairs = (file) => lines(file).map(extractor(pattern)).map(parse).map(builder);
+const pairs = (file) => lines(file).map(extractor(pattern)).map(builder);
 
 const isContainingPair = pair => isInside(pair.two, pair.one) || isInside(pair.one, pair.two);
 const isOverlappingPair = pair => isOverlapping(pair.one, pair.two);
