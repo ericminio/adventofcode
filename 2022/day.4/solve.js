@@ -11,8 +11,8 @@ const pairs = (file) => lines(file).map(extractor(pattern)).map(parse).map(build
 const areContaining = pair => isInside(pair.two, pair.one) || isInside(pair.one, pair.two);
 const containing = file => pairs(file).map(areContaining);
 
-const areOverlapping = pair => isOverlapping(pair.one, pair.two);
-const overlapping = file => pairs(file).map(areOverlapping);
+const isOverlappingPair = pair => isOverlapping(pair.one, pair.two);
+const overlapping = file => pairs(file).map(isOverlappingPair);
 
 const solve1 = (file) => {
     return total(containing(file));
