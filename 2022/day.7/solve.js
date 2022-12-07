@@ -1,7 +1,7 @@
 const { lines, total } = require('../support');
 
 const inspect = (file) => {
-    let folders = [];
+    let folders = [{ name: '/', size: 0 }];
     let current = '';
     lines(file);
 
