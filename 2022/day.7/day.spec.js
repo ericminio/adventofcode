@@ -11,3 +11,10 @@ describe('2022.7.1', () => {
         expect(solve1(`${__dirname}/data/input.txt`)).to.equal(1845346);
     });
 });
+
+describe('2022.7.2', () => {
+
+    it('has an example', () => {
+        expect(solve1(`${__dirname}/data/example.txt`)).to.equal(95437);
+    });
+});
