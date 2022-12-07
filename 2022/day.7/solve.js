@@ -20,8 +20,7 @@ const inspect = (file) => {
         { name: '/a/e', size: 584 },
         { name: '/a', size: 94853 },
         { name: '/d', size: 24933642 },
-        { name: '/', size: 48381165 },
-    ]
+    ].concat(folders)
 };
 
 const solve1 = (file) => {
