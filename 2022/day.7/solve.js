@@ -20,7 +20,7 @@ const inspect = (file) => {
             current = current.substring(0, current.lastIndexOf(separator))
         }
         if (isChangeDirDownCommand(line)) {
-            let name = line.substring(5).trim();
+            const name = line.substring(5).trim();
             current = name === separator ? separator : current + `${separator}${name}`;
             folders.push(initialFolderInfo(current));
         }
