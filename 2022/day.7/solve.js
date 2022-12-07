@@ -1,8 +1,8 @@
 const { lines, total } = require('../support');
 
 const isCommand = (line) => line.startsWith('$');
-const isChangeDirToParent = (line) => line.startsWith('$ cd ..');
-const isChangeDirDown = (line) => line.startsWith('$ cd ');
+const isChangeDirToParent = (line) => isCommand(line) && line.startsWith('$ cd ..');
+const isChangeDirDown = (line) => isCommand(line) && !isChangeDirToParent(line) && line.startsWith('$ cd ');
 const isFileInfo = (line) => !line.startsWith('dir');
 const inspect = (file) => {
     let folders = [];
