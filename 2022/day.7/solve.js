@@ -2,10 +2,12 @@ const { lines, total } = require('../support');
 
 const inspect = (file) => {
     let folders = [{ name: '/', size: 0 }];
-    let current = ''
+    let current = '';
     lines(file).forEach(line => {
         if (line.startsWith('$')) {
+            if (line.startsWith('$ cd ..')) {
 
+            }
         }
         else if (line.startsWith('dir')) {
 
