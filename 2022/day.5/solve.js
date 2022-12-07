@@ -1,5 +1,8 @@
 const { groups, extractor } = require('../support');
 
+const pattern = /^move\s(.*)\sfrom\s(.*)\sto\s(.*)$/;
+const parseMoves = (file) => groups(file)[1].map(extractor(pattern)).map(builder);
+
 const top = (stack) => stack[stack.length - 1];
 const rearrange = (stacks, move) => {
     for (var i = 0; i < move.count; i++) {
@@ -16,8 +19,6 @@ const solve1 = (file) => {
     return stacks.map(top).join('');
 };
 
-const pattern = /^move\s(.*)\sfrom\s(.*)\sto\s(.*)$/;
-const parseMoves = (file) => groups(file)[1].map(extractor(pattern)).map(builder);
 const parseStacks = (file) => {
     return [['Z', 'N'], ['M', 'C', 'D'], ['P']];
 };
