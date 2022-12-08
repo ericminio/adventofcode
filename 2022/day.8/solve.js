@@ -1,4 +1,4 @@
-const { lines, orderDescending, total } = require('../support');
+const { lines, orderDescending, sum } = require('../support');
 
 const above = { dx: -1, dy: 0 };
 const below = { dx: 1, dy: 0 };
@@ -32,7 +32,7 @@ const isVisibleFrom = (direction, tree, forest) => {
 };
 const viewingDistance = (direction, tree, forest) => {
     let stop = false;
-    return total(neighbours(direction, tree, forest)
+    return sum(neighbours(direction, tree, forest)
         .map(candidate => {
             if (stop) {
                 return false;
