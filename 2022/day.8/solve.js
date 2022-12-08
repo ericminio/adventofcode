@@ -42,17 +42,7 @@ const viewingDistance = (offset, tree, forest) => {
     }
     return count;
 };
-const viewingDistanceTop = (tree, forest) => {
-    let count = 0;
-    for (var i = tree.x - 1; i >= 0; i--) {
-        let candidate = treeAt(i, tree.y, forest);
-        count += 1;
-        if (tree.height <= candidate.height) {
-            break;
-        }
-    }
-    return count;
-};
+const viewingDistanceTop = (tree, forest) => viewingDistance(above, tree, forest);
 const viewingDistanceRight = (tree, forest) => {
     let count = 0;
     for (var j = tree.y + 1; j < forest[0].length; j++) {
