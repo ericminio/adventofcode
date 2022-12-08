@@ -29,6 +29,15 @@ const isVisibleFromBottom = (tree, forest) => {
     }
     return true;
 };
+const isVisibleFromLeft = (tree, forest) => {
+    for (var j = tree.y - 1; j >= 0; j--) {
+        let candidate = treeAt(tree.x, j, forest);
+        if (tree.height <= candidate.height) {
+            return false;
+        }
+    }
+    return true;
+};
 const isVisible = (tree, forest) => (
     isVisibleFromTop(tree, forest) ||
     isVisibleFromRight(tree, forest) ||
