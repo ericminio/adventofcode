@@ -54,7 +54,7 @@ const solve1 = (file) => {
     let count = 0;
     for (var x = 1; x < forest.length - 1; x++) {
         for (var y = 1; y < forest[0].length - 1; y++) {
-            count = count + isVisible(treeAt(x, y, forest), forest);
+            count += isVisible(treeAt(x, y, forest), forest);
         }
     }
     return perimeter(forest) + count;
