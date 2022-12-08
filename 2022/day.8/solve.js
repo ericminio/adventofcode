@@ -56,12 +56,23 @@ const viewingDistanceTop = (tree, forest) => {
     }
     return count;
 };
+const viewingDistanceRight = (tree, forest) => {
+    let count = 0;
+    for (var j = tree.y + 1; j < forest[0].length; j++) {
+        let candidate = treeAt(tree.x, j, forest);
+        count += 1;
+        if (tree.height <= candidate.height) {
+            return count;
+        }
+    }
+    return count;
+};
 
 const scenicScore = (tree, forest) => (
     viewingDistanceTop(tree, forest) *
     2 *
     1 *
-    2
+    viewingDistanceRight(tree, forest)
 );
 
 const solve1 = (file) => {
