@@ -23,6 +23,17 @@ const neighbours = (offset, tree, forest) => {
     }
     return trees;
 };
+const isVisibleFromTopNew = (tree, forest) => {
+    const trees = neighbours(above, tree, forest);
+    console.log(trees);
+    return !trees
+        .map(candidate => tree.height > candidate.height)
+        .some(() => false);
+};
+const explore = (file) => {
+    const forest = lines(file);
+    isVisibleFromTopNew(treeAt(1, 1, forest), forest);
+}
 const isVisibleFromTop = (tree, forest) => {
     for (var i = tree.x - 1; i >= 0; i--) {
         let candidate = treeAt(i, tree.y, forest);
@@ -31,12 +42,6 @@ const isVisibleFromTop = (tree, forest) => {
         }
     }
     return true;
-};
-const isVisibleFromTopNew = (tree, forest) => {
-    const trees = neighbours(above, tree, forest);
-    return !trees
-        .map(candidate => tree.height > candidate.height)
-        .some(() => false);
 };
 const viewingDistanceTop = (tree, forest) => {
     let count = 0;
@@ -150,4 +155,4 @@ const solve2 = (file) => {
     return scores[0];
 }
 
-module.exports = { solve1, solve2, isVisibleFromTopNew };
+module.exports = { solve1, solve2, explore };

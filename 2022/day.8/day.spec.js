@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { solve1, solve2, isVisibleFromTopNew } = require('./solve');
+const { solve1, solve2, explore } = require('./solve');
 
 describe('2022.8', () => {
 
@@ -30,7 +30,7 @@ describe('2022.8', () => {
     describe('exploration', () => {
 
         it('can help', () => {
-
+            explore(`${__dirname}/data/example.txt`);
         });
     });
 });
