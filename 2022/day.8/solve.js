@@ -65,8 +65,7 @@ const solve2 = (file) => {
     let scores = [];
     for (var x = 1; x < forest.length - 1; x++) {
         for (var y = 1; y < forest[0].length - 1; y++) {
-            let score = scenicScore(treeAt(x, y, forest), forest);
-            scores.push(score);
+            scores.push(scenicScore(treeAt(x, y, forest), forest));
         }
     }
     orderDescending(scores);
