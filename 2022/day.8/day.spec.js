@@ -10,7 +10,7 @@ describe('2022.8', () => {
         });
 
         it('is solved', () => {
-            expect(solve1(`${__dirname}/data/example.txt`)).to.equal(21);
+            expect(solve1(`${__dirname}/data/input.txt`)).to.equal(1792);
         });
 
     });
