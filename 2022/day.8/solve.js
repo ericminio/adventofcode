@@ -48,12 +48,12 @@ const isVisible = (tree, forest) =>
         .reduce((acc, direction) => acc || isVisibleFrom(direction, tree, forest)
             , false);
 
-const scenicScore = (tree, forest) => (
+const scenicScore = (tree, forest) =>
     viewingDistance(above, tree, forest) *
     viewingDistance(left, tree, forest) *
     viewingDistance(below, tree, forest) *
     viewingDistance(right, tree, forest)
-);
+
 
 const solve1 = (file) => {
     const forest = lines(file);
