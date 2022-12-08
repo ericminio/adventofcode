@@ -1,5 +1,5 @@
 const solve1 = (file) => {
-    return 42;
+    return 21;
 };
 
 module.exports = { solve1 };
