@@ -6,9 +6,9 @@ const left = { dx: 0, dy: -1 };
 const right = { dx: 0, dy: 1 };
 const perimeter = (forest) => 2 * forest.length + 2 * (forest[0].length - 2);
 const treeAt = (x, y, forest) => ({ x, y, height: parseInt(forest[x][y]) });
-const neighbour = (step, direction, tree, forest) => {
-    let x = tree.x + step * direction.dx;
-    let y = tree.y + step * direction.dy;
+const neighbour = (steps, direction, tree, forest) => {
+    let x = tree.x + steps * direction.dx;
+    let y = tree.y + steps * direction.dy;
     if (forest[x] !== undefined && forest[x][y]) {
         return treeAt(x, y, forest);
     }
@@ -16,12 +16,12 @@ const neighbour = (step, direction, tree, forest) => {
 }
 const neighbours = (direction, tree, forest) => {
     let trees = [];
-    let step = 1;
-    let candidate = neighbour(step, direction, tree, forest);
+    let steps = 1;
+    let candidate = neighbour(steps, direction, tree, forest);
     while (candidate !== undefined) {
         trees.push(candidate);
-        step++;
-        candidate = neighbour(step, direction, tree, forest);
+        steps++;
+        candidate = neighbour(steps, direction, tree, forest);
     }
     return trees;
 };
