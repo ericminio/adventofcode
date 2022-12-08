@@ -45,7 +45,9 @@ const isVisible = (tree, forest) => (
     isVisibleFromLeft(tree, forest)
 );
 
-const scenicScore = (tree, forest) => 2 * 2 * 1 * 2;
+const scenicScore = (tree, forest) => (
+    2 * 2 * 1 * 2
+);
 
 const solve1 = (file) => {
     const forest = lines(file);
