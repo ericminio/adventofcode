@@ -7,7 +7,6 @@ const isVisibleFromTop = (tree, forest) => {
         let candidate = treeAt(tree.x - 1, tree.y, forest);
         if (tree.height < candidate.height) {
             return false;
-            break;
         }
     }
     return true;
