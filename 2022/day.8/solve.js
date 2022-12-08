@@ -1,7 +1,7 @@
 const { lines, orderDescending } = require('../support');
 
 const perimeter = (forest) => 2 * forest.length + 2 * (forest[0].length - 2);
-const treeAt = (x, y, forest) => ({ x, y, height: forest[x][y] });
+const treeAt = (x, y, forest) => ({ x, y, height: parseInt(forest[x][y]) });
 
 const neighbour = (step, offset, tree, forest) => {
     let x = tree.x + step * offset.dx;
