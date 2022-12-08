@@ -23,7 +23,7 @@ const neighbours = (offset, tree, forest) => {
     }
     return trees;
 };
-const isVisibleFromTopNew = (tree, forest) => {
+const isVisibleFromTop = (tree, forest) => {
     const trees = neighbours(above, tree, forest);
     // console.log(trees);
     const visible = !trees
@@ -31,20 +31,6 @@ const isVisibleFromTopNew = (tree, forest) => {
         .some(visible => visible === false);
     // console.log({ visible });
     return visible;
-};
-const explore = (file) => {
-    const forest = lines(file);
-    isVisibleFromTopNew(treeAt(1, 1, forest), forest);
-};
-
-const isVisibleFromTop = (tree, forest) => {
-    for (var i = tree.x - 1; i >= 0; i--) {
-        let candidate = treeAt(i, tree.y, forest);
-        if (tree.height <= candidate.height) {
-            return false;
-        }
-    }
-    return true;
 };
 const viewingDistanceTop = (tree, forest) => {
     let count = 0;
