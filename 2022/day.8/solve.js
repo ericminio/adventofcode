@@ -44,7 +44,7 @@ const viewingDistance = (offset, tree, forest) => {
 };
 
 const isVisible = (tree, forest) => [above, right, below, left]
-    .reduce((acc, direction) => acc || isVisibleFrom(direction, tree, forest), false);
+    .reduce((visible, direction) => visible || isVisibleFrom(direction, tree, forest), false);
 
 const scenicScore = (tree, forest) => [above, right, below, left]
     .reduce((acc, direction) => acc * viewingDistance(direction, tree, forest), 1);
