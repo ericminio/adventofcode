@@ -58,6 +58,7 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     const forest = lines(file);
+
     return 8;
 }
 
