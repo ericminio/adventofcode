@@ -41,7 +41,7 @@ const isVisibleFromLeft = (tree, forest) => {
 const isVisible = (tree, forest) => (
     isVisibleFromTop(tree, forest) ||
     isVisibleFromRight(tree, forest) ||
-    isVisibleFromBottom(tree, forest)
+    isVisibleFromLeft(tree, forest)
 );
 
 const solve1 = (file) => {
