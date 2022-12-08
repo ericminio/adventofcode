@@ -1,10 +1,16 @@
 const { lines, orderDescending, sum } = require('../support');
 
+const parse = (lines) => {
+    lines.width = lines[0].length;
+    lines.height = lines.length;
+
+    return lines;
+};
 const above = { dx: -1, dy: 0 };
 const below = { dx: 1, dy: 0 };
 const left = { dx: 0, dy: -1 };
 const right = { dx: 0, dy: 1 };
-const perimeter = (forest) => 2 * forest.length + 2 * (forest[0].length - 2);
+const perimeter = (forest) => 2 * forest.height + 2 * (forest.width - 2);
 const treeAt = (x, y, forest) => ({ x, y, height: parseInt(forest[x][y]) });
 const neighbour = (steps, direction, tree, forest) => {
     let x = tree.x + steps * direction.dx;
@@ -53,7 +59,8 @@ const scenicScore = (tree, forest) => [above, right, below, left]
     .reduce((score, direction) => score * viewingDistance(direction, tree, forest), 1);
 
 const solve1 = (file) => {
-    const forest = lines(file);
+    const input = lines(file);
+    const forest = parse(input);
     let count = 0;
     for (var x = 1; x < forest.length - 1; x++) {
         for (var y = 1; y < forest[0].length - 1; y++) {
@@ -64,7 +71,8 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    const forest = lines(file);
+    const input = lines(file);
+    const forest = parse(input);
     let scores = [];
     for (var x = 1; x < forest.length - 1; x++) {
         for (var y = 1; y < forest[0].length - 1; y++) {
