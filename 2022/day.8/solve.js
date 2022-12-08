@@ -27,8 +27,8 @@ const isVisibleFromTopNew = (tree, forest) => {
     const trees = neighbours(above, tree, forest);
     console.log(trees);
     const visible = trees
-        .map(candidate => tree.height > candidate.height)
-        .some(visible => visible === false);
+        .map(candidate => tree.height <= candidate.height)
+        .some(hidden => hidden === true);
     console.log(visible);
 };
 const explore = (file) => {
