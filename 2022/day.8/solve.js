@@ -48,12 +48,6 @@ const isVisible = (tree, forest) =>
         .reduce((acc, direction) => acc || isVisibleFrom(direction, tree, forest)
             , false);
 
-
-// isVisibleFrom(above, tree, forest) ||
-// isVisibleFrom(right, tree, forest) ||
-// isVisibleFrom(below, tree, forest) ||
-// isVisibleFrom(left, tree, forest)
-
 const scenicScore = (tree, forest) => (
     viewingDistance(above, tree, forest) *
     viewingDistance(left, tree, forest) *
