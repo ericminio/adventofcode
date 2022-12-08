@@ -18,7 +18,7 @@ const viewingDistanceTop = (tree, forest) => {
         let candidate = treeAt(i, tree.y, forest);
         count += 1;
         if (tree.height <= candidate.height) {
-            return count;
+            break;
         }
     }
     return count;
