@@ -56,6 +56,9 @@ const solve1 = (file) => {
     return perimeter(forest) + count;
 };
 
-const solve2 = (file) => 8;
+const solve2 = (file) => {
+    const forest = lines(file);
+    return 8;
+}
 
 module.exports = { solve1, solve2 };
