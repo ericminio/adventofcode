@@ -85,10 +85,10 @@ const isVisible = (tree, forest) => (
 );
 
 const scenicScore = (tree, forest) => (
-    viewingDistanceTop(tree, forest) *
-    viewingDistanceLeft(tree, forest) *
-    viewingDistanceBottom(tree, forest) *
-    viewingDistanceRight(tree, forest)
+    viewingDistance(above, tree, forest) *
+    viewingDistance(left, tree, forest) *
+    viewingDistance(below, tree, forest) *
+    viewingDistance(right, tree, forest)
 );
 
 const solve1 = (file) => {
