@@ -42,40 +42,6 @@ const viewingDistance = (offset, tree, forest) => {
     }
     return count;
 };
-const viewingDistanceTop = (tree, forest) => viewingDistance(above, tree, forest);
-const viewingDistanceRight = (tree, forest) => {
-    let count = 0;
-    for (var j = tree.y + 1; j < forest[0].length; j++) {
-        let candidate = treeAt(tree.x, j, forest);
-        count += 1;
-        if (tree.height <= candidate.height) {
-            return count;
-        }
-    }
-    return count;
-};
-const viewingDistanceBottom = (tree, forest) => {
-    let count = 0;
-    for (var i = tree.x + 1; i < forest.length; i++) {
-        let candidate = treeAt(i, tree.y, forest);
-        count += 1;
-        if (tree.height <= candidate.height) {
-            return count;
-        }
-    }
-    return count;
-};
-const viewingDistanceLeft = (tree, forest) => {
-    let count = 0;
-    for (var j = tree.y - 1; j >= 0; j--) {
-        let candidate = treeAt(tree.x, j, forest);
-        count += 1;
-        if (tree.height <= candidate.height) {
-            return count;
-        }
-    }
-    return count;
-};
 
 const isVisible = (tree, forest) => (
     isVisibleFrom(above, tree, forest) ||
