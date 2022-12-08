@@ -2,6 +2,7 @@ const { lines, orderDescending } = require('../support');
 
 const perimeter = (forest) => 2 * forest.length + 2 * (forest[0].length - 2);
 const treeAt = (x, y, forest) => ({ x, y, height: forest[x][y] });
+
 const isVisibleFromTop = (tree, forest) => {
     for (var i = tree.x - 1; i >= 0; i--) {
         let candidate = treeAt(i, tree.y, forest);
@@ -11,6 +12,18 @@ const isVisibleFromTop = (tree, forest) => {
     }
     return true;
 };
+const viewingDistanceTop = (tree, forest) => {
+    let count = 0;
+    for (var i = tree.x - 1; i >= 0; i--) {
+        let candidate = treeAt(i, tree.y, forest);
+        count += 1;
+        if (tree.height <= candidate.height) {
+            return count;
+        }
+    }
+    return count;
+};
+
 const isVisibleFromRight = (tree, forest) => {
     for (var j = tree.y + 1; j < forest[0].length; j++) {
         let candidate = treeAt(tree.x, j, forest);
@@ -37,17 +50,6 @@ const isVisibleFromLeft = (tree, forest) => {
         }
     }
     return true;
-};
-const viewingDistanceTop = (tree, forest) => {
-    let count = 0;
-    for (var i = tree.x - 1; i >= 0; i--) {
-        let candidate = treeAt(i, tree.y, forest);
-        count += 1;
-        if (tree.height <= candidate.height) {
-            return count;
-        }
-    }
-    return count;
 };
 const viewingDistanceRight = (tree, forest) => {
     let count = 0;
