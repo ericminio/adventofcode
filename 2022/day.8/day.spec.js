@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { solve1, solve2 } = require('./solve');
+const { solve1 } = require('./solve');
 
 describe('2022.8', () => {
 
