@@ -6,33 +6,33 @@ const left = { dx: 0, dy: -1 };
 const right = { dx: 0, dy: 1 };
 const perimeter = (forest) => 2 * forest.length + 2 * (forest[0].length - 2);
 const treeAt = (x, y, forest) => ({ x, y, height: parseInt(forest[x][y]) });
-const neighbour = (step, offset, tree, forest) => {
-    let x = tree.x + step * offset.dx;
-    let y = tree.y + step * offset.dy;
+const neighbour = (step, direction, tree, forest) => {
+    let x = tree.x + step * direction.dx;
+    let y = tree.y + step * direction.dy;
     if (forest[x] !== undefined && forest[x][y]) {
         return treeAt(x, y, forest);
     }
     return undefined;
 }
-const neighbours = (offset, tree, forest) => {
+const neighbours = (direction, tree, forest) => {
     let trees = [];
     let step = 1;
-    let candidate = neighbour(step, offset, tree, forest);
+    let candidate = neighbour(step, direction, tree, forest);
     while (candidate !== undefined) {
         trees.push(candidate);
         step++;
-        candidate = neighbour(step, offset, tree, forest);
+        candidate = neighbour(step, direction, tree, forest);
     }
     return trees;
 };
-const isVisibleFrom = (offset, tree, forest) => {
-    return !neighbours(offset, tree, forest)
+const isVisibleFrom = (direction, tree, forest) => {
+    return !neighbours(direction, tree, forest)
         .map(candidate => tree.height > candidate.height)
         .some(visible => visible === false);
 };
-const viewingDistance = (offset, tree, forest) => {
+const viewingDistance = (direction, tree, forest) => {
     let count = 0;
-    let candidates = neighbours(offset, tree, forest);
+    let candidates = neighbours(direction, tree, forest);
     for (var i = 0; i < candidates.length; i++) {
         let candidate = candidates[i];
         count += 1;
