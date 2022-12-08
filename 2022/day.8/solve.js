@@ -29,7 +29,7 @@ const isVisibleFromTopNew = (tree, forest) => {
     const view = trees
         .map(candidate => tree.height <= candidate.height)
         .some(hidden => hidden === true);
-    console.log(view);
+    console.log({ view });
 };
 const explore = (file) => {
     const forest = lines(file);
