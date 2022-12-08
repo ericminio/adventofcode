@@ -41,34 +41,6 @@ const viewingDistanceTop = (tree, forest) => {
     }
     return count;
 };
-
-const isVisibleFromRight = (tree, forest) => {
-    for (var j = tree.y + 1; j < forest[0].length; j++) {
-        let candidate = treeAt(tree.x, j, forest);
-        if (tree.height <= candidate.height) {
-            return false;
-        }
-    }
-    return true;
-};
-const isVisibleFromBottom = (tree, forest) => {
-    for (var i = tree.x + 1; i < forest.length; i++) {
-        let candidate = treeAt(i, tree.y, forest);
-        if (tree.height <= candidate.height) {
-            return false;
-        }
-    }
-    return true;
-};
-const isVisibleFromLeft = (tree, forest) => {
-    for (var j = tree.y - 1; j >= 0; j--) {
-        let candidate = treeAt(tree.x, j, forest);
-        if (tree.height <= candidate.height) {
-            return false;
-        }
-    }
-    return true;
-};
 const viewingDistanceRight = (tree, forest) => {
     let count = 0;
     for (var j = tree.y + 1; j < forest[0].length; j++) {
