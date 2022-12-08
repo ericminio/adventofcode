@@ -13,7 +13,7 @@ const neighbour = (steps, direction, tree, forest) => {
         return treeAt(x, y, forest);
     }
     return undefined;
-}
+};
 const neighbours = (direction, tree, forest) => {
     let trees = [];
     let steps = 1;

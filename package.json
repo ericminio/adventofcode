@@ -12,7 +12,7 @@
     "sinon-chai": "latest"
   },
   "scripts": {
-    "test": "mocha 2022/*/*.spec.js --timeout 0 --exit"
+    "test": "mocha 2022/*/*.spec.js --timeout 15000 --exit"
   },
   "dependencies": {
     "node-object-hash": "^1.3.0",
