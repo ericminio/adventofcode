@@ -158,4 +158,4 @@ const solve2 = (file) => {
     return scores[0];
 }
 
-module.exports = { solve1, solve2, explore };
+module.exports = { solve1, solve2 };
