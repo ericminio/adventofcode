@@ -15,10 +15,7 @@ const treeAt = (x, y, forest) => forest[`${x}x${y}`];
 const neighbour = (steps, direction, tree, forest) => {
     let x = tree.x + steps * direction.dx;
     let y = tree.y + steps * direction.dy;
-    if (forest[x] !== undefined && forest[x][y]) {
-        return treeAt(x, y, forest);
-    }
-    return undefined;
+    return treeAt(x, y, forest);
 };
 const above = { dx: -1, dy: 0 };
 const below = { dx: 1, dy: 0 };
