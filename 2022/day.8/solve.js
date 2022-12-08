@@ -10,7 +10,6 @@ const above = { dx: -1, dy: 0 };
 const below = { dx: 1, dy: 0 };
 const left = { dx: 0, dy: -1 };
 const right = { dx: 0, dy: 1 };
-const perimeter = (forest) => 2 * forest.height + 2 * (forest.width - 2);
 const treeAt = (x, y, forest) => ({ x, y, height: parseInt(forest[x][y]) });
 const neighbour = (steps, direction, tree, forest) => {
     let x = tree.x + steps * direction.dx;
@@ -57,6 +56,8 @@ const isVisible = (tree, forest) => [above, right, below, left]
 
 const scenicScore = (tree, forest) => [above, right, below, left]
     .reduce((score, direction) => score * viewingDistance(direction, tree, forest), 1);
+
+const perimeter = (forest) => 2 * forest.height + 2 * (forest.width - 2);
 
 const solve1 = (file) => {
     const input = lines(file);
