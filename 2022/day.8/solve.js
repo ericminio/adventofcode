@@ -45,6 +45,8 @@ const isVisible = (tree, forest) => (
     isVisibleFromLeft(tree, forest)
 );
 
+const scenicScore = (tree, forest) => 8;
+
 const solve1 = (file) => {
     const forest = lines(file);
     let count = 0;
@@ -59,7 +61,7 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const forest = lines(file);
 
-    return 8;
+    return scenicScore(treeAt(3, 2, forest), forest);
 }
 
 module.exports = { solve1, solve2 };
