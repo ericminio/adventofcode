@@ -32,17 +32,18 @@ const isVisibleFrom = (direction, tree, forest) => {
 };
 const viewingDistance = (direction, tree, forest) => {
     let stop = false;
-    return sum(neighbours(direction, tree, forest)
-        .map(candidate => {
-            if (stop) {
-                return false;
-            }
-            if (tree.height <= candidate.height) {
-                stop = true;
+    return sum(
+        neighbours(direction, tree, forest)
+            .map(candidate => {
+                if (stop) {
+                    return false;
+                }
+                if (tree.height <= candidate.height) {
+                    stop = true;
+                    return true;
+                }
                 return true;
-            }
-            return true;
-        }));
+            }));
 };
 
 const isVisible = (tree, forest) => [above, right, below, left]
