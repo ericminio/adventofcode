@@ -25,11 +25,12 @@ const neighbours = (offset, tree, forest) => {
 };
 const isVisibleFromTopNew = (tree, forest) => {
     const trees = neighbours(above, tree, forest);
-    console.log(trees);
+    // console.log(trees);
     const visible = !trees
         .map(candidate => tree.height > candidate.height)
         .some(visible => visible === false);
-    console.log({ visible });
+    // console.log({ visible });
+    return visible;
 };
 const explore = (file) => {
     const forest = lines(file);
