@@ -47,11 +47,13 @@ const isVisible = (tree, forest) => (
 
 const solve1 = (file) => {
     const forest = lines(file);
-    return perimeter(forest) +
-        isVisible(treeAt(1, 1, forest), forest) + 1 + 0 +
-        isVisible(treeAt(2, 1, forest), forest) + 0 + 1 +
-        0 + isVisible(treeAt(3, 2, forest), forest) + 0
-        ;
+    let count = 0;
+    for (var x = 1; x < forest.length - 1; x++) {
+        for (var y = 1; y < forest[0].length - 1; y++) {
+            count = count + isVisible(treeAt(x, y, forest), forest);
+        }
+    }
+    return perimeter(forest) + count;
 };
 
 module.exports = { solve1 };
