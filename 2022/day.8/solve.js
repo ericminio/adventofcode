@@ -48,8 +48,8 @@ const isVisible = (tree, forest) => (
 const viewingDistanceTop = (tree, forest) => {
     let count = 0;
     for (var i = tree.x - 1; i >= 0; i--) {
-        count += 1;
         let candidate = treeAt(i, tree.y, forest);
+        count += 1;
         if (tree.height <= candidate.height) {
             return count;
         }
