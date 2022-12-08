@@ -1,4 +1,4 @@
-const { lines } = require('../support');
+const { lines, orderDescending } = require('../support');
 
 const perimeter = (forest) => 2 * forest.length + 2 * (forest[0].length - 2);
 const treeAt = (x, y, forest) => ({ x, y, height: forest[x][y] });
@@ -110,8 +110,16 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     const forest = lines(file);
+    let scores = [];
+    for (var x = 1; x < forest.length - 1; x++) {
+        for (var y = 1; y < forest[0].length - 1; y++) {
+            let score = scenicScore(treeAt(x, y, forest), forest);
+            scores.push(score);
+        }
+    }
+    orderDescending(scores);
 
-    return scenicScore(treeAt(3, 2, forest), forest);
+    return scores[0];
 }
 
 module.exports = { solve1, solve2 };
