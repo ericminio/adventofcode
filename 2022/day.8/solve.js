@@ -20,7 +20,10 @@ const isVisibleFromRight = (tree, forest) => {
     }
     return true;
 };
-const isVisible = (tree, forest) => isVisibleFromTop(tree, forest) || isVisibleFromRight(tree, forest);
+const isVisible = (tree, forest) => (
+    isVisibleFromTop(tree, forest) ||
+    isVisibleFromRight(tree, forest)
+);
 
 const solve1 = (file) => {
     const forest = lines(file);
