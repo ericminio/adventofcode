@@ -105,7 +105,7 @@ const viewingDistanceLeft = (tree, forest) => {
 };
 
 const isVisible = (tree, forest) => (
-    isVisibleFromTop(tree, forest) ||
+    isVisibleFrom(above, tree, forest) ||
     isVisibleFromRight(tree, forest) ||
     isVisibleFromBottom(tree, forest) ||
     isVisibleFromLeft(tree, forest)
