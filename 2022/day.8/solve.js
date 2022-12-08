@@ -46,7 +46,10 @@ const isVisible = (tree, forest) => (
 );
 
 const scenicScore = (tree, forest) => (
-    2 * 2 * 1 * 2
+    2 *
+    2 *
+    1 *
+    2
 );
 
 const solve1 = (file) => {
