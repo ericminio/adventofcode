@@ -3,6 +3,19 @@ const { lines, orderDescending } = require('../support');
 const perimeter = (forest) => 2 * forest.length + 2 * (forest[0].length - 2);
 const treeAt = (x, y, forest) => ({ x, y, height: forest[x][y] });
 
+const neighbour = (step, offset, tree, forest) => {
+    let x = tree.x + step * offset.dx;
+    let y = tree.y + step * offset.dy;
+    if (forest[x] !== undefined && forest[x][y]) {
+        return treeAt(x, y, forest);
+    }
+    return undefined;
+}
+const above = { dx: -1, dy: 0 };
+const neighbours = (offset, tree, forest) => {
+    let trees = [];
+    let candidate = neighbour(1, offset, tree, forest);
+}
 const isVisibleFromTop = (tree, forest) => {
     for (var i = tree.x - 1; i >= 0; i--) {
         let candidate = treeAt(i, tree.y, forest);
