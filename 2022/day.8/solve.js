@@ -63,8 +63,8 @@ const solve1 = (file) => {
     const input = lines(file);
     const forest = parse(input);
     let count = 0;
-    for (var x = 1; x < forest.length - 1; x++) {
-        for (var y = 1; y < forest[0].length - 1; y++) {
+    for (var x = 1; x < forest.height - 1; x++) {
+        for (var y = 1; y < forest.width - 1; y++) {
             count += isVisible(treeAt(x, y, forest), forest);
         }
     }
@@ -75,8 +75,8 @@ const solve2 = (file) => {
     const input = lines(file);
     const forest = parse(input);
     let scores = [];
-    for (var x = 1; x < forest.length - 1; x++) {
-        for (var y = 1; y < forest[0].length - 1; y++) {
+    for (var x = 1; x < forest.height - 1; x++) {
+        for (var y = 1; y < forest.width - 1; y++) {
             scores.push(scenicScore(treeAt(x, y, forest), forest));
         }
     }
