@@ -23,11 +23,12 @@ const neighbours = (offset, tree, forest) => {
     }
     return trees;
 };
-const isVisibleFromTop = (tree, forest) => {
-    return !neighbours(above, tree, forest)
+const isVisibleFrom = (offset, tree, forest) => {
+    return !neighbours(offset, tree, forest)
         .map(candidate => tree.height > candidate.height)
         .some(visible => visible === false);
-};
+}
+const isVisibleFromTop = (tree, forest) => isVisibleFrom(above, tree, forest);
 const viewingDistanceTop = (tree, forest) => {
     let count = 0;
     for (var i = tree.x - 1; i >= 0; i--) {
