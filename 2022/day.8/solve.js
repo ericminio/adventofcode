@@ -3,6 +3,11 @@ const { lines, orderDescending, sum } = require('../support');
 const parse = (lines) => {
     lines.width = lines[0].length;
     lines.height = lines.length;
+    for (var x = 0; x < lines.height; x++) {
+        for (var y = 0; y < lines.width; y++) {
+            lines[`${x}x${y}`] = { x, y, height: parseInt(lines[x][y]) }
+        }
+    }
 
     return lines;
 };
