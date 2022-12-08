@@ -14,7 +14,14 @@ const neighbour = (step, offset, tree, forest) => {
 const above = { dx: -1, dy: 0 };
 const neighbours = (offset, tree, forest) => {
     let trees = [];
-    let candidate = neighbour(1, offset, tree, forest);
+    let step = 1;
+    let candidate = neighbour(step, offset, tree, forest);
+    while (candidate !== undefined) {
+        trees.push(candidate);
+        step++;
+        candidate = neighbour(step, offset, tree, forest);
+    }
+    return trees;
 }
 const isVisibleFromTop = (tree, forest) => {
     for (var i = tree.x - 1; i >= 0; i--) {
