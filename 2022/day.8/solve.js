@@ -1,7 +1,7 @@
 const { lines } = require('../support');
 
 const perimeter = (forest) => 2 * forest.length + 2 * (forest[0].length - 2);
-const treeAt = (x, y, forest) => ({ x, y, height: 0 });
+const treeAt = (x, y, forest) => ({ x, y, height: forest[x][y] });
 const isVisibleFromTop = (tree, forest) => {
     let candidate = treeAt(tree.x - 1, tree.y, forest);
     return tree.height > candidate.height;
