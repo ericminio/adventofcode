@@ -29,7 +29,19 @@ const isVisibleFrom = (offset, tree, forest) => {
     return !neighbours(offset, tree, forest)
         .map(candidate => tree.height > candidate.height)
         .some(visible => visible === false);
-}
+};
+const viewingDistance = (offset, tree, forest) => {
+    let count = 0;
+    let candidates = neighbours(offset, tree, forest);
+    for (var i = 0; i < candidates.length; i++) {
+        let candidate = candidates[i];
+        count += 1;
+        if (tree.height <= candidate.height) {
+            break;
+        }
+    }
+    return count;
+};
 const viewingDistanceTop = (tree, forest) => {
     let count = 0;
     for (var i = tree.x - 1; i >= 0; i--) {
