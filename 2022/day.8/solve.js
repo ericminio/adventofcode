@@ -33,7 +33,7 @@ const isVisibleFromTopNew = (tree, forest) => {
 };
 const explore = (file) => {
     const forest = lines(file);
-    isVisibleFromTopNew(treeAt(1, 2, forest), forest);
+    isVisibleFromTopNew(treeAt(1, 3, forest), forest);
 };
 
 const isVisibleFromTop = (tree, forest) => {
