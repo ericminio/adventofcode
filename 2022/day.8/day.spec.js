@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { solve1, solve2 } = require('./solve');
+const { solve1, solve2, isVisibleFromTopNew } = require('./solve');
 
 describe('2022.8', () => {
 
@@ -25,6 +25,13 @@ describe('2022.8', () => {
             expect(solve2(`${__dirname}/data/input.txt`)).to.equal(334880);
         });
 
+    });
+
+    describe('exploration', () => {
+
+        it('can help', () => {
+
+        });
     });
 });
 
