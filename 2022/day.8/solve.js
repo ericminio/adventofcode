@@ -25,7 +25,7 @@ const neighbours = (direction, tree, forest) => {
     let trees = [];
     let steps = 1;
     let candidate = neighbour(steps, direction, tree, forest);
-    while (candidate !== undefined) {
+    while (!!candidate) {
         trees.push(candidate);
         steps++;
         candidate = neighbour(steps, direction, tree, forest);
