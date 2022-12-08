@@ -46,8 +46,16 @@ const isVisible = (tree, forest) => (
 );
 
 const viewingDistanceTop = (tree, forest) => {
-    return 2;
-}
+    let count = 0;
+    for (var i = tree.x - 1; i >= 0; i--) {
+        count += 1;
+        let candidate = treeAt(i, tree.y, forest);
+        if (tree.height <= candidate.height) {
+            return count;
+        }
+    }
+    return count;
+};
 
 const scenicScore = (tree, forest) => (
     viewingDistanceTop(tree, forest) *
