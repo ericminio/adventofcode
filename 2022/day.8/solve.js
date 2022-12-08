@@ -78,10 +78,21 @@ const viewingDistanceBottom = (tree, forest) => {
     }
     return count;
 };
+const viewingDistanceLeft = (tree, forest) => {
+    let count = 0;
+    for (var j = tree.y - 1; j >= 0; j--) {
+        let candidate = treeAt(tree.x, j, forest);
+        count += 1;
+        if (tree.height <= candidate.height) {
+            return count;
+        }
+    }
+    return count;
+};
 
 const scenicScore = (tree, forest) => (
     viewingDistanceTop(tree, forest) *
-    2 *
+    viewingDistanceLeft(tree, forest) *
     viewingDistanceBottom(tree, forest) *
     viewingDistanceRight(tree, forest)
 );
