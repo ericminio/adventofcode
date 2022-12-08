@@ -45,7 +45,9 @@ const isVisible = (tree, forest) => (
     isVisibleFromLeft(tree, forest)
 );
 
-const viewingDistanceTop = (tree, forest) => 2;
+const viewingDistanceTop = (tree, forest) => {
+    return 2;
+}
 
 const scenicScore = (tree, forest) => (
     viewingDistanceTop(tree, forest) *
