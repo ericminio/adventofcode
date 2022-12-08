@@ -21,7 +21,7 @@ describe('2022.8', () => {
             expect(solve2(`${__dirname}/data/example.txt`)).to.equal(8);
         });
 
-        it('is solved', () => {
+        it('is solved again', () => {
             expect(solve2(`${__dirname}/data/example.txt`)).to.equal(8);
         });
 
