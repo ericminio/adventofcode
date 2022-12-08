@@ -11,7 +11,7 @@ const parse = (lines) => {
 
     return lines;
 };
-const treeAt = (x, y, forest) => ({ x, y, height: parseInt(forest[x][y]) });
+const treeAt = (x, y, forest) => forest[`${x}x${y}`];
 const neighbour = (steps, direction, tree, forest) => {
     let x = tree.x + steps * direction.dx;
     let y = tree.y + steps * direction.dy;
