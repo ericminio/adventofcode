@@ -47,7 +47,7 @@ const isVisible = (tree, forest) => [above, right, below, left]
     .reduce((visible, direction) => visible || isVisibleFrom(direction, tree, forest), false);
 
 const scenicScore = (tree, forest) => [above, right, below, left]
-    .reduce((acc, direction) => acc * viewingDistance(direction, tree, forest), 1);
+    .reduce((score, direction) => score * viewingDistance(direction, tree, forest), 1);
 
 
 const solve1 = (file) => {
