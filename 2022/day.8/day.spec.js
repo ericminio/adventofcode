@@ -26,13 +26,6 @@ describe('2022.8', () => {
         });
 
     });
-
-    describe('exploration', () => {
-
-        it('can help', () => {
-            explore(`${__dirname}/data/example.txt`);
-        });
-    });
 });
 
 
