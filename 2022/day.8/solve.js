@@ -38,13 +38,6 @@ const isVisibleFromLeft = (tree, forest) => {
     }
     return true;
 };
-const isVisible = (tree, forest) => (
-    isVisibleFromTop(tree, forest) ||
-    isVisibleFromRight(tree, forest) ||
-    isVisibleFromBottom(tree, forest) ||
-    isVisibleFromLeft(tree, forest)
-);
-
 const viewingDistanceTop = (tree, forest) => {
     let count = 0;
     for (var i = tree.x - 1; i >= 0; i--) {
@@ -89,6 +82,13 @@ const viewingDistanceLeft = (tree, forest) => {
     }
     return count;
 };
+
+const isVisible = (tree, forest) => (
+    isVisibleFromTop(tree, forest) ||
+    isVisibleFromRight(tree, forest) ||
+    isVisibleFromBottom(tree, forest) ||
+    isVisibleFromLeft(tree, forest)
+);
 
 const scenicScore = (tree, forest) => (
     viewingDistanceTop(tree, forest) *
