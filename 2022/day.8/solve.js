@@ -4,7 +4,7 @@ const perimeter = (forest) => 2 * forest.length + 2 * (forest[0].length - 2);
 const treeAt = (x, y, forest) => ({ x, y, height: forest[x][y] });
 const isVisibleFromTop = (tree, forest) => {
     for (var i = tree.x - 1; i >= 0; i--) {
-        let candidate = treeAt(tree.x - 1, tree.y, forest);
+        let candidate = treeAt(i, tree.y, forest);
         if (tree.height < candidate.height) {
             return false;
         }
