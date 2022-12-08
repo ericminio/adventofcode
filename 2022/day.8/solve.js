@@ -26,14 +26,16 @@ const neighbours = (offset, tree, forest) => {
 const isVisibleFromTopNew = (tree, forest) => {
     const trees = neighbours(above, tree, forest);
     console.log(trees);
-    return !trees
+    const visible = !trees
         .map(candidate => tree.height > candidate.height)
         .some(() => false);
+    console.log(visible);
 };
 const explore = (file) => {
     const forest = lines(file);
     isVisibleFromTopNew(treeAt(1, 1, forest), forest);
-}
+};
+
 const isVisibleFromTop = (tree, forest) => {
     for (var i = tree.x - 1; i >= 0; i--) {
         let candidate = treeAt(i, tree.y, forest);
