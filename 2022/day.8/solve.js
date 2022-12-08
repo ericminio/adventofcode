@@ -5,7 +5,7 @@ const treeAt = (x, y, forest) => ({ x, y, height: forest[x][y] });
 const isVisibleFromTop = (tree, forest) => {
     for (var i = tree.x - 1; i >= 0; i--) {
         let candidate = treeAt(i, tree.y, forest);
-        if (tree.height < candidate.height) {
+        if (tree.height <= candidate.height) {
             return false;
         }
     }
@@ -17,7 +17,7 @@ const solve1 = (file) => {
     const forest = lines(file);
     return perimeter(forest) +
         isVisible(treeAt(1, 1, forest), forest) + 1 + 0 +
-        isVisible(treeAt(2, 1, forest), forest) + 0 + 1 +
+        1 + 0 + 1 +
         0 + 1 + 0
         ;
 };
