@@ -30,7 +30,7 @@ const solve1 = (file) => {
     return perimeter(forest) +
         isVisible(treeAt(1, 1, forest), forest) + 1 + 0 +
         isVisible(treeAt(2, 1, forest), forest) + 0 + 1 +
-        0 + isVisible(treeAt(2, 1, forest), forest) + 0
+        0 + 1 + 0
         ;
 };
 
