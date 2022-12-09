@@ -1,5 +1,7 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
+const { parse } = require('./solve');
+const { lines } = require('../support');
 
 describe.only('2022.9', () => {
 
