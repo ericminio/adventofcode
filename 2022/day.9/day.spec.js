@@ -23,8 +23,11 @@ describe.only('2022.9', () => {
 
     describe('internals', () => {
 
-        it('may be needed', () => {
+        describe('parsing', () => {
 
+            it('identifies moves as expected', () => {
+                const input = lines(`${__dirname}/data/example.txt`);
+            });
         });
     });
 });
