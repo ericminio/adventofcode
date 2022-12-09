@@ -59,6 +59,8 @@ describe.only('2022.9', () => {
                 expect(rope.tail).to.deep.equal({ x: 0, y: 1 });
                 moving(rope, right);
                 expect(rope.tail).to.deep.equal({ x: 0, y: 2 });
+                moving(rope, right);
+                expect(rope.tail).to.deep.equal({ x: 0, y: 3 });
             });
         });
     });
