@@ -66,6 +66,35 @@ describe.only('2022.9', () => {
             });
         });
 
+        describe('moving diagonal', () => {
+            let rope;
+            beforeEach(() => {
+                rope = { head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } };
+            });
+
+            it('moves head as expected', () => {
+                moving(rope, right);
+                expect(rope.head).to.deep.equal({ x: 0, y: 1 });
+                moving(rope, right);
+                expect(rope.head).to.deep.equal({ x: 0, y: 2 });
+                moving(rope, right);
+                expect(rope.head).to.deep.equal({ x: 0, y: 3 });
+                moving(rope, right);
+                expect(rope.head).to.deep.equal({ x: 0, y: 4 });
+            });
+
+            it('moves tail as expected', () => {
+                moving(rope, right);
+                expect(rope.tail).to.deep.equal({ x: 0, y: 0 });
+                moving(rope, right);
+                expect(rope.tail).to.deep.equal({ x: 0, y: 1 });
+                moving(rope, right);
+                expect(rope.tail).to.deep.equal({ x: 0, y: 2 });
+                moving(rope, right);
+                expect(rope.tail).to.deep.equal({ x: 0, y: 3 });
+            });
+        });
+
         describe('visited', () => {
             let visited;
             beforeEach(() => {
