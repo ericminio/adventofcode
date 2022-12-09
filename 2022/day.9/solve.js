@@ -1,4 +1,8 @@
 const solve1 = (file) => {
+    const visited = {
+        '0x0': 1,
+        '0x1': 1,
+    }
     return 13;
 };
 
