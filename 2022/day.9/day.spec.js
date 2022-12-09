@@ -84,6 +84,13 @@ describe.only('2022.9', () => {
 
                 expect(visited).to.deep.equal({ '0x0': 1, '12x-15': 1 });
             });
+
+            it('captures one position of tail once', () => {
+                updateVisited({ head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } }, visited);
+                updateVisited({ head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } }, visited);
+
+                expect(visited).to.deep.equal({ '0x0': 1 });
+            });
         });
     });
 });
