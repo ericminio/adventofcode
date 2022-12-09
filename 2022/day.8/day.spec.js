@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
 
-describe.only('2022.8', () => {
+describe('2022.8', () => {
 
     describe('part 1', () => {
 
