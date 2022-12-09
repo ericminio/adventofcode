@@ -10,6 +10,14 @@ describe.only('2022.9', () => {
         });
 
     });
+
+    describe('part 2', () => {
+
+        it('has an example', () => {
+            expect(solve2(`${__dirname}/data/example.txt`)).to.equal(15);
+        });
+
+    });
 });
 
 
