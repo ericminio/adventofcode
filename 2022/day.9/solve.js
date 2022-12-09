@@ -36,7 +36,7 @@ const solve1 = (file) => {
 
 
 
-        '0x3': 1,
+
         '-1x4': 1,
         '-2x4': 1,
         '-3x4': 1,
@@ -56,6 +56,8 @@ const solve1 = (file) => {
     moving(rope, moves[0]);
     visited[`${tail.x}-${tail.y}`] = 1;
     moving(rope, moves[1]);
+    visited[`${tail.x}-${tail.y}`] = 1;
+    moving(rope, moves[2]);
     visited[`${tail.x}-${tail.y}`] = 1;
     moving(rope, moves[2]);
     visited[`${tail.x}-${tail.y}`] = 1;
