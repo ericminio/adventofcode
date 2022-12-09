@@ -14,6 +14,8 @@ const solve1 = (file) => {
         '-2x1': 1,
         '-4x2': 1,
     };
+    let head = { x: 0, y: 0 };
+    let tail = { x: 0, y: 0 };
     return Object.keys(visited).length;
 };
 
