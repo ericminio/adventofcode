@@ -1,5 +1,7 @@
 const { lines } = require('../support');
 
+const right = { dx: 0, dy: 1 };
+
 const solve1 = (file) => {
     const moves = lines(file);
     const visited = {
@@ -21,6 +23,8 @@ const solve1 = (file) => {
     let tail = { x: 0, y: 0 };
 
     visited[`${tail.x}-${tail.y}`] = 1;
+
+    let move = right;
 
     return Object.keys(visited).length;
 };
