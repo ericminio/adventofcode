@@ -51,6 +51,13 @@ describe.only('2022.9', () => {
                 moving(rope, right);
                 expect(rope.head).to.deep.equal({ x: 0, y: 3 });
             });
+
+            it('moves tail as expected', () => {
+                moving(rope, right);
+                expect(rope.tail).to.deep.equal({ x: 0, y: 0 });
+                moving(rope, right);
+                expect(rope.tail).to.deep.equal({ x: 0, y: 1 });
+            });
         });
     });
 });
