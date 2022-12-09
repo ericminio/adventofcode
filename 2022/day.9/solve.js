@@ -30,6 +30,10 @@ const solve1 = (file) => {
     visited[`${tail.x}-${tail.y}`] = 1;
 
     moving(rope, right);
+    visited[`${tail.x}-${tail.y}`] = 1;
+
+    moving(rope, right);
+    visited[`${tail.x}-${tail.y}`] = 1;
 
     return Object.keys(visited).length;
 };
