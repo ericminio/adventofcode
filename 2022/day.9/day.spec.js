@@ -44,7 +44,9 @@ describe.only('2022.9', () => {
             });
 
             it('moves head as expected', () => {
+                moving(rope, right);
 
+                expect(rope.head).to.deep.equal({ x: 0, y: 1 });
             });
         });
     });
