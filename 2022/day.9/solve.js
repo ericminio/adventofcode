@@ -57,7 +57,7 @@ const solve1 = (file) => {
     updateVisited(rope, visited);
 
     moving(rope, moves[0]);
-    visited[`${rope.tail.x}x${rope.tail.y}`] = 1;
+    updateVisited(rope, visited);
     moving(rope, moves[1]);
     visited[`${tail.x}x${tail.y}`] = 1;
     moving(rope, moves[2]);
