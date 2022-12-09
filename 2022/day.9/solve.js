@@ -29,6 +29,9 @@ const moving = (rope, direction) => {
         rope.tail.y += direction.dy;
     }
 };
+const updateVisited = (rope, visited) => {
+
+};
 
 const solve1 = (file) => {
     const moves = parse(lines(file));
@@ -69,4 +72,4 @@ const solve2 = (file) => {
     return 15;
 };
 
-module.exports = { solve1, solve2, parse, right, up, moving };
+module.exports = { solve1, solve2, parse, right, up, moving, updateVisited };
