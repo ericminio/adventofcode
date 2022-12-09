@@ -28,6 +28,9 @@ const moving = (rope, direction) => {
     if (Math.abs(rope.head.y - rope.tail.y) > 1) {
         rope.tail.y += direction.dy;
     }
+    if (Math.abs(rope.head.x - rope.tail.x) > 1) {
+        rope.tail.x += direction.dx;
+    }
 };
 const updateVisited = (rope, visited) => {
     visited[`${rope.tail.x}x${rope.tail.y}`] = 1;
@@ -40,7 +43,7 @@ const solve1 = (file) => {
 
 
 
-        '-1x4': 1,
+
         '-2x4': 1,
         '-3x4': 1,
         '-2x3': 1,
