@@ -30,7 +30,7 @@ const moving = (rope, direction) => {
     }
 };
 const updateVisited = (rope, visited) => {
-
+    visited[`${rope.tail.x}-${rope.tail.y}`] = 1;
 };
 
 const solve1 = (file) => {
