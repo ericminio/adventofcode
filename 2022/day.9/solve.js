@@ -59,9 +59,11 @@ const solve1 = (file) => {
     moving(rope, moves[0]);
     updateVisited(rope, visited);
     moving(rope, moves[1]);
-    visited[`${tail.x}x${tail.y}`] = 1;
+    updateVisited(rope, visited);
     moving(rope, moves[2]);
-    visited[`${tail.x}x${tail.y}`] = 1;
+    updateVisited(rope, visited);
+    moving(rope, moves[3]);
+    updateVisited(rope, visited);
 
     return Object.keys(visited).length;
 };
