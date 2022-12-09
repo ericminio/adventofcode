@@ -82,6 +82,18 @@ describe.only('2022.9', () => {
             })
         });
 
+        describe('moving diagonal', () => {
+            let rope;
+            beforeEach(() => {
+                rope = { head: { x: 0, y: 3 }, tail: { x: 0, y: 2 } };
+            });
+
+            it('moves tail as expected', () => {
+                moving(rope, { dx: -1, dy: 1 });
+                // expect(rope.tail).to.deep.equal({ x: -1, y: 4 });
+            })
+        });
+
         describe('visited', () => {
             let visited;
             beforeEach(() => {
