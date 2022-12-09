@@ -73,7 +73,7 @@ describe.only('2022.9', () => {
                 const visited = {};
                 updateVisited(rope, visited);
 
-                expect(visited).to.deep.equal({ '0-0': 1 });
+                expect(visited).to.deep.equal({ '0x0': 1 });
             });
         });
     });
