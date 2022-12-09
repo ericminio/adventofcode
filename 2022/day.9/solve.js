@@ -7,6 +7,18 @@ const directions = {
     'L': { dx: 0, dy: -1 },
     'D': { dx: 1, dy: 0 },
 };
+const parse = (input) => {
+    const moves = [];
+    for (var i = 0; i < input.length; i++) {
+        const data = pattern.exec(input[i]);
+        const direction = directions[data[1]];
+        const steps = parseInt(data[2]);
+        for (var count = 0; count < steps; count++) {
+            moves.push(direction);
+        }
+    }
+    return moves;
+};
 const moving = (rope, direction) => {
     rope.head.x += direction.dx;
     rope.head.y += direction.dy;
@@ -17,16 +29,7 @@ const moving = (rope, direction) => {
 };
 
 const solve1 = (file) => {
-    const input = lines(file);
-    const moves = [];
-    for (var i = 0; i < input.length; i++) {
-        const data = pattern.exec(input[i]);
-        const direction = directions[data[1]];
-        const steps = parseInt(data[2]);
-        for (var count = 0; count < steps; count++) {
-            moves.push(direction);
-        }
-    }
+    const moves = parse(lines(file));
     const visited = {
 
 
