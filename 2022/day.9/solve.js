@@ -27,6 +27,7 @@ const moving = (rope, direction) => {
 
     if (Math.abs(rope.head.y - rope.tail.y) > 1) {
         rope.tail.y += direction.dy;
+        rope.tail.x = rope.head.x;
     }
     if (Math.abs(rope.head.x - rope.tail.x) > 1) {
         rope.tail.x += direction.dx;
