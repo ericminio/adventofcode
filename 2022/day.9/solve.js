@@ -1,4 +1,7 @@
+const { lines } = require('../support');
+
 const solve1 = (file) => {
+    const moves = lines(file);
     const visited = {
 
         '0x1': 1,
