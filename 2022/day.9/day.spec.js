@@ -71,6 +71,11 @@ describe.only('2022.9', () => {
             beforeEach(() => {
                 rope = { head: { x: -1, y: 4 }, tail: { x: 0, y: 3 } };
             });
+
+            it('moves tail as expected', () => {
+                moving(rope, up);
+                expect(rope.tail).to.deep.equal({ x: -1, y: 4 });
+            })
         });
 
         describe('visited', () => {
