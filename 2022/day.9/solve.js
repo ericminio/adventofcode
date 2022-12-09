@@ -1,7 +1,6 @@
 const { lines } = require('../support');
 
 const pattern = /^(.*)\s(.*)/;
-const right = { dx: 0, dy: 1 };
 const directions = {
     'R': { dx: 0, dy: 1 },
     'U': { dx: -1, dy: 0 },
