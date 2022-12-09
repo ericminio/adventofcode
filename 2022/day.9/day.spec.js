@@ -36,5 +36,16 @@ describe.only('2022.9', () => {
                 expect(moves[4]).to.deep.equal(up);
             });
         });
+
+        describe('moving', () => {
+            let rope;
+            beforeEach(() => {
+                rope = { head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } };
+            });
+
+            it('moves head as expected', () => {
+
+            });
+        });
     });
 });
