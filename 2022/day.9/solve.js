@@ -1,6 +1,6 @@
 const solve1 = (file) => {
     const visited = {
-        '0x0': 1,
+
         '0x1': 1,
         '0x2': 1,
         '0x3': 1,
@@ -16,6 +16,7 @@ const solve1 = (file) => {
     };
     let head = { x: 0, y: 0 };
     let tail = { x: 0, y: 0 };
+    visited[`${tail.x}-${tail.y}`] = 1;
     return Object.keys(visited).length;
 };
 
