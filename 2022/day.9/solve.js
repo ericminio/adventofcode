@@ -30,7 +30,7 @@ const moving = (rope, direction) => {
     }
     if (Math.abs(rope.head.x - rope.tail.x) > 1) {
         rope.tail.x += direction.dx;
-        rope.tail.y = 4;
+        rope.tail.y = rope.head.y;
     }
 };
 const updateVisited = (rope, visited) => {
