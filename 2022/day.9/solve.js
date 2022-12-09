@@ -54,14 +54,14 @@ const solve1 = (file) => {
     let tail = { x: 0, y: 0 };
     let rope = { head, tail };
 
-    visited[`${rope.tail.x}x${rope.tail.y}`] = 1
+    visited[`${rope.tail.x}x${rope.tail.y}`] = 1;
 
     moving(rope, moves[0]);
     visited[`${rope.tail.x}x${rope.tail.y}`] = 1;
     moving(rope, moves[1]);
-    visited[`${tail.x}-${tail.y}`] = 1;
+    visited[`${tail.x}x${tail.y}`] = 1;
     moving(rope, moves[2]);
-    visited[`${tail.x}-${tail.y}`] = 1;
+    visited[`${tail.x}x${tail.y}`] = 1;
 
     return Object.keys(visited).length;
 };
