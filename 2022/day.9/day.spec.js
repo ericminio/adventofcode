@@ -84,7 +84,7 @@ describe.only('2022.9', () => {
 
         describe('moving diagonal', () => {
 
-            it('moves tail as expected on right-left', () => {
+            it('moves tail as expected on up-right', () => {
                 let rope = { head: { x: 0, y: 3 }, tail: { x: 0, y: 2 } };
                 moving(rope, { dx: -1, dy: 1 });
                 expect(rope.tail).to.deep.equal({ x: -1, y: 3 });
