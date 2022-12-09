@@ -40,40 +40,16 @@ const updateVisited = (rope, visited) => {
 
 const solve1 = (file) => {
     const moves = parse(lines(file));
-    const visited = {
-
-
-
-
-
-        '-2x4': 1,
-        '-3x4': 1,
-        '-2x3': 1,
-        '-3x3': 1,
-        '-4x3': 1,
-        '-2x2': 1,
-        '-2x1': 1,
-        '-4x2': 1,
-    };
+    const visited = {};
     let head = { x: 0, y: 0 };
     let tail = { x: 0, y: 0 };
     let rope = { head, tail };
-
     updateVisited(rope, visited);
 
-    moving(rope, moves[0]);
-    updateVisited(rope, visited);
-    moving(rope, moves[1]);
-    updateVisited(rope, visited);
-    moving(rope, moves[2]);
-    updateVisited(rope, visited);
-    moving(rope, moves[3]);
-    updateVisited(rope, visited);
-
-    moving(rope, moves[4]);
-    updateVisited(rope, visited);
-    moving(rope, moves[4]);
-    updateVisited(rope, visited);
+    moves.forEach(move => {
+        moving(rope, move);
+        updateVisited(rope, visited);
+    });
 
     return Object.keys(visited).length;
 };
