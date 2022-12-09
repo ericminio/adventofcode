@@ -6,7 +6,7 @@ const moving = (rope, direction) => {
     rope.head.y += direction.dy;
 
     if (Math.abs(rope.head.y - rope.tail.y) > 1) {
-        rope.tail.y = 1;
+        rope.tail.y += 1;
     }
 };
 
