@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
-const { parse, right, up, moving } = require('./solve');
+const { parse, right, up, moving, updateVisited } = require('./solve');
 const { lines } = require('../support');
 
 describe.only('2022.9', () => {
@@ -63,6 +63,17 @@ describe.only('2022.9', () => {
                 expect(rope.tail).to.deep.equal({ x: 0, y: 2 });
                 moving(rope, right);
                 expect(rope.tail).to.deep.equal({ x: 0, y: 3 });
+            });
+        });
+
+        describe('visited', () => {
+
+            it('captures position of tail', () => {
+                const rope = { head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } };
+                const visited = {};
+                updateVisited(rope, visited);
+
+                expect(visited).to.deep.equal({ '0-0': 1 });
             });
         });
     });
