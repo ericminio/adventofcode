@@ -70,7 +70,7 @@ describe.only('2022.9', () => {
             });
         });
 
-        describe('moving diagonal', () => {
+        describe('making the tail move diagonal', () => {
             let rope;
             beforeEach(() => {
                 rope = { head: { x: -1, y: 4 }, tail: { x: 0, y: 3 } };
