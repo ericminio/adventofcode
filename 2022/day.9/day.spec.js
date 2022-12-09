@@ -73,15 +73,13 @@ describe.only('2022.9', () => {
             });
 
             it('captures position of tail', () => {
-                const rope = { head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } };
-                updateVisited(rope, visited);
+                updateVisited({ head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } }, visited);
 
                 expect(visited).to.deep.equal({ '0x0': 1 });
             });
 
             it('captures several positions of tail', () => {
-                const rope = { head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } };
-                updateVisited(rope, visited);
+                updateVisited({ head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } }, visited);
 
                 expect(visited).to.deep.equal({ '0x0': 1 });
             });
