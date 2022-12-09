@@ -5,7 +5,7 @@ const moving = (rope, direction) => {
     rope.head.x += direction.dx;
     rope.head.y += direction.dy;
 
-    if (rope.head.y == 2) {
+    if (Math.abs(rope.head.y - rope.tail.y) > 1) {
         rope.tail.y = 1;
     }
 };
