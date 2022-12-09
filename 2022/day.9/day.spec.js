@@ -31,6 +31,7 @@ describe.only('2022.9', () => {
 
                 expect(moves[0]).to.deep.equal(right);
                 expect(moves[1]).to.deep.equal(right);
+                expect(moves[2]).to.deep.equal(right);
             });
         });
     });
