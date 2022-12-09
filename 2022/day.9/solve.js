@@ -4,13 +4,17 @@ const right = { dx: 0, dy: 1 };
 const moving = (rope, direction) => {
     rope.head.x += direction.dx;
     rope.head.y += direction.dy;
+
+    if (rope.head.y == 2) {
+        rope.tail.y = 1;
+    }
 };
 
 const solve1 = (file) => {
     const moves = lines(file);
     const visited = {
 
-        '0x1': 1,
+
         '0x2': 1,
         '0x3': 1,
         '-1x4': 1,
