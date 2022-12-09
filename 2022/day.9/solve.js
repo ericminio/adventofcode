@@ -1,6 +1,13 @@
 const { lines } = require('../support');
 
+const pattern = /^(.*)\s(.*)/;
 const right = { dx: 0, dy: 1 };
+const directions = {
+    'R': { dx: 0, dy: 1 },
+    'U': { dx: -1, dy: 0 },
+    'L': { dx: 0, dy: -1 },
+    'D': { dx: 1, dy: 0 },
+};
 const moving = (rope, direction) => {
     rope.head.x += direction.dx;
     rope.head.y += direction.dy;
@@ -11,7 +18,11 @@ const moving = (rope, direction) => {
 };
 
 const solve1 = (file) => {
-    const moves = lines(file);
+    const input = lines(file);
+    const moves = [];
+    for (var i = 0; i < input.length; i++) {
+        let data = pattern.exec(input[i]);
+    }
     const visited = {
 
 
