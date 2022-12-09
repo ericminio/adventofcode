@@ -21,7 +21,12 @@ const solve1 = (file) => {
     const input = lines(file);
     const moves = [];
     for (var i = 0; i < input.length; i++) {
-        let data = pattern.exec(input[i]);
+        const data = pattern.exec(input[i]);
+        const direction = directions[data[1]];
+        const steps = parseInt(data[2]);
+        for (var count = 0; count < steps; count++) {
+            moves.push(direction);
+        }
     }
     const visited = {
 
