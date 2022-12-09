@@ -29,6 +29,7 @@ describe.only('2022.9', () => {
                 const input = lines(`${__dirname}/data/example.txt`);
                 const moves = parse(input);
 
+                expect(moves[0]).to.deep.equal(right);
                 expect(moves[1]).to.deep.equal(right);
             });
         });
