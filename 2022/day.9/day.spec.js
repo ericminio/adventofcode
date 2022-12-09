@@ -93,7 +93,7 @@ describe.only('2022.9', () => {
             it('moves tail as expected on up-left', () => {
                 let rope = { head: { x: -3, y: 4 }, tail: { x: -2, y: 3 } };
                 moving(rope, { dx: -1, dy: -1 });
-                // expect(rope.tail).to.deep.equal({ x: -1, y: 3 });
+                // expect(rope.tail).to.deep.equal({ x: -3, y: 3 });
             });
 
         });
