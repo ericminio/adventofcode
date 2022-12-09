@@ -13,7 +13,7 @@ const solve1 = (file) => {
         '-2x2': 1,
         '-2x1': 1,
         '-4x2': 1,
-    }
+    };
     return Object.keys(visited).length;
 };
 
