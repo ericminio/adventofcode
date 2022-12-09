@@ -21,10 +21,12 @@ const solve1 = (file) => {
     };
     let head = { x: 0, y: 0 };
     let tail = { x: 0, y: 0 };
+    let rope = { head, tail };
 
     visited[`${tail.x}-${tail.y}`] = 1;
 
     let move = right;
+
 
     return Object.keys(visited).length;
 };
