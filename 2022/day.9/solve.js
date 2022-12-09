@@ -2,9 +2,10 @@ const { lines } = require('../support');
 
 const pattern = /^(.*)\s(.*)/;
 const right = { dx: 0, dy: 1 };
+const up = { dx: -1, dy: 0 };
 const directions = {
     'R': right,
-    'U': { dx: -1, dy: 0 },
+    'U': up,
     'L': { dx: 0, dy: -1 },
     'D': { dx: 1, dy: 0 },
 };
@@ -65,4 +66,4 @@ const solve2 = (file) => {
     return 15;
 };
 
-module.exports = { solve1, solve2, parse, right };
+module.exports = { solve1, solve2, parse, right, up };

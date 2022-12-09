@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
-const { parse, right } = require('./solve');
+const { parse, right, up } = require('./solve');
 const { lines } = require('../support');
 
 describe.only('2022.9', () => {
@@ -33,6 +33,7 @@ describe.only('2022.9', () => {
                 expect(moves[1]).to.deep.equal(right);
                 expect(moves[2]).to.deep.equal(right);
                 expect(moves[3]).to.deep.equal(right);
+                expect(moves[4]).to.deep.equal(up);
             });
         });
     });
