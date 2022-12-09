@@ -1,6 +1,10 @@
 const { lines } = require('../support');
 
 const right = { dx: 0, dy: 1 };
+const moving = (rope, direction) => {
+    rope.head.x += direction.dx;
+    rope.head.y += direction.dy;
+};
 
 const solve1 = (file) => {
     const moves = lines(file);
@@ -25,8 +29,7 @@ const solve1 = (file) => {
 
     visited[`${tail.x}-${tail.y}`] = 1;
 
-    let move = right;
-
+    moving(rope, right);
 
     return Object.keys(visited).length;
 };
