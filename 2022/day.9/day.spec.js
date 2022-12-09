@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
-const { parse } = require('./solve');
+const { parse, right } = require('./solve');
 const { lines } = require('../support');
 
 describe.only('2022.9', () => {
@@ -27,6 +27,9 @@ describe.only('2022.9', () => {
 
             it('identifies moves as expected', () => {
                 const input = lines(`${__dirname}/data/example.txt`);
+                const moves = parse(input);
+
+                expect(moves[1]).to.deep.equal(right);
             });
         });
     });
