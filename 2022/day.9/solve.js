@@ -65,6 +65,9 @@ const solve1 = (file) => {
     moving(rope, moves[3]);
     updateVisited(rope, visited);
 
+    moving(rope, moves[4]);
+    updateVisited(rope, visited);
+
     return Object.keys(visited).length;
 };
 
