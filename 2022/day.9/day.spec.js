@@ -37,7 +37,7 @@ describe.only('2022.9', () => {
             });
         });
 
-        describe('moving', () => {
+        describe('moving straight', () => {
             let rope;
             beforeEach(() => {
                 rope = { head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } };
