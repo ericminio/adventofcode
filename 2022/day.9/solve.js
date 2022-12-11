@@ -76,18 +76,7 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     const moves = parse(lines(file));
-    const knots = [
-        { x: 0, y: 0 },
-        { x: 0, y: 0 },
-        { x: 0, y: 0 },
-        { x: 0, y: 0 },
-        { x: 0, y: 0 },
-        { x: 0, y: 0 },
-        { x: 0, y: 0 },
-        { x: 0, y: 0 },
-        { x: 0, y: 0 },
-        { x: 0, y: 0 },
-    ];
+    const knots = rope({ size: 10 });
     const visited = swing(knots, moves);
 
     return Object.keys(visited).length;
