@@ -1,7 +1,10 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
-const { parse, right, up, updateVisited } = require('./solve');
+const { parse, directions, updateVisited } = require('./solve');
 const { lines } = require('../support');
+
+const right = directions['R'];
+const up = directions['U'];
 
 describe.only('2022.9', () => {
 
