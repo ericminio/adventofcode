@@ -49,9 +49,9 @@ const solve1 = (file) => {
     const visited = {};
     let head = { x: 0, y: 0 };
     let tail = { x: 0, y: 0 };
-    updateVisited(tail, visited);
     const knots = [head, tail];
 
+    updateVisited(tail, visited);
     moves.forEach(initial => {
         let move = initial;
         for (var i = 0; i < knots.length - 1; i++) {
