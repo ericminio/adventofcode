@@ -7,7 +7,9 @@ const { lines } = require('../support');
   .....
 */
 const dontMove = { dx: 0, dy: 0 };
+const relative = (head, tail) => `${head.x - tail.x}x${head.y - tail.y}`;
 const tailMove = (head, tail) => {
+    const position = relative(head, tail);
     return dontMove;
 };
 const moving = (rope, direction) => {
