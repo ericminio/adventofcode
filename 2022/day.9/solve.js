@@ -50,7 +50,7 @@ const updateVisited = (knot, visited) => {
 };
 const swing = (knots, moves) => {
     const visited = {};
-    let tail = knots[1];
+    let tail = knots[knots.length - 1];
     updateVisited(tail, visited);
     moves.forEach(initial => {
         let move = initial;
@@ -74,7 +74,22 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    return 1;
+    const moves = parse(lines(file));
+    const knots = [
+        { x: 0, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: 0 },
+        { x: 0, y: 0 },
+    ];
+    const visited = swing(knots, moves);
+
+    return Object.keys(visited).length;
 };
 
 const pattern = /^(.*)\s(.*)/;
