@@ -91,4 +91,4 @@ const parse = (input) => {
     return moves;
 };
 
-module.exports = { solve1, solve2, parse, directions, moving, updateVisited };
+module.exports = { solve1, solve2, parse, directions, updateVisited };
