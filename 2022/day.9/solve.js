@@ -3,7 +3,7 @@ const { lines } = require('../support');
 /*.....
   .....
   ..T..
-  H....
+  .....
   .....
 */
 const dontMove = { dx: 0, dy: 0 };
@@ -24,6 +24,11 @@ const nextMove = {
 
     '-2x1': { dx: -1, dy: 1 },
     '-1x2': { dx: -1, dy: 1 },
+
+    '2x2': { dx: 1, dy: 1 },
+    '2x-2': { dx: 1, dy: -1 },
+    '-2x-2': { dx: -1, dy: -1 },
+    '-2x2': { dx: -1, dy: 1 },
 };
 const relative = (head, tail) => `${head.x - tail.x}x${head.y - tail.y}`;
 const tailMove = (head, tail) => {
