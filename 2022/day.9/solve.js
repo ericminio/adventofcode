@@ -2,20 +2,42 @@ const { lines } = require('../support');
 
 /*.....
   .....
-  ..T.H
-  .....
+  ..T..
+  H....
   .....
 */
 const dontMove = { dx: 0, dy: 0 };
+const nextMove = {
+    '2x0': { dx: 1, dy: 0 },
+    '0x2': { dx: 0, dy: 1 },
+    '-2x0': { dx: -1, dy: 0 },
+    '0x-2': { dx: 0, dy: -1 },
+
+    '1x2': { dx: 1, dy: 1 },
+    '2x1': { dx: 1, dy: 1 },
+
+    '2x-1': { dx: 1, dy: -1 },
+    '1x-2': { dx: 1, dy: -1 },
+
+    '-2x-1': { dx: -1, dy: -1 },
+    '-1x-2': { dx: -1, dy: -1 },
+
+    '-2x1': { dx: -1, dy: 1 },
+    '-1x2': { dx: -1, dy: 1 },
+};
 const relative = (head, tail) => `${head.x - tail.x}x${head.y - tail.y}`;
 const tailMove = (head, tail) => {
-    const position = relative(head, tail);
+    if (shouldMove(tail, head)) {
+        const call = relative(head, tail);
+        return nextMove[call];
+    }
     return dontMove;
 };
+const shouldMove = (tail, head) => {
+    return Math.abs(head.x = tail.x) > 1 || Math.abs(head.y - tail.y) > 1;
+}
 const moving = (rope, direction) => {
     movingKnot(rope.head, direction);
-    const move = tailMove(rope.head, rope.tail);
-    movingKnot(rope.tail, move);
 
     if (Math.abs(rope.head.y - rope.tail.y) > 1) {
         rope.tail.y += direction.dy;
