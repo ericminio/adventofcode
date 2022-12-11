@@ -29,7 +29,7 @@ const solve1 = (file) => {
     let head = { x: 0, y: 0 };
     let tail = { x: 0, y: 0 };
     let rope = { head, tail };
-    updateVisited(rope.tail, visited);
+    updateVisited(tail, visited);
 
     moves.forEach(move => {
         moving(rope, move);
