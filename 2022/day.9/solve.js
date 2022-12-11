@@ -50,6 +50,7 @@ const solve1 = (file) => {
     let head = { x: 0, y: 0 };
     let tail = { x: 0, y: 0 };
     updateVisited(tail, visited);
+    const knots = [head, tail];
 
     moves.forEach(headMove => {
         moving(head, headMove);
