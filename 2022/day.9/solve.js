@@ -34,10 +34,12 @@ const tailMove = (head, tail) => {
     return dontMove;
 };
 const shouldMove = (tail, head) => {
-    return Math.abs(head.x = tail.x) > 1 || Math.abs(head.y - tail.y) > 1;
+    return Math.abs(head.x - tail.x) > 1 || Math.abs(head.y - tail.y) > 1;
 }
 const moving = (rope, direction) => {
     movingKnot(rope.head, direction);
+    const move = tailMove(rope.head, rope.tail);
+
 
     if (Math.abs(rope.head.y - rope.tail.y) > 1) {
         rope.tail.y += direction.dy;
