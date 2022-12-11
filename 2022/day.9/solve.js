@@ -58,10 +58,17 @@ const swing = (knots, moves) => {
     });
     return visited;
 };
+const rope = ({ size }) => {
+    const knots = [];
+    for (var i = 0; i < size; i++) {
+        knots.push({ x: 0, y: 0 })
+    }
+    return knots
+}
 
 const solve1 = (file) => {
     const moves = parse(lines(file));
-    const knots = [{ x: 0, y: 0 }, { x: 0, y: 0 }];
+    const knots = rope({ size: 2 });
     const visited = swing(knots, moves);
 
     return Object.keys(visited).length;
