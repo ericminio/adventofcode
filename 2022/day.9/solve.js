@@ -1,14 +1,6 @@
 const { lines } = require('../support');
 
 const pattern = /^(.*)\s(.*)/;
-const right = { dx: 0, dy: 1 };
-const up = { dx: -1, dy: 0 };
-const directions = {
-    'R': right,
-    'U': up,
-    'L': { dx: 0, dy: -1 },
-    'D': { dx: 1, dy: 0 },
-};
 const parse = (input) => {
     const moves = [];
     for (var i = 0; i < input.length; i++) {
@@ -20,6 +12,14 @@ const parse = (input) => {
         }
     }
     return moves;
+};
+const right = { dx: 0, dy: 1 };
+const up = { dx: -1, dy: 0 };
+const directions = {
+    'R': right,
+    'U': up,
+    'L': { dx: 0, dy: -1 },
+    'D': { dx: 1, dy: 0 },
 };
 const moving = (rope, direction) => {
     rope.head.x += direction.dx;
