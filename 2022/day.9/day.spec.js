@@ -41,63 +41,6 @@ describe.only('2022.9', () => {
             });
         });
 
-        describe('moving straight', () => {
-            let rope;
-            beforeEach(() => {
-                rope = { head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } };
-            });
-
-            it('moves head as expected', () => {
-                moving(rope, right);
-                expect(rope.head).to.deep.equal({ x: 0, y: 1 });
-                moving(rope, right);
-                expect(rope.head).to.deep.equal({ x: 0, y: 2 });
-                moving(rope, right);
-                expect(rope.head).to.deep.equal({ x: 0, y: 3 });
-                moving(rope, right);
-                expect(rope.head).to.deep.equal({ x: 0, y: 4 });
-            });
-
-            it('moves tail as expected', () => {
-                moving(rope, right);
-                expect(rope.tail).to.deep.equal({ x: 0, y: 0 });
-                moving(rope, right);
-                expect(rope.tail).to.deep.equal({ x: 0, y: 1 });
-                moving(rope, right);
-                expect(rope.tail).to.deep.equal({ x: 0, y: 2 });
-                moving(rope, right);
-                expect(rope.tail).to.deep.equal({ x: 0, y: 3 });
-            });
-        });
-
-        describe('making the tail move diagonal', () => {
-            let rope;
-            beforeEach(() => {
-                rope = { head: { x: -1, y: 4 }, tail: { x: 0, y: 3 } };
-            });
-
-            it('moves tail as expected', () => {
-                moving(rope, up);
-                expect(rope.tail).to.deep.equal({ x: -1, y: 4 });
-            })
-        });
-
-        describe('moving diagonal', () => {
-
-            it('moves tail as expected on up-right', () => {
-                let rope = { head: { x: 0, y: 3 }, tail: { x: 0, y: 2 } };
-                moving(rope, { dx: -1, dy: 1 });
-                expect(rope.tail).to.deep.equal({ x: -1, y: 3 });
-            });
-
-            it('moves tail as expected on up-left', () => {
-                let rope = { head: { x: -3, y: 4 }, tail: { x: -2, y: 3 } };
-                moving(rope, { dx: -1, dy: -1 });
-                // expect(rope.tail).to.deep.equal({ x: -3, y: 3 });
-            });
-
-        });
-
         describe('visited', () => {
             let visited;
             beforeEach(() => {
