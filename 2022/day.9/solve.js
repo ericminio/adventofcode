@@ -19,6 +19,7 @@ const tailMove = (head, tail) => {
 const moving = (rope, direction) => {
     movingKnot(rope.head, direction);
     const move = tailMove(rope.head, rope.tail);
+    movingKnot(rope.tail, move);
 
     if (Math.abs(rope.head.y - rope.tail.y) > 1) {
         rope.tail.y += direction.dy;
