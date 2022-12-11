@@ -36,7 +36,7 @@ const tailMove = (head, tail) => {
 const shouldMove = (tail, head) => {
     return Math.abs(head.x - tail.x) > 1 || Math.abs(head.y - tail.y) > 1;
 }
-const movingKnot = (knot, direction) => {
+const moving = (knot, direction) => {
     knot.x += direction.dx;
     knot.y += direction.dy;
 }
@@ -53,9 +53,9 @@ const solve1 = (file) => {
     updateVisited(tail, visited);
 
     moves.forEach(headMove => {
-        movingKnot(rope.head, headMove);
+        moving(rope.head, headMove);
         const move = tailMove(rope.head, rope.tail);
-        movingKnot(rope.tail, move);
+        moving(rope.tail, move);
         updateVisited(rope.tail, visited);
     });
 
