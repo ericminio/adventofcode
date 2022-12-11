@@ -39,16 +39,7 @@ const shouldMove = (tail, head) => {
 const moving = (rope, direction) => {
     movingKnot(rope.head, direction);
     const move = tailMove(rope.head, rope.tail);
-
-
-    if (Math.abs(rope.head.y - rope.tail.y) > 1) {
-        rope.tail.y += direction.dy;
-        rope.tail.x = rope.head.x;
-    }
-    if (Math.abs(rope.head.x - rope.tail.x) > 1) {
-        rope.tail.x += direction.dx;
-        rope.tail.y = rope.head.y;
-    }
+    movingKnot(rope.tail, move);
 };
 const movingKnot = (knot, direction) => {
     knot.x += direction.dx;
