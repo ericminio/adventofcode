@@ -47,22 +47,16 @@ describe.only('2022.9', () => {
                 visited = {};
             });
 
-            it('captures position of tail', () => {
-                updateVisited({ head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } }, visited);
-
-                expect(visited).to.deep.equal({ '0x0': 1 });
-            });
-
-            it('captures several positions of tail', () => {
-                updateVisited({ head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } }, visited);
-                updateVisited({ head: { x: 0, y: 0 }, tail: { x: 12, y: -15 } }, visited);
+            it('captures positions of tail', () => {
+                updateVisited({ x: 0, y: 0 }, visited);
+                updateVisited({ x: 12, y: -15 }, visited);
 
                 expect(visited).to.deep.equal({ '0x0': 1, '12x-15': 1 });
             });
 
             it('captures one position of tail once', () => {
-                updateVisited({ head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } }, visited);
-                updateVisited({ head: { x: 0, y: 0 }, tail: { x: 0, y: 0 } }, visited);
+                updateVisited({ x: 0, y: 0 }, visited);
+                updateVisited({ x: 0, y: 0 }, visited);
 
                 expect(visited).to.deep.equal({ '0x0': 1 });
             });

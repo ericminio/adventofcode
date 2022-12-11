@@ -34,8 +34,8 @@ const moving = (rope, direction) => {
         rope.tail.y = rope.head.y;
     }
 };
-const updateVisited = (rope, visited) => {
-    visited[`${rope.tail.x}x${rope.tail.y}`] = 1;
+const updateVisited = (knot, visited) => {
+    visited[`${knot.x}x${knot.y}`] = 1;
 };
 
 const solve1 = (file) => {
@@ -44,11 +44,11 @@ const solve1 = (file) => {
     let head = { x: 0, y: 0 };
     let tail = { x: 0, y: 0 };
     let rope = { head, tail };
-    updateVisited(rope, visited);
+    updateVisited(rope.tail, visited);
 
     moves.forEach(move => {
         moving(rope, move);
-        updateVisited(rope, visited);
+        updateVisited(rope.tail, visited);
     });
 
     return Object.keys(visited).length;
