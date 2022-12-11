@@ -57,8 +57,10 @@ const solve1 = (file) => {
     let rope = { head, tail };
     updateVisited(tail, visited);
 
-    moves.forEach(move => {
-        moving(rope, move);
+    moves.forEach(headMove => {
+        movingKnot(rope.head, headMove);
+        const move = tailMove(rope.head, rope.tail);
+        movingKnot(rope.tail, move);
         updateVisited(rope.tail, visited);
     });
 
