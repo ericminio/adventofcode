@@ -49,14 +49,13 @@ const solve1 = (file) => {
     const visited = {};
     let head = { x: 0, y: 0 };
     let tail = { x: 0, y: 0 };
-    let rope = { head, tail };
     updateVisited(tail, visited);
 
     moves.forEach(headMove => {
-        moving(rope.head, headMove);
-        const move = tailMove(rope.head, rope.tail);
-        moving(rope.tail, move);
-        updateVisited(rope.tail, visited);
+        moving(head, headMove);
+        const move = tailMove(head, tail);
+        moving(tail, move);
+        updateVisited(tail, visited);
     });
 
     return Object.keys(visited).length;
