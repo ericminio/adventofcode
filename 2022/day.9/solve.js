@@ -54,7 +54,6 @@ const solve1 = (file) => {
     const visited = {};
     const knots = [{ x: 0, y: 0 }, { x: 0, y: 0 }];
 
-    let head = knots[0];
     let tail = knots[1];
     updateVisited(tail, visited);
     moves.forEach(initial => {
