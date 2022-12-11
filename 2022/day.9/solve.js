@@ -6,6 +6,7 @@ const { lines } = require('../support');
   .....
   .....
 */
+const dontMove = { dx: 0, dy: 0 };
 const directions = {
     'R': { dx: 1, dy: 0 },
     'U': { dx: 0, dy: 1 },
@@ -13,7 +14,7 @@ const directions = {
     'D': { dx: 0, dy: -1 },
 };
 const tailMove = (head, tail) => {
-
+    return dontMove;
 };
 const moving = (rope, direction) => {
     movingKnot(rope.head, direction);
