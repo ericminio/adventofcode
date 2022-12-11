@@ -7,8 +7,7 @@ const directions = {
     'D': { dx: 0, dy: -1 },
 };
 const moving = (rope, direction) => {
-    rope.head.x += direction.dx;
-    rope.head.y += direction.dy;
+    movingKnot(rope.head, direction);
 
     if (Math.abs(rope.head.y - rope.tail.y) > 1) {
         rope.tail.y += direction.dy;
@@ -19,6 +18,10 @@ const moving = (rope, direction) => {
         rope.tail.y = rope.head.y;
     }
 };
+const movingKnot = (knot, direction) => {
+    knot.x += direction.dx;
+    knot.y += direction.dy;
+}
 const updateVisited = (knot, visited) => {
     visited[`${knot.x}x${knot.y}`] = 1;
 };
