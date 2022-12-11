@@ -1,18 +1,5 @@
 const { lines } = require('../support');
 
-const pattern = /^(.*)\s(.*)/;
-const parse = (input) => {
-    const moves = [];
-    for (var i = 0; i < input.length; i++) {
-        const data = pattern.exec(input[i]);
-        const direction = directions[data[1]];
-        const steps = parseInt(data[2]);
-        for (var count = 0; count < steps; count++) {
-            moves.push(direction);
-        }
-    }
-    return moves;
-};
 const right = { dx: 0, dy: 1 };
 const up = { dx: -1, dy: 0 };
 const directions = {
@@ -56,6 +43,20 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     return 1;
+};
+
+const pattern = /^(.*)\s(.*)/;
+const parse = (input) => {
+    const moves = [];
+    for (var i = 0; i < input.length; i++) {
+        const data = pattern.exec(input[i]);
+        const direction = directions[data[1]];
+        const steps = parseInt(data[2]);
+        for (var count = 0; count < steps; count++) {
+            moves.push(direction);
+        }
+    }
+    return moves;
 };
 
 module.exports = { solve1, solve2, parse, right, up, moving, updateVisited };
