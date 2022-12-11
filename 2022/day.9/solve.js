@@ -48,11 +48,7 @@ const moving = (knot, direction) => {
 const updateVisited = (knot, visited) => {
     visited[`${knot.x}x${knot.y}`] = 1;
 };
-
-const solve1 = (file) => {
-    const moves = parse(lines(file));
-    const knots = [{ x: 0, y: 0 }, { x: 0, y: 0 }];
-
+const swing = (knots, moves) => {
     const visited = {};
     let tail = knots[1];
     updateVisited(tail, visited);
@@ -66,6 +62,13 @@ const solve1 = (file) => {
         moving(tail, move);
         updateVisited(tail, visited);
     });
+    return visited;
+};
+
+const solve1 = (file) => {
+    const moves = parse(lines(file));
+    const knots = [{ x: 0, y: 0 }, { x: 0, y: 0 }];
+    const visited = swing(knots, moves);
 
     return Object.keys(visited).length;
 };
