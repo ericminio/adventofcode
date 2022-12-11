@@ -12,8 +12,12 @@ const directions = {
     'L': { dx: -1, dy: 0 },
     'D': { dx: 0, dy: -1 },
 };
+const tailMove = (head, tail) => {
+
+};
 const moving = (rope, direction) => {
     movingKnot(rope.head, direction);
+    const move = tailMove(rope.head, rope.tail);
 
     if (Math.abs(rope.head.y - rope.tail.y) > 1) {
         rope.tail.y += direction.dy;
