@@ -36,11 +36,6 @@ const tailMove = (head, tail) => {
 const shouldMove = (tail, head) => {
     return Math.abs(head.x - tail.x) > 1 || Math.abs(head.y - tail.y) > 1;
 }
-const moving = (rope, direction) => {
-    movingKnot(rope.head, direction);
-    const move = tailMove(rope.head, rope.tail);
-    movingKnot(rope.tail, move);
-};
 const movingKnot = (knot, direction) => {
     knot.x += direction.dx;
     knot.y += direction.dy;
