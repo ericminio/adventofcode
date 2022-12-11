@@ -59,4 +59,4 @@ const parse = (input) => {
     return moves;
 };
 
-module.exports = { solve1, solve2, parse, right, up, moving, updateVisited };
+module.exports = { solve1, solve2, parse, directions, right, up, moving, updateVisited };
