@@ -48,10 +48,10 @@ const parse = (input) => {
     const moves = [];
     for (var i = 0; i < input.length; i++) {
         const data = pattern.exec(input[i]);
-        const direction = directions[data[1]];
+        const move = directions[data[1]];
         const steps = parseInt(data[2]);
         for (var count = 0; count < steps; count++) {
-            moves.push(direction);
+            moves.push(move);
         }
     }
     return moves;
