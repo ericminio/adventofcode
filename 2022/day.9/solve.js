@@ -19,9 +19,6 @@ const moving = (rope, direction) => {
         rope.tail.y = rope.head.y;
     }
 };
-const shouldMove = (head, tail) => {
-    return Math.abs(head.x - tail.x) > 1 || Math.abs(head.y - tail.y) > 1;
-};
 const updateVisited = (knot, visited) => {
     visited[`${knot.x}x${knot.y}`] = 1;
 };
