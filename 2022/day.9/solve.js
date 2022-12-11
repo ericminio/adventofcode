@@ -1,10 +1,8 @@
 const { lines } = require('../support');
 
-const right = { dx: 1, dy: 0 };
-const up = { dx: 0, dy: 1 };
 const directions = {
-    'R': right,
-    'U': up,
+    'R': { dx: 1, dy: 0 },
+    'U': { dx: 0, dy: 1 },
     'L': { dx: -1, dy: 0 },
     'D': { dx: 0, dy: -1 },
 };
