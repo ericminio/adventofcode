@@ -53,8 +53,12 @@ const solve1 = (file) => {
     const knots = [head, tail];
 
     moves.forEach(initial => {
-        moving(head, initial);
-        const move = tailMove(head, tail);
+        let move = initial;
+        for (var i = 0; i < knots.length - 1; i++) {
+            let knot = knots[i];
+            moving(knot, move);
+            move = tailMove(knot, knots[i + 1]);
+        }
         moving(tail, move);
         updateVisited(tail, visited);
     });
