@@ -52,10 +52,10 @@ const updateVisited = (knot, visited) => {
 const solve1 = (file) => {
     const moves = parse(lines(file));
     const visited = {};
-    let head = { x: 0, y: 0 };
-    let tail = { x: 0, y: 0 };
-    const knots = [head, tail];
+    const knots = [{ x: 0, y: 0 }, { x: 0, y: 0 }];
 
+    let head = knots[0];
+    let tail = knots[1];
     updateVisited(tail, visited);
     moves.forEach(initial => {
         let move = initial;
