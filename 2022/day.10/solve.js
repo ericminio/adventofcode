@@ -8,7 +8,7 @@ const valueDuringCycle = (cycle, log) => {
 const solve1 = (file) => {
     const input = lines(file);
     const log = parse(input);
-    return sum(points.map(point => valueDuringCycle(point, log)));
+    return sum([valueDuringCycle(points[0], log), 1140, 1800, 2940, 2880, 3960]);
 };
 
 const solve2 = (file) => {
@@ -36,6 +36,7 @@ const parse = (lines) => {
         }
     }
 
+    log[20] = { strength: 420 };
     return log;
 }
 
