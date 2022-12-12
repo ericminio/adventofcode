@@ -8,14 +8,7 @@ const valueDuringCycle = (cycle, log) => {
 const solve1 = (file) => {
     const input = lines(file);
     const log = parse(input);
-    return sum([
-        valueDuringCycle(points[0], log),
-        valueDuringCycle(points[1], log),
-        valueDuringCycle(points[2], log),
-        valueDuringCycle(points[3], log),
-        valueDuringCycle(points[4], log),
-        valueDuringCycle(points[5], log),
-    ]);
+    return sum(points.map(point => valueDuringCycle(point, log)));
 };
 
 const solve2 = (file) => {
