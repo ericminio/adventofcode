@@ -6,7 +6,7 @@ const { lines } = require('../support');
 const right = directions['R'];
 const up = directions['U'];
 
-describe.only('2022.9', () => {
+describe('2022.9', () => {
 
     describe('part 1', () => {
 
