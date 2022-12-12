@@ -36,7 +36,6 @@ const parse = (lines) => {
         }
     }
 
-    log[20] = { strength: 420 };
     return log;
 }
 
