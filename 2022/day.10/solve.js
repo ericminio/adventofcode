@@ -11,7 +11,7 @@ const solve1 = (file) => {
     return sum([
         valueDuringCycle(points[0], log),
         valueDuringCycle(points[1], log),
-        1800,
+        valueDuringCycle(points[2], log),
         2940,
         2880,
         3960
