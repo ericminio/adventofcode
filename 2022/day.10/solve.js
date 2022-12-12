@@ -17,8 +17,13 @@ const solve2 = (file) => {
 
 const parse = (lines) => {
     const log = {};
+    let cycle = 1;
+    let register = 1;
     for (var i = 0; i < lines.length; i++) {
         const line = lines[i];
+        if (line === 'noop') {
+            log[cycle] = { start: register, end: register, strength: register * cycle };
+        }
     }
 
     log[20] = { strength: 420 };
