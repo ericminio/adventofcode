@@ -23,10 +23,16 @@ const parse = (lines) => {
         const line = lines[i];
         if (line === 'noop') {
             log[cycle] = { start: register, end: register, strength: register * cycle };
+            cycle++;
         }
         else {
             let increment = parseInt(line.substring(5));
-
+            log[cycle] = { start: register, end: register, strength: register * cycle };
+            cycle++;
+            let endValue = register + increment;
+            log[cycle] = { start: register, end: endValue, strength: endValue * cycle };
+            register = endValue;
+            cycle++;
         }
     }
 
