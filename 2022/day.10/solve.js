@@ -31,8 +31,7 @@ const parse = (lines) => {
             log[cycle] = { strength: register * cycle };
             cycle++;
             let increment = parseInt(line.substring(5));
-            let endValue = register + increment;
-            register = endValue;
+            register += increment;
         }
     }
 
