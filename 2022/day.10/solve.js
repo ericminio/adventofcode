@@ -13,7 +13,7 @@ const solve1 = (file) => {
         valueDuringCycle(points[1], log),
         valueDuringCycle(points[2], log),
         valueDuringCycle(points[3], log),
-        2880,
+        valueDuringCycle(points[4], log),
         3960
     ]);
 };
