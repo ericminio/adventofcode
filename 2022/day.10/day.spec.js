@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
 
-describe('2022.?', () => {
+describe('2022.10', () => {
 
     describe('part 1', () => {
 
