@@ -37,7 +37,7 @@ const parse = (lines) => {
             log[cycle] = { start: register, end: register, strength: register * cycle };
             cycle++;
             let endValue = register + increment;
-            log[cycle] = { start: register, end: endValue, strength: endValue * cycle };
+            log[cycle] = { start: register, end: endValue, strength: register * cycle };
             register = endValue;
             cycle++;
         }
