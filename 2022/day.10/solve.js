@@ -17,6 +17,10 @@ const solve2 = (file) => {
 
 const parse = (lines) => {
     const log = {};
+    for (var i = 0; i < lines.length; i++) {
+
+    }
+
     log[20] = { strength: 420 };
     return log;
 }
