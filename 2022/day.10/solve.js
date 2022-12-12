@@ -11,7 +11,7 @@ const valueDuringCycle = (cycle, log) => {
 
 const solve1 = (file) => {
     const input = lines(file);
-    const log = parse(input);
+    const log = run(input);
     return sum(points.map(point => valueDuringCycle(point, log)));
 };
 
@@ -19,7 +19,7 @@ const solve2 = (file) => {
     return 15;
 };
 
-const parse = (lines) => {
+const run = (lines) => {
     const log = {};
     let cycle = 1;
     let register = 1;
