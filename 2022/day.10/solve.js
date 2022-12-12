@@ -28,9 +28,9 @@ const parse = (lines) => {
         else {
             log[cycle] = { strength: register * cycle };
             cycle++;
+            log[cycle] = { strength: register * cycle };
             let increment = parseInt(line.substring(5));
             let endValue = register + increment;
-            log[cycle] = { strength: register * cycle };
             register = endValue;
             cycle++;
         }
