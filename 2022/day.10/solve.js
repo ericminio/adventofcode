@@ -24,13 +24,9 @@ const parse = (lines) => {
     let register = 1;
     for (var i = 0; i < lines.length; i++) {
         const line = lines[i];
-        if (line === 'noop') {
-            logCycle(log, cycle, register);
-            cycle++;
-        }
-        else {
-            logCycle(log, cycle, register);
-            cycle++;
+        logCycle(log, cycle, register);
+        cycle++;
+        if (line !== 'noop') {
             logCycle(log, cycle, register);
             cycle++;
             register += parseInt(line.substring(5));
