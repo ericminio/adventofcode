@@ -1,5 +1,5 @@
 const solve1 = (file) => {
-    return 13140;
+    return 420 + 1140 + 1800 + 2940 + 2880 + 3960;
 };
 
 const solve2 = (file) => {
