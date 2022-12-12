@@ -29,9 +29,9 @@ const parse = (lines) => {
             cycle++;
         }
         else {
-            log[cycle] = { strength: register * cycle };
+            logCycle(log, cycle, register);
             cycle++;
-            log[cycle] = { strength: register * cycle };
+            logCycle(log, cycle, register);
             cycle++;
             register += parseInt(line.substring(5));
         }
