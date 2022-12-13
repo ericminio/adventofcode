@@ -1,6 +1,8 @@
+const { orderDescending } = require('../support');
+
 const solve1 = (file) => {
     const counts = [101, 95, 7, 105];
-    counts.sort();
+    orderDescending(counts);
 
     return 101 * 105;
 };
