@@ -18,12 +18,19 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const input = lines(file);
     let cycle = 1;
-    let spritePosition = 1;
-    for (var i = 0; i < lines.length; i++) {
-        const line = lines[i];
-    }
+    let sprite = { position: 1 };
+    let screen = {};
+
+    const line = lines[0];
+    display(sprite, screen, cycle - 1);
 
     return 15;
+};
+
+const display = (sprite, screen, crt) => {
+    if (Math.abs(crt - sprite.position) < 2) {
+
+    }
 };
 
 const run = (lines) => {
