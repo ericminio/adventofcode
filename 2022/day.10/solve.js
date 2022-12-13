@@ -36,10 +36,10 @@ const solve2 = (file) => {
     const input = lines(file);
     const cycles = run(input);
 
-    const explore = Object.keys(cycles).map(key => cycles[key]).map(logged => ({
-        ...logged,
-        lit: Math.abs(((logged.cycle - 1) % 40) - logged.spritePosition) < 2
-    }));
+    const explore = Object.keys(cycles).map(key => cycles[key])
+        .map(logged => ({
+            lit: Math.abs(((logged.cycle - 1) % 40) - logged.spritePosition) < 2
+        }));
     for (let i = 0; i < 10; i++) {
         console.log(explore[i + 1]);
     }
