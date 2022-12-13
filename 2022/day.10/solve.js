@@ -42,7 +42,7 @@ const solve2 = (file) => {
             lit: Math.abs(((logged.cycle - 1) % 40) - logged.spritePosition) < 2
         }));
     for (let i = 0; i < 10; i++) {
-        console.log(explore[i + 1]);
+        console.log(explore[i]);
     }
     const screen = [];
     for (var index = 1; index <= Object.keys(cycles).length; index++) {
