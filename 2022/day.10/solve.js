@@ -36,7 +36,7 @@ const solve2 = (file) => {
     const input = lines(file);
     const cycles = run(input);
 
-    let screen = {};
+    let screen = [];
     for (var index = 1; index <= Object.keys(cycles).length; index++) {
         let logged = cycles[index];
         screen[index - 1] = (Math.abs(((index - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.';
