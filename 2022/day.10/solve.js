@@ -2,6 +2,7 @@ const { lines, sum } = require('../support');
 
 const logCycle = (log, cycle, register) => {
     log[cycle] = {
+        cycle,
         strength: register * cycle,
         spritePosition: register,
     };
@@ -36,7 +37,7 @@ const solve2 = (file) => {
     const cycles = run(input);
 
     const screen = Object.keys(cycles)
-        .map((logged, index) => (Math.abs(((index - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.');
+        .map((logged) => (Math.abs(((logged.cycle - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.');
     for (var index = 1; index <= Object.keys(cycles).length; index++) {
         const logged = cycles[index];
         screen[index - 1] = (Math.abs(((index - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.';
