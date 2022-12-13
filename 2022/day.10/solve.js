@@ -26,10 +26,10 @@ const run = (lines) => {
 
 const solve1 = (file) => {
     const input = lines(file);
-    const log = run(input);
+    const cycles = run(input);
     const points = [20, 60, 100, 140, 180, 220];
 
-    return sum(points.map(point => log[point].strength));
+    return sum(points.map(point => cycles[point].strength));
 };
 
 const solve2 = (file) => {
