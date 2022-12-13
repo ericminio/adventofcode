@@ -38,13 +38,12 @@ const solve2 = (file) => {
 
     let screen = [];
     for (var index = 1; index <= Object.keys(cycles).length; index++) {
-        let logged = cycles[index];
+        const logged = cycles[index];
         screen[index - 1] = (Math.abs(((index - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.';
     }
 
     const size = 40;
     let rows = [];
-    let rendered = Object.keys(screen).map(key => screen[key]);
     for (let i = 0; i < screen.length; i += size) {
         const row = screen.slice(i, i + size);
         rows.push(row.join(''));
