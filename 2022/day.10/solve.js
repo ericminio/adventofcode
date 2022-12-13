@@ -35,7 +35,7 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const input = lines(file);
     const cycles = run(input);
-
+    console.log(cycles[1]);
     const explore = Object.keys(cycles).map(key => cycles[key])
         .map(logged => ({
             ...logged,
