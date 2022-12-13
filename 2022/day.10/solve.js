@@ -46,6 +46,7 @@ const solve2 = (file) => {
             pixel: logged.lit ? '#' : '.'
         }))
         ;
+
     for (let i = 0; i < 10; i++) {
         console.log(explore[i]);
     }
