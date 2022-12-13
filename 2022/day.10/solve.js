@@ -36,14 +36,14 @@ const solve2 = (file) => {
     const input = lines(file);
     const cycles = run(input);
 
-    let screen = [];
+    const screen = [];
     for (var index = 1; index <= Object.keys(cycles).length; index++) {
         const logged = cycles[index];
         screen[index - 1] = (Math.abs(((index - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.';
     }
 
     const size = 40;
-    let rows = [];
+    const rows = [];
     for (let i = 0; i < screen.length; i += size) {
         const row = screen.slice(i, i + size);
         rows.push(row.join(''));
