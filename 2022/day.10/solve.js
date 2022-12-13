@@ -36,7 +36,7 @@ const solve2 = (file) => {
     const input = lines(file);
     const cycles = run(input);
 
-    const explore = Object.keys(cycles).map(logged => ({
+    const explore = Object.keys(cycles).map(key => cycles[key]).map(logged => ({
         ...logged,
         lit: Math.abs(((logged.cycle - 1) % 40) - logged.spritePosition) < 2
     }));
