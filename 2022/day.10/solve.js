@@ -41,6 +41,7 @@ const render = (screen, crt) => {
     for (var i = 0; i < crt; i++) {
         value += screen.crt;
     }
+    console.log('Screen')
     console.log(value);
 };
 
