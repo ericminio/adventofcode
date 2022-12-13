@@ -24,11 +24,16 @@ const solve2 = (file) => {
     for (var index = 1; index <= Object.keys(cycles).length; index++) {
         logged = cycles[index];
         screen[index - 1] = (Math.abs(((index - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.';
-        // console.log(`crt ${index - 1} ${logged.line}\tposition ${logged.spritePosition} -> ${screen[index - 1]}`);
     }
 
     let rendered = Object.keys(screen).map(key => screen[key]);
-    console.log(rendered);
+    let rows = [];
+    const size = 40;
+    for (let i = 0; i < rendered.length; i += size) {
+        const row = rendered.slice(i, i + size);
+        rows.push(row);
+    }
+    console.log(rows);
 
     return 15;
 };
