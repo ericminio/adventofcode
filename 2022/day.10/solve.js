@@ -24,7 +24,7 @@ const solve2 = (file) => {
     for (var index = 1; index <= 50; index++) {
         logged = cycles[index];
         screen[index - 1] = (Math.abs(index - 1 - logged.spritePosition) < 2) ? '#' : '.';
-        console.log(`crt ${index - 1} ${logged.line}`, `position ${logged.spritePosition} -> ${screen[index - 1]}`);
+        console.log(`crt ${index - 1} ${logged.line}\tposition ${logged.spritePosition} -> ${screen[index - 1]}`);
     }
 
     return 15;
