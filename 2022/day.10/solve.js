@@ -40,6 +40,15 @@ const solve2 = (file) => {
         screen[index - 1] = '.';
     }
 
+    index++;
+    logged = cycles[index];
+    if (Math.abs(index - 1 - logged.spritePosition) < 2) {
+        screen[index - 1] = '#';
+    }
+    else {
+        screen[index - 1] = '.';
+    }
+
     console.log(screen);
 
     return 15;
