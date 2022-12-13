@@ -3,10 +3,6 @@ const { lines, sum } = require('../support');
 const logCycle = (log, line, cycle, register) => {
     log[cycle] = { cycle, line, spritePosition: register, strength: register * cycle };
 };
-const valueDuringCycle = (cycle, log) => {
-    return log[cycle].strength;
-};
-
 const run = (lines) => {
     const log = {};
     let cycle = 1;
