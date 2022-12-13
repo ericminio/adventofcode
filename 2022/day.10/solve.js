@@ -42,7 +42,7 @@ const solve2 = (file) => {
         });
     for (let i = 0; i < 10; i++) {
         console.log(cycles[i + 1]);
-        console.log(screen[i])
+        console.log(screen[i]);
     }
     for (var index = 1; index <= Object.keys(cycles).length; index++) {
         const logged = cycles[index];
