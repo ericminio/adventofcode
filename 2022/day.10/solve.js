@@ -1,6 +1,5 @@
 const { lines, sum } = require('../support');
 
-const points = [20, 60, 100, 140, 180, 220];
 const logCycle = (log, cycle, register) => {
     log[cycle] = { strength: register * cycle };
     return cycle + 1;
@@ -12,6 +11,8 @@ const valueDuringCycle = (cycle, log) => {
 const solve1 = (file) => {
     const input = lines(file);
     const log = run(input);
+    const points = [20, 60, 100, 140, 180, 220];
+
     return sum(points.map(point => valueDuringCycle(point, log)));
 };
 
