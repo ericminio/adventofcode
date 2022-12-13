@@ -18,14 +18,17 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const input = lines(file);
     const cycles = run(input);
-    let sprite = { position: 1 };
     let screen = {};
 
-    let cycle = 1;
-    let log = cycles[cycle];
-
-    display(sprite, screen, cycle - 1);
-    render(screen, cycle - 1);
+    let index = 1;
+    let logged = cycles[index];
+    if (Math.abs(index - 1 - logged.spritePosition) < 2) {
+        screen[index - 1] = '#';
+    }
+    else {
+        screen[index - 1] = '.';
+    }
+    console.log(screen);
 
     return 15;
 };
