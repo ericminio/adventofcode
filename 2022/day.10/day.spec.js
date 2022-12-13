@@ -39,13 +39,6 @@ describe('2022.10', () => {
         });
 
     });
-
-    describe('internals', () => {
-
-        it('may be needed', () => {
-
-        });
-    });
 });
 
 
