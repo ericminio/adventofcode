@@ -27,6 +27,7 @@ const run = (lines) => {
             start: 1,
             end: 1,
         },
+        line: undefined,
     };
     let cycle = 1;
     let register = 1;
