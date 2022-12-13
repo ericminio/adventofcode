@@ -22,17 +22,9 @@ const solve2 = (file) => {
 
     let logged;
     for (var index = 1; index <= Object.keys(cycles).length; index++) {
-
         logged = cycles[index];
-        if (Math.abs(index - 1 - logged.spritePosition) < 2) {
-            screen[index - 1] = '#';
-        }
-        else {
-            screen[index - 1] = '.';
-        }
+        screen[index - 1] = (Math.abs(index - 1 - logged.spritePosition) < 2) ? '#' : '.';
     }
-
-
     console.log(screen);
 
     return 15;
