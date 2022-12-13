@@ -7,7 +7,7 @@ const logCycle = (log, line, cycle, register) => {
     };
 };
 const run = (lines) => {
-    const log = {};
+    const log = [];
     let cycle = 1;
     let register = 1;
     for (var i = 0; i < lines.length; i++) {
