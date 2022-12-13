@@ -21,6 +21,13 @@ const solve2 = (file) => {
 
 const run = (lines) => {
     const log = {};
+    const options = {
+        cycle: 1,
+        register: {
+            start: 1,
+            end: 1,
+        },
+    };
     let cycle = 1;
     let register = 1;
     for (var i = 0; i < lines.length; i++) {
