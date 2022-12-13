@@ -1,7 +1,7 @@
 const { lines, sum } = require('../support');
 
-const logCycle = (log, cycle, register) => {
-    log[cycle] = { strength: register * cycle };
+const logCycle = (log, line, cycle, register) => {
+    log[cycle] = { line, strength: register * cycle };
 };
 const valueDuringCycle = (cycle, log) => {
     return log[cycle].strength;
@@ -25,10 +25,10 @@ const run = (lines) => {
     let register = 1;
     for (var i = 0; i < lines.length; i++) {
         const line = lines[i];
-        logCycle(log, cycle, register);
+        logCycle(log, line, cycle, register);
         cycle++;
         if (line !== 'noop') {
-            logCycle(log, cycle, register);
+            logCycle(log, line, cycle, register);
             register += parseInt(line.substring(5));
             cycle++;
         }
