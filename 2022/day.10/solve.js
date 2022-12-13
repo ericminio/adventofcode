@@ -43,8 +43,8 @@ const solve2 = (file) => {
     }
 
     const size = 40;
-    let rendered = Object.keys(screen).map(key => screen[key]);
     let rows = [];
+    let rendered = Object.keys(screen).map(key => screen[key]);
     for (let i = 0; i < rendered.length; i += size) {
         const row = rendered.slice(i, i + size);
         rows.push(row.join(''));
