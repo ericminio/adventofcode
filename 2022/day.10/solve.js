@@ -35,6 +35,6 @@ const run = (lines) => {
     }
 
     return log;
-}
+};
 
 module.exports = { solve1, solve2 };
