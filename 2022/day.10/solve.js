@@ -18,9 +18,9 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const input = lines(file);
     const log = run(input);
+    let sprite = { position: 1 };
 
     let cycle = 1;
-    let sprite = { position: 1 };
     let screen = {};
 
     const line = lines[0];
