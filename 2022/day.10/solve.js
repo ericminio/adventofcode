@@ -24,8 +24,11 @@ const solve2 = (file) => {
     for (var index = 1; index <= Object.keys(cycles).length; index++) {
         logged = cycles[index];
         screen[index - 1] = (Math.abs(((index - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.';
-        console.log(`crt ${index - 1} ${logged.line}\tposition ${logged.spritePosition} -> ${screen[index - 1]}`);
+        // console.log(`crt ${index - 1} ${logged.line}\tposition ${logged.spritePosition} -> ${screen[index - 1]}`);
     }
+
+    let rendered = Object.keys(screen).map(key => screen[key]);
+    console.log(rendered);
 
     return 15;
 };
