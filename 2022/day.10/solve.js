@@ -30,7 +30,7 @@ const solve1 = (file) => {
     const log = run(input);
     const points = [20, 60, 100, 140, 180, 220];
 
-    return sum(points.map(point => valueDuringCycle(point, log)));
+    return sum(points.map(point => log[point].strength));
 };
 
 const solve2 = (file) => {
