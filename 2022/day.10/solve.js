@@ -23,6 +23,7 @@ const solve2 = (file) => {
 
     const line = lines[0];
     display(sprite, screen, cycle - 1);
+    render(screen, cycle - 1);
 
     return 15;
 };
@@ -34,6 +35,13 @@ const display = (sprite, screen, crt) => {
     else {
         screen[crt] = '.';
     }
+};
+const render = (screen, crt) => {
+    let value = '';
+    for (var i = 0; i < crt; i++) {
+        value += screen.crt;
+    }
+    console.log(value);
 };
 
 const run = (lines) => {
