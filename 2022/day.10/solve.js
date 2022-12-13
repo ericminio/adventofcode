@@ -27,9 +27,8 @@ const run = (lines) => {
 const solve1 = (file) => {
     const input = lines(file);
     const cycles = run(input);
-    const points = [20, 60, 100, 140, 180, 220];
 
-    return sum(points.map(point => cycles[point].strength));
+    return sum([20, 60, 100, 140, 180, 220].map(point => cycles[point].strength));
 };
 
 const solve2 = (file) => {
