@@ -37,7 +37,9 @@ const solve2 = (file) => {
     const cycles = run(input);
 
     const screen = Object.keys(cycles)
-        .map(logged => (Math.abs(((logged.cycle - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.');
+        .map(logged => {
+            return (Math.abs(((logged.cycle - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.';
+        });
     for (let i = 0; i < 10; i++) {
         console.log(screen[i])
     }
