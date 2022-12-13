@@ -41,6 +41,7 @@ const solve2 = (file) => {
             return (Math.abs(((logged.cycle - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.';
         });
     for (let i = 0; i < 10; i++) {
+        console.log(cycles[i + 1]);
         console.log(screen[i])
     }
     for (var index = 1; index <= Object.keys(cycles).length; index++) {
