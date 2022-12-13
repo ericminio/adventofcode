@@ -33,9 +33,8 @@ const solve2 = (file) => {
         const row = rendered.slice(i, i + size);
         rows.push(row.join(''));
     }
-    console.log(rows);
 
-    return 15;
+    return rows;
 };
 
 const run = (lines) => {
