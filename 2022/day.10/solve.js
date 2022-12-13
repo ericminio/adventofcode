@@ -36,24 +36,12 @@ const solve2 = (file) => {
     const input = lines(file);
     const cycles = run(input);
 
-    const explore = cycles
-        .map(logged => ({
-            ...logged,
-            lit: Math.abs((logged.cycle % 40) - logged.spritePosition) < 2
-        }))
-        .map(logged => ({
-            ...logged,
-            pixel: logged.lit ? '#' : '.'
-        }))
-        ;
+    const screen = cycles
+        .map(logged => Math.abs((logged.cycle % 40) - logged.spritePosition) < 2)
+        .map(lit => lit ? '#' : '.');
 
     for (let i = 0; i < 10; i++) {
-        console.log(explore[i]);
-    }
-    const screen = [];
-    for (var index = 0; index < Object.keys(cycles).length; index++) {
-        const logged = cycles[index];
-        screen[index] = (Math.abs((index % 40) - logged.spritePosition) < 2) ? '#' : '.';
+        console.log(screen[i]);
     }
 
     const size = 40;
