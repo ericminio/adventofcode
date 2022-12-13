@@ -20,6 +20,10 @@ describe.only('2022.10', () => {
             expect(solve2(`${__dirname}/data/example.txt`)).to.equal(15);
         });
 
+        it('is solved', () => {
+            expect(solve2(`${__dirname}/data/input.txt`)).to.equal(15);
+        });
+
     });
 
     describe('internals', () => {
