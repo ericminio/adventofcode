@@ -29,7 +29,10 @@ const solve2 = (file) => {
 
 const display = (sprite, screen, crt) => {
     if (Math.abs(crt - sprite.position) < 2) {
-
+        screen[crt] = '#';
+    }
+    else {
+        screen[crt] = '.';
     }
 };
 
