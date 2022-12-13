@@ -1,7 +1,7 @@
 const { lines, sum } = require('../support');
 
 const logCycle = (log, line, cycle, register) => {
-    log[cycle] = { line, strength: register * cycle };
+    log[cycle] = { cycle, line, spritePosition: register, strength: register * cycle };
 };
 const valueDuringCycle = (cycle, log) => {
     return log[cycle].strength;
@@ -17,13 +17,13 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     const input = lines(file);
-    const log = run(input);
+    const cycles = run(input);
     let sprite = { position: 1 };
-
-    let cycle = 1;
     let screen = {};
 
-    const line = lines[0];
+    let cycle = 1;
+    let log = cycles[cycle];
+
     display(sprite, screen, cycle - 1);
     render(screen, cycle - 1);
 
