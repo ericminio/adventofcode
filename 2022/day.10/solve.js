@@ -17,9 +17,12 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     const input = lines(file);
+    let cycle = 1;
+    let spritePosition = 1;
     for (var i = 0; i < lines.length; i++) {
         const line = lines[i];
     }
+
     return 15;
 };
 
