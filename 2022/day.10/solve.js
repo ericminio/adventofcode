@@ -3,13 +3,13 @@ const { lines, sum } = require('../support');
 const logCycle = (log, cycle, register) => {
     log[cycle] = {
         cycle,
-        strength: register * cycle,
+        strength: register * (cycle + 1),
         spritePosition: register,
     };
 };
 const run = (lines) => {
     const log = [];
-    let cycle = 1;
+    let cycle = 0;
     let register = 1;
     for (var i = 0; i < lines.length; i++) {
         const line = lines[i];
@@ -29,25 +29,30 @@ const solve1 = (file) => {
     const input = lines(file);
     const cycles = run(input);
 
-    return sum([20, 60, 100, 140, 180, 220].map(point => cycles[point].strength));
+    return sum([20, 60, 100, 140, 180, 220].map(point => cycles[point - 1].strength));
 };
 
 const solve2 = (file) => {
     const input = lines(file);
     const cycles = run(input);
 
-    const explore = Object.keys(cycles).map(key => cycles[key])
+    const explore = cycles
         .map(logged => ({
             ...logged,
-            lit: Math.abs(((logged.cycle - 1) % 40) - logged.spritePosition) < 2
-        }));
+            lit: Math.abs((logged.cycle % 40) - logged.spritePosition) < 2
+        }))
+        .map(logged => ({
+            ...logged,
+            pixel: logged.lit ? '#' : '.'
+        }))
+        ;
     for (let i = 0; i < 10; i++) {
         console.log(explore[i]);
     }
     const screen = [];
-    for (var index = 1; index <= Object.keys(cycles).length; index++) {
+    for (var index = 0; index < Object.keys(cycles).length; index++) {
         const logged = cycles[index];
-        screen[index - 1] = (Math.abs(((index - 1) % 40) - logged.spritePosition) < 2) ? '#' : '.';
+        screen[index] = (Math.abs((index % 40) - logged.spritePosition) < 2) ? '#' : '.';
     }
 
     const size = 40;
