@@ -31,7 +31,7 @@ const solve2 = (file) => {
     const size = 40;
     for (let i = 0; i < rendered.length; i += size) {
         const row = rendered.slice(i, i + size);
-        rows.push(row);
+        rows.push(row.join(''));
     }
     console.log(rows);
 
