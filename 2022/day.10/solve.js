@@ -40,10 +40,10 @@ const solve2 = (file) => {
         .map(logged => Math.abs((logged.cycle % 40) - logged.spritePosition) < 2)
         .map(lit => lit ? '#' : '.');
 
-    const size = 40;
+    const rowSize = 40;
     const rows = [];
-    for (let i = 0; i < screen.length; i += size) {
-        const row = screen.slice(i, i + size);
+    for (let i = 0; i < screen.length; i += rowSize) {
+        const row = screen.slice(i, i + rowSize);
         rows.push(row.join(''));
     }
 
