@@ -30,23 +30,6 @@ const solve2 = (file) => {
     return 15;
 };
 
-const display = (sprite, screen, crt) => {
-    if (Math.abs(crt - sprite.position) < 2) {
-        screen[crt] = '#';
-    }
-    else {
-        screen[crt] = '.';
-    }
-};
-const render = (screen, crt) => {
-    let value = '';
-    for (var i = 0; i < crt; i++) {
-        value += screen.crt;
-    }
-    console.log('Screen')
-    console.log(value);
-};
-
 const run = (lines) => {
     const log = {};
     let cycle = 1;
