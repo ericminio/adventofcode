@@ -1,8 +1,9 @@
 const solve1 = (file) => {
+    let resting = [];
     let candidate = { x: 500, y: 7 };
-    let resting = [
-        { x: 500, y: 8 }
-    ];
+
+    resting.push(candidate);
+
     return resting.length + 23;
 };
 
