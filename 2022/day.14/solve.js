@@ -62,6 +62,7 @@ const parse = (file) => {
     let y = segment.start.y;
     for (var x = segment.start.x; x <= segment.end.x; x++) {
         key = location({ x, y });
+        console.log(key)
     }
 
     return { obstacles, bottom };
