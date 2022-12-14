@@ -1,4 +1,4 @@
-const { lines, groupsOf, total } = require('../support');
+const { add, lines, groupsOf, total } = require('../support');
 
 const adjust = (code) => code > 94 ? code - 96 : code - 64 + 26;
 const priorityOf = (letter) => adjust(letter.charCodeAt(0));
@@ -14,11 +14,11 @@ const priorityOfGroup = (group) => priorityOf(duplicateInGroup(group));
 const groupPriorities = (file) => groupsOf(3, file).map(priorityOfGroup);
 
 const solve1 = (file) => {
-    return total(sackPriorities(file));
+    return sackPriorities(file).reduce(add);
 };
 
 const solve2 = (file) => {
-    return total(groupPriorities(file));
+    return groupPriorities(file).reduce(add);
 };
 
 module.exports = { solve1, solve2 };
