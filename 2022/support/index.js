@@ -19,7 +19,6 @@ const numberOrZero = (item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item))
 const groupsOfNumbers = (file) => groups(file).map(items => items.map(item => numberOrZero(item)));
 const total = (array) => array.reduce((acc, current) => acc += current, 0);
 const descending = (a, b) => b - a;
-const orderDescending = (array) => { array.sort(descending); }
 const multiply = (a, b) => a * b;
 const add = (a, b) => a + b;
 
@@ -37,7 +36,6 @@ module.exports = {
     total,
     add,
     multiply,
-    orderDescending,
     descending,
     extractor,
     isInside,
