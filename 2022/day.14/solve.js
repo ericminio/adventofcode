@@ -54,13 +54,22 @@ const parse = (file) => {
     let obstacles = {};
     let bottom = 9;
 
-    let points = [[502, 9], [498, 9]];
+    let points = [[502, 4], [502, 9]];
     let i = 0;
     if (points[i][1] == points[i + 1][1]) {
-        let y = points[0][1]
+        let y = points[i][1]
         let start = points[i][0] < points[i + 1][0] ? points[i][0] : points[i + 1][0];
         let end = points[i][0] < points[i + 1][0] ? points[i + 1][0] : points[i][0];
-        for (var x = start; x <= end; x++) {
+        for (let x = start; x <= end; x++) {
+            key = location({ x, y });
+            console.log(key)
+        }
+    }
+    else {
+        let x = points[i][0];
+        let start = points[i][1] < points[i + 1][1] ? points[i][1] : points[i + 1][1];
+        let end = points[i][1] < points[i + 1][1] ? points[i + 1][1] : points[i][1];
+        for (let y = start; y <= end; y++) {
             key = location({ x, y });
             console.log(key)
         }
