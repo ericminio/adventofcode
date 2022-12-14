@@ -10,7 +10,7 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     return groupsOfNumbers(file)
-        .map(group => total(group))
+        .map(group => group.reduce(add))
         .sort(descending)
         .slice(0, 3)
         .reduce(add);
