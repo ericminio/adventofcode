@@ -5,14 +5,14 @@ const solve1 = (file) => {
     let resting = [];
 
     let unit = { x: 500, y: 8 };
-    if (blocked(unit, obstacles)) {
+    if (isBlocked(unit, obstacles)) {
         resting.push(unit);
     }
 
     return resting.length + 23;
 };
 
-const blocked = (unit, obstacles) => {
+const isBlocked = (unit, obstacles) => {
     const options = [below(unit), left(unit), right(unit)];
     return options.reduce((acc, curr) => acc && obstacles[curr] !== undefined, true);
 };
