@@ -29,8 +29,9 @@ const move = (unit, obstacles) => {
     }
 }
 const isBlocked = (unit, obstacles) => {
-    const options = [below(unit), left(unit), right(unit)];
-    return options.reduce((acc, curr) => acc && obstacles[curr] !== undefined, true);
+    return (obstacles[below(unit)] !== undefined
+        && obstacles[left(unit)] !== undefined
+        && obstacles[right(unit)] !== undefined);
 };
 const below = unit => `${unit.x}x${unit.y + 1}`;
 const left = unit => `${unit.x - 1}x${unit.y + 1}`;
