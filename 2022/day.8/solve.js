@@ -1,4 +1,4 @@
-const { add, descending, lines, orderDescending } = require('../support');
+const { add, descending, lines } = require('../support');
 
 const parse = (lines) => {
     lines.width = lines[0].length;
