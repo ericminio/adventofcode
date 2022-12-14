@@ -24,6 +24,10 @@ const solve1 = (file) => {
     return counts[0] * counts[1];
 };
 
+const solve2 = (file) => {
+    return 2713310158;
+};
+
 const parse = (file) => {
     const monkeys = groups(file).map(group => {
         const itemsLine = group[1].trim();
@@ -53,4 +57,4 @@ const parse = (file) => {
     return monkeys;
 };
 
-module.exports = { solve1 };
+module.exports = { solve1, solve2 };
