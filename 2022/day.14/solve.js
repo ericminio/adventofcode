@@ -13,8 +13,11 @@ const solve1 = (file) => {
 };
 
 const blocked = (unit, obstacles) => {
-
-    return true;
+    const options = [below(unit), left(unit), right(unit)];
+    return options.reduce((acc, curr) => acc && obstacles[curr] !== undefined, true);
 };
+const below = (unit) => `${unit.x}x${unit.y + 1}`;
+const left = (unit) => `${unit.x - 1}x${unit.y + 1}`;
+const right = (unit) => `${unit.x + 1}x${unit.y + 1}`;
 
 module.exports = { solve1 };
