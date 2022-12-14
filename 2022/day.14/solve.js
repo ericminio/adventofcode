@@ -27,6 +27,21 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
+    let { obstacles, bottom } = parse(file);
+    bottom = bottom + 2;
+
+    let unit;
+    let didNotEvenMove = false;
+    while (!didNotEvenMove) {
+        unit = spawn();
+        didNotEvenMove = true;
+        while (!isBlocked2(unit, obstacles, bottom)) {
+            move(unit, obstacles);
+            didNotEvenMove = false;
+        }
+        obstacles[location(unit)] = SAND
+    }
+
     return 93;
 };
 
@@ -46,6 +61,9 @@ const move = (unit, obstacles) => {
         return;
     }
 }
+const isBlocked2 = (unit, obstacles, bottom) => {
+    return (unit.y == (bottom - 1) || isBlocked(unit, obstacles));
+};
 const isBlocked = (unit, obstacles) => {
     return (obstacles[below(unit)] !== undefined
         && obstacles[left(unit)] !== undefined
