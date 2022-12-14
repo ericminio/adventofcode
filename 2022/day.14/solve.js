@@ -24,7 +24,15 @@ const solve1 = (file) => {
         obstacles[location(unit)] = SAND;
     }
 
-    return 22 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
+    unit = spawn();
+    while (!isBlocked(unit, obstacles) && unit.y < bottom) {
+        move(unit, obstacles);
+    }
+    if (isBlocked(unit, obstacles)) {
+        obstacles[location(unit)] = SAND;
+    }
+
+    return 21 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
 };
 
 const move = (unit, obstacles) => {
