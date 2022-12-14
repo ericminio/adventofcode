@@ -22,7 +22,6 @@ const solve1 = (file) => {
         else {
             overflow = true;
         }
-        console.log(obstacles);
     }
 
     return 21 + count;
