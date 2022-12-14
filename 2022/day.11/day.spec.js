@@ -14,6 +14,14 @@ describe.only('2022.11', () => {
         });
 
     });
+
+    describe('part 2', () => {
+
+        it('has an example', () => {
+            expect(solve2(`${__dirname}/data/example.txt`)).to.equal(2713310158);
+        });
+
+    });
 });
 
 
