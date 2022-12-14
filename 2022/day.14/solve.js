@@ -31,9 +31,17 @@ const solve1 = (file) => {
     if (isBlocked(unit, obstacles)) {
         obstacles[location(unit)] = SAND;
     }
+
+    unit = spawn();
+    while (!isBlocked(unit, obstacles) && unit.y < bottom) {
+        move(unit, obstacles);
+    }
+    if (isBlocked(unit, obstacles)) {
+        obstacles[location(unit)] = SAND;
+    }
     console.log(obstacles);
 
-    return 21 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
+    return 20 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
 };
 
 const move = (unit, obstacles) => {
