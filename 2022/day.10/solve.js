@@ -1,4 +1,4 @@
-const { lines, sum } = require('../support');
+const { lines, sum, add } = require('../support');
 
 const logCycle = (log, cycle, register) => {
     log[cycle] = {
@@ -29,7 +29,7 @@ const solve1 = (file) => {
     const input = lines(file);
     const cycles = run(input);
 
-    return sum([20, 60, 100, 140, 180, 220].map(point => cycles[point - 1].strength));
+    return [20, 60, 100, 140, 180, 220].map(point => cycles[point - 1].strength).reduce(add);
 };
 
 const solve2 = (file) => {
