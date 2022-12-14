@@ -19,7 +19,7 @@ const solve1 = (file) => {
     unit = spawn();
     obstacles[location(unit)] = SAND;
 
-    console.log(obstacles)
+
     return 22 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
 };
 
