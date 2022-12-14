@@ -42,7 +42,7 @@ const solve1 = (file) => {
         count--;
     }
 
-    const counts = [101, 95, 7, 105];
+    const counts = monkeys.map(monkey => monkey.count);
     orderDescending(counts);
 
     return counts[0] * counts[1];
