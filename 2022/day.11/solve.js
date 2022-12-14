@@ -8,7 +8,6 @@ const solve1 = (file) => {
         monkeys.forEach(monkey => {
             monkey.items.forEach(value => {
                 monkey.count++;
-                monkey.counts[value] = 1;
                 let newValue = monkey.operation(value);
                 newValue = Math.floor(newValue / 3);
                 let nextMonkey = monkey.goto(newValue);
@@ -33,7 +32,6 @@ const solve2 = (file) => {
         monkeys.forEach(monkey => {
             monkey.items.forEach(value => {
                 monkey.count++;
-                monkey.counts[value] = 1;
                 let newValue = monkey.operation(value);
                 let nextMonkey = monkey.goto(newValue);
                 monkeys[nextMonkey].items.push(newValue);
@@ -43,7 +41,7 @@ const solve2 = (file) => {
         count--;
     }
 
-    const counts = monkeys.map(monkey => Object.keys(monkey.counts).length);
+    const counts = monkeys.map(monkey => monkey.count);
     console.log(counts);
 
     orderDescending(counts);
@@ -72,7 +70,6 @@ const parse = (file) => {
 
         return {
             count: 0,
-            counts: {},
             items,
             operation,
             goto,
