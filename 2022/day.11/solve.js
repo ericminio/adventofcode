@@ -70,6 +70,7 @@ const parse = (file) => {
 
         return {
             count: 0,
+            counts: {},
             items,
             operation,
             goto,
