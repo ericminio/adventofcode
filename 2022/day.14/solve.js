@@ -41,11 +41,10 @@ const solve2 = (file) => {
         }
         obstacles[location(unit)] = SAND;
     }
-    console.log(Object.keys(obstacles)
-        .map(key => obstacles[key])
-        .filter(value => value === SAND).length)
 
-    return 93;
+    return Object.keys(obstacles)
+        .map(key => obstacles[key])
+        .filter(value => value === SAND).length;
 };
 
 const move = (unit, obstacles) => {
