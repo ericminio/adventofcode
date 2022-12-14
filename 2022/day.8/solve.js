@@ -1,4 +1,4 @@
-const { add, lines, orderDescending } = require('../support');
+const { add, descending, lines, orderDescending } = require('../support');
 
 const parse = (lines) => {
     lines.width = lines[0].length;
@@ -82,7 +82,7 @@ const solve2 = (file) => {
             scores.push(scenicScore(treeAt(x, y, forest), forest));
         }
     }
-    orderDescending(scores);
+    scores.sort(descending);
 
     return scores[0];
 }
