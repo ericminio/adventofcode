@@ -1,4 +1,4 @@
-const { add, lines, total } = require('../support');
+const { add, lines } = require('../support');
 
 const rounds = (file) => lines(file)
     .map(line => ({
