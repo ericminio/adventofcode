@@ -5,7 +5,7 @@ const solve1 = (file) => {
 
     let count = 20;
     while (count > 0) {
-        run(monkeys, value => Math.floor(value / 3));
+        runRound(monkeys, value => Math.floor(value / 3));
         count--;
     }
 
@@ -20,7 +20,7 @@ const solve2 = (file) => {
 
     let count = 10000;
     while (count > 0) {
-        run(monkeys, keepCalm);
+        runRound(monkeys, keepCalm);
         count--;
     }
     const counts = monkeys.map(monkey => monkey.count);
@@ -30,7 +30,7 @@ const solve2 = (file) => {
     return counts[0] * counts[1];
 };
 
-const run = (monkeys, keepCalm) => {
+const runRound = (monkeys, keepCalm) => {
     monkeys.forEach(monkey => {
         monkey.items.forEach(value => {
             monkey.count++;
