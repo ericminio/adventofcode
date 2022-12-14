@@ -21,6 +21,10 @@ describe.only('2022.11', () => {
             expect(solve2(`${__dirname}/data/example.txt`)).to.equal(2713310158);
         });
 
+        it('is solved again', () => {
+            expect(solve2(`${__dirname}/data/example.txt`)).to.equal(2713310158);
+        });
+
     });
 });
 
