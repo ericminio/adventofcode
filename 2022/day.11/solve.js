@@ -28,7 +28,7 @@ const solve1 = (file) => {
         },
     ];
     let count = 20;
-    while (count > 1) {
+    while (count > 0) {
         monkeys.forEach(monkey => {
             monkey.items.forEach(value => {
                 monkey.count++;
