@@ -23,7 +23,7 @@ const solve1 = (file) => {
 
 const move = (unit, obstacles) => {
     if (obstacles[below(unit)] === undefined) {
-        unit.y = unit.y + 1;
+        unit.y++;
     }
 }
 const isBlocked = (unit, obstacles) => {
