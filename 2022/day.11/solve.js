@@ -1,4 +1,4 @@
-const { descending, groups, orderDescending } = require('../support');
+const { descending, groups, multiply } = require('../support');
 
 const solve1 = (file) => {
     const { monkeys } = parse(file);
