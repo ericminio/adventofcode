@@ -52,6 +52,7 @@ const right = unit => `${unit.x + 1}x${unit.y + 1}`;
 const location = unit => `${unit.x}x${unit.y}`;
 
 const parse = (file) => {
+    let segment = { start: { x: 502, y: 9 }, end: { x: 494, y: 9 } };
 
     let obstacles = { '498x9': ROCK, '499x9': ROCK, '500x9': ROCK, '501x9': ROCK, '502x9': ROCK };
     let bottom = 9;
