@@ -62,6 +62,7 @@ const parse = (file) => {
         let end = points[i][0] < points[i + 1][0] ? points[i + 1][0] : points[i][0];
         for (var x = start; x <= end; x++) {
             key = location({ x, y });
+            console.log(key)
         }
     }
     let segment = { start: { x: 498, y: 9 }, end: { x: 502, y: 9 } };
