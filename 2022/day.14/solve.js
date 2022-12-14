@@ -13,13 +13,13 @@ const solve1 = (file) => {
         move(unit, obstacles);
     }
     if (isBlocked(unit, obstacles)) {
-        resting.push(unit);
+        obstacles[location(unit)] = SAND;
     }
 
     unit = spawn();
-    resting.push(unit);
+    obstacles[location(unit)] = SAND;
 
-    return resting.length + 22;
+    return 22 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
 };
 
 const move = (unit, obstacles) => {
