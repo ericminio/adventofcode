@@ -1,7 +1,7 @@
 const solve1 = (file) => {
     let resting = [
         { x: 500, y: 8 }
-    ]
+    ];
     return resting.length + 23;
 };
 
