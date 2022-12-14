@@ -11,7 +11,7 @@ const solve1 = (file) => {
         return {
             count: 0,
             items,
-            spy: operation(2),
+            operation,
         };
     });
     console.log(input);
