@@ -2,7 +2,7 @@ const { add, descending, groupsOfNumbers, total } = require('../support');
 
 const solve1 = (file) => {
     return groupsOfNumbers(file)
-        .map(group => total(group))
+        .map(group => group.reduce(add))
         .sort(descending)
         .slice(0, 1)
         .reduce(add)
