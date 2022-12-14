@@ -1,4 +1,4 @@
-const { lines, total } = require('../support');
+const { add, lines, total } = require('../support');
 
 const rounds = (file) => lines(file)
     .map(line => ({
@@ -39,11 +39,11 @@ const scores2 = file => scores(rounds(file).map(outcomeCall).map(actualRound).ma
 
 
 const solve1 = (file) => {
-    return total(scores1(file));
+    return scores1(file).reduce(add);
 };
 
 const solve2 = (file) => {
-    return total(scores2(file));
+    return scores2(file).reduce(add);
 };
 
 module.exports = { solve1, solve2 };

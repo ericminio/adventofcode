@@ -1,4 +1,4 @@
-const { add, descending, groupsOfNumbers, total } = require('../support');
+const { add, descending, groupsOfNumbers } = require('../support');
 
 const solve1 = (file) => {
     return groupsOfNumbers(file)
