@@ -26,6 +26,17 @@ const solve1 = (file) => {
 const move = (unit, obstacles) => {
     if (obstacles[below(unit)] === undefined) {
         unit.y++;
+        return;
+    }
+    if (obstacles[left(unit)] === undefined) {
+        unit.y++;
+        unit.x--;
+        return;
+    }
+    if (obstacles[right(unit)] === undefined) {
+        unit.y++;
+        unit.x++;
+        return;
     }
 }
 const isBlocked = (unit, obstacles) => {
