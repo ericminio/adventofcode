@@ -6,7 +6,18 @@ const solve1 = (file) => {
         const items = itemsLine.substring(itemsLine.indexOf(':') + 1).trim().split(',').map(value => parseInt(value));
 
         const operationLine = group[2].trim();
-        const operation = new Function(`function operation(old) { return ${operationLine.substring(operationLine.indexOf('=') + 1).trim()}; } return operation;`)();
+        const operationCode = operationLine.substring(operationLine.indexOf('=') + 1).trim();
+        const operation = new Function(`function operation(old) { return ${operationCode}; } return operation;`)();
+
+        const gotoLine = group[3].trim();
+        const divisor = gotoLine.substring(gotoLine.indexOf('by') + 3);
+        const trueBranch = group[4].trim();
+        const trueBranchMonkey = trueBranch.substring(trueBranch.indexOf('monkey') + 7);
+        const falseBranch = group[5].trim();
+        const falseBranchMonkey = falseBranch.substring(falseBranch.indexOf('monkey') + 7);
+        const gotoCode = `function goto(value) { return (value % ${divisor} == 0) ? ${trueBranchMonkey} : ${falseBranchMonkey}; }`;
+
+        const goto = new Function(`${gotoCode} return goto;`)();
 
         return {
             count: 0,
