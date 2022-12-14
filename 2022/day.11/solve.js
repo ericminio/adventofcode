@@ -8,6 +8,7 @@ const solve1 = (file) => {
         monkeys.forEach(monkey => {
             monkey.items.forEach(value => {
                 monkey.count++;
+                monkey.counts[value] = 1;
                 let newValue = monkey.operation(value);
                 newValue = Math.floor(newValue / 3);
                 let nextMonkey = monkey.goto(newValue);
