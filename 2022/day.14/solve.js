@@ -56,7 +56,7 @@ const parse = (file) => {
     let obstacles = [];
     let bottom = 9;
 
-    let segment = { start: { x: 499, y: 9 }, end: { x: 501, y: 9 } };
+    let segment = { start: { x: 498, y: 9 }, end: { x: 502, y: 9 } };
 
     let y = segment.start.y;
     for (var x = segment.start.x; x <= segment.end.x; x++) {
