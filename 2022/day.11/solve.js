@@ -42,7 +42,7 @@ const solve2 = (file) => {
         count--;
     }
 
-    const counts = monkeys.map(monkey => monkey.count);
+    const counts = monkeys.map(monkey => Object.keys(monkey.counts).length);
     console.log(counts);
 
     orderDescending(counts);
