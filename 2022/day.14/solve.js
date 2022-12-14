@@ -4,9 +4,9 @@ const SAND = 2;
 
 const solve1 = (file) => {
     let { obstacles, bottom } = parse(file);
+
     let unit;
     let overflow = false;
-
     while (!overflow) {
         unit = spawn();
         while (!isBlocked(unit, obstacles) && unit.y < bottom) {
