@@ -5,9 +5,13 @@ const solve1 = (file) => {
         const itemsLine = group[1].trim();
         const items = itemsLine.substring(itemsLine.indexOf(':') + 1).trim().split(',').map(value => parseInt(value));
 
+        const operationLine = group[2].trim();
+        const operation = operationLine;
+
         return {
             count: 0,
             items,
+            operation,
         };
     });
     console.log(input);
