@@ -1,4 +1,4 @@
-const { add, lines, total, ascending } = require('../support');
+const { add, lines, ascending } = require('../support');
 
 const separator = '/';
 const isCommand = (line) => line.startsWith('$');
