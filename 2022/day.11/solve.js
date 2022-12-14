@@ -27,6 +27,8 @@ const solve1 = (file) => {
             goto: value => value % 17 == 0 ? 0 : 1,
         },
     ]
+
+
     const counts = [101, 95, 7, 105];
     orderDescending(counts);
 
