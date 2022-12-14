@@ -3,13 +3,16 @@ const ROCK = 1;
 
 const solve1 = (file) => {
     let obstacles = { '500x9': ROCK, '499x9': ROCK, '501x9': ROCK };
+    let bottom = 9;
     let resting = [];
 
     let unit = spawn();
-    while (!isBlocked(unit, obstacles)) {
+    while (!isBlocked(unit, obstacles) && unit.y < bottom) {
         move(unit, obstacles);
     }
-    resting.push(unit);
+    if (isBlocked(unit, obstacles)) {
+        resting.push(unit);
+    }
 
     return resting.length + 23;
 };
