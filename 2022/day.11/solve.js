@@ -33,7 +33,7 @@ const solve2 = (file) => {
         count--;
     }
     const counts = monkeys.map(monkey => monkey.count);
-    console.log(counts);
+    console.log(counts)
 
     orderDescending(counts);
 
