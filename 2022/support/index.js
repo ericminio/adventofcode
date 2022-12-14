@@ -21,6 +21,7 @@ const total = (array) => array.reduce((acc, current) => acc += current, 0);
 const sum = (array) => array.reduce((acc, current) => acc += current, 0);
 const descending = (a, b) => b - a;
 const orderDescending = (array) => { array.sort(descending); }
+const multiply = (a, b) => a * b;
 
 const extractor = (pattern) => (line) => pattern.exec(line).splice(1);
 
@@ -35,6 +36,7 @@ module.exports = {
     groupsOfNumbers,
     total,
     sum,
+    multiply,
     orderDescending,
     descending,
     extractor,
