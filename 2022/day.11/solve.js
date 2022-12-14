@@ -4,15 +4,13 @@ const solve1 = (file) => {
     const { monkeys } = parse(file);
     run(20, monkeys, value => Math.floor(value / 3));
 
-    const counts = monkeys.map(monkey => monkey.count);
-    orderDescending(counts);
-
-    return counts[0] * counts[1];
+    return monkeyBusiness(monkeys);
 };
 
 const solve2 = (file) => {
     const { monkeys, keepCalm } = parse(file);
     run(10000, monkeys, keepCalm);
+
     return monkeyBusiness(monkeys);
 };
 
