@@ -27,7 +27,7 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const monkeys = parse(file);
 
-    let count = 20;
+    let count = 1000;
     while (count > 0) {
         monkeys.forEach(monkey => {
             monkey.items.forEach(value => {
