@@ -6,16 +6,18 @@ const SAND = 2;
 
 const solve1 = (file) => {
     let { obstacles, bottom } = parse(file);
+    let count = 0;
 
     let unit;
     let overflow = false;
-    while (!overflow) {
+    while (!overflow && count < 3) {
         unit = spawn();
         while (!isBlocked(unit, obstacles) && unit.y < bottom) {
             move(unit, obstacles);
         }
         if (isBlocked(unit, obstacles)) {
             obstacles[location(unit)] = SAND;
+            count++;
         }
         else {
             overflow = true;
@@ -23,7 +25,7 @@ const solve1 = (file) => {
         console.log(obstacles);
     }
 
-    return 20 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
+    return 21 + count;
 };
 
 const move = (unit, obstacles) => {
