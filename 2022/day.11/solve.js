@@ -1,7 +1,11 @@
 const { groups, orderDescending } = require('../support');
 
 const solve1 = (file) => {
-    const input = groups(file);
+    const input = groups(file).map(group => {
+        return {
+            count: 0,
+        };
+    });
     console.log(input);
     const monkeys = [
         {
