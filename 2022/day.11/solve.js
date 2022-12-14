@@ -2,8 +2,12 @@ const { groups, orderDescending } = require('../support');
 
 const solve1 = (file) => {
     const input = groups(file).map(group => {
+        const itemsLine = group[1].trim();
+        const items = itemsLine.substring(itemsLine.indexOf(':')).trim();
+
         return {
             count: 0,
+            items,
         };
     });
     console.log(input);
