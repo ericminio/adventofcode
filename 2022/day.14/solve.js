@@ -56,7 +56,7 @@ const parse = (file) => {
     let segment = { start: { x: 494, y: 9 }, end: { x: 502, y: 9 } };
     let y = segment.start.y;
     for (var x = segment.start.x; x <= segment.end.x; x++) {
-        console.log(location({ x, y }));
+        key = location({ x, y });
     }
 
     let obstacles = { '498x9': ROCK, '499x9': ROCK, '500x9': ROCK, '501x9': ROCK, '502x9': ROCK };
