@@ -3,8 +3,7 @@ const ROCK = 1;
 const SAND = 2;
 
 const solve1 = (file) => {
-    let obstacles = { '498x9': ROCK, '499x9': ROCK, '500x9': ROCK, '501x9': ROCK, '502x9': ROCK };
-    let bottom = 9;
+    let { obstacles, bottom } = parse(file);
     let unit;
     let overflow = false;
 
@@ -49,5 +48,12 @@ const below = unit => `${unit.x}x${unit.y + 1}`;
 const left = unit => `${unit.x - 1}x${unit.y + 1}`;
 const right = unit => `${unit.x + 1}x${unit.y + 1}`;
 const location = unit => `${unit.x}x${unit.y}`;
+
+const parse = (file) => {
+    let obstacles = { '498x9': ROCK, '499x9': ROCK, '500x9': ROCK, '501x9': ROCK, '502x9': ROCK };
+    let bottom = 9;
+
+    return { obstacles, bottom };
+}
 
 module.exports = { solve1 };
