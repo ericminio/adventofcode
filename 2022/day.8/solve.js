@@ -1,4 +1,4 @@
-const { lines, orderDescending, sum } = require('../support');
+const { add, lines, orderDescending, sum } = require('../support');
 
 const parse = (lines) => {
     lines.width = lines[0].length;
@@ -39,18 +39,18 @@ const isVisibleFrom = (direction, tree, forest) => {
 };
 const viewingDistance = (direction, tree, forest) => {
     let stop = false;
-    return sum(
-        neighbours(direction, tree, forest)
-            .map(candidate => {
-                if (stop) {
-                    return false;
-                }
-                if (tree.height <= candidate.height) {
-                    stop = true;
-                    return true;
-                }
+    return neighbours(direction, tree, forest)
+        .map(candidate => {
+            if (stop) {
+                return false;
+            }
+            if (tree.height <= candidate.height) {
+                stop = true;
                 return true;
-            }));
+            }
+            return true;
+        })
+        .reduce(add);
 };
 
 const isVisible = (tree, forest) => [above, right, below, left]
