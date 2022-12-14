@@ -41,7 +41,6 @@ const solve1 = (file) => {
         });
         count--;
     }
-    console.log(monkeys);
 
     const counts = [101, 95, 7, 105];
     orderDescending(counts);
