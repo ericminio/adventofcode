@@ -6,6 +6,7 @@ const solve1 = (file) => {
     let obstacles = { '498x9': ROCK, '499x9': ROCK, '500x9': ROCK, '501x9': ROCK, '502x9': ROCK };
     let bottom = 9;
     let unit;
+    let overflow = false;
 
     unit = spawn();
     while (!isBlocked(unit, obstacles) && unit.y < bottom) {
