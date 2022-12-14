@@ -1,4 +1,4 @@
-const { add, lines, total } = require('../support');
+const { add, lines, total, ascending } = require('../support');
 
 const separator = '/';
 const isCommand = (line) => line.startsWith('$');
@@ -46,10 +46,11 @@ const solve2 = (file) => {
     const used = folders.find(folder => folder.name === '/').size;
     const unused = 70000000 - used;
     const needed = 30000000 - unused;
-    const candidates = folders.filter(folder => folder.size >= needed);
-    candidates.sort((a, b) => a.size - b.size);
 
-    return candidates[0].size;
+    return folders
+        .filter(folder => folder.size >= needed)
+        .map(folder => folder.size)
+        .sort(ascending)[0];
 };
 
 module.exports = { solve1, solve2 };
