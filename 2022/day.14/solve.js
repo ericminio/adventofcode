@@ -21,6 +21,7 @@ const solve1 = (file) => {
             overflow = true;
         }
     }
+    console.log(obstacles)
 
     return 21 + 3;
 };
