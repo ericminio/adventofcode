@@ -5,18 +5,10 @@ const solve1 = (file) => {
     let resting = [];
 
     let unit = { x: 500, y: 7 };
-    if (isBlocked(unit, obstacles)) {
-        resting.push(unit);
-    }
-    else {
+    while (!isBlocked(unit, obstacles)) {
         move(unit, obstacles);
     }
-    if (isBlocked(unit, obstacles)) {
-        resting.push(unit);
-    }
-    else {
-        move(unit, obstacles);
-    }
+    resting.push(unit);
 
     return resting.length + 23;
 };
