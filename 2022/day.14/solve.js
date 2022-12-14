@@ -4,14 +4,26 @@ const solve1 = (file) => {
     let obstacles = { '500x9': ROCK, '499x9': ROCK, '501x9': ROCK };
     let resting = [];
 
-    let unit = { x: 500, y: 8 };
+    let unit = { x: 500, y: 7 };
     if (isBlocked(unit, obstacles)) {
         resting.push(unit);
+    }
+    else {
+        move(unit);
+    }
+    if (isBlocked(unit, obstacles)) {
+        resting.push(unit);
+    }
+    else {
+        move(unit);
     }
 
     return resting.length + 23;
 };
 
+const move = (unit) => {
+    unit.y = 8;
+}
 const isBlocked = (unit, obstacles) => {
     const options = [below(unit), left(unit), right(unit)];
     return options.reduce((acc, curr) => acc && obstacles[curr] !== undefined, true);
