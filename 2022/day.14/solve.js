@@ -16,7 +16,12 @@ const solve1 = (file) => {
     }
 
     unit = spawn();
-    resting.push(unit);
+    while (!isBlocked(unit, obstacles) && unit.y < bottom) {
+        move(unit, obstacles);
+    }
+    if (isBlocked(unit, obstacles)) {
+        resting.push(unit);
+    }
 
     return resting.length + 22;
 };
