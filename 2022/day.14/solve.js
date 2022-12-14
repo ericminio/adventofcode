@@ -54,7 +54,7 @@ const parse = (file) => {
     let obstacles = {};
     let bottom = 9;
 
-    let points = [[502, 4], [502, 9]];
+    let points = [[503, 4], [502, 4], [502, 9], [494, 9]];
     let i = 0;
     if (points[i][1] == points[i + 1][1]) {
         let y = points[i][1]
