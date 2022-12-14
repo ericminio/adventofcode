@@ -54,7 +54,7 @@ const location = unit => `${unit.x}x${unit.y}`;
 const parse = (file) => {
     const input = lines(file)
         .map(line => line.split('->'))
-        .map(points => points.map(point => point.trim().split(',')))
+        .map(points => points.map(point => point.split(',')))
         ;
     console.log(input)
 
