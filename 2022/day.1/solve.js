@@ -1,4 +1,4 @@
-const { descending, groupsOfNumbers, orderDescending, total } = require('../support');
+const { add, descending, groupsOfNumbers, orderDescending, total } = require('../support');
 
 const solve1 = (file) => {
     return groupsOfNumbers(file)
@@ -7,10 +7,12 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    const totals = groupsOfNumbers(file).map(group => total(group));
-    orderDescending(totals);
-
-    return totals[0] + totals[1] + totals[2];
+    return groupsOfNumbers(file)
+        .map(group => total(group))
+        .sort(descending)
+        .slice(0, 3)
+        .reduce(add)
+        ;
 };
 
 module.exports = { solve: solve1, solve1, solve2 };
