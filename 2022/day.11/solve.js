@@ -18,11 +18,7 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const { monkeys, keepCalm } = parse(file);
 
-    let count = 10000;
-    while (count > 0) {
-        runRound(monkeys, keepCalm);
-        count--;
-    }
+    run(10000, monkeys, keepCalm);
     const counts = monkeys.map(monkey => monkey.count);
 
     orderDescending(counts);
@@ -30,6 +26,12 @@ const solve2 = (file) => {
     return counts[0] * counts[1];
 };
 
+const run = (n, monkeys, keepCalm) => {
+    while (n > 0) {
+        runRound(monkeys, keepCalm);
+        n--;
+    }
+};
 const runRound = (monkeys, keepCalm) => {
     monkeys.forEach(monkey => {
         monkey.items.forEach(value => {
