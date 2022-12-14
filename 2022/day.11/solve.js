@@ -6,12 +6,12 @@ const solve1 = (file) => {
         const items = itemsLine.substring(itemsLine.indexOf(':') + 1).trim().split(',').map(value => parseInt(value));
 
         const operationLine = group[2].trim();
-        const operation = operationLine.substring(operationLine.indexOf('=') + 1).trim();
+        const operation = new Function(`function operation(old) { return ${operationLine.substring(operationLine.indexOf('=') + 1).trim()}; } return operation;`);
 
         return {
             count: 0,
             items,
-            operation,
+            spy: operation(2),
         };
     });
     console.log(input);
