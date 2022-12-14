@@ -3,11 +3,7 @@ const { groups, orderDescending } = require('../support');
 const solve1 = (file) => {
     const { monkeys } = parse(file);
 
-    let count = 20;
-    while (count > 0) {
-        runRound(monkeys, value => Math.floor(value / 3));
-        count--;
-    }
+    run(20, monkeys, value => Math.floor(value / 3));
 
     const counts = monkeys.map(monkey => monkey.count);
     orderDescending(counts);
