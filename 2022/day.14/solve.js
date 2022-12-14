@@ -52,8 +52,10 @@ const right = unit => `${unit.x + 1}x${unit.y + 1}`;
 const location = unit => `${unit.x}x${unit.y}`;
 
 const parse = (file) => {
-
+    let segments = [];
     let segment = { start: { x: 494, y: 9 }, end: { x: 502, y: 9 } };
+    segments.push(segment);
+
     let y = segment.start.y;
     for (var x = segment.start.x; x <= segment.end.x; x++) {
         key = location({ x, y });
