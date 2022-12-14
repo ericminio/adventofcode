@@ -3,8 +3,7 @@ const { descending, groupsOfNumbers, orderDescending, total } = require('../supp
 const solve1 = (file) => {
     return groupsOfNumbers(file)
         .map(group => total(group))
-        .sort(descending)
-    [0];
+        .sort(descending)[0];
 };
 
 const solve2 = (file) => {
