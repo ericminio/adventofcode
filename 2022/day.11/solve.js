@@ -1,6 +1,30 @@
 const { groups, orderDescending } = require('../support');
 
 const solve1 = (file) => {
+    const monkeys = parse(file);
+
+    let count = 20;
+    while (count > 0) {
+        monkeys.forEach(monkey => {
+            monkey.items.forEach(value => {
+                monkey.count++;
+                let newValue = monkey.operation(value);
+                newValue = Math.floor(newValue / 3);
+                let nextMonkey = monkey.goto(newValue);
+                monkeys[nextMonkey].items.push(newValue);
+            });
+            monkey.items = [];
+        });
+        count--;
+    }
+
+    const counts = monkeys.map(monkey => monkey.count);
+    orderDescending(counts);
+
+    return counts[0] * counts[1];
+};
+
+const parse = (file) => {
     const monkeys = groups(file).map(group => {
         const itemsLine = group[1].trim();
         const items = itemsLine.substring(itemsLine.indexOf(':') + 1).trim().split(',').map(value => parseInt(value));
@@ -26,26 +50,7 @@ const solve1 = (file) => {
             goto,
         };
     });
-
-    let count = 20;
-    while (count > 0) {
-        monkeys.forEach(monkey => {
-            monkey.items.forEach(value => {
-                monkey.count++;
-                let newValue = monkey.operation(value);
-                newValue = Math.floor(newValue / 3);
-                let nextMonkey = monkey.goto(newValue);
-                monkeys[nextMonkey].items.push(newValue);
-            });
-            monkey.items = [];
-        });
-        count--;
-    }
-
-    const counts = monkeys.map(monkey => monkey.count);
-    orderDescending(counts);
-
-    return counts[0] * counts[1];
+    return monkeys;
 };
 
 module.exports = { solve1 };
