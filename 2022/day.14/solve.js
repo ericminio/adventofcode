@@ -1,10 +1,10 @@
 const ROCK = 1;
-const SAND = 2;
+const spawn = () => ({ x: 500, y: 0 });
 const solve1 = (file) => {
     let obstacles = { '500x9': ROCK, '499x9': ROCK, '501x9': ROCK };
     let resting = [];
 
-    let unit = { x: 500, y: 7 };
+    let unit = spawn();
     while (!isBlocked(unit, obstacles)) {
         move(unit, obstacles);
     }
