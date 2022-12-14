@@ -1,4 +1,4 @@
-const { lines, sum, add } = require('../support');
+const { lines, add } = require('../support');
 
 const logCycle = (log, cycle, register) => {
     log[cycle] = {
