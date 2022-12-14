@@ -2,7 +2,6 @@ const { groups, orderDescending } = require('../support');
 
 const solve1 = (file) => {
     const { monkeys } = parse(file);
-
     run(20, monkeys, value => Math.floor(value / 3));
 
     const counts = monkeys.map(monkey => monkey.count);
@@ -13,7 +12,6 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     const { monkeys, keepCalm } = parse(file);
-
     run(10000, monkeys, keepCalm);
     const counts = monkeys.map(monkey => monkey.count);
 
