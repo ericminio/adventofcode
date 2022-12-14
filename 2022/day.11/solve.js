@@ -15,9 +15,7 @@ const solve2 = (file) => {
 };
 
 const monkeyBusiness = (monkeys) => {
-    counts = monkeys.map(monkey => monkey.count).sort(descending).slice(0, 2);
-
-    return counts[0] * counts[1];
+    return monkeys.map(monkey => monkey.count).sort(descending).slice(0, 2).reduce(multiply);
 };
 const run = (n, monkeys, keepCalm) => {
     while (n > 0) {
