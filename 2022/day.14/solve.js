@@ -54,8 +54,9 @@ const parse = (file) => {
     let obstacles = {};
     let bottom = 9;
 
-    let walls = lines(file)
-        .map(line => line.split('->').map(p => p.split(',')).map(p => p.map(v => parseInt(v))));
+    let walls = lines(file).map(line => line.split('->')
+        .map(p => p.split(','))
+        .map(p => p.map(v => parseInt(v))));
     walls.forEach(points => {
         for (let i = 0; i < points.length - 1; i++) {
             if (points[i][1] == points[i + 1][1]) {
