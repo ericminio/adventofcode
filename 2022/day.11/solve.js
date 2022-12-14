@@ -30,9 +30,9 @@ const solve2 = (file) => {
     let count = 20;
     while (count > 0) {
         run(monkeys);
+        console.log(monkeys);
         count--;
     }
-    console.log(monkeys)
     const counts = monkeys.map(monkey => monkey.count);
     console.log(counts);
 
