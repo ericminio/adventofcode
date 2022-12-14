@@ -30,7 +30,6 @@ const solve2 = (file) => {
     let count = 20;
     while (count > 0) {
         run(monkeys);
-        console.log(monkeys.map(monkey => monkey.items));
         count--;
     }
     const counts = monkeys.map(monkey => monkey.count);
@@ -46,6 +45,7 @@ const run = (monkeys) => {
         monkey.items.forEach(value => {
             monkey.count++;
             let newValue = monkey.operation(value);
+            newValue = newValue % (23 * 19 * 13 * 17);
             let nextMonkey = monkey.goto(newValue);
             monkeys[nextMonkey].items.push(newValue);
         });
