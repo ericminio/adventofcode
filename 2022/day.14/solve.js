@@ -23,7 +23,7 @@ const solve1 = (file) => {
     }
     console.log(obstacles)
 
-    return 21 + 3;
+    return 20 + 4;
 };
 
 const move = (unit, obstacles) => {
