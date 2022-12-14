@@ -20,6 +20,7 @@ const solve1 = (file) => {
         else {
             overflow = true;
         }
+        console.log(obstacles);
     }
 
     return 20 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
