@@ -25,6 +25,27 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
+    const monkeys = parse(file);
+
+    let count = 10000;
+    while (count > 0) {
+        monkeys.forEach(monkey => {
+            monkey.items.forEach(value => {
+                monkey.count++;
+                let newValue = monkey.operation(value);
+                let nextMonkey = monkey.goto(newValue);
+                monkeys[nextMonkey].items.push(newValue);
+            });
+            monkey.items = [];
+        });
+        count--;
+    }
+
+    const counts = monkeys.map(monkey => monkey.count);
+    orderDescending(counts);
+
+    console.log(counts)
+
     return 2713310158;
 };
 
