@@ -26,17 +26,21 @@ const solve1 = (file) => {
             operation: old => old + 3,
             goto: value => value % 17 == 0 ? 0 : 1,
         },
-    ]
-    monkeys.forEach(monkey => {
-        monkey.items.forEach(value => {
-            monkey.count++;
-            let newValue = monkey.operation(value);
-            newValue = Math.floor(newValue / 3);
-            let nextMonkey = monkey.goto(newValue);
-            monkeys[nextMonkey].items.push(newValue);
+    ];
+    let count = 20;
+    while (count > 1) {
+        monkeys.forEach(monkey => {
+            monkey.items.forEach(value => {
+                monkey.count++;
+                let newValue = monkey.operation(value);
+                newValue = Math.floor(newValue / 3);
+                let nextMonkey = monkey.goto(newValue);
+                monkeys[nextMonkey].items.push(newValue);
+            });
+            monkey.items = [];
         });
-        monkey.items = [];
-    });
+        count--;
+    }
     console.log(monkeys);
 
     const counts = [101, 95, 7, 105];
