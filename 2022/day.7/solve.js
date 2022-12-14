@@ -1,4 +1,4 @@
-const { lines, total } = require('../support');
+const { add, lines, total } = require('../support');
 
 const separator = '/';
 const isCommand = (line) => line.startsWith('$');
@@ -35,11 +35,10 @@ const inspect = (file) => {
 };
 
 const solve1 = (file) => {
-    return total(
-        inspect(file)
-            .filter(folder => folder.size <= 100000)
-            .map(folder => folder.size)
-    );
+    return inspect(file)
+        .filter(folder => folder.size <= 100000)
+        .map(folder => folder.size)
+        .reduce(add);
 };
 
 const solve2 = (file) => {

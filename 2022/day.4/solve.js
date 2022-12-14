@@ -1,4 +1,4 @@
-const { add, total, lines, extractor, isInside, isOverlapping } = require('../support');
+const { add, lines, extractor, isInside, isOverlapping } = require('../support');
 
 const pattern = /^(.*)-(.*),(.*)-(.*)$/;
 const builder = (data) => ({
