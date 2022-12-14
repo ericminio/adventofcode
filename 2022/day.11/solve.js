@@ -6,7 +6,7 @@ const solve1 = (file) => {
         const items = itemsLine.substring(itemsLine.indexOf(':') + 1).trim().split(',').map(value => parseInt(value));
 
         const operationLine = group[2].trim();
-        const operation = operationLine;
+        const operation = operationLine.substring(operationLine.indexOf('=') + 1).trim();
 
         return {
             count: 0,
