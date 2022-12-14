@@ -55,7 +55,7 @@ const parse = (file) => {
     let bottom = 9;
 
     let line = '503,4 -> 502,4 -> 502,9 -> 494,9';
-    let ps = line.split('->').map(p => p.split(','));
+    let ps = line.split('->').map(p => p.split(',')).map(p => p.map(v => parseInt(v)));
     console.log(ps);
     let points = [[503, 4], [502, 4], [502, 9], [494, 9]];
     for (let i = 0; i < points.length - 1; i++) {
