@@ -1,3 +1,5 @@
+const { lines } = require('../support');
+
 const spawn = () => ({ x: 500, y: 0 });
 const ROCK = 1;
 const SAND = 2;
