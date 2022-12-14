@@ -27,7 +27,15 @@ const solve1 = (file) => {
             goto: value => value % 17 == 0 ? 0 : 1,
         },
     ]
-
+    monkeys.forEach(monkey => {
+        monkey.items.forEach(value => {
+            let newValue = monkey.operation(value);
+            newValue = newValue / 3;
+            let nextMonkey = monkey.goto(newValue);
+            monkeys[nextMonkey].items.push(newValue);
+        });
+    });
+    console.log(monkeys);
 
     const counts = [101, 95, 7, 105];
     orderDescending(counts);
