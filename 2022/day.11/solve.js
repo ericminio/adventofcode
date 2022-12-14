@@ -25,11 +25,11 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    const { monkeys } = parse(file);
+    const { monkeys, keepCalm } = parse(file);
 
     let count = 10000;
     while (count > 0) {
-        run(monkeys);
+        run(monkeys, keepCalm);
         count--;
     }
     const counts = monkeys.map(monkey => monkey.count);
@@ -39,12 +39,12 @@ const solve2 = (file) => {
     return counts[0] * counts[1];
 };
 
-const run = (monkeys) => {
+const run = (monkeys, keepCalm) => {
     monkeys.forEach(monkey => {
         monkey.items.forEach(value => {
             monkey.count++;
             let newValue = monkey.operation(value);
-            newValue = newValue % (monkeys.keepCalm);
+            newValue = keepCalm(newValue);
             let nextMonkey = monkey.goto(newValue);
             monkeys[nextMonkey].items.push(newValue);
         });
@@ -53,7 +53,7 @@ const run = (monkeys) => {
 };
 
 const parse = (file) => {
-    let keepCalm = 1;
+    let divisors = 1;
     const monkeys = groups(file).map(group => {
         const itemsLine = group[1].trim();
         const items = itemsLine.substring(itemsLine.indexOf(':') + 1).trim().split(',').map(value => parseInt(value));
@@ -64,7 +64,7 @@ const parse = (file) => {
 
         const gotoLine = group[3].trim();
         const divisor = gotoLine.substring(gotoLine.indexOf('by') + 3);
-        keepCalm *= parseInt(divisor);
+        divisors *= parseInt(divisor);
         const trueBranch = group[4].trim();
         const trueBranchMonkey = trueBranch.substring(trueBranch.indexOf('monkey') + 7);
         const falseBranch = group[5].trim();
@@ -80,8 +80,7 @@ const parse = (file) => {
             goto,
         };
     });
-    monkeys.keepCalm = keepCalm;
-    return { monkeys };
+    return { monkeys, keepCalm: value => value % divisors };
 };
 
 module.exports = { solve1, solve2 };
