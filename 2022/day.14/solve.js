@@ -21,7 +21,7 @@ const solve1 = (file) => {
             overflow = true;
         }
     }
-    return 20 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
+    return Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
 };
 
 const move = (unit, obstacles) => {
@@ -64,7 +64,7 @@ const parse = (file) => {
                 let end = points[i][0] < points[i + 1][0] ? points[i + 1][0] : points[i][0];
                 for (let x = start; x <= end; x++) {
                     key = location({ x, y });
-                    console.log(key)
+                    obstacles[key] = ROCK;
                 }
             }
             else {
@@ -73,19 +73,11 @@ const parse = (file) => {
                 let end = points[i][1] < points[i + 1][1] ? points[i + 1][1] : points[i][1];
                 for (let y = start; y <= end; y++) {
                     key = location({ x, y });
-                    console.log(key)
+                    obstacles[key] = ROCK;
                 }
             }
         }
     });
-
-    let segment = { start: { x: 498, y: 9 }, end: { x: 502, y: 9 } };
-
-    let y = segment.start.y;
-    for (var x = segment.start.x; x <= segment.end.x; x++) {
-        key = location({ x, y });
-        obstacles[key] = ROCK;
-    }
 
     return { obstacles, bottom };
 }
