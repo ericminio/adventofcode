@@ -34,6 +34,7 @@ const solve1 = (file) => {
             let nextMonkey = monkey.goto(newValue);
             monkeys[nextMonkey].items.push(newValue);
         });
+        monkey.items = [];
     });
     console.log(monkeys);
 
