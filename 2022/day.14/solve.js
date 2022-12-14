@@ -21,7 +21,7 @@ const solve1 = (file) => {
             overflow = true;
         }
     }
-    console.log(obstacles)
+    console.log(Object.keys(obstacles).map(ky => obstacles[key]))
 
     return 20 + 4;
 };
