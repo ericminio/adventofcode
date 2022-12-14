@@ -39,7 +39,7 @@ const solve2 = (file) => {
             move(unit, obstacles);
             didNotEvenMove = false;
         }
-        obstacles[location(unit)] = SAND
+        obstacles[location(unit)] = SAND;
     }
 
     return 93;
