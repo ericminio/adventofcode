@@ -42,9 +42,9 @@ const solve2 = (file) => {
     }
 
     const counts = monkeys.map(monkey => monkey.count);
-    orderDescending(counts);
+    console.log(counts);
 
-    console.log(counts)
+    orderDescending(counts);
 
     return 2713310158;
 };
