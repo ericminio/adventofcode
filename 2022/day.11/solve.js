@@ -5,16 +5,7 @@ const solve1 = (file) => {
 
     let count = 20;
     while (count > 0) {
-        monkeys.forEach(monkey => {
-            monkey.items.forEach(value => {
-                monkey.count++;
-                let newValue = monkey.operation(value);
-                newValue = Math.floor(newValue / 3);
-                let nextMonkey = monkey.goto(newValue);
-                monkeys[nextMonkey].items.push(newValue);
-            });
-            monkey.items = [];
-        });
+        run(monkeys, value => Math.floor(value / 3));
         count--;
     }
 
