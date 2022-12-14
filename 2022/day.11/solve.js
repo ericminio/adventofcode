@@ -13,13 +13,16 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const { monkeys, keepCalm } = parse(file);
     run(10000, monkeys, keepCalm);
+    return monkeyBusiness(monkeys);
+};
+
+const monkeyBusiness = (monkeys) => {
     const counts = monkeys.map(monkey => monkey.count);
 
     orderDescending(counts);
 
     return counts[0] * counts[1];
 };
-
 const run = (n, monkeys, keepCalm) => {
     while (n > 0) {
         runRound(monkeys, keepCalm);
