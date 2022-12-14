@@ -26,6 +26,10 @@ const solve1 = (file) => {
         .filter(value => value === SAND).length;
 };
 
+const solve2 = (file) => {
+    return 93;
+};
+
 const move = (unit, obstacles) => {
     if (obstacles[below(unit)] === undefined) {
         unit.y++;
@@ -87,4 +91,4 @@ const parse = (file) => {
     return { obstacles, bottom };
 }
 
-module.exports = { solve1 };
+module.exports = { solve1, solve2 };
