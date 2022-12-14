@@ -21,9 +21,7 @@ const solve1 = (file) => {
             overflow = true;
         }
     }
-    console.log(Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND))
-
-    return 20 + 4;
+    return 20 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
 };
 
 const move = (unit, obstacles) => {
