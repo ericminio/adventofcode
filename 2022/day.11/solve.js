@@ -23,6 +23,7 @@ const solve1 = (file) => {
             count: 0,
             items,
             operation,
+            goto,
         };
     });
     console.log(input);
