@@ -1,5 +1,6 @@
-const ROCK = 1;
 const spawn = () => ({ x: 500, y: 0 });
+const ROCK = 1;
+
 const solve1 = (file) => {
     let obstacles = { '500x9': ROCK, '499x9': ROCK, '501x9': ROCK };
     let resting = [];
