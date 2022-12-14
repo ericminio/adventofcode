@@ -3,7 +3,7 @@ const ROCK = 1;
 const SAND = 2;
 
 const solve1 = (file) => {
-    let obstacles = { '500x9': ROCK, '499x9': ROCK, '501x9': ROCK };
+    let obstacles = { '498x9': ROCK, '499x9': ROCK, '500x9': ROCK, '501x9': ROCK, '502x9': ROCK };
     let bottom = 9;
     let resting = [];
     let unit;
@@ -17,8 +17,15 @@ const solve1 = (file) => {
     }
 
     unit = spawn();
-    obstacles[location(unit)] = SAND;
+    while (!isBlocked(unit, obstacles) && unit.y < bottom) {
+        move(unit, obstacles);
+        console.log(unit)
+    }
+    if (isBlocked(unit, obstacles)) {
+        obstacles[location(unit)] = SAND;
+    }
 
+    console.log(obstacles);
 
     return 22 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
 };
