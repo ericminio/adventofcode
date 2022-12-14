@@ -1,4 +1,4 @@
-const { groups, orderDescending } = require('../support');
+const { descending, groups, orderDescending } = require('../support');
 
 const solve1 = (file) => {
     const { monkeys } = parse(file);
@@ -15,9 +15,7 @@ const solve2 = (file) => {
 };
 
 const monkeyBusiness = (monkeys) => {
-    const counts = monkeys.map(monkey => monkey.count);
-
-    orderDescending(counts);
+    counts = monkeys.map(monkey => monkey.count).sort(descending).slice(0, 2);
 
     return counts[0] * counts[1];
 };
