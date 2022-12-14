@@ -53,7 +53,8 @@ const location = unit => `${unit.x}x${unit.y}`;
 
 const parse = (file) => {
     const input = lines(file)
-        .map(line => line.split('->'));
+        .map(line => line.split('->'))
+        ;
     console.log(input)
 
     let obstacles = { '498x9': ROCK, '499x9': ROCK, '500x9': ROCK, '501x9': ROCK, '502x9': ROCK };
