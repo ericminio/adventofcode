@@ -1,6 +1,8 @@
-const { orderDescending } = require('../support');
+const { groups, orderDescending } = require('../support');
 
 const solve1 = (file) => {
+    const input = groups(file);
+    console.log(input);
     const monkeys = [
         {
             count: 0,
