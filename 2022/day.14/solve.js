@@ -52,7 +52,7 @@ const location = unit => `${unit.x}x${unit.y}`;
 
 const parse = (file) => {
     let obstacles = {};
-    let bottom = 9;
+    let bottom = 0;
 
     let walls = lines(file).map(line => line.split('->')
         .map(p => p.split(','))
@@ -60,7 +60,8 @@ const parse = (file) => {
     walls.forEach(points => {
         for (let i = 0; i < points.length - 1; i++) {
             if (points[i][1] == points[i + 1][1]) {
-                let y = points[i][1]
+                let y = points[i][1];
+                if (y > bottom) { bottom = y; }
                 let start = points[i][0] < points[i + 1][0] ? points[i][0] : points[i + 1][0];
                 let end = points[i][0] < points[i + 1][0] ? points[i + 1][0] : points[i][0];
                 for (let x = start; x <= end; x++) {
@@ -73,6 +74,7 @@ const parse = (file) => {
                 let start = points[i][1] < points[i + 1][1] ? points[i][1] : points[i + 1][1];
                 let end = points[i][1] < points[i + 1][1] ? points[i + 1][1] : points[i][1];
                 for (let y = start; y <= end; y++) {
+                    if (y > bottom) { bottom = y; }
                     key = location({ x, y });
                     obstacles[key] = ROCK;
                 }
