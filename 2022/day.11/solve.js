@@ -40,7 +40,7 @@ const solve2 = (file) => {
         });
         count--;
     }
-
+    console.log(monkeys)
     const counts = monkeys.map(monkey => monkey.count);
     console.log(counts);
 
