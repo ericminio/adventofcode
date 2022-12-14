@@ -54,33 +54,31 @@ const parse = (file) => {
     let obstacles = {};
     let bottom = 9;
 
-    let input = lines(file)
+    let walls = lines(file)
         .map(line => line.split('->').map(p => p.split(',')).map(p => p.map(v => parseInt(v))));
-    console.log(input);
-
-    let line = '503,4 -> 502,4 -> 502,9 -> 494,9';
-    let points = line.split('->').map(p => p.split(',')).map(p => p.map(v => parseInt(v)));
-
-    for (let i = 0; i < points.length - 1; i++) {
-        if (points[i][1] == points[i + 1][1]) {
-            let y = points[i][1]
-            let start = points[i][0] < points[i + 1][0] ? points[i][0] : points[i + 1][0];
-            let end = points[i][0] < points[i + 1][0] ? points[i + 1][0] : points[i][0];
-            for (let x = start; x <= end; x++) {
-                key = location({ x, y });
-                console.log(key)
+    walls.forEach(points => {
+        for (let i = 0; i < points.length - 1; i++) {
+            if (points[i][1] == points[i + 1][1]) {
+                let y = points[i][1]
+                let start = points[i][0] < points[i + 1][0] ? points[i][0] : points[i + 1][0];
+                let end = points[i][0] < points[i + 1][0] ? points[i + 1][0] : points[i][0];
+                for (let x = start; x <= end; x++) {
+                    key = location({ x, y });
+                    console.log(key)
+                }
+            }
+            else {
+                let x = points[i][0];
+                let start = points[i][1] < points[i + 1][1] ? points[i][1] : points[i + 1][1];
+                let end = points[i][1] < points[i + 1][1] ? points[i + 1][1] : points[i][1];
+                for (let y = start; y <= end; y++) {
+                    key = location({ x, y });
+                    console.log(key)
+                }
             }
         }
-        else {
-            let x = points[i][0];
-            let start = points[i][1] < points[i + 1][1] ? points[i][1] : points[i + 1][1];
-            let end = points[i][1] < points[i + 1][1] ? points[i + 1][1] : points[i][1];
-            for (let y = start; y <= end; y++) {
-                key = location({ x, y });
-                console.log(key)
-            }
-        }
-    }
+    });
+
     let segment = { start: { x: 498, y: 9 }, end: { x: 502, y: 9 } };
 
     let y = segment.start.y;
