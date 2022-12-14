@@ -3,7 +3,7 @@ const { groups, orderDescending } = require('../support');
 const solve1 = (file) => {
     const input = groups(file).map(group => {
         const itemsLine = group[1].trim();
-        const items = itemsLine.substring(itemsLine.indexOf(':') + 1).trim();
+        const items = itemsLine.substring(itemsLine.indexOf(':') + 1).trim().split(',');
 
         return {
             count: 0,
