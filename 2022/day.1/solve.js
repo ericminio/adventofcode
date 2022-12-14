@@ -3,7 +3,9 @@ const { add, descending, groupsOfNumbers, orderDescending, total } = require('..
 const solve1 = (file) => {
     return groupsOfNumbers(file)
         .map(group => total(group))
-        .sort(descending)[0];
+        .sort(descending)
+        .slice(0, 1)
+        .reduce(add)
 };
 
 const solve2 = (file) => {
@@ -11,8 +13,7 @@ const solve2 = (file) => {
         .map(group => total(group))
         .sort(descending)
         .slice(0, 3)
-        .reduce(add)
-        ;
+        .reduce(add);
 };
 
 module.exports = { solve: solve1, solve1, solve2 };
