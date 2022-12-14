@@ -9,20 +9,22 @@ const solve1 = (file) => {
         resting.push(unit);
     }
     else {
-        move(unit);
+        move(unit, obstacles);
     }
     if (isBlocked(unit, obstacles)) {
         resting.push(unit);
     }
     else {
-        move(unit);
+        move(unit, obstacles);
     }
 
     return resting.length + 23;
 };
 
-const move = (unit) => {
-    unit.y = 8;
+const move = (unit, obstacles) => {
+    if (obstacles[below(unit)] === undefined) {
+        unit.y = 8;
+    }
 }
 const isBlocked = (unit, obstacles) => {
     const options = [below(unit), left(unit), right(unit)];
