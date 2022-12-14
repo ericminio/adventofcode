@@ -54,6 +54,10 @@ const parse = (file) => {
     let obstacles = {};
     let bottom = 9;
 
+    let input = lines(file);
+    let p = input.map(line => line.split('->').map(p => p.split(',')).map(p => p.map(v => parseInt(v))));
+    console.log(p);
+
     let line = '503,4 -> 502,4 -> 502,9 -> 494,9';
     let points = line.split('->').map(p => p.split(',')).map(p => p.map(v => parseInt(v)));
 
