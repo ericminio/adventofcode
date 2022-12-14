@@ -50,7 +50,9 @@ const solve2 = (file) => {
     return folders
         .filter(folder => folder.size >= needed)
         .map(folder => folder.size)
-        .sort(ascending)[0];
+        .sort(ascending)
+        .slice(0, 1)
+        .reduce(add);
 };
 
 module.exports = { solve1, solve2 };
