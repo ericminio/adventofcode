@@ -8,12 +8,17 @@ const solve1 = (file) => {
     let unit;
     let overflow = false;
 
-    unit = spawn();
-    while (!isBlocked(unit, obstacles) && unit.y < bottom) {
-        move(unit, obstacles);
-    }
-    if (isBlocked(unit, obstacles)) {
-        obstacles[location(unit)] = SAND;
+    while (!overflow) {
+        unit = spawn();
+        while (!isBlocked(unit, obstacles) && unit.y < bottom) {
+            move(unit, obstacles);
+        }
+        if (isBlocked(unit, obstacles)) {
+            obstacles[location(unit)] = SAND;
+        }
+        else {
+            overflow = true;
+        }
     }
 
     unit = spawn();
@@ -40,16 +45,6 @@ const solve1 = (file) => {
         obstacles[location(unit)] = SAND;
     }
     console.log(obstacles);
-
-
-
-    unit = spawn();
-    while (!isBlocked(unit, obstacles) && unit.y < bottom) {
-        move(unit, obstacles);
-    }
-    if (isBlocked(unit, obstacles)) {
-        obstacles[location(unit)] = SAND;
-    }
 
     return 20 + Object.keys(obstacles).map(key => obstacles[key]).filter(value => value === SAND).length;
 };
