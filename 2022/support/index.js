@@ -36,7 +36,6 @@ module.exports = {
     groupsOf,
     groupsOfNumbers,
     total,
-    sum,
     add,
     multiply,
     orderDescending,
