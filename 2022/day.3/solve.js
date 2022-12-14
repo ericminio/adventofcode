@@ -1,4 +1,4 @@
-const { add, lines, groupsOf, total } = require('../support');
+const { add, lines, groupsOf } = require('../support');
 
 const adjust = (code) => code > 94 ? code - 96 : code - 64 + 26;
 const priorityOf = (letter) => adjust(letter.charCodeAt(0));

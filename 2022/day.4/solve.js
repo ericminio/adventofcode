@@ -1,4 +1,4 @@
-const { total, lines, extractor, isInside, isOverlapping } = require('../support');
+const { add, total, lines, extractor, isInside, isOverlapping } = require('../support');
 
 const pattern = /^(.*)-(.*),(.*)-(.*)$/;
 const builder = (data) => ({
@@ -11,10 +11,10 @@ const isContainingPair = pair => isInside(pair.two, pair.one) || isInside(pair.o
 const isOverlappingPair = pair => isOverlapping(pair.one, pair.two);
 
 const solve1 = (file) => {
-    return total(pairs(file).map(isContainingPair));
+    return pairs(file).map(isContainingPair).reduce(add);
 };
 const solve2 = (file) => {
-    return total(pairs(file).map(isOverlappingPair));
+    return pairs(file).map(isOverlappingPair).reduce(add);
 };
 
 module.exports = { solve1, solve2 };
