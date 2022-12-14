@@ -15,6 +15,7 @@ const solve1 = (file) => {
     if (isBlocked(unit, obstacles)) {
         obstacles[location(unit)] = SAND;
     }
+    console.log(obstacles)
 
     unit = spawn();
     obstacles[location(unit)] = SAND;
