@@ -29,15 +29,7 @@ const solve2 = (file) => {
 
     let count = 20;
     while (count > 0) {
-        monkeys.forEach(monkey => {
-            monkey.items.forEach(value => {
-                monkey.count++;
-                let newValue = monkey.operation(value);
-                let nextMonkey = monkey.goto(newValue);
-                monkeys[nextMonkey].items.push(newValue);
-            });
-            monkey.items = [];
-        });
+        run(monkeys);
         count--;
     }
     console.log(monkeys)
@@ -47,6 +39,18 @@ const solve2 = (file) => {
     orderDescending(counts);
 
     return 2713310158;
+};
+
+const run = (monkeys) => {
+    monkeys.forEach(monkey => {
+        monkey.items.forEach(value => {
+            monkey.count++;
+            let newValue = monkey.operation(value);
+            let nextMonkey = monkey.goto(newValue);
+            monkeys[nextMonkey].items.push(newValue);
+        });
+        monkey.items = [];
+    });
 };
 
 const parse = (file) => {
