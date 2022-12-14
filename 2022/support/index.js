@@ -17,7 +17,6 @@ const groupsOf = (size, file) => {
 };
 const numberOrZero = (item => Number.isNaN(parseInt(item)) ? 0 : parseInt(item));
 const groupsOfNumbers = (file) => groups(file).map(items => items.map(item => numberOrZero(item)));
-const total = (array) => array.reduce((acc, current) => acc += current, 0);
 const descending = (a, b) => b - a;
 const ascending = (a, b) => a - b;
 const multiply = (a, b) => a * b;
@@ -34,7 +33,6 @@ module.exports = {
     groups,
     groupsOf,
     groupsOfNumbers,
-    total,
     add,
     multiply,
     descending,
