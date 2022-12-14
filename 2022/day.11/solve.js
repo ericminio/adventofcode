@@ -32,6 +32,7 @@ const solve2 = (file) => {
         monkeys.forEach(monkey => {
             monkey.items.forEach(value => {
                 monkey.count++;
+                monkey.counts[value] = 1;
                 let newValue = monkey.operation(value);
                 let nextMonkey = monkey.goto(newValue);
                 monkeys[nextMonkey].items.push(newValue);
