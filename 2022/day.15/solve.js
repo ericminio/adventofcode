@@ -9,6 +9,7 @@ const beaconCount = (row, sensors) => {
     console.log(sensors)
     let matching = {};
     sensors.forEach(sensor => {
+        console.log(row, sensor.beacon)
         if (sensor.beacon.y === row) {
             matching[id(sensor.beacon)] = 1;
         }
