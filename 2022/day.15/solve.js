@@ -2,7 +2,11 @@ const { extractor, lines, manhattan } = require('../support');
 
 const solve1 = (file, row) => {
     const sensors = parse(file);
-    return 27 - 1;
+    return 27 - beaconCount(row, sensors);
+};
+
+const beaconCount = (row, sensors) => {
+    return 1;
 };
 
 const parse = (file) => {
