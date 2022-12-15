@@ -3,10 +3,8 @@ const { extractor, id, lines, manhattan, ascending, descending } = require('../s
 const solve1 = (file, row) => {
     const sensors = parse(file);
     const points = Object.values(coverage(sensors));
-    console.log(points.length);
     const rowPoints = points.filter(point => point.y === row);
     rowPoints.sort((a, b) => a.x - b.x)
-    console.log(rowPoints);
 
     return rowPoints.length - beaconCount(row, sensors);
 };
