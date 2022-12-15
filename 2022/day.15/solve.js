@@ -103,4 +103,4 @@ const parse = (file) => {
         }));
 };
 
-module.exports = { solve1, solve2, parse, area };
+module.exports = { solve1, solve2, parse, area, rowCoverage };
