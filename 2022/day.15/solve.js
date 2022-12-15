@@ -10,6 +10,7 @@ const solve2 = (file) => {
     const range = area(sensors);
     let beacon = {};
 
+    let stop = false;
     for (y = range.minimum.y; y <= range.maximum.y; y++) {
         for (x = range.minimum.x; x <= range.maximum.x; x++) {
             let candidate = { x, y };
@@ -23,8 +24,12 @@ const solve2 = (file) => {
             }
             if (!covered) {
                 beacon = candidate;
-                console.log({ beacon });
+                stop = true;
+                break;
             }
+        }
+        if (stop) {
+            break;
         }
     }
 
