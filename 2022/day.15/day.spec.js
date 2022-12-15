@@ -10,21 +10,6 @@ describe.only('2022.15', () => {
         });
 
     });
-
-    describe('part 2', () => {
-
-        it('has an example', () => {
-            expect(solve2(`${__dirname}/data/example.txt`)).to.equal(15);
-        });
-
-    });
-
-    describe('internals', () => {
-
-        it('may be needed', () => {
-
-        });
-    });
 });
 
 
