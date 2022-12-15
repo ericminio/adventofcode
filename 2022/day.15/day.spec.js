@@ -21,7 +21,7 @@ describe.only('2022.15', () => {
         });
 
         it.skip('is solved', () => {
-            expect(solve1(`${__dirname}/data/input.txt`, 2000000)).to.equal(4748135);
+            expect(solve2(`${__dirname}/data/input.txt`)).to.equal(1);
         });
 
     });
