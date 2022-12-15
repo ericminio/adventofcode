@@ -11,7 +11,7 @@ const solve2 = (file) => {
 
     let beacon = {};
     for (row = range.minimum.y; row <= range.maximum.y; row++) {
-        const points = Object.values(coverage(row, sensors));
+        const points = Object.values(rowCoverage(row, sensors));
         const x = missing(points);
         if (x !== undefined) {
             beacon.x = x;
@@ -58,7 +58,7 @@ const area = (sensors) => {
 };
 const clone = (sensor) => ({ x: sensor.x, y: sensor.y });
 const tunningFrequency = (point) => point.x * 4000000 + point.y;
-const coverage = (row, sensors) => {
+const rowCoverage = (row, sensors) => {
     const points = {};
     const candidates = sensors.filter(sensor => Math.abs(sensor.y - row) <= sensor.distanceToBeacon);
     candidates.forEach(sensor => {
@@ -74,7 +74,7 @@ const coverage = (row, sensors) => {
     return points;
 };
 const rowCoverageSize = (row, sensors) => {
-    return Object.keys(coverage(row, sensors)).length;
+    return Object.keys(rowCoverage(row, sensors)).length;
 };
 const beaconCount = (row, sensors) => {
     let matching = {};
