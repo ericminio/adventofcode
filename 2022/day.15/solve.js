@@ -13,12 +13,16 @@ const solve2 = (file) => {
     for (row = range.minimum.y; row <= range.maximum.y; row++) {
         const points = Object.values(coverage(row, sensors));
         console.log(row, points);
+        const x = missing(points);
     }
 
     beacon = { ...{ x: 14, y: 11 } };
     return tunningFrequency(beacon);
 };
 
+const missing = (points) => {
+
+};
 const area = (sensors) => {
     const first = sensors[0];
     let range = {
