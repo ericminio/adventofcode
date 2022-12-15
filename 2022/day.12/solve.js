@@ -16,7 +16,10 @@ const solve2 = (file) => {
     const lows = Object.keys(map)
         .map(key => map[key])
         .filter(point => point.height == 1);
-    console.log(lows)
+    lows.map(low => {
+        let request = { ...map.request, origin: { id: lows.id } };
+    })
+
 
     return 29;
 };
