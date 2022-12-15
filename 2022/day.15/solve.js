@@ -8,7 +8,6 @@ const solve1 = (file, row) => {
 const beaconCount = (row, sensors) => {
     let matching = {};
     sensors.forEach(sensor => {
-        console.log(row, sensor.beacon)
         if (sensor.beacon.y === row) {
             matching[id(sensor.beacon)] = 1;
         }
