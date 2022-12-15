@@ -1,9 +1,11 @@
+const { gps } = require('../../lib/2d/gps.js');
 const { mapAsHash, id } = require('../../lib/2d/map');
 const { input } = require('../support');
 
 const solve1 = (file) => {
     let view = input(file);
     let map = load(view);
+    let path = gps(map.request, map);
 
     return 31;
 };
