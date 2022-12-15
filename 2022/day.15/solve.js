@@ -17,7 +17,7 @@ const solve2 = (file) => {
 
 const area = (sensors) => {
     const first = { x: sensors[0].x, y: sensors[0].y };
-    const range = {
+    let range = {
         minimum: first,
         maximum: first,
     };
