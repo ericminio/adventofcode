@@ -38,6 +38,14 @@ describe.only('2022.12', () => {
             expect(map['0x1'].height).to.equal(2);
             expect(map['1x2'].height).to.equal(26);
         });
+
+        it('sets expected neighbours', () => {
+            let map = load(`
+                Sbc
+                deE
+            `);
+            expect(map['0x0'].neighbours).to.deep.equal(['0x1', '1x0']);
+        });
     });
 });
 
