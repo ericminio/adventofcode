@@ -51,7 +51,7 @@ const coverage = (row, sensors) => {
             let point = { x, y: row };
             let distance = manhattan(sensor, point);
             if (distance <= sensor.distanceToBeacon) {
-                points[id(point)] = point;
+                points[id(point)] = point.x;
             }
         }
 
