@@ -6,7 +6,9 @@ const solve1 = (file, row) => {
 };
 
 const solve2 = (file) => {
-    let beacon = { x: 14, y: 11 };
+    let beacon = {};
+
+    beacon = { ...{ x: 14, y: 11 } };
     return tunningFrequency(beacon);
 };
 
