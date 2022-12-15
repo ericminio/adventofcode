@@ -44,7 +44,7 @@ describe.only('2022.12', () => {
                 Sbc
                 deE
             `);
-            expect(map['0x0'].neighbours).to.deep.equal(['0x1', '1x0']);
+            expect(map['0x0'].neighbours).to.deep.equal(['0x1']);
         });
     });
 });

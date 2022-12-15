@@ -21,6 +21,17 @@ const load = (view) => {
         }
     }
     for (var row = 0; row < size.height; row++) {
+        for (var column = 0; column < size.width; column++) {
+            let cell = id(row, column);
+            let candidates = map[cell].neighbours;
+            let neighbours = [];
+            candidates.forEach(candidate => {
+                if (map[candidate].height <= map[cell].height + 1) {
+                    neighbours.push(candidate);
+                }
+            });
+            map[cell].neighbours = neighbours;
+        }
     }
     return map;
 }
