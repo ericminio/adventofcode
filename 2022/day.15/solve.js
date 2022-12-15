@@ -8,8 +8,6 @@ const solve1 = (file, row) => {
 const coverage = (row, sensors) => {
     const points = {};
     const candidates = sensors.filter(sensor => Math.abs(sensor.y - row) <= sensor.distanceToBeacon);
-    console.log(candidates);
-
     candidates.forEach(sensor => {
         for (var x = sensor.x - sensor.distanceToBeacon; x <= sensor.x + sensor.distanceToBeacon; x++) {
             let point = { x, y: row };
@@ -20,8 +18,7 @@ const coverage = (row, sensors) => {
         }
 
     })
-    console.log(Object.keys(points).length);
-    return 27;
+    return Object.keys(points).length;
 };
 const beaconCount = (row, sensors) => {
     let matching = {};
