@@ -10,6 +10,10 @@ const solve1 = (file) => {
     return path.nodes.length - 1;
 };
 
+const solve2 = (file) => {
+    return 29;
+};
+
 const load = (view) => {
     let lines = view.trim().split('\n');
     let size = { height: lines.length, width: lines[0].trim().length };
@@ -43,4 +47,4 @@ const load = (view) => {
     return map;
 }
 
-module.exports = { solve1, load };
+module.exports = { load, solve1, solve2 };

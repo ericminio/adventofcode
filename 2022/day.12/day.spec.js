@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { solve1, load } = require('./solve');
+const { load, solve1, solve2 } = require('./solve');
 
 describe.only('2022.12', () => {
 
@@ -10,6 +10,14 @@ describe.only('2022.12', () => {
         });
         it('is solved', () => {
             expect(solve1(`${__dirname}/data/input.txt`)).to.equal(517);
+        });
+
+    });
+
+    describe('part 2', () => {
+
+        it('has an example', () => {
+            expect(solve2(`${__dirname}/data/example.txt`)).to.equal(29);
         });
 
     });
