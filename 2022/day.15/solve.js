@@ -2,7 +2,7 @@ const { extractor, id, lines, manhattan, ascending, descending } = require('../s
 
 const solve1 = (file, row) => {
     const sensors = parse(file);
-    return coverageSize(row, sensors) - beaconCount(row, sensors);
+    return coverageRowSize(row, sensors) - beaconCount(row, sensors);
 };
 
 const solve2 = (file) => {
@@ -73,7 +73,7 @@ const coverage = (row, sensors) => {
     });
     return points;
 };
-const coverageSize = (row, sensors) => {
+const coverageRowSize = (row, sensors) => {
     return Object.keys(coverage(row, sensors)).length;
 };
 const beaconCount = (row, sensors) => {
