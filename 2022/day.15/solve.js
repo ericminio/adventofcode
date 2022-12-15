@@ -6,6 +6,7 @@ const solve1 = (file, row) => {
 };
 
 const beaconCount = (row, sensors) => {
+    console.log(sensors)
     const matching = sensors.filter(sensor => sensor.beacon.y == row);
     console.log(matching)
 
