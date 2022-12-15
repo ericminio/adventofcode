@@ -29,13 +29,6 @@ describe.only('2022.15', () => {
 
         let file = `${__dirname}/data/input.txt`;
         it('is usefull', () => {
-            const sensors = parse(file);
-
-            const sizes = sensors.map(sensor => sensor.distanceToBeacon);
-            console.log(sizes);
-
-            const range = area(sensors);
-            console.log(range);
         });
     });
 });
