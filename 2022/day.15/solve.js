@@ -6,8 +6,10 @@ const solve1 = (file, row) => {
 };
 
 const solve2 = (file) => {
-    return 14 * 4000000 + 11;
-}
+    return tunningFrequency({ x: 14, y: 11 });
+};
+
+const tunningFrequency = (point) => point.x * 4000000 + point.y;
 
 const coverage = (row, sensors) => {
     const points = {};
