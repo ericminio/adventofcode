@@ -13,8 +13,7 @@ const solve2 = (file) => {
 };
 
 const tunningFrequency = (point) => point.x * 4000000 + point.y;
-
-const coverageSize = (row, sensors) => {
+const coverage = (row, sensors) => {
     const points = {};
     const candidates = sensors.filter(sensor => Math.abs(sensor.y - row) <= sensor.distanceToBeacon);
     candidates.forEach(sensor => {
@@ -26,8 +25,11 @@ const coverageSize = (row, sensors) => {
             }
         }
 
-    })
-    return Object.keys(points).length;
+    });
+    return points;
+};
+const coverageSize = (row, sensors) => {
+    return Object.keys(coverage(row, sensors)).length;
 };
 const beaconCount = (row, sensors) => {
     let matching = {};
