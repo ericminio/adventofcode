@@ -28,6 +28,14 @@ describe.only('2022.12', () => {
             `);
             expect(map['1x2'].value).to.equal(1);
         });
+
+        it('sets expected height', () => {
+            let map = load(`
+                Sbc
+                deE
+            `);
+            expect(map['0x1'].height).to.equal(2);
+        });
     });
 });
 

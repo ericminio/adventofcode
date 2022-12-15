@@ -12,7 +12,10 @@ const load = (view) => {
         let line = lines[row].trim();
         for (var column = 0; column < size.width; column++) {
             let cell = id(row, column);
+            let letter = line[column];
+            let height = letter.charCodeAt(0) - 96;
             map[cell].value = 1;
+            map[cell].height = height;
         }
     }
     return map;
