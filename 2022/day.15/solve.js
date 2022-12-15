@@ -20,7 +20,6 @@ const solve2 = (file) => {
 };
 
 const missing = (points) => {
-    console.log(row, points);
     let found;
     let maximum = points.sort(descending)[0];
     let minimum = points.sort(ascending)[0];
