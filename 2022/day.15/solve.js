@@ -6,7 +6,8 @@ const solve1 = (file, row) => {
 };
 
 const solve2 = (file) => {
-    return tunningFrequency({ x: 14, y: 11 });
+    let beacon = { x: 14, y: 11 };
+    return tunningFrequency(beacon);
 };
 
 const tunningFrequency = (point) => point.x * 4000000 + point.y;
