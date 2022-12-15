@@ -7,7 +7,7 @@ const solve1 = (file) => {
     let map = load(view);
     let path = gps(map.request, map);
 
-    return 31;
+    return path.nodes.length - 1;
 };
 
 const load = (view) => {
