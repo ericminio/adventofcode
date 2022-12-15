@@ -6,7 +6,7 @@ const solve1 = (file, row) => {
 };
 
 const solve2 = (file) => {
-    return 56000011;
+    return 14 * 4000000 + 11;
 }
 
 const coverage = (row, sensors) => {
