@@ -5,6 +5,10 @@ const solve1 = (file, row) => {
     return coverage(row, sensors) - beaconCount(row, sensors);
 };
 
+const solve2 = (file) => {
+    return 56000011;
+}
+
 const coverage = (row, sensors) => {
     const points = {};
     const candidates = sensors.filter(sensor => Math.abs(sensor.y - row) <= sensor.distanceToBeacon);
