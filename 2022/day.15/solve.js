@@ -11,7 +11,7 @@ const solve2 = (file) => {
 
     let beacon = {};
     for (row = range.minimum.y; row <= range.maximum.y; row++) {
-        const points = coverage(row, sensors)
+        const points = coverage(row, sensors);
     }
 
     beacon = { ...{ x: 14, y: 11 } };
