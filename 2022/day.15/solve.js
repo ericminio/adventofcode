@@ -1,4 +1,4 @@
-const { extractor, lines } = require('../support');
+const { extractor, lines, manhattan } = require('../support');
 
 const solve1 = (file, row) => {
     const sensors = parse(file);
@@ -15,6 +15,10 @@ const parse = (file) => {
                 x: parseInt(data[2]),
                 y: parseInt(data[3]),
             },
+        }))
+        .map(sensor => ({
+            ...sensor,
+            distanceToBeacon: manhattan(sensor, sensor.beacon),
         }))
         ;
     console.log(sensors);

@@ -27,6 +27,8 @@ const extractor = (pattern) => (line) => pattern.exec(line).splice(1);
 const isInside = (reference, candidate) => candidate.start >= reference.start && candidate.end <= reference.end;
 const isOverlapping = (reference, candidate) => candidate.end >= reference.start && candidate.start <= reference.end;
 
+const manhattan = (a, b) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+
 module.exports = {
     input,
     lines,
@@ -40,4 +42,5 @@ module.exports = {
     extractor,
     isInside,
     isOverlapping,
+    manhattan,
 };
