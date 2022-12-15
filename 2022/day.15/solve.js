@@ -23,11 +23,10 @@ const solve2 = (file) => {
 
 const missing = (points) => {
     let found;
-    let maximum = points.sort(descending)[0];
-    let minimum = points.sort(ascending)[0];
-    for (var i = minimum; i <= maximum; i++) {
-        if (points[i] !== i) {
-            found = i;
+    points.sort(ascending);
+    for (var i = 0; i < points.length - 1; i++) {
+        if (points[i] + 1 !== points[i + 1]) {
+            found = points[i] + 1;
             break;
         }
     }
