@@ -32,7 +32,7 @@ describe.only('2022.15', () => {
             const sensors = parse(file);
             const range = area(sensors);
 
-            const sizes = sensors.map(sensor => sensor.distanceOtBeacon);
+            const sizes = sensors.map(sensor => sensor.distanceToBeacon);
             console.log(sizes);
         });
     });
