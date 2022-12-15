@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { solve1, solve2 } = require('./solve');
+const { solve1, solve2, parse, area } = require('./solve');
 
 describe.only('2022.15', () => {
 
@@ -23,6 +23,18 @@ describe.only('2022.15', () => {
             expect(solve2(`${__dirname}/data/input.txt`)).to.equal(1);
         });
 
+    });
+
+    describe('exploration', () => {
+
+        let file = `${__dirname}/data/input.txt`;
+        it('is usefull', () => {
+            const sensors = parse(file);
+            const range = area(sensors);
+
+            const sizes = sensors.map(sensor => sensor.distanceOtBeacon);
+            console.log(sizes);
+        });
     });
 });
 
