@@ -8,6 +8,7 @@ const solve1 = (file, row) => {
 const solve2 = (file) => {
     const sensors = parse(file);
     const range = area(sensors);
+    console.log({ range });
     let beacon = {};
 
     beacon = { ...{ x: 14, y: 11 } };
@@ -20,9 +21,7 @@ const area = (sensors) => {
         minimum: clone(first),
         maximum: clone(first),
     };
-    console.log({ range });
     sensors.forEach(sensor => {
-        console.log({ sensor })
         if (sensor.x < range.minimum.x) {
             range.minimum.x = sensor.x;
         }
@@ -36,7 +35,6 @@ const area = (sensors) => {
             range.maximum.y = sensor.y;
         }
     });
-    console.log({ range });
     return range;
 };
 const clone = (sensor) => ({ x: sensor.x, y: sensor.y });
