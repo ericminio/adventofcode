@@ -16,19 +16,22 @@ const solve2 = (file) => {
 };
 
 const area = (sensors) => {
-    const first = { x: sensors[0].x, y: sensors[0].y };
+    const first = sensors[0];
     let range = {
-        minimum: first,
-        maximum: first,
+        minimum: clone(first),
+        maximum: clone(first),
     };
     sensors.forEach(sensor => {
-        if (sensor.x < range.minimum.x) { range.minimum.x = sensor.x; }
-        if (sensor.y < range.minimum.y) { range.minimum.y = sensor.y; }
-        if (sensor.x > range.maximum.x) { range.maximum.x = sensor.x; }
-        if (sensor.y > range.maximum.y) { range.maximum.y = sensor.y; }
+        if (sensor.x < range.minimum.x || sensor.y < range.minimum.y) {
+            range.minimum = clone(sensor);
+        }
+        if (sensor.x > range.maximum.x || sensor.y > range.maximum.y) {
+            range.maximum = clone(sensor);
+        }
     });
     return range;
 };
+const clone = (sensor) => ({ x: sensor.x, y: sensor.y });
 const tunningFrequency = (point) => point.x * 4000000 + point.y;
 const coverage = (row, sensors) => {
     const points = {};
