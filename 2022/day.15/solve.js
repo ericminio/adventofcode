@@ -10,7 +10,7 @@ const coverage = (row, sensors) => {
     const candidates = sensors.filter(sensor => Math.abs(sensor.y - row) <= sensor.distanceToBeacon);
     console.log(candidates);
     let sensor = candidates[0];
-    for (var x = -sensor.distanceToBeacon; x <= sensor.distanceToBeacon; x++) {
+    for (var x = sensor.x - sensor.distanceToBeacon; x <= sensor.x + sensor.distanceToBeacon; x++) {
         if (manhattan(sensor, { x, row }) <= sensor.distanceToBeacon) {
             points[id({ x, row })] = 1;
         }
