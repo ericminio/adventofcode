@@ -23,9 +23,7 @@ const parse = (file) => {
         .map(sensor => ({
             ...sensor,
             distanceToBeacon: manhattan(sensor, sensor.beacon),
-        }))
-        ;
-    console.log(sensors);
+        }));
 };
 
 module.exports = { solve1 };
