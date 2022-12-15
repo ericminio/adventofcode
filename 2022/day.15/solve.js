@@ -5,7 +5,7 @@ const solve1 = (file, row) => {
     const points = coverage(sensors);
     const rowSize = Object.values(points).filter(point => point.y === row).length
 
-    return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
+    return rowSize - beaconCount(row, sensors);
 };
 
 const solve2 = (file) => {
