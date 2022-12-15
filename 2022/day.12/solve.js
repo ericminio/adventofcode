@@ -11,6 +11,13 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
+    let view = input(file);
+    let map = load(view);
+    const lows = Object.keys(map)
+        .map(key => map[key])
+        .filter(point => point.height == 1);
+    console.log(lows)
+
     return 29;
 };
 
