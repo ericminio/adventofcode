@@ -1,4 +1,4 @@
-const { extractor, id, lines, manhattan } = require('../support');
+const { extractor, id, lines, manhattan, ascending, descending } = require('../support');
 
 const solve1 = (file, row) => {
     const sensors = parse(file);
@@ -12,7 +12,6 @@ const solve2 = (file) => {
     let beacon = {};
     for (row = range.minimum.y; row <= range.maximum.y; row++) {
         const points = Object.values(coverage(row, sensors));
-        console.log(row, points);
         const x = missing(points);
     }
 
@@ -21,7 +20,17 @@ const solve2 = (file) => {
 };
 
 const missing = (points) => {
-
+    console.log(row, points);
+    let found;
+    let maximum = points.sort(descending)[0];
+    let minimum = points.sort(ascending)[0];
+    for (var i = minimum; i <= maximum; i++) {
+        if (points[i] !== i) {
+            found = i;
+            break;
+        }
+    }
+    console.log(found);
 };
 const area = (sensors) => {
     const first = sensors[0];
