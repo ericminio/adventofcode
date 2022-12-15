@@ -9,14 +9,17 @@ const coverage = (row, sensors) => {
     const points = {};
     const candidates = sensors.filter(sensor => Math.abs(sensor.y - row) <= sensor.distanceToBeacon);
     console.log(candidates);
-    let sensor = candidates[0];
-    for (var x = sensor.x - sensor.distanceToBeacon; x <= sensor.x + sensor.distanceToBeacon; x++) {
-        let point = { x, y: row };
-        let distance = manhattan(sensor, point);
-        if (distance <= sensor.distanceToBeacon) {
-            points[id(point)] = 1;
+
+    candidates.forEach(sensor => {
+        for (var x = sensor.x - sensor.distanceToBeacon; x <= sensor.x + sensor.distanceToBeacon; x++) {
+            let point = { x, y: row };
+            let distance = manhattan(sensor, point);
+            if (distance <= sensor.distanceToBeacon) {
+                points[id(point)] = 1;
+            }
         }
-    }
+
+    })
     console.log(points);
     return 27;
 };
