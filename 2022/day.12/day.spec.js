@@ -21,6 +21,14 @@ describe.only('2022.12', () => {
             expect(map.size).to.deep.equal({ height: 2, width: 3 });
         });
 
+        it('exposes the request', () => {
+            let map = load(`
+                Sbc
+                deE
+            `);
+            expect(map.request).to.deep.equal({ origin: { id: '0x0' }, target: { id: '1x2' } });
+        });
+
         it('sets expected value', () => {
             let map = load(`
                 Sbc
