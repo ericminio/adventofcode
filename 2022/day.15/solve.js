@@ -1,4 +1,4 @@
-const { extractor, lines, manhattan } = require('../support');
+const { extractor, id, lines, manhattan } = require('../support');
 
 const solve1 = (file, row) => {
     const sensors = parse(file);
@@ -7,7 +7,12 @@ const solve1 = (file, row) => {
 
 const beaconCount = (row, sensors) => {
     console.log(sensors)
-    const matching = sensors.filter(sensor => sensor.beacon.y === row);
+    const matching = {};
+    sensors.forEach(sensor => {
+        if (sensor.beacon.y === row) {
+            matching[id(sensor.beacon)] = 1;
+        }
+    })
     console.log(matching)
 
     return 1;
