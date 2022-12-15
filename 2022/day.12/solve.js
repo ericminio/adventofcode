@@ -14,6 +14,8 @@ const load = (view) => {
             let cell = id(row, column);
             let letter = line[column];
             let height = letter.charCodeAt(0) - 96;
+            if (letter === 'S') { height = 1; }
+            if (letter === 'E') { height = 26; }
             map[cell].value = 1;
             map[cell].height = height;
         }
