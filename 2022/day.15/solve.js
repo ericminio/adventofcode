@@ -4,9 +4,11 @@ const solve1 = (file, row) => {
     const sensors = parse(file);
     const points = Object.values(coverage(sensors));
     console.log(points.length);
-    const rowSize = points.filter(point => point.y === row).length
+    const rowPoints = points.filter(point => point.y === row);
+    rowPoints.sort((a, b) => a.x - b.x)
+    console.log(rowPoints);
 
-    return rowSize - beaconCount(row, sensors);
+    return rowPoints.length - beaconCount(row, sensors);
 };
 
 const solve2 = (file) => {
@@ -28,6 +30,7 @@ const solve2 = (file) => {
 };
 
 const coverage = (sensors) => {
+    const range = area(sensors);
     const points = {};
     sensors.forEach(sensor => {
         for (var x = sensor.x - sensor.distanceToBeacon; x <= sensor.x + sensor.distanceToBeacon; x++) {
@@ -41,7 +44,13 @@ const coverage = (sensors) => {
         }
     });
     return points;
-}
+};
+const isInside = (range, point) => {
+    return point.x >= range.minimum.x
+        && point.y >= range.minimum.y
+        && point.x <= range.maximum.x
+        && point.y <= range.maximum.y;
+};
 
 const missing = (points) => {
     let found;
