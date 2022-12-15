@@ -6,7 +6,6 @@ const solve1 = (file, row) => {
 };
 
 const beaconCount = (row, sensors) => {
-    console.log(sensors)
     let matching = {};
     sensors.forEach(sensor => {
         console.log(row, sensor.beacon)
@@ -14,9 +13,7 @@ const beaconCount = (row, sensors) => {
             matching[id(sensor.beacon)] = 1;
         }
     })
-    console.log(matching)
-
-    return 1;
+    return Object.keys(matching).length;
 };
 
 const parse = (file) => {
