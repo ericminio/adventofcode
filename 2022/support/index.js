@@ -28,6 +28,7 @@ const isInside = (reference, candidate) => candidate.start >= reference.start &&
 const isOverlapping = (reference, candidate) => candidate.end >= reference.start && candidate.start <= reference.end;
 
 const manhattan = (a, b) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+const id = (location) => `${location.x}x${location.y}`;
 
 module.exports = {
     input,
@@ -43,4 +44,5 @@ module.exports = {
     isInside,
     isOverlapping,
     manhattan,
+    id,
 };
