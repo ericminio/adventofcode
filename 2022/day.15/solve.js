@@ -7,7 +7,7 @@ const solve1 = (file, row) => {
 
 const beaconCount = (row, sensors) => {
     console.log(sensors)
-    const matching = {};
+    let matching = {};
     sensors.forEach(sensor => {
         if (sensor.beacon.y === row) {
             matching[id(sensor.beacon)] = 1;
