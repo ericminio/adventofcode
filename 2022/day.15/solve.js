@@ -13,6 +13,8 @@ const solve2 = (file) => {
     for (row = range.minimum.y; row <= range.maximum.y; row++) {
         const points = Object.values(coverage(row, sensors));
         const x = missing(points);
+        console.log(row, points);
+        console.log(x);
     }
 
     beacon = { ...{ x: 14, y: 11 } };
@@ -29,7 +31,7 @@ const missing = (points) => {
             break;
         }
     }
-    console.log(found);
+    return found;
 };
 const area = (sensors) => {
     const first = sensors[0];
