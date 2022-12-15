@@ -24,13 +24,6 @@ describe.only('2022.15', () => {
         });
 
     });
-
-    describe('exploration', () => {
-
-        let file = `${__dirname}/data/input.txt`;
-        it('is usefull', () => {
-        });
-    });
 });
 
 
