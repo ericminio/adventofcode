@@ -12,6 +12,9 @@ const solve2 = (file) => {
 
     for (y = range.minimum.y; y <= range.maximum.y; y++) {
         for (x = range.minimum.x; x <= range.maximum.x; x++) {
+            for (var i = 0; i < sensors.length; i++) {
+
+            }
         }
     }
 
