@@ -13,14 +13,15 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     let view = input(file);
     let map = load(view);
-    const lows = Object.keys(map)
+    const sizes = Object.keys(map)
         .map(key => map[key])
-        .filter(point => point.height == 1);
-    lows.map(low => {
-        let request = { ...map.request, origin: { id: low.id } };
-        let path = gps(request, map);
-    })
-
+        .filter(point => point.height == 1)
+        .map(low => {
+            let request = { ...map.request, origin: { id: low.id } };
+            let path = gps(request, map);
+            return path.nodes.length - 1;
+        });
+    console.log(sizes);
 
     return 29;
 };
