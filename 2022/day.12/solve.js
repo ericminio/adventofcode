@@ -20,6 +20,8 @@ const load = (view) => {
             map[cell].height = height;
         }
     }
+    for (var row = 0; row < size.height; row++) {
+    }
     return map;
 }
 
