@@ -11,9 +11,12 @@ const solve1 = (file, row) => {
 
 const solve2 = (file) => {
     const sensors = parse(file);
-    const range = area(sensors);
-
     let beacon = {};
+
+    const points = Object.values(coverage(sensors));
+
+
+    const range = area(sensors);
     for (row = range.minimum.y; row <= range.maximum.y; row++) {
         const points = Object.values(rowCoverage(row, sensors));
         const x = missing(points);
