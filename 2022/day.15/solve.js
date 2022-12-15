@@ -6,12 +6,29 @@ const solve1 = (file, row) => {
 };
 
 const solve2 = (file) => {
+    const sensors = parse(file);
+    const range = area(sensors);
+    console.log({ range })
     let beacon = {};
 
     beacon = { ...{ x: 14, y: 11 } };
     return tunningFrequency(beacon);
 };
 
+const area = (sensors) => {
+    const first = { x: sensors[0].x, y: sensors[0].y };
+    const range = {
+        minimum: first,
+        maximum: first,
+    };
+    sensors.forEach(sensor => {
+        if (sensor.x < range.minimum.x) { range.minimum.x = sensor.x; }
+        if (sensor.y < range.minimum.y) { range.minimum.y = sensor.y; }
+        if (sensor.x > range.maximum.x) { range.maximum.x = sensor.x; }
+        if (sensor.y > range.maximum.y) { range.maximum.y = sensor.y; }
+    });
+    return range;
+};
 const tunningFrequency = (point) => point.x * 4000000 + point.y;
 const coverage = (row, sensors) => {
     const points = {};
