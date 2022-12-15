@@ -2,21 +2,14 @@ const { extractor, id, lines, manhattan, ascending, descending } = require('../s
 
 const solve1 = (file, row) => {
     const sensors = parse(file);
-    const points = Object.values(coverage(sensors));
-    const rowPoints = points.filter(point => point.y === row);
-    rowPoints.sort((a, b) => a.x - b.x)
-
-    return rowPoints.length - beaconCount(row, sensors);
+    return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
 };
 
 const solve2 = (file) => {
     const sensors = parse(file);
-    let beacon = {};
-
-    const points = Object.values(coverage(sensors));
-    console.log(points.length)
-
     const range = area(sensors);
+
+    let beacon = {};
     for (row = range.minimum.y; row <= range.maximum.y; row++) {
         const points = Object.values(rowCoverage(row, sensors));
         const x = missing(points);
@@ -28,29 +21,6 @@ const solve2 = (file) => {
     }
 
     return tunningFrequency(beacon);
-};
-
-const coverage = (sensors) => {
-    const range = area(sensors);
-    const points = {};
-    sensors.forEach(sensor => {
-        for (var x = sensor.x - sensor.distanceToBeacon; x <= sensor.x + sensor.distanceToBeacon; x++) {
-            for (var y = sensor.y - sensor.distanceToBeacon; y <= sensor.y + sensor.distanceToBeacon; y++) {
-                let point = { x, y };
-                let distance = manhattan(sensor, point);
-                if (distance <= sensor.distanceToBeacon) {
-                    points[id(point)] = point;
-                }
-            }
-        }
-    });
-    return points;
-};
-const isInside = (range, point) => {
-    return point.x >= range.minimum.x
-        && point.y >= range.minimum.y
-        && point.x <= range.maximum.x
-        && point.y <= range.maximum.y;
 };
 
 const missing = (points) => {
@@ -102,6 +72,9 @@ const rowCoverage = (row, sensors) => {
 
     });
     return points;
+};
+const rowCoverageSize = (row, sensors) => {
+    return Object.keys(rowCoverage(row, sensors)).length;
 };
 const beaconCount = (row, sensors) => {
     let matching = {};
