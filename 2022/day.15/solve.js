@@ -12,8 +12,8 @@ const parse = (file) => {
             x: parseInt(data[0]),
             y: parseInt(data[1]),
             beacon: {
-                x: parseInt(data[3]),
-                y: parseInt(data[4]),
+                x: parseInt(data[2]),
+                y: parseInt(data[3]),
             },
         }))
         ;
