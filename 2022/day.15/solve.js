@@ -2,6 +2,7 @@ const { extractor, id, lines, manhattan, ascending, descending } = require('../s
 
 const solve1 = (file, row) => {
     const sensors = parse(file);
+    const points = coverage(sensors);
     return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
 };
 
@@ -22,6 +23,22 @@ const solve2 = (file) => {
 
     return tunningFrequency(beacon);
 };
+
+const coverage = (sensors) => {
+    const points = {};
+    sensors.forEach(sensor => {
+        for (var x = sensor.x - sensor.distanceToBeacon; x <= sensor.x + sensor.distanceToBeacon; x++) {
+            for (var y = sensor.y - sensor.distanceToBeacon; y <= sensor.y + sensor.distanceToBeacon; y++) {
+                let point = { x, y };
+                let distance = manhattan(sensor, point);
+                if (distance <= sensor.distanceToBeacon) {
+                    points[id(point)] = point;
+                }
+            }
+        }
+    });
+    return points;
+}
 
 const missing = (points) => {
     let found;
