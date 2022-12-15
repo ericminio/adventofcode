@@ -29,6 +29,7 @@ const area = (sensors) => {
         if (sensor.x > range.maximum.x || sensor.y > range.maximum.y) {
             range.maximum = clone(sensor);
         }
+        console.log({ range });
     });
     return range;
 };
