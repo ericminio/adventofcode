@@ -13,10 +13,12 @@ const solve2 = (file) => {
     for (row = range.minimum.y; row <= range.maximum.y; row++) {
         const points = Object.values(coverage(row, sensors));
         const x = missing(points);
-        console.log(row, points);
-        console.log(x);
+        if (x !== undefined) {
+            beacon.x = x;
+            beacon.y = row;
+        }
     }
-
+    console.log({ beacon });
     beacon = { ...{ x: 14, y: 11 } };
     return tunningFrequency(beacon);
 };
