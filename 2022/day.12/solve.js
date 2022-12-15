@@ -18,9 +18,13 @@ const solve2 = (file) => {
         .filter(point => point.height == 1)
         .map(low => {
             let request = { ...map.request, origin: { id: low.id } };
-            console.log({ request })
-            let path = gps(request, map);
-            return path.nodes.length - 1;
+            try {
+                let path = gps(request, map);
+                return path.nodes.length - 1;
+            }
+            catch (error) {
+                return 517;
+            }
         })
         .sort(ascending);
 
