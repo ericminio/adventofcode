@@ -29,6 +29,12 @@ const area = (sensors) => {
         if (sensor.y < range.minimum.y) {
             range.minimum.y = sensor.y;
         }
+        if (sensor.x > range.maximum.x) {
+            range.maximum.x = sensor.x;
+        }
+        if (sensor.y > range.maximum.y) {
+            range.maximum.y = sensor.y;
+        }
     });
     console.log({ range });
     return range;
