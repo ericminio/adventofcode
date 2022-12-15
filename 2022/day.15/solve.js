@@ -33,15 +33,15 @@ const solve2 = (file) => {
         }
     }
 
-    for (row = range.minimum.y; row <= range.maximum.y; row++) {
-        const points = Object.values(rowCoverage(row, sensors));
-        const x = missing(points);
-        if (x !== undefined) {
-            beacon.x = x;
-            beacon.y = row;
-            break;
-        }
-    }
+    // for (row = range.minimum.y; row <= range.maximum.y; row++) {
+    //     const points = Object.values(rowCoverage(row, sensors));
+    //     const x = missing(points);
+    //     if (x !== undefined) {
+    //         beacon.x = x;
+    //         beacon.y = row;
+    //         break;
+    //     }
+    // }
 
     return tunningFrequency(beacon);
 };
