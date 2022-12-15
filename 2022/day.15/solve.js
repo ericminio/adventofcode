@@ -16,6 +16,7 @@ const solve2 = (file) => {
         if (x !== undefined) {
             beacon.x = x;
             beacon.y = row;
+            break;
         }
     }
 
