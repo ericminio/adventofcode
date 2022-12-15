@@ -6,11 +6,14 @@ const solve1 = (file, row) => {
 };
 
 const beaconCount = (row, sensors) => {
+    const matching = sensors.filter(sensor => sensor.beacon.y == row);
+    console.log(matching)
+
     return 1;
 };
 
 const parse = (file) => {
-    let sensors = lines(file)
+    return lines(file)
         .map(extractor(/^Sensor at x=(.*), y=(.*): closest beacon is at x=(.*), y=(.*)$/))
         .map(data => ({
             x: parseInt(data[0]),
