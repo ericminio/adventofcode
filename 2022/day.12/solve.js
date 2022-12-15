@@ -17,7 +17,8 @@ const solve2 = (file) => {
         .map(key => map[key])
         .filter(point => point.height == 1);
     lows.map(low => {
-        let request = { ...map.request, origin: { id: lows.id } };
+        let request = { ...map.request, origin: { id: low.id } };
+        let path = gps(request, map);
     })
 
 
