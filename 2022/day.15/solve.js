@@ -18,8 +18,7 @@ const solve2 = (file) => {
             beacon.y = row;
         }
     }
-    console.log({ beacon });
-    beacon = { ...{ x: 14, y: 11 } };
+
     return tunningFrequency(beacon);
 };
 
