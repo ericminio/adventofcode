@@ -3,6 +3,8 @@ const { input } = require('../support');
 
 const solve1 = (file) => {
     let view = input(file);
+    let map = load(view);
+
     return 31;
 };
 
