@@ -12,8 +12,18 @@ const solve2 = (file) => {
 
     for (y = range.minimum.y; y <= range.maximum.y; y++) {
         for (x = range.minimum.x; x <= range.maximum.x; x++) {
+            let candidate = { x, y };
+            let covered = false;
             for (var i = 0; i < sensors.length; i++) {
-
+                let sensor = sensors[i];
+                if (manhattan(candidate, sensor) <= sensor.distanceToBeacon) {
+                    covered = true;
+                    break;
+                }
+            }
+            if (!covered) {
+                beacon = candidate;
+                console.log({ beacon });
             }
         }
     }
