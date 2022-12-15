@@ -1,6 +1,6 @@
 const { gps } = require('../../lib/2d/gps.js');
 const { mapAsHash, id } = require('../../lib/2d/map');
-const { input } = require('../support');
+const { input, ascending } = require('../support');
 
 const solve1 = (file) => {
     let view = input(file);
@@ -20,10 +20,10 @@ const solve2 = (file) => {
             let request = { ...map.request, origin: { id: low.id } };
             let path = gps(request, map);
             return path.nodes.length - 1;
-        });
-    console.log(sizes);
+        })
+        .sort(ascending);
 
-    return 29;
+    return sizes[0];
 };
 
 const load = (view) => {
