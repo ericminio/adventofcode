@@ -12,10 +12,9 @@ const coverage = (row, sensors) => {
     let sensor = candidates[0];
     for (var x = sensor.x - sensor.distanceToBeacon; x <= sensor.x + sensor.distanceToBeacon; x++) {
         let point = { x, y: row };
-        let distance = manhattan(sensor, { x, y: row });
-        console.log(distance, sensor.distanceToBeacon)
+        let distance = manhattan(sensor, point);
         if (distance <= sensor.distanceToBeacon) {
-            points[id({ x, row })] = 1;
+            points[id(point)] = 1;
         }
     }
     console.log(points);
