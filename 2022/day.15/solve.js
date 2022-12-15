@@ -23,14 +23,14 @@ const area = (sensors) => {
     console.log({ range });
     sensors.forEach(sensor => {
         console.log({ sensor })
-        if (sensor.x < range.minimum.x || sensor.y < range.minimum.y) {
-            range.minimum = clone(sensor);
+        if (sensor.x < range.minimum.x) {
+            range.minimum.x = sensor.x;
         }
-        if (sensor.x > range.maximum.x || sensor.y > range.maximum.y) {
-            range.maximum = clone(sensor);
+        if (sensor.y < range.minimum.y) {
+            range.minimum.y = sensor.y;
         }
-        console.log({ range });
     });
+    console.log({ range });
     return range;
 };
 const clone = (sensor) => ({ x: sensor.x, y: sensor.y });
