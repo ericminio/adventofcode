@@ -9,7 +9,6 @@ const load = (view) => {
     let size = { height: lines.length, width: lines[0].trim().length };
     let map = mapAsHash({ height: size.height, width: size.width });
 
-
     return map;
 }
 
