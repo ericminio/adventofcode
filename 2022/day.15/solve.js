@@ -20,7 +20,7 @@ const coverage = (row, sensors) => {
         }
 
     })
-    console.log(points.length);
+    console.log(Object.keys(points).length);
     return 27;
 };
 const beaconCount = (row, sensors) => {
