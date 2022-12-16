@@ -20,14 +20,14 @@ const RIGHT_ORDER = 1;
 const NOT_RIGHT_ORDER = 0;
 const compareList = (left, right) => {
     console.log('\ncomparing lists', { left, right });
-    let index = 0;
-    let result = compareItem(left[index], right[index]);
-    while (result === DONT_KNOW_YET) {
+    let result;
+    let index = -1;
+    do {
         index++;
         result = compareItem(left[index], right[index]);
-
-        if (index == 15) { return 1; }
     }
+    while (result === DONT_KNOW_YET);
+
     return result;
 };
 const compareItem = (left, right) => {
