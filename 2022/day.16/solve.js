@@ -8,6 +8,7 @@ const solve1 = (file) => {
     const candidates = [];
     const candidate = {
         opened: [
+            { minutes: 0, valve: { id: 'AA', rate: 0 } },
             { minutes: 2, valve: { id: 'DD', rate: 20 } },
             { minutes: 5, valve: { id: 'BB', rate: 13 } },
             { minutes: 9, valve: { id: 'JJ', rate: 21 } },
