@@ -7,7 +7,7 @@ describe.only('2022.16', () => {
     describe('part 1', () => {
 
         it('has an example', () => {
-            expect(solve1(`${__dirname}/data/input.txt`)).to.equal(1651);
+            expect(solve1(`${__dirname}/data/example.txt`)).to.equal(1651);
         });
 
     });
