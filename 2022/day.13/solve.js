@@ -39,10 +39,10 @@ const compareItem = (left, right) => {
         return compareList(left, right);
     }
     if (typeof left == 'number' && typeof right == 'object') {
-
+        return compareList([left], right);
     }
     if (typeof left == 'object' && typeof right == 'number') {
-
+        return compareList(left, [right]);
     }
 
     return DONT_KNOW_YET;
