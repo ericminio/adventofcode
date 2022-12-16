@@ -49,6 +49,8 @@ const solve2 = (file) => {
     return tunningFrequency(beacon);
 };
 
+const tunningFrequency = (point) => point.x * 4000000 + point.y;
+
 const area = (sensors) => {
     const first = sensors[0];
     let range = {
@@ -71,7 +73,6 @@ const area = (sensors) => {
     });
     return range;
 };
-const tunningFrequency = (point) => point.x * 4000000 + point.y;
 const beaconCount = (row, sensors) => {
     let matching = {};
     sensors.forEach(sensor => {
