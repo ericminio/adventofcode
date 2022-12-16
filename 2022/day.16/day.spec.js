@@ -31,7 +31,7 @@ describe.only('2022.16', () => {
                 map[valve.id] = {
                     id: valve.id,
                     value: 1,
-                    neighbours: valve.neighbours,
+                    neighbours: valve.neighbours.map(n => n.id),
                 };
             });
             const request = {
