@@ -6,6 +6,7 @@ const solve1 = (file) => {
     const targets = valves.filter(valve => valve.rate > 0);
 
     console.log(targets.map(v => v.id));
+    console.log(targets.length);
     const candidates = [];
 
     const candidate = {
