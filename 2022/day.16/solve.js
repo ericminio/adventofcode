@@ -3,7 +3,7 @@ const { extractor, lines, add, descending } = require('../support');
 const solve1 = (file) => {
     const valves = parse(file);
 
-    candidates = [];
+    const candidates = [];
     const candidate = {
         opened: [
             { minutes: 2, valve: { id: 'DD', rate: 20 } },
