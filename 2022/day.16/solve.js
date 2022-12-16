@@ -2,7 +2,7 @@ const { extractor, lines, add, descending } = require('../support');
 
 const solve1 = (file) => {
     const valves = parse(file);
-    // const start = valves.find(valve => valve.id = 'AA');
+    const start = valves.find(valve => valve.id = 'AA');
     const targets = valves.filter(valve => valve.rate > 0).sort((a, b) => b.rate - a.rate);
 
     console.log(targets.map(v => ({ id: v.id, rate: v.rate })));
