@@ -14,7 +14,7 @@ const parse = (file) => {
     return digest(lines(file));
 };
 const digest = (lines) => {
-    return lines.map(extractor(/^Valve (.*) has flow rate=(.*); tunnel[s]? lead[s]? to valve[s]? (.*)$/))
+    const valves = lines.map(extractor(/^Valve (.*) has flow rate=(.*); tunnel[s]? lead[s]? to valve[s]? (.*)$/))
         .map(data => ({
             id: data[0],
             rate: parseInt(data[1]),
@@ -22,6 +22,8 @@ const digest = (lines) => {
             opened: false,
             visited: false,
         }));
+
+    return valves;
 }
 
 module.exports = { solve1, solve2, digest };
