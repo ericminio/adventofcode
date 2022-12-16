@@ -12,6 +12,7 @@ const solve2 = (file) => {
     const pairs = lines(file).filter(line => line.length > 0).map(list => eval(list));
     pairs.push([[2]]);
     pairs.push([[6]]);
+    pairs.sort(compareList);
     console.log(pairs);
 
     return 140;
