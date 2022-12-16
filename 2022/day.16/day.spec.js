@@ -32,6 +32,16 @@ describe.only('2022.16', () => {
             expect(total).to.equal(2 * 28);
         });
 
+        it('works with 2 children', () => {
+            const valves = digest([
+                'Valve AA has flow rate=0; tunnels lead to valves BB',
+                'Valve BB has flow rate=2; tunnels lead to valves AA',
+            ]);
+            const total = solve(valves);
+
+            expect(total).to.equal(2 * 28);
+        });
+
         const solve = (valves) => {
             let opened = [];
             let minutes = 0;
