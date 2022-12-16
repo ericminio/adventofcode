@@ -1,4 +1,4 @@
-const { groups, add } = require('../support');
+const { groups, add, lines } = require('../support');
 
 const solve1 = (file) => {
     const pairs = groups(file).map(group => group.map(list => eval(list)));
@@ -9,6 +9,9 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
+    const pairs = lines(file)
+    console.log(pairs);
+
     return 140;
 };
 
