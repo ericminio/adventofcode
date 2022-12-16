@@ -1,4 +1,4 @@
-const { extractor, lines } = require('../support');
+const { extractor, lines, add } = require('../support');
 
 const solve1 = (file) => {
     const valves = parse(file);
@@ -11,8 +11,9 @@ const solve1 = (file) => {
             { minutes: 2, valve: { id: 'HH', rate: 22 } },
             { minutes: 2, valve: { id: 'EE', rate: 3 } },
             { minutes: 2, valve: { id: 'CC', rate: 2 } },
-        ]
+        ],
     };
+    best.total = best.opened.map(event => event.valve.rate * (30 - event.minutes)).reduce(add);
 
     return 1651;
 };
