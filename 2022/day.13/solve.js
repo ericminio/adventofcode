@@ -33,6 +33,7 @@ const compareList = (left, right) => {
 };
 const compareItem = (left, right) => {
     console.log('comparing items', { left, right });
+    if (left === undefined && right === undefined) { return BOTH_EMPTY; }
     if (left === undefined && right !== undefined) { return RIGHT_ORDER; }
     if (left !== undefined && right === undefined) { return NOT_RIGHT_ORDER; }
     if (typeof left == 'number' && typeof right == 'number') {
