@@ -16,6 +16,8 @@ const statusOf = (pair) => {
     return compare(left, right);
 };
 const compare = (left, right) => {
+
+
     return 1;
 };
 
