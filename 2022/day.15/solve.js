@@ -10,7 +10,7 @@ const solve1 = (file, row) => {
         for (var i = 0; i < sensors.length; i++) {
             let sensor = sensors[i];
             if (manhattan(candidate, sensor) <= sensor.distanceToBeacon) {
-                points[id(candidate)] = x;
+                points[id(candidate)] = candidate;
                 break;
             }
         }
