@@ -16,8 +16,7 @@ const solve1 = (file, row) => {
             }
         }
     }
-    const values = Object.values(points).sort(ascending);
-    console.log(values);
+    const values = Object.values(points);
 
     return values.length - beaconCount(row, sensors);
 };
