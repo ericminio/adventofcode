@@ -13,7 +13,7 @@ const solve2 = (file) => {
 const parse = (file) => {
     const pattern = /^Valve (.*) has flow rate=(.*); tunnels lead to valves (.*)$/;
     return lines(file)
-        .map(line => pattern.exec(line));
+    // .map(line => pattern.exec(line));
     // .map(data => ({
     //     id: data[0],
     //     rate: parseInt(data[1]),
