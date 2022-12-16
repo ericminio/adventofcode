@@ -34,7 +34,17 @@ describe.only('2022.16', () => {
         const solve = (valves) => {
             let opened = [];
             let minutes = 0;
-            let current = valves.find(v => v.is === 'AA');
+            let current = valves.find(v => v.id === 'AA');
+
+            current.children.forEach(id => {
+                minutes++;
+                let child = valves.find(v => v.id === id);
+                if (child.rate !== 0) {
+                    minutes++;
+                    opened.push({ id: child.id, rate: child.rate, minutes });
+                }
+            });
+
             return 56;
         };
     });
