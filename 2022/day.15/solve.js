@@ -3,12 +3,13 @@ const { extractor, id, lines, manhattan, ascending, descending } = require('../s
 const solve1 = (file, row) => {
     const sensors = parse(file);
     const range = area(sensors);
+    const sensorsAroundRow = sensors.filter(sensor => Math.abs(sensor.y - row) <= sensor.distanceToBeacon);
 
     const points = {};
     for (x = range.minimum.x - range.minimum.xsensor.distanceToBeacon; x <= range.maximum.x + range.maximum.xsensor.distanceToBeacon; x++) {
         let point = { x, y: row };
-        for (var i = 0; i < sensors.length; i++) {
-            let sensor = sensors[i];
+        for (var i = 0; i < sensorsAroundRow.length; i++) {
+            let sensor = sensorsAroundRow[i];
             let distance = manhattan(sensor, point);
             if (distance <= sensor.distanceToBeacon) {
                 points[id(point)] = point.x;
