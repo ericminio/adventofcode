@@ -7,7 +7,7 @@ const solve1 = (file) => {
     const statuses = pairs.map(pair => statusOf(pair));
     //[1, 1, 0, 1, 0, 1, 0, statusOf(pairs[7])]
 
-    return statuses.map((value, index) => (index + 1) * value).reduce(add);
+    return statuses.map((value, index) => value === RIGHT_ORDER ? index + 1 : 0).reduce(add);
 };
 
 const solve2 = (file) => {
@@ -22,8 +22,8 @@ const statusOf = (pair) => {
 };
 const BOTH_EMPTY = 3;
 const DONT_KNOW_YET = 2;
-const RIGHT_ORDER = 1;
-const NOT_RIGHT_ORDER = 0;
+const RIGHT_ORDER = -1;
+const NOT_RIGHT_ORDER = 1;
 const compareList = (left, right) => {
     // console.log('\ncomparing lists', { left, right });
     let result;
