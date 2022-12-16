@@ -22,7 +22,12 @@ const digest = (lines) => {
             opened: false,
             visited: false,
         }));
-
+    valves.forEach(valve => {
+        valve.neighbours = [];
+        valve.childrenIds.forEach(id => {
+            valve.neighbours.push(valves.find(v => v.id === id));
+        })
+    })
     return valves;
 }
 
