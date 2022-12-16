@@ -11,11 +11,13 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const pairs = lines(file).filter(line => line.length > 0).map(list => eval(list));
     const two = [[2]];
+    const six = [[6]];
     pairs.push(two);
-    pairs.push([[6]]);
+    pairs.push(six);
     pairs.sort(compareList);
     console.log(pairs);
-    console.log(pairs.indexOf(two));
+    console.log(pairs.indexOf(two) + 1);
+    console.log(pairs.indexOf(six) + 1);
 
     return 140;
 };
