@@ -49,17 +49,6 @@ const solve2 = (file) => {
     return tunningFrequency(beacon);
 };
 
-const missing = (points) => {
-    let found;
-    points.sort(ascending);
-    for (var i = 0; i < points.length - 1; i++) {
-        if (points[i] + 1 !== points[i + 1]) {
-            found = points[i] + 1;
-            break;
-        }
-    }
-    return found;
-};
 const area = (sensors) => {
     const first = sensors[0];
     let range = {
@@ -82,7 +71,6 @@ const area = (sensors) => {
     });
     return range;
 };
-const clone = (sensor) => ({ x: sensor.x, y: sensor.y });
 const tunningFrequency = (point) => point.x * 4000000 + point.y;
 const rowCoverage = (row, sensors) => {
     const points = {};
