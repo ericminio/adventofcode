@@ -5,7 +5,7 @@ const solve1 = (file, row) => {
     const range = area(sensors);
 
     const points = {};
-    for (x = range.minimum.x; x <= range.maximum.x; x++) {
+    for (x = range.minimum.x - range.minimum.xsensor.distanceToBeacon; x <= range.maximum.x + range.maximum.xsensor.distanceToBeacon; x++) {
         let point = { x, y: row };
         for (var i = 0; i < sensors.length; i++) {
             let sensor = sensors[i];
@@ -83,15 +83,19 @@ const area = (sensors) => {
     sensors.forEach(sensor => {
         if (sensor.x < range.minimum.x) {
             range.minimum.x = sensor.x;
+            range.minimum.xsensor = sensor;
         }
         if (sensor.y < range.minimum.y) {
             range.minimum.y = sensor.y;
+            range.minimum.ysensor = sensor;
         }
         if (sensor.x > range.maximum.x) {
             range.maximum.x = sensor.x;
+            range.maximum.xsensor = sensor;
         }
         if (sensor.y > range.maximum.y) {
             range.maximum.y = sensor.y;
+            range.maximum.ysensor = sensor;
         }
     });
     return range;
