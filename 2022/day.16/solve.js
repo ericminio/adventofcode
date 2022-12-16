@@ -7,6 +7,16 @@ const solve1 = (file) => {
 
     const candidates = [];
 
+    let path = [
+        { id: 'AA', rate: 0 },
+        { id: 'DD', rate: 20 },
+        { id: 'BB', rate: 13 },
+        { id: 'JJ', rate: 21 },
+        { id: 'HH', rate: 22 },
+        { id: 'EE', rate: 3 },
+        { id: 'CC', rate: 2 },
+    ];
+
     const candidate = {
         opened: [
             { minutes: 0, valve: { id: 'AA', rate: 0 } },
