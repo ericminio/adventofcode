@@ -38,6 +38,7 @@ describe.only('2022.16', () => {
                 origin: { id: 'DD' },
                 target: { id: 'JJ' },
             };
+            console.log(map);
             // let path = gps(request, map);
         });
 
