@@ -34,6 +34,9 @@ const compareItem = (left, right) => {
         if (left < right) { return RIGHT_ORDER; }
         if (left > right) { return NOT_RIGHT_ORDER; }
     }
+    if (typeof left == 'object' && typeof right == 'object') {
+        return compareList(left, right);
+    }
 
     return DONT_KNOW_YET;
 };
