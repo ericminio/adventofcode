@@ -24,4 +24,4 @@ const digest = (lines) => {
         }));
 }
 
-module.exports = { solve1, solve2, parse };
+module.exports = { solve1, solve2, digest };
