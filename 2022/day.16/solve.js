@@ -2,6 +2,7 @@ const { gps } = require('../../lib/2d/gps');
 const { extractor, lines, add, descending } = require('../support');
 
 const solve1 = (file) => {
+    const map = parse(file);
 
     const candidates = [];
 
@@ -14,6 +15,16 @@ const solve1 = (file) => {
         { id: 'EE', rate: 3 },
         { id: 'CC', rate: 2 },
     ];
+
+    for (var i = 0; i < path.length - 1; i++) {
+        let options = {
+            from: path[i].id,
+            to: path[i + 1].id,
+            map,
+        };
+        path[i + 1].minutes = timeSpent(options);
+    }
+    console.log(path);
 
     const candidate = {
         opened: [
