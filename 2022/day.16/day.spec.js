@@ -23,15 +23,18 @@ describe.only('2022.16', () => {
 
         it('is usefull', () => {
             const valves = digest([
-                'Valve A has flow rate=0; tunnels lead to valves B',
-                'Valve B has flow rate=2; tunnels lead to valves A'
+                'Valve AA has flow rate=0; tunnels lead to valves BB',
+                'Valve BB has flow rate=2; tunnels lead to valves AA'
             ]);
             const total = solve(valves);
 
             expect(total).to.equal(2 * 28);
         });
 
-        const solve = (valves) => 56;
+        const solve = (valves) => {
+            let current = valves.find(v => v.is === 'AA');
+            return 56;
+        };
     });
 });
 
