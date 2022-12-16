@@ -45,7 +45,8 @@ const digest = (lines) => {
         valve.neighbours = [];
         valve.childrenIds.forEach(id => {
             valve.neighbours.push(valves.find(v => v.id === id));
-        })
+        });
+        delete valve.childrenIds;
     })
     return valves;
 }
