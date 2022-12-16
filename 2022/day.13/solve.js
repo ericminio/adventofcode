@@ -8,7 +8,7 @@ const solve1 = (file) => {
 };
 
 const parse = (file) => {
-    return groups(file);
+    return groups(file).map(group => group.map(list => eval(list)));
 }
 
 module.exports = { solve1 };
