@@ -18,8 +18,9 @@ const digest = (lines) => {
         .map(data => ({
             id: data[0],
             rate: parseInt(data[1]),
-            children: data[2].split(','),
+            children: data[2].split(',').map(id => id.trim()),
             opened: false,
+            visited: false,
         }));
 }
 
