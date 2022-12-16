@@ -2,8 +2,6 @@ const { extractor, lines } = require('../support');
 
 const solve1 = (file) => {
     const valves = parse(file);
-    console.log(valves);
-
 
     return 1651;
 };
