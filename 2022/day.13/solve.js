@@ -26,7 +26,7 @@ const compareList = (left, right) => {
         index++;
         result = compareItem(left[index], right[index]);
     }
-    while (result === DONT_KNOW_YET && index < 15);
+    while (result !== RIGHT_ORDER && result !== NOT_RIGHT_ORDER && index < 15);
 
     return result;
 };
