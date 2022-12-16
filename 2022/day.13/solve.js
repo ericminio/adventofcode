@@ -4,7 +4,7 @@ const solve1 = (file) => {
     const pairs = parse(file);
     console.log(pairs);
 
-    const statuses = [1, 1, 0, 1, 0, 1, 0, 0];
+    const statuses = [1, statusOf(pairs[1]), 0, 1, 0, 1, 0, 0]
 
     return statuses.map((value, index) => (index + 1) * value).reduce(add);
 };
@@ -26,7 +26,7 @@ const compareList = (left, right) => {
         index++;
         result = compareItem(left[index], right[index]);
     }
-    while (result === DONT_KNOW_YET);
+    while (result === DONT_KNOW_YET && index < 15);
 
     return result;
 };
