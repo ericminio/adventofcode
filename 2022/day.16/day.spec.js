@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { gps } = require('../../lib/2d/gps.js');
 const { descending } = require('../support');
-const { solve1, solve2, parse } = require('./solve');
+const { solve1, solve2, parse, timeSpent } = require('./solve');
 
 describe.only('2022.16', () => {
 
@@ -44,7 +44,18 @@ describe.only('2022.16', () => {
         });
 
         it('can help with clocking moves between valves', () => {
+            const file = `${__dirname}/data/example.txt`;
+            const valves = parse(file);
+            const map = {};
+            valves.forEach(valve => {
+                map[valve.id] = {
+                    id: valve.id,
+                    value: 1,
+                    neighbours: valve.neighbours.map(n => n.id),
+                };
+            });
 
+            expect(timeSpent({ from: 'DD', to: 'JJ', map })).to.equal(3);
         });
 
     });
