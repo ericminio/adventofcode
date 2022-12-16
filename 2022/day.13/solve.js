@@ -9,7 +9,7 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    const pairs = lines(file).filter(line => line.length > 0);
+    const pairs = lines(file).filter(line => line.length > 0).map(list => eval(list));
     console.log(pairs);
 
     return 140;
