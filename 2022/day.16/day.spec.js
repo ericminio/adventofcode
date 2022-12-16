@@ -22,17 +22,7 @@ describe.only('2022.16', () => {
 
     describe('exploration', () => {
 
-        it('works with 1 child', () => {
-            const valves = digest([
-                'Valve AA has flow rate=0; tunnels lead to valves BB',
-                'Valve BB has flow rate=2; tunnels lead to valves AA',
-            ]);
-            const total = solve(valves);
-
-            expect(total).to.equal(2 * 28);
-        });
-
-        it('works with 2 children', () => {
+        it('works with 1 level', () => {
             const valves = digest([
                 'Valve AA has flow rate=0; tunnels lead to valves BB',
                 'Valve BB has flow rate=2; tunnels lead to valves AA',
