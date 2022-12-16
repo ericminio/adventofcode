@@ -26,7 +26,7 @@ describe.only('2022.16', () => {
                 'Valve A has flow rate=0; tunnels lead to valves B',
                 'Valve B has flow rate=1; tunnels lead to valves A'
             ]);
-
+            console.log(valves);
         });
     });
 });
