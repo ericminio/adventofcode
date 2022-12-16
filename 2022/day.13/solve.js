@@ -1,14 +1,14 @@
-const { groupsOf } = require('../support');
+const { groups } = require('../support');
 
 const solve1 = (file) => {
-    const groups = parse(file);
-    console.log(groups);
+    const pairs = parse(file);
+    console.log(pairs);
 
     return 13;
 };
 
 const parse = (file) => {
-    return groupsOf(2, file);
+    return groups(file);
 }
 
 module.exports = { solve1 };
