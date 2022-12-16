@@ -52,4 +52,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { solve1, solve2, digest };
+module.exports = { solve1, solve2, parse };
