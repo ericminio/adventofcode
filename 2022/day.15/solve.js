@@ -3,29 +3,20 @@ const { extractor, id, lines, manhattan, ascending, descending } = require('../s
 const solve1 = (file, row) => {
     const sensors = parse(file);
     const range = area(sensors);
+
+    let pointCount = 0;
     const sensorsAroundRow = sensors.filter(sensor => Math.abs(sensor.y - row) <= sensor.distanceToBeacon);
     const maximumDistance = sensorsAroundRow.map(sensor => sensor.distanceToBeacon).sort(descending)[0];
-    console.log({ maximumDistance })
-
-    const points = {};
     for (x = range.minimum.x - maximumDistance; x <= range.maximum.x + maximumDistance; x++) {
         let point = { x, y: row };
-        for (var i = 0; i < sensorsAroundRow.length; i++) {
-            let sensor = sensorsAroundRow[i];
-            let distance = manhattan(sensor, point);
-            if (distance <= sensor.distanceToBeacon) {
-                points[id(point)] = point.x;
-                break;
-            }
+        const sensor = sensorsAroundRow.find(s => manhattan(s, point) <= s.distanceToBeacon);
+        if (sensor !== undefined) {
+            let border = sensor.x + sensor.distanceToBeacon - Math.abs(sensor.y - row);
+            pointCount += border - x + 1;
+            x = border;
         }
     }
-    const values = Object.values(points);
-    // console.log(values);
-    const value = values.length - beaconCount(row, sensors);
-    // console.log(value, 4748135);
-    return value;
-
-    // return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
+    return pointCount - beaconCount(row, sensors);
 };
 
 const solve2 = (file) => {
