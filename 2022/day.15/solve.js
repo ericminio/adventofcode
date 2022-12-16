@@ -19,9 +19,10 @@ const solve1 = (file, row) => {
     }
     const values = Object.values(points);
     // console.log(values);
-    return values.length - beaconCount(row, sensors);
+    const value = values.length - beaconCount(row, sensors);
+    console.log(value);
 
-    // return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
+    return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
 };
 
 const solve2 = (file) => {
