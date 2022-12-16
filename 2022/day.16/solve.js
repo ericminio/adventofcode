@@ -2,6 +2,8 @@ const { extractor, lines, add, descending } = require('../support');
 
 const solve1 = (file) => {
     const valves = parse(file);
+    const targets = valves.filter(valve => valve.rate > 0);
+    console.log(targets.map(v => v.id));
 
     const candidates = [];
     const candidate = {
