@@ -21,7 +21,7 @@ const solve1 = (file, row) => {
     const values = Object.values(points);
     // console.log(values);
     const value = values.length - beaconCount(row, sensors);
-    console.log(value, 4748135);
+    // console.log(value, 4748135);
     return value;
 
     // return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
