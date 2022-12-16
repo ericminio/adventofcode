@@ -7,7 +7,7 @@ const solve1 = (file) => {
     const candidates = [];
 
     let path = [
-        { id: 'AA', rate: 0 },
+        { id: 'AA', rate: 0, minutes: 0 },
         { id: 'DD', rate: 20 },
         { id: 'BB', rate: 13 },
         { id: 'JJ', rate: 21 },
