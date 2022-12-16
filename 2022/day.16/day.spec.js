@@ -38,9 +38,9 @@ describe.only('2022.16', () => {
                 origin: { id: 'DD' },
                 target: { id: 'JJ' },
             };
+            let path = gps(request, map).nodes.map(node => node.id);
 
-            let path = gps(request, map);
-            console.log(path);
+            expect(path).to.deep.equal(['DD', 'AA', 'II', 'JJ']);
         });
 
     });
