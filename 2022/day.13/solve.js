@@ -33,6 +33,7 @@ const compareItem = (left, right) => {
     if (typeof left == 'number' && typeof right == 'number') {
         if (left < right) { return RIGHT_ORDER; }
         if (left > right) { return NOT_RIGHT_ORDER; }
+        return DONT_KNOW_YET;
     }
     if (typeof left == 'object' && typeof right == 'object') {
         return compareList(left, right);
