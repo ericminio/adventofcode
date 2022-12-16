@@ -2,6 +2,20 @@ const { extractor, id, lines, manhattan, ascending, descending } = require('../s
 
 const solve1 = (file, row) => {
     const sensors = parse(file);
+    const range = area(sensors);
+
+    const points = {};
+    for (x = range.minimum.x; x <= range.maximum.x; x++) {
+        let candidate = { x, y: row };
+        for (var i = 0; i < sensors.length; i++) {
+            let sensor = sensors[i];
+            if (manhattan(candidate, sensor) <= sensor.distanceToBeacon) {
+                points[id(candidate)] = x;
+                break;
+            }
+        }
+    }
+
     return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
 };
 
