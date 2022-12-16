@@ -87,9 +87,6 @@ const rowCoverage = (row, sensors) => {
     });
     return points;
 };
-const rowCoverageSize = (row, sensors) => {
-    return Object.keys(rowCoverage(row, sensors)).length;
-};
 const beaconCount = (row, sensors) => {
     let matching = {};
     sensors.forEach(sensor => {
