@@ -23,6 +23,7 @@ const solve1 = (file) => {
             map,
         };
         minutes += timeSpent(options);
+        if (path[i + 1].rate > 0) { minutes++; }
         path[i + 1].minutes = minutes;
     }
     console.log(path);
