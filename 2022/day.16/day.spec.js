@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { add, descending } = require('../support');
+const { descending } = require('../support');
 const { solve1, solve2, digest } = require('./solve');
 
 describe.only('2022.16', () => {
