@@ -1,7 +1,7 @@
 const { groups, add } = require('../support');
 
 const solve1 = (file) => {
-    const pairs = parse(file);
+    const pairs = groups(file).map(group => group.map(list => eval(list)));
 
     const statuses = pairs.map(pair => statusOf(pair));
 
@@ -61,9 +61,5 @@ const compareItem = (left, right) => {
 
     return DONT_KNOW_YET;
 };
-
-const parse = (file) => {
-    return groups(file).map(group => group.map(list => eval(list)));
-}
 
 module.exports = { solve1, solve2 };
