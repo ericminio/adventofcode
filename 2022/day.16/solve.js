@@ -1,3 +1,4 @@
+const { gps } = require('../../lib/2d/gps');
 const { extractor, lines, add, descending } = require('../support');
 
 const solve1 = (file) => {
@@ -39,7 +40,13 @@ const solve2 = (file) => {
 };
 
 const timeSpent = (options) => {
-    return 3;
+    const request = {
+        origin: { id: options.from },
+        target: { id: options.to },
+    };
+    let path = gps(request, options.map).nodes.map(node => node.id);
+
+    return path.length - 1;
 };
 
 const parse = (file) => {
