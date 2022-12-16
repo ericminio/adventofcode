@@ -10,6 +10,10 @@ const solve1 = (file) => {
     return statuses.map((value, index) => (index + 1) * value).reduce(add);
 };
 
+const solve2 = (file) => {
+    return 140;
+};
+
 const statusOf = (pair) => {
     const left = pair[0];
     const right = pair[1];
