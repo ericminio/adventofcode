@@ -53,7 +53,7 @@ describe.only('2022.16', () => {
             return opened.map(e => e.valve.rate * (30 - e.minutes)).sort(descending)[0];
         };
         const visit = (valve, valves, minutes, opened) => {
-            console.log('visiting', valve.id);
+            console.log('visiting', valve.id)
             valve.visited = true;
             if (valve.rate > 0) {
                 opened.push({
