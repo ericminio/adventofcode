@@ -2,10 +2,8 @@ const { groups, add } = require('../support');
 
 const solve1 = (file) => {
     const pairs = parse(file);
-    // console.log(pairs);
 
     const statuses = pairs.map(pair => statusOf(pair));
-    //[1, 1, 0, 1, 0, 1, 0, statusOf(pairs[7])]
 
     return statuses.map((value, index) => value === RIGHT_ORDER ? index + 1 : 0).reduce(add);
 };
