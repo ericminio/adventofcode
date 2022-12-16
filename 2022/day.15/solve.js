@@ -31,10 +31,12 @@ const solve1 = (file, row) => {
 const solve2 = (file) => {
     const sensors = parse(file);
     const range = area(sensors);
+    console.log({ range });
     let beacon = {};
 
     let stop = false;
     for (y = range.minimum.y; y <= range.maximum.y; y++) {
+        if (y % 1000 === 0) { console.log({ y }) }
         for (x = range.minimum.x; x <= range.maximum.x; x++) {
             let candidate = { x, y };
             let covered = false;
