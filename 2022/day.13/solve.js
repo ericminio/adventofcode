@@ -26,13 +26,14 @@ const compareList = (left, right) => {
     do {
         index++;
         result = compareItem(left[index], right[index]);
+        console.log('items ->', result)
     }
     while (result !== RIGHT_ORDER && result !== NOT_RIGHT_ORDER && result !== BOTH_EMPTY && index < 15);
 
     if (result === BOTH_EMPTY) {
         result = DONT_KNOW_YET;
     }
-    console.log('list comparaison ->', result);
+    console.log('lists ->', result);
     return result;
 };
 const compareItem = (left, right) => {
