@@ -15,7 +15,17 @@ const statusOf = (pair) => {
 
     return compareList(left, right);
 };
+const DONT_KNOW_YET = 2;
 const compareList = (left, right) => {
+    let index = 0;
+    let result = compareItem(left[index], right[index]);
+    while (result === DONT_KNOW_YET) {
+        index++;
+        result = compareItem(left[index], right[index]);
+    }
+    return result;
+};
+const compareItem = (left, right) => {
     return 1;
 };
 
