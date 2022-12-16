@@ -7,23 +7,23 @@ const solve1 = (file) => {
     const candidates = [];
 
     let path = [
-        { id: 'AA', rate: 0, minutes: 0 },
-        { id: 'DD', rate: 20 },
-        { id: 'BB', rate: 13 },
-        { id: 'JJ', rate: 21 },
-        { id: 'HH', rate: 22 },
-        { id: 'EE', rate: 3 },
-        { id: 'CC', rate: 2 },
+        { valve: { id: 'AA', rate: 0 }, minutes: 0 },
+        { valve: { id: 'DD', rate: 20 } },
+        { valve: { id: 'BB', rate: 13 } },
+        { valve: { id: 'JJ', rate: 21 } },
+        { valve: { id: 'HH', rate: 22 } },
+        { valve: { id: 'EE', rate: 3 } },
+        { valve: { id: 'CC', rate: 2 } },
     ];
     let minutes = 0;
     for (var i = 0; i < path.length - 1; i++) {
         let options = {
-            from: path[i].id,
-            to: path[i + 1].id,
+            from: path[i].valve.id,
+            to: path[i + 1].valve.id,
             map,
         };
         minutes += timeSpent(options);
-        if (path[i + 1].rate > 0) { minutes++; }
+        if (path[i + 1].valve.rate > 0) { minutes++; }
         path[i + 1].minutes = minutes;
     }
     console.log(path);
