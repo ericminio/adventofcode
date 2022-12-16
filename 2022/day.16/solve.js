@@ -49,6 +49,7 @@ const timeSpent = (options) => {
     return path.length - 1;
 };
 
+
 const parse = (file) => {
     return digest(lines(file));
 };
