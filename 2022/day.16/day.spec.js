@@ -40,6 +40,7 @@ describe.only('2022.16', () => {
             };
 
             let path = gps(request, map);
+            console.log(path);
         });
 
     });
