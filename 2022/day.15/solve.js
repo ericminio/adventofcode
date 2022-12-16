@@ -79,8 +79,8 @@ const missing = (points) => {
 const area = (sensors) => {
     const first = sensors[0];
     let range = {
-        minimum: clone(first),
-        maximum: clone(first),
+        minimum: { x: first.x, y: first.y, xsensor: first },
+        maximum: { x: first.x, y: first.y, xsensor: first },
     };
     sensors.forEach(sensor => {
         if (sensor.x < range.minimum.x) {
@@ -89,7 +89,6 @@ const area = (sensors) => {
         }
         if (sensor.y < range.minimum.y) {
             range.minimum.y = sensor.y;
-            range.minimum.ysensor = sensor;
         }
         if (sensor.x > range.maximum.x) {
             range.maximum.x = sensor.x;
@@ -97,7 +96,6 @@ const area = (sensors) => {
         }
         if (sensor.y > range.maximum.y) {
             range.maximum.y = sensor.y;
-            range.maximum.ysensor = sensor;
         }
     });
     return range;
