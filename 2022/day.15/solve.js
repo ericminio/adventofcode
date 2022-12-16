@@ -6,11 +6,11 @@ const solve1 = (file, row) => {
 
     const points = {};
     for (x = range.minimum.x; x <= range.maximum.x; x++) {
-        let candidate = { x, y: row };
+        let point = { x, y: row };
         for (var i = 0; i < sensors.length; i++) {
             let sensor = sensors[i];
-            if (manhattan(candidate, sensor) <= sensor.distanceToBeacon) {
-                points[id(candidate)] = candidate;
+            if (manhattan(point, sensor) <= sensor.distanceToBeacon) {
+                points[id(point)] = point;
                 break;
             }
         }
