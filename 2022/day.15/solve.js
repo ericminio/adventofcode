@@ -4,9 +4,10 @@ const solve1 = (file, row) => {
     const sensors = parse(file);
     const range = area(sensors);
     const sensorsAroundRow = sensors.filter(sensor => Math.abs(sensor.y - row) <= sensor.distanceToBeacon);
+    const maximumDistance = sensorsAroundRow.map(sensor => sensor.distanceToBeacon).sort(descending)[0];
 
     const points = {};
-    for (x = range.minimum.x - range.minimum.xsensor.distanceToBeacon; x <= range.maximum.x + range.maximum.xsensor.distanceToBeacon; x++) {
+    for (x = range.minimum.x - maximumDistance; x <= range.maximum.x + range.maximum.maximumDistance; x++) {
         let point = { x, y: row };
         for (var i = 0; i < sensorsAroundRow.length; i++) {
             let sensor = sensorsAroundRow[i];
