@@ -6,9 +6,9 @@ const solve1 = (file, row) => {
 
     const points = {};
     for (x = range.minimum.x; x <= range.maximum.x; x++) {
+        let point = { x, y: row };
         for (var i = 0; i < sensors.length; i++) {
             let sensor = sensors[i];
-            let point = { x, y: row };
             let distance = manhattan(sensor, point);
             if (distance <= sensor.distanceToBeacon) {
                 points[id(point)] = point.x;
