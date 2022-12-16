@@ -28,9 +28,7 @@ const solve1 = (file) => {
     }
     console.log(path);
 
-    const candidate = {
-        opened: path,
-    };
+    const candidate = { opened: path };
     candidate.total = candidate.opened.map(event => event.valve.rate * (30 - event.minutes)).reduce(add);
     candidates.push(candidate);
 
