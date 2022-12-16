@@ -2,7 +2,7 @@ const { groups, add } = require('../support');
 
 const solve1 = (file) => {
     const pairs = parse(file);
-    console.log(pairs);
+    // console.log(pairs);
 
     const statuses = [1, 1, 0, 1, 0, 1, 0, statusOf(pairs[7])]
 
