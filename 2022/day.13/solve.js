@@ -30,7 +30,12 @@ const compareList = (left, right) => {
 const compareItem = (left, right) => {
     if (left === undefined && right !== undefined) { return RIGHT_ORDER; }
     if (left !== undefined && right === undefined) { return NOT_RIGHT_ORDER; }
-    return RIGHT_ORDER;
+    if (typeof left == 'number' && typeof right == 'number') {
+        if (left < right) { return RIGHT_ORDER; }
+        if (left > right) { return NOT_RIGHT_ORDER; }
+    }
+
+    return DONT_KNOW_YET;
 };
 
 const parse = (file) => {
