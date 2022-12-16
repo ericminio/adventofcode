@@ -3,6 +3,10 @@ const { extractor, lines } = require('../support');
 const solve1 = (file) => {
     const valves = parse(file);
 
+    const best = [
+        { minutes: 2, valve: { id: 'DD', rate: 20 } },
+    ];
+
     return 1651;
 };
 
