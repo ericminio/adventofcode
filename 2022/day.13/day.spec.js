@@ -22,7 +22,7 @@ describe.only('2022.13', () => {
         });
 
         it('is solved', () => {
-            expect(solve2(`${__dirname}/data/example.txt`)).to.equal(140);
+            expect(solve2(`${__dirname}/data/input.txt`)).to.equal(25935);
         });
 
     });
