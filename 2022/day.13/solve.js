@@ -15,11 +15,8 @@ const solve2 = (file) => {
     pairs.push(two);
     pairs.push(six);
     pairs.sort(compareList);
-    console.log(pairs);
-    console.log(pairs.indexOf(two) + 1);
-    console.log(pairs.indexOf(six) + 1);
 
-    return 140;
+    return (pairs.indexOf(two) + 1) * (pairs.indexOf(six) + 1);
 };
 
 const statusOf = (pair) => {
