@@ -15,6 +15,7 @@ const statusOf = (pair) => {
 
     return compareList(left, right);
 };
+const BOTH_EMPTY = 2;
 const DONT_KNOW_YET = 2;
 const RIGHT_ORDER = 1;
 const NOT_RIGHT_ORDER = 0;
