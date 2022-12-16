@@ -20,8 +20,11 @@ describe.only('2022.16', () => {
 
     });
 
-    describe('exploration', () => {
+    describe('re-use gps', () => {
 
+        it('is promising', () => {
+
+        });
 
     });
 });
