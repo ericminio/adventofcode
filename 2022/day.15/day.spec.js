@@ -20,8 +20,8 @@ describe.only('2022.15', () => {
         it('has an example', () => {
             expect(solve2(`${__dirname}/data/example.txt`)).to.equal(56000011);
         });
-        it.skip('is solved', () => {
-            expect(solve2(`${__dirname}/data/input.txt`)).to.equal(1);
+        it('is solved', () => {
+            expect(solve2(`${__dirname}/data/input.txt`)).to.equal(13743542639657);
         });
 
     });
