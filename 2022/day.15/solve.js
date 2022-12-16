@@ -7,7 +7,7 @@ const solve1 = (file, row) => {
     const maximumDistance = sensorsAroundRow.map(sensor => sensor.distanceToBeacon).sort(descending)[0];
 
     const points = {};
-    for (x = range.minimum.x - maximumDistance; x <= range.maximum.x + range.maximum.maximumDistance; x++) {
+    for (x = range.minimum.x - maximumDistance; x <= range.maximum.x + maximumDistance; x++) {
         let point = { x, y: row };
         for (var i = 0; i < sensorsAroundRow.length; i++) {
             let sensor = sensorsAroundRow[i];
