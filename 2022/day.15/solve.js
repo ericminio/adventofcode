@@ -11,14 +11,12 @@ const solve1 = (file, row) => {
             let sensor = sensors[i];
             let distance = manhattan(sensor, point);
             if (distance <= sensor.distanceToBeacon) {
-                console.log(point, sensor)
                 points[id(point)] = point.x;
                 break;
             }
         }
     }
     const values = Object.values(points).sort(ascending);
-    console.log(values)
 
     return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
 };
