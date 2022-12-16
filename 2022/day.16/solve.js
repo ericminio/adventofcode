@@ -4,9 +4,10 @@ const solve1 = (file) => {
     const valves = parse(file);
     const start = valves.find(valve => valve.id = 'AA');
     const targets = valves.filter(valve => valve.rate > 0);
-    console.log(targets.map(v => v.id));
 
+    console.log(targets.map(v => v.id));
     const candidates = [];
+
     const candidate = {
         opened: [
             { minutes: 0, valve: { id: 'AA', rate: 0 } },
