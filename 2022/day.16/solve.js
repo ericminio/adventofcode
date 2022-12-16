@@ -58,17 +58,9 @@ const digest = (lines) => {
         .map(data => ({
             id: data[0],
             rate: parseInt(data[1]),
-            childrenIds: data[2].split(',').map(id => id.trim()),
-            opened: false,
-            visited: false,
+            value: 1,
+            neighbours: data[2].split(',').map(id => id.trim()),
         }));
-    valves.forEach(valve => {
-        valve.neighbours = [];
-        valve.childrenIds.forEach(id => {
-            valve.neighbours.push(valves.find(v => v.id === id));
-        });
-        delete valve.childrenIds;
-    })
     return valves;
 }
 
