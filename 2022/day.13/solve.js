@@ -35,7 +35,7 @@ const compareList = (left, right) => {
         index++;
         result = compareItem(left[index], right[index]);
     }
-    while (result !== RIGHT_ORDER && result !== NOT_RIGHT_ORDER && result !== BOTH_EMPTY);
+    while (result === DONT_KNOW_YET);
 
     if (result === BOTH_EMPTY) {
         result = DONT_KNOW_YET;
