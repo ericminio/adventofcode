@@ -22,4 +22,4 @@ const parse = (file) => {
         }));
 };
 
-module.exports = { solve1, solve2 };
+module.exports = { solve1, solve2, parse };
