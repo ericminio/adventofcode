@@ -15,7 +15,7 @@ const solve1 = (file) => {
     };
     best.total = best.opened.map(event => event.valve.rate * (30 - event.minutes)).reduce(add);
 
-    return 1651;
+    return best.total;
 };
 
 const solve2 = (file) => {
