@@ -39,7 +39,7 @@ describe.only('2022.16', () => {
                 target: { id: 'JJ' },
             };
 
-            // let path = gps(request, map);
+            let path = gps(request, map);
         });
 
     });
