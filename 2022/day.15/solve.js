@@ -17,6 +17,7 @@ const solve1 = (file, row) => {
         }
     }
     const values = Object.values(points).sort(ascending);
+    console.log(values);
 
     return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
 };
