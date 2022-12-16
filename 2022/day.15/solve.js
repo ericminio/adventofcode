@@ -1,4 +1,4 @@
-const { extractor, id, lines, manhattan, descending } = require('../support');
+const { descending, extractor, id, lines, manhattan } = require('../support');
 
 const solve1 = (file, row) => {
     const sensors = parse(file);
