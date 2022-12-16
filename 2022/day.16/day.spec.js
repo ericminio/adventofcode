@@ -24,7 +24,11 @@ describe.only('2022.16', () => {
 
         it('is promising', () => {
             const file = `${__dirname}/data/example.txt`;
-            const valves = parse(file);
+            const map = parse(file);
+            const request = {
+                origin: { id: 'DD' },
+                target: { id: 'JJ' },
+            };
         });
 
     });
