@@ -6,11 +6,11 @@ const solve1 = (file) => {
     const best = {
         opened: [
             { minutes: 2, valve: { id: 'DD', rate: 20 } },
-            { minutes: 2, valve: { id: 'BB', rate: 13 } },
-            { minutes: 2, valve: { id: 'JJ', rate: 21 } },
-            { minutes: 2, valve: { id: 'HH', rate: 22 } },
-            { minutes: 2, valve: { id: 'EE', rate: 3 } },
-            { minutes: 2, valve: { id: 'CC', rate: 2 } },
+            { minutes: 5, valve: { id: 'BB', rate: 13 } },
+            { minutes: 9, valve: { id: 'JJ', rate: 21 } },
+            { minutes: 17, valve: { id: 'HH', rate: 22 } },
+            { minutes: 21, valve: { id: 'EE', rate: 3 } },
+            { minutes: 24, valve: { id: 'CC', rate: 2 } },
         ],
     };
     best.total = best.opened.map(event => event.valve.rate * (30 - event.minutes)).reduce(add);
