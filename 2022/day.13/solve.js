@@ -2,7 +2,6 @@ const { groups, add, lines } = require('../support');
 
 const solve1 = (file) => {
     const pairs = groups(file).map(group => group.map(list => eval(list)));
-
     const statuses = pairs.map(pair => statusOf(pair));
 
     return statuses.map((value, index) => value === RIGHT_ORDER ? index + 1 : 0).reduce(add);
@@ -30,24 +29,20 @@ const DONT_KNOW_YET = 2;
 const RIGHT_ORDER = -1;
 const NOT_RIGHT_ORDER = 1;
 const compareList = (left, right) => {
-    // console.log('\ncomparing lists', { left, right });
     let result;
     let index = -1;
     do {
         index++;
         result = compareItem(left[index], right[index]);
-        // console.log('items ->', result)
     }
     while (result !== RIGHT_ORDER && result !== NOT_RIGHT_ORDER && result !== BOTH_EMPTY && index < 15);
 
     if (result === BOTH_EMPTY) {
         result = DONT_KNOW_YET;
     }
-    // console.log('lists ->', result);
     return result;
 };
 const compareItem = (left, right) => {
-    // console.log('comparing items', { left, right });
     if (left === undefined && right === undefined) { return BOTH_EMPTY; }
     if (left === undefined && right !== undefined) { return RIGHT_ORDER; }
     if (left !== undefined && right === undefined) { return NOT_RIGHT_ORDER; }
