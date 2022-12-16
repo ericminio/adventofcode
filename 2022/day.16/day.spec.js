@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { solve1, solve2 } = require('./solve');
+const { solve1, solve2, digest } = require('./solve');
 
 describe.only('2022.16', () => {
 
@@ -22,10 +22,10 @@ describe.only('2022.16', () => {
     describe('exploration', () => {
 
         it('is usefull', () => {
-            const lines = [
+            const valves = digest([
                 'Valve A has flow rate=0; tunnels lead to valves B',
                 'Valve B has flow rate=1; tunnels lead to valves A'
-            ];
+            ]);
 
         });
     });
