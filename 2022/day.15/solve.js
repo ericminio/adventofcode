@@ -22,8 +22,9 @@ const solve1 = (file, row) => {
     // console.log(values);
     const value = values.length - beaconCount(row, sensors);
     console.log(value, 4748135);
+    return value;
 
-    return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
+    // return rowCoverageSize(row, sensors) - beaconCount(row, sensors);
 };
 
 const solve2 = (file) => {
