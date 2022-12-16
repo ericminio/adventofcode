@@ -61,7 +61,7 @@ describe.only('2022.16', () => {
                     minutes: minutes + 1,
                 });
             }
-            valve.children.forEach(id => {
+            valve.childrenIds.forEach(id => {
                 let child = valves.find(v => v.id === id);
                 if (!child.visited) { visit(child, valves, minutes + 1, opened) };
             });
