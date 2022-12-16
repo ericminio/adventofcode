@@ -10,6 +10,9 @@ const solve1 = (file) => {
 };
 
 const statusOf = (pair) => {
+    const left = pair[0];
+    const right = pair[1];
+
     return 1;
 };
 
