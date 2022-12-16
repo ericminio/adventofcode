@@ -22,7 +22,6 @@ const solve1 = (file, row) => {
 const solve2 = (file) => {
     const sensors = parse(file);
     const range = area(sensors);
-    console.log({ range });
     let beacon = {};
 
     let stop = false;
