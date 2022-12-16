@@ -4,7 +4,7 @@ const solve1 = (file) => {
     const valves = parse(file);
 
     candidates = [];
-    const best = {
+    const candidate = {
         opened: [
             { minutes: 2, valve: { id: 'DD', rate: 20 } },
             { minutes: 5, valve: { id: 'BB', rate: 13 } },
@@ -14,8 +14,8 @@ const solve1 = (file) => {
             { minutes: 24, valve: { id: 'CC', rate: 2 } },
         ],
     };
-    best.total = best.opened.map(event => event.valve.rate * (30 - event.minutes)).reduce(add);
-    candidates.push(best);
+    candidate.total = candidate.opened.map(event => event.valve.rate * (30 - event.minutes)).reduce(add);
+    candidates.push(candidate);
 
     return candidates.map(candidate => candidate.total).sort(descending)[0];
 };
