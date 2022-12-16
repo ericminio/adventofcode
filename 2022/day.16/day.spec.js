@@ -32,6 +32,8 @@ describe.only('2022.16', () => {
         });
 
         const solve = (valves) => {
+            let opened = [];
+            let minutes = 0;
             let current = valves.find(v => v.is === 'AA');
             return 56;
         };
