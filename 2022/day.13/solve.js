@@ -38,6 +38,12 @@ const compareItem = (left, right) => {
     if (typeof left == 'object' && typeof right == 'object') {
         return compareList(left, right);
     }
+    if (typeof left == 'number' && typeof right == 'object') {
+
+    }
+    if (typeof left == 'object' && typeof right == 'number') {
+
+    }
 
     return DONT_KNOW_YET;
 };
