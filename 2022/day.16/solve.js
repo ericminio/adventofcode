@@ -15,14 +15,15 @@ const solve1 = (file) => {
         { id: 'EE', rate: 3 },
         { id: 'CC', rate: 2 },
     ];
-
+    let minutes = 0;
     for (var i = 0; i < path.length - 1; i++) {
         let options = {
             from: path[i].id,
             to: path[i + 1].id,
             map,
         };
-        path[i + 1].minutes = timeSpent(options);
+        minutes += timeSpent(options);
+        path[i + 1].minutes = minutes;
     }
     console.log(path);
 
