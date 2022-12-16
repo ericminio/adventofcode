@@ -18,7 +18,7 @@ const digest = (lines) => {
         .map(data => ({
             id: data[0],
             rate: parseInt(data[1]),
-            next: data[2].split(','),
+            children: data[2].split(','),
             opened: false,
         }));
 }
