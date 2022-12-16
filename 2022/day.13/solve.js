@@ -13,11 +13,9 @@ const statusOf = (pair) => {
     const left = pair[0];
     const right = pair[1];
 
-    return compare(left, right);
+    return compareList(left, right);
 };
-const compare = (left, right) => {
-
-
+const compareList = (left, right) => {
     return 1;
 };
 
