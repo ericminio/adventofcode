@@ -4,7 +4,8 @@ const solve1 = (file) => {
     const pairs = parse(file);
     // console.log(pairs);
 
-    const statuses = [1, 1, 0, 1, 0, 1, 0, statusOf(pairs[7])]
+    const statuses = pairs.map(pair => statusOf(pair));
+    //[1, 1, 0, 1, 0, 1, 0, statusOf(pairs[7])]
 
     return statuses.map((value, index) => (index + 1) * value).reduce(add);
 };
