@@ -38,6 +38,10 @@ const solve2 = (file) => {
     return 15;
 };
 
+const timeSpent = (options) => {
+    return 3;
+};
+
 const parse = (file) => {
     return digest(lines(file));
 };
@@ -60,4 +64,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { solve1, solve2, parse };
+module.exports = { solve1, solve2, parse, timeSpent };
