@@ -23,8 +23,8 @@ describe.only('2022.16', () => {
 
         it('is usefull', () => {
             const lines = [
-                'Valve AA has flow rate=0; tunnels lead to valves DD, II, BB',
-                'Valve BB has flow rate=13; tunnels lead to valves CC, AA'
+                'Valve A has flow rate=0; tunnels lead to valves B',
+                'Valve B has flow rate=1; tunnels lead to valves A'
             ];
 
         });
