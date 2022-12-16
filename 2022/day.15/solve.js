@@ -5,6 +5,7 @@ const solve1 = (file, row) => {
     const range = area(sensors);
     const sensorsAroundRow = sensors.filter(sensor => Math.abs(sensor.y - row) <= sensor.distanceToBeacon);
     const maximumDistance = sensorsAroundRow.map(sensor => sensor.distanceToBeacon).sort(descending)[0];
+    console.log({ maximumDistance })
 
     const points = {};
     for (x = range.minimum.x - maximumDistance; x <= range.maximum.x + maximumDistance; x++) {
