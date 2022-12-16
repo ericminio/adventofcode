@@ -46,41 +46,6 @@ const solve2 = (file) => {
         }
     }
 
-
-    // let stop = false;
-    // for (let y = range.minimum.y; y <= range.maximum.y; y++) {
-    //     if (y % 1000 === 0) { console.log({ y }) }
-    //     for (let x = range.minimum.x; x <= range.maximum.x; x++) {
-    //         let candidate = { x, y };
-    //         let covered = false;
-    //         for (let i = 0; i < sensors.length; i++) {
-    //             let sensor = sensors[i];
-    //             if (manhattan(candidate, sensor) <= sensor.distanceToBeacon) {
-    //                 covered = true;
-    //                 break;
-    //             }
-    //         }
-    //         if (!covered) {
-    //             beacon = candidate;
-    //             stop = true;
-    //             break;
-    //         }
-    //     }
-    //     if (stop) {
-    //         break;
-    //     }
-    // }
-
-    // for (row = range.minimum.y; row <= range.maximum.y; row++) {
-    //     const points = Object.values(rowCoverage(row, sensors));
-    //     const x = missing(points);
-    //     if (x !== undefined) {
-    //         beacon.x = x;
-    //         beacon.y = row;
-    //         break;
-    //     }
-    // }
-
     return tunningFrequency(beacon);
 };
 
