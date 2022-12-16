@@ -3,9 +3,16 @@ const { extractor, lines } = require('../support');
 const solve1 = (file) => {
     const valves = parse(file);
 
-    const best = [
-        { minutes: 2, valve: { id: 'DD', rate: 20 } },
-    ];
+    const best = {
+        opened: [
+            { minutes: 2, valve: { id: 'DD', rate: 20 } },
+            { minutes: 2, valve: { id: 'BB', rate: 13 } },
+            { minutes: 2, valve: { id: 'JJ', rate: 21 } },
+            { minutes: 2, valve: { id: 'HH', rate: 22 } },
+            { minutes: 2, valve: { id: 'EE', rate: 3 } },
+            { minutes: 2, valve: { id: 'CC', rate: 2 } },
+        ]
+    };
 
     return 1651;
 };
