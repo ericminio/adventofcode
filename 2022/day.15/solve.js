@@ -7,7 +7,7 @@ const solve1 = (file, row) => {
     let pointCount = 0;
     const sensorsAroundRow = sensors.filter(sensor => Math.abs(sensor.y - row) <= sensor.distanceToBeacon);
     const maximumDistance = sensorsAroundRow.map(sensor => sensor.distanceToBeacon).sort(descending)[0];
-    for (x = range.minimum.x - maximumDistance; x <= range.maximum.x + maximumDistance; x++) {
+    for (var x = range.minimum.x - maximumDistance; x <= range.maximum.x + maximumDistance; x++) {
         let point = { x, y: row };
         const sensor = sensorsAroundRow.find(s => manhattan(s, point) <= s.distanceToBeacon);
         if (sensor !== undefined) {
@@ -22,6 +22,7 @@ const solve1 = (file, row) => {
 const solve2 = (file) => {
     const sensors = parse(file);
     const range = area(sensors);
+
     let beacon = {};
 
     let stop = false;
