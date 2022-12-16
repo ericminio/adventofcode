@@ -51,13 +51,16 @@ const parse = (file) => {
     return digest(lines(file));
 };
 const digest = (lines) => {
-    const valves = lines.map(extractor(/^Valve (.*) has flow rate=(.*); tunnel[s]? lead[s]? to valve[s]? (.*)$/))
+    const collection = lines.map(extractor(/^Valve (.*) has flow rate=(.*); tunnel[s]? lead[s]? to valve[s]? (.*)$/))
         .map(data => ({
             id: data[0],
             rate: parseInt(data[1]),
             value: 1,
             neighbours: data[2].split(',').map(id => id.trim()),
         }));
+    const valves = {};
+    collection.forEach(valve => valves[valve.id] = valve);
+
     return valves;
 }
 

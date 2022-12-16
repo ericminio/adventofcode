@@ -25,11 +25,7 @@ describe.only('2022.16', () => {
 
         it('is promising', () => {
             const file = `${__dirname}/data/example.txt`;
-            const valves = parse(file);
-            const map = {};
-            valves.forEach(valve => {
-                map[valve.id] = valve;
-            });
+            const map = parse(file);
             const request = {
                 origin: { id: 'DD' },
                 target: { id: 'JJ' },
@@ -41,11 +37,7 @@ describe.only('2022.16', () => {
 
         it('can help with clocking moves between valves', () => {
             const file = `${__dirname}/data/example.txt`;
-            const valves = parse(file);
-            const map = {};
-            valves.forEach(valve => {
-                map[valve.id] = valve;
-            });
+            const map = parse(file);
 
             expect(timeSpent({ from: 'DD', to: 'JJ', map })).to.equal(3);
         });
