@@ -8,23 +8,23 @@ const solve1 = (file) => {
     const candidates = [];
 
     let path = [
-        { valve: { id: 'AA', rate: 0 }, minutes: 0 },
-        { valve: { id: 'DD', rate: 20 } },
-        { valve: { id: 'BB', rate: 13 } },
-        { valve: { id: 'JJ', rate: 21 } },
-        { valve: { id: 'HH', rate: 22 } },
-        { valve: { id: 'EE', rate: 3 } },
-        { valve: { id: 'CC', rate: 2 } },
+        { id: 'AA', rate: 0, minutes: 0 },
+        { id: 'DD', rate: 20 },
+        { id: 'BB', rate: 13 },
+        { id: 'JJ', rate: 21 },
+        { id: 'HH', rate: 22 },
+        { id: 'EE', rate: 3 },
+        { id: 'CC', rate: 2 },
     ];
     let minutes = 0;
     for (var i = 0; i < path.length - 1; i++) {
-        minutes += table[`${path[i].valve.id}-${path[i + 1].valve.id}`]
-        if (path[i + 1].valve.rate > 0) { minutes++; }
+        minutes += table[`${path[i].id}-${path[i + 1].id}`]
+        if (path[i + 1].rate > 0) { minutes++; }
         path[i + 1].minutes = minutes;
     }
 
-    const candidate = { opened: path };
-    candidate.total = candidate.opened.map(event => event.valve.rate * (30 - event.minutes)).reduce(add);
+    const candidate = { path };
+    candidate.total = candidate.path.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
     candidates.push(candidate);
 
     return candidates.map(candidate => candidate.total).sort(descending)[0];
