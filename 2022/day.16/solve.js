@@ -6,24 +6,27 @@ const solve1 = (file) => {
     const table = distances(map);
 
     const valves = Object.values(map).filter(valve => valve.rate > 0);
-    const nodes = valves.map(valve => ({ id: valve.id, rate: valve.rate }));
-    const candidates = permutations(nodes).map(candidate => {
-        candidate.unshift({ id: 'AA', rate: 0, minutes: 0 });
-        return { path: candidate };
-    });
+    const ids = valves.map(valve => valve.id);
+    const paths = permutations(ids);
 
-    candidates.forEach(candidate => {
-        let path = candidate.path;
+    let max = 0;
+    paths.forEach(path => {
+        path = path.map(id => ({ id, rate: map[id].rate }));
+        path.unshift({ id: 'AA', rate: 0, minutes: 0 });
+        console.log(path);
         let minutes = 0;
         for (var i = 0; i < path.length - 1; i++) {
             minutes += table[`${path[i].id}-${path[i + 1].id}`]
             if (path[i + 1].rate > 0) { minutes++; }
             path[i + 1].minutes = minutes;
         }
-        candidate.total = candidate.path.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
+        total = path.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
+        if (total > max) {
+            max = total;
+        }
     });
 
-    return candidates.map(candidate => candidate.total).sort(descending)[0];
+    return max;
 };
 
 const solve2 = (file) => {
