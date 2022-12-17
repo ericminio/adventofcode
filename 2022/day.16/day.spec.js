@@ -64,7 +64,8 @@ describe.only('2022.16', () => {
             const map = parse(file);
             const valves = Object.values(map).filter(valve => valve.rate > 0);
             const ids = valves.map(valve => valve.id);
-            console.log(ids);
+            const candidates = permutations(ids);
+
         });
     });
 });
