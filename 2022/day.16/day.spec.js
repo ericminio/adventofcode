@@ -62,6 +62,13 @@ describe.only('2022.16', () => {
         const permutations = (set) => {
             let values = [];
 
+            for (let i = 0; i < set.length; i++) {
+                let one = set[i];
+                let rest = set.slice(0, i).concat(set.slice(i + 1));
+                values.push(rest.concat(one));
+            }
+            console.log(values);
+
             return [
                 [1, 2, 3],
                 [1, 3, 2],
