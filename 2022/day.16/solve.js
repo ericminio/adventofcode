@@ -42,6 +42,15 @@ const solve2 = (file) => {
     return 15;
 };
 
+const score = (path, table) => {
+    let minutes = 0;
+    for (var i = 0; i < path.length - 1; i++) {
+        minutes += table[`${path[i].id}-${path[i + 1].id}`]
+        if (path[i + 1].rate > 0) { minutes++; }
+        path[i + 1].minutes = minutes;
+    }
+    return path.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
+};
 const permutations = (set, yield) => {
     let values = [];
     if (set.length === 1) {
