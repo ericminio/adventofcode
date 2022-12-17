@@ -1,5 +1,5 @@
 const { gps } = require('../../lib/2d/gps');
-const { extractor, lines, add, descending, id } = require('../support');
+const { extractor, lines, add, descending, id, ascending } = require('../support');
 
 const solve1 = (file) => {
     const map = parse(file);
@@ -7,6 +7,7 @@ const solve1 = (file) => {
 
     const valves = Object.values(map).filter(valve => valve.rate > 0);
     const candidates = valves.map(valve => ({ id: valve.id, rate: valve.rate }));
+    candidates.sort(ascending);
     console.log(candidates);
 
     return 1;
