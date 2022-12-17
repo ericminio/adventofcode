@@ -11,7 +11,8 @@ const solve1 = (file) => {
         .map(candidate => ({ ...candidate, distance: table[`AA-${candidate.id}`] }))
         .sort((a, b) => b.distance - a.distance)
         ;
-    console.log(expanded);
+    expanded.unshift({ id: 'AA', rate: 0, minutes: 0 });
+    console.log(score(expanded, table));
 
     return 1;
 };
