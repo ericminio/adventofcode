@@ -9,7 +9,7 @@ const solve1 = (file) => {
     const nodes = valves.map(valve => ({ id: valve.id, rate: valve.rate }));
     const candidates = permutations(nodes).map(candidate => {
         candidate.unshift({ id: 'AA', rate: 0, minutes: 0 });
-        return candidate;
+        return { path: candidate };
     });
 
     let path = [
