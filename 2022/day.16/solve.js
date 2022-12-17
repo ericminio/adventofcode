@@ -8,8 +8,8 @@ const solve1 = (file) => {
     const valves = Object.values(map).filter(valve => valve.rate > 0);
     const candidates = valves.map(valve => ({ id: valve.id, rate: valve.rate }));
     let expanded = candidates
-        .sort((a, b) => b.rate - a.rate)
         .map(candidate => ({ ...candidate, distance: table[`AA-${candidate.id}`] }))
+        .sort((a, b) => b.distance - a.distance)
         ;
     console.log(expanded);
 
