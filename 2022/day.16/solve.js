@@ -20,8 +20,7 @@ const solveExample = (file) => {
     const valves = Object.values(map).filter(valve => valve.rate > 0);
     const ids = valves.map(valve => valve.id);
     permutations(ids, path => {
-        path = path.map(id => ({ id, rate: map[id].rate }));
-        path.unshift({ id: 'AA', rate: 0, minutes: 0 });
+        path = prepare(path, map);
         let total = score(path, table);
         if (total > max) {
             max = total;
