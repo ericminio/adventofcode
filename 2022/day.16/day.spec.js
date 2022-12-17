@@ -60,6 +60,9 @@ describe.only('2022.16', () => {
         });
 
         const permutations = (set) => {
+            let values = [];
+
+
             return [
                 [1, 2, 3],
                 [1, 3, 2],
