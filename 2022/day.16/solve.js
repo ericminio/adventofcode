@@ -34,6 +34,22 @@ const solve2 = (file) => {
     return 15;
 };
 
+const permutations = (set) => {
+    let values = [];
+    if (set.length === 1) {
+        return [set];
+    }
+
+    for (let i = 0; i < set.length; i++) {
+        let one = set[i];
+        let rest = set.slice(0, i).concat(set.slice(i + 1));
+        let inner = permutations(rest);
+        inner.forEach(p => values.push([one].concat(p)));
+    }
+
+    return values;
+};
+
 const distances = (map) => {
     let values = {};
     const ids = Object.keys(map);
@@ -76,4 +92,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { solve1, solve2, parse, timeSpent };
+module.exports = { solve1, solve2, parse, timeSpent, permutations };

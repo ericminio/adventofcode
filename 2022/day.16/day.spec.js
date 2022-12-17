@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { gps } = require('../../lib/2d/gps.js');
 const { descending } = require('../support');
-const { solve1, solve2, parse, timeSpent } = require('./solve');
+const { solve1, solve2, parse, timeSpent, permutations } = require('./solve');
 
 describe.only('2022.16', () => {
 
@@ -51,33 +51,20 @@ describe.only('2022.16', () => {
             let expected = [
                 [1, 2, 3],
                 [1, 3, 2],
-                [2, 3, 1],
                 [2, 1, 3],
+                [2, 3, 1],
                 [3, 1, 2],
                 [3, 2, 1],
             ];
             expect(actual).to.deep.equal(expected);
         });
 
-        const permutations = (set) => {
-            let values = [];
-
-            for (let i = 0; i < set.length; i++) {
-                let one = set[i];
-                let rest = set.slice(0, i).concat(set.slice(i + 1));
-                values.push(rest.concat(one));
-            }
-            console.log(values);
-
-            return [
-                [1, 2, 3],
-                [1, 3, 2],
-                [2, 3, 1],
-                [2, 1, 3],
-                [3, 1, 2],
-                [3, 2, 1],
-            ];
-        }
+        it('can compute all candidates', () => {
+            const file = `${__dirname}/data/example.txt`;
+            const map = parse(file);
+            const valves = Object.values(map).filter(valve => valve.rate > 0);
+            console.log(valves);
+        });
     });
 });
 
