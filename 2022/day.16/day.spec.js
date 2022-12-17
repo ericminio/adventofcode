@@ -68,6 +68,7 @@ describe.only('2022.16', () => {
 
             expect(candidates.length).to.equal(720);
             const candidate = candidates[0];
+            candidate.unshift('AA')
             console.log(candidate);
         });
     });
