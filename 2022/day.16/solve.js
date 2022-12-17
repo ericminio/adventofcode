@@ -13,7 +13,6 @@ const solve1 = (file) => {
     paths.forEach(path => {
         path = path.map(id => ({ id, rate: map[id].rate }));
         path.unshift({ id: 'AA', rate: 0, minutes: 0 });
-        console.log(path);
         let minutes = 0;
         for (var i = 0; i < path.length - 1; i++) {
             minutes += table[`${path[i].id}-${path[i + 1].id}`]
