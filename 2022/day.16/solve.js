@@ -18,16 +18,10 @@ const solve1 = (file) => {
     ];
     let minutes = 0;
     for (var i = 0; i < path.length - 1; i++) {
-        let options = {
-            from: path[i].valve.id,
-            to: path[i + 1].valve.id,
-            map,
-        };
         minutes += table[`${path[i].valve.id}-${path[i + 1].valve.id}`]
         if (path[i + 1].valve.rate > 0) { minutes++; }
         path[i + 1].minutes = minutes;
     }
-    console.log(path);
 
     const candidate = { opened: path };
     candidate.total = candidate.opened.map(event => event.valve.rate * (30 - event.minutes)).reduce(add);
@@ -52,7 +46,6 @@ const distances = (map) => {
             });
         }
     }
-    console.log(values);
     return values;
 };
 const timeSpent = (options) => {
