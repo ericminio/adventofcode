@@ -22,13 +22,7 @@ const solveExample = (file) => {
     permutations(ids, path => {
         path = path.map(id => ({ id, rate: map[id].rate }));
         path.unshift({ id: 'AA', rate: 0, minutes: 0 });
-        let minutes = 0;
-        for (var i = 0; i < path.length - 1; i++) {
-            minutes += table[`${path[i].id}-${path[i + 1].id}`]
-            if (path[i + 1].rate > 0) { minutes++; }
-            path[i + 1].minutes = minutes;
-        }
-        total = score(path, table);
+        let total = score(path, table);
         if (total > max) {
             max = total;
             console.log({ path, max });
