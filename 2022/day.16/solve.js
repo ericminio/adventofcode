@@ -51,23 +51,26 @@ const score = (path, table) => {
     return path.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
 };
 const permutations = (set, yield) => {
-    let values = [];
-    if (set.length === 1) {
-        return [set];
-    }
+    var permArr = [],
+        usedChars = [];
 
-    for (let i = 0; i < set.length; i++) {
-        let one = set[i];
-        let rest = set.slice(0, i).concat(set.slice(i + 1));
-        let inner = permutations(rest);
-        inner.forEach(p => {
-            const permuted = [one].concat(p);
-            values.push(permuted);
-            if (!!yield) { yield(permuted); }
-        });
-    }
-
-    return values;
+    function permute(input) {
+        var i, ch;
+        for (i = 0; i < input.length; i++) {
+            ch = input.splice(i, 1)[0];
+            usedChars.push(ch);
+            if (input.length == 0) {
+                arr = usedChars.slice();
+                permArr.push(usedChars.slice());
+                if (!!yield) { yield(arr); }
+            }
+            permute(input);
+            input.splice(i, 0, ch);
+            usedChars.pop();
+        }
+        return permArr
+    };
+    return permute(set);
 };
 
 const distances = (map) => {
