@@ -13,15 +13,13 @@ const solve1 = (file) => {
     return 1;
 };
 const solveExample = (file) => {
+    let max = 0;
     const map = parse(file);
     const table = distances(map);
 
     const valves = Object.values(map).filter(valve => valve.rate > 0);
     const ids = valves.map(valve => valve.id);
-    const paths = permutations(ids);
-
-    let max = 0;
-    paths.forEach(path => {
+    permutations(ids, path => {
         path = path.map(id => ({ id, rate: map[id].rate }));
         path.unshift({ id: 'AA', rate: 0, minutes: 0 });
         let minutes = 0;
