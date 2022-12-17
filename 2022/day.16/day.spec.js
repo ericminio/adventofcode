@@ -63,8 +63,8 @@ describe.only('2022.16', () => {
             const file = `${__dirname}/data/example.txt`;
             const map = parse(file);
             const valves = Object.values(map).filter(valve => valve.rate > 0);
-            const ids = valves.map(valve => valve.id);
-            const candidates = permutations(valves);
+            const nodes = valves.map(valve => ({ id: valve.id, rate: valve.rate }));
+            const candidates = permutations(nodes);
 
             expect(candidates.length).to.equal(720);
             const candidate = candidates[0];
