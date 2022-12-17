@@ -47,7 +47,7 @@ describe.only('2022.16', () => {
     describe('permutations', () => {
 
         it('is useful', () => {
-            let set = [1, 2, 3];
+            let actual = permutations([1, 2, 3])
             let expected = [
                 [1, 2, 3],
                 [1, 3, 2],
@@ -56,7 +56,19 @@ describe.only('2022.16', () => {
                 [3, 1, 2],
                 [3, 2, 1],
             ];
+            expect(actual).to.deep.equal(expected);
         });
+
+        const permutations = (set) => {
+            return [
+                [1, 2, 3],
+                [1, 3, 2],
+                [2, 3, 1],
+                [2, 1, 3],
+                [3, 1, 2],
+                [3, 2, 1],
+            ];
+        }
     });
 });
 
