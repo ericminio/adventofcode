@@ -6,8 +6,8 @@ const solve1 = (file) => {
     const table = distances(map);
 
     const valves = Object.values(map).filter(valve => valve.rate > 0);
-    console.log(valves);
-    const ids = valves.map(valve => valve.id);
+    const candidates = valves.map(valve => ({ id: valve.id, rate: valve.rate }));
+    console.log(candidates);
 
     return 1;
 };
