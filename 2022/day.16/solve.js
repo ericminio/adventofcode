@@ -5,7 +5,12 @@ const solve1 = (file) => {
     const map = parse(file);
     const table = distances(map);
 
-    const candidates = [];
+    const valves = Object.values(map).filter(valve => valve.rate > 0);
+    const nodes = valves.map(valve => ({ id: valve.id, rate: valve.rate }));
+    const candidates = permutations(nodes).map(candidate => {
+        candidate.unshift({ id: 'AA', rate: 0, minutes: 0 });
+        return candidate;
+    });
 
     let path = [
         { id: 'AA', rate: 0, minutes: 0 },
