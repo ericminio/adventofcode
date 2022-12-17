@@ -1,5 +1,5 @@
 const { gps } = require('../../lib/2d/gps');
-const { extractor, lines, add, descending } = require('../support');
+const { extractor, lines, add, descending, id } = require('../support');
 
 const solve1 = (file) => {
     const map = parse(file);
@@ -41,7 +41,19 @@ const solve2 = (file) => {
 };
 
 const distances = (map) => {
-
+    let values = {};
+    const ids = Object.keys(map);
+    for (let i = 0; i < ids.length; i++) {
+        for (let j = 0; j < ids.length; j++) {
+            values[`${ids[i]}-${ids[j]}`] = timeSpent({
+                from: ids[i],
+                to: ids[j],
+                map,
+            });
+        }
+    }
+    console.log(values);
+    return values;
 };
 const timeSpent = (options) => {
     const request = {
