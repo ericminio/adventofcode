@@ -63,7 +63,8 @@ describe.only('2022.16', () => {
             const file = `${__dirname}/data/example.txt`;
             const map = parse(file);
             const valves = Object.values(map).filter(valve => valve.rate > 0);
-            console.log(valves);
+            const ids = valves.map(valve => valve.id);
+            console.log(ids);
         });
     });
 });
