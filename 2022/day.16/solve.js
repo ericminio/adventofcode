@@ -3,6 +3,7 @@ const { extractor, lines, add, descending } = require('../support');
 
 const solve1 = (file) => {
     const map = parse(file);
+    const table = distances(map);
 
     const candidates = [];
 
@@ -39,6 +40,9 @@ const solve2 = (file) => {
     return 15;
 };
 
+const distances = (map) => {
+
+};
 const timeSpent = (options) => {
     const request = {
         origin: { id: options.from },
