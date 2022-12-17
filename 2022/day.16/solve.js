@@ -27,6 +27,32 @@ const solve1 = (file) => {
 
     return max;
 };
+const solveExample = (file) => {
+    const map = parse(file);
+    const table = distances(map);
+
+    const valves = Object.values(map).filter(valve => valve.rate > 0);
+    const ids = valves.map(valve => valve.id);
+    const paths = permutations(ids);
+
+    let max = 0;
+    paths.forEach(path => {
+        path = path.map(id => ({ id, rate: map[id].rate }));
+        path.unshift({ id: 'AA', rate: 0, minutes: 0 });
+        let minutes = 0;
+        for (var i = 0; i < path.length - 1; i++) {
+            minutes += table[`${path[i].id}-${path[i + 1].id}`]
+            if (path[i + 1].rate > 0) { minutes++; }
+            path[i + 1].minutes = minutes;
+        }
+        total = path.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
+        if (total > max) {
+            max = total;
+        }
+    });
+
+    return max;
+};
 
 const solve2 = (file) => {
     return 15;
@@ -90,4 +116,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { solve1, solve2, parse, timeSpent, permutations };
+module.exports = { solveExample, solve1, solve2, parse, timeSpent, permutations };
