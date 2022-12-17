@@ -28,7 +28,7 @@ const solveExample = (file) => {
             if (path[i + 1].rate > 0) { minutes++; }
             path[i + 1].minutes = minutes;
         }
-        total = path.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
+        total = score(path, table);
         if (total > max) {
             max = total;
             console.log({ path, max });
