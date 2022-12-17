@@ -23,7 +23,6 @@ const solve1 = (file) => {
         candidate.total = candidate.path.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
     });
 
-    // return 1651;
     return candidates.map(candidate => candidate.total).sort(descending)[0];
 };
 
