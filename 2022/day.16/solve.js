@@ -23,7 +23,7 @@ const solve1 = (file) => {
             to: path[i + 1].valve.id,
             map,
         };
-        minutes += timeSpent(options);
+        minutes += table[`${path[i].valve.id}-${path[i + 1].valve.id}`]
         if (path[i + 1].valve.rate > 0) { minutes++; }
         path[i + 1].minutes = minutes;
     }
