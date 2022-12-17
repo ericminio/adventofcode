@@ -33,6 +33,7 @@ const solveExample = (file) => {
         total = path.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
         if (total > max) {
             max = total;
+            console.log({ max });
         }
     });
 
