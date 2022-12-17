@@ -1,14 +1,13 @@
 const { expect } = require('chai');
 const { gps } = require('../../lib/2d/gps.js');
-const { descending } = require('../support');
-const { solve1, solve2, parse, timeSpent, permutations } = require('./solve');
+const { solveExample, solve1, solve2, parse, timeSpent, permutations } = require('./solve');
 
 describe.only('2022.16', () => {
 
     describe('part 1', () => {
 
         it('has an example', () => {
-            expect(solve1(`${__dirname}/data/example.txt`)).to.equal(1651);
+            expect(solveExample(`${__dirname}/data/example.txt`)).to.equal(1651);
         });
 
     });
