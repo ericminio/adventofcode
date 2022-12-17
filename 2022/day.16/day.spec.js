@@ -76,16 +76,10 @@ describe.only('2022.16', () => {
         });
 
         it('can notify', () => {
-            let actual = permutations([1, 2, 3], (set) => console.log(set));
-            let expected = [
-                [1, 2, 3],
-                [1, 3, 2],
-                [2, 1, 3],
-                [2, 3, 1],
-                [3, 1, 2],
-                [3, 2, 1],
-            ];
-            expect(actual).to.deep.equal(expected);
+            let count = 0;
+            permutations([1, 2, 3], (set) => count++);
+
+            expect(count).to.equal(6);
         });
     });
 });
