@@ -74,6 +74,19 @@ describe.only('2022.16', () => {
 
             expect(candidates.length).to.equal(720);
         });
+
+        it('can notify', () => {
+            let actual = permutations([1, 2, 3], (set) => console.log(set));
+            let expected = [
+                [1, 2, 3],
+                [1, 3, 2],
+                [2, 1, 3],
+                [2, 3, 1],
+                [3, 1, 2],
+                [3, 2, 1],
+            ];
+            expect(actual).to.deep.equal(expected);
+        });
     });
 });
 

@@ -44,7 +44,7 @@ const solve2 = (file) => {
     return 15;
 };
 
-const permutations = (set) => {
+const permutations = (set, yield) => {
     let values = [];
     if (set.length === 1) {
         return [set];
@@ -54,7 +54,11 @@ const permutations = (set) => {
         let one = set[i];
         let rest = set.slice(0, i).concat(set.slice(i + 1));
         let inner = permutations(rest);
-        inner.forEach(p => values.push([one].concat(p)));
+        inner.forEach(p => {
+            const permuted = [one].concat(p);
+            values.push(permuted);
+            if (!!yield) { yield(permuted); }
+        });
     }
 
     return values;
