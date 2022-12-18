@@ -23,7 +23,7 @@ const solve1 = (file) => {
             return bTHENa - aTHENb;
         });
         end = candidates[0];
-        minutes += table[entry(start.id, end.id)];
+        minutes += (table[entry(start.id, end.id)] + 1);
     }
     start = candidates.shift();
     sorted.push(start);
