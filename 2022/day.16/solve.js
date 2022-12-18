@@ -2,12 +2,16 @@ const { gps } = require('../../lib/2d/gps');
 const { extractor, lines, add } = require('../support');
 
 const credit = 30;
-const solve1 = (file) => {
-    const map = parse(file);
-    const table = distances(map);
+const init = (map) => {
     const candidates = Object.values(map)
         .filter(valve => valve.rate > 0)
         .map(valve => ({ id: valve.id, rate: valve.rate }));
+    return candidates;
+};
+const solve1 = (file) => {
+    const map = parse(file);
+    const table = distances(map);
+    const candidates = init(map);
 
     const sorted = sort(candidates, { id: 'AA', rate: 0 }, table, credit);
 
@@ -17,12 +21,6 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const map = parse(file);
     const table = distances(map);
-    const init = (map) => {
-        const candidates = Object.values(map)
-            .filter(valve => valve.rate > 0)
-            .map(valve => ({ id: valve.id, rate: valve.rate }));
-        return candidates;
-    }
 
     let start = { id: 'AA', rate: 0 };
     let best = [];
