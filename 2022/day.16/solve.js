@@ -31,6 +31,7 @@ const solve2 = (file) => {
     first = sorted[1];
     best.push(first);
     candidates = candidates.splice(1, 1);
+    console.log(candidates);
     sorted = sort(candidates, table, credit);
     first = sorted[1];
     best.push(first);
