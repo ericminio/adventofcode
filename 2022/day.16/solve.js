@@ -22,6 +22,16 @@ const solve2 = (file) => {
         .filter(valve => valve.rate > 0)
         .map(valve => ({ id: valve.id, rate: valve.rate }));
 
+    let best = [];
+    let sorted;
+    let first;
+
+    sorted = sort(candidates, table, credit);
+    first = sorted[0];
+    best.push(first);
+
+    console.log(best);
+
     return 1707;
 };
 
