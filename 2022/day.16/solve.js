@@ -9,8 +9,7 @@ const solve1 = (file) => {
         .filter(valve => valve.rate > 0)
         .map(valve => ({ id: valve.id, rate: valve.rate }));
 
-    candidates.unshift({ id: 'AA', rate: 0 });
-    const sorted = sort(candidates, table, credit);
+    const sorted = sort(candidates, { id: 'AA', rate: 0 }, table, credit);
 
     return score(sorted, credit);
 };
@@ -34,7 +33,7 @@ const solve2 = (file) => {
 
     candidates = init(map);
     candidates.unshift(start);
-    sorted = sort(candidates, table, credit);
+    sorted = sort(candidates, start, table, credit);
     elephant = sorted[1];
     best.push(elephant);
 
@@ -49,15 +48,12 @@ const score = (set, credit) => {
             (valve.minutes > credit) ? 0 : valve.rate * (credit - valve.minutes))
         .reduce(add);
 };
-const sort = (candidates, table, credit) => {
+const sort = (candidates, start, table, credit) => {
     const sorted = [];
     let minutes = 0;
-    let start;
     let end;
 
     while (candidates.length > 1) {
-        start = candidates.shift();
-        sorted.push({ ...start, minutes });
         candidates.sort((a, b) => {
             let aTHENb = weight(start, a, b, table, credit - minutes);
             let bTHENa = weight(start, b, a, table, credit - minutes);
@@ -65,9 +61,12 @@ const sort = (candidates, table, credit) => {
         });
         end = candidates[0];
         minutes += (table[entry(start, end)] + 1);
+        sorted.push({ ...end, minutes });
+        start = candidates.shift();
     }
-    start = candidates.shift();
-    sorted.push({ ...start, minutes });
+    end = candidates[0];
+    minutes += (table[entry(start, end)] + 1);
+    sorted.push({ ...end, minutes });
 
     return sorted;
 };
