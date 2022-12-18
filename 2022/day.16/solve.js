@@ -32,24 +32,6 @@ const solve1 = (file) => {
 
     return score;
 };
-const solveExample = (file) => {
-    let max = 0;
-    const map = parse(file);
-    const table = distances(map);
-
-    const valves = Object.values(map).filter(valve => valve.rate > 0);
-    const ids = valves.map(valve => valve.id);
-    permutations(ids, path => {
-        path = prepare(path, map);
-        let total = score(path, table);
-        if (total > max) {
-            max = total;
-            // console.log({ path, max });
-        }
-    });
-
-    return max;
-};
 
 const solve2 = (file) => {
     return 15;
@@ -139,4 +121,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { solveExample, solve1, solve2, parse, timeSpent, permutations };
+module.exports = { solve1, solve2, parse, timeSpent, permutations };
