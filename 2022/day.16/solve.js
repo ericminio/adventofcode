@@ -20,21 +20,10 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const map = parse(file);
     const table = distances(map);
+    const candidates = init(map);
+    const sorted = sort(candidates, { id: 'AA', rate: 0 }, table, credit);
 
-    let start = { id: 'AA', rate: 0 };
-    let best = [];
-    let candidates;
-    let sorted;
-    let elephant;
-    let me;
-
-    candidates = init(map);
-    candidates.unshift(start);
-    sorted = sort(candidates, start, table, credit);
-    elephant = sorted[1];
-    best.push(elephant);
-
-    console.log(best);
+    console.log(sorted);
 
     return 1707;
 };
