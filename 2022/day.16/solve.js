@@ -21,7 +21,6 @@ const solve1 = (file) => {
             let bTHENa = (table[entry(start.id, b.id)] + 1) * b.rate + (table[entry(b.id, a.id)] + 1) * a.rate;
             return aTHENb - bTHENa;
         });
-        console.log(candidates);
     }
 
     if (candidates.length > 1) {
@@ -32,7 +31,6 @@ const solve1 = (file) => {
             let bTHENa = (table[entry(start.id, b.id)] + 1) * b.rate + (table[entry(b.id, a.id)] + 1) * a.rate;
             return aTHENb - bTHENa;
         });
-        console.log(candidates);
     }
 
     console.log(sorted);
