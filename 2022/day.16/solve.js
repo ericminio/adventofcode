@@ -21,9 +21,15 @@ const solve2 = (file) => {
     const map = parse(file);
     const table = distances(map);
     const candidates = init(map);
-    const sorted = sort(candidates, { id: 'AA', rate: 0 }, table, credit);
 
+    const sorted = sort(candidates, { id: 'AA', rate: 0 }, table, credit);
     console.log(sorted);
+
+    let best = [];
+    let elephant = sorted[1]
+    best.push(elephant);
+
+    console.log(best);
 
     return 1707;
 };
