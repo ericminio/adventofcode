@@ -53,7 +53,6 @@ describe.only('2022.16', () => {
         const table = distances(map);
 
         it.only('computes AJB as expected', () => {
-            console.log(table);
             let value = weight(map['AA'], map['JJ'], map['BB'], table, 26);
             console.log(value);
         });
