@@ -8,7 +8,6 @@ const solve1 = (file) => {
     const valves = Object.values(map).filter(valve => valve.rate > 0);
     const candidates = valves.map(valve => ({ id: valve.id, rate: valve.rate }));
     candidates.unshift({ id: 'AA', rate: 0 });
-    console.log(candidates);
 
     let sorted = [];
     let start;
