@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { gps } = require('../../lib/2d/gps.js');
-const { solve1, solve2, parse, timeSpent, permutations } = require('./solve');
+const { solve1, solve2, parse, timeSpent } = require('./solve');
 
 describe.only('2022.16', () => {
 
@@ -45,42 +45,6 @@ describe.only('2022.16', () => {
             expect(timeSpent({ from: 'DD', to: 'JJ', map })).to.equal(3);
         });
 
-    });
-
-    describe('permutations', () => {
-
-        it('is useful', () => {
-            let actual = permutations([1, 2, 3])
-            let expected = [
-                [1, 2, 3],
-                [1, 3, 2],
-                [2, 1, 3],
-                [2, 3, 1],
-                [3, 1, 2],
-                [3, 2, 1],
-            ];
-            expect(actual).to.deep.equal(expected);
-        });
-
-        it('can compute all candidates', () => {
-            const file = `${__dirname}/data/example.txt`;
-            const map = parse(file);
-            const valves = Object.values(map).filter(valve => valve.rate > 0);
-            const nodes = valves.map(valve => ({ id: valve.id, rate: valve.rate }));
-            const candidates = permutations(nodes).map(candidate => {
-                candidate.unshift({ id: 'AA', rate: 0, minutes: 0 });
-                return candidate;
-            });
-
-            expect(candidates.length).to.equal(720);
-        });
-
-        it('can notify', () => {
-            let count = 0;
-            permutations([1, 2, 3], (set) => count++);
-
-            expect(count).to.equal(6);
-        });
     });
 });
 
