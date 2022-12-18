@@ -42,6 +42,7 @@ const solve2 = (file) => {
     candidates.unshift(start);
     console.log(candidates);
     sorted = sort(candidates, table, credit);
+    console.log(sorted);
     me = sorted[1];
     best.push(me);
 
