@@ -70,6 +70,7 @@ const sort = (candidates, start, table, credit) => {
 const weight = (start, a, b, table, remaining) => {
     const startToA = table[entry(start, a)] + 1;
     const aToB = table[entry(a, b)] + 1;
+    console.log(startToA, aToB);
     return (remaining - startToA) * a.rate + (remaining - startToA - aToB) * b.rate;
 };
 const entry = (a, b) => `${a.id}-${b.id}`;
