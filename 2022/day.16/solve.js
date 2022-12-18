@@ -34,7 +34,6 @@ const solve2 = (file) => {
     sorted = sort(candidates, table, credit);
     first = sorted[1];
     best.push(first);
-    console.log(best)
     candidates = init(map).filter(c => !best.map(e => e.id).includes(c.id));
 
     sorted = sort(candidates, table, credit);
