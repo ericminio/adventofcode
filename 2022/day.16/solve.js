@@ -29,7 +29,7 @@ const solve1 = (file) => {
     sorted.push({ ...start, minutes });
 
     console.log(sorted);
-    let score = sorted.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
+    let score = sorted.map(valve => (valve.minutes > 30) ? 0 : valve.rate * (30 - valve.minutes)).reduce(add);
     console.log(score);
 
     return 1;
