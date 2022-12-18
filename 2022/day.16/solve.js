@@ -18,9 +18,13 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const map = parse(file);
     const table = distances(map);
-    let candidates = Object.values(map)
-        .filter(valve => valve.rate > 0)
-        .map(valve => ({ id: valve.id, rate: valve.rate }));
+    const init = (map) => {
+        const candidates = Object.values(map)
+            .filter(valve => valve.rate > 0)
+            .map(valve => ({ id: valve.id, rate: valve.rate }));
+        return candidates;
+    }
+    let candidates = init(map);
     candidates.unshift({ id: 'AA', rate: 0 });
 
     let best = [];
@@ -30,7 +34,7 @@ const solve2 = (file) => {
     sorted = sort(candidates, table, credit);
     first = sorted[1];
     best.push(first);
-    candidates.splice(1, 1);
+    candidates = init(map).filter(c => c.id !== first.id);
     console.log(candidates);
     sorted = sort(candidates, table, credit);
     first = sorted[1];
