@@ -16,9 +16,9 @@ const solve1 = (file) => {
     let start = candidates.shift();
     sorted.push(start);
     candidates.sort((a, b) => {
-        let wa = (table[entry(start.id, a.id)] + 1) * a.rate;
-        let wb = (table[entry(start.id, b.id)] + 1) * b.rate;
-        return wb - wa;
+        let aTHENb = (table[entry(start.id, a.id)] + 1) * a.rate + (table[entry(a.id, b.id)] + 1) * b.rate;
+        let bTHENa = (table[entry(start.id, b.id)] + 1) * b.rate + (table[entry(b.id, a.id)] + 1) * a.rate;
+        return bTHENa - aTHENb;
     });
     console.log(candidates);
 
