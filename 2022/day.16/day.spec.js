@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { gps } = require('../../lib/2d/gps.js');
-const { solve1, solve2, parse, timeSpent } = require('./solve');
+const { solve1, solve2, parse, timeSpent, weight, distances } = require('./solve');
 
 describe.only('2022.16', () => {
 
@@ -48,7 +48,13 @@ describe.only('2022.16', () => {
     });
 
     describe('weight', () => {
+        const file = `${__dirname}/data/example.txt`;
+        const map = parse(file);
+        const table = distances(map);
 
+        it('computes AJB as expected', () => {
+            let value = weight(map['AA'], map['JJ'], map['BB'], table, 26);
+        })
     });
 });
 
