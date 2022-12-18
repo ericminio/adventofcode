@@ -116,4 +116,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { solve1, solve2, parse, timeSpent, weight };
+module.exports = { solve1, solve2, parse, timeSpent, weight, distances };
