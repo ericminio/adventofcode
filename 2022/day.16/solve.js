@@ -38,13 +38,8 @@ const solve2 = (file) => {
     sorted = sort(candidates, table, credit);
     console.log(sorted);
     elephant = sorted[1];
+    me = sorted[2];
     best.push(elephant);
-    candidates = init(map);
-    candidates = candidates.filter(c => !best.map(e => e.id).includes(c.id));
-    candidates.unshift(start);
-    sorted = sort(candidates, table, credit);
-    console.log(sorted);
-    me = sorted[1];
     best.push(me);
 
 
