@@ -24,22 +24,27 @@ const solve2 = (file) => {
             .map(valve => ({ id: valve.id, rate: valve.rate }));
         return candidates;
     }
-    let candidates = init(map);
-    candidates.unshift({ id: 'AA', rate: 0 });
 
+    let start = { id: 'AA', rate: 0 };
     let best = [];
+    let candidates;
     let sorted;
-    let first;
+    let elephant;
+    let me;
 
+    candidates = init(map);
+    candidates = candidates.filter(c => !best.map(e => e.id).includes(c.id));
+    candidates.unshift(start);
     sorted = sort(candidates, table, credit);
-    first = sorted[1];
-    best.push(first);
-    candidates = init(map).filter(c => !best.map(e => e.id).includes(c.id));
+    elephant = sorted[1];
+    best.push(elephant);
+    candidates = init(map);
+    candidates = candidates.filter(c => !best.map(e => e.id).includes(c.id));
+    candidates.unshift(start);
+    sorted = sort(candidates, table, credit);
+    me = sorted[1];
+    best.push(me);
 
-    sorted = sort(candidates, table, credit);
-    first = sorted[1];
-    best.push(first);
-    candidates = init(map).filter(c => !best.map(e => e.id).includes(c.id));
 
     console.log(best);
 
