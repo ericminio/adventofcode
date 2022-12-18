@@ -23,14 +23,14 @@ const solve2 = (file) => {
     let best = [];
 
     let candidates = init(map);
-    let sorted = sort(candidates, { id: 'AA', rate: 0 }, table, credit);
+    let sorted = sort(candidates, { id: 'AA', rate: 0 }, table, 26);
     console.log(sorted);
 
     let elephant = sorted[0]
     best.push(elephant);
 
     candidates = init(map).filter(c => c.id !== elephant.id);
-    sorted = sort(candidates, { id: 'AA', rate: 0 }, table, credit);
+    sorted = sort(candidates, { id: 'AA', rate: 0 }, table, 26);
     console.log(sorted);
 
     console.log(best);
