@@ -11,6 +11,7 @@ const solve1 = (file) => {
 
     candidates.unshift({ id: 'AA', rate: 0 });
     const sorted = sort(candidates, table, credit);
+    console.log(sorted);
 
     return score(sorted, credit);
 };
