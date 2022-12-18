@@ -1,6 +1,7 @@
 const { gps } = require('../../lib/2d/gps');
 const { extractor, lines, add } = require('../support');
 
+const credit = 30;
 const solve1 = (file) => {
     const map = parse(file);
     const table = distances(map);
@@ -10,9 +11,9 @@ const solve1 = (file) => {
         .map(valve => ({ id: valve.id, rate: valve.rate }));
     candidates.unshift({ id: 'AA', rate: 0 });
 
-    let sorted = sort(candidates, table, 30)
+    let sorted = sort(candidates, table, credit)
 
-    let score = sorted.map(valve => (valve.minutes > 30) ? 0 : valve.rate * (30 - valve.minutes)).reduce(add);
+    let score = sorted.map(valve => (valve.minutes > credit) ? 0 : valve.rate * (credit - valve.minutes)).reduce(add);
 
     return score;
 };
