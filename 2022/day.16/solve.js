@@ -5,10 +5,10 @@ const credit = 30;
 const solve1 = (file) => {
     const map = parse(file);
     const table = distances(map);
-
     const candidates = Object.values(map)
         .filter(valve => valve.rate > 0)
         .map(valve => ({ id: valve.id, rate: valve.rate }));
+
     candidates.unshift({ id: 'AA', rate: 0 });
     const sorted = sort(candidates, table, credit);
 
@@ -16,6 +16,12 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
+    const map = parse(file);
+    const table = distances(map);
+    const candidates = Object.values(map)
+        .filter(valve => valve.rate > 0)
+        .map(valve => ({ id: valve.id, rate: valve.rate }));
+
     return 1707;
 };
 
