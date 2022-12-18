@@ -20,12 +20,12 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const map = parse(file);
     const table = distances(map);
-    const candidates = init(map);
+    let best = [];
 
-    const sorted = sort(candidates, { id: 'AA', rate: 0 }, table, credit);
+    let candidates = init(map);
+    let sorted = sort(candidates, { id: 'AA', rate: 0 }, table, credit);
     console.log(sorted);
 
-    let best = [];
     let elephant = sorted[0]
     best.push(elephant);
 
