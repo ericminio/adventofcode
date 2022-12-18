@@ -11,9 +11,18 @@ const solve1 = (file) => {
     console.log(candidates);
 
     let sorted = [];
+    let start;
 
-    let i = 0;
-    let start = candidates.shift();
+    start = candidates.shift();
+    sorted.push(start);
+    candidates.sort((a, b) => {
+        let aTHENb = (table[entry(start.id, a.id)] + 1) * a.rate + (table[entry(a.id, b.id)] + 1) * b.rate;
+        let bTHENa = (table[entry(start.id, b.id)] + 1) * b.rate + (table[entry(b.id, a.id)] + 1) * a.rate;
+        return aTHENb - bTHENa;
+    });
+    console.log(candidates);
+
+    start = candidates.shift();
     sorted.push(start);
     candidates.sort((a, b) => {
         let aTHENb = (table[entry(start.id, a.id)] + 1) * a.rate + (table[entry(a.id, b.id)] + 1) * b.rate;
