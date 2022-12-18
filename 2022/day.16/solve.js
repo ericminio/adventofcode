@@ -29,6 +29,8 @@ const solve1 = (file) => {
     sorted.push({ ...start, minutes });
 
     console.log(sorted);
+    let score = sorted.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
+    console.log(score);
 
     return 1;
 };
