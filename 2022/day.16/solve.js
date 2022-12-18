@@ -14,16 +14,16 @@ const solve1 = (file) => {
     let start;
     let end;
 
-    while (candidates.length > 1) {
+    if (candidates.length > 1) {
         start = candidates.shift();
         sorted.push({ ...start, minutes });
         candidates.sort((a, b) => {
-            let aTHENb = (30 - minutes - table[entry(start.id, a.id)] - 1) * a.rate + (30 - minutes - table[entry(a.id, b.id)] - 1) * b.rate;
-            let bTHENa = (30 - minutes - table[entry(start.id, b.id)] - 1) * b.rate + (30 - minutes - table[entry(b.id, a.id)] - 1) * a.rate;
+            let aTHENb = (30 - minutes - table[entry(start, a)] - 1) * a.rate + (30 - minutes - table[entry(a, b)] - 1) * b.rate;
+            let bTHENa = (30 - minutes - table[entry(start, b)] - 1) * b.rate + (30 - minutes - table[entry(b, a)] - 1) * a.rate;
             return bTHENa - aTHENb;
         });
         end = candidates[0];
-        minutes += (table[entry(start.id, end.id)] + 1);
+        minutes += (table[entry(start, end)] + 1);
     }
     start = candidates.shift();
     sorted.push(start);
@@ -55,7 +55,7 @@ const solve2 = (file) => {
     return 15;
 };
 
-const entry = (a, b) => `${a}-${b}`;
+const entry = (a, b) => `${a.id}-${b.id}`;
 
 const prepare = (path, map) => {
     path = path.map(id => ({ id, rate: map[id].rate }));
