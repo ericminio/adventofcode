@@ -46,7 +46,7 @@ const solveExample = (file) => {
         let total = score(path, table);
         if (total > max) {
             max = total;
-            console.log({ path, max });
+            // console.log({ path, max });
         }
     });
 
