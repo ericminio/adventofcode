@@ -5,8 +5,9 @@ const solve1 = (file) => {
     const map = parse(file);
     const table = distances(map);
 
-    const valves = Object.values(map).filter(valve => valve.rate > 0);
-    const candidates = valves.map(valve => ({ id: valve.id, rate: valve.rate }));
+    const candidates = Object.values(map)
+        .filter(valve => valve.rate > 0)
+        .map(valve => ({ id: valve.id, rate: valve.rate }));
     candidates.unshift({ id: 'AA', rate: 0 });
 
     let sorted = [];
