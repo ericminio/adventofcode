@@ -26,7 +26,7 @@ const solve1 = (file) => {
         minutes += (table[entry(start, end)] + 1);
     }
     start = candidates.shift();
-    sorted.push(start);
+    sorted.push({ ...start, minutes });
 
     console.log(sorted);
 
