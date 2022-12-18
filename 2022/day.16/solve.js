@@ -6,14 +6,21 @@ const solve1 = (file) => {
     const table = distances(map);
 
     const valves = Object.values(map).filter(valve => valve.rate > 0);
-    const candidates = valves.map(valve => valve.id);
-    candidates.unshift('AA');
+    const candidates = valves.map(valve => ({ id: valve.id, rate: valve.rate }));
+    candidates.unshift({ id: 'AA', rate: 0 });
     console.log(candidates);
 
     let sorted = [];
+
     let i = 0;
     let start = candidates.shift();
     sorted.push(start);
+    candidates.sort((a, b) => {
+        let wa = (table[entry(start.id, a.id)] + 1) * a.rate;
+        let wb = (table[entry(start.id, b.id)] + 1) * b.rate;
+        return wb - wa;
+    });
+    console.log(candidates);
 
     console.log(sorted);
 
@@ -41,6 +48,8 @@ const solveExample = (file) => {
 const solve2 = (file) => {
     return 15;
 };
+
+const entry = (a, b) => `${a}-${b}`;
 
 const prepare = (path, map) => {
     path = path.map(id => ({ id, rate: map[id].rate }));
