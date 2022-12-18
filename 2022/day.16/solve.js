@@ -10,7 +10,19 @@ const solve1 = (file) => {
         .map(valve => ({ id: valve.id, rate: valve.rate }));
     candidates.unshift({ id: 'AA', rate: 0 });
 
-    let sorted = [];
+    let sorted = sort(candidates, table)
+
+    let score = sorted.map(valve => (valve.minutes > 30) ? 0 : valve.rate * (30 - valve.minutes)).reduce(add);
+
+    return score;
+};
+
+const solve2 = (file) => {
+    return 15;
+};
+
+const sort = (candidates, table) => {
+    const sorted = [];
     let minutes = 0;
     let start;
     let end;
@@ -29,13 +41,7 @@ const solve1 = (file) => {
     start = candidates.shift();
     sorted.push({ ...start, minutes });
 
-    let score = sorted.map(valve => (valve.minutes > 30) ? 0 : valve.rate * (30 - valve.minutes)).reduce(add);
-
-    return score;
-};
-
-const solve2 = (file) => {
-    return 15;
+    return sorted;
 };
 
 const weight = (start, a, b, table, remaining) => {
