@@ -18,8 +18,8 @@ const solve1 = (file) => {
         start = candidates.shift();
         sorted.push({ ...start, minutes });
         candidates.sort((a, b) => {
-            let aTHENb = (30 - minutes - table[entry(start, a)] - 1) * a.rate + (30 - minutes - table[entry(a, b)] - 1) * b.rate;
-            let bTHENa = (30 - minutes - table[entry(start, b)] - 1) * b.rate + (30 - minutes - table[entry(b, a)] - 1) * a.rate;
+            let aTHENb = weight(start, a, b, table, 30 - minutes);
+            let bTHENa = weight(start, b, a, table, 30 - minutes);
             return bTHENa - aTHENb;
         });
         end = candidates[0];
@@ -55,6 +55,11 @@ const solve2 = (file) => {
     return 15;
 };
 
+const weight = (start, a, b, table, remaining) => {
+    const startToA = table[entry(start, a)] + 1;
+    const aToB = table[entry(a, b)] + 1;
+    return (remaining - startToA) * a.rate + (remaining - startToA - aToB) * b.rate;
+};
 const entry = (a, b) => `${a.id}-${b.id}`;
 
 const prepare = (path, map) => {
