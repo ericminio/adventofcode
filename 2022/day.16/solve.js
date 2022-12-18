@@ -11,8 +11,7 @@ const solve1 = (file) => {
         .map(valve => ({ id: valve.id, rate: valve.rate }));
     candidates.unshift({ id: 'AA', rate: 0 });
 
-    let sorted = sort(candidates, table, credit)
-
+    let sorted = sort(candidates, table, credit);
     let score = sorted.map(valve => (valve.minutes > credit) ? 0 : valve.rate * (credit - valve.minutes)).reduce(add);
 
     return score;
