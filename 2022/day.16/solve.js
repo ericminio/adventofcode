@@ -12,7 +12,7 @@ const solve1 = (file) => {
     let sorted = [];
     let start;
 
-    while (candidates.length > 1) {
+    if (candidates.length > 1) {
         start = candidates.shift();
         sorted.push(start);
         candidates.sort((a, b) => {
