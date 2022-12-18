@@ -58,7 +58,7 @@ describe.only('2022.16', () => {
         });
         it('computes ABJ as expected', () => {
             let value = weight(map['AA'], map['BB'], map['JJ'], table, 26);
-            console.log(value);
+            expect(value).to.equal(732);
         })
     });
 });
