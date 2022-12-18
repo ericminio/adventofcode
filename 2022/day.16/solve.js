@@ -18,15 +18,19 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     const map = parse(file);
     const table = distances(map);
-    const candidates = Object.values(map)
+    let candidates = Object.values(map)
         .filter(valve => valve.rate > 0)
         .map(valve => ({ id: valve.id, rate: valve.rate }));
+    candidates.unshift({ id: 'AA', rate: 0 });
 
     let best = [];
     let sorted;
     let first;
 
-    candidates.unshift({ id: 'AA', rate: 0 });
+    sorted = sort(candidates, table, credit);
+    first = sorted[1];
+    best.push(first);
+    candidates = candidates.splice(1, 1);
     sorted = sort(candidates, table, credit);
     first = sorted[1];
     best.push(first);
