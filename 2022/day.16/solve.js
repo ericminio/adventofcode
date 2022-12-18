@@ -7,6 +7,7 @@ const solve1 = (file) => {
 
     const valves = Object.values(map).filter(valve => valve.rate > 0);
     const candidates = valves.map(valve => valve.id);
+    candidates.unshift('AA');
     console.log(candidates);
 
     return 1;
