@@ -28,7 +28,7 @@ const solve2 = (file) => {
 
     candidates.unshift({ id: 'AA', rate: 0 });
     sorted = sort(candidates, table, credit);
-    first = sorted[0];
+    first = sorted[1];
     best.push(first);
 
     console.log(best);
