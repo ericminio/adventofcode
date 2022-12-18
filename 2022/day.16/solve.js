@@ -1,5 +1,5 @@
 const { gps } = require('../../lib/2d/gps');
-const { extractor, lines, add, descending, id, ascending } = require('../support');
+const { extractor, lines, add } = require('../support');
 
 const solve1 = (file) => {
     const map = parse(file);
@@ -44,21 +44,7 @@ const weight = (start, a, b, table, remaining) => {
 };
 const entry = (a, b) => `${a.id}-${b.id}`;
 
-const prepare = (path, map) => {
-    path = path.map(id => ({ id, rate: map[id].rate }));
-    path.unshift({ id: 'AA', rate: 0, minutes: 0 });
-    return path;
-};
 
-const score = (path, table) => {
-    let minutes = 0;
-    for (var i = 0; i < path.length - 1; i++) {
-        minutes += table[`${path[i].id}-${path[i + 1].id}`]
-        if (path[i + 1].rate > 0) { minutes++; }
-        path[i + 1].minutes = minutes <= 30 ? minutes : 0;
-    }
-    return path.map(valve => valve.rate * (30 - valve.minutes)).reduce(add);
-};
 const permutations = (set, yield) => {
     let values = [];
     if (set.length === 1) {
