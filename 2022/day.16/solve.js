@@ -44,27 +44,6 @@ const weight = (start, a, b, table, remaining) => {
 };
 const entry = (a, b) => `${a.id}-${b.id}`;
 
-
-const permutations = (set, yield) => {
-    let values = [];
-    if (set.length === 1) {
-        return [set];
-    }
-
-    for (let i = 0; i < set.length; i++) {
-        let one = set[i];
-        let rest = set.slice(0, i).concat(set.slice(i + 1));
-        let inner = permutations(rest);
-        inner.forEach(p => {
-            const permuted = [one].concat(p);
-            values.push(permuted);
-            if (!!yield) { yield(permuted); }
-        });
-    }
-
-    return values;
-};
-
 const distances = (map) => {
     let values = {};
     const ids = Object.keys(map);
@@ -107,4 +86,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { solve1, solve2, parse, timeSpent, permutations };
+module.exports = { solve1, solve2, parse, timeSpent };
