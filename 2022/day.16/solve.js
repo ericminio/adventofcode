@@ -39,15 +39,6 @@ const solve2 = (file) => {
     elephant = sorted[1];
     best.push(elephant);
 
-    candidates = init(map).filter(c => c.id !== elephant.id);
-    candidates.unshift(start);
-    console.log(candidates);
-    sorted = sort(candidates, table, credit);
-    console.log(sorted);
-    me = sorted[1];
-    best.push(me);
-
-
     console.log(best);
 
     return 1707;
