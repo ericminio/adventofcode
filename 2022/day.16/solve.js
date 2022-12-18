@@ -26,7 +26,7 @@ const solve2 = (file) => {
     console.log(sorted);
 
     let best = [];
-    let elephant = sorted[1]
+    let elephant = sorted[0]
     best.push(elephant);
 
     console.log(best);
