@@ -14,7 +14,7 @@ const solve1 = (file) => {
     let start;
     let end;
 
-    if (candidates.length > 1) {
+    while (candidates.length > 1) {
         start = candidates.shift();
         sorted.push({ ...start, minutes });
         candidates.sort((a, b) => {
