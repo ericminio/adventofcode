@@ -12,15 +12,18 @@ const solve1 = (file) => {
     let sorted = [];
     let minutes = 0;
     let start;
+    let end;
 
     while (candidates.length > 1) {
         start = candidates.shift();
         sorted.push(start);
         candidates.sort((a, b) => {
-            let aTHENb = (30 - table[entry(start.id, a.id)] - 1) * a.rate + (30 - table[entry(a.id, b.id)] - 1) * b.rate;
-            let bTHENa = (30 - table[entry(start.id, b.id)] - 1) * b.rate + (30 - table[entry(b.id, a.id)] - 1) * a.rate;
+            let aTHENb = (30 - minutes - table[entry(start.id, a.id)] - 1) * a.rate + (30 - minutes - table[entry(a.id, b.id)] - 1) * b.rate;
+            let bTHENa = (30 - minutes - table[entry(start.id, b.id)] - 1) * b.rate + (30 - minutes - table[entry(b.id, a.id)] - 1) * a.rate;
             return bTHENa - aTHENb;
         });
+        end = candidates[0];
+        minutes += table[entry(start.id, end.id)];
     }
     start = candidates.shift();
     sorted.push(start);
