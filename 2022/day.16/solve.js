@@ -10,6 +10,13 @@ const solve1 = (file) => {
     candidates.unshift('AA');
     console.log(candidates);
 
+    let sorted = [];
+    let i = 0;
+    let start = candidates.shift();
+    sorted.push(start);
+
+    console.log(sorted);
+
     return 1;
 };
 const solveExample = (file) => {
