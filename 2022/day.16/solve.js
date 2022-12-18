@@ -10,17 +10,21 @@ const solve1 = (file) => {
         .filter(valve => valve.rate > 0)
         .map(valve => ({ id: valve.id, rate: valve.rate }));
     candidates.unshift({ id: 'AA', rate: 0 });
+    const sorted = sort(candidates, table, credit);
 
-    let sorted = sort(candidates, table, credit);
-    let score = sorted.map(valve => (valve.minutes > credit) ? 0 : valve.rate * (credit - valve.minutes)).reduce(add);
-
-    return score;
+    return score(sorted, credit);
 };
 
 const solve2 = (file) => {
     return 15;
 };
 
+const score = (set, credit) => {
+    return set
+        .map(valve =>
+            (valve.minutes > credit) ? 0 : valve.rate * (credit - valve.minutes))
+        .reduce(add);
+};
 const sort = (candidates, table, credit) => {
     const sorted = [];
     let minutes = 0;
