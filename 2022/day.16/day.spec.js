@@ -95,6 +95,20 @@ describe.only('2022.16', () => {
                         .sort((n1, n2) => n2.hint - n1.hint)
                         .slice(0, 2);
                 });
+                if (bests[0][0].id == bests[1][0].id) {
+                    if (bests[0][0].hint > bests[1][0].hint) {
+                        bests[0].best = bests[0][0];
+                        bests[1].best = bests[1][1];
+                    }
+                    else {
+                        bests[0].best = bests[0][1];
+                        bests[1].best = bests[1][0];
+                    }
+                }
+                else {
+                    bests[0].best = bests[0][0];
+                    bests[1].best = bests[1][0];
+                }
                 console.log(JSON.stringify(bests, null, 2));
 
                 candidates = [
