@@ -74,10 +74,10 @@ describe.only('2022.16', () => {
                                 hint: (credit - table[entry(start, node)] - 1) * node.rate,
                             }))
                             .sort((n1, n2) => n2.hint - n1.hint)
-                        [0].id
+                        [0]
                     };
                 });
-                console.log({ bests });
+                console.log(bests);
                 starts.forEach((start, index) => {
                     let exploration = candidates
                         .filter(node => !visited.includes(node.id))
