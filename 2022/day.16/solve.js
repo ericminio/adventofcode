@@ -19,19 +19,6 @@ const winner1 = (file) => {
 };
 
 const solve2 = (file) => {
-    const map = parse(file);
-    const table = distances(map);
-    let best = [];
-
-    let candidates = init(map);
-    let sorted = sort(candidates, { id: 'AA', rate: 0 }, table, 26);
-
-    let elephant = sorted[0]
-    best.push(elephant);
-
-    candidates = init(map).filter(c => c.id !== elephant.id);
-    sorted = sort(candidates, { id: 'AA', rate: 0 }, table, 26);
-
     return score(winner2(file), 26);
 };
 const winner2 = (file) => {
