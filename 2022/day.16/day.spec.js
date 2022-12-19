@@ -24,7 +24,15 @@ describe.only('2022.16', () => {
             });
         });
 
-        describe('challenge', () => {
+        it('is solved', () => {
+            expect(solve1(`${__dirname}/data/input.txt`)).to.equal(2119);
+        });
+
+    });
+
+    describe('part 2', () => {
+
+        describe('example', () => {
 
             it('has a winning path', () => {
                 expect(winner2(`${__dirname}/data/example.txt`, 26)).to.deep.equal([
@@ -38,16 +46,8 @@ describe.only('2022.16', () => {
             });
 
             it('is solved', () => {
-                expect(solve1(`${__dirname}/data/input.txt`)).to.equal(2119);
+                expect(solve2(`${__dirname}/data/example.txt`)).to.equal(1707);
             });
-        });
-
-    });
-
-    describe('part 2', () => {
-
-        it('has an example', () => {
-            expect(solve2(`${__dirname}/data/example.txt`)).to.equal(1707);
         });
 
     });
