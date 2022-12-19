@@ -80,6 +80,7 @@ describe.only('2022.16', () => {
                 console.log({ paths });
                 console.log({ visited });
 
+                console.log({ starts })
                 let bests = starts.map((start, index) => {
                     return {
                         index,
