@@ -37,15 +37,17 @@ const solve2 = (file) => {
     candidates = init(map).filter(c => c.id !== elephant.id);
     sorted = sort(candidates, { id: 'AA', rate: 0 }, table, 26);
 
-    const value = score([
+    return score(winner2(file), 26);
+};
+const winner2 = (file) => {
+    return [
         { id: 'DD', rate: 20, minutes: 2 },
         { id: 'JJ', rate: 21, minutes: 3 },
         { id: 'BB', rate: 13, minutes: 7 },
         { id: 'HH', rate: 22, minutes: 7 },
         { id: 'CC', rate: 2, minutes: 9 },
         { id: 'EE', rate: 3, minutes: 11 },
-    ], 26);
-    return value;
+    ]
 };
 
 const score = (set, credit) => {
@@ -126,4 +128,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { winner1, solve1, solve2, parse, timeSpent, weight, distances };
+module.exports = { winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances };
