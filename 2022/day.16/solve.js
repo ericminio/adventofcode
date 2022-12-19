@@ -9,13 +9,13 @@ const init = (map) => {
     return candidates;
 };
 const solve1 = (file) => {
-    return score(winner1(file), 30);
+    return score(winner1(file, 15), 30);
 };
-const winner1 = (file) => {
+const winner1 = (file, a) => {
     const map = parse(file);
     const table = distances(map);
     const candidates = init(map);
-    console.log({ credit })
+    console.log({ a })
     return sort(candidates, { id: 'AA', rate: 0 }, table, credit);
 };
 
