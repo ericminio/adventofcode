@@ -9,7 +9,7 @@ const init = (map) => {
     return candidates;
 };
 const solve1 = (file) => {
-    return score(winner1(file), credit);
+    return score(winner1(file), 30);
 };
 const winner1 = (file) => {
     const map = parse(file);
