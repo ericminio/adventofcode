@@ -60,25 +60,6 @@ describe.only('2022.16', () => {
 
                 let paths = { 0: [{ id: 'AA', rate: 0 }], 1: [{ id: 'AA', rate: 0 }] };
                 let visited = [];
-                let starts = [
-                    paths[0][paths[0].length - 1],
-                    paths[1][paths[1].length - 1],
-                ];
-
-                // [{ id: 'AA' }, { id: 'AA' }].forEach((start, index) => {
-                //     let exploration = candidates
-                //         .filter(node => !visited.includes(node.id))
-                //         .map(node => ({
-                //             ...node,
-                //             hint: (credit - table[entry(start, node)] - 1) * node.rate,
-                //         }))
-                //         .sort((n1, n2) => n2.hint - n1.hint);
-                //     let best = exploration[0];
-                //     paths[index].push(best);
-                //     visited.push(best.id);
-                // });
-                // console.log({ paths });
-                // console.log({ visited });
 
                 run(paths, visited, candidates, table, credit);
                 run(paths, visited, candidates, table, credit);
