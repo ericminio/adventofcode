@@ -58,14 +58,6 @@ describe.only('2022.16', () => {
                 let candidates = init(map);
                 console.log(candidates);
 
-                let paths = { 0: [{ id: 'AA', rate: 0 }], 1: [{ id: 'AA', rate: 0 }] };
-                let visited = [];
-
-                run(paths, visited, candidates, table, credit);
-                run(paths, visited, candidates, table, credit);
-                run(paths, visited, candidates, table, credit);
-
-
                 candidates = [
                     { id: 'BB', rate: 13 },
                     { id: 'CC', rate: 2 },
@@ -89,6 +81,22 @@ describe.only('2022.16', () => {
                     hint2: (credit - table[entry({ id: 'BB' }, node)] - 1) * node.rate,
                 }));
                 console.log(exploration);
+            });
+
+            it('can help to crack the code', () => {
+                const file = `${__dirname}/data/example.txt`;
+                const map = parse(file);
+                const table = distances(map);
+                const credit = 26;
+                let candidates = init(map);
+                console.log(candidates);
+
+                let paths = { 0: [{ id: 'AA', rate: 0 }], 1: [{ id: 'AA', rate: 0 }] };
+                let visited = [];
+
+                run(paths, visited, candidates, table, credit);
+                run(paths, visited, candidates, table, credit);
+                run(paths, visited, candidates, table, credit);
             });
 
             const run = (paths, visited, candidates, table, credit) => {
