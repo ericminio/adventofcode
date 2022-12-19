@@ -82,6 +82,7 @@ describe.only('2022.16', () => {
 
                 run(paths, visited, candidates, table, credit);
                 run(paths, visited, candidates, table, credit);
+                run(paths, visited, candidates, table, credit);
 
 
                 candidates = [
