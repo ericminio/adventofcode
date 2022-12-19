@@ -107,7 +107,7 @@ describe.only('2022.16', () => {
                     paths[0][paths[0].length - 1],
                     paths[1][paths[1].length - 1],
                 ];
-                console.log({ starts })
+
                 let bests = starts.map((start, index) => {
                     return candidates
                         .filter(node => !visited.includes(node.id))
@@ -147,8 +147,6 @@ describe.only('2022.16', () => {
                 paths[1].push({ id: choice[1].id, rate: choice[1].rate });
                 visited.push(choice[0].id);
                 visited.push(choice[1].id);
-                console.log(JSON.stringify(paths, null, 2));
-                console.log({ visited });
             };
         });
 
