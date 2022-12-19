@@ -56,7 +56,7 @@ describe.only('2022.16', () => {
                 const table = distances(map);
                 const credit = 26;
                 let candidates = init(map);
-                console.log(candidates);
+                // console.log(candidates);
 
                 candidates = [
                     { id: 'BB', rate: 13 },
@@ -69,7 +69,7 @@ describe.only('2022.16', () => {
                     hint1: (credit - table[entry({ id: 'DD' }, node)] - 1) * node.rate,
                     hint2: (credit - table[entry({ id: 'JJ' }, node)] - 1) * node.rate,
                 }));
-                console.log(exploration);
+                // console.log(exploration);
 
                 candidates = [
                     { id: 'CC', rate: 2 },
@@ -80,7 +80,7 @@ describe.only('2022.16', () => {
                     hint1: (credit - table[entry({ id: 'HH' }, node)] - 1) * node.rate,
                     hint2: (credit - table[entry({ id: 'BB' }, node)] - 1) * node.rate,
                 }));
-                console.log(exploration);
+                // console.log(exploration);
             });
 
             it('can help to crack the code', () => {
