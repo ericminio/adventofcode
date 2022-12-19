@@ -89,7 +89,6 @@ describe.only('2022.16', () => {
                 const table = distances(map);
                 const credit = 26;
                 let candidates = init(map);
-                console.log(candidates);
 
                 let paths = { 0: [{ id: 'AA', rate: 0 }], 1: [{ id: 'AA', rate: 0 }] };
                 let visited = [];
