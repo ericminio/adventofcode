@@ -54,6 +54,12 @@ describe.only('2022.16', () => {
                 const file = `${__dirname}/data/example.txt`;
                 const map = parse(file);
                 const table = distances(map);
+                const credit = 26;
+                const exploration = path.map(entry => ({
+                    ...entry,
+                    hint: 15,
+                }));
+                console.log(exploration);
             });
         });
 
