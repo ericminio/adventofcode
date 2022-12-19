@@ -58,15 +58,16 @@ describe.only('2022.16', () => {
                 let candidates = init(map);
                 console.log(candidates);
 
-                let path = [];
+                let paths = { 0: [], 1: [] };
+                let visited = [];
                 let starts = [
                     { id: 'AA' },
                     { id: 'AA' },
                 ];
                 let nextStarts = [];
-                starts.forEach(start => {
+                starts.forEach((start, index) => {
                     let exploration = candidates
-                        .filter(node => !path.includes(node.id))
+                        .filter(node => !visited.includes(node.id))
                         .map(node => ({
                             ...node,
                             hint: (credit - table[entry(start, node)] - 1) * node.rate,
@@ -74,7 +75,7 @@ describe.only('2022.16', () => {
                         .sort((n1, n2) => n2.hint - n1.hint);
                     let best = exploration[0];
                     nextStarts.push(best);
-                    path.push(best.id);
+                    paths[index].push(best.id);
                 });
                 console.log({ path });
                 starts = nextStarts;
