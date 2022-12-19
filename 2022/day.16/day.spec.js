@@ -88,7 +88,7 @@ describe.only('2022.16', () => {
                 let bests = starts.map((start, index) => {
                     return {
                         index,
-                        best: candidates
+                        bests: candidates
                             .filter(node => !visited.includes(node.id))
                             .map(node => ({
                                 ...node,
