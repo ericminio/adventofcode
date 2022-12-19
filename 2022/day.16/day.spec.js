@@ -73,8 +73,8 @@ describe.only('2022.16', () => {
                         .sort((n1, n2) => n2.hint - n1.hint);
                     let best = exploration[0];
                     path.push(best.id);
-                    console.log(best);
                 });
+                console.log({ path });
 
                 candidates = [
                     { id: 'BB', rate: 13 },
