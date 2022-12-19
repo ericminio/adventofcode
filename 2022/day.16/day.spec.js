@@ -74,7 +74,7 @@ describe.only('2022.16', () => {
                                 hint: (credit - table[entry(start, node)] - 1) * node.rate,
                             }))
                             .sort((n1, n2) => n2.hint - n1.hint)
-                        [0]
+                        [0].id
                     };
                 });
                 console.log({ bests });
