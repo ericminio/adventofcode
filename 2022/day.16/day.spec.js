@@ -55,10 +55,25 @@ describe.only('2022.16', () => {
                 const map = parse(file);
                 const table = distances(map);
                 const credit = 26;
-                const candidates = init(map);
-                const exploration = candidates.map(node => ({
+                let candidates = init(map);
+                console.log(candidates);
+
+                let exploration = candidates.map(node => ({
                     ...node,
                     hint1: (credit - table[entry({ id: 'AA' }, node)] - 1) * node.rate,
+                }));
+                console.log(exploration);
+
+                candidates = [
+                    { id: 'BB', rate: 13 },
+                    { id: 'CC', rate: 2 },
+                    { id: 'EE', rate: 3 },
+                    { id: 'HH', rate: 22 },
+                ];
+                exploration = candidates.map(node => ({
+                    ...node,
+                    hint1: (credit - table[entry({ id: 'DD' }, node)] - 1) * node.rate,
+                    hint2: (credit - table[entry({ id: 'JJ' }, node)] - 1) * node.rate,
                 }));
                 console.log(exploration);
             });
