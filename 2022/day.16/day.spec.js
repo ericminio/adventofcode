@@ -107,7 +107,7 @@ describe.only('2022.16', () => {
                 time(paths[1], table);
                 expect(paths[1].map(p => p.minutes)).to.deep.equal([0, 3, 7, 9]);
 
-                let actual = paths[0].concat(paths[1]).sort((a, b) => b.minutes - a.minutes);
+                let actual = paths[0].concat(paths[1]).sort((a, b) => a.minutes - b.minutes);
                 console.log(actual);
             });
 
