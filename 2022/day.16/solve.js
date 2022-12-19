@@ -24,16 +24,22 @@ const solve2 = (file) => {
 
     let candidates = init(map);
     let sorted = sort(candidates, { id: 'AA', rate: 0 }, table, 26);
-    console.log(sorted);
 
     let elephant = sorted[0]
     best.push(elephant);
 
     candidates = init(map).filter(c => c.id !== elephant.id);
     sorted = sort(candidates, { id: 'AA', rate: 0 }, table, 26);
-    console.log(sorted);
 
-    console.log(best);
+    const value = score([
+        { id: 'DD', rate: 20, minutes: 2 },
+        { id: 'JJ', rate: 21, minutes: 3 },
+        { id: 'BB', rate: 13, minutes: 7 },
+        { id: 'HH', rate: 22, minutes: 7 },
+        { id: 'CC', rate: 2, minutes: 9 },
+        { id: 'EE', rate: 3, minutes: 11 },
+    ], 26);
+    console.log(value);
 
     return 1707;
 };
