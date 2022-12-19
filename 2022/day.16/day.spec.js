@@ -64,20 +64,20 @@ describe.only('2022.16', () => {
                     paths[0][paths[0].length - 1],
                     paths[1][paths[1].length - 1],
                 ];
-                let bests = starts.map((start, index) => {
-                    return {
-                        index,
-                        best: candidates
-                            .filter(node => !visited.includes(node.id))
-                            .map(node => ({
-                                ...node,
-                                hint: (credit - table[entry(start, node)] - 1) * node.rate,
-                            }))
-                            .sort((n1, n2) => n2.hint - n1.hint)
-                        [0]
-                    };
-                });
-                console.log(bests);
+                // let bests = starts.map((start, index) => {
+                //     return {
+                //         index,
+                //         best: candidates
+                //             .filter(node => !visited.includes(node.id))
+                //             .map(node => ({
+                //                 ...node,
+                //                 hint: (credit - table[entry(start, node)] - 1) * node.rate,
+                //             }))
+                //             .sort((n1, n2) => n2.hint - n1.hint)
+                //         [0]
+                //     };
+                // });
+                // console.log(bests);
 
                 [{ id: 'AA' }, { id: 'AA' }].forEach((start, index) => {
                     let exploration = candidates
