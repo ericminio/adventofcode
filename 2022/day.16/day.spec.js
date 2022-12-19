@@ -106,6 +106,9 @@ describe.only('2022.16', () => {
                 expect(paths[0].map(p => p.minutes)).to.deep.equal([0, 2, 7, 11]);
                 time(paths[1], table);
                 expect(paths[1].map(p => p.minutes)).to.deep.equal([0, 3, 7, 9]);
+
+                let actual = paths[0].concat(paths[1]).sort((a, b) => b.minutes - a.minutes);
+                console.log(actual);
             });
 
             const run = (paths, visited, candidates, table, credit) => {
