@@ -50,7 +50,7 @@ describe.only('2022.16', () => {
                 expect(solve2(`${__dirname}/data/example.txt`)).to.equal(1707);
             });
 
-            it('is useful', () => {
+            it('can help to understand the sort strategy', () => {
                 const file = `${__dirname}/data/example.txt`;
                 const map = parse(file);
                 const table = distances(map);
