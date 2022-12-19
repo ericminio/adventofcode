@@ -77,7 +77,7 @@ describe.only('2022.16', () => {
                     nextStarts.push(best);
                     paths[index].push(best.id);
                 });
-                console.log({ path });
+                console.log({ paths });
                 starts = nextStarts;
 
                 candidates = [
