@@ -77,7 +77,7 @@ describe.only('2022.16', () => {
                         [0]
                     };
                 });
-                console.log(bests);
+                console.log({ bests });
                 starts.forEach((start, index) => {
                     let exploration = candidates
                         .filter(node => !visited.includes(node.id))
