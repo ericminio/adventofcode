@@ -97,6 +97,8 @@ describe.only('2022.16', () => {
                 run(paths, visited, candidates, table, credit);
                 run(paths, visited, candidates, table, credit);
                 run(paths, visited, candidates, table, credit);
+
+                expect(paths[0].map(p => p.id)).to.deep.equal(['AA', 'DD', 'HH', 'EE']);
             });
 
             const run = (paths, visited, candidates, table, credit) => {
