@@ -15,6 +15,7 @@ const winner1 = (file) => {
     const map = parse(file);
     const table = distances(map);
     const candidates = init(map);
+    console.log({ credit })
     return sort(candidates, { id: 'AA', rate: 0 }, table, credit);
 };
 
