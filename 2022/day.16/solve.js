@@ -39,9 +39,7 @@ const solve2 = (file) => {
         { id: 'CC', rate: 2, minutes: 9 },
         { id: 'EE', rate: 3, minutes: 11 },
     ], 26);
-    console.log(value);
-
-    return 1707;
+    return value;
 };
 
 const score = (set, credit) => {
