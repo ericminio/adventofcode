@@ -9,12 +9,7 @@ const init = (map) => {
     return candidates;
 };
 const solve1 = (file) => {
-    const map = parse(file);
-    const table = distances(map);
-    const candidates = init(map);
-    const sorted = sort(candidates, { id: 'AA', rate: 0 }, table, credit);
-
-    return score(sorted, credit);
+    return score(winner1(file), credit);
 };
 const winner1 = (file) => {
     const map = parse(file);
