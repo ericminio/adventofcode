@@ -121,20 +121,20 @@ describe.only('2022.16', () => {
                         choice.push(bests[0][0]);
                         choice.push(bests[1][1]);
                     }
-                    else if (bests[0][0].hint > bests[1][0].hint) {
+                    else {
                         choice.push(bests[0][1]);
                         choice.push(bests[1][0]);
                     }
-                    else {
-                        if (bests[0][1].hint > bests[1][1].hint) {
-                            choice.push(bests[0][1]);
-                            choice.push(bests[1][0]);
-                        }
-                        else {
-                            choice.push(bests[0][0]);
-                            choice.push(bests[1][1]);
-                        }
-                    }
+                    // else {
+                    //     if (bests[0][1].hint > bests[1][1].hint) {
+                    //         choice.push(bests[0][1]);
+                    //         choice.push(bests[1][0]);
+                    //     }
+                    //     else {
+                    //         choice.push(bests[0][0]);
+                    //         choice.push(bests[1][1]);
+                    //     }
+                    // }
                 }
                 else {
                     choice.push(bests[0][0]);
