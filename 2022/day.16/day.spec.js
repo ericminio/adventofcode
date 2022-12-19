@@ -110,8 +110,6 @@ describe.only('2022.16', () => {
                     choice.push(bests[0][0]);
                     choice.push(bests[1][0]);
                 }
-                // console.log(JSON.stringify(bests, null, 2));
-                // console.log(choice);
                 paths[0].push(choice[0]);
                 paths[1].push(choice[1]);
                 visited.push(choice[0].id);
