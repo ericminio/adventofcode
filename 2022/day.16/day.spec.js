@@ -76,7 +76,8 @@ describe.only('2022.16', () => {
                             .sort((n1, n2) => n2.hint - n1.hint)
                         [0]
                     };
-                })
+                });
+                console.log(bests);
                 starts.forEach((start, index) => {
                     let exploration = candidates
                         .filter(node => !visited.includes(node.id))
