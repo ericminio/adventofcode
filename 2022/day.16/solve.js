@@ -18,9 +18,9 @@ const winner1 = (file, credit) => {
 };
 
 const solve2 = (file) => {
-    return score(winner2(file), 26);
+    return score(winner2(file, 26), 26);
 };
-const winner2 = (file) => {
+const winner2 = (file, credit) => {
     return [
         { id: 'DD', rate: 20, minutes: 2 },
         { id: 'JJ', rate: 21, minutes: 3 },
