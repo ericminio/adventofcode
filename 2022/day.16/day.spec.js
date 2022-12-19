@@ -9,7 +9,7 @@ describe.only('2022.16', () => {
         describe('example', () => {
 
             it('has a winning path', () => {
-                expect(winner1(`${__dirname}/data/example.txt`)).to.deep.equal([
+                expect(winner1(`${__dirname}/data/example.txt`, 30)).to.deep.equal([
                     { id: 'DD', rate: 20, minutes: 2 },
                     { id: 'BB', rate: 13, minutes: 5 },
                     { id: 'JJ', rate: 21, minutes: 9 },
