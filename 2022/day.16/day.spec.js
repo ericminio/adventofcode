@@ -77,7 +77,7 @@ describe.only('2022.16', () => {
                             .slice(0, 2)
                     };
                 });
-                console.log(JSON.stringify(bests));
+                console.log(JSON.stringify(bests, null, 2));
 
                 [{ id: 'AA' }, { id: 'AA' }].forEach((start, index) => {
                     let exploration = candidates
