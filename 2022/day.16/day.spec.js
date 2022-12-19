@@ -147,6 +147,16 @@ describe.only('2022.16', () => {
                 visited.push(choice[0].id);
                 visited.push(choice[1].id);
             };
+
+            const time = (path, table) => {
+                let minutes = 0;
+                for (let i = 0; i < path.length - 1; i++) {
+                    let start = path[i];
+                    let end = path[i + 1];
+                    minutes += (table[entry(start, end)] + 1);
+                    path[i + 1].minutes = minutes;
+                }
+            };
         });
 
     });
