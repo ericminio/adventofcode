@@ -58,13 +58,12 @@ describe.only('2022.16', () => {
                 let candidates = init(map);
                 console.log(candidates);
 
-                let paths = { 0: [], 1: [] };
+                let paths = { 0: [{ id: 'AA' }], 1: [{ id: 'AA' }] };
                 let visited = [];
                 let starts = [
-                    { id: 'AA' },
-                    { id: 'AA' },
+                    paths[0][paths[0].length - 1],
+                    paths[1][paths[1].length - 1],
                 ];
-                let nextStarts = [];
                 starts.forEach((start, index) => {
                     let exploration = candidates
                         .filter(node => !visited.includes(node.id))
@@ -74,13 +73,11 @@ describe.only('2022.16', () => {
                         }))
                         .sort((n1, n2) => n2.hint - n1.hint);
                     let best = exploration[0];
-                    nextStarts.push(best);
                     paths[index].push(best.id);
                     visited.push(best.id);
                 });
                 console.log({ paths });
                 console.log({ visited });
-                starts = nextStarts;
 
                 candidates = [
                     { id: 'BB', rate: 13 },
