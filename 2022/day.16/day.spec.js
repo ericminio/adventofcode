@@ -86,17 +86,14 @@ describe.only('2022.16', () => {
                 ];
                 console.log({ starts })
                 let bests = starts.map((start, index) => {
-                    return {
-                        index,
-                        bests: candidates
-                            .filter(node => !visited.includes(node.id))
-                            .map(node => ({
-                                ...node,
-                                hint: (credit - table[entry(start, node)] - 1) * node.rate,
-                            }))
-                            .sort((n1, n2) => n2.hint - n1.hint)
-                            .slice(0, 2)
-                    };
+                    return candidates
+                        .filter(node => !visited.includes(node.id))
+                        .map(node => ({
+                            ...node,
+                            hint: (credit - table[entry(start, node)] - 1) * node.rate,
+                        }))
+                        .sort((n1, n2) => n2.hint - n1.hint)
+                        .slice(0, 2);
                 });
                 console.log(JSON.stringify(bests, null, 2));
 
