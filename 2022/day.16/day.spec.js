@@ -58,7 +58,7 @@ describe.only('2022.16', () => {
                 let candidates = init(map);
                 console.log(candidates);
 
-                let paths = { 0: [{ id: 'AA' }], 1: [{ id: 'AA' }] };
+                let paths = { 0: [{ id: 'AA', rate: 0 }], 1: [{ id: 'AA', rate: 0 }] };
                 let visited = [];
                 let starts = [
                     paths[0][paths[0].length - 1],
