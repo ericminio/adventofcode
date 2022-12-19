@@ -58,7 +58,7 @@ describe.only('2022.16', () => {
                 const candidates = init(map);
                 const exploration = candidates.map(node => ({
                     ...node,
-                    hint1: (credit - node.minutes - table[entry({ id: 'AA' }, node)] - 1) * node.rate,
+                    hint1: (credit - table[entry({ id: 'AA' }, node)] - 1) * node.rate,
                 }));
                 console.log(exploration);
             });
