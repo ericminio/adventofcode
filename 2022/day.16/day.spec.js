@@ -114,7 +114,7 @@ describe.only('2022.16', () => {
                 paths[1].push(choice[1]);
                 visited.push(choice[0].id);
                 visited.push(choice[1].id);
-                console.log({ paths });
+                console.log(JSON.stringify(paths, null, 2));
                 console.log({ visited });
 
                 candidates = [
