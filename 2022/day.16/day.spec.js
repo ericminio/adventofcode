@@ -79,6 +79,7 @@ describe.only('2022.16', () => {
                     visited.push(best.id);
                 });
                 console.log({ paths });
+                console.log({ visited });
                 starts = nextStarts;
 
                 candidates = [
