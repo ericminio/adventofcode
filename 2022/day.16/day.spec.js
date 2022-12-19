@@ -34,15 +34,16 @@ describe.only('2022.16', () => {
 
         describe('example', () => {
 
+            let path = [
+                { id: 'DD', rate: 20, minutes: 2 },
+                { id: 'JJ', rate: 21, minutes: 3 },
+                { id: 'BB', rate: 13, minutes: 7 },
+                { id: 'HH', rate: 22, minutes: 7 },
+                { id: 'CC', rate: 2, minutes: 9 },
+                { id: 'EE', rate: 3, minutes: 11 },
+            ];
             it('has a winning path', () => {
-                expect(winner2(`${__dirname}/data/example.txt`, 26)).to.deep.equal([
-                    { id: 'DD', rate: 20, minutes: 2 },
-                    { id: 'JJ', rate: 21, minutes: 3 },
-                    { id: 'BB', rate: 13, minutes: 7 },
-                    { id: 'HH', rate: 22, minutes: 7 },
-                    { id: 'CC', rate: 2, minutes: 9 },
-                    { id: 'EE', rate: 3, minutes: 11 },
-                ]);
+                expect(winner2(`${__dirname}/data/example.txt`, 26)).to.deep.equal(path);
             });
 
             it('is solved', () => {
@@ -50,14 +51,7 @@ describe.only('2022.16', () => {
             });
 
             it('is useful', () => {
-                let path = [
-                    { id: 'DD', rate: 20, minutes: 2 },
-                    { id: 'JJ', rate: 21, minutes: 3 },
-                    { id: 'BB', rate: 13, minutes: 7 },
-                    { id: 'HH', rate: 22, minutes: 7 },
-                    { id: 'CC', rate: 2, minutes: 9 },
-                    { id: 'EE', rate: 3, minutes: 11 },
-                ];
+
             });
         });
 
