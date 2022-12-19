@@ -62,12 +62,17 @@ describe.only('2022.16', () => {
                     { id: 'AA' },
                     { id: 'AA' },
                 ];
+                let path = [];
                 starts.forEach(start => {
-                    let exploration = candidates.map(node => ({
-                        ...node,
-                        hint: (credit - table[entry(start, node)] - 1) * node.rate,
-                    })).sort((n1, n2) => n2.hint - n1.hint);
-                    console.log(exploration[0]);
+                    let exploration = candidates
+                        .map(node => ({
+                            ...node,
+                            hint: (credit - table[entry(start, node)] - 1) * node.rate,
+                        }))
+                        .sort((n1, n2) => n2.hint - n1.hint);
+                    let best = exploration[0];
+                    path.push(best);
+                    console.log(best);
                 });
 
                 candidates = [
