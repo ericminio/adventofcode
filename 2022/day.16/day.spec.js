@@ -74,7 +74,7 @@ describe.only('2022.16', () => {
                         }))
                         .sort((n1, n2) => n2.hint - n1.hint);
                     let best = exploration[0];
-                    paths[index].push(best.id);
+                    paths[index].push(best);
                     visited.push(best.id);
                 });
                 console.log({ paths });
