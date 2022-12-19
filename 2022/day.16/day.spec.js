@@ -24,8 +24,11 @@ describe.only('2022.16', () => {
             });
         });
 
-        it('is solved', () => {
-            expect(solve1(`${__dirname}/data/input.txt`)).to.equal(2119);
+        describe('challenge', () => {
+
+            it('is solved', () => {
+                expect(solve1(`${__dirname}/data/input.txt`)).to.equal(2119);
+            });
         });
 
     });
