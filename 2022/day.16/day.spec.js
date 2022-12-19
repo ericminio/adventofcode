@@ -48,6 +48,17 @@ describe.only('2022.16', () => {
             it('is solved', () => {
                 expect(solve2(`${__dirname}/data/example.txt`)).to.equal(1707);
             });
+
+            it('is useful', () => {
+                let path = [
+                    { id: 'DD', rate: 20, minutes: 2 },
+                    { id: 'JJ', rate: 21, minutes: 3 },
+                    { id: 'BB', rate: 13, minutes: 7 },
+                    { id: 'HH', rate: 22, minutes: 7 },
+                    { id: 'CC', rate: 2, minutes: 9 },
+                    { id: 'EE', rate: 3, minutes: 11 },
+                ];
+            });
         });
 
     });
