@@ -80,6 +80,35 @@ describe.only('2022.16', () => {
                 // console.log({ paths });
                 // console.log({ visited });
 
+                run(paths, visited, candidates, table, credit);
+
+
+                candidates = [
+                    { id: 'BB', rate: 13 },
+                    { id: 'CC', rate: 2 },
+                    { id: 'EE', rate: 3 },
+                    { id: 'HH', rate: 22 },
+                ];
+                exploration = candidates.map(node => ({
+                    ...node,
+                    hint1: (credit - table[entry({ id: 'DD' }, node)] - 1) * node.rate,
+                    hint2: (credit - table[entry({ id: 'JJ' }, node)] - 1) * node.rate,
+                }));
+                console.log(exploration);
+
+                candidates = [
+                    { id: 'CC', rate: 2 },
+                    { id: 'EE', rate: 3 },
+                ];
+                exploration = candidates.map(node => ({
+                    ...node,
+                    hint1: (credit - table[entry({ id: 'HH' }, node)] - 1) * node.rate,
+                    hint2: (credit - table[entry({ id: 'EE' }, node)] - 1) * node.rate,
+                }));
+                console.log(exploration);
+            });
+
+            const run = (paths, visited, candidates, table, credit) => {
                 starts = [
                     paths[0][paths[0].length - 1],
                     paths[1][paths[1].length - 1],
@@ -116,31 +145,7 @@ describe.only('2022.16', () => {
                 visited.push(choice[1].id);
                 console.log(JSON.stringify(paths, null, 2));
                 console.log({ visited });
-
-                candidates = [
-                    { id: 'BB', rate: 13 },
-                    { id: 'CC', rate: 2 },
-                    { id: 'EE', rate: 3 },
-                    { id: 'HH', rate: 22 },
-                ];
-                exploration = candidates.map(node => ({
-                    ...node,
-                    hint1: (credit - table[entry({ id: 'DD' }, node)] - 1) * node.rate,
-                    hint2: (credit - table[entry({ id: 'JJ' }, node)] - 1) * node.rate,
-                }));
-                console.log(exploration);
-
-                candidates = [
-                    { id: 'CC', rate: 2 },
-                    { id: 'EE', rate: 3 },
-                ];
-                exploration = candidates.map(node => ({
-                    ...node,
-                    hint1: (credit - table[entry({ id: 'HH' }, node)] - 1) * node.rate,
-                    hint2: (credit - table[entry({ id: 'EE' }, node)] - 1) * node.rate,
-                }));
-                console.log(exploration);
-            });
+            };
         });
 
     });
