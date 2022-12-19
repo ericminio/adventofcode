@@ -51,7 +51,9 @@ describe.only('2022.16', () => {
             });
 
             it('is useful', () => {
-
+                const file = `${__dirname}/data/example.txt`;
+                const map = parse(file);
+                const table = distances(map);
             });
         });
 
