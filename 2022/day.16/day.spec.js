@@ -78,7 +78,8 @@ describe.only('2022.16', () => {
                     };
                 });
                 console.log(bests);
-                starts.forEach((start, index) => {
+
+                [{ id: 'AA' }, { id: 'AA' }].forEach((start, index) => {
                     let exploration = candidates
                         .filter(node => !visited.includes(node.id))
                         .map(node => ({
