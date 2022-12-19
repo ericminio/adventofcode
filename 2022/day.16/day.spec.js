@@ -57,7 +57,7 @@ describe.only('2022.16', () => {
                 const credit = 26;
                 const exploration = path.map(node => ({
                     ...node,
-                    hint: (credit - node.minutes - table[entry({ id: 'AA' }, node)] - 1) * node.rate,
+                    hint1: (credit - node.minutes - table[entry({ id: 'AA' }, node)] - 1) * node.rate,
                 }));
                 console.log(exploration);
             });
