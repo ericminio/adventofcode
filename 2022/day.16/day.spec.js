@@ -93,6 +93,7 @@ describe.only('2022.16', () => {
                             hint: (credit - table[entry(start, node)] - 1) * node.rate,
                         }))
                         .sort((n1, n2) => n2.hint - n1.hint)
+                        .map(node => ({ id: node.id, rate: node.rate }))
                         .slice(0, 2);
                 });
                 let choice = [];
