@@ -1,7 +1,6 @@
 const { gps } = require('../../lib/2d/gps');
 const { extractor, lines, add } = require('../support');
 
-const credit = 30;
 const init = (map) => {
     const candidates = Object.values(map)
         .filter(valve => valve.rate > 0)
