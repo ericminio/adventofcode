@@ -16,6 +16,12 @@ const solve1 = (file) => {
 
     return score(sorted, credit);
 };
+const winner1 = (file) => {
+    const map = parse(file);
+    const table = distances(map);
+    const candidates = init(map);
+    return sort(candidates, { id: 'AA', rate: 0 }, table, credit);
+};
 
 const solve2 = (file) => {
     const map = parse(file);
@@ -120,4 +126,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { solve1, solve2, parse, timeSpent, weight, distances };
+module.exports = { winner1, solve1, solve2, parse, timeSpent, weight, distances };
