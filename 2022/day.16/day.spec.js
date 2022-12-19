@@ -55,9 +55,9 @@ describe.only('2022.16', () => {
                 const map = parse(file);
                 const table = distances(map);
                 const credit = 26;
-                const exploration = path.map(entry => ({
-                    ...entry,
-                    hint: 15,
+                const exploration = path.map(node => ({
+                    ...node,
+                    hint: table[entry({ id: 'AA' }, node)],
                 }));
                 console.log(exploration);
             });
