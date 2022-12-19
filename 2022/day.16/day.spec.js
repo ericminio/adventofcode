@@ -79,20 +79,6 @@ describe.only('2022.16', () => {
                 console.log({ path });
                 starts = nextStarts;
 
-                starts.forEach(start => {
-                    let exploration = candidates
-                        .filter(node => !path.includes(node.id))
-                        .map(node => ({
-                            ...node,
-                            hint: (credit - table[entry(start, node)] - 1) * node.rate,
-                        }))
-                        .sort((n1, n2) => n2.hint - n1.hint);
-                    let best = exploration[0];
-                    nextStarts.push(best);
-                    path.push(best.id);
-                });
-                console.log({ path });
-
                 candidates = [
                     { id: 'BB', rate: 13 },
                     { id: 'CC', rate: 2 },
