@@ -81,6 +81,7 @@ describe.only('2022.16', () => {
                 // console.log({ visited });
 
                 run(paths, visited, candidates, table, credit);
+                run(paths, visited, candidates, table, credit);
 
 
                 candidates = [
