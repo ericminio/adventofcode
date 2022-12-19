@@ -58,11 +58,12 @@ describe.only('2022.16', () => {
                 let candidates = init(map);
                 console.log(candidates);
 
+                let path = [];
                 let starts = [
                     { id: 'AA' },
                     { id: 'AA' },
                 ];
-                let path = [];
+                let nextStarts = [];
                 starts.forEach(start => {
                     let exploration = candidates
                         .filter(node => !path.includes(node.id))
@@ -72,6 +73,7 @@ describe.only('2022.16', () => {
                         }))
                         .sort((n1, n2) => n2.hint - n1.hint);
                     let best = exploration[0];
+                    nextStarts.push(best);
                     path.push(best.id);
                 });
                 console.log({ path });
