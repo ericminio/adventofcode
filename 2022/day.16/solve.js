@@ -109,4 +109,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances };
+module.exports = { winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances, entry };
