@@ -121,12 +121,12 @@ describe.only('2022.16', () => {
                     let candidates = init(map).filter(c => !visited(paths).includes(c.id));
                     if (candidates.length == 0) { return }
 
-                    console.log({ lasts: [last(paths[0]), last(paths[1])] })
+                    // console.log({ lasts: [last(paths[0]), last(paths[1])] })
                     let nexts = [];
                     nexts.push(pickNext(minutes, last(paths[0]), candidates, table, credit));
                     nexts.push(pickNext(minutes, last(paths[1]), candidates, table, credit));
                     if (nexts[0].id === nexts[1].id) {
-                        console.log({ nexts });
+                        // console.log({ nexts });
                         if (nexts[0].score > nexts[1].score) {
                             paths[0].push(nexts[0]);
                             pushNext(minutes, paths[1], table, credit);
