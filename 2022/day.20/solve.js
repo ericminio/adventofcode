@@ -2,7 +2,7 @@ const { add, lines } = require('../support');
 
 const solve1 = (file) => {
     let incoming = lines(file).map(line => parseInt(line));
-    console.log(incoming)
+
 
     let values = [1, 2, -3, 4, 0, 3, -2];
 
