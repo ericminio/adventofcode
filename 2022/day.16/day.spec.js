@@ -80,7 +80,7 @@ describe.only('2022.16', () => {
                 // console.log(exploration);
             });
 
-            it.only('can help to crack the code', () => {
+            it('can help to crack the code', () => {
                 const file = `${__dirname}/data/example.txt`;
                 const map = parse(file);
                 const table = distances(map);
