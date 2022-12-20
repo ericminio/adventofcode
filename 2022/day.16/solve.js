@@ -33,6 +33,7 @@ const solve2 = (file) => {
     for (count = 0; count < size; count++) {
         run(paths, visited, candidates, table, credit);
     }
+    console.log(visited);
 
     time(paths[0], table);
     time(paths[1], table);
