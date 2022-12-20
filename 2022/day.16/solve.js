@@ -18,7 +18,27 @@ const winner1 = (file, credit) => {
 };
 
 const solve2 = (file) => {
-    return score(winner2(file, 26), 26);
+    const map = parse(file);
+    const table = distances(map);
+    const credit = 26;
+    let candidates = init(map);
+
+    let paths = {
+        0: [{ id: 'AA', rate: 0, minutes: 0 }],
+        1: [{ id: 'AA', rate: 0, minutes: 0 }]
+    };
+    let visited = [];
+
+    let size = Math.floor(candidates.length / 2);
+    for (count = 0; count < size; count++) {
+        run(paths, visited, candidates, table, credit);
+    }
+
+    time(paths[0], table);
+    time(paths[1], table);
+
+    let total = score(paths[0], credit) + score(paths[1], credit);
+    return total;
 };
 const winner2 = (file, credit) => {
     return [
