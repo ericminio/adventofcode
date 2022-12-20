@@ -7,6 +7,6 @@ const solve1 = (file) => {
     return [nthAfter(1000, values, zero), -3, 2].reduce(add);
 };
 
-const nthAfter = (n, values, start) => 4;
+const nthAfter = (n, values, start) => values[(n + start) % values.length];
 
 module.exports = { solve1 };
