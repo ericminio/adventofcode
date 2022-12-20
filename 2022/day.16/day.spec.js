@@ -134,16 +134,16 @@ describe.only('2022.16', () => {
 
                 };
                 const run = (minutes, paths, table, credit) => {
-                    if (last(paths[0]).minutes == minutes && last(paths[0]).minutes == minutes) {
-                        pushNexts(minutes, paths, table, credit);
-                    }
-                    else {
-                        paths.forEach(path => {
-                            if (last(path).minutes == minutes) {
-                                pushNext(minutes, path, table, credit);
-                            }
-                        });
-                    }
+                    // if (last(paths[0]).minutes == minutes && last(paths[0]).minutes == minutes) {
+                    //     pushNexts(minutes, paths, table, credit);
+                    // }
+                    // else {
+                    paths.forEach(path => {
+                        if (last(path).minutes == minutes) {
+                            pushNext(minutes, path, table, credit);
+                        }
+                    });
+                    // }
                 };
                 let minutes = 0;
                 let start = { id: 'AA', rate: 0, minutes };
