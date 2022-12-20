@@ -101,6 +101,7 @@ describe.only('2022.16', () => {
                 time(paths[1], table);
 
                 let total = score(paths[0], credit) + score(paths[1], credit);
+
                 expect(1707).to.equal(1707);
             });
 
