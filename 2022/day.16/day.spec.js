@@ -97,7 +97,7 @@ describe.only('2022.16', () => {
                 const nodeScore = (start, node, table, credit) => {
                     return (credit - table[entry(start, node)] - 1) * node.rate;
                 };
-                const pickNext = (start, candidates, table, credit) => {
+                const pickNext = (minutes, start, candidates, table, credit) => {
                     let next = candidates
                         .map(node => ({
                             ...node,
@@ -108,39 +108,39 @@ describe.only('2022.16', () => {
                     next.minutes = minutes + table[entry(start, next)] + 1;
                     return next;
                 };
-                const pushNext = (path, table, credit) => {
+                const pushNext = (minutes, path, table, credit) => {
                     let candidates = init(map).filter(c => !visited(paths).includes(c.id));
                     if (candidates.length == 0) { return }
 
                     start = last(path);
-                    let next = pickNext(start, candidates, table, credit);
+                    let next = pickNext(minutes, start, candidates, table, credit);
                     path.push(next);
                 };
-                const pushNexts = (paths, table, credit) => {
+                const pushNexts = (minutes, paths, table, credit) => {
                     let candidates = init(map).filter(c => !visited(paths).includes(c.id));
                     if (candidates.length == 0) { return }
 
                     let nexts = [];
-                    nexts.push(pickNext(last(paths[0]), candidates, table, credit));
-                    nexts.push(pickNext(last(paths[1]), candidates, table, credit));
+                    nexts.push(pickNext(minutes, last(paths[0]), candidates, table, credit));
+                    nexts.push(pickNext(minutes, last(paths[1]), candidates, table, credit));
                     if (nexts[0].score > nexts[1].score) {
                         paths[0].push(nexts[0]);
-                        pushNext(paths[1], table, credit);
+                        pushNext(minutes, paths[1], table, credit);
                     }
                     else {
                         paths[1].push(nexts[1]);
-                        pushNext(paths[0], table, credit);
+                        pushNext(minutes, paths[0], table, credit);
                     }
 
                 };
                 const run = (minutes, paths, table, credit) => {
                     if (last(paths[0]).minutes == minutes && last(paths[0]).minutes == minutes) {
-                        pushNexts(paths, table, credit);
+                        pushNexts(minutes, paths, table, credit);
                     }
                     else {
                         paths.forEach(path => {
                             if (last(path).minutes == minutes) {
-                                pushNext(path, table, credit);
+                                pushNext(minutes, path, table, credit);
                             }
                         });
                     }
