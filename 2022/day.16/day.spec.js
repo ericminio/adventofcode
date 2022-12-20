@@ -115,20 +115,17 @@ describe.only('2022.16', () => {
                 };
                 let minutes = 0;
                 let start = { id: 'AA', rate: 0, minutes };
-                let paths = {
-                    0: [start],
-                    1: [start]
-                };
-                let path;
+                let paths = [
+                    [start],
+                    [start],
+                ];
 
-                path = paths[0];
-                if (last(path).minutes == minutes) {
-                    pushNext(path, table, credit);
-                }
-                path = paths[1];
-                if (last(path).minutes == minutes) {
-                    pushNext(path, table, credit);
-                }
+                paths.forEach(path => {
+                    if (last(path).minutes == minutes) {
+                        pushNext(path, table, credit);
+                    }
+                });
+
                 console.log(JSON.stringify(paths, null, 2))
 
                 expect(1707).to.equal(1707);
