@@ -133,7 +133,9 @@ describe.only('2022.16', () => {
                     minutes++;
                 }
 
-                console.log(JSON.stringify(paths, null, 2))
+                console.log(JSON.stringify(paths, null, 2));
+                let total = score(paths[0], credit) + score(paths[1], credit);
+                console.log(total);
 
                 expect(1707).to.equal(1707);
             });
