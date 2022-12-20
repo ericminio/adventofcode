@@ -4,7 +4,7 @@ const solve1 = (file) => {
     values = [1, 2, -3, 4, 0, 3, -2];
 
     let zero = values.indexOf(0);
-    return [nthAfter(1000, values, zero), -3, 2].reduce(add);
+    return [1000, 2000, 3000].map(n => nthAfter(n, values, zero)).reduce(add);
 };
 
 const nthAfter = (n, values, start) => values[(n + start) % values.length];
