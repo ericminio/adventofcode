@@ -3,7 +3,7 @@ const { gps } = require('../../lib/2d/gps.js');
 const { add } = require('../support/index.js');
 const { score, time, run, init, winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances, entry } = require('./solve');
 
-describe.only('2022.16', () => {
+describe('2022.16', () => {
 
     describe('part 1', () => {
 
