@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { gps } = require('../../lib/2d/gps.js');
-const { init, winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances, entry } = require('./solve');
+const { score, init, winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances, entry } = require('./solve');
 
 describe.only('2022.16', () => {
 
@@ -107,8 +107,7 @@ describe.only('2022.16', () => {
                 time(paths[1], table);
                 expect(paths[1].map(p => p.minutes)).to.deep.equal([0, 3, 7, 9]);
 
-                let actual = paths[0].concat(paths[1]).sort((a, b) => a.minutes - b.minutes);
-                console.log(actual);
+                console.log(score(paths[0], credit) + score(paths[1], credit));
             });
 
             const run = (paths, visited, candidates, table, credit) => {
