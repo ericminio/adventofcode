@@ -84,18 +84,47 @@ describe.only('2022.16', () => {
                 const map = parse(file);
                 const table = distances(map);
                 const credit = 26;
-                let candidates = init(map);
 
-                let paths = {
-                    0: [{ id: 'AA', rate: 0, minutes: 0 }],
-                    1: [{ id: 'AA', rate: 0, minutes: 0 }]
-                };
                 const visited = (paths) => {
                     const union = []
                     paths[0].forEach(node => { if (!union.includes(node.id)) { union.push(node.id) } });
                     paths[1].forEach(node => { if (!union.includes(node.id)) { union.push(node.id) } });
                     return union;
                 };
+                const last = (path) => {
+                    return path[path.length - 1];
+                };
+                const nodeScore = (start, node, table, credit) => {
+                    return (credit - table[entry(start, node)] - 1) * node.rate;
+                };
+                const pickNext = (start, candidates, table, credit) => {
+                    return candidates
+                        .map(node => ({
+                            ...node,
+                            score: nodeScore(start, node, table, credit),
+                        }))
+                        .sort((n1, n2) => n2.score - n1.score)
+                    [0];
+                };
+                const pushNext = (path, table, credit) => {
+                    start = last(path);
+                    let candidates = init(map).filter(c => !visited(paths).includes(c.id))
+                    let next = pickNext(start, candidates, table, credit);
+                    next.minutes = minutes + table[entry(start, next)] + 1;
+                    path.push(next);
+                };
+                let minutes = 0;
+                let start = { id: 'AA', rate: 0, minutes };
+                let paths = {
+                    0: [start],
+                    1: [start]
+                };
+                let path;
+
+                path = paths[0];
+                if (last(path).minutes == minutes) {
+                    pushNext(path, table, credit);
+                }
 
                 expect(1707).to.equal(1707);
             });
