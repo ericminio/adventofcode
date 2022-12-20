@@ -101,12 +101,8 @@ describe.only('2022.16', () => {
                     run(paths, visited, candidates, table, credit);
                 }
 
-                expect(paths[0].map(p => p.id)).to.deep.equal(['AA', 'DD', 'HH', 'EE']);
-                expect(paths[1].map(p => p.id)).to.deep.equal(['AA', 'JJ', 'BB', 'CC']);
                 time(paths[0], table);
-                expect(paths[0].map(p => p.minutes)).to.deep.equal([0, 2, 7, 11]);
                 time(paths[1], table);
-                expect(paths[1].map(p => p.minutes)).to.deep.equal([0, 3, 7, 9]);
 
                 let total = score(paths[0], credit) + score(paths[1], credit);
                 expect(total).to.equal(1707);
