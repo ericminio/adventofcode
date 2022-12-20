@@ -186,12 +186,12 @@ describe.only('2022.16', () => {
                     minutes++;
                 }
 
-                console.log(JSON.stringify(paths, null, 2));
+                // console.log(JSON.stringify(paths, null, 2));
                 let total = paths[0].filter(p => p.score > 0).map(p => p.score).reduce(add) +
                     paths[1].filter(p => p.score > 0).map(p => p.score).reduce(add)
-                console.log(total);
+                // console.log(total);
 
-                expect(1707).to.equal(1707);
+                expect(total).to.equal(1707);
             });
 
             it('is solved', () => {
