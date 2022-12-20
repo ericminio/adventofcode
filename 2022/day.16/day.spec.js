@@ -186,7 +186,6 @@ describe.only('2022.16', () => {
                 }
 
                 console.log(JSON.stringify(paths, null, 2));
-                console.log(paths[0].map(p => p.score))
                 let total = paths[0].map(p => p.score).reduce(add)
                     + paths[1].map(p => p.score).reduce(add)
                 console.log(total);
