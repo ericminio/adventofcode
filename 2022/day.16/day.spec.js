@@ -128,7 +128,7 @@ describe.only('2022.16', () => {
                     [start],
                 ];
 
-                while (minutes < 5) {
+                while (minutes < 30) {
                     run(minutes, paths, table, credit);
                     minutes++;
                 }
