@@ -30,6 +30,52 @@ const winner2 = (file, credit) => {
         { id: 'EE', rate: 3, minutes: 11 },
     ]
 };
+const run = (paths, visited, candidates, table, credit) => {
+    starts = [
+        paths[0][paths[0].length - 1],
+        paths[1][paths[1].length - 1],
+    ];
+
+    let bests = starts.map((start, index) => {
+        return candidates
+            .filter(node => !visited.includes(node.id))
+            .map(node => ({
+                ...node,
+                hint: (credit - table[entry(start, node)] - 1) * node.rate,
+            }))
+            .sort((n1, n2) => n2.hint - n1.hint)
+            .slice(0, 2);
+    });
+    let choice = [];
+    if (bests[0][0].id == bests[1][0].id) {
+        if (bests[0][0].hint > bests[1][0].hint) {
+            choice.push(bests[0][0]);
+            choice.push(bests[1][1]);
+        }
+        else if (bests[0][0].hint < bests[1][0].hint) {
+            choice.push(bests[0][1]);
+            choice.push(bests[1][0]);
+        }
+        else {
+            if (bests[0][1].hint < bests[1][1].hint) {
+                choice.push(bests[0][0]);
+                choice.push(bests[1][1]);
+            }
+            else {
+                choice.push(bests[0][1]);
+                choice.push(bests[1][0]);
+            }
+        }
+    }
+    else {
+        choice.push(bests[0][0]);
+        choice.push(bests[1][0]);
+    }
+    paths[0].push({ id: choice[0].id, rate: choice[0].rate });
+    paths[1].push({ id: choice[1].id, rate: choice[1].rate });
+    visited.push(choice[0].id);
+    visited.push(choice[1].id);
+};
 
 const score = (set, credit) => {
     return set
@@ -109,4 +155,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { score, init, winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances, entry };
+module.exports = { score, run, init, winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances, entry };
