@@ -113,6 +113,13 @@ describe.only('2022.16', () => {
                     next.minutes = minutes + table[entry(start, next)] + 1;
                     path.push(next);
                 };
+                const run = (minutes, paths, table, credit) => {
+                    paths.forEach(path => {
+                        if (last(path).minutes == minutes) {
+                            pushNext(path, table, credit);
+                        }
+                    });
+                };
                 let minutes = 0;
                 let start = { id: 'AA', rate: 0, minutes };
                 let paths = [
@@ -120,11 +127,7 @@ describe.only('2022.16', () => {
                     [start],
                 ];
 
-                paths.forEach(path => {
-                    if (last(path).minutes == minutes) {
-                        pushNext(path, table, credit);
-                    }
-                });
+                run(minutes, paths, table, credit);
 
                 console.log(JSON.stringify(paths, null, 2))
 
