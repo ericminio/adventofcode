@@ -125,6 +125,11 @@ describe.only('2022.16', () => {
                 if (last(path).minutes == minutes) {
                     pushNext(path, table, credit);
                 }
+                path = paths[1];
+                if (last(path).minutes == minutes) {
+                    pushNext(path, table, credit);
+                }
+                console.log(JSON.stringify(paths, null, 2))
 
                 expect(1707).to.equal(1707);
             });
