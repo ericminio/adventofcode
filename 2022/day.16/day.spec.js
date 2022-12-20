@@ -145,7 +145,7 @@ describe.only('2022.16', () => {
                             let nexts2 = [];
                             nexts2.push(pickNext(minutes, last(paths[0]), candidates, table, credit));
                             nexts2.push(pickNext(minutes, last(paths[1]), candidates, table, credit));
-                            console.log({ nexts2 });
+                            // console.log({ nexts2 });
                             if (nexts2[1].score > nexts2[0].score) {
                                 paths[0].push(nexts[0]);
                                 paths[1].push(nexts2[1]);
