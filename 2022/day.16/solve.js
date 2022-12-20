@@ -77,6 +77,16 @@ const run = (paths, visited, candidates, table, credit) => {
     visited.push(choice[1].id);
 };
 
+const time = (path, table) => {
+    let minutes = 0;
+    for (let i = 0; i < path.length - 1; i++) {
+        let start = path[i];
+        let end = path[i + 1];
+        minutes += (table[entry(start, end)] + 1);
+        path[i + 1].minutes = minutes;
+    }
+};
+
 const score = (set, credit) => {
     return set
         .map(valve =>
@@ -155,4 +165,4 @@ const digest = (lines) => {
     return valves;
 }
 
-module.exports = { score, run, init, winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances, entry };
+module.exports = { score, time, run, init, winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances, entry };
