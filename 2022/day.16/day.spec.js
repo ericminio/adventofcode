@@ -120,6 +120,7 @@ describe.only('2022.16', () => {
                     let candidates = init(map).filter(c => !visited(paths).includes(c.id));
                     if (candidates.length == 0) { return }
 
+                    console.log({ lasts: [last(paths[0]), last(paths[1])] })
                     let nexts = [];
                     nexts.push(pickNext(minutes, last(paths[0]), candidates, table, credit));
                     nexts.push(pickNext(minutes, last(paths[1]), candidates, table, credit));
