@@ -186,8 +186,8 @@ describe.only('2022.16', () => {
                 }
 
                 console.log(JSON.stringify(paths, null, 2));
-                let total = paths[0].map(p => p.score).reduce(add)
-                    + paths[1].map(p => p.score).reduce(add)
+                let total = paths[0].filter(p => p.score > 0).map(p => p.score).reduce(add) +
+                    paths[1].filter(p => p.score > 0).map(p => p.score).reduce(add)
                 console.log(total);
 
                 expect(1707).to.equal(1707);
