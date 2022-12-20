@@ -93,6 +93,8 @@ describe.only('2022.16', () => {
                 const visited = (paths) => {
                     const union = []
                     paths[0].forEach(node => { if (!union.includes(node.id)) { union.push(node.id) } });
+                    paths[1].forEach(node => { if (!union.includes(node.id)) { union.push(node.id) } });
+                    return union;
                 };
 
                 expect(1707).to.equal(1707);
