@@ -94,14 +94,14 @@ describe.only('2022.16', () => {
                 const last = (path) => {
                     return path[path.length - 1];
                 };
-                const nodeScore = (start, node, table, credit) => {
-                    return (credit - table[entry(start, node)] - 1) * node.rate;
+                const nodeScore = (start, node, table, credit, minutes) => {
+                    return (credit - minutes - table[entry(start, node)] - 1) * node.rate;
                 };
                 const pickNext = (minutes, start, candidates, table, credit) => {
                     let next = candidates
                         .map(node => ({
                             ...node,
-                            score: nodeScore(start, node, table, credit),
+                            score: nodeScore(start, node, table, credit, minutes),
                         }))
                         .sort((n1, n2) => n2.score - n1.score)
                     [0];
