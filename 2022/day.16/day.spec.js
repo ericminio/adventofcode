@@ -90,17 +90,10 @@ describe.only('2022.16', () => {
                     0: [{ id: 'AA', rate: 0, minutes: 0 }],
                     1: [{ id: 'AA', rate: 0, minutes: 0 }]
                 };
-                let visited = [];
-
-                let size = Math.floor(candidates.length / 2);
-                for (count = 0; count < size; count++) {
-                    run(paths, visited, candidates, table, credit);
-                }
-
-                time(paths[0], table);
-                time(paths[1], table);
-
-                let total = score(paths[0], credit) + score(paths[1], credit);
+                const visited = (paths) => {
+                    const union = []
+                    paths[0].forEach(node => { if (!union.includes(node.id)) { union.push(node.id) } });
+                };
 
                 expect(1707).to.equal(1707);
             });
