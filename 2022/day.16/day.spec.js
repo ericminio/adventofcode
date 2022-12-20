@@ -135,8 +135,28 @@ describe.only('2022.16', () => {
                             pushNext(minutes, paths[0], table, credit);
                         }
                         if (nexts[1].score == nexts[0].score) {
-
+                            candidates = init(map)
+                                .filter(c => !visited(paths).includes(c.id) && c.id !== nexts[0].id);
+                            if (candidates.length == 0) {
+                                paths[0].push(nexts[0]);
+                                return;
+                            }
+                            let nexts2 = [];
+                            nexts2.push(pickNext(minutes, last(paths[0]), candidates, table, credit));
+                            nexts2.push(pickNext(minutes, last(paths[1]), candidates, table, credit));
+                            if (nexts2[1].score > nexts2[0].score) {
+                                paths[0].push(nexts[0]);
+                                paths[1].push(nexts2[1]);
+                            }
+                            else {
+                                paths[0].push(nexts2[0]);
+                                paths[1].push(nexts[1]);
+                            }
                         }
+                    }
+                    else {
+                        paths[0].push(nexts[0]);
+                        paths[1].push(nexts[1]);
                     }
 
                 };
