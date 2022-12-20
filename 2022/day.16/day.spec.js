@@ -107,8 +107,9 @@ describe.only('2022.16', () => {
                     [0];
                 };
                 const pushNext = (path, table, credit) => {
+                    let candidates = init(map).filter(c => !visited(paths).includes(c.id));
+                    if (candidates.length == 0) { return }
                     start = last(path);
-                    let candidates = init(map).filter(c => !visited(paths).includes(c.id))
                     let next = pickNext(start, candidates, table, credit);
                     next.minutes = minutes + table[entry(start, next)] + 1;
                     path.push(next);
