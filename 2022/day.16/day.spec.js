@@ -174,7 +174,7 @@ describe.only('2022.16', () => {
                     }
                 };
                 let minutes = 0;
-                let start = { id: 'AA', rate: 0, minutes };
+                let start = { id: 'AA', rate: 0, score: 0, minutes };
                 let paths = [
                     [start],
                     [start],
