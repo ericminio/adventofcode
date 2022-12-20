@@ -107,7 +107,8 @@ describe.only('2022.16', () => {
                 time(paths[1], table);
                 expect(paths[1].map(p => p.minutes)).to.deep.equal([0, 3, 7, 9]);
 
-                console.log(score(paths[0], credit) + score(paths[1], credit));
+                let total = score(paths[0], credit) + score(paths[1], credit);
+                expect(total).to.equal(1707);
             });
 
             const run = (paths, visited, candidates, table, credit) => {
