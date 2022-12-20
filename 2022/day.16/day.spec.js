@@ -127,7 +127,10 @@ describe.only('2022.16', () => {
                     [start],
                 ];
 
-                run(minutes, paths, table, credit);
+                while (minutes < 3) {
+                    run(minutes, paths, table, credit);
+                    minutes++;
+                }
 
                 console.log(JSON.stringify(paths, null, 2))
 
