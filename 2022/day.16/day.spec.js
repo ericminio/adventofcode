@@ -96,6 +96,8 @@ describe.only('2022.16', () => {
                 };
                 let visited = [];
 
+                let size = Math.floor((Object.keys(map).length - 1) / 2);
+                console.log(size);
                 run(paths, visited, candidates, table, credit);
                 run(paths, visited, candidates, table, credit);
                 run(paths, visited, candidates, table, credit);
