@@ -46,10 +46,6 @@ describe.only('2022.16', () => {
                 expect(winner2(`${__dirname}/data/example.txt`, 26)).to.deep.equal(path);
             });
 
-            it('is solved', () => {
-                expect(solve2(`${__dirname}/data/example.txt`)).to.equal(1707);
-            });
-
             it('can help to understand the sort strategy', () => {
                 const file = `${__dirname}/data/example.txt`;
                 const map = parse(file);
@@ -108,8 +104,9 @@ describe.only('2022.16', () => {
                 expect(total).to.equal(1707);
             });
 
-
-
+            it('is solved', () => {
+                expect(solve2(`${__dirname}/data/example.txt`)).to.equal(1707);
+            });
 
         });
 
