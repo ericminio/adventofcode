@@ -13,7 +13,7 @@ const solve1 = (file) => {
         { index: 5, value: 4 },
         { index: 6, value: -2 },
     ]
-    let oldIndex = input.filter(item => item.value === 4).index;
+    let oldIndex = input.find(item => item.value === 4).index;
     let newIndex = (oldIndex + 4) % input.length;
     console.log(oldIndex, newIndex);
 
