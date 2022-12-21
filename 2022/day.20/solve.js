@@ -7,7 +7,7 @@ const solve1 = (file) => {
     let oldIndex = input.indexOf(4);
     let newIndex = (oldIndex + 4 + 1) % input.length;
     console.log(oldIndex, newIndex);
-    input = input.splice(oldIndex, 1);
+    input.splice(oldIndex, 1);
     console.log(input);
     input.splice(newIndex, 0, 4)
 
