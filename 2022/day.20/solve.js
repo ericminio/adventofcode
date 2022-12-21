@@ -12,7 +12,7 @@ const solve1 = (file) => {
     input.splice(newIndex, 0, 4);
     console.log(input);
 
-    let output = [1, 2, -3, 4, 0, 3, -2];
+    let output = input;
 
     let zero = output.indexOf(0);
     return [1000, 2000, 3000].map(n => nthAfter(n, output, zero)).reduce(add);
