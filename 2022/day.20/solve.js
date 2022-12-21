@@ -4,13 +4,11 @@ const solve1 = (file) => {
     let incoming = lines(file).map(line => parseInt(line));
 
     let input = [1, 2, -3, 0, 3, 4, -2];
+
     let oldIndex = input.indexOf(4);
     let newIndex = (oldIndex + 4 + 1) % input.length;
-    console.log(oldIndex, newIndex);
     input.splice(oldIndex, 1);
-    console.log(input);
     input.splice(newIndex, 0, 4);
-    console.log(input);
 
     let output = input;
 
