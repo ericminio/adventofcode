@@ -6,6 +6,7 @@ const solve1 = (file) => {
     let input = [1, 2, -3, 0, 3, 4, -2];
     let oldIndex = input.indexOf(4);
     let newIndex = (oldIndex + 4) % input.length;
+    console.log(oldIndex, newIndex);
 
     let output = [1, 2, -3, 4, 0, 3, -2];
 
