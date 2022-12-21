@@ -2,9 +2,9 @@ const { add, lines } = require('../support');
 
 const solve1 = (file) => {
     let incoming = lines(file).map(line => parseInt(line));
+    let input;
 
-    let input = [1, 2, -3, 0, 3, 4, -2];
-
+    input = [1, 2, -3, 0, 3, 4, -2];
     let value = 4;
     transform(input, value);
 
