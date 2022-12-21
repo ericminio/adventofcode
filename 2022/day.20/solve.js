@@ -9,7 +9,8 @@ const solve1 = (file) => {
     console.log(oldIndex, newIndex);
     input.splice(oldIndex, 1);
     console.log(input);
-    input.splice(newIndex, 0, 4)
+    input.splice(newIndex, 0, 4);
+    console.log(input);
 
     let output = [1, 2, -3, 4, 0, 3, -2];
 
