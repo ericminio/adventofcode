@@ -5,10 +5,11 @@ const solve1 = (file) => {
 
     let input = [1, 2, -3, 0, 3, 4, -2];
 
-    let oldIndex = input.indexOf(4);
-    let newIndex = (oldIndex + 4 + 1) % input.length;
+    let value = 4;
+    let oldIndex = input.indexOf(value);
+    let newIndex = (oldIndex + value + 1) % input.length;
     input.splice(oldIndex, 1);
-    input.splice(newIndex, 0, 4);
+    input.splice(newIndex, 0, value);
 
     let output = input;
 
