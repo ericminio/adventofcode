@@ -3,9 +3,10 @@ const { add, lines } = require('../support');
 const solve1 = (file) => {
     let incoming = lines(file).map(line => parseInt(line));
     let input;
+    let value;
 
     input = [1, 2, -3, 0, 3, 4, -2];
-    let value = 4;
+    value = 4;
     transform(input, value);
 
     let zero = input.indexOf(0);
