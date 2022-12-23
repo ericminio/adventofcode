@@ -12,17 +12,21 @@ const nth = (n, values) => {
     let index = values.indexOf(0);
 
     return values[(index + n) % values.length]
-}
-
-const solve1 = (file) => {
+};
+const decrypt = (file) => {
     let input = lines(file).map(line => parseInt(line));
-    let values = input.slice();
+    let message = input.slice();
 
     for (let i = 0; i < input.length; i++) {
-        values = move(input[i], values);
+        message = move(input[i], message);
     }
+    return message;
+};
 
-    return [1000, 2000, 3000].map(n => nth(n, values)).reduce(add);
+const solve1 = (file) => {
+    let message = decrypt(file);
+
+    return [1000, 2000, 3000].map(n => nth(n, message)).reduce(add);
 };
 
 const solve2 = (file) => {
