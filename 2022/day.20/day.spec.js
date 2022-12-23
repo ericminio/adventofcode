@@ -156,6 +156,14 @@ describe.only('2022.??', () => {
 
                 expect(inverted).to.deep.equal([1, 3, 2, 4, 5]);
             });
+
+            it('can mean push left', () => {
+                let incoming = [1, 2, 3, 4, 5];
+                let list = buildFrom(incoming);
+                let inverted = asArray(pushLeft(list, 4))
+
+                expect(inverted).to.deep.equal([1, 2, 4, 3, 5]);
+            });
         });
 
         it('can solve part 1 example', () => {
@@ -182,8 +190,8 @@ describe.only('2022.??', () => {
             console.log('message', asArray(list));
         });
 
-        const pushRight = (list, valueA) => {
-            let a = list[nodeKey(valueA)];
+        const pushRight = (list, value) => {
+            let a = list[nodeKey(value)];
             let b = list[a.next];
             let around = {
                 previous: list[a.key].previous,
@@ -197,7 +205,24 @@ describe.only('2022.??', () => {
             list[around.next].previous = a.key;
 
             return list;
-        }
+        };
+
+        const pushLeft = (list, value) => {
+            let b = list[nodeKey(value)];
+            let a = list[b.previous];
+            let around = {
+                previous: list[a.key].previous,
+                next: list[b.key].next,
+            };
+            b.next = a.key;
+            a.previous = b.key;
+            b.previous = around.previous;
+            a.next = around.next;
+            list[around.previous].next = b.key;
+            list[around.next].previous = a.key;
+
+            return list;
+        };
 
         const asArray = (list) => {
             let size = Object.values(list).length - 2;
