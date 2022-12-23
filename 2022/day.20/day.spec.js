@@ -40,8 +40,8 @@ describe.only('2022.20', () => {
         describe('move', () => {
 
             it('moves values to the right when positive', () => {
-                expect(move(4, [1, 2, -3, 0, 3, 4, -2]))
-                    .to.deep.equal([1, 2, -3, 4, 0, 3, -2]);
+                expect(move(4, [1, 2, -3, 0, 3, 4, -2])).
+                    to.deep.equal([1, 2, -3, 4, 0, 3, -2]);
             });
         });
     });
