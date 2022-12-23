@@ -1,6 +1,7 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
 const { move } = require('./solve');
+const { add, lines } = require('../support');
 
 describe.only('2022.??', () => {
 
@@ -155,6 +156,13 @@ describe.only('2022.??', () => {
 
                 expect(inverted).to.deep.equal([1, 3, 2, 4, 5]);
             });
+        });
+
+        it('can solve part 1 example', () => {
+            let input = lines(`${__dirname}/data/example.txt`).map(line => parseInt(line));
+            let list = buildFrom(input);
+
+            expect(Object.keys(list).length).to.equal(7 + 2);
         });
 
         const invert = (list, valueA, valueB) => {
