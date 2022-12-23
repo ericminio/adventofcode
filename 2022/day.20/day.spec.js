@@ -181,9 +181,7 @@ describe.only('2022.??', () => {
                 }
                 if (value < 0) {
                     for (let count = 0; count > value; count--) {
-                        let a = list[nodeKey(value)];
-                        let b = list[a.previous];
-                        pushRight(list, a.value, b.value);
+                        pushLeft(list, value);
                     }
                 }
             }
