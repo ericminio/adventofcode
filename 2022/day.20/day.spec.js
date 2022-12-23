@@ -54,11 +54,6 @@ describe.only('2022.20', () => {
                     to.deep.equal([2, 1, 3]);
             });
 
-            it('works when ending last', () => {
-                expect(move(2, [2, 1, 3])).
-                    to.deep.equal([1, 3, 2]);
-            });
-
             it('wraps when needed', () => {
                 expect(move(2, [1, 2, 3])).
                     to.deep.equal([2, 1, 3]);
