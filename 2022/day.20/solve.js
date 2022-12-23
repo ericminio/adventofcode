@@ -50,14 +50,7 @@ const move = (n, mixed) => {
         result.push(current.value);
         current = current.next;
     }
-    console.log(result);
-
-    let oldIndex = mixed.indexOf(n);
-    let newIndex = (oldIndex + n) % size;
-    mixed.splice(oldIndex, 1);
-    mixed.splice(newIndex, 0, n);
-
-    return mixed;
+    return result;
 };
 const solve1 = (file) => {
     let mixed = [1, 2, -3, 0, 3, 4, -2];
