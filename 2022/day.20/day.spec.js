@@ -168,10 +168,11 @@ describe.only('2022.??', () => {
                 let b = list[a.next];
                 invert(list, a.value, b.value);
             }
-            console.log(asArray(list));
         });
 
         const invert = (list, valueA, valueB) => {
+            console.log('list', asArray(list));
+            console.log(valueA, valueB);
             let a = list[nodeKey(valueA)];
             let b = list[nodeKey(valueB)];
             let around = {
