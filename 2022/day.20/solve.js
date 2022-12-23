@@ -8,8 +8,9 @@ const move = (n, mixed) => {
     if (n === 0) { return mixed; }
 
     const size = mixed.length;
-    const index = (i) => {
-        return i % size;
+    const index = (i, size) => {
+        let inRange = i % size;
+        return inRange < 0 ? size + inRange : inRange;
     };
     const chain = {
         0: { value: mixed[0] }
@@ -24,13 +25,19 @@ const move = (n, mixed) => {
     chain[mixed.length - 1].next = chain[0];
     chain[0].previous = chain[mixed.length - 1];
 
-
     let start = mixed.indexOf(n);
     if (n > 0) {
         for (var i = 0; i < n; i++) {
-            let before = index(start + i - 1);
-            let after = index(start + i + 1);
-            let current = chain[start + i];
+            let before = index(start + i - 1, size);
+            console.log(before);
+            let after = index(start + i + 1, size);
+            console.log(after);
+            let current = start + i;
+            chain[before].next = chain[after];
+            chain[after].previous = chain[before];
+            chain[current].before = chain[after];
+            chain[current].next = chain[after].next;
+            chain[after].next = chain[current];
         }
     }
 
