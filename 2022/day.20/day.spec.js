@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
-const { move } = require('./solve');
+const { move, nth } = require('./solve');
 const { add, lines } = require('../support');
 
 describe.only('2022.??', () => {
@@ -184,7 +184,10 @@ describe.only('2022.??', () => {
                     }
                 }
             }
-            console.log('message', asArray(list));
+            let message = asArray(list);
+            let total = [1000, 2000, 3000].map(n => nth(n, message)).reduce(add);
+
+            expect(total).to.equal(3);
         });
 
         const pushRight = (list, value) => {
