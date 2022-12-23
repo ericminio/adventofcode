@@ -51,6 +51,12 @@ describe.only('2022.??', () => {
             );
         });
 
+        it('works for -2', () => {
+            expect(move(-2, [0, 0, -2, 0])).to.deep.equal(
+                [-2, 0, 0, 0]
+            );
+        });
+
         const move = (n, values) => {
             let oldIndex = values.indexOf(n);
             values.splice(oldIndex, 1);
