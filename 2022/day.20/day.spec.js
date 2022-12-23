@@ -88,6 +88,25 @@ describe.only('2022.??', () => {
             );
         });
     });
+
+    describe('linked list', () => {
+
+        describe('build from array', () => {
+
+            it('works with a single element', () => {
+                let list = buildFrom([1]);
+
+                expect(Object.keys(list).length).to.equal(1);
+            });
+        });
+
+        const buildFrom = (incoming) => {
+            let list = {
+                1: 1
+            };
+            return list;
+        }
+    });
 });
 
 
