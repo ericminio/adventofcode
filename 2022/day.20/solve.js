@@ -5,6 +5,7 @@ const nth = (n, values) => {
     return values[(zero + n) % values.length];
 };
 const move = (n, mixed) => {
+    if (n === 0) { return mixed; }
     return [1, 2, -3, 4, 0, 3, -2];
 };
 const solve1 = (file) => {

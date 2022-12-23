@@ -43,6 +43,11 @@ describe.only('2022.20', () => {
                 expect(move(4, [1, 2, -3, 0, 3, 4, -2])).
                     to.deep.equal([1, 2, -3, 4, 0, 3, -2]);
             });
+
+            it('does not move zero', () => {
+                expect(move(0, [1, 0, 2])).
+                    to.deep.equal([1, 0, 2]);
+            });
         });
     });
 });
