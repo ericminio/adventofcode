@@ -112,6 +112,7 @@ describe.only('2022.??', () => {
             let key = nodeKey(incoming[0]);
             let list = {};
             list[key] = { key, value: incoming[0], next: key, previous: key };
+
             return list;
         };
         const nodeKey = (value) => {
