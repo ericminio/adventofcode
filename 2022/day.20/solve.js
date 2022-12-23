@@ -16,8 +16,8 @@ const nth = (n, values) => {
 
 const solve1 = (file) => {
     let input = lines(file).map(line => parseInt(line));
-
     let values = [1, 2, -3, 0, 3, 4, -2];
+
     for (let i = input.length - 1; i < input.length; i++) {
         values = move(input[i], values);
     }
