@@ -1,5 +1,7 @@
+const { add } = require('../support');
+
 const solve1 = (file) => {
-    return 3;
+    return [4, -3, 2].reduce(add);
 };
 
 const solve2 = (file) => {
