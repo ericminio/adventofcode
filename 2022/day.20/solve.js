@@ -7,12 +7,30 @@ const nth = (n, values) => {
 const move = (n, mixed) => {
     if (n === 0) { return mixed; }
 
-    const chain = {};
-    for (var i = 0; i < mixed.length; i++) {
-        let node = { value: mixed[i] }
+    const size = mixed.length;
+    const index = (i) => {
+        return i % size;
+    };
+    const chain = {
+        0: { value: mixed[0] }
+    };
+    for (var i = 1; i < mixed.length; i++) {
+        chain[i] = {
+            value: mixed[i],
+            previous: chain[i - 1],
+        };
+        chain[i - 1].next = chain[i];
+    }
+    chain[mixed.length - 1].next = chain[0];
+    chain[0].previous = chain[mixed.length - 1];
+
+
+    if (n > 0) {
+        for (var i = 0; i < n; i++) {
+
+        }
     }
 
-    let size = mixed.length;
     let oldIndex = mixed.indexOf(n);
     let newIndex = (oldIndex + n) % size;
     mixed.splice(oldIndex, 1);
