@@ -29,7 +29,8 @@ const move = (n, mixed) => {
     if (n > 0) {
         for (var i = 0; i < n; i++) {
             let before = index(start + i - 1);
-            let after = index(start + i + 1)
+            let after = index(start + i + 1);
+
         }
     }
 
