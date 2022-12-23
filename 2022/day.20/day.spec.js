@@ -173,6 +173,13 @@ describe.only('2022.??', () => {
                         invert(list, a.value, b.value);
                     }
                 }
+                if (value < 0) {
+                    for (let count = 0; count > value; count--) {
+                        let a = list[nodeKey(value)];
+                        let b = list[a.previous];
+                        invert(list, a.value, b.value);
+                    }
+                }
             }
             console.log('message', asArray(list));
         });
