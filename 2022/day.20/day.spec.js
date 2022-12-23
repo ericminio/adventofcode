@@ -146,7 +146,16 @@ describe.only('2022.??', () => {
             });
         });
 
-        const asArray = (list) => [1, 2, 3];
+        const asArray = (list) => {
+            let size = Object.values(list).length - 2;
+            let current = list[list.first];
+            let array = [];
+            for (let i = 0; i < size; i++) {
+                array.push(current.value);
+                current = list[current.next];
+            }
+            return array;
+        };
 
         const buildFrom = (incoming) => {
             let key = nodeKey(incoming[0]);
