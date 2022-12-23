@@ -96,12 +96,26 @@ describe.only('2022.??', () => {
             it('works with a single element', () => {
                 let list = buildFrom([1]);
 
-                expect(Object.keys(list).length).to.equal(1);
-                let key = Object.keys(list)[0];
-                expect(key).to.equal('1');
-                expect(list[key]).to.deep.equal({
+                expect(list['1']).to.deep.equal({
                     key: '1',
                     value: 1,
+                    next: '1',
+                    previous: '1',
+                });
+            });
+
+            it('works with two elements', () => {
+                let list = buildFrom([1, 2]);
+
+                expect(list['1']).to.deep.equal({
+                    key: '1',
+                    value: 1,
+                    next: '2',
+                    previous: '2',
+                });
+                expect(list['2']).to.deep.equal({
+                    key: '2',
+                    value: 2,
                     next: '1',
                     previous: '1',
                 });
@@ -112,12 +126,28 @@ describe.only('2022.??', () => {
             let key = nodeKey(incoming[0]);
             let list = {};
             list[key] = { key, value: incoming[0], next: key, previous: key };
+            list.first = key;
+            list.last = key;
+
+            for (let i = 1; i < incoming.length; i++) {
+                let value = incoming[i];
+                list = pushNode(value, list);
+            }
 
             return list;
         };
         const nodeKey = (value) => {
             return `${value}`;
         };
+        const pushNode = (value, list) => {
+            let key = nodeKey(value);
+            let node = { key, value, next: list.first, previous: list.last };
+            list[list.last].next = key;
+            list[list.first].previous = key;
+            list[key] = node;
+
+            return list;
+        }
     });
 });
 
