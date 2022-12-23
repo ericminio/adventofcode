@@ -39,6 +39,8 @@ const move = (n, mixed) => {
         }
     }
 
+    console.log(chain);
+
     let result = Object.values(chain).map(c => c.value);
     console.log(result);
 
