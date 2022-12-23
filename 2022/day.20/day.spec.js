@@ -168,7 +168,7 @@ describe.only('2022.??', () => {
                 let b = list[a.next];
                 invert(list, a.value, b.value);
             }
-            console.log(list);
+            console.log(asArray(list));
         });
 
         const invert = (list, valueA, valueB) => {
