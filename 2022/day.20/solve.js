@@ -8,6 +8,7 @@ const move = (n, values) => {
 };
 
 const solve1 = (file) => {
+    let values = [1, 2, -3, 4, 0, 3, -2];
     return 3;
 };
 
