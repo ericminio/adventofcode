@@ -7,6 +7,11 @@ const nth = (n, values) => {
 const move = (n, mixed) => {
     if (n === 0) { return mixed; }
 
+    const chain = {};
+    for (var i = 0; i < mixed.length; i++) {
+        let node = { value: mixed[i] }
+    }
+
     let size = mixed.length;
     let oldIndex = mixed.indexOf(n);
     let newIndex = (oldIndex + n) % size;
