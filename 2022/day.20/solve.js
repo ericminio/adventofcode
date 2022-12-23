@@ -6,6 +6,8 @@ const nth = (n, values) => {
 };
 const move = (n, mixed) => {
     if (n === 0) { return mixed; }
+
+    let oldIndex = mixed.indexOf(n);
     return [1, 2, -3, 4, 0, 3, -2];
 };
 const solve1 = (file) => {
