@@ -34,7 +34,7 @@ const move = (n, mixed) => {
             let current = index(start + i, size);
             chain[before].next = chain[after];
             chain[after].previous = chain[before];
-            chain[current].before = chain[after];
+            chain[current].previous = chain[after];
             chain[current].next = chain[after].next;
             chain[after].next = chain[current];
             chain[after2].previous = chain[current];
