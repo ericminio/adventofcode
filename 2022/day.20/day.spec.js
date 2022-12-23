@@ -76,9 +76,9 @@ describe.only('2022.??', () => {
             );
         });
 
-        it('wraps as expected', () => {
-            expect(move(4, [0, 0, 0, 4, 0, 0])).to.deep.equal(
-                [0, 0, 4, 0, 0, 0]
+        it('wraps long shot as expected', () => {
+            expect(move(11, [0, 0, 0, 11, 0, 0])).to.deep.equal(
+                [0, 0, 0, 0, 11, 0]
             );
         });
     });
