@@ -81,6 +81,12 @@ describe.only('2022.??', () => {
                 [0, 0, 0, 0, 11, 0]
             );
         });
+
+        it('wraps negative long shot as expected', () => {
+            expect(move(-11, [0, 0, 0, -11, 0, 0])).to.deep.equal(
+                [0, 0, -11, 0, 0, 0]
+            );
+        });
     });
 });
 
