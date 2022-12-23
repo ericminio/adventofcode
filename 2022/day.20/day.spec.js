@@ -48,6 +48,11 @@ describe.only('2022.20', () => {
                 expect(move(0, [1, 0, 2])).
                     to.deep.equal([1, 0, 2]);
             });
+
+            it('works with 1', () => {
+                expect(move(1, [1, 2, 3])).
+                    to.deep.equal([2, 1, 3]);
+            });
         });
     });
 });

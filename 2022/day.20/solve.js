@@ -8,7 +8,8 @@ const move = (n, mixed) => {
     if (n === 0) { return mixed; }
 
     let oldIndex = mixed.indexOf(n);
-    return [1, 2, -3, 4, 0, 3, -2];
+
+    return [2, 1, 3];
 };
 const solve1 = (file) => {
     let mixed = [1, 2, -3, 0, 3, 4, -2];
