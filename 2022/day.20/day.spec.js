@@ -157,9 +157,18 @@ describe.only('2022.??', () => {
             });
         });
 
-        const invert = (list, a, b) => {
-            let keyA = nodeKey(a);
-            let keyB = nodeKey(b);
+        const invert = (list, valueA, valueB) => {
+            let a = list[nodeKey(valueA)];
+            let b = list[nodeKey(valueB)];
+            let around = {
+                previous: list[a.key].previous,
+                next: list[b.key].next,
+            };
+            b.next = a.key;
+            a.previous = b.key;
+            b.previous = around.previous;
+            a.next = around.next;
+
             return buildFrom([1, 3, 2, 4, 5]);
         }
 
