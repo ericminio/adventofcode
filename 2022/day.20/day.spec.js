@@ -149,7 +149,7 @@ describe.only('2022.??', () => {
 
         describe('inversion', () => {
 
-            it('works as expected', () => {
+            it('can mean push right', () => {
                 let incoming = [1, 2, 3, 4, 5];
                 let list = buildFrom(incoming);
                 let inverted = asArray(pushRight(list, 2, 3))
