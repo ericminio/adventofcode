@@ -158,6 +158,8 @@ describe.only('2022.??', () => {
         });
 
         const invert = (list, a, b) => {
+            let keyA = nodeKey(a);
+            let keyB = nodeKey(b);
             return buildFrom([1, 3, 2, 4, 5]);
         }
 
