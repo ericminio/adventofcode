@@ -19,11 +19,17 @@ describe.only('2022.??', () => {
 
     });
 
-    describe('internals', () => {
+    describe('moving', () => {
 
-        it('may be needed', () => {
-
+        it('works for 1', () => {
+            expect(move(1, [0, 0, 1, 0])).to.deep.equal(
+                [0, 0, 0, 1]
+            )
         });
+
+        const move = (n, values) => {
+            return [0, 0, 0, 1];
+        };
     });
 });
 
