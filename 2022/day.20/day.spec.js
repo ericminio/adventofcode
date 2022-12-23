@@ -109,11 +109,15 @@ describe.only('2022.??', () => {
         });
 
         const buildFrom = (incoming) => {
+            let key = nodeKey(incoming[0]);
             let list = {
                 '1': { key: '1', value: incoming[0], next: '1', previous: '1' },
             };
             return list;
-        }
+        };
+        const nodeKey = (value) => {
+            return `${value}`;
+        };
     });
 });
 
