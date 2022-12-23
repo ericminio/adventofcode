@@ -168,9 +168,7 @@ describe.only('2022.??', () => {
                 console.log('moving', value);
                 if (value > 0) {
                     for (let count = 0; count < value; count++) {
-                        let a = list[nodeKey(value)];
-                        let b = list[a.next];
-                        pushRight(list, a.value, b.value);
+                        pushRight(list, value);
                     }
                 }
                 if (value < 0) {
