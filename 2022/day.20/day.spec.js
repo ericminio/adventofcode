@@ -110,7 +110,7 @@ describe.only('2022.??', () => {
 
         const buildFrom = (incoming) => {
             let list = {
-                '1': { key: '1', value: 1, next: '1', previous: '1' },
+                '1': { key: '1', value: incoming[0], next: '1', previous: '1' },
             };
             return list;
         }
