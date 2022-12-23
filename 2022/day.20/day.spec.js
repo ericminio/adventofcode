@@ -176,8 +176,8 @@ describe.only('2022.??', () => {
         });
 
         const invert = (list, valueA, valueB) => {
-            // console.log('decrypting', asArray(list));
-            // console.log(valueA, valueB);
+            console.log('decrypting', asArray(list));
+            console.log(valueA, valueB);
             let a = list[nodeKey(valueA)];
             let b = list[nodeKey(valueB)];
             let around = {
