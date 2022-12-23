@@ -99,13 +99,16 @@ describe.only('2022.??', () => {
                 expect(Object.keys(list).length).to.equal(1);
                 let key = Object.keys(list)[0];
                 expect(key).to.equal('1');
-                expect(list[key]).to.deep.equal(1);
+                expect(list[key]).to.deep.equal({
+                    key: '1',
+                    value: 1,
+                });
             });
         });
 
         const buildFrom = (incoming) => {
             let list = {
-                1: 1
+                '1': { key: '1', value: 1 },
             };
             return list;
         }
