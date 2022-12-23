@@ -1,5 +1,6 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
+const { move } = require('./solve');
 
 describe.only('2022.??', () => {
 
@@ -74,15 +75,6 @@ describe.only('2022.??', () => {
                 [1, 2, -3, 4, 0, 3, -2]
             );
         });
-
-        const move = (n, values) => {
-            let oldIndex = values.indexOf(n);
-            values.splice(oldIndex, 1);
-            let newIndex = (oldIndex + n) % values.length;
-            values.splice(newIndex, 0, n);
-
-            return values;
-        };
     });
 });
 
