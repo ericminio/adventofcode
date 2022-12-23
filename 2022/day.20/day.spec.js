@@ -21,8 +21,15 @@ describe.only('2022.20', () => {
 
     describe('internals', () => {
 
-        it('may be needed', () => {
+        const {
+            nth,
+        } = require('./solve.js');
 
+        describe('nth', () => {
+
+            it('works for 1', () => {
+                expect(nth(0, [-1, 1, 2, 0, 4])).to.equal(4);
+            });
         });
     });
 });
