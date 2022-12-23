@@ -43,7 +43,13 @@ const move = (n, mixed) => {
 
     console.log(chain);
 
-    let result = Object.values(chain).map(c => c.value);
+    let first = chain[0];
+    let result = [first.value];
+    let current = first.next;
+    while (current.value !== first.value) {
+        result.push(current.value);
+        current = current.next;
+    }
     console.log(result);
 
     let oldIndex = mixed.indexOf(n);
