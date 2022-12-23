@@ -37,7 +37,7 @@ describe.only('2022.20', () => {
             });
         });
 
-        describe('move', () => {
+        describe.only('move', () => {
 
             it.skip('moves values to the right when positive', () => {
                 expect(move(4, [1, 2, -3, 0, 3, 4, -2])).
