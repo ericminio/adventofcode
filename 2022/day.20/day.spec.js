@@ -102,13 +102,15 @@ describe.only('2022.??', () => {
                 expect(list[key]).to.deep.equal({
                     key: '1',
                     value: 1,
+                    next: '1',
+                    previous: '1',
                 });
             });
         });
 
         const buildFrom = (incoming) => {
             let list = {
-                '1': { key: '1', value: 1 },
+                '1': { key: '1', value: 1, next: '1', previous: '1' },
             };
             return list;
         }
