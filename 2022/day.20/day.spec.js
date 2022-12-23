@@ -152,7 +152,7 @@ describe.only('2022.??', () => {
             it('works as expected', () => {
                 let incoming = [1, 2, 3, 4, 5];
                 let list = buildFrom(incoming);
-                let inverted = asArray(invert(list, 2, 3))
+                let inverted = asArray(pushRight(list, 2, 3))
 
                 expect(inverted).to.deep.equal([1, 3, 2, 4, 5]);
             });
@@ -170,21 +170,21 @@ describe.only('2022.??', () => {
                     for (let count = 0; count < value; count++) {
                         let a = list[nodeKey(value)];
                         let b = list[a.next];
-                        invert(list, a.value, b.value);
+                        pushRight(list, a.value, b.value);
                     }
                 }
                 if (value < 0) {
                     for (let count = 0; count > value; count--) {
                         let a = list[nodeKey(value)];
                         let b = list[a.previous];
-                        invert(list, a.value, b.value);
+                        pushRight(list, a.value, b.value);
                     }
                 }
             }
             console.log('message', asArray(list));
         });
 
-        const invert = (list, valueA, valueB) => {
+        const pushRight = (list, valueA, valueB) => {
             console.log('decrypting', asArray(list));
             console.log(valueA, valueB);
             let a = list[nodeKey(valueA)];
