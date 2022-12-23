@@ -120,6 +120,13 @@ describe.only('2022.??', () => {
                     previous: '1',
                 });
             });
+
+            it('keeps track of first and last elements righ tfrom the start', () => {
+                let list = buildFrom([1]);
+
+                expect(list.first).to.equal('1');
+                expect(list.last).to.equal('1');
+            });
         });
 
         const buildFrom = (incoming) => {
