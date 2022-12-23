@@ -121,11 +121,18 @@ describe.only('2022.??', () => {
                 });
             });
 
-            it('keeps track of first and last elements righ tfrom the start', () => {
+            it('keeps track of first and last elements right tfrom the start', () => {
                 let list = buildFrom([1]);
 
                 expect(list.first).to.equal('1');
                 expect(list.last).to.equal('1');
+            });
+
+            it('keeps track of first and last elements after push', () => {
+                let list = buildFrom([1, 2]);
+
+                expect(list.first).to.equal('1');
+                expect(list.last).to.equal('2');
             });
         });
 
@@ -152,6 +159,7 @@ describe.only('2022.??', () => {
             list[list.last].next = key;
             list[list.first].previous = key;
             list[key] = node;
+            list.last = key;
 
             return list;
         }
