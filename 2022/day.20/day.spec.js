@@ -23,6 +23,7 @@ describe.only('2022.20', () => {
 
         const {
             nth,
+            move,
         } = require('./solve.js');
 
         describe('nth', () => {
@@ -33,6 +34,14 @@ describe.only('2022.20', () => {
 
             it('works for 2', () => {
                 expect(nth(2, [-1, 1, 2, 0, 4])).to.equal(-1);
+            });
+        });
+
+        describe('move', () => {
+
+            it('moves values to the right when positive', () => {
+                expect(move(4, [1, 2, -3, 0, 3, 4, -2]))
+                    .to.deep.equal([1, 2, -3, 4, 0, 3, -2]);
             });
         });
     });
