@@ -164,9 +164,12 @@ describe.only('2022.??', () => {
 
             expect(Object.keys(list).length).to.equal(7 + 2);
             for (let i = 0; i < input.length; i++) {
-                let a = list[nodeKey(input[i])];
-                let b = list[a.next];
-                invert(list, a.value, b.value);
+                let value = input[i];
+                for (let count = 0; count < value; count++) {
+                    let a = list[nodeKey(value)];
+                    let b = list[a.next];
+                    invert(list, a.value, b.value);
+                }
             }
             console.log('message', asArray(list));
         });
