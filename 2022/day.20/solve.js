@@ -18,8 +18,9 @@ const solve1 = (file) => {
     let input = lines(file).map(line => parseInt(line));
 
     let values = [1, 2, -3, 0, 3, 4, -2];
-    let i = input.length - 1;
-    values = move(input[i], values);
+    for (let i = input.length - 1; i < input.length; i++) {
+        values = move(input[i], values);
+    }
 
     return [1000, 2000, 3000].map(n => nth(n, values)).reduce(add);
 };
