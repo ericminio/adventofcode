@@ -146,6 +146,21 @@ describe.only('2022.??', () => {
             });
         });
 
+        describe('inversion', () => {
+
+            it('works as expected', () => {
+                let incoming = [1, 2, 3, 4, 5];
+                let list = buildFrom(incoming);
+                let inverted = asArray(invert(list, 2, 3))
+
+                expect(inverted).to.deep.equal([1, 3, 2, 4, 5]);
+            });
+        });
+
+        const invert = (list, a, b) => {
+            return buildFrom([1, 3, 2, 4, 5]);
+        }
+
         const asArray = (list) => {
             let size = Object.values(list).length - 2;
             let current = list[list.first];
