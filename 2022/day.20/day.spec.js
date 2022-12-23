@@ -136,6 +136,18 @@ describe.only('2022.??', () => {
             });
         });
 
+        describe('recreate array', () => {
+
+            it('works', () => {
+                let list = buildFrom([1, 2, 3]);
+                let array = asArray(list);
+
+                expect(array).to.deep.equal([1, 2, 3]);
+            });
+        });
+
+        const asArray = (list) => [1, 2, 3];
+
         const buildFrom = (incoming) => {
             let key = nodeKey(incoming[0]);
             let list = {};
