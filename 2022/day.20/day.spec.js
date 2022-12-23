@@ -23,15 +23,21 @@ describe.only('2022.??', () => {
 
         it('works for 1', () => {
             expect(move(1, [0, 0, 1, 0])).to.deep.equal(
-                [0, 0, 0, 1]
-            )
+                [1, 0, 0, 0]
+            );
+        });
+
+        it('works for 2', () => {
+            expect(move(2, [0, 0, 2, 0])).to.deep.equal(
+                [0, 2, 0, 0]
+            );
         });
 
         const move = (n, values) => {
             let oldIndex = values.indexOf(n);
             values.splice(oldIndex, 1);
-            let newIndex = oldIndex + n;
-            values.splice(newIndex, 1, n);
+            let newIndex = (oldIndex + n) % values.length;
+            values.splice(newIndex, 0, n);
 
             return values;
         };
