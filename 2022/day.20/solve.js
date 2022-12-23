@@ -17,8 +17,7 @@ const nth = (n, values) => {
 const solve1 = (file) => {
     let values = [1, 2, -3, 4, 0, 3, -2];
 
-    // return [1000, 2000, 3000].map(n => nth(n, values)).reduce(add);
-    return 3;
+    return [1000, 2000, 3000].map(n => nth(n, values)).reduce(add);
 };
 
 const solve2 = (file) => {
