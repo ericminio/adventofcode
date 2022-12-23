@@ -169,6 +169,8 @@ describe.only('2022.??', () => {
             a.previous = b.key;
             b.previous = around.previous;
             a.next = around.next;
+            list[around.previous].next = b.key;
+            list[around.next].previous = a.key;
 
             return buildFrom([1, 3, 2, 4, 5]);
         }
