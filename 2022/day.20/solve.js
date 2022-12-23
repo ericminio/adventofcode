@@ -7,8 +7,9 @@ const nth = (n, values) => {
 const move = (n, mixed) => {
     if (n === 0) { return mixed; }
 
+    let size = mixed.length;
     let oldIndex = mixed.indexOf(n);
-    let newIndex = oldIndex + n;
+    let newIndex = (oldIndex + n) % size;
     mixed.splice(oldIndex, 1);
     mixed.splice(newIndex, 0, n);
 
