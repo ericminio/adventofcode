@@ -163,6 +163,12 @@ describe.only('2022.??', () => {
             let list = buildFrom(input);
 
             expect(Object.keys(list).length).to.equal(7 + 2);
+            for (let i = 0; i < input.length; i++) {
+                let a = list[nodeKey(input[i])];
+                let b = list[a.next];
+                invert(list, a.value, b.value);
+            }
+            console.log(asArray(list));
         });
 
         const invert = (list, valueA, valueB) => {
