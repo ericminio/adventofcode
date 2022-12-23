@@ -164,7 +164,6 @@ describe.only('2022.??', () => {
                 previous: list[a.key].previous,
                 next: list[b.key].next,
             };
-            console.log({ around });
             b.next = a.key;
             a.previous = b.key;
             b.previous = around.previous;
