@@ -1,5 +1,3 @@
-
-
 const move = (n, values) => {
     let oldIndex = values.indexOf(n);
     values.splice(oldIndex, 1);
