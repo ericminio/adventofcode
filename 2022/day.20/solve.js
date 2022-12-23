@@ -39,6 +39,9 @@ const move = (n, mixed) => {
         }
     }
 
+    let result = Object.values(chain).map(c => c.value);
+    console.log(result);
+
     let oldIndex = mixed.indexOf(n);
     let newIndex = (oldIndex + n) % size;
     mixed.splice(oldIndex, 1);
