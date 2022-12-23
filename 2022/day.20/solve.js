@@ -1,6 +1,9 @@
 const { add } = require('../support');
 
-const nth = (n, values) => 4;
+const nth = (n, values) => {
+    let zero = values.indexOf(0);
+    return values[(zero + n) % values.length];
+};
 const solve1 = (file) => {
     let mixed = [1, 2, -3, 4, 0, 3, -2];
 
