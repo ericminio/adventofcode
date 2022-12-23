@@ -30,12 +30,14 @@ const move = (n, mixed) => {
         for (var i = 0; i < n; i++) {
             let before = index(start + i - 1, size);
             let after = index(start + i + 1, size);
+            let after2 = index(start + i + 2, size);
             let current = index(start + i, size);
             chain[before].next = chain[after];
             chain[after].previous = chain[before];
             chain[current].before = chain[after];
             chain[current].next = chain[after].next;
             chain[after].next = chain[current];
+            chain[after2].previous = chain[current];
         }
     }
 
