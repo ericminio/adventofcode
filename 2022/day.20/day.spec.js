@@ -58,16 +58,6 @@ describe.only('2022.20', () => {
                 expect(move(2, [1, 2, 3])).
                     to.deep.equal([2, 1, 3]);
             });
-
-            it('works with -1', () => {
-                expect(move(-1, [2, -1, 3])).
-                    to.deep.equal([-1, 2, 3]);
-            });
-
-            it('wraps with negative positions when needed', () => {
-                expect(move(-3, [1, -3, 2, 3, -2, 0, 4])).
-                    to.deep.equal([1, 2, 3, -2, -3, 0, 4]);
-            });
         });
     });
 });
