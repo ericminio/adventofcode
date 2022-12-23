@@ -152,7 +152,7 @@ describe.only('2022.??', () => {
             it('can mean push right', () => {
                 let incoming = [1, 2, 3, 4, 5];
                 let list = buildFrom(incoming);
-                let inverted = asArray(pushRight(list, 2, 3))
+                let inverted = asArray(pushRight(list, 2))
 
                 expect(inverted).to.deep.equal([1, 3, 2, 4, 5]);
             });
@@ -184,11 +184,9 @@ describe.only('2022.??', () => {
             console.log('message', asArray(list));
         });
 
-        const pushRight = (list, valueA, valueB) => {
-            console.log('decrypting', asArray(list));
-            console.log(valueA, valueB);
+        const pushRight = (list, valueA) => {
             let a = list[nodeKey(valueA)];
-            let b = list[nodeKey(valueB)];
+            let b = list[a.next];
             let around = {
                 previous: list[a.key].previous,
                 next: list[b.key].next,
