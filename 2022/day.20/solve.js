@@ -15,7 +15,8 @@ const nth = (n, values) => {
 }
 
 const solve1 = (file) => {
-    let values = [1, 2, -3, 4, 0, 3, -2];
+    let values = [1, 2, -3, 0, 3, 4, -2];
+    values = move(4, values);
 
     return [1000, 2000, 3000].map(n => nth(n, values)).reduce(add);
 };
