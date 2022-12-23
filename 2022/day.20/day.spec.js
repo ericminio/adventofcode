@@ -97,7 +97,8 @@ describe.only('2022.??', () => {
                 let list = buildFrom([1]);
 
                 expect(Object.keys(list).length).to.equal(1);
-                expect(Object.keys(list)[0]).to.equal('1');
+                let key = Object.keys(list)[0]
+                expect(key).to.equal('1');
             });
         });
 
