@@ -171,7 +171,7 @@ describe.only('2022.??', () => {
             list[around.previous].next = b.key;
             list[around.next].previous = a.key;
 
-            return buildFrom([1, 3, 2, 4, 5]);
+            return list;
         }
 
         const asArray = (list) => {
