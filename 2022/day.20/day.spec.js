@@ -28,6 +28,10 @@ describe.only('2022.??', () => {
         });
 
         const move = (n, values) => {
+            let oldIndex = values.indexOf(n);
+            values.splice(oldIndex, 1);
+            let newIndex = oldIndex + n;
+            values.splice(newIndex, 1, n);
             return [0, 0, 0, 1];
         };
     });
