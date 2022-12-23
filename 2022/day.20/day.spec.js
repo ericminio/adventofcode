@@ -173,7 +173,6 @@ describe.only('2022.??', () => {
             expect(Object.keys(list).length).to.equal(7 + 2);
             for (let i = 0; i < input.length; i++) {
                 let value = input[i];
-                console.log('moving', value);
                 if (value > 0) {
                     for (let count = 0; count < value; count++) {
                         pushRight(list, value);
