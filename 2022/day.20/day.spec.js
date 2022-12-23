@@ -165,6 +165,7 @@ describe.only('2022.??', () => {
             expect(Object.keys(list).length).to.equal(7 + 2);
             for (let i = 0; i < input.length; i++) {
                 let value = input[i];
+                console.log('moving', value);
                 for (let count = 0; count < value; count++) {
                     let a = list[nodeKey(value)];
                     let b = list[a.next];
@@ -175,8 +176,8 @@ describe.only('2022.??', () => {
         });
 
         const invert = (list, valueA, valueB) => {
-            console.log('decrypting', asArray(list));
-            console.log(valueA, valueB);
+            // console.log('decrypting', asArray(list));
+            // console.log(valueA, valueB);
             let a = list[nodeKey(valueA)];
             let b = list[nodeKey(valueB)];
             let around = {
