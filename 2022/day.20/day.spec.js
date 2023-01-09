@@ -308,7 +308,7 @@ describe.only('2022.20', () => {
         it('circles back', () => {
             let list = [1, 2, 3];
 
-            expect(pushCount(2, list)).to.equal(0);
+            expect(pushCount(8, list)).to.equal(0);
         });
     });
 });
