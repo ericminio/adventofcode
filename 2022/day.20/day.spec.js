@@ -332,6 +332,12 @@ describe.only('2022.20', () => {
             expect(endIndex(0, 1, list)).to.equal(1);
         });
 
+        it('works for 2', () => {
+            let list = [1, 2, 3];
+
+            expect(endIndex(0, 2, list)).to.equal(0);
+        });
+
     });
 });
 
