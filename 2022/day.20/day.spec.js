@@ -338,7 +338,7 @@ describe.only('2022.20', () => {
             expect(endIndex(0, 2, list)).to.equal(0);
         });
 
-        it('can land before start', () => {
+        it('can end before start', () => {
             let list = [1, 2, 3, 4, 5];
 
             expect(endIndex(2, 3, list)).to.equal(1);
