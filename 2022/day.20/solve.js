@@ -29,10 +29,10 @@ const solve2 = (file) => {
 };
 
 const circularIndex = (index, list) => ((index % list.length) + list.length) % list.length;
-const nth = (n, values) => {
-    let index = values.indexOf(0);
+const nth = (n, list) => {
+    let index = list.indexOf(0);
 
-    return values[circularIndex(index + n, values)];
+    return list[circularIndex(index + n, list)];
 };
 
 module.exports = { move, nth, circularIndex, solve1, solve2 };
