@@ -1,4 +1,5 @@
 const { add, lines } = require('../support');
+const { circularIndex } = require('../support/circular-index');
 
 const move = (n, values) => {
     let oldIndex = values.indexOf(n);
@@ -39,7 +40,6 @@ const solve2 = (file) => {
     return 15;
 };
 
-const circularIndex = (index, list) => ((index % list.length) + list.length) % list.length;
 const nth = (n, list) => list[circularIndex(list.indexOf(0) + n, list)];
 const pushCount = (n, list) => n % (list.length - 1);
 const endIndex = (start, offset, list) => {
