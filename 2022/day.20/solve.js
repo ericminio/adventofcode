@@ -32,7 +32,7 @@ const circularIndex = (index, list) => ((index % list.length) + list.length) % l
 const nth = (n, values) => {
     let index = values.indexOf(0);
 
-    return values[(index + n) % values.length]
+    return values[circularIndex(index + n, values)];
 };
 
 module.exports = { move, nth, circularIndex, solve1, solve2 };
