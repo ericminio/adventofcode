@@ -43,7 +43,9 @@ const circularIndex = (index, list) => ((index % list.length) + list.length) % l
 const nth = (n, list) => list[circularIndex(list.indexOf(0) + n, list)];
 const pushCount = (n, list) => n % (list.length - 1);
 const endIndex = (start, offset, list) => {
-    return (start + offset) % (list.length - 1);
+    let end = (start + offset) % (list.length - 1);
+
+    return end;
 }
 
 module.exports = { move, nth, circularIndex, pushCount, endIndex, solve1, solve2 };
