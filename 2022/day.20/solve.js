@@ -33,6 +33,6 @@ const solve2 = (file) => {
     return 15;
 };
 
-const circularIndex = (index, list) => 0
+const circularIndex = (index, list) => index % list.length
 
 module.exports = { move, nth, circularIndex, solve1, solve2 };
