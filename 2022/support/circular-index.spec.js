@@ -9,7 +9,7 @@ describe('array circular index', () => {
         expect(list[circularIndex(0, list)]).to.equal(1);
     });
 
-    it('works for 3', () => {
+    it('stays in range', () => {
         let list = [1, 2, 3];
 
         expect(list[circularIndex(3, list)]).to.equal(1);
