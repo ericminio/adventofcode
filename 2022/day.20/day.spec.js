@@ -350,10 +350,10 @@ describe.only('2022.20', () => {
             expect(endIndex(1, 3, list)).to.equal(0);
         });
 
-        it('rethinks negatives', () => {
+        it('can end first going backwards', () => {
             let list = [1, 2, 3, 4, 5];
 
-            expect(endIndex(3, -2, list)).to.equal(1);
+            expect(endIndex(3, -3, list)).to.equal(0);
         });
 
     });
