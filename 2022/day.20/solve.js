@@ -8,11 +8,6 @@ const move = (n, values) => {
 
     return values;
 };
-const nth = (n, values) => {
-    let index = values.indexOf(0);
-
-    return values[(index + n) % values.length]
-};
 const decrypt = (file) => {
     let input = lines(file).map(line => parseInt(line));
     let message = input.slice();
@@ -34,5 +29,10 @@ const solve2 = (file) => {
 };
 
 const circularIndex = (index, list) => ((index % list.length) + list.length) % list.length;
+const nth = (n, values) => {
+    let index = values.indexOf(0);
+
+    return values[(index + n) % values.length]
+};
 
 module.exports = { move, nth, circularIndex, solve1, solve2 };
