@@ -291,7 +291,7 @@ describe.only('2022.20', () => {
         });
     });
 
-    describe('array item pushing count', () => {
+    describe.only('array item pushing count', () => {
 
         it('works for zero', () => {
             let list = [1, 2, 3];
