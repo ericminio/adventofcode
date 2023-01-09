@@ -329,7 +329,7 @@ describe.only('2022.20', () => {
         it('works for 1', () => {
             let list = [1, 2, 3];
 
-            expect(endIndex(0, list)).to.equal(1);
+            expect(endIndex(0, 1, list)).to.equal(1);
         });
 
     });
