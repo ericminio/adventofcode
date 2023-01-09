@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
-const { move, nth, circularIndex, pushCount } = require('./solve');
+const { move, nth, circularIndex, pushCount, endIndex } = require('./solve');
 const { add, lines } = require('../support');
 
 describe.only('2022.20', () => {
@@ -322,6 +322,16 @@ describe.only('2022.20', () => {
 
             expect(pushCount(-8, list)).to.equal(0);
         });
+    });
+
+    describe('index after pushing', () => {
+
+        it('works for 1', () => {
+            let list = [1, 2, 3];
+
+            expect(endIndex(0, list)).to.equal(1);
+        });
+
     });
 });
 
