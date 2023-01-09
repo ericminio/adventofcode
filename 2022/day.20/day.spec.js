@@ -264,7 +264,7 @@ describe.only('2022.20', () => {
         }
     });
 
-    describe.only('array circular index', () => {
+    describe('array circular index', () => {
 
         it('works for zero', () => {
             let list = [1, 2, 3];
