@@ -344,6 +344,12 @@ describe.only('2022.20', () => {
             expect(endIndex(2, 3, list)).to.equal(1);
         });
 
+        it('can end first', () => {
+            let list = [1, 2, 3, 4, 5];
+
+            expect(endIndex(1, 3, list)).to.equal(0);
+        });
+
     });
 });
 
