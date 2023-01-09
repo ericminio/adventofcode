@@ -44,7 +44,9 @@ const nth = (n, list) => list[circularIndex(list.indexOf(0) + n, list)];
 const pushCount = (n, list) => n % (list.length - 1);
 const endIndex = (start, offset, list) => {
     let end = (start + offset) % (list.length - 1);
-
+    if (end < 0) {
+        end = circularIndex(end - 1, list);
+    }
     return end;
 }
 
