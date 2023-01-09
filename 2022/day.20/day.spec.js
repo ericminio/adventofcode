@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
-const { move, nth } = require('./solve');
+const { move, nth, circularIndex } = require('./solve');
 const { add, lines } = require('../support');
 
 describe.only('2022.20', () => {
@@ -263,6 +263,15 @@ describe.only('2022.20', () => {
             return list;
         }
     });
+
+    describe.only('array', () => {
+
+        it('needs rolling index', () => {
+            let list = [1, 2, 3];
+
+            expect(list[circularIndex(0)]).to.equal(1);
+        });
+    })
 });
 
 
