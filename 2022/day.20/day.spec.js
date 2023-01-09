@@ -324,7 +324,7 @@ describe.only('2022.20', () => {
         });
     });
 
-    describe.only('index after pushing', () => {
+    describe('index after pushing', () => {
 
         it('works for 1', () => {
             let list = [1, 2, 3];
