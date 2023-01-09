@@ -264,9 +264,9 @@ describe.only('2022.20', () => {
         }
     });
 
-    describe.only('array', () => {
+    describe.only('array circular index', () => {
 
-        it('needs rolling index', () => {
+        it('works for zero', () => {
             let list = [1, 2, 3];
 
             expect(list[circularIndex(0)]).to.equal(1);
