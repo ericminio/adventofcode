@@ -13,7 +13,14 @@ const decrypt = (file) => {
     let message = input.slice();
 
     for (let i = 0; i < input.length; i++) {
-        message = move(input[i], message);
+        let start = i;
+        let value = input[i];
+        let offset = pushCount(value, input);
+        let end = endIndex(start, offset, message);
+        let direction = Math.sign(end - start);
+        for (let position = start; position !== end; position += direction) {
+            [message[position], message[position + direction]] = [message[position + direction], message[position]];
+        }
     }
     return message;
 };
