@@ -15,7 +15,7 @@ const decrypt = (file) => {
     for (let i = 0; i < input.length; i++) {
         let start = i;
         let value = input[i];
-        let offset = pushCount(value, input);
+        let offset = pushCount(value, message);
         let end = endIndex(start, offset, message);
         let direction = Math.sign(end - start);
         for (let position = start; position !== end; position += direction) {
@@ -23,6 +23,9 @@ const decrypt = (file) => {
         }
     }
     return message;
+};
+const push = (i, initial, message) => {
+
 };
 
 const solve1 = (file) => {
