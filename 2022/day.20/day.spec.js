@@ -353,7 +353,7 @@ describe.only('2022.20', () => {
         it('rethinks negatives', () => {
             let list = [1, 2, 3, 4, 5];
 
-            expect(endIndex(3, -2, list)).to.equal(1);
+            expect(endIndex(3, -2, list)).to.equal(1)
         });
 
     });
