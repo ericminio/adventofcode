@@ -25,7 +25,7 @@ const decrypt = (file) => {
     return message;
 };
 const push = (start, initial, message) => {
-    let value = input[i];
+    let value = initial[i];
     let offset = pushCount(value, message);
     let end = endIndex(start, offset, message);
     let direction = Math.sign(end - start);
