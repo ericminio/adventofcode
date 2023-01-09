@@ -298,6 +298,12 @@ describe.only('2022.20', () => {
 
             expect(pushCount(0, list)).to.equal(0);
         });
+
+        it('works for 1', () => {
+            let list = [1, 2, 3];
+
+            expect(pushCount(1, list)).to.equal(1);
+        });
     });
 });
 
