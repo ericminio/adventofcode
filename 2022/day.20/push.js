@@ -1,5 +1,4 @@
-const push = (start, initial, message) => {
-    let value = initial[start];
+const push = (value, message) => {
     let offset = pushCount(value, message);
     let end = endIndex(start, offset, message)
     let direction = Math.sign(end - start);
