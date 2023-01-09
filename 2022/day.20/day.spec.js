@@ -283,6 +283,12 @@ describe.only('2022.20', () => {
 
             expect(list[circularIndex(-1, list)]).to.equal(3);
         });
+
+        it('works for -4', () => {
+            let list = [1, 2, 3];
+
+            expect(list[circularIndex(-4, list)]).to.equal(3);
+        });
     })
 });
 
