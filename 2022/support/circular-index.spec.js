@@ -21,7 +21,7 @@ describe.only('array circular index', () => {
         expect(array[circularIndex(-1, array)]).to.equal(3);
     });
 
-    it('works for -4', () => {
+    it('stays in range for negatives too', () => {
         let array = [1, 2, 3];
 
         expect(array[circularIndex(-4, array)]).to.equal(3);
