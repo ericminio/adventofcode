@@ -13,19 +13,12 @@ const decrypt = (file) => {
     let message = input.slice();
 
     for (let i = 0; i < input.length; i++) {
-        let start = i;
-        let value = input[i];
-        let offset = pushCount(value, message);
-        let end = endIndex(start, offset, message);
-        let direction = Math.sign(end - start);
-        for (let position = start; position !== end; position += direction) {
-            [message[position], message[position + direction]] = [message[position + direction], message[position]];
-        }
+        push(i, input, message);
     }
     return message;
 };
 const push = (start, initial, message) => {
-    let value = initial[i];
+    let value = initial[start];
     let offset = pushCount(value, message);
     let end = endIndex(start, offset, message);
     let direction = Math.sign(end - start);
