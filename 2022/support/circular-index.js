@@ -1,3 +1,3 @@
-const circularIndex = (index, array) => ((index % array.length) + array.length) % array.length;
+const circularIndex = (index, size) => ((index % size) + size) % size;
 
 module.exports = { circularIndex };
