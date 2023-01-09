@@ -24,7 +24,7 @@ const decrypt = (file) => {
     }
     return message;
 };
-const push = (i, initial, message) => {
+const push = (start, initial, message) => {
 
 };
 
