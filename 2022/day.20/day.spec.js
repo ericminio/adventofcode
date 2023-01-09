@@ -3,7 +3,7 @@ const { solve1, solve2 } = require('./solve');
 const { move, nth } = require('./solve');
 const { add, lines } = require('../support');
 
-describe.only('2022.??', () => {
+describe.only('2022.20', () => {
 
     describe('part 1', () => {
 
