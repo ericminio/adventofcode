@@ -35,7 +35,7 @@ describe.only('linked list', () => {
             });
         });
 
-        it('keeps track of first and last elements right tfrom the start', () => {
+        it('keeps track of first and last elements right from the start', () => {
             let list = buildFrom([1]);
 
             expect(list.first).to.equal('1');
