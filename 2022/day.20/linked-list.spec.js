@@ -85,13 +85,14 @@ describe.only('linked list', () => {
         expect(Object.keys(list).length).to.equal(input.length + 2);
         for (let i = 0; i < input.length; i++) {
             let value = input[i];
+            let increment = value > 0 ? +1 : -1;
             if (value > 0) {
-                for (let count = 0; count < value; count++) {
+                for (let count = 0; count < value; count += increment) {
                     pushRight(list, value);
                 }
             }
             if (value < 0) {
-                for (let count = 0; count > value; count--) {
+                for (let count = 0; count > value; count += increment) {
                     pushLeft(list, value);
                 }
             }
