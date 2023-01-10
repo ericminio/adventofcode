@@ -9,6 +9,10 @@ describe.only('2022.20', () => {
             expect(solve1(`${__dirname}/data/example.txt`)).to.equal(3);
         });
 
+        it('is solved', () => {
+            expect(solve1(`${__dirname}/data/example.txt`)).to.equal(3);
+        });
+
     });
 
     describe('part 2', () => {
