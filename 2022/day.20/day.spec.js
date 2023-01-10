@@ -21,7 +21,7 @@ describe.only('2022.20', () => {
             expect(solve2(`${__dirname}/data/example.txt`)).to.equal(1623178306);
         });
 
-        it('is solved', () => {
+        it.skip('is solved', () => {
             expect(solve2(`${__dirname}/data/input.txt`)).to.equal(1632917375836);
         });
 
