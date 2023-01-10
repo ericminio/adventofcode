@@ -20,12 +20,13 @@ const solve2 = (file) => {
         mix(input, list);
     }
 
-    let message = asArray(list);
-    let total = fingerPrints(message).reduce(add);
-
-    return total;
+    return checksum(list);
 };
 
+const checksum = (list) => {
+    let message = asArray(list);
+    return fingerPrints(message).reduce(add);
+};
 const fingerPrints = (message) => {
     let zero = message.indexOf(0);
     return [1000, 2000, 3000].map(n => message[circularIndex(zero + n, message.length)]);
