@@ -1,14 +1,6 @@
 const { add, lines } = require('../support');
 const { circularIndex } = require('../support/circular-index');
 
-const move = (n, values) => {
-    let oldIndex = values.indexOf(n);
-    values.splice(oldIndex, 1);
-    let newIndex = (oldIndex + n) % values.length;
-    values.splice(newIndex, 0, n);
-
-    return values;
-};
 const decrypt = (file) => {
     let input = lines(file).map(line => parseInt(line));
     let message = input.slice();
@@ -50,4 +42,4 @@ const endIndex = (start, offset, list) => {
     return end;
 }
 
-module.exports = { move, nth, circularIndex, pushCount, endIndex, solve1, solve2 };
+module.exports = { nth, circularIndex, pushCount, endIndex, solve1, solve2 };
