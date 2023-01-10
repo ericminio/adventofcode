@@ -16,7 +16,17 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    return 1623178306;
+    let input = lines(file).map(line => 811589153 * parseInt(line));
+
+    let list = buildFrom(input);
+    for (let i = 0; i < 10; i++) {
+        mix(input, list);
+    }
+
+    let message = asArray(list);
+    let total = fingerPrints(message).reduce(add);
+
+    return total;
 };
 
 const mix = (input, list) => {
