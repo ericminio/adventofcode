@@ -1,5 +1,4 @@
 const { add, lines } = require('../support');
-const { circularIndex } = require('../support/circular-index');
 const { endIndex } = require('./end-index');
 const { fingerPrints } = require('./finger-prints');
 const { pushCount } = require('./push-count');
