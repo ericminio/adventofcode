@@ -16,7 +16,7 @@ describe.only('linked list', () => {
                 next: '0',
                 previous: '0',
             });
-        });
+        })
 
         it('works with two elements', () => {
             let list = buildFrom([1, 2]);
