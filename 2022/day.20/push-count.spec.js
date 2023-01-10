@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { pushCount } = require('./push-count');
 
-describe.only('array item pushing count', () => {
+describe('array item pushing count', () => {
 
     it('works for zero', () => {
         let list = [1, 2, 3];
