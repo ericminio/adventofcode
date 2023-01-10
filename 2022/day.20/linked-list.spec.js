@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { nth } = require('./solve');
 const { add, lines } = require('../support');
 
-describe.only('linked list', () => {
+describe('linked list', () => {
 
     describe('build from array', () => {
 
