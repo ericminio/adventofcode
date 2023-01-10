@@ -104,6 +104,12 @@ describe.only('linked list', () => {
 const pushRight = (list, key) => {
     let a = list[key];
     let b = list[a.next];
+    return invert(a, b, list);
+};
+
+const pushLeft = (list, key) => {
+    let b = list[key];
+    let a = list[b.previous];
     let around = {
         previous: list[a.key].previous,
         next: list[b.key].next,
@@ -118,9 +124,7 @@ const pushRight = (list, key) => {
     return list;
 };
 
-const pushLeft = (list, key) => {
-    let b = list[key];
-    let a = list[b.previous];
+const invert = (a, b, list) => {
     let around = {
         previous: list[a.key].previous,
         next: list[b.key].next,
