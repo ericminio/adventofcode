@@ -28,9 +28,9 @@ const checksum = (list) => {
 const mix = (initial, list) => {
     for (let i = 0; i < initial.length; i++) {
         let value = initial[i];
-        let increment = value > 0 ? +1 : -1;
+        let direction = value > 0 ? +1 : -1;
         let max = value % (initial.length - 1);
-        for (let count = 0; count !== max; count += increment) {
+        for (let count = 0; count !== max; count += direction) {
             if (value > 0) { pushRight(list, i); } else { pushLeft(list, i); }
         }
     }
