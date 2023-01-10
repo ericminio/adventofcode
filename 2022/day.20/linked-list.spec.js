@@ -82,7 +82,7 @@ describe.only('linked list', () => {
         let input = lines(`${__dirname}/data/example.txt`).map(line => parseInt(line));
         let list = buildFrom(input);
 
-        expect(Object.keys(list).length).to.equal(7 + 2);
+        expect(Object.keys(list).length).to.equal(input.length + 2);
         for (let i = 0; i < input.length; i++) {
             let value = input[i];
             if (value > 0) {
