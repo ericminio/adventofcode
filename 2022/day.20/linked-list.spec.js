@@ -3,7 +3,7 @@ const { add, lines } = require('../support');
 const { fingerPrints } = require('./finger-prints');
 const { pushCount } = require('./push-count');
 
-describe.only('linked list', () => {
+describe('linked list', () => {
 
     describe('build from array', () => {
 
