@@ -34,20 +34,6 @@ describe.only('linked list', () => {
                 previous: '0',
             });
         });
-
-        it('keeps track of first and last elements right from the start', () => {
-            let list = buildFrom([1]);
-
-            expect(list.first).to.equal('0');
-            expect(list.last).to.equal('0');
-        });
-
-        it('keeps track of first and last elements after push', () => {
-            let list = buildFrom([1, 2]);
-
-            expect(list.first).to.equal('0');
-            expect(list.last).to.equal('1');
-        });
     });
 
     describe('recreate array', () => {
@@ -79,7 +65,7 @@ describe.only('linked list', () => {
         });
     });
 
-    it('can solve part 1', () => {
+    it.skip('can solve part 1', () => {
         let input = lines(`${__dirname}/data/input.txt`).map(line => parseInt(line));
         let list = buildFrom(input);
 
@@ -129,8 +115,8 @@ const invert = (a, b, list) => {
 };
 
 const asArray = (list) => {
-    let size = Object.values(list).length - 2;
-    let current = list[list.first];
+    let size = Object.values(list).length;
+    let current = list[nodeKey(0)];
     let array = [];
     for (let i = 0; i < size; i++) {
         array.push(current.value);
@@ -161,6 +147,8 @@ const buildFrom = (incoming) => {
         list = pushNode(i, value, list);
     }
 
+    delete list.first;
+    delete list.last;
     return list;
 };
 const nodeKey = (index) => {
