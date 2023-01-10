@@ -1,5 +1,5 @@
 const { add, lines } = require('../support');
-const { circularIndex } = require('../support/circular-index');
+const { circularIndex } = require('../../lib/circular-index');
 const { buildFromArray, asArray, pushRight, pushLeft } = require('../../lib/linked-list');
 
 const solve1 = (file) => {
