@@ -4,7 +4,6 @@ const { buildFromArray, asArray, pushRight, pushLeft } = require('../../lib/link
 
 const solve1 = (file) => {
     let input = lines(file).map(line => parseInt(line));
-
     let list = buildFromArray(input);
     mix(input, list);
 
@@ -16,7 +15,6 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     let input = lines(file).map(line => 811589153 * parseInt(line));
-
     let list = buildFromArray(input);
     for (let i = 0; i < 10; i++) {
         mix(input, list);
