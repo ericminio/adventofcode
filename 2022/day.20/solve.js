@@ -6,7 +6,6 @@ const solve1 = (file) => {
     let input = lines(file).map(line => parseInt(line));
     let list = buildFromArray(input);
     mix(input, list);
-
     return checksum(list);
 };
 
@@ -16,7 +15,6 @@ const solve2 = (file) => {
     for (let i = 0; i < 10; i++) {
         mix(input, list);
     }
-
     return checksum(list);
 };
 
