@@ -102,7 +102,7 @@ describe.only('linked list', () => {
 });
 
 const pushRight = (list, index) => {
-    let a = list[nodeKey(index)];
+    let a = list[index];
     let b = list[a.next];
     let around = {
         previous: list[a.key].previous,
