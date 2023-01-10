@@ -78,7 +78,7 @@ describe.only('linked list', () => {
         });
     });
 
-    it.skip('can solve part 1 example', () => {
+    it('can solve part 1 example', () => {
         let input = lines(`${__dirname}/data/example.txt`).map(line => parseInt(line));
         let list = buildFrom(input);
 
