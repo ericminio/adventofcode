@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { circularIndex } = require('./circular-index');
 
-describe.only('array circular index', () => {
+describe('array circular index', () => {
 
     it('works for zero', () => {
         let array = [1, 2, 3];

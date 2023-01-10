@@ -22,6 +22,14 @@ const push = (start, initial, message) => {
         ];
     }
 };
+const pushCount = (n, list) => n % (list.length - 1);
+const endIndex = (start, offset, list) => {
+    let end = (start + offset) % (list.length - 1);
+    if (end < 0) {
+        end = circularIndex(end - 1, list.length);
+    }
+    return end;
+};
 
 const solve1 = (file) => {
     let message = decrypt(file);
@@ -33,13 +41,5 @@ const solve2 = (file) => {
     return 15;
 };
 
-const pushCount = (n, list) => n % (list.length - 1);
-const endIndex = (start, offset, list) => {
-    let end = (start + offset) % (list.length - 1);
-    if (end < 0) {
-        end = circularIndex(end - 1, list.length);
-    }
-    return end;
-}
 
 module.exports = { circularIndex, pushCount, endIndex, solve1, solve2 };
