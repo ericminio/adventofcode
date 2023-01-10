@@ -1,11 +1,11 @@
 const { add, lines } = require('../support');
 const { circularIndex } = require('../support/circular-index');
-const { buildFrom, asArray, pushRight, pushLeft } = require('./linked-list');
+const { buildFromArray, asArray, pushRight, pushLeft } = require('./linked-list');
 
 const solve1 = (file) => {
     let input = lines(file).map(line => parseInt(line));
 
-    let list = buildFrom(input);
+    let list = buildFromArray(input);
     mix(input, list);
 
     let message = asArray(list);
@@ -17,7 +17,7 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     let input = lines(file).map(line => 811589153 * parseInt(line));
 
-    let list = buildFrom(input);
+    let list = buildFromArray(input);
     for (let i = 0; i < 10; i++) {
         mix(input, list);
     }

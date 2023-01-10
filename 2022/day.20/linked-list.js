@@ -36,7 +36,7 @@ const asArray = (list) => {
     return array;
 };
 
-const buildFrom = (incoming) => {
+const buildFromArray = (incoming) => {
     const pushNode = (index, value, list) => {
         let key = nodeKey(index);
         let node = { key, value, next: list.first, previous: list.last };
@@ -66,4 +66,4 @@ const nodeKey = (index) => {
     return `${index}`;
 };
 
-module.exports = { asArray, buildFrom, pushLeft, pushRight };
+module.exports = { asArray, buildFromArray, pushLeft, pushRight };
