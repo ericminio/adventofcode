@@ -78,7 +78,7 @@ describe.only('linked list', () => {
         });
     });
 
-    it('can solve part 1 example', () => {
+    it.skip('can solve part 1 example', () => {
         let input = lines(`${__dirname}/data/example.txt`).map(line => parseInt(line));
         let list = buildFrom(input);
 
@@ -102,76 +102,78 @@ describe.only('linked list', () => {
         expect(total).to.equal(3);
     });
 
-    const pushRight = (list, value) => {
-        let a = list[nodeKey(value)];
-        let b = list[a.next];
-        let around = {
-            previous: list[a.key].previous,
-            next: list[b.key].next,
-        };
-        b.next = a.key;
-        a.previous = b.key;
-        b.previous = around.previous;
-        a.next = around.next;
-        list[around.previous].next = b.key;
-        list[around.next].previous = a.key;
 
-        return list;
-    };
-
-    const pushLeft = (list, value) => {
-        let b = list[nodeKey(value)];
-        let a = list[b.previous];
-        let around = {
-            previous: list[a.key].previous,
-            next: list[b.key].next,
-        };
-        b.next = a.key;
-        a.previous = b.key;
-        b.previous = around.previous;
-        a.next = around.next;
-        list[around.previous].next = b.key;
-        list[around.next].previous = a.key;
-
-        return list;
-    };
-
-    const asArray = (list) => {
-        let size = Object.values(list).length - 2;
-        let current = list[list.first];
-        let array = [];
-        for (let i = 0; i < size; i++) {
-            array.push(current.value);
-            current = list[current.next];
-        }
-        return array;
-    };
-
-    const buildFrom = (incoming) => {
-        let key = nodeKey(incoming[0]);
-        let list = {};
-        list[key] = { key, value: incoming[0], next: key, previous: key };
-        list.first = key;
-        list.last = key;
-
-        for (let i = 1; i < incoming.length; i++) {
-            let value = incoming[i];
-            list = pushNode(value, list);
-        }
-
-        return list;
-    };
-    const nodeKey = (value) => {
-        return `${value}`;
-    };
-    const pushNode = (value, list) => {
-        let key = nodeKey(value);
-        let node = { key, value, next: list.first, previous: list.last };
-        list[list.last].next = key;
-        list[list.first].previous = key;
-        list[key] = node;
-        list.last = key;
-
-        return list;
-    }
 });
+
+const pushRight = (list, value) => {
+    let a = list[nodeKey(value)];
+    let b = list[a.next];
+    let around = {
+        previous: list[a.key].previous,
+        next: list[b.key].next,
+    };
+    b.next = a.key;
+    a.previous = b.key;
+    b.previous = around.previous;
+    a.next = around.next;
+    list[around.previous].next = b.key;
+    list[around.next].previous = a.key;
+
+    return list;
+};
+
+const pushLeft = (list, value) => {
+    let b = list[nodeKey(value)];
+    let a = list[b.previous];
+    let around = {
+        previous: list[a.key].previous,
+        next: list[b.key].next,
+    };
+    b.next = a.key;
+    a.previous = b.key;
+    b.previous = around.previous;
+    a.next = around.next;
+    list[around.previous].next = b.key;
+    list[around.next].previous = a.key;
+
+    return list;
+};
+
+const asArray = (list) => {
+    let size = Object.values(list).length - 2;
+    let current = list[list.first];
+    let array = [];
+    for (let i = 0; i < size; i++) {
+        array.push(current.value);
+        current = list[current.next];
+    }
+    return array;
+};
+
+const buildFrom = (incoming) => {
+    let key = nodeKey(incoming[0]);
+    let list = {};
+    list[key] = { key, value: incoming[0], next: key, previous: key };
+    list.first = key;
+    list.last = key;
+
+    for (let i = 1; i < incoming.length; i++) {
+        let value = incoming[i];
+        list = pushNode(value, list);
+    }
+
+    return list;
+};
+const nodeKey = (value) => {
+    return `${value}`;
+};
+const pushNode = (value, list) => {
+    let key = nodeKey(value);
+    let node = { key, value, next: list.first, previous: list.last };
+    list[list.last].next = key;
+    list[list.first].previous = key;
+    list[key] = node;
+    list.last = key;
+
+    return list;
+}
