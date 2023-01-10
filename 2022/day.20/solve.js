@@ -42,4 +42,4 @@ const solve2 = (file) => {
 };
 
 
-module.exports = { circularIndex, pushCount, endIndex, solve1, solve2 };
+module.exports = { endIndex, solve1, solve2 };
