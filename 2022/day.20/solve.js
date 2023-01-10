@@ -1,5 +1,5 @@
 const { add, lines } = require('../support');
-const { fingerPrints } = require('./finger-prints');
+const { circularIndex } = require('../support/circular-index');
 const { buildFrom, asArray, pushRight, pushLeft } = require('./linked-list');
 
 const solve1 = (file) => {
@@ -28,6 +28,10 @@ const solve2 = (file) => {
     return total;
 };
 
+const fingerPrints = (message) => {
+    let zero = message.indexOf(0);
+    return [1000, 2000, 3000].map(n => message[circularIndex(zero + n, message.length)]);
+};
 const mix = (input, list) => {
     for (let i = 0; i < input.length; i++) {
         let value = input[i];
