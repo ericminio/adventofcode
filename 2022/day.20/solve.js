@@ -3,17 +3,17 @@ const { circularIndex } = require('../../lib/circular-index');
 const { buildFromArray, asArray, pushRight, pushLeft } = require('../../lib/linked-list');
 
 const solve1 = (file) => {
-    let input = lines(file).map(line => parseInt(line));
-    let list = buildFromArray(input);
-    mix(input, list);
+    let initial = lines(file).map(line => parseInt(line));
+    let list = buildFromArray(initial);
+    mix(initial, list);
     return checksum(list);
 };
 
 const solve2 = (file) => {
-    let input = lines(file).map(line => 811589153 * parseInt(line));
-    let list = buildFromArray(input);
+    let initial = lines(file).map(line => 811589153 * parseInt(line));
+    let list = buildFromArray(initial);
     for (let i = 0; i < 10; i++) {
-        mix(input, list);
+        mix(initial, list);
     }
     return checksum(list);
 };
@@ -25,11 +25,11 @@ const checksum = (list) => {
         .map(n => message[circularIndex(zero + n, message.length)])
         .reduce(add);
 };
-const mix = (input, list) => {
-    for (let i = 0; i < input.length; i++) {
-        let value = input[i];
+const mix = (initial, list) => {
+    for (let i = 0; i < initial.length; i++) {
+        let value = initial[i];
         let increment = value > 0 ? +1 : -1;
-        let max = value % (input.length - 1);
+        let max = value % (initial.length - 1);
         for (let count = 0; count !== max; count += increment) {
             if (value > 0) { pushRight(list, i); } else { pushLeft(list, i); }
         }
