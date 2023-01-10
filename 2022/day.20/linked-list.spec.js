@@ -101,8 +101,8 @@ describe.only('linked list', () => {
 
 });
 
-const pushRight = (list, index) => {
-    let a = list[index];
+const pushRight = (list, key) => {
+    let a = list[key];
     let b = list[a.next];
     let around = {
         previous: list[a.key].previous,
