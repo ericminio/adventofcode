@@ -87,12 +87,12 @@ describe.only('linked list', () => {
             let value = input[i];
             let increment = value > 0 ? +1 : -1;
             if (value > 0) {
-                for (let count = 0; count < value; count += increment) {
+                for (let count = 0; count !== value; count += increment) {
                     pushRight(list, value);
                 }
             }
             if (value < 0) {
-                for (let count = 0; count > value; count += increment) {
+                for (let count = 0; count !== value; count += increment) {
                     pushLeft(list, value);
                 }
             }
