@@ -1,7 +1,6 @@
 const { add, lines } = require('../support');
 const { fingerPrints } = require('./finger-prints');
 const { buildFrom, asArray, pushRight, pushLeft } = require('./linked-list');
-const { pushCount } = require('./push-count');
 
 const solve1 = (file) => {
     let input = lines(file).map(line => parseInt(line));
