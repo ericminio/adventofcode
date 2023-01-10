@@ -30,8 +30,9 @@ const mix = (initial, list) => {
         let value = initial[i];
         let direction = Math.sign(value);
         let pushCount = value % (initial.length - 1);
-        for (let count = 0; count !== pushCount; count += direction) {
+        while (pushCount !== 0) {
             if (direction > 0) { pushRight(list, i); } else { pushLeft(list, i); }
+            pushCount -= direction;
         }
     }
 };
