@@ -1,5 +1,6 @@
 const { add, lines } = require('../support');
 const { circularIndex } = require('../support/circular-index');
+const { endIndex } = require('./end-index');
 const { fingerPrints } = require('./finger-prints');
 const { pushCount } = require('./push-count');
 
@@ -23,13 +24,6 @@ const push = (start, initial, message) => {
         ];
     }
 };
-const endIndex = (start, offset, list) => {
-    let end = (start + offset) % (list.length - 1);
-    if (end < 0) {
-        end = circularIndex(end - 1, list.length);
-    }
-    return end;
-};
 
 const solve1 = (file) => {
     let message = decrypt(file);
@@ -42,4 +36,4 @@ const solve2 = (file) => {
 };
 
 
-module.exports = { endIndex, solve1, solve2 };
+module.exports = { solve1, solve2 };
