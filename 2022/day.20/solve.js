@@ -21,8 +21,7 @@ const solve2 = (file) => {
 };
 
 const checksum = (list) => {
-    let message = asArray(list);
-    return fingerPrints(message).reduce(add);
+    return fingerPrints(asArray(list)).reduce(add);
 };
 const fingerPrints = (message) => {
     let zero = message.indexOf(0);
