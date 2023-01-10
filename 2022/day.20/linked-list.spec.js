@@ -1,10 +1,7 @@
 const { expect } = require('chai');
-const { add, lines } = require('../support');
-const { fingerPrints } = require('./finger-prints');
-const { pushCount } = require('./push-count');
 const { asArray, buildFrom, pushLeft, pushRight } = require('./linked-list');
 
-describe.only('linked list', () => {
+describe('linked list', () => {
 
     describe('build from array', () => {
 
