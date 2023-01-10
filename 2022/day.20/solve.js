@@ -1,6 +1,9 @@
 const { add, lines } = require('../support');
 const { circularIndex } = require('../support/circular-index');
 
+const fingerPrints = (message) => {
+    return [1000, 2000, 3000];
+};
 const decrypt = (file) => {
     let input = lines(file).map(line => parseInt(line));
     let message = input.slice();
@@ -25,7 +28,7 @@ const push = (start, initial, message) => {
 const solve1 = (file) => {
     let message = decrypt(file);
 
-    return [1000, 2000, 3000].map(n => nth(n, message)).reduce(add);
+    return fingerPrints(message).map(n => nth(n, message)).reduce(add);
 };
 
 const solve2 = (file) => {
