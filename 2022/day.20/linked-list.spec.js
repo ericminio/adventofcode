@@ -140,6 +140,16 @@ const asArray = (list) => {
 };
 
 const buildFrom = (incoming) => {
+    const pushNode = (index, value, list) => {
+        let key = nodeKey(index);
+        let node = { key, value, next: list.first, previous: list.last };
+        list[list.last].next = key;
+        list[list.first].previous = key;
+        list[key] = node;
+        list.last = key;
+
+        return list;
+    };
     let key = nodeKey(0);
     let list = {};
     list[key] = { key, value: incoming[0], next: key, previous: key };
@@ -156,13 +166,3 @@ const buildFrom = (incoming) => {
 const nodeKey = (index) => {
     return `${index}`;
 };
-const pushNode = (index, value, list) => {
-    let key = nodeKey(index);
-    let node = { key, value, next: list.first, previous: list.last };
-    list[list.last].next = key;
-    list[list.first].previous = key;
-    list[key] = node;
-    list.last = key;
-
-    return list;
-}
