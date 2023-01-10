@@ -1,12 +1,3 @@
-const push = (value, message) => {
-    let offset = pushCount(value, message);
-    let end = endIndex(start, offset, message)
-    let direction = Math.sign(end - start);
-    for (let position = start; position !== end; position += direction) {
-        [message[position], message[position + direction]] = [
-            message[position + direction], message[position]
-        ];
-    }
-};
+const pushCount = (n, list) => n % (list.length - 1);
 
-module.exports = { push };
+module.exports = { pushCount };
