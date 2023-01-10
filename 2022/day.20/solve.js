@@ -1,6 +1,6 @@
 const { add, lines } = require('../support');
 const { circularIndex } = require('../support/circular-index');
-const { buildFromArray, asArray, pushRight, pushLeft } = require('./linked-list');
+const { buildFromArray, asArray, pushRight, pushLeft } = require('../../lib/linked-list');
 
 const solve1 = (file) => {
     let input = lines(file).map(line => parseInt(line));
