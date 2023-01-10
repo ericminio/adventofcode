@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { add, lines } = require('../support');
 const { fingerPrints } = require('./finger-prints');
 
-describe('linked list', () => {
+describe.only('linked list', () => {
 
     describe('build from array', () => {
 
