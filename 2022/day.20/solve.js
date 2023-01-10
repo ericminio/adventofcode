@@ -33,7 +33,6 @@ const solve2 = (file) => {
     return 15;
 };
 
-const nth = (n, list) => list[circularIndex(list.indexOf(0) + n, list.length)];
 const pushCount = (n, list) => n % (list.length - 1);
 const endIndex = (start, offset, list) => {
     let end = (start + offset) % (list.length - 1);
@@ -43,4 +42,4 @@ const endIndex = (start, offset, list) => {
     return end;
 }
 
-module.exports = { nth, circularIndex, pushCount, endIndex, solve1, solve2 };
+module.exports = { circularIndex, pushCount, endIndex, solve1, solve2 };
