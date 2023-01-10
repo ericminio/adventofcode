@@ -65,11 +65,11 @@ describe.only('linked list', () => {
         });
     });
 
-    it.skip('can solve part 1', () => {
+    it('can solve part 1', () => {
         let input = lines(`${__dirname}/data/input.txt`).map(line => parseInt(line));
         let list = buildFrom(input);
 
-        expect(Object.keys(list).length).to.equal(input.length + 2);
+        expect(Object.keys(list).length).to.equal(input.length);
         for (let i = 0; i < input.length; i++) {
             let value = input[i];
             let increment = value > 0 ? +1 : -1;
