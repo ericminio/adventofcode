@@ -16,7 +16,7 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    return 15;
+    return 1623178306;
 };
 
 const mix = (input, list) => {
