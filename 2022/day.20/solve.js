@@ -7,10 +7,7 @@ const solve1 = (file) => {
     let list = buildFromArray(input);
     mix(input, list);
 
-    let message = asArray(list);
-    let total = fingerPrints(message).reduce(add);
-
-    return total;
+    return checksum(list);
 };
 
 const solve2 = (file) => {
