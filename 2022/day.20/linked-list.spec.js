@@ -119,7 +119,7 @@ const pushRight = (list, index) => {
 };
 
 const pushLeft = (list, index) => {
-    let b = list[nodeKey(index)];
+    let b = list[index];
     let a = list[b.previous];
     let around = {
         previous: list[a.key].previous,
