@@ -1,6 +1,7 @@
 const { expect } = require('chai');
 const { add, lines } = require('../support');
 const { fingerPrints } = require('./finger-prints');
+const { pushCount } = require('./push-count');
 
 describe.only('linked list', () => {
 
@@ -86,7 +87,8 @@ describe.only('linked list', () => {
         for (let i = 0; i < input.length; i++) {
             let value = input[i];
             let increment = value > 0 ? +1 : -1;
-            for (let count = 0; count !== value; count += increment) {
+            let max = pushCount(value, input.length);
+            for (let count = 0; count !== max; count += increment) {
                 if (value > 0) { pushRight(list, value); } else { pushLeft(list, value); }
             }
         }
