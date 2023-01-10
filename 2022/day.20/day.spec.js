@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
-const { move, nth, pushCount, endIndex } = require('./solve');
+const { move, nth, endIndex } = require('./solve');
 const { add, lines } = require('../support');
 
 describe('2022.20', () => {
@@ -262,39 +262,6 @@ describe('2022.20', () => {
 
             return list;
         }
-    });
-
-    describe('array item pushing count', () => {
-
-        it('works for zero', () => {
-            let list = [1, 2, 3];
-
-            expect(pushCount(0, list)).to.equal(0);
-        });
-
-        it('works for 1', () => {
-            let list = [1, 2, 3];
-
-            expect(pushCount(1, list)).to.equal(1);
-        });
-
-        it('circles back', () => {
-            let list = [1, 2, 3];
-
-            expect(pushCount(8, list)).to.equal(0);
-        });
-
-        it('works for -1', () => {
-            let list = [1, 2, 3];
-
-            expect(pushCount(-1, list)).to.equal(-1);
-        });
-
-        it('circles back in the negative too', () => {
-            let list = [1, 2, 3];
-
-            expect(pushCount(-8, list)).to.equal(0);
-        });
     });
 
     describe('index after pushing', () => {
