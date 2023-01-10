@@ -88,12 +88,12 @@ describe.only('linked list', () => {
             let increment = value > 0 ? +1 : -1;
             if (value > 0) {
                 for (let count = 0; count !== value; count += increment) {
-                    pushRight(list, value);
+                    if (value > 0) { pushRight(list, value); } else { pushLeft(list, value); }
                 }
             }
             if (value < 0) {
                 for (let count = 0; count !== value; count += increment) {
-                    pushLeft(list, value);
+                    if (value > 0) { pushRight(list, value); } else { pushLeft(list, value); }
                 }
             }
         }
