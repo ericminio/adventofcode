@@ -33,7 +33,7 @@ const mix = (input, list) => {
     for (let i = 0; i < input.length; i++) {
         let value = input[i];
         let increment = value > 0 ? +1 : -1;
-        let max = pushCount(value, input.length);
+        let max = value % (input.length - 1);
         for (let count = 0; count !== max; count += increment) {
             if (value > 0) { pushRight(list, i); } else { pushLeft(list, i); }
         }
