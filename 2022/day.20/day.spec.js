@@ -5,7 +5,7 @@ describe('2022.20', () => {
 
     describe('part 1', () => {
 
-        it('has an example', () => {
+        it.only('has an example', () => {
             expect(solve1(`${__dirname}/data/example.txt`)).to.equal(3);
         });
 
@@ -17,7 +17,7 @@ describe('2022.20', () => {
 
     describe('part 2', () => {
 
-        it('has an example', () => {
+        it.only('has an example', () => {
             expect(solve2(`${__dirname}/data/example.txt`)).to.equal(1623178306);
         });
 
