@@ -1,16 +1,24 @@
 const { add, lines } = require('../support');
 const { fingerPrints } = require('./finger-prints');
-const { push } = require('./push');
+const { buildFrom, asArray, pushRight, pushLeft } = require('./linked-list');
+const { pushCount } = require('./push-count');
 
 const solve1 = (file) => {
     let input = lines(file).map(line => parseInt(line));
-    let message = input.slice();
+    let list = buildFrom(input);
 
     for (let i = 0; i < input.length; i++) {
-        push(i, input, message);
+        let value = input[i];
+        let increment = value > 0 ? +1 : -1;
+        let max = pushCount(value, input.length);
+        for (let count = 0; count !== max; count += increment) {
+            if (value > 0) { pushRight(list, i); } else { pushLeft(list, i); }
+        }
     }
+    let message = asArray(list);
+    let total = fingerPrints(message).reduce(add);
 
-    return fingerPrints(message).reduce(add);
+    return total;
 };
 
 const solve2 = (file) => {
