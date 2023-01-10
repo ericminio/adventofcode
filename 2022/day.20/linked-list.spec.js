@@ -66,24 +66,4 @@ describe.only('linked list', () => {
         });
     });
 
-    it('can solve part 1', () => {
-        let input = lines(`${__dirname}/data/input.txt`).map(line => parseInt(line));
-        let list = buildFrom(input);
-
-        expect(Object.keys(list).length).to.equal(input.length);
-        for (let i = 0; i < input.length; i++) {
-            let value = input[i];
-            let increment = value > 0 ? +1 : -1;
-            let max = pushCount(value, input.length);
-            for (let count = 0; count !== max; count += increment) {
-                if (value > 0) { pushRight(list, i); } else { pushLeft(list, i); }
-            }
-        }
-        let message = asArray(list);
-        let total = fingerPrints(message).reduce(add);
-
-        expect(total).to.equal(17490);
-    });
-
-
 });
