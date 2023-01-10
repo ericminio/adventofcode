@@ -157,7 +157,7 @@ const nodeKey = (index) => {
     return `${index}`;
 };
 const pushNode = (index, value, list) => {
-    let key = nodeKey(index);
+    let key = `${index}`;
     let node = { key, value, next: list.first, previous: list.last };
     list[list.last].next = key;
     list[list.first].previous = key;
