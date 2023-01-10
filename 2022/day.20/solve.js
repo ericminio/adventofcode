@@ -20,10 +20,10 @@ const solve2 = (file) => {
     return checksum(list);
 };
 
-const checksum = (list) => fingerPrints(asArray(list)).reduce(add);
+const checksum = (list) => fingerPrints(asArray(list));
 const fingerPrints = (message) => {
     let zero = message.indexOf(0);
-    return [1000, 2000, 3000].map(n => message[circularIndex(zero + n, message.length)]);
+    return [1000, 2000, 3000].map(n => message[circularIndex(zero + n, message.length)]).reduce(add);
 };
 const mix = (input, list) => {
     for (let i = 0; i < input.length; i++) {
