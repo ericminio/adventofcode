@@ -39,5 +39,4 @@ const mix = (input, list) => {
     }
 };
 
-
 module.exports = { solve1, solve2 };
