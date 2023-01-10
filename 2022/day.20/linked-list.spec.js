@@ -110,18 +110,7 @@ const pushRight = (list, key) => {
 const pushLeft = (list, key) => {
     let b = list[key];
     let a = list[b.previous];
-    let around = {
-        previous: list[a.key].previous,
-        next: list[b.key].next,
-    };
-    b.next = a.key;
-    a.previous = b.key;
-    b.previous = around.previous;
-    a.next = around.next;
-    list[around.previous].next = b.key;
-    list[around.next].previous = a.key;
-
-    return list;
+    return invert(a, b, list);
 };
 
 const invert = (a, b, list) => {
