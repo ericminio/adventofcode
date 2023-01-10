@@ -1,5 +1,4 @@
 const { expect } = require('chai');
-const { endIndex } = require('./end-index');
 const { push } = require('./push');
 
 describe.only('index after pushing', () => {
