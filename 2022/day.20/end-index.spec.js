@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { endIndex } = require('./end-index');
 
-describe('index after pushing', () => {
+describe.only('index after pushing', () => {
 
     it('works for 1', () => {
         let list = [1, 2, 3];
