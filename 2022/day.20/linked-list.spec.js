@@ -1,6 +1,6 @@
 const { expect } = require('chai');
-const { nth } = require('./solve');
 const { add, lines } = require('../support');
+const { fingerPrints } = require('./finger-prints');
 
 describe('linked list', () => {
 
@@ -97,7 +97,7 @@ describe('linked list', () => {
             }
         }
         let message = asArray(list);
-        let total = [1000, 2000, 3000].map(n => nth(n, message)).reduce(add);
+        let total = fingerPrints(message).reduce(add);
 
         expect(total).to.equal(3);
     });
