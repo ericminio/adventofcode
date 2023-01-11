@@ -5,7 +5,7 @@ const solve1 = (file) => {
         .map(group => group.reduce(add))
         .sort(descending)
         .slice(0, 1)
-        .reduce(add)
+        .reduce(add);
 };
 
 const solve2 = (file) => {

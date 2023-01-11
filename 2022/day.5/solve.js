@@ -35,10 +35,10 @@ const moveOneByOne = (stacks, move) => {
 };
 const moveInGroup = (stacks, move) => {
     let tmp = [];
-    for (var i = 0; i < move.count; i++) {
+    for (let i = 0; i < move.count; i++) {
         tmp.push(stacks[move.from].pop());
     }
-    for (var i = 0; i < move.count; i++) {
+    for (let i = 0; i < move.count; i++) {
         stacks[move.to].push(tmp.pop());
     }
     return stacks;
@@ -47,14 +47,18 @@ const moveInGroup = (stacks, move) => {
 const solve1 = (file) => {
     let stacks = parseStacks(file);
     let moves = parseMoves(file);
-    moves.forEach(move => { stacks = moveOneByOne(stacks, move) });
+    moves.forEach(move => {
+        stacks = moveOneByOne(stacks, move);
+    });
 
     return stacks.map(top).join('');
 };
 const solve2 = (file) => {
     let stacks = parseStacks(file);
     let moves = parseMoves(file);
-    moves.forEach(move => { stacks = moveInGroup(stacks, move) });
+    moves.forEach(move => {
+        stacks = moveInGroup(stacks, move);
+    });
 
     return stacks.map(top).join('');
 };

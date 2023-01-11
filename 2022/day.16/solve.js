@@ -24,13 +24,13 @@ const solve2 = (file) => {
     let candidates = init(map);
 
     let paths = {
-        0: [{ id: 'AA', rate: 0, minutes: 0 }],
-        1: [{ id: 'AA', rate: 0, minutes: 0 }]
+        0: [ { id: 'AA', rate: 0, minutes: 0 } ],
+        1: [ { id: 'AA', rate: 0, minutes: 0 } ]
     };
     let visited = [];
 
     let size = Math.floor(candidates.length / 2);
-    for (count = 0; count < size; count++) {
+    for (let count = 0; count < size; count++) {
         run(paths, visited, candidates, table, credit);
     }
 
@@ -40,7 +40,7 @@ const solve2 = (file) => {
     let total = score(paths[0], credit) + score(paths[1], credit);
     return total;
 };
-const winner2 = (file, credit) => {
+const winner2 = () => {
     return [
         { id: 'DD', rate: 20, minutes: 2 },
         { id: 'JJ', rate: 21, minutes: 3 },
@@ -48,15 +48,15 @@ const winner2 = (file, credit) => {
         { id: 'HH', rate: 22, minutes: 7 },
         { id: 'CC', rate: 2, minutes: 9 },
         { id: 'EE', rate: 3, minutes: 11 },
-    ]
+    ];
 };
 const run = (paths, visited, candidates, table, credit) => {
-    starts = [
+    let starts = [
         paths[0][paths[0].length - 1],
         paths[1][paths[1].length - 1],
     ];
 
-    let bests = starts.map((start, index) => {
+    let bests = starts.map((start) => {
         return candidates
             .filter(node => !visited.includes(node.id))
             .map(node => ({
@@ -183,6 +183,6 @@ const digest = (lines) => {
     collection.forEach(valve => valves[valve.id] = valve);
 
     return valves;
-}
+};
 
 module.exports = { score, time, run, init, winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances, entry };

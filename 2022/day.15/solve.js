@@ -79,7 +79,7 @@ const beaconCount = (row, sensors) => {
         if (sensor.beacon.y === row) {
             matching[id(sensor.beacon)] = 1;
         }
-    })
+    });
     return Object.keys(matching).length;
 };
 

@@ -62,7 +62,7 @@ const move = (unit, obstacles) => {
         unit.x++;
         return;
     }
-}
+};
 const isBlocked2 = (unit, obstacles, bottom) => {
     return (unit.y == (bottom - 1) || isBlocked(unit, obstacles));
 };
@@ -87,11 +87,13 @@ const parse = (file) => {
         for (let i = 0; i < points.length - 1; i++) {
             if (points[i][1] == points[i + 1][1]) {
                 let y = points[i][1];
-                if (y > bottom) { bottom = y; }
+                if (y > bottom) {
+                    bottom = y;
+                }
                 let start = points[i][0] < points[i + 1][0] ? points[i][0] : points[i + 1][0];
                 let end = points[i][0] < points[i + 1][0] ? points[i + 1][0] : points[i][0];
                 for (let x = start; x <= end; x++) {
-                    key = location({ x, y });
+                    let key = location({ x, y });
                     obstacles[key] = ROCK;
                 }
             }
@@ -100,8 +102,10 @@ const parse = (file) => {
                 let start = points[i][1] < points[i + 1][1] ? points[i][1] : points[i + 1][1];
                 let end = points[i][1] < points[i + 1][1] ? points[i + 1][1] : points[i][1];
                 for (let y = start; y <= end; y++) {
-                    if (y > bottom) { bottom = y; }
-                    key = location({ x, y });
+                    if (y > bottom) {
+                        bottom = y;
+                    }
+                    let key = location({ x, y });
                     obstacles[key] = ROCK;
                 }
             }
@@ -109,6 +113,6 @@ const parse = (file) => {
     });
 
     return { obstacles, bottom };
-}
+};
 
 module.exports = { solve1, solve2 };

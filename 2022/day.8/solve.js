@@ -5,7 +5,7 @@ const parse = (lines) => {
     lines.height = lines.length;
     for (var x = 0; x < lines.height; x++) {
         for (var y = 0; y < lines.width; y++) {
-            lines[`${x}x${y}`] = { x, y, height: parseInt(lines[x][y]) }
+            lines[`${x}x${y}`] = { x, y, height: parseInt(lines[x][y]) };
         }
     }
 
@@ -53,10 +53,10 @@ const viewingDistance = (direction, tree, forest) => {
         .reduce(add);
 };
 
-const isVisible = (tree, forest) => [above, right, below, left]
+const isVisible = (tree, forest) => [ above, right, below, left ]
     .reduce((visible, direction) => visible || isVisibleFrom(direction, tree, forest), false);
 
-const scenicScore = (tree, forest) => [above, right, below, left]
+const scenicScore = (tree, forest) => [ above, right, below, left ]
     .reduce((score, direction) => score * viewingDistance(direction, tree, forest), 1);
 
 const perimeter = (forest) => 2 * forest.height + 2 * (forest.width - 2);
@@ -85,6 +85,6 @@ const solve2 = (file) => {
     scores.sort(descending);
 
     return scores[0];
-}
+};
 
 module.exports = { solve1, solve2 };

@@ -29,7 +29,7 @@ const solve1 = (file) => {
     const input = lines(file);
     const cycles = run(input);
 
-    return [20, 60, 100, 140, 180, 220].map(point => cycles[point - 1].strength).reduce(add);
+    return [ 20, 60, 100, 140, 180, 220 ].map(point => cycles[point - 1].strength).reduce(add);
 };
 
 const solve2 = (file) => {

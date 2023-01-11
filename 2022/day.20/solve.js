@@ -21,7 +21,7 @@ const solve2 = (file) => {
 const checksum = (list) => {
     let message = asArray(list);
     let zero = message.indexOf(0);
-    return [1000, 2000, 3000]
+    return [ 1000, 2000, 3000 ]
         .map(n => message[circularIndex(zero + n, message.length)])
         .reduce(add);
 };
@@ -31,7 +31,12 @@ const mix = (initial, list) => {
         let direction = Math.sign(value);
         let pushCount = value % (initial.length - 1);
         while (pushCount !== 0) {
-            if (direction > 0) { pushRight(list, i); } else { pushLeft(list, i); }
+            if (direction > 0) {
+                pushRight(list, i);
+            }
+            else {
+                pushLeft(list, i);
+            }
             pushCount -= direction;
         }
     }

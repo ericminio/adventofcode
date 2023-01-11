@@ -17,7 +17,7 @@ const solve2 = (file) => {
         .map(key => map[key])
         .filter(point => point.height == 1)
         .map(low => {
-            let request = { ...map.request, origin: { id: low.id } };
+            let request = { ...map.request, origin: { id: low.id }};
             try {
                 let path = gps(request, map);
                 return path.nodes.length - 1;
@@ -36,20 +36,24 @@ const load = (view) => {
     let size = { height: lines.length, width: lines[0].trim().length };
     let map = mapAsHash({ height: size.height, width: size.width });
     map.request = {};
-    for (var row = 0; row < size.height; row++) {
+    for (let row = 0; row < size.height; row++) {
         let line = lines[row].trim();
-        for (var column = 0; column < size.width; column++) {
+        for (let column = 0; column < size.width; column++) {
             let cell = id(row, column);
             let letter = line[column];
             let height = letter.charCodeAt(0) - 96;
-            if (letter === 'S') { height = 1; map.request.origin = { id: cell }; }
-            if (letter === 'E') { height = 26; map.request.target = { id: cell }; }
+            if (letter === 'S') {
+                height = 1; map.request.origin = { id: cell };
+            }
+            if (letter === 'E') {
+                height = 26; map.request.target = { id: cell };
+            }
             map[cell].value = 1;
             map[cell].height = height;
         }
     }
-    for (var row = 0; row < size.height; row++) {
-        for (var column = 0; column < size.width; column++) {
+    for (let row = 0; row < size.height; row++) {
+        for (let column = 0; column < size.width; column++) {
             let cell = id(row, column);
             let candidates = map[cell].neighbours;
             let neighbours = [];
@@ -62,6 +66,6 @@ const load = (view) => {
         }
     }
     return map;
-}
+};
 
 module.exports = { load, solve1, solve2 };

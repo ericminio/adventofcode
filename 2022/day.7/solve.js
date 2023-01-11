@@ -16,7 +16,7 @@ const inspect = (file) => {
     let current = '';
     lines(file).forEach(line => {
         if (isChangeDirUpCommand(line)) {
-            current = current.substring(0, current.lastIndexOf(separator))
+            current = current.substring(0, current.lastIndexOf(separator));
         }
         if (isChangeDirDownCommand(line)) {
             const name = line.substring(5).trim();

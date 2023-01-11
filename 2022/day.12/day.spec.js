@@ -40,7 +40,7 @@ describe('2022.12', () => {
                 Sbc
                 deE
             `);
-            expect(map.request).to.deep.equal({ origin: { id: '0x0' }, target: { id: '1x2' } });
+            expect(map.request).to.deep.equal({ origin: { id: '0x0' }, target: { id: '1x2' }});
         });
 
         it('sets expected value', () => {
@@ -66,7 +66,7 @@ describe('2022.12', () => {
                 Sbc
                 deE
             `);
-            expect(map['0x0'].neighbours).to.deep.equal(['0x1']);
+            expect(map['0x0'].neighbours).to.deep.equal([ '0x1' ]);
         });
     });
 });

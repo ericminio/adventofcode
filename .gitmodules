@@ -1,0 +1,3 @@
+[submodule "yop-eslint"]
+	path = yop-eslint
+	url = https://github.com/ericminio/yop-eslint.git

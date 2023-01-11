@@ -34,11 +34,11 @@ const tailMove = (head, tail) => {
 };
 const shouldMove = (tail, head) => {
     return Math.abs(head.x - tail.x) > 1 || Math.abs(head.y - tail.y) > 1;
-}
+};
 const moving = (knot, direction) => {
     knot.x += direction.dx;
     knot.y += direction.dy;
-}
+};
 const updateVisited = (knot, visited) => {
     visited[`${knot.x}x${knot.y}`] = 1;
 };
@@ -61,10 +61,10 @@ const swing = (knots, moves) => {
 const rope = ({ size }) => {
     const knots = [];
     for (var i = 0; i < size; i++) {
-        knots.push({ x: 0, y: 0 })
+        knots.push({ x: 0, y: 0 });
     }
-    return knots
-}
+    return knots;
+};
 
 const solve1 = (file) => {
     const moves = parse(lines(file));

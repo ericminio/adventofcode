@@ -1,8 +1,8 @@
-const solve1 = (file) => {
+const solve1 = () => {
     return 42;
 };
 
-const solve2 = (file) => {
+const solve2 = () => {
     return 15;
 };
 

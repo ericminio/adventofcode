@@ -9,8 +9,8 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     const pairs = lines(file).filter(line => line.length > 0).map(list => eval(list));
-    const two = [[2]];
-    const six = [[6]];
+    const two = [ [ 2 ] ];
+    const six = [ [ 6 ] ];
     pairs.push(two);
     pairs.push(six);
     pairs.sort(compareList);
@@ -43,22 +43,32 @@ const compareList = (left, right) => {
     return result;
 };
 const compareItem = (left, right) => {
-    if (left === undefined && right === undefined) { return BOTH_EMPTY; }
-    if (left === undefined && right !== undefined) { return RIGHT_ORDER; }
-    if (left !== undefined && right === undefined) { return NOT_RIGHT_ORDER; }
+    if (left === undefined && right === undefined) {
+        return BOTH_EMPTY;
+    }
+    if (left === undefined && right !== undefined) {
+        return RIGHT_ORDER;
+    }
+    if (left !== undefined && right === undefined) {
+        return NOT_RIGHT_ORDER;
+    }
     if (typeof left == 'number' && typeof right == 'number') {
-        if (left < right) { return RIGHT_ORDER; }
-        if (left > right) { return NOT_RIGHT_ORDER; }
+        if (left < right) {
+            return RIGHT_ORDER;
+        }
+        if (left > right) {
+            return NOT_RIGHT_ORDER;
+        }
         return DONT_KNOW_YET;
     }
     if (typeof left == 'object' && typeof right == 'object') {
         return compareList(left, right);
     }
     if (typeof left == 'number' && typeof right == 'object') {
-        return compareList([left], right);
+        return compareList([ left ], right);
     }
     if (typeof left == 'object' && typeof right == 'number') {
-        return compareList(left, [right]);
+        return compareList(left, [ right ]);
     }
 
     return DONT_KNOW_YET;
