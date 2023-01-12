@@ -45,8 +45,13 @@ describe.only('2022.21', () => {
 const resolve = (cells) => {
 
     let formula = cells[1].formula;
+    let needs = variables(formula);
     let operation = formula.replace(/aaa/g, cells[0].value);
     let value = eval(operation);
 
     cells[1].value =  value;
+};
+
+const variables = (formula) => {
+    return [ 'aaa' ];
 };
