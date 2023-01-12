@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { parseCell } = require('./parser');
 
-describe('parser', () => {
+describe.only('parser', () => {
 
     it('supports values', () => {
         let cell = parseCell('dvpt: 42');
