@@ -24,7 +24,7 @@ describe.only('2022.21', () => {
         let pattern = /(.*):\s(.*)/;
         let parse = (incoming) => {
             let data = pattern.exec(incoming).splice(1);
-            let value = NaN;
+            let value;
             try {
                 value = eval(data[1]);
             }
