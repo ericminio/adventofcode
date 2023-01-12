@@ -22,7 +22,7 @@ describe.only('2022.21', () => {
     describe('cells', () => {
 
         let pattern = /(.*):\s(.*)/;
-        let parse = (incoming) => {
+        let parseCell = (incoming) => {
             let data = pattern.exec(incoming).splice(1);
             let value;
             try {
@@ -40,7 +40,7 @@ describe.only('2022.21', () => {
         };
 
         it('supports values', () => {
-            let cell = parse('dvpt: 42');
+            let cell = parseCell('dvpt: 42');
 
             expect(cell).to.deep.equal({
                 name: 'dvpt',
@@ -50,7 +50,7 @@ describe.only('2022.21', () => {
         });
 
         it('supports formulas', () => {
-            let cell = parse('lgvd: ljgn * ptdq');
+            let cell = parseCell('lgvd: ljgn * ptdq');
 
             expect(cell).to.deep.equal({
                 name: 'lgvd',
@@ -60,7 +60,7 @@ describe.only('2022.21', () => {
         });
 
         it('supports formula with right operand resolved', () => {
-            let cell = parse('aaaa: bbbb * 5');
+            let cell = parseCell('aaaa: bbbb * 5');
 
             expect(cell).to.deep.equal({
                 name: 'aaaa',
@@ -70,7 +70,7 @@ describe.only('2022.21', () => {
         });
 
         it('supports formula with left operand resolved', () => {
-            let cell = parse('aaaa: 5 * bbbb');
+            let cell = parseCell('aaaa: 5 * bbbb');
 
             expect(cell).to.deep.equal({
                 name: 'aaaa',
@@ -80,7 +80,7 @@ describe.only('2022.21', () => {
         });
 
         it('supports resolved formulas', () => {
-            let cell = parse('lgvd: 3 * 5');
+            let cell = parseCell('lgvd: 3 * 5');
 
             expect(cell).to.deep.equal({
                 name: 'lgvd',
