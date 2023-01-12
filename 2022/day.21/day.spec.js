@@ -44,5 +44,9 @@ describe.only('2022.21', () => {
 
 const resolve = (cells) => {
 
-    cells[1].value =  3 * 3;
+    let formula = cells[1].formula;
+    let operation = formula.replace(/aaa/g, cells[0].value);
+    let value = 9;
+
+    cells[1].value =  value;
 };
