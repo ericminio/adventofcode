@@ -1,4 +1,9 @@
-const solve1 = () => {
+const { lines } = require('../support/index.js');
+
+const solve1 = (file) => {
+    let cellDefinitions = lines(file);
+    console.log(cellDefinitions.length);
+
     return 152;
 };
 
