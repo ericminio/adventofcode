@@ -33,8 +33,7 @@ describe.only('2022.21', () => {
         };
 
         it('supports values', () => {
-            let incoming = 'dvpt: 42';
-            let cell = parse(incoming);
+            let cell = parse('dvpt: 42');
 
             expect(cell).to.deep.equal({
                 name: 'dvpt',
@@ -44,13 +43,7 @@ describe.only('2022.21', () => {
         });
 
         it('supports formulas', () => {
-            let incoming = 'lgvd: ljgn * ptdq';
-            let data = pattern.exec(incoming).splice(1);
-            let cell = {
-                name: data[0],
-                formula: data[1],
-                value: parseInt(data[1]),
-            };
+            let cell = parse('lgvd: ljgn * ptdq');
 
             expect(cell).to.deep.equal({
                 name: 'lgvd',
