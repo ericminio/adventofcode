@@ -21,9 +21,10 @@ describe.only('2022.21', () => {
 
     describe('worksheet', () => {
 
+        let pattern = /(.*):\s(.*)/;
+
         it('supports values', () => {
             let incoming = 'dvpt: 42';
-            let pattern = /(.*):\s(.*)/;
             let data = pattern.exec(incoming).splice(1);
             let cell = {
                 name: data[0],
