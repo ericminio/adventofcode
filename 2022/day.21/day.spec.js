@@ -25,6 +25,10 @@ describe.only('2022.21', () => {
         it('works', () => {
             let cells = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
             let sheet = { cells };
+            sheet.values = {};
+            cells.forEach(cell => {
+                sheet.values[cell.name] = cell.value;
+            });
             resolve(cells);
 
             expect(cells).to.deep.equal([
