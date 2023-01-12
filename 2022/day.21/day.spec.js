@@ -22,7 +22,11 @@ describe.only('2022.21', () => {
     describe('worksheet', () => {
 
         it('supports values', () => {
+            let incoming = 'dvpt: 42';
+            let pattern = /(.*):\s(.*)/;
+            let data = pattern.exec(incoming).splice(1);
 
+            expect(data).to.deep.equal(['dvpt', '42']);
         });
     });
 });
