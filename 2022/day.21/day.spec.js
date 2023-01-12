@@ -24,6 +24,7 @@ describe.only('2022.21', () => {
 
         it('works', () => {
             let cells = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
+            let sheet = { cells };
             resolve(cells);
 
             expect(cells).to.deep.equal([
