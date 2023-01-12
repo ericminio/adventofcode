@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+const { parseCell } = require('./parser');
 const { solve1, solve2 } = require('./solve');
 
 describe.only('2022.21', () => {
@@ -21,5 +22,8 @@ describe.only('2022.21', () => {
 
     describe('formula solving', () => {
 
+        it('works', () => {
+            let sheet = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
+        });
     });
 });
