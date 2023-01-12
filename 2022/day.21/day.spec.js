@@ -23,8 +23,10 @@ describe.only('2022.21', () => {
     describe.only('formula solving', () => {
 
         it('works', () => {
-            let sheet = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
-            resolve(sheet);
+            let cells = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
+            resolve(cells);
+
+
         });
     });
 });
