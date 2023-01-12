@@ -47,6 +47,9 @@ const resolve = (cells) => {
     let formula = cells[1].formula;
     let needs = variables(formula);
     let operation = formula.replace(/aaa/g, cells[0].value);
+    needs.forEach(variable => {
+
+    });
     let value = eval(operation);
 
     cells[1].value =  value;
