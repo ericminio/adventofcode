@@ -26,7 +26,7 @@ describe.only('2022.21', () => {
             let pattern = /(.*):\s(.*)/;
             let data = pattern.exec(incoming).splice(1);
 
-            expect(data).to.deep.equal(['dvpt', '42']);
+            expect(data).to.deep.equal([ 'dvpt', '42' ]);
         });
     });
 });
