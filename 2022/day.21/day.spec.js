@@ -46,13 +46,14 @@ describe.only('2022.21', () => {
     });
 });
 
-const resolve = ({ cells }) => {
+const resolve = ({ cells, values }) => {
 
     let formula = cells[1].formula;
     let needs = variables(formula);
-    let operation = formula.replace(/aaa/g, cells[0].value);
+    let operation;
     needs.forEach(variable => {
-
+        let pattern = new RegExp(variable, 'g');
+        operation = formula.replace(pattern, values[variable]);
     });
     let value = eval(operation);
 
