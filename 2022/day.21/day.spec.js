@@ -29,7 +29,7 @@ describe.only('2022.21', () => {
             let cell = {
                 name: data[0],
                 formula: data[1],
-                value: 42,
+                value: parseInt(data[1]),
             };
 
             expect(cell).to.deep.equal({
