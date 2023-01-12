@@ -35,7 +35,7 @@ describe.only('2022.21', () => {
                 {
                     name: 'bbb',
                     formula: 'aaa * aaa',
-                    value: NaN,
+                    value: 9,
                 },
             ]);
         });
@@ -44,4 +44,5 @@ describe.only('2022.21', () => {
 
 const resolve = (cells) => {
 
+    cells[1].value = 9;
 };
