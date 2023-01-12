@@ -1,6 +1,5 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
-const { parseCell } = require('./solve');
 
 describe.only('2022.21', () => {
 
