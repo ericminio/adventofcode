@@ -46,7 +46,7 @@ const resolve = (cells) => {
 
     let formula = cells[1].formula;
     let operation = formula.replace(/aaa/g, cells[0].value);
-    let value = 9;
+    let value = eval(operation);
 
     cells[1].value =  value;
 };
