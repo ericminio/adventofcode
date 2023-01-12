@@ -25,7 +25,11 @@ describe.only('2022.21', () => {
             let incoming = 'dvpt: 42';
             let pattern = /(.*):\s(.*)/;
             let data = pattern.exec(incoming).splice(1);
-            let cell = { formula: incoming };
+            let cell = {
+                name: data[0],
+                formula: data[1],
+
+            };
 
             expect(data).to.deep.equal([ 'dvpt', '42' ]);
         });
