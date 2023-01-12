@@ -36,5 +36,19 @@ describe.only('2022.21', () => {
                 formula: '42'
             });
         });
+
+        it('supports formulas', () => {
+            let incoming = 'lgvd: ljgn * ptdq';
+            let data = pattern.exec(incoming).splice(1);
+            let cell = {
+                name: data[0],
+                formula: data[1],
+            };
+
+            expect(cell).to.deep.equal({
+                name: 'lgvd',
+                formula: 'ljgn * ptdq'
+            });
+        });
     });
 });
