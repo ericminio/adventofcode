@@ -40,7 +40,7 @@ describe.only('2022.21', () => {
         });
 
         it('supports formulas', () => {
-            let incoming = 'lgvd: ljgn * 5';
+            let incoming = 'lgvd: ljgn * ptdq';
             let data = pattern.exec(incoming).splice(1);
             let cell = {
                 name: data[0],
@@ -50,7 +50,7 @@ describe.only('2022.21', () => {
 
             expect(cell).to.deep.equal({
                 name: 'lgvd',
-                formula: 'ljgn * 5',
+                formula: 'ljgn * ptdq',
                 value: NaN,
             });
         });
