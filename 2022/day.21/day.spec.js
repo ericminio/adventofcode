@@ -78,5 +78,15 @@ describe.only('2022.21', () => {
                 value: NaN,
             });
         });
+
+        it('supports resolved formulas', () => {
+            let cell = parse('lgvd: 3 * 5');
+
+            expect(cell).to.deep.equal({
+                name: 'lgvd',
+                formula: '3 * 5',
+                value: 15,
+            });
+        });
     });
 });
