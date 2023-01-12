@@ -28,10 +28,9 @@ describe.only('2022.21', () => {
             let cell = {
                 name: data[0],
                 formula: data[1],
-
             };
 
-            expect(data).to.deep.equal([ 'dvpt', '42' ]);
+            expect(cell).to.deep.equal({ name: 'dvpt', formula: '42' });
         });
     });
 });
