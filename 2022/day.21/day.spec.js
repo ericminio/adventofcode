@@ -1,5 +1,6 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
+const { parseCell } = require('./solve');
 
 describe.only('2022.21', () => {
 
@@ -20,24 +21,6 @@ describe.only('2022.21', () => {
     });
 
     describe('cells', () => {
-
-        let pattern = /(.*):\s(.*)/;
-        let parseCell = (incoming) => {
-            let data = pattern.exec(incoming).splice(1);
-            let value;
-            try {
-                value = eval(data[1]);
-            }
-            catch {
-                value = NaN;
-            }
-            let cell = {
-                name: data[0],
-                formula: data[1],
-                value,
-            };
-            return cell;
-        };
 
         it('supports values', () => {
             let cell = parseCell('dvpt: 42');
