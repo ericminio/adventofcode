@@ -24,8 +24,7 @@ describe.only('2022.21', () => {
 
         it('works', () => {
             let cells = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
-            let sheet = { cells };
-            sheet.values = {};
+            let sheet = { cells, values: {}};
             cells.forEach(cell => {
                 sheet.values[cell.name] = cell.value;
             });
