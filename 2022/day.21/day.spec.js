@@ -28,9 +28,9 @@ describe.only('2022.21', () => {
             cells.forEach(cell => {
                 sheet.values[cell.name] = cell.value;
             });
-            resolve(cells);
+            resolve(sheet);
 
-            expect(cells).to.deep.equal([
+            expect(sheet.cells).to.deep.equal([
                 {
                     name: 'aaa',
                     formula: '3',
@@ -46,7 +46,7 @@ describe.only('2022.21', () => {
     });
 });
 
-const resolve = (cells) => {
+const resolve = ({ cells }) => {
 
     let formula = cells[1].formula;
     let needs = variables(formula);
