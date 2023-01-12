@@ -53,11 +53,11 @@ describe.only('2022.21', () => {
         });
 
         it('supports formula with right operand resolved', () => {
-            let cell = parse('lgvd: ljgn * 5');
+            let cell = parse('aaaa: bbbb * 5');
 
             expect(cell).to.deep.equal({
-                name: 'lgvd',
-                formula: 'ljgn * 5',
+                name: 'aaaa',
+                formula: 'bbbb * 5',
                 value: NaN,
             });
         });
