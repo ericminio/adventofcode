@@ -18,4 +18,8 @@ describe.only('2022.21', () => {
         });
 
     });
+
+    describe('formula solving', () => {
+
+    });
 });
