@@ -2,7 +2,8 @@ const { lines } = require('../support/index.js');
 
 const solve1 = (file) => {
     let cellDefinitions = lines(file);
-    console.log(cellDefinitions.length);
+    let sheet = cellDefinitions.map(parseCell);
+    console.log(sheet);
 
     return 152;
 };
