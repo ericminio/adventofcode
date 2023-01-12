@@ -24,10 +24,15 @@ describe.only('2022.21', () => {
         let pattern = /(.*):\s(.*)/;
         let parse = (incoming) => {
             let data = pattern.exec(incoming).splice(1);
+            let value = NaN;
+            try {
+                value = eval(data[1]);
+            }
+            catch {}
             let cell = {
                 name: data[0],
                 formula: data[1],
-                value: parseInt(data[1]),
+                value,
             };
             return cell;
         };
@@ -58,6 +63,16 @@ describe.only('2022.21', () => {
             expect(cell).to.deep.equal({
                 name: 'aaaa',
                 formula: 'bbbb * 5',
+                value: NaN,
+            });
+        });
+
+        it('supports formula with left operand resolved', () => {
+            let cell = parse('aaaa: 5 * bbbb');
+
+            expect(cell).to.deep.equal({
+                name: 'aaaa',
+                formula: '5 * bbbb',
                 value: NaN,
             });
         });
