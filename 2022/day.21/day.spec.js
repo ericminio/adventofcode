@@ -22,15 +22,19 @@ describe.only('2022.21', () => {
     describe('worksheet', () => {
 
         let pattern = /(.*):\s(.*)/;
-
-        it('supports values', () => {
-            let incoming = 'dvpt: 42';
+        let parse = (incoming) => {
             let data = pattern.exec(incoming).splice(1);
             let cell = {
                 name: data[0],
                 formula: data[1],
                 value: parseInt(data[1]),
             };
+            return cell;
+        };
+
+        it('supports values', () => {
+            let incoming = 'dvpt: 42';
+            let cell = parse(incoming);
 
             expect(cell).to.deep.equal({
                 name: 'dvpt',
