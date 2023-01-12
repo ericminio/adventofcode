@@ -51,5 +51,15 @@ describe.only('2022.21', () => {
                 value: NaN,
             });
         });
+
+        it('supports formula with right operand resolved', () => {
+            let cell = parse('lgvd: ljgn * 5');
+
+            expect(cell).to.deep.equal({
+                name: 'lgvd',
+                formula: 'ljgn * 5',
+                value: NaN,
+            });
+        });
     });
 });
