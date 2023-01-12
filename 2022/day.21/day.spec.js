@@ -20,7 +20,7 @@ describe.only('2022.21', () => {
 
     });
 
-    describe('formula solving', () => {
+    describe.only('formula solving', () => {
 
         it('works', () => {
             let sheet = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
