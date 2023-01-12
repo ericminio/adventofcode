@@ -28,7 +28,9 @@ describe.only('2022.21', () => {
             try {
                 value = eval(data[1]);
             }
-            catch {}
+            catch {
+                value = NaN;
+            }
             let cell = {
                 name: data[0],
                 formula: data[1],
