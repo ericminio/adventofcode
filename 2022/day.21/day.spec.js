@@ -26,7 +26,18 @@ describe.only('2022.21', () => {
             let cells = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
             resolve(cells);
 
-            expect(cells).to.deep.equal(cells);
+            expect(cells).to.deep.equal([
+                {
+                    name: 'aaa',
+                    formula: '3',
+                    value: 3,
+                },
+                {
+                    name: 'bbb',
+                    formula: 'aaa * aaa',
+                    value: NaN,
+                },
+            ]);
         });
     });
 });
