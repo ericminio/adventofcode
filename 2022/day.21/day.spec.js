@@ -44,5 +44,5 @@ describe.only('2022.21', () => {
 
 const resolve = (cells) => {
 
-    cells[1].value = 9;
+    cells[1].value =  3 * 3;
 };
