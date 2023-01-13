@@ -28,20 +28,12 @@ describe.only('dichotomy', () => {
     });
 
     it('can be arythmetic', () => {
-        const target = 5321;
-        const affine = x => x;
-        const jump = x => x + 1000;
-        let x = 1000;
-
-        let around = false;
-        while (! around) {
-            let current = affine(x);
-            let next = affine(jump(x));
-            around = (current - target) * (next - target) < 0;
-            if (! around) {
-                x = jump(x);
-            }
-        }
+        let x = approach({
+            target: 5321,
+            affine: x => x,
+            start: 1000,
+            jump: x => x + 1000
+        });
 
         expect(x).to.equal(5000);
     });
