@@ -25,7 +25,8 @@ const solve2 = (file) => {
             all[cell.name] = cell.formula;
             return all;
         }, {});
-    let [ monkey1, monkey2 ] = formulaPattern.exec(formulas['root']).splice(1).map(monkey => expand(monkey, formulas));
+    let [ monkey1, monkey2 ] = formulaPattern.exec(formulas['root']).splice(1)
+        .map(monkey => expand(monkey, formulas));
 
     let target = eval(monkey2.replace('humn', 0));
     const affine = (humn) => eval(monkey1.replace('humn', humn));
