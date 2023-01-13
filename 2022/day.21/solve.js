@@ -48,12 +48,13 @@ const solve2 = (file) => {
     console.log(humn);
 
 
-    // let same = false;
-    // do {
-    //     humn ++;
-    //     let first = eval(one.replace('humn', humn));
-    //     same = first === second;
-    // } while (! same);
+    let same = affine(humn) === target;
+    do {
+        humn ++;
+        let first = affine(humn);
+        same = first === target;
+    } while (! same);
+    console.log(humn);
 
     return 301;
 };
