@@ -17,10 +17,12 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    let formulas = lines(file).map(parseCell).reduce((all, cell) => {
-        all[cell.name] = cell.formula;
-        return all;
-    }, {});
+    let formulas = lines(file)
+        .map(parseCell)
+        .reduce((all, cell) => {
+            all[cell.name] = cell.formula;
+            return all;
+        }, {});
     let pattern = /(.*)\s.\s(.*)/;
     let [ monkey1, monkey2 ] = pattern.exec(formulas['root']).splice(1);
 
