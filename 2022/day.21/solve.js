@@ -1,5 +1,5 @@
+const { hug } = require('../../lib/dichotomy.js');
 const { lines } = require('../support/index.js');
-const { hug } = require('./dichotomy.js');
 const { expand } = require('./expand.js');
 const { parseCell } = require('./parser.js');
 
