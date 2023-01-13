@@ -43,8 +43,6 @@ const solve2 = (file) => {
             humn += increment;
         }
     }
-    console.log(humn);
-
 
     let same = affine(humn) === target;
     do {
