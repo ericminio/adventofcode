@@ -6,7 +6,7 @@ describe.only('2022.22', () => {
     describe('figuring out the final password to pass through the force field', () => {
 
         it('leverages an example', () => {
-            expect(solve1(`${__dirname}/data/example.txt`)).to.equal(42);
+            expect(solve1(`${__dirname}/data/example.txt`)).to.equal(6032);
         });
 
     });
