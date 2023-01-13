@@ -1,7 +1,7 @@
-let cellPattern = /(.*):\s(.*)/;
+const cellPattern = /(.*):\s(.*)/;
 const formulaPattern = /(.*)\s.\s(.*)/;
 
-let parseCell = (incoming) => {
+const parseCell = (incoming) => {
     let data = cellPattern.exec(incoming).splice(1);
     let value;
     try {
