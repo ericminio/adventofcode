@@ -29,8 +29,8 @@ const solve2 = (file) => {
     let one = expand(monkey1, formulas);
     let two = expand(monkey2, formulas);
     let humn = 0;
-    console.log(one);
-    console.log(two);
+    console.log(one.replace('humn', humn), one);
+    console.log(two.replace('humn', humn), two);
 
     let same = false;
     do {
