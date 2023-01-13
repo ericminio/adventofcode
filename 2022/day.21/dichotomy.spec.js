@@ -32,6 +32,10 @@ describe.only('dichotomy', () => {
             start: 1,
             jump: x => x * 10
         });
+        let step = x;
+        while (step > 10) {
+            step /= 10;
+        }
 
         x = 5320;
         expect(x).to.equal(5320);
