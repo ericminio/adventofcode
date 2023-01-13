@@ -1,6 +1,6 @@
-const compute = ({ cells, values }, probe) => {
+const compute = ({ cells, values }) => {
 
-    while (isNaN(values[probe])) {
+    while (isNaN(values['root'])) {
         cells.forEach(cell => {
             if (isNaN(cell.value)) {
                 tryToCompute({ cell, values });

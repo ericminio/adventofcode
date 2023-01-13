@@ -9,7 +9,7 @@ const solve1 = (file) => {
     cells.forEach(cell => {
         sheet.values[cell.name] = cell.value;
     });
-    compute(sheet, 'root');
+    compute(sheet);
 
     return sheet.values['root'];
 };
@@ -36,7 +36,7 @@ const tryWith = (value, cellDefinitions) => {
         sheet.values[cell.name] = cell.value;
     });
     sheet.values['humn'] = value;
-    compute(sheet, 'root');
+    compute(sheet);
 
     return sheet;
 };
