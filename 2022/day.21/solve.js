@@ -34,8 +34,8 @@ const solve2 = (file) => {
     let target = eval(two.replace('humn', 0));
     console.log('target', target);
 
-    let humn = 3342154800000;
-    let increment = 10000;
+    let humn = 3342154810000;
+    let increment = 1000;
     let around = false;
     while (! around) {
         let first = affine(humn);
