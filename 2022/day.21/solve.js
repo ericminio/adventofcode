@@ -35,7 +35,7 @@ const solve2 = (file) => {
     console.log('target', second);
 
     let humn = 0;
-    console.log('start', affine(0));
+    console.log('0', affine(0));
     console.log('1', affine(1));
 
 
