@@ -1,5 +1,4 @@
 const { lines } = require('../support/index.js');
-const { compute } = require('./compute.js');
 const { hug } = require('./dichotomy.js');
 const { expand } = require('./expand.js');
 const { parseCell } = require('./parser.js');
@@ -14,15 +13,8 @@ const solve1 = (file) => {
         }, {});
     let value = cells.find(cell => cell.name == 'humn').value;
     let formula = expand('root', formulas).replace('humn', value);
+
     return eval(formula);
-
-    let sheet = { cells, values: {}};
-    cells.forEach(cell => {
-        sheet.values[cell.name] = cell.value;
-    });
-    compute(sheet);
-
-    return sheet.values['root'];
 };
 
 const formulaPattern = /(.*)\s.\s(.*)/;
