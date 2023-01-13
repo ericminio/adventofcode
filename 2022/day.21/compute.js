@@ -1,15 +1,12 @@
 const compute = ({ cells, values }) => {
 
-    cells.forEach(cell => {
-        if (isNaN(cell.value)) {
-            tryToCompute({ cell, values });
-        }
-    });
-    cells.forEach(cell => {
-        if (isNaN(cell.value)) {
-            tryToCompute({ cell, values });
-        }
-    });
+    while (isNaN(values['root'])) {
+        cells.forEach(cell => {
+            if (isNaN(cell.value)) {
+                tryToCompute({ cell, values });
+            }
+        });
+    }
 };
 
 let pattern = /(.*)\s.\s(.*)/;
