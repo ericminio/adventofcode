@@ -38,7 +38,7 @@ const solve2 = (file) => {
     let around = false;
     while (! around) {
         let first = affine(humn);
-        let second = affine(humn + 10);
+        let second = affine(humn + 100);
         around = (first - target) * (second - target) < 0;
         if (! around) {
             humn += 10;
