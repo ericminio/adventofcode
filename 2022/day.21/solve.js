@@ -15,7 +15,7 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    let one = '(4 + 2 * humn - 3) / 4';
+    let one = '(4 + 2 * (humn - 3)) / 4';
     let two = '(32 - 2) * 5';
 
     let humn = 301;
