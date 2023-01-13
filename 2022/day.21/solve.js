@@ -18,7 +18,7 @@ const solve2 = (file) => {
     let one = '(4 + 2 * humn - 3) / 4';
     let two = '(32 - 2) * 5';
 
-    let humn = 0;
+    let humn = 301;
     let first = eval(one.replace('humn', humn));
     let second = eval(two.replace('humn', humn));
     console.log(first === second);
