@@ -1,6 +1,6 @@
 describe.only('line intersection', () => {
 
-    describe('leverages geometrical dichotomy', () => {
+    describe('leverages geometric dichotomy', () => {
 
     });
 });
