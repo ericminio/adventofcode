@@ -15,7 +15,7 @@ const solve1 = (file) => {
 };
 
 const solve2 = () => {
-    let one = '(4 + 2 * (humn - 3)) / 4';
+    let one = reducedFormula('pppw');
     let two = '(32 - 2) * 5';
     let humn = 0;
 
@@ -29,6 +29,8 @@ const solve2 = () => {
 
     return humn;
 };
+
+const reducedFormula = (monkey) => '(4 + 2 * (humn - 3)) / 4';
 
 
 module.exports = { solve1, solve2 };
