@@ -1,5 +1,6 @@
 const { lines } = require('../support/index.js');
 const { compute } = require('./compute.js');
+const { hug } = require('./dichotomy.js');
 const { expand } = require('./expand.js');
 const { parseCell } = require('./parser.js');
 
@@ -32,7 +33,7 @@ const solve2 = (file) => {
     let two = expand(monkey2, formulas);
     let target = eval(two.replace('humn', 0));
 
-    let humn = 3342154812500;
+    let humn = hug({ target, affine, start: 1, step: 10 });
     let increment = 10;
     let around = false;
     while (! around) {
