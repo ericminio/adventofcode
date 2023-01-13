@@ -1,6 +1,6 @@
 const { expect } = require('chai');
-const approach = ({ target, affine, jump }) => {
-    let x = 1;
+const approach = ({ target, affine, start, jump }) => {
+    let x = start;
     let step = 10;
     let around = false;
     while (! around) {
