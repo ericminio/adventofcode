@@ -14,7 +14,7 @@ const solve1 = (file) => {
     return sheet.values['root'];
 };
 
-const solve2 = (file) => {
+const solve2 = () => {
     let one = '(4 + 2 * (humn - 3)) / 4';
     let two = '(32 - 2) * 5';
     let humn = 0;
