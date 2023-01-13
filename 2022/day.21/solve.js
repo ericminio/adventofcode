@@ -4,6 +4,8 @@ const { hug } = require('./dichotomy.js');
 const { expand } = require('./expand.js');
 const { parseCell } = require('./parser.js');
 
+const formulaPattern = /(.*)\s.\s(.*)/;
+
 const solve1 = (file) => {
     let cellDefinitions = lines(file);
     let cells = cellDefinitions.map(parseCell);
@@ -23,7 +25,6 @@ const solve2 = (file) => {
             all[cell.name] = cell.formula;
             return all;
         }, {});
-    let formulaPattern = /(.*)\s.\s(.*)/;
     let [ monkey1, monkey2 ] = formulaPattern.exec(formulas['root']).splice(1).map(monkey => expand(monkey, formulas));
 
     let target = eval(monkey2.replace('humn', 0));
