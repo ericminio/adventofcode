@@ -14,7 +14,7 @@ describe.only('Compute', () => {
 
         expect(sheet.values).to.deep.equal({
             'aaa': 3,
-            'bbb': NaN
+            'bbb': 9
         });
     });
 });

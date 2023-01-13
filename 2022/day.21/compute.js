@@ -1,5 +1,6 @@
 const compute = ({ cells, values }) => {
 
+    let name = cells[1].name;
     let formula = cells[1].formula;
     let needs = variables(formula);
     let operation;
@@ -9,7 +10,7 @@ const compute = ({ cells, values }) => {
     });
     let value = eval(operation);
 
-    cells[1].value =  value;
+    values[name] =  value;
 };
 
 const variables = (formula) => {
