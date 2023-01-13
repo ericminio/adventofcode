@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
 
-describe.only('2022.23', () => {
+describe('2022.23', () => {
 
     describe('how many empty ground tiles does contain the smallest rectangle that contains the Elves after 10 rounds?', () => {
 
