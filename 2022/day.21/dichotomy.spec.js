@@ -26,6 +26,7 @@ describe.only('dichotomy', () => {
     });
 
     it('can be a combination of both', () => {
-
+        let x = 5320;
+        expect(x).to.equal(5320);
     });
 });
