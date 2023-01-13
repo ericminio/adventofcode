@@ -10,7 +10,7 @@ const formulas = (cells) => {
 };
 describe.only('expand', () => {
 
-    it('works with 3 cells', () => {
+    it('works with 2 cells', () => {
         let cells = [
             parseCell('aaa: 3'),
             parseCell('bbb: aaa * aaa'),
