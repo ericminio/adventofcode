@@ -24,10 +24,10 @@ const solve2 = (file) => {
             return all;
         }, {});
     let formulaPattern = /(.*)\s.\s(.*)/;
-    let [ one, two ] = formulaPattern.exec(formulas['root']).splice(1).map(monkey => expand(monkey, formulas));
+    let [ monkey1, monkey2 ] = formulaPattern.exec(formulas['root']).splice(1).map(monkey => expand(monkey, formulas));
 
-    let target = eval(two.replace('humn', 0));
-    const affine = (humn) => eval(one.replace('humn', humn));
+    let target = eval(monkey2.replace('humn', 0));
+    const affine = (humn) => eval(monkey1.replace('humn', humn));
 
     let humn = hug({ target, affine, start: 1, step: 10 });
 
