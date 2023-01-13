@@ -23,6 +23,10 @@ const solve2 = (file) => {
     cells.forEach(cell => {
         formulas[cell.name] = cell.formula;
     });
+    formulas = cells.reduce((acc, cell) => {
+        acc[cell.name] = cell.formula;
+        return acc;
+    }, {});
     let pattern = /(.*)\s.\s(.*)/;
     let [ monkey1, monkey2 ] = pattern.exec(formulas['root']).splice(1);
 
