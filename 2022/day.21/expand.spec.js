@@ -27,4 +27,13 @@ describe.only('expand', () => {
 
         expect(expand('ccc', formulas(cells))).to.equal('(3) + ((3) * (3))');
     });
+    it('preserves humn', () => {
+        let cells = [
+            parseCell('aaa: 3'),
+            parseCell('bbb: aaa * aaa'),
+            parseCell('ccc: humn + bbb'),
+        ];
+
+        expect(expand('ccc', formulas(cells))).to.equal('(undefined) + ((3) * (3))');
+    });
 });
