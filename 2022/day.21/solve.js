@@ -16,13 +16,18 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     let cellDefinitions = lines(file);
+    let sheet;
+    let value = 0;
 
-    tryWith(5, cellDefinitions);
-    tryWith(6, cellDefinitions);
-    tryWith(301, cellDefinitions);
+    do {
+        value ++;
+        sheet = tryWith(value, cellDefinitions);
+    } while (! equalityCheckPasses(sheet));
 
-    return 301;
+    return value;
 };
+
+const equalityCheckPasses = (sheet) => sheet.values['pppw'] == sheet.values['sjmn'];
 
 const tryWith = (value, cellDefinitions) => {
     let cells = cellDefinitions.map(parseCell);
@@ -33,8 +38,8 @@ const tryWith = (value, cellDefinitions) => {
     sheet.values['humn'] = value;
     compute(sheet, 'root');
 
-    console.log(sheet.values['pppw']);
-    console.log(sheet.values['sjmn']);
+    return sheet;
 };
+
 
 module.exports = { solve1, solve2 };
