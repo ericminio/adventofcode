@@ -26,4 +26,8 @@ const compute = ({ cells, values }) => {
 let pattern = /(.*)\s.\s(.*)/;
 const variables = (formula) => pattern.exec(formula).splice(1);
 
+const tryToCompute = ({ cell, values }) => {
+
+};
+
 module.exports = { compute };
