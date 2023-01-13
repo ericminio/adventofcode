@@ -35,8 +35,16 @@ const solve2 = (file) => {
     console.log('target', target);
 
     let humn = 0;
-    console.log('0', affine(0));
-    console.log('1', affine(1));
+    let around = false;
+    while (! around) {
+        let first = affine(humn);
+        let second = affine(humn + 10);
+        around = (first - target) * (second - target) < 0;
+        if (! around) {
+            around += 10;
+        }
+    }
+    console.log(humn);
 
 
     // let same = false;
