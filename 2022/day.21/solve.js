@@ -27,7 +27,9 @@ const solve2 = (file) => {
     return value;
 };
 
-const equalityCheckPasses = (sheet) => sheet.values['pppw'] == sheet.values['sjmn'];
+const equalityCheckPasses = (sheet) => {
+    return sheet.values['pppw'] == sheet.values['sjmn'];
+};
 
 const tryWith = (value, cellDefinitions) => {
     let cells = cellDefinitions.map(parseCell);
