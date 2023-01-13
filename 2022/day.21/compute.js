@@ -5,6 +5,11 @@ const compute = ({ cells, values }) => {
             tryToCompute({ cell, values });
         }
     });
+    cells.forEach(cell => {
+        if (isNaN(cell.value)) {
+            tryToCompute({ cell, values });
+        }
+    });
 };
 
 let pattern = /(.*)\s.\s(.*)/;

@@ -21,8 +21,8 @@ describe.only('compute', () => {
     it('works with 3 cells', () => {
         let cells = [
             parseCell('aaa: 3'),
+            parseCell('ccc: aaa + bbb'),
             parseCell('bbb: aaa * aaa'),
-            parseCell('ccc: aaa + bbb')
         ];
         let sheet = { cells, values: {}};
         cells.forEach(cell => {
