@@ -1,5 +1,5 @@
 const { lines } = require('../support/index.js');
-const { compute, variables } = require('./compute.js');
+const { compute } = require('./compute.js');
 const { parseCell } = require('./parser.js');
 
 const solve1 = (file) => {
@@ -21,6 +21,7 @@ const solve2 = (file) => {
     let [ monkey1, monkey2 ] = pattern.exec(rootDefinition).splice(1);
     let sheet;
     let value = 0;
+    let formula = '(4 + 2 * humn - 3) / 4';
 
     do {
         value ++;

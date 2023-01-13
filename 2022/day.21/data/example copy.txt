@@ -1,0 +1,19 @@
+root: aaaa + bbbb
+cccc: 5
+dddd: eeee + ffff
+gggg: 2
+hhhh: humn - iiii
+iiii: 3
+jjjj: 4
+humn: 5
+kkkk: 2
+bbbb: llll * cccc
+eeee: 4
+aaaa: dddd / jjjj
+ffff: kkkk * hhhh
+llll: mmmm - gggg
+mmmm: 32
+
+
+aaaa: (4 + 2 * humn - 3) / 4
+bbbb: 150
