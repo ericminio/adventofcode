@@ -29,14 +29,12 @@ const solve2 = (file) => {
     let one = expand(monkey1, formulas);
     let two = expand(monkey2, formulas);
     let humn = 0;
-    console.log(eval(one.replace('humn', humn)), one);
-    console.log(eval(two.replace('humn', humn)), two);
+    let second = eval(two.replace('humn', humn));
 
     let same = false;
     do {
         humn ++;
         let first = eval(one.replace('humn', humn));
-        let second = eval(two.replace('humn', humn));
         same = first === second;
     } while (! same);
 
