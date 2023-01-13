@@ -13,8 +13,10 @@ const compute = ({ cells, values }) => {
     values[name] =  value;
 };
 
+let pattern = /(.*)\s.\s(.*)/;
 const variables = (formula) => {
-    return [ 'aaa' ];
+    let data = pattern.exec(formula).splice(1);
+    return data;
 };
 
 module.exports = { compute };
