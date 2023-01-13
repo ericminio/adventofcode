@@ -1,5 +1,24 @@
 const { expect } = require('chai');
 const { approach } = require('./dichotomy');
+const hug = ({ target, affine, start, step }) => {
+    let x = approach({
+        target,
+        affine,
+        start,
+        jump: x => x * step
+    });
+    let increment = x;
+    while (increment > 1) {
+        x = approach({
+            target,
+            affine,
+            start: x,
+            jump: x => x + increment
+        });
+        increment /= step;
+    }
+    return x;
+};
 
 describe.only('dichotomy', () => {
 
