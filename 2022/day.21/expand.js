@@ -6,7 +6,8 @@ const expand = (monkey, formulas) => {
     let done = false;
     while (!done) {
         try {
-            eval(formula);
+            let result = eval(formula);
+            console.log({ result });
             done = true;
         }
         catch (error) {
