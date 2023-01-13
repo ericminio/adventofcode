@@ -35,7 +35,7 @@ const solve2 = (file) => {
     console.log('target', target);
 
     let humn = 0;
-    let increment = 100;
+    let increment = 1000000000;
     let around = false;
     while (! around) {
         let first = affine(humn);
