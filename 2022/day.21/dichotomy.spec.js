@@ -32,6 +32,8 @@ describe.only('dichotomy', () => {
             }
         }
 
+        x = approach({ target, affine, start: 1, jump });
+
         expect(x).to.equal(1000);
     });
 
