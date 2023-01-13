@@ -41,7 +41,7 @@ const solve2 = (file) => {
         let second = affine(humn + 100);
         around = (first - target) * (second - target) < 0;
         if (! around) {
-            humn += 10;
+            humn += 100;
         }
     }
     console.log(humn);
