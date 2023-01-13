@@ -17,9 +17,6 @@ const approach = ({ target, affine, start, jump }) => {
 describe.only('dichotomy', () => {
 
     it('can be geometric', () => {
-        const target = 5321;
-        const affine = x => x;
-        const jump = x => x * 10;
         let x = approach({
             target: 5321,
             affine: x => x,
