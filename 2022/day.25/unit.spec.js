@@ -10,7 +10,8 @@ describe.only('unit transformation', () => {
 const toSNAFU = (number) => {
     let snafu = [];
 
-    let focus = number % Math.pow(5, 1);
+    let digit = 1;
+    let focus = number % Math.pow(5, digit);
 
     snafu.unshift('1');
 
