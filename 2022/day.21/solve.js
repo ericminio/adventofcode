@@ -35,13 +35,14 @@ const solve2 = (file) => {
     console.log('target', target);
 
     let humn = 0;
+    let increment = 100;
     let around = false;
     while (! around) {
         let first = affine(humn);
-        let second = affine(humn + 100);
+        let second = affine(humn + increment);
         around = (first - target) * (second - target) < 0;
         if (! around) {
-            humn += 100;
+            humn += increment;
         }
     }
     console.log(humn);
