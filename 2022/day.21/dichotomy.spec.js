@@ -45,11 +45,9 @@ describe.only('dichotomy', () => {
     });
 
     it('can be a combination of both', () => {
-        let target = 5321;
-        let affine = x => x;
         let x = hug({
-            target,
-            affine,
+            target: 5321,
+            affine: x => x,
             start: 1,
             step: 10
         });
