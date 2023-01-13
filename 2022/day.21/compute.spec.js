@@ -1,5 +1,6 @@
 const { expect } = require('chai');
 const { parseCell } = require('./parser');
+const { compute } = require('./compute');
 
 describe.only('Compute', () => {
 
@@ -9,7 +10,7 @@ describe.only('Compute', () => {
         cells.forEach(cell => {
             sheet.values[cell.name] = cell.value;
         });
-        resolve(sheet);
+        compute(sheet);
 
         expect(sheet.cells).to.deep.equal([
             {
