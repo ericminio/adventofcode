@@ -36,6 +36,8 @@ const solve2 = (file) => {
 
     let humn = 0;
     console.log('start', affine(humn));
+
+
     // let same = false;
     // do {
     //     humn ++;
