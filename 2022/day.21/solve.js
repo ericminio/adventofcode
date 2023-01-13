@@ -14,8 +14,15 @@ const solve1 = (file) => {
     return sheet.values['root'];
 };
 
-const solve2 = () => {
-    let one = reducedFormula('pppw');
+const solve2 = (file) => {
+    let cellDefinitions = lines(file);
+    let cells = cellDefinitions.map(parseCell);
+    let formulas = {};
+    cells.forEach(cell => {
+        formulas[cell.name] = cell.formula;
+    });
+
+    let one = reducedFormula('pppw', formulas);
     let two = '(32 - 2) * 5';
     let humn = 0;
 
@@ -30,7 +37,7 @@ const solve2 = () => {
     return humn;
 };
 
-const reducedFormula = (monkey) => '(4 + 2 * (humn - 3)) / 4';
+const reducedFormula = (monkey, formulas) => '(4 + 2 * (humn - 3)) / 4';
 
 
 module.exports = { solve1, solve2 };
