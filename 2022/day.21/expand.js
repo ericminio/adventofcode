@@ -12,7 +12,7 @@ const expand = (monkey, formulas) => {
         formula = formula.replace(new RegExp(variable, 'g'), `(${next})`);
     }
 
-    return '(3) * (3)';
+    return formula;
 };
 
 module.exports = { expand };
