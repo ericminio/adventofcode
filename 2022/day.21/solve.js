@@ -17,6 +17,7 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     let cellDefinitions = lines(file);
 
+    tryWith(5, cellDefinitions);
     let cells = cellDefinitions.map(parseCell);
     let sheet = { cells, values: {}};
     cells.forEach(cell => {
@@ -28,6 +29,10 @@ const solve2 = (file) => {
     console.log(sheet.values['sjmn']);
 
     return 301;
+};
+
+const tryWith = (value, cellDefinitions) => {
+
 };
 
 module.exports = { solve1, solve2 };
