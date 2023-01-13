@@ -12,7 +12,7 @@ const solve1 = (file) => {
     });
     compute(sheet);
 
-    return 152;
+    return sheet.values['root'];
 };
 
 const solve2 = () => {
