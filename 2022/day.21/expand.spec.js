@@ -16,6 +16,6 @@ describe.only('expand', () => {
             parseCell('bbb: aaa * aaa'),
         ];
 
-        expect(expand('bbb', formulas(cells))).to.equal('3 * 3');
+        expect(expand('bbb', formulas(cells))).to.equal('(3) * (3)');
     });
 });
