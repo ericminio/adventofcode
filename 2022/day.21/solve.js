@@ -54,9 +54,8 @@ const solve2 = (file) => {
         let first = affine(humn);
         same = first === target;
     } while (! same);
-    console.log(humn);
 
-    return 301;
+    return humn;
 };
 
 module.exports = { solve1, solve2 };
