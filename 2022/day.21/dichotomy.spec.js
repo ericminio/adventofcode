@@ -3,7 +3,7 @@ const { expect } = require('chai');
 describe.only('dichotomy', () => {
 
     it('can be geometric', () => {
-        const target = 5042;
+        const target = 5321;
         const affine = x => x;
         const geometric = jump => jump * 10;
 
