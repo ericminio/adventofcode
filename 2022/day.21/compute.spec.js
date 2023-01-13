@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { parseCell } = require('./parser');
 
-describe.only('formula solving', () => {
+describe.only('Compute', () => {
 
     it('works', () => {
         let cells = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
