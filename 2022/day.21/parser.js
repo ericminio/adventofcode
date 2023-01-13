@@ -1,8 +1,8 @@
-let pattern = /(.*):\s(.*)/;
+let cellPattern = /(.*):\s(.*)/;
 const formulaPattern = /(.*)\s.\s(.*)/;
 
 let parseCell = (incoming) => {
-    let data = pattern.exec(incoming).splice(1);
+    let data = cellPattern.exec(incoming).splice(1);
     let value;
     try {
         value = eval(data[1]);
