@@ -14,7 +14,7 @@ const solve1 = (file) => {
         }, {});
     let value = cells.find(cell => cell.name == 'humn').value;
     let formula = expand('root', formulas).replace('humn', value);
-
+    return eval(formula);
 
     let sheet = { cells, values: {}};
     cells.forEach(cell => {
