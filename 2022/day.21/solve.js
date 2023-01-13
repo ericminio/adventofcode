@@ -17,8 +17,7 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    let cellDefinitions = lines(file);
-    let formulas = cellDefinitions.map(parseCell).reduce((acc, cell) => {
+    let formulas = lines(file).map(parseCell).reduce((acc, cell) => {
         acc[cell.name] = cell.formula;
         return acc;
     }, {});
