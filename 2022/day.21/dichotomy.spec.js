@@ -35,7 +35,7 @@ describe.only('dichotomy', () => {
             jump: x => x * 10
         });
         let step = x;
-        while (step > 10) {
+        while (step > 1) {
             x = approach({
                 target,
                 affine,
@@ -45,7 +45,7 @@ describe.only('dichotomy', () => {
             step /= 10;
         }
 
-        x = 5320;
+        // x = 5320;
         expect(x).to.equal(5320);
     });
 });
