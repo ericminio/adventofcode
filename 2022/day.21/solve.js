@@ -34,16 +34,6 @@ const solve2 = (file) => {
     let target = eval(two.replace('humn', 0));
 
     let humn = hug({ target, affine, start: 1, step: 10 });
-    let increment = 10;
-    let around = false;
-    while (! around) {
-        let first = affine(humn);
-        let second = affine(humn + increment);
-        around = (first - target) * (second - target) < 0;
-        if (! around) {
-            humn += increment;
-        }
-    }
 
     let same = affine(humn) === target;
     do {
