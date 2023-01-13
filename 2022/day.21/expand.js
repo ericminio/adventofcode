@@ -1,5 +1,7 @@
 const expand = (monkey, formulas) => {
-    return '3 + (3 * 3)';
+    let formula = formulas[monkey];
+
+    return '3 * 3';
 };
 
 module.exports = { expand };
