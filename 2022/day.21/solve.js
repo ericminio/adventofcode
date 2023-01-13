@@ -25,12 +25,10 @@ const solve2 = (file) => {
         }, {});
     let pattern = /(.*)\s.\s(.*)/;
     let [ monkey1, monkey2 ] = pattern.exec(formulas['root']).splice(1);
+    let [ one, two ] = [ monkey1, monkey2 ].map(monkey => expand(monkey, formulas));
 
-    let one = expand(monkey1, formulas);
-    const affine = (humn) => eval(one.replace('humn', humn));
-
-    let two = expand(monkey2, formulas);
     let target = eval(two.replace('humn', 0));
+    const affine = (humn) => eval(one.replace('humn', humn));
 
     let humn = hug({ target, affine, start: 1, step: 10 });
 
