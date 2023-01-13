@@ -1,6 +1,8 @@
-describe.only('line intersection', () => {
+describe.only('geometric dichotomy', () => {
 
-    describe('leverages geometric dichotomy', () => {
+    it('works', () => {
+        const constante = () => 5000;
+        const affine = (x) => x;
 
     });
 });
