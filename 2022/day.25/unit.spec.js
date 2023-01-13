@@ -7,4 +7,6 @@ describe.only('unit transformation', () => {
     });
 });
 
-const toSNAFU = (number) => '1';
+const toSNAFU = (number) => {
+    return '1';
+};
