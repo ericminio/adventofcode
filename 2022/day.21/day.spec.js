@@ -3,9 +3,9 @@ const { solve1, solve2 } = require('./solve');
 
 describe.only('2022.21', () => {
 
-    describe('part 1', () => {
+    describe('working out the number the monkey named root will yell', () => {
 
-        it('has an example', () => {
+        it('is possible with the example', () => {
             expect(solve1(`${__dirname}/data/example.txt`)).to.equal(152);
         });
 
