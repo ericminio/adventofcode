@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { parseCell } = require('./parser');
 const { compute } = require('./compute');
 
-describe.only('compute', () => {
+describe('compute', () => {
 
     it('works with 2 cells', () => {
         let cells = [ parseCell('aaa: 3'), parseCell('root: aaa * aaa') ];
