@@ -20,7 +20,12 @@ describe.only('dichotomy', () => {
         const target = 5321;
         const affine = x => x;
         const jump = x => x * 10;
-        let x = approach({ target, affine, start: 1, jump });
+        let x = approach({
+            target: 5321,
+            affine: x => x,
+            start: 1,
+            jump: x => x * 10
+        });
 
         expect(x).to.equal(1000);
     });
