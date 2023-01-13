@@ -30,9 +30,7 @@ const solve2 = (file) => {
 
     const target = eval(monkey2.replace('humn', 0));
     const affine = (humn) => eval(monkey1.replace('humn', humn));
-
     let humn = hug({ target, affine, start: 1, step: 10 });
-
     let same = affine(humn) === target;
     do {
         humn ++;
