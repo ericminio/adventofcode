@@ -5,7 +5,7 @@ describe.only('2022.21', () => {
 
     describe('working out the number the monkey named root will yell', () => {
 
-        it('is possible with the example', () => {
+        it('leverages the example', () => {
             expect(solve1(`${__dirname}/data/example.txt`)).to.equal(152);
         });
 
