@@ -4,7 +4,7 @@ const { compute } = require('./compute');
 
 describe.only('Compute', () => {
 
-    it('works', () => {
+    it('works with 2 cells', () => {
         let cells = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
         let sheet = { cells, values: {}};
         cells.forEach(cell => {
