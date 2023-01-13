@@ -8,5 +8,9 @@ describe.only('unit transformation', () => {
 });
 
 const toSNAFU = (number) => {
+    let snafu = [];
+
+    snafu.unshift('1');
+
     return '1';
 };
