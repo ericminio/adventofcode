@@ -31,7 +31,6 @@ const solve2 = (file) => {
 
     let two = expand(monkey2, formulas);
     let target = eval(two.replace('humn', 0));
-    console.log('target', target);
 
     let humn = 3342154812500;
     let increment = 10;
