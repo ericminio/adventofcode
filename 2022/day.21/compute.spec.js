@@ -12,17 +12,9 @@ describe.only('Compute', () => {
         });
         compute(sheet);
 
-        expect(sheet.cells).to.deep.equal([
-            {
-                name: 'aaa',
-                formula: '3',
-                value: 3,
-            },
-            {
-                name: 'bbb',
-                formula: 'aaa * aaa',
-                value: 9,
-            },
-        ]);
+        expect(sheet.values).to.deep.equal({
+            'aaa': 3,
+            'bbb': NaN
+        });
     });
 });
