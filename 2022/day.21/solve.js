@@ -19,7 +19,7 @@ const solve1 = (file) => {
 const formulaPattern = /(.*)\s.\s(.*)/;
 
 const solve2 = (file) => {
-    let formulas = lines(file)
+    const formulas = lines(file)
         .map(parseCell)
         .reduce((all, cell) => {
             all[cell.name] = cell.formula;
