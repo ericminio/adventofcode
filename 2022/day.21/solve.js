@@ -19,6 +19,7 @@ const solve2 = (file) => {
 
     tryWith(5, cellDefinitions);
     tryWith(6, cellDefinitions);
+    tryWith(301, cellDefinitions);
 
     return 301;
 };
