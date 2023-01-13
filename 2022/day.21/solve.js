@@ -27,7 +27,7 @@ const solve2 = (file) => {
     let [ monkey1, monkey2 ] = pattern.exec(root).splice(1);
 
     let one = expand(monkey1, formulas);
-    let two = '(32 - 2) * 5';
+    let two = expand(monkey2, formulas);
     let humn = 0;
     console.log(one);
     console.log(two);
