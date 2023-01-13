@@ -12,5 +12,5 @@ const toSNAFU = (number) => {
 
     snafu.unshift('1');
 
-    return '1';
+    return snafu.join('');
 };
