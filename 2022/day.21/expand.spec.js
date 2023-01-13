@@ -16,8 +16,7 @@ describe.only('expand', () => {
             parseCell('bbb: aaa * aaa'),
             parseCell('ccc: aaa + bbb'),
         ];
-        let expanded = expand('cccc', formulas(cells));
 
-        expect(expanded).to.equal('aaa + (aaa * aaa)');
+        expect(expand('cccc', formulas(cells))).to.equal('aaa + (aaa * aaa)');
     });
 });
