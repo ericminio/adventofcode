@@ -1,8 +1,8 @@
 const { expect } = require('chai');
 
-describe.only('geometric dichotomy', () => {
+describe.only('dichotomy', () => {
 
-    it('assumes that the solution is a positive integer', () => {
+    it('can be geometric', () => {
         const target = 5000;
         const affine = x => x;
         const geometric = jump => jump * 10;
