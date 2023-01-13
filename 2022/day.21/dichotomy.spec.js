@@ -45,7 +45,6 @@ describe.only('dichotomy', () => {
             step /= 10;
         }
 
-        // x = 5320;
         expect(x).to.equal(5320);
     });
 });
