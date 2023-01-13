@@ -32,4 +32,4 @@ const tryToCompute = ({ cell, values }) => {
     }
 };
 
-module.exports = { compute };
+module.exports = { compute, variables };
