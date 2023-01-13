@@ -20,8 +20,8 @@ describe.only('dichotomy', () => {
         const target = 5321;
         const affine = x => x;
         const jump = x => x * 10;
-
         let x = 1;
+
         let around = false;
         while (! around) {
             let current = affine(x);
