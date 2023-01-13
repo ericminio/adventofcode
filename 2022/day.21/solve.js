@@ -16,21 +16,22 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     let cellDefinitions = lines(file);
-    let root = cellDefinitions.find(line => line.startsWith('root'));
-    console.log(root);
+    let rootDefinition = cellDefinitions.find(line => line.startsWith('root'));
+    let pattern = /root:\s(.*)\s.\s(.*)/;
+    let [ monkey1, monkey2 ] = pattern.exec(rootDefinition).splice(1);
     let sheet;
     let value = 0;
 
     do {
         value ++;
         sheet = tryWith(value, cellDefinitions);
-    } while (! equalityCheckPasses(sheet));
+    } while (! equalityCheckPasses(sheet, monkey1, monkey2));
 
     return value;
 };
 
-const equalityCheckPasses = (sheet) => {
-    return sheet.values['pppw'] == sheet.values['sjmn'];
+const equalityCheckPasses = (sheet, monkey1, monkey2) => {
+    return sheet.values[monkey1] == sheet.values[monkey2];
 };
 
 const tryWith = (value, cellDefinitions) => {
