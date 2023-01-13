@@ -21,7 +21,7 @@ const solve2 = (file) => {
     let humn = 0;
     let first = eval(one.replace('humn', humn));
     let second = eval(two.replace('humn', humn));
-    console.log(first, second);
+    console.log(first === second);
 
     return 301;
 };
