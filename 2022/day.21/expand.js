@@ -2,6 +2,7 @@ const pattern = /^(.*) is not defined$/;
 
 const expand = (monkey, formulas) => {
     let formula = formulas[monkey];
+
     let done = false;
     while (!done) {
         try {
