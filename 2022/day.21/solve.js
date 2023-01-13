@@ -28,6 +28,8 @@ const solve2 = (file) => {
     let one = expand(monkey1, formulas);
     let two = '(32 - 2) * 5';
     let humn = 0;
+    console.log(one);
+    console.log(two);
 
     let same = false;
     do {
