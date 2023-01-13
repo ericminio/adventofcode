@@ -32,6 +32,10 @@ const solve2 = (file) => {
     let second = eval(two.replace('humn', humn));
     console.log('target', second);
 
+    const affine = (humn) => eval(one.replace('humn', humn));
+
+    console.log('start', affine(0));
+
     // let same = false;
     // do {
     //     humn ++;
