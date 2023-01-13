@@ -28,7 +28,6 @@ const solve2 = (file) => {
 
     let one = expand(monkey1, formulas);
     const affine = (humn) => eval(one.replace('humn', humn));
-    console.log(one);
 
     let two = expand(monkey2, formulas);
     let target = eval(two.replace('humn', 0));

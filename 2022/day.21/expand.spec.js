@@ -8,7 +8,7 @@ const formulas = (cells) => {
     });
     return map;
 };
-describe.only('expand', () => {
+describe('expand', () => {
 
     it('works with 2 cells', () => {
         let cells = [
