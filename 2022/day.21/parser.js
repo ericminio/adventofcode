@@ -1,4 +1,5 @@
 let pattern = /(.*):\s(.*)/;
+
 let parseCell = (incoming) => {
     let data = pattern.exec(incoming).splice(1);
     let value;
