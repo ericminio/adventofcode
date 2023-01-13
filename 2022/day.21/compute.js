@@ -16,7 +16,6 @@ let pattern = /(.*)\s.\s(.*)/;
 const variables = (formula) => pattern.exec(formula).splice(1);
 
 const tryToCompute = ({ cell, values }) => {
-    let name = cell.name;
     let formula = cell.formula;
     let needs = variables(formula);
     let available = true;
@@ -32,7 +31,7 @@ const tryToCompute = ({ cell, values }) => {
             operation = operation.replace(pattern, values[variable]);
         });
         let value = eval(operation);
-        values[name] =  value;
+        values[cell.name] =  value;
     }
 };
 
