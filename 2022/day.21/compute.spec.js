@@ -19,7 +19,10 @@ describe.only('compute', () => {
     });
 
     it('works with 3 cells', () => {
-        let cells = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
+        let cells = [
+            parseCell('aaa: 3'),
+            parseCell('bbb: aaa * aaa')
+        ];
         let sheet = { cells, values: {}};
         cells.forEach(cell => {
             sheet.values[cell.name] = cell.value;
