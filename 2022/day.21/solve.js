@@ -31,8 +31,8 @@ const solve2 = (file) => {
     console.log(one);
 
     let two = expand(monkey2, formulas);
-    let second = eval(two.replace('humn', 0));
-    console.log('target', second);
+    let target = eval(two.replace('humn', 0));
+    console.log('target', target);
 
     let humn = 0;
     console.log('0', affine(0));
