@@ -1,5 +1,5 @@
 const { lines } = require('../support/index.js');
-const { compute } = require('./compute.js');
+const { compute, variables } = require('./compute.js');
 const { parseCell } = require('./parser.js');
 
 const solve1 = (file) => {
@@ -16,6 +16,8 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     let cellDefinitions = lines(file);
+    let root = cellDefinitions.find(line => line.startsWith('root'));
+    console.log(root);
     let sheet;
     let value = 0;
 
