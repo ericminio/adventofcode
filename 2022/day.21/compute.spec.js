@@ -17,4 +17,18 @@ describe.only('compute', () => {
             'bbb': 9
         });
     });
+
+    it('works with 3 cells', () => {
+        let cells = [ parseCell('aaa: 3'), parseCell('bbb: aaa * aaa') ];
+        let sheet = { cells, values: {}};
+        cells.forEach(cell => {
+            sheet.values[cell.name] = cell.value;
+        });
+        compute(sheet);
+
+        expect(sheet.values).to.deep.equal({
+            'aaa': 3,
+            'bbb': 9
+        });
+    });
 });
