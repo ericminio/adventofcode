@@ -6,18 +6,20 @@ const expand = (monkey, formulas) => {
     let done = false;
     while (!done) {
         try {
-            let result = eval(formula);
-            console.log({ result });
+            eval(formula);
             done = true;
         }
         catch (error) {
             let [ variable ] = pattern.exec(error.message).splice(1);
             let next = formulas[variable];
+            if (variable === 'humn') {
+                next = '42';
+            }
             formula = formula.replace(new RegExp(variable, 'g'), `(${next})`);
         }
     }
 
-    return formula;
+    return formula.replace(/\(42\)/g, 'humn');
 };
 
 module.exports = { expand };
