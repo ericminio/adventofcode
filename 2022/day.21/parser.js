@@ -8,12 +8,11 @@ let parseCell = (incoming) => {
     catch {
         value = NaN;
     }
-    let cell = {
+    return {
         name: data[0],
         formula: data[1],
         value,
     };
-    return cell;
 };
 
 module.exports = { parseCell };
