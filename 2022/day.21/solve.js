@@ -24,9 +24,8 @@ const solve2 = (file) => {
     let root = cellDefinitions.find(line => line.startsWith('root'));
     let pattern = /root:\s(.*)\s.\s(.*)/;
     let [ monkey1, monkey2 ] = pattern.exec(root).splice(1);
-    console.log(monkey1, monkey2);
 
-    let one = reducedFormula('pppw', formulas);
+    let one = reducedFormula(monkey1, formulas);
     let two = '(32 - 2) * 5';
     let humn = 0;
 
