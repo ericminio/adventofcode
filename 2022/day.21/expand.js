@@ -1,3 +1,3 @@
-const expand = (monkey, formulas) => '(4 + 2 * (humn - 3)) / 4';
+const expand = (monkey, formulas) => 'aaa + (aaa * aaa)';
 
 module.exports = { expand };
