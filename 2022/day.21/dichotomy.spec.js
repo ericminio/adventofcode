@@ -5,17 +5,17 @@ describe.only('dichotomy', () => {
     it('can be geometric', () => {
         const target = 5321;
         const affine = x => x;
-        const geometric = (x, jump) => x * jump;
+        const jump = (x, jump) => x * jump;
 
         let x = 1;
-        let jump = 10;
+        let step = 10;
         let around = false;
         while (! around) {
             let current = affine(x);
-            let next = affine(geometric(x, jump));
+            let next = affine(jump(x, step));
             around = (current - target) * (next - target) < 0;
             if (! around) {
-                x = geometric(x, jump);
+                x = jump(x, step);
             }
         }
 
