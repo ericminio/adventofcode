@@ -4,7 +4,6 @@ const { parseCell } = require('./parser.js');
 const solve1 = (file) => {
     let cellDefinitions = lines(file);
     let sheet = cellDefinitions.map(parseCell);
-    console.log(sheet);
 
     return 152;
 };
