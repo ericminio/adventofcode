@@ -23,8 +23,8 @@ const solve2 = (file) => {
     cells.forEach(cell => {
         formulas[cell.name] = cell.formula;
     });
-    let root = cellDefinitions.find(line => line.startsWith('root'));
-    let pattern = /root:\s(.*)\s.\s(.*)/;
+    let root = formulas['root'];
+    let pattern = /(.*)\s.\s(.*)/;
     let [ monkey1, monkey2 ] = pattern.exec(root).splice(1);
 
     let one = expand(monkey1, formulas);
