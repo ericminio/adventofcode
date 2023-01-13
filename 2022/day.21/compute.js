@@ -4,9 +4,7 @@ const compute = ({ cells, values }) => {
         if (isNaN(cell.value)) {
             tryToCompute({ cell, values });
         }
-
     });
-
 };
 
 let pattern = /(.*)\s.\s(.*)/;
