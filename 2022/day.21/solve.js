@@ -25,7 +25,7 @@ const solve2 = (file) => {
     let pattern = /root:\s(.*)\s.\s(.*)/;
     let [ monkey1, monkey2 ] = pattern.exec(root).splice(1);
 
-    let one = reducedFormula(monkey1, formulas);
+    let one = expand(monkey1, formulas);
     let two = '(32 - 2) * 5';
     let humn = 0;
 
@@ -40,7 +40,7 @@ const solve2 = (file) => {
     return humn;
 };
 
-const reducedFormula = (monkey, formulas) => '(4 + 2 * (humn - 3)) / 4';
+const expand = (monkey, formulas) => '(4 + 2 * (humn - 3)) / 4';
 
 
 module.exports = { solve1, solve2 };
