@@ -1,3 +1,5 @@
-const expand = (monkey, formulas) => 'aaa + (aaa * aaa)';
+const expand = (monkey, formulas) => {
+    return 'aaa + (aaa * aaa)';
+};
 
 module.exports = { expand };
