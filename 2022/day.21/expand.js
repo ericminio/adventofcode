@@ -11,6 +11,22 @@ const expand = (monkey, formulas) => {
         let next = formulas[variable];
         formula = formula.replace(new RegExp(variable, 'g'), `(${next})`);
     }
+    try {
+        eval(formula);
+    }
+    catch (error) {
+        let [ variable ] = pattern.exec(error.message).splice(1);
+        let next = formulas[variable];
+        formula = formula.replace(new RegExp(variable, 'g'), `(${next})`);
+    }
+    try {
+        eval(formula);
+    }
+    catch (error) {
+        let [ variable ] = pattern.exec(error.message).splice(1);
+        let next = formulas[variable];
+        formula = formula.replace(new RegExp(variable, 'g'), `(${next})`);
+    }
 
     return formula;
 };

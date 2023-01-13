@@ -18,4 +18,13 @@ describe.only('expand', () => {
 
         expect(expand('bbb', formulas(cells))).to.equal('(3) * (3)');
     });
+    it('works with 3 cells', () => {
+        let cells = [
+            parseCell('aaa: 3'),
+            parseCell('bbb: aaa * aaa'),
+            parseCell('ccc: aaa + bbb'),
+        ];
+
+        expect(expand('ccc', formulas(cells))).to.equal('(3) + ((3) * (3))');
+    });
 });
