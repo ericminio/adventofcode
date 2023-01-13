@@ -6,11 +6,10 @@ const { parseCell } = require('./parser.js');
 const solve1 = (file) => {
     let cellDefinitions = lines(file);
     let cells = cellDefinitions.map(parseCell);
-    const formulas = cells
-        .reduce((all, cell) => {
-            all[cell.name] = cell.formula;
-            return all;
-        }, {});
+    const formulas = cells.reduce((all, cell) => {
+        all[cell.name] = cell.formula;
+        return all;
+    }, {});
     let value = cells.find(cell => cell.name == 'humn').value;
     let formula = expand('root', formulas).replace('humn', value);
 
