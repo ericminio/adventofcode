@@ -18,7 +18,7 @@ describe.only('2022.21', () => {
     describe('figuring out what number you need to yell so that root equality check passes', () => {
 
         it('leverages the example', () => {
-            expect(solve2(`${__dirname}/data/example.txt`)).to.equal(15);
+            expect(solve2(`${__dirname}/data/example.txt`)).to.equal(301);
         });
 
     });
