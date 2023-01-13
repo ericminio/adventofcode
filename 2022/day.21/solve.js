@@ -18,6 +18,7 @@ const solve2 = (file) => {
     let cellDefinitions = lines(file);
 
     tryWith(5, cellDefinitions);
+    tryWith(6, cellDefinitions);
 
     return 301;
 };
