@@ -5,18 +5,17 @@ const { expand } = require('./expand.js');
 const { parseCell } = require('./parser.js');
 
 const solve1 = (file) => {
-    const formulas = lines(file)
-        .map(parseCell)
+    let cellDefinitions = lines(file);
+    let cells = cellDefinitions.map(parseCell);
+    const formulas = cells
         .reduce((all, cell) => {
             all[cell.name] = cell.formula;
             return all;
         }, {});
+    let value = cells.find(cell => cell.name == 'humn').value;
+    let formula = expand('root', formulas).replace('humn', value);
 
-    // console.log(eval(expand('root', formulas)));
 
-
-    let cellDefinitions = lines(file);
-    let cells = cellDefinitions.map(parseCell);
     let sheet = { cells, values: {}};
     cells.forEach(cell => {
         sheet.values[cell.name] = cell.value;
