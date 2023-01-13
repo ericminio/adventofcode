@@ -23,8 +23,8 @@ const solve2 = (file) => {
             all[cell.name] = cell.formula;
             return all;
         }, {});
-    let pattern = /(.*)\s.\s(.*)/;
-    let [ one, two ] = pattern.exec(formulas['root']).splice(1).map(monkey => expand(monkey, formulas));
+    let formulaPattern = /(.*)\s.\s(.*)/;
+    let [ one, two ] = formulaPattern.exec(formulas['root']).splice(1).map(monkey => expand(monkey, formulas));
 
     let target = eval(two.replace('humn', 0));
     const affine = (humn) => eval(one.replace('humn', humn));
