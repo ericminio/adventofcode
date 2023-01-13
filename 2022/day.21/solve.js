@@ -5,6 +5,16 @@ const { expand } = require('./expand.js');
 const { parseCell } = require('./parser.js');
 
 const solve1 = (file) => {
+    const formulas = lines(file)
+        .map(parseCell)
+        .reduce((all, cell) => {
+            all[cell.name] = cell.formula;
+            return all;
+        }, {});
+
+    // console.log(eval(expand('root', formulas)));
+
+
     let cellDefinitions = lines(file);
     let cells = cellDefinitions.map(parseCell);
     let sheet = { cells, values: {}};
