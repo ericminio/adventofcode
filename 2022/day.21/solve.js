@@ -1,7 +1,7 @@
 const { hug } = require('../../lib/dichotomy.js');
 const { lines } = require('../support/index.js');
 const { expand } = require('./expand.js');
-const { parseCell } = require('./parser.js');
+const { parseCell, formulaPattern } = require('./parser.js');
 
 const solve1 = (file) => {
     let cellDefinitions = lines(file);
@@ -15,8 +15,6 @@ const solve1 = (file) => {
 
     return eval(formula);
 };
-
-const formulaPattern = /(.*)\s.\s(.*)/;
 
 const solve2 = (file) => {
     const formulas = lines(file)

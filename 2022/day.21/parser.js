@@ -1,4 +1,5 @@
 let pattern = /(.*):\s(.*)/;
+const formulaPattern = /(.*)\s.\s(.*)/;
 
 let parseCell = (incoming) => {
     let data = pattern.exec(incoming).splice(1);
@@ -16,4 +17,4 @@ let parseCell = (incoming) => {
     };
 };
 
-module.exports = { parseCell };
+module.exports = { parseCell, formulaPattern };
