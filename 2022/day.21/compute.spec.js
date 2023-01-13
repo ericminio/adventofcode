@@ -21,7 +21,8 @@ describe.only('compute', () => {
     it('works with 3 cells', () => {
         let cells = [
             parseCell('aaa: 3'),
-            parseCell('bbb: aaa * aaa')
+            parseCell('bbb: aaa * aaa'),
+            parseCell('ccc: aaa + bbb')
         ];
         let sheet = { cells, values: {}};
         cells.forEach(cell => {
@@ -31,7 +32,8 @@ describe.only('compute', () => {
 
         expect(sheet.values).to.deep.equal({
             'aaa': 3,
-            'bbb': 9
+            'bbb': 9,
+            'ccc': 12
         });
     });
 });

@@ -21,10 +21,10 @@ const tryToCompute = ({ cell, values }) => {
         }
     });
     if (available) {
-        let operation;
+        let operation = formula;
         needs.forEach(variable => {
             let pattern = new RegExp(variable, 'g');
-            operation = formula.replace(pattern, values[variable]);
+            operation = operation.replace(pattern, values[variable]);
         });
         let value = eval(operation);
         values[name] =  value;
