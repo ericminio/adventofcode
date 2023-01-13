@@ -26,14 +26,22 @@ describe.only('dichotomy', () => {
     });
 
     it('can be a combination of both', () => {
+        let target = 5321;
+        let affine = x => x;
         let x = approach({
-            target: 5321,
-            affine: x => x,
+            target,
+            affine,
             start: 1,
             jump: x => x * 10
         });
         let step = x;
         while (step > 10) {
+            x = approach({
+                target,
+                affine,
+                start: x,
+                jump: x => x + step
+            });
             step /= 10;
         }
 
