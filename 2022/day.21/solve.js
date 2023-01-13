@@ -43,7 +43,7 @@ const solve2 = (file) => {
         around = (first - target) * (second - target) < 0;
         console.log(around);
         if (! around) {
-            around += 10;
+            humn += 10;
         }
     }
     console.log(humn);
