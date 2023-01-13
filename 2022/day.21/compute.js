@@ -1,7 +1,8 @@
 const compute = ({ cells, values }) => {
 
-    let name = cells[1].name;
-    let formula = cells[1].formula;
+    let cell = cells[1];
+    let name = cell.name;
+    let formula = cell.formula;
     let needs = variables(formula);
     let available = true;
     needs.forEach(variable => {
