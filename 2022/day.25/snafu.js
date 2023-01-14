@@ -3,6 +3,7 @@ const { powerDecomposition } = require('../../lib/power-decomposition.js');
 const fromDecimalToSnafu = (number) => {
     let decomposition = powerDecomposition(5, number);
     let transposed = decomposition.slice();
+    transposed.unshift(0);
     for (let i = transposed.length - 1; i > 0; i--) {
         let value = transposed[i];
         if (value == 3) {
@@ -18,19 +19,8 @@ const fromDecimalToSnafu = (number) => {
             transposed[i - 1] = transposed[i - 1] + 1;
         }
     }
-    let i = 0;
-    let value = transposed[i];
-    if (value == 3) {
-        transposed[i] = -2;
-        transposed.unshift(1);
-    }
-    if (value == 4) {
-        transposed[i] = -1;
-        transposed.unshift(1);
-    }
-    if (value == 5) {
-        transposed[i] = -1;
-        transposed.unshift(1);
+    if (transposed[0] === 0) {
+        transposed.shift();
     }
 
     return transposed.map(snafuSymbol).join('');
