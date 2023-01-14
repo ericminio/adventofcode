@@ -16,7 +16,7 @@ describe.only('snafu transformation', () => {
     });
 });
 
-describe.only('power of 5 decomposition', () => {
+describe.only('power decomposition', () => {
 
     it('works as expected', () => {
         expect(powDecomposition(5, 33)).to.deep.equal([ 1, 1, 3 ]);
