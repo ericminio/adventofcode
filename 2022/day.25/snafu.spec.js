@@ -24,5 +24,10 @@ describe.only('power decomposition', () => {
 });
 
 const powDecomposition = (pow, number) => {
+    let max = 1;
+    while (Math.floor(number / max) > 1) {
+        max ++;
+    }
+
     return [ 1, 1, 3 ];
 };
