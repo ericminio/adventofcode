@@ -18,7 +18,7 @@ describe.only('from snafu to decimal', () => {
         expect(fromSnafuToDecimal('1=11-2')).to.equal(2022);
     });
 
-    it('works for 1=11-2', () => {
+    it('works for 1121-1110-1=0', () => {
         expect(fromSnafuToDecimal('1121-1110-1=0')).to.equal(314159265);
     });
 });
