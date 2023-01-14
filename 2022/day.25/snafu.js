@@ -11,12 +11,10 @@ const fromDecimalToSnafu = (number) => {
 
 const fromSnafuToDecimal = (snafu) => {
     let decimal = 0;
-    const digits = snafu.split('');
-    for (let i = 0; i < digits.length; i++) {
-        let digit = digits[i];
+    snafu.split('').forEach((digit, i) => {
         let value = snafuTable[digit];
-        decimal += value * Math.pow(5, digits.length - i - 1);
-    }
+        decimal += value * Math.pow(5, snafu.length - i - 1);
+    });
     return decimal;
 };
 
