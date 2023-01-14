@@ -6,6 +6,10 @@ describe.only('from decimal to snafu', () => {
     it('works for 66', () => {
         expect(fromDecimalToSnafu(66)).to.equal('1==1');
     });
+
+    it('works for 2022', () => {
+        expect(fromDecimalToSnafu(2022)).to.equal('1=11-2');
+    });
 });
 
 describe.only('from snafu to decimal', () => {
