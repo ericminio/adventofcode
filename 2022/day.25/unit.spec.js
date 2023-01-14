@@ -23,5 +23,7 @@ const toSNAFU = (number) => {
 };
 
 const toDecimal = (snafu) => {
+    const digits = snafu.split('');
+
     return 2022;
 };
