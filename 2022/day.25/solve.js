@@ -1,10 +1,10 @@
 const { lines, add } = require('../support');
-const { fromSnafuToDecimal } = require('./snafu.js');
+const { fromSnafuToDecimal, fromDecimalToSnafu } = require('./snafu.js');
 
 const solve1 = (file) => {
     let total = lines(file).map(fromSnafuToDecimal).reduce(add);
 
-    return '2=-1=0';
+    return fromDecimalToSnafu(total);
 };
 
 const solve2 = () => {
