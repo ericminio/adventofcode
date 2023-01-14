@@ -4,7 +4,7 @@ const { fromDecimalToSnafu, fromSnafuToDecimal } = require('./snafu');
 describe.only('from decimal to snafu', () => {
 
     it('works for 20', () => {
-        expect(fromDecimalToSnafu(1)).to.equal('1-0');
+        expect(fromDecimalToSnafu(20)).to.equal('1-0');
     });
 });
 
