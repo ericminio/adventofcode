@@ -30,7 +30,7 @@ const toDecimal = (snafu) => {
         let value = snafuTable[digit];
         decimal += value * Math.pow(5, digits.length - i - 1);
     }
-    return 2022;
+    return decimal;
 };
 
 const snafuTable = {
