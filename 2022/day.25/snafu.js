@@ -15,6 +15,16 @@ const fromDecimalToSnafu = (number) => {
             transposed[i - 1] = transposed[i - 1] + 1;
         }
     }
+    let i = 0;
+    let value = transposed[i];
+    if (value == 3) {
+        transposed[i] = -2;
+        transposed.unshift(1);
+    }
+    if (value == 4) {
+        transposed[i] = -1;
+        transposed.unshift(1);
+    }
     console.log(transposed);
 
     return '1-0';
