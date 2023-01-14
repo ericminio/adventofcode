@@ -8,16 +8,6 @@ const fromDecimalToSnafu = (number) => {
         number = number - focus;
     }
 
-    if (number > 0) {
-        focus = Math.floor(number / 5);
-        if (focus == 1) {
-            snafu.unshift('1');
-            number = number - focus * 5;
-        }
-    }
-
-    console.log(number);
-
     return snafu.join('');
 };
 
