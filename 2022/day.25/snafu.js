@@ -2,6 +2,9 @@ const { powerDecomposition } = require('./power-decomposition.js');
 
 const fromDecimalToSnafu = (number) => {
     let decomposition = powerDecomposition(5, number);
+    let transposed = decomposition.slice();
+
+    console.log(transposed);
 
     return '1-0';
 };
