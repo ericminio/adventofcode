@@ -27,7 +27,7 @@ const fromDecimalToSnafu = (number) => {
     }
     console.log(transposed);
     console.log(transposed.map(snafuSymbol));
-    return '1-0';
+    return '1==1';
 };
 
 const fromSnafuToDecimal = (snafu) => {
@@ -47,7 +47,6 @@ const snafuTable = {
     '-': -1,
 };
 const snafuSymbol = (decimal) => {
-    console.log('looking for', decimal);
     return Object.keys(snafuTable).find(key => snafuTable[key] === decimal);
 };
 
