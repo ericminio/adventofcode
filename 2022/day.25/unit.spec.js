@@ -3,15 +3,15 @@ const { expect } = require('chai');
 describe.only('unit transformation', () => {
 
     it('works for 1', () => {
-        expect(toSNAFU(1)).to.equal('1');
+        expect(fromDecimalToSnafu(1)).to.equal('1');
     });
 
     it('works for 1=11-2', () => {
-        expect(toDecimal('1=11-2')).to.equal(2022);
+        expect(fromSnafuToDecimal('1=11-2')).to.equal(2022);
     });
 });
 
-const toSNAFU = (number) => {
+const fromDecimalToSnafu = (number) => {
     let snafu = [];
 
     let digit = 1;
@@ -22,7 +22,7 @@ const toSNAFU = (number) => {
     return snafu.join('');
 };
 
-const toDecimal = (snafu) => {
+const fromSnafuToDecimal = (snafu) => {
     let decimal = 0;
     const digits = snafu.split('');
     for (let i = 0; i < digits.length; i++) {
