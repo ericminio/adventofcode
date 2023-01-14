@@ -1,5 +1,7 @@
 const { powerDecomposition } = require('../../lib/power-decomposition.js');
 
+const base = 5;
+
 const fromDecimalToSnafu = (number) => {
     let transposed = powerDecomposition(5, number);
     transposed.unshift(0);
@@ -20,7 +22,7 @@ const fromDecimalToSnafu = (number) => {
 const fromSnafuToDecimal = (snafu) => {
     let decimal = 0;
     snafu.split('').forEach((digit, i) => {
-        decimal += snafuTable[digit] * Math.pow(5, snafu.length - i - 1);
+        decimal += snafuTable[digit] * Math.pow(base, snafu.length - i - 1);
     });
     return decimal;
 };
