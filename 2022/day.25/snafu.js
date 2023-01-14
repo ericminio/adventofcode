@@ -1,5 +1,4 @@
 const { powerDecomposition } = require('../../lib/power-decomposition.js');
-
 const base = 5;
 
 const fromDecimalToSnafu = (number) => {
