@@ -7,7 +7,7 @@ describe.only('power decomposition', () => {
         expect(powerDecomposition(5, 33)).to.deep.equal([ 1, 1, 3 ]);
     });
 
-    it('works as expected', () => {
+    it('remove leading zero if any', () => {
         expect(powerDecomposition(5, 33)).to.deep.equal([ 1, 1, 3 ]);
     });
 });
