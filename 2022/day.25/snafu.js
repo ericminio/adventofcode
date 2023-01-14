@@ -47,6 +47,7 @@ const snafuTable = {
     '-': -1,
 };
 const snafuSymbol = (decimal) => {
+    console.log('looking for', decimal);
     Object.keys(snafuTable).find(key => snafuTable[key] === decimal);
 };
 
