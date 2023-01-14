@@ -6,6 +6,9 @@ describe.only('snafu transformation', () => {
     it('works for 1', () => {
         expect(fromDecimalToSnafu(1)).to.equal('1');
     });
+    it('works for 6', () => {
+        expect(fromDecimalToSnafu(6)).to.equal('11');
+    });
 
     it('works for 1=11-2', () => {
         expect(fromSnafuToDecimal('1=11-2')).to.equal(2022);
