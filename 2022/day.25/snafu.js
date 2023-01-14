@@ -4,7 +4,9 @@ const fromDecimalToSnafu = (number) => {
     let digit = 1;
     let focus = number % Math.pow(5, digit);
 
-    snafu.unshift('1');
+    if (focus == 1) {
+        snafu.unshift('1');
+    }
 
     return snafu.join('');
 };
