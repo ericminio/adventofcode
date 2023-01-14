@@ -1,4 +1,4 @@
-const { powerDecomposition } = require('./power-decomposition.js');
+const { powerDecomposition } = require('../../lib/power-decomposition.js');
 
 const fromDecimalToSnafu = (number) => {
     let decomposition = powerDecomposition(5, number);
