@@ -3,7 +3,6 @@ const fromDecimalToSnafu = (number) => {
 
     let digit = 1;
     let focus = number % Math.pow(5, digit);
-
     if (focus == 1) {
         snafu.unshift('1');
     }
