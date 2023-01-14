@@ -26,7 +26,7 @@ const fromDecimalToSnafu = (number) => {
         transposed.unshift(1);
     }
     console.log(transposed);
-
+    console.log(transposed.map(snafuSymbol));
     return '1-0';
 };
 
