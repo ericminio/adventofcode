@@ -4,17 +4,22 @@ const fromDecimalToSnafu = (number) => {
 
     digit = 1;
     focus = number % Math.pow(5, digit);
+    console.log(focus);
     if (focus == 1) {
         snafu.unshift('1');
-        number -= focus * Math.pow(5, digit - 1);
+        console.log(focus * Math.pow(5, digit - 1));
+        number = number - focus * Math.pow(5, digit - 1);
+        console.log(number);
     }
 
     if (number > 0) {
         digit ++;
         focus = number % Math.pow(5, digit);
+        console.log(focus);
         if (focus == 1) {
             snafu.unshift('1');
             number -= focus * Math.pow(5, digit - 1);
+            console.log(number);
         }
     }
 
