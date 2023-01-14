@@ -1,15 +1,21 @@
 const fromDecimalToSnafu = (number) => {
     let snafu = [];
+    let digit, focus;
 
-    let digit = 1;
-    let focus = number % Math.pow(5, digit);
+    digit = 1;
+    focus = number % Math.pow(5, digit);
     if (focus == 1) {
         snafu.unshift('1');
         number -= focus * Math.pow(5, digit - 1);
     }
 
     if (number > 0) {
-        snafu.unshift('1');
+        digit = 2;
+        focus = number % Math.pow(5, digit);
+        if (focus == 1) {
+            snafu.unshift('1');
+            number -= focus * Math.pow(5, digit - 1);
+        }
     }
 
     return snafu.join('');
