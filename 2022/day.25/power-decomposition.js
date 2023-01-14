@@ -1,6 +1,6 @@
 const powerDecomposition = (base, number) => {
     let max = 1;
-    while (Math.floor(number / Math.pow(max, base)) > 1) {
+    while (Math.floor(number / Math.pow(base, max)) > 1) {
         max ++;
     }
     let decomposition = [];
