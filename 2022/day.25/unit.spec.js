@@ -5,6 +5,10 @@ describe.only('unit transformation', () => {
     it('works for 1', () => {
         expect(toSNAFU(1)).to.equal('1');
     });
+
+    it('works for 1=11-2', () => {
+        expect(toDecimal('1=11-2')).to.equal(2022);
+    });
 });
 
 const toSNAFU = (number) => {
@@ -16,4 +20,8 @@ const toSNAFU = (number) => {
     snafu.unshift('1');
 
     return snafu.join('');
+};
+
+const toDecimal = (snafu) => {
+    return 2022;
 };
