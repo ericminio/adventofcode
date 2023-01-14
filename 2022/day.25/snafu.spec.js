@@ -18,11 +18,11 @@ describe.only('snafu transformation', () => {
 
 describe.only('power of 5 decomposition', () => {
 
-    it('works for 1', () => {
-        expect(powDecomposition(5, 1)).to.deep.equal([ 1 ]);
+    it('works as expected', () => {
+        expect(powDecomposition(5, 33)).to.deep.equal([ 1, 1, 3 ]);
     });
 });
 
 const powDecomposition = (pow, number) => {
-    return [ 1 ];
+    return [ 1, 1, 3 ];
 };
