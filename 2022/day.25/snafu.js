@@ -4,7 +4,15 @@ const fromDecimalToSnafu = (number) => {
     let decomposition = powerDecomposition(5, number);
     let transposed = decomposition.slice();
     for (let i = transposed.length - 1; i > 0; i--) {
-
+        let value = transposed[i];
+        if (value == 3) {
+            transposed[i] = -2;
+            transposed[i - 1] = transposed[i - 1] + 1;
+        }
+        if (value == 4) {
+            transposed[i] = -1;
+            transposed[i - 1] = transposed[i - 1] + 1;
+        }
     }
     console.log(transposed);
 
