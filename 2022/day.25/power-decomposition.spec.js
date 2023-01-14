@@ -8,6 +8,6 @@ describe.only('power decomposition', () => {
     });
 
     it('remove leading zero if any', () => {
-        expect(powerDecomposition(5, 33)).to.deep.equal([ 1, 1, 3 ]);
+        expect(powerDecomposition(5, 66)).to.deep.equal([ 0, 2, 3, 1 ]);
     });
 });
