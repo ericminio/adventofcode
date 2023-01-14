@@ -3,7 +3,7 @@ const { powerDecomposition } = require('../../lib/power-decomposition.js');
 const base = 5;
 
 const fromDecimalToSnafu = (number) => {
-    let transposed = powerDecomposition(5, number);
+    let transposed = powerDecomposition(base, number);
     transposed.unshift(0);
     for (let i = transposed.length - 1; i > 0; i--) {
         let value = transposed[i];
