@@ -23,9 +23,9 @@ describe.only('power decomposition', () => {
     });
 });
 
-const powDecomposition = (pow, number) => {
+const powDecomposition = (base, number) => {
     let max = 1;
-    while (Math.floor(number / max) > 1) {
+    while (Math.floor(number / Math.pow(max, base)) > 1) {
         max ++;
     }
 
