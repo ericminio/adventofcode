@@ -13,6 +13,10 @@ const fromDecimalToSnafu = (number) => {
             transposed[i] = -1;
             transposed[i - 1] = transposed[i - 1] + 1;
         }
+        if (value == 5) {
+            transposed[i] = 0;
+            transposed[i - 1] = transposed[i - 1] + 1;
+        }
     }
     let i = 0;
     let value = transposed[i];
@@ -21,6 +25,10 @@ const fromDecimalToSnafu = (number) => {
         transposed.unshift(1);
     }
     if (value == 4) {
+        transposed[i] = -1;
+        transposed.unshift(1);
+    }
+    if (value == 5) {
         transposed[i] = -1;
         transposed.unshift(1);
     }
