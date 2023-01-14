@@ -32,7 +32,7 @@ const powDecomposition = (base, number) => {
     for (let power = max ; power > 0; power --) {
         let factor = Math.floor(number / Math.pow(base, power));
         decomposition.push(factor);
-        number = number - factor * base;
+        number = number - factor * Math.pow(base, power);
     }
 
     return [ 1, 1, 3 ];
