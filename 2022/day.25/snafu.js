@@ -2,7 +2,6 @@ const { powerDecomposition } = require('./power-decomposition.js');
 
 const fromDecimalToSnafu = (number) => {
     let decomposition = powerDecomposition(5, number);
-    console.log(decomposition);
     let transposed = decomposition.slice();
     for (let i = transposed.length - 1; i > 0; i--) {
         let value = transposed[i];
@@ -25,8 +24,7 @@ const fromDecimalToSnafu = (number) => {
         transposed[i] = -1;
         transposed.unshift(1);
     }
-    console.log(transposed);
-    console.log(transposed.map(snafuSymbol));
+
     return transposed.map(snafuSymbol).join('');
 };
 
