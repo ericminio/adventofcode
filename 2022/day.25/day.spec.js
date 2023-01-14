@@ -10,7 +10,7 @@ describe.only('2022.25', () => {
         });
 
         it('is done', () => {
-            expect(solve1(`${__dirname}/data/example.txt`)).to.equal('2=-1=0');
+            expect(solve1(`${__dirname}/data/input.txt`)).to.equal('2-1-110-=01-1-0-0==2');
         });
 
     });
