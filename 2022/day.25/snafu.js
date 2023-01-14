@@ -47,7 +47,7 @@ const snafuTable = {
     '-': -1,
 };
 const snafuSymbol = (decimal) => {
-    Object.keys(snafuTable).find(key => snafuTable[key] == decimal);
+    Object.keys(snafuTable).find(key => snafuTable[key] === decimal);
 };
 
 module.exports = { fromSnafuToDecimal, fromDecimalToSnafu };
