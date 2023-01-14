@@ -16,6 +16,7 @@ const fromDecimalToSnafu = (number) => {
         }
     }
 
+    console.log(number);
 
     return snafu.join('');
 };
