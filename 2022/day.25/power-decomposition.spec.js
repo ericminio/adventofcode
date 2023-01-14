@@ -12,6 +12,7 @@ describe.only('power decomposition', () => {
     });
 
     it('remove all leading zeros', () => {
-        expect(powerDecomposition(5, 66)).to.deep.equal([ 2, 3, 1 ]);
+        expect(powerDecomposition(5, 314159265)).to.deep.equal(
+            [ 1, 1, 2, 0, 4, 1, 1, 0, 4, 4, 0, 3, 0 ]);
     });
 });
