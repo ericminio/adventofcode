@@ -14,7 +14,6 @@ const fromDecimalToSnafu = (number) => {
     if (transposed[0] === 0) {
         transposed.shift();
     }
-
     return transposed.map(snafuSymbol).join('');
 };
 
