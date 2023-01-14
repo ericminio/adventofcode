@@ -1,4 +1,5 @@
-const solve1 = () => {
+const solve1 = (file) => {
+    let quatities = lines(file);
     return '2=-1=0';
 };
 
