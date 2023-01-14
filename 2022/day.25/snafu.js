@@ -5,15 +5,7 @@ const fromDecimalToSnafu = (number) => {
     transposed.unshift(0);
     for (let i = transposed.length - 1; i > 0; i--) {
         let value = transposed[i];
-        if (value == 3) {
-            transposed[i] = value - 5;
-            transposed[i - 1] = transposed[i - 1] + 1;
-        }
-        if (value == 4) {
-            transposed[i] = value - 5;
-            transposed[i - 1] = transposed[i - 1] + 1;
-        }
-        if (value == 5) {
+        if ([ 3, 4, 5 ].includes(value)) {
             transposed[i] = value - 5;
             transposed[i - 1] = transposed[i - 1] + 1;
         }
