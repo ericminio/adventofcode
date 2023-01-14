@@ -16,3 +16,13 @@ describe.only('snafu transformation', () => {
     });
 });
 
+describe.only('power of 5 decomposition', () => {
+
+    it('works for 1', () => {
+        expect(powDecomposition(5, 1)).to.deep.equal([ 1 ]);
+    });
+});
+
+const powDecomposition = (pow, number) => {
+    return [ 1 ];
+};
