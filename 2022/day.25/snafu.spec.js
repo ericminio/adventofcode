@@ -33,7 +33,6 @@ const powDecomposition = (base, number) => {
         let factor = Math.floor(number / Math.pow(base, power));
         decomposition.push(factor);
         number = number - factor * Math.pow(base, power);
-        console.log(number);
     }
 
     return decomposition;
