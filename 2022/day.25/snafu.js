@@ -19,11 +19,11 @@ const fromDecimalToSnafu = (number) => {
 };
 
 const fromSnafuToDecimal = (snafu) => {
-    let decimal = 0;
-    snafu.split('').forEach((digit, i) => {
-        decimal += snafuTable[digit] * Math.pow(base, snafu.length - i - 1);
-    });
-    return decimal;
+    return snafu.split('').reduce((acc, digit) => {
+        acc.total += snafuTable[digit] * Math.pow(base, snafu.length - acc.i - 1);
+        acc.i ++;
+        return acc;
+    }, { i: 0, total: 0 }).total;
 };
 
 const snafuTable = {
