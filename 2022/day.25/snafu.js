@@ -8,7 +8,7 @@ const fromDecimalToSnafu = (number) => {
         number = number - focus;
     }
 
-    if (number > 1) {
+    if (number > 0) {
         focus = Math.floor(number / 5);
         if (focus == 1) {
             snafu.unshift('1');
