@@ -20,8 +20,7 @@ const fromDecimalToSnafu = (number) => {
 const fromSnafuToDecimal = (snafu) => {
     let decimal = 0;
     snafu.split('').forEach((digit, i) => {
-        let value = snafuTable[digit];
-        decimal += value * Math.pow(5, snafu.length - i - 1);
+        decimal += snafuTable[digit] * Math.pow(5, snafu.length - i - 1);
     });
     return decimal;
 };
