@@ -28,6 +28,7 @@ const powDecomposition = (base, number) => {
     while (Math.floor(number / Math.pow(max, base)) > 1) {
         max ++;
     }
+    let decomposition = [];
 
     return [ 1, 1, 3 ];
 };
