@@ -1,7 +1,9 @@
-const { lines } = require('../support');
+const { lines, add } = require('../support');
+const { fromSnafuToDecimal } = require('./snafu.js');
 
 const solve1 = (file) => {
-    let quatities = lines(file);
+    let total = lines(file).map(fromSnafuToDecimal).reduce(add);
+
     return '2=-1=0';
 };
 
