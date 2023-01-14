@@ -36,5 +36,5 @@ const powDecomposition = (base, number) => {
         console.log(number);
     }
 
-    return [ 1, 1, 3 ];
+    return decomposition;
 };
