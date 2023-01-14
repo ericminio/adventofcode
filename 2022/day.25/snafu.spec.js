@@ -3,8 +3,8 @@ const { fromDecimalToSnafu, fromSnafuToDecimal } = require('./snafu');
 
 describe.only('from decimal to snafu', () => {
 
-    it('works for 20', () => {
-        expect(fromDecimalToSnafu(20)).to.equal('1-0');
+    it('works for 70', () => {
+        expect(fromDecimalToSnafu(70)).to.equal('1-0');
     });
 });
 
