@@ -14,10 +14,6 @@ describe('from decimal to snafu', () => {
     it('works for 314159265', () => {
         expect(fromDecimalToSnafu(314159265)).to.equal('1121-1110-1=0');
     });
-
-    it('works for 314159265', () => {
-        expect(fromDecimalToSnafu(314159265)).to.equal('1121-1110-1=0');
-    });
 });
 
 describe.only('from snafu to decimal', () => {
