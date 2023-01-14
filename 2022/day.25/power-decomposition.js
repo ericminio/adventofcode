@@ -9,7 +9,7 @@ const powerDecomposition = (base, number) => {
         decomposition.push(factor);
         number = number - factor * Math.pow(base, power);
     }
-    if (decomposition[0] == 0) {
+    while (decomposition[0] == 0) {
         decomposition.shift();
     }
 
