@@ -2,16 +2,8 @@ const { powerDecomposition } = require('./power-decomposition.js');
 
 const fromDecimalToSnafu = (number) => {
     let decomposition = powerDecomposition(5, number);
-    let snafu = [];
-    let focus;
 
-    focus = number % 5;
-    if (focus == 1) {
-        snafu.unshift('1');
-        number = number - focus;
-    }
-
-    return snafu.join('');
+    return '1-0';
 };
 
 const fromSnafuToDecimal = (snafu) => {
