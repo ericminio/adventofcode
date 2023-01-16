@@ -30,5 +30,7 @@ const touching = (cubes) => {
 };
 
 const around = (cube) => {
-
+    return [
+        { x: cube.x + 1, y: cube.y, z: cube.z }
+    ];
 };
