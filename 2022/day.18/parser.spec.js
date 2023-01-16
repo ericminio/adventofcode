@@ -1,34 +1,25 @@
 const { expect } = require('chai');
 
-describe.only('exploring cube touching', () => {
+describe.only('parser', () => {
 
-    it('is fun', () => {
-        let total = exposed({
-            '1,1,1': { neighbours: around({ x: 1, y: 1, z: 1 }) },
-            '2,1,1': { neighbours: around({ x: 2, y: 1, z: 1 }) }
+    it('works', () => {
+        expect(parse('1,2,3')).to.deep.equal({
+            neighbours: [
+                { x: 2, y: 2, z: 3 },
+                { x: 0, y: 2, z: 3 },
+                { x: 1, y: 3, z: 3 },
+                { x: 1, y: 1, z: 3 },
+                { x: 1, y: 2, z: 4 },
+                { x: 1, y: 2, z: 2 },
+            ]
         });
-        expect(total).to.equal(10);
     });
 });
 
-const exposed = (cubes) => {
-    let cubeCount = Object.keys(cubes).length;
-
-    return cubeCount * 6 - touching(cubes) ;
-};
-
-const touching = (cubes) => {
-    let total = 0;
-
-    Object.values(cubes).forEach(cube => {
-        cube.neighbours.forEach(neighbour => {
-            if (cubes[id(neighbour)] !== undefined) {
-                total ++;
-            }
-        });
-    });
-
-    return total;
+let pattern = /(.*),(.*),(.*)/;
+const parse = (line) => {
+    let [ x, y, z ] = pattern.exec(line).splice(1);
+    return { neighbours: around({ x: parseInt(x), y: parseInt(y), z: parseInt(z) }) };
 };
 
 const around = (cube) => {
@@ -40,7 +31,4 @@ const around = (cube) => {
         { x: cube.x, y: cube.y, z: cube.z + 1 },
         { x: cube.x, y: cube.y, z: cube.z - 1 },
     ];
-};
-const id = (cube) => {
-    return `${cube.x},${cube.y},${cube.z}`;
 };
