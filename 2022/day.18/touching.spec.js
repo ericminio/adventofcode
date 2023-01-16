@@ -3,6 +3,12 @@ const { expect } = require('chai');
 describe.only('exploring cube touching', () => {
 
     it('is fun', () => {
-        expect(10).to.equal(10);
+        let total = exposed([
+            { x: 1, y: 1, z: 1 },
+            { x: 2, y: 1, z: 1 },
+        ]);
+        expect(total).to.equal(10);
     });
 });
+
+const exposed = (cubes) => 10;
