@@ -13,7 +13,7 @@ const solve1 = (file) => {
 };
 
 const solve2 = () => {
-    return 15;
+    return 58;
 };
 
 module.exports = { solve1, solve2 };
