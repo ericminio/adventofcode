@@ -21,9 +21,14 @@ const touching = (cubes) => {
     let total = 0;
 
     let cube = Object.values(cubes)[0];
+    let neighbours = around(cube);
     total ++;
 
     total ++;
 
     return total;
+};
+
+const around = (cube) => {
+
 };
