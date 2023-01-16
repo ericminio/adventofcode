@@ -26,9 +26,7 @@ const touching = (cubes) => {
                 total ++;
             }
         });
-
     });
-
 
     return total;
 };
