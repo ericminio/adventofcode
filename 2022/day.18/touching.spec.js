@@ -39,3 +39,6 @@ const around = (cube) => {
         { x: cube.x, y: cube.y, z: cube.z - 1 },
     ];
 };
+const id = (cube) => {
+    return `${cube.x},${cube.y},${cube.z}`;
+};
