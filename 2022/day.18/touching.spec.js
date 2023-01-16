@@ -4,8 +4,8 @@ describe.only('exploring cube touching', () => {
 
     it('is fun', () => {
         let total = exposed({
-            '1,1,1': { x: 1, y: 1, z: 1 },
-            '2,1,1': { x: 2, y: 1, z: 1 },
+            '1,1,1': { cube: { x: 1, y: 1, z: 1 }, neighbours: around({ x: 1, y: 1, z: 1 }) },
+            '2,1,1': { cube: { x: 2, y: 1, z: 1 }, neighbours: around({ x: 2, y: 1, z: 1 }) }
         });
         expect(total).to.equal(10);
     });
@@ -20,8 +20,8 @@ const exposed = (cubes) => {
 const touching = (cubes) => {
     let total = 0;
 
-    Object.values(cubes).forEach(cube => {
-        around(cube).forEach(neighbour => {
+    Object.values(cubes).forEach(value => {
+        value.neighbours.forEach(neighbour => {
             if (cubes[id(neighbour)] !== undefined) {
                 total ++;
             }
