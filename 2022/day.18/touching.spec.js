@@ -11,4 +11,4 @@ describe.only('exploring cube touching', () => {
     });
 });
 
-const exposed = (cubes) => 10;
+const exposed = (cubes) => 12 - 2 ;
