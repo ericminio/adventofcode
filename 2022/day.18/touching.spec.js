@@ -14,7 +14,7 @@ describe.only('exploring cube touching', () => {
 const exposed = (cubes) => {
     let cubeCount = Object.keys(cubes).length;
 
-    return cubeCount * 6 - 2 ;
+    return cubeCount * 6 - touching(cubes) ;
 };
 
 const touching = (cubes) => 2;
