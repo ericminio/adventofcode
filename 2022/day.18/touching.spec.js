@@ -20,14 +20,15 @@ const exposed = (cubes) => {
 const touching = (cubes) => {
     let total = 0;
 
-    let cube = Object.values(cubes)[0];
-    around(cube).forEach(neighbour => {
-        if (cubes[id(neighbour)] !== undefined) {
-            total ++;
-        }
+    Object.values(cubes).forEach(cube => {
+        around(cube).forEach(neighbour => {
+            if (cubes[id(neighbour)] !== undefined) {
+                total ++;
+            }
+        });
+
     });
 
-    total ++;
 
     return total;
 };
