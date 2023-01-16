@@ -7,9 +7,8 @@ const solve1 = (file) => {
     lines(file).map(line => {
         cubes[line] = parse(line);
     });
-    let total = exposed(cubes);
 
-    return total;
+    return exposed(cubes);
 };
 
 const solve2 = () => {
