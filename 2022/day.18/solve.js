@@ -1,11 +1,13 @@
 const { lines } = require('../support');
+const { exposed } = require('./exposed');
 const { parse } = require('./parser');
 
 const solve1 = (file) => {
-    let cube = {};
+    let cubes = {};
     lines(file).map(line => {
-        cube[line] = parse(line);
+        cubes[line] = parse(line);
     });
+    let total = exposed(cubes);
 
     return 64;
 };
