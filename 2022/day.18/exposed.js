@@ -1,3 +1,5 @@
+const { id } = require('./cube');
+
 const exposed = (cubes) => {
     let cubeCount = Object.keys(cubes).length;
 
@@ -18,18 +20,4 @@ const touching = (cubes) => {
     return total;
 };
 
-const around = (cube) => {
-    return [
-        { x: cube.x + 1, y: cube.y, z: cube.z },
-        { x: cube.x - 1, y: cube.y, z: cube.z },
-        { x: cube.x, y: cube.y + 1, z: cube.z },
-        { x: cube.x, y: cube.y - 1, z: cube.z },
-        { x: cube.x, y: cube.y, z: cube.z + 1 },
-        { x: cube.x, y: cube.y, z: cube.z - 1 },
-    ];
-};
-const id = (cube) => {
-    return `${cube.x},${cube.y},${cube.z}`;
-};
-
-module.exports = { exposed, around };
+module.exports = { exposed };

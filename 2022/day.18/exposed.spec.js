@@ -1,5 +1,6 @@
 const { expect } = require('chai');
-const { exposed, around } = require('./exposed');
+const { around } = require('./cube');
+const { exposed } = require('./exposed');
 
 describe.only('exploring cube touching', () => {
 
