@@ -16,3 +16,5 @@ const exposed = (cubes) => {
 
     return cubeCount * 6 - 2 ;
 };
+
+const touching = (cubes) => 2;
