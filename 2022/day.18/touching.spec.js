@@ -44,3 +44,5 @@ const around = (cube) => {
 const id = (cube) => {
     return `${cube.x},${cube.y},${cube.z}`;
 };
+
+module.exports = { exposed };
