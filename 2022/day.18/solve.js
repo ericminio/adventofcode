@@ -1,5 +1,5 @@
 const solve1 = () => {
-    return 42;
+    return 64;
 };
 
 const solve2 = () => {

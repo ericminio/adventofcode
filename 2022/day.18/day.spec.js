@@ -6,7 +6,7 @@ describe.only('2022.18', () => {
     describe('figure out the surface area of your scanned lava droplet', () => {
 
         it('leverages an example', () => {
-            expect(solve1(`${__dirname}/data/example.txt`)).to.equal(42);
+            expect(solve1(`${__dirname}/data/example.txt`)).to.equal(64);
         });
 
     });
