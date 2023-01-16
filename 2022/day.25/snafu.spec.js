@@ -16,7 +16,7 @@ describe('from decimal to snafu', () => {
     });
 });
 
-describe.only('from snafu to decimal', () => {
+describe('from snafu to decimal', () => {
 
     it('works for 1=11-2', () => {
         expect(fromSnafuToDecimal('1=11-2')).to.equal(2022);
