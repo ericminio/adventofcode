@@ -3,10 +3,10 @@ const { exposed } = require('./exposed');
 const { parse } = require('./parser');
 
 const solve1 = (file) => {
-    let cubes = {};
-    lines(file).map(line => {
+    let cubes = lines(file).reduce((cubes, line) => {
         cubes[line] = parse(line);
-    });
+        return cubes;
+    }, {});
 
     return exposed(cubes);
 };
