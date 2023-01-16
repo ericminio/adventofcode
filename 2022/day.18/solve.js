@@ -1,4 +1,7 @@
-const solve1 = () => {
+const { lines } = require('../support');
+
+const solve1 = (file) => {
+
     return 64;
 };
 
