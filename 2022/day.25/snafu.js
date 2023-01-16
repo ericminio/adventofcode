@@ -19,8 +19,8 @@ const fromDecimalToSnafu = (number) => {
 
 const fromSnafuToDecimal = (snafu) => {
     return snafu.split('').reduce((acc, digit, index) => {
-        return { total: acc.total + snafuTable[digit] * Math.pow(base, snafu.length - index - 1) };
-    }, { total: 0 }).total;
+        return acc + snafuTable[digit] * Math.pow(base, snafu.length - index - 1) ;
+    }, 0);
 };
 
 const snafuTable = {
