@@ -9,7 +9,7 @@ const solve1 = (file) => {
     });
     let total = exposed(cubes);
 
-    return 64;
+    return total;
 };
 
 const solve2 = () => {
