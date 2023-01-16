@@ -18,5 +18,11 @@ const exposed = (cubes) => {
 };
 
 const touching = (cubes) => {
-    return 2;
+    let total = 0;
+
+    total ++;
+
+    total ++;
+
+    return total;
 };
