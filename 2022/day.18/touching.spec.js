@@ -20,6 +20,7 @@ const exposed = (cubes) => {
 const touching = (cubes) => {
     let total = 0;
 
+    let cube = Object.values(cubes)[0];
     total ++;
 
     total ++;
