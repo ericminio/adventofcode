@@ -21,8 +21,11 @@ const touching = (cubes) => {
     let total = 0;
 
     let cube = Object.values(cubes)[0];
-    let neighbours = around(cube);
-    total ++;
+    around(cube).forEach(neighbour => {
+        if (cubes[id(neighbour)] !== undefined) {
+            total ++;
+        }
+    });
 
     total ++;
 
