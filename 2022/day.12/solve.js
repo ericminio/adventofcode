@@ -1,4 +1,4 @@
-const { gps } = require('../../lib/2d/gps.js');
+const { gps } = require('../../lib/gps.js');
 const { mapAsHash, id } = require('../../lib/2d/map');
 const { input, ascending } = require('../support');
 

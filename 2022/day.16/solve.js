@@ -1,4 +1,4 @@
-const { gps } = require('../../lib/2d/gps');
+const { gps } = require('../../lib/gps');
 const { extractor, lines, add } = require('../support');
 
 const init = (map) => {

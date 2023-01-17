@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { gps } = require('../../lib/2d/gps.js');
+const { gps } = require('../../lib/gps.js');
 const { add } = require('../support/index.js');
 const { init, winner1, solve1, winner2, solve2, parse, timeSpent, weight, distances, entry } = require('./solve');
 
