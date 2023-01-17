@@ -23,6 +23,20 @@ const solve2 = (file) => {
         });
         return neighbours;
     }, {});
+
+    let total = 0;
+    Object.values(neighbours).forEach(candidate => {
+        let allTouching = true;
+        candidate.neighbours.forEach(neighbour => {
+            if (cubes[id(neighbour)] === undefined) {
+                touching = false;
+            }
+        });
+        if (allTouching) {
+            total ++;
+        }
+    });
+
     return 58;
 };
 
