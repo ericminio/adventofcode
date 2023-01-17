@@ -1,10 +1,11 @@
-const { around } = require('./cube');
+const { around, id } = require('./cube');
 
 const pattern = /(.*),(.*),(.*)/;
 
 const parse = (line) => {
     let [ x, y, z ] = pattern.exec(line).splice(1).map(entry => parseInt(entry));
-    return { neighbours: around({ x, y, z }) };
+    let position = { x, y, z };
+    return { id: id(position), neighbours: around(position) };
 };
 
 module.exports = { parse };
