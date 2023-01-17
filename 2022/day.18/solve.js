@@ -29,7 +29,7 @@ const solve2 = (file) => {
         let allTouching = true;
         candidate.neighbours.forEach(neighbour => {
             if (cubes[id(neighbour)] === undefined) {
-                touching = false;
+                allTouching = false;
             }
         });
         if (allTouching) {
