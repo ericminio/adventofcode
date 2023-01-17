@@ -28,14 +28,15 @@ const solve2 = (file) => {
     Object.values(neighbours).forEach(candidate => {
         let trapped = true;
         candidate.neighbours.forEach(neighbour => {
-            if (candidate.id === '2,2,5') {
-                console.log(neighbour, cubes[id(neighbour)]);
-            }
+            // if (candidate.id === '2,2,5') {
+            //     console.log(neighbour, cubes[id(neighbour)]);
+            // }
             if (cubes[id(neighbour)] === undefined) {
                 trapped = false;
             }
         });
         if (trapped) {
+            console.log(candidate.id);
             total ++;
         }
     });
