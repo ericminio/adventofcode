@@ -31,21 +31,16 @@ const solve2 = (file) => {
     candidates.forEach(candidate => {
         let trapped = true;
         candidate.neighbours.forEach(neighbour => {
-            // if (candidate.id === '2,2,2') {
-            //     console.log(neighbour, cubes[id(neighbour)]);
-            // }
             if (cubes[id(neighbour)] === undefined) {
                 trapped = false;
             }
         });
         if (trapped) {
-            // console.log(candidate.id);
             total ++;
         }
     });
-    console.log(total);
 
-    return 58;
+    return exposed(cubes) - 6 * total;
 };
 
 module.exports = { solve1, solve2 };
