@@ -17,6 +17,7 @@ const solve2 = (file) => {
         cubes[line] = parse(line);
         return cubes;
     }, {});
+
     let neighbours = Object.values(cubes)
         .reduce((neighbours, cube) => {
             cube.neighbours.forEach(neighbour => {
@@ -24,9 +25,9 @@ const solve2 = (file) => {
             });
             return neighbours;
         }, {});
-
     let candidates = Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
-    let total = 0;
+
+    let count = 0;
     candidates.forEach(candidate => {
         let trapped = true;
         candidate.neighbours.forEach(neighbour => {
@@ -35,11 +36,11 @@ const solve2 = (file) => {
             }
         });
         if (trapped) {
-            total ++;
+            count ++;
         }
     });
 
-    return exposed(cubes) - 6 * total;
+    return exposed(cubes) - 6 * count;
 };
 
 module.exports = { solve1, solve2 };
