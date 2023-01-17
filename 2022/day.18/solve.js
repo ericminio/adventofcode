@@ -27,13 +27,13 @@ const solve2 = (file) => {
     let total = 0;
     Object.values(neighbours).forEach(candidate => {
         console.log(candidate.id);
-        let allTouching = true;
+        let trapped = true;
         candidate.neighbours.forEach(neighbour => {
             if (cubes[id(neighbour)] === undefined) {
-                allTouching = false;
+                trapped = false;
             }
         });
-        if (allTouching) {
+        if (trapped) {
             total ++;
         }
     });
