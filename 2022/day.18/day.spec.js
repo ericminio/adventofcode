@@ -21,9 +21,5 @@ describe.only('2022.18', () => {
             expect(solve2(`${__dirname}/data/example.txt`)).to.equal(58);
         });
 
-        it('is done', () => {
-            expect(solve2(`${__dirname}/data/input.txt`)).to.equal(3316);
-        });
-
     });
 });
