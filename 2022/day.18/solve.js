@@ -36,6 +36,7 @@ const solve2 = (file) => {
             total ++;
         }
     });
+    console.log(total);
 
     return 58;
 };
