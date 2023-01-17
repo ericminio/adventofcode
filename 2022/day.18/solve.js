@@ -26,9 +26,11 @@ const solve2 = (file) => {
 
     let total = 0;
     Object.values(neighbours).forEach(candidate => {
-        console.log(candidate.id);
         let trapped = true;
         candidate.neighbours.forEach(neighbour => {
+            if (candidate.id === '2,2,5') {
+                console.log(neighbour.id);
+            }
             if (cubes[id(neighbour)] === undefined) {
                 trapped = false;
             }
