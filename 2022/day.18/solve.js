@@ -17,12 +17,15 @@ const solve2 = (file) => {
         cubes[line] = parse(line);
         return cubes;
     }, {});
-    let neighbours = Object.values(cubes).reduce((neighbours, cube) => {
-        cube.neighbours.forEach(neighbour => {
-            neighbours[id(neighbour)] = { id: id(neighbour), neighbours: around(neighbour) };
-        });
-        return neighbours;
-    }, {});
+    let neighbours = Object.values(cubes)
+        .reduce((neighbours, cube) => {
+            cube.neighbours.forEach(neighbour => {
+                neighbours[id(neighbour)] = { id: id(neighbour), neighbours: around(neighbour) };
+            });
+            return neighbours;
+        }, {});
+
+    let candidates = Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
 
     let total = 0;
     Object.values(neighbours).forEach(candidate => {
