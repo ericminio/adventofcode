@@ -29,7 +29,7 @@ const solve2 = (file) => {
         let trapped = true;
         candidate.neighbours.forEach(neighbour => {
             if (candidate.id === '2,2,5') {
-                console.log(id(neighbour));
+                console.log(neighbour);
             }
             if (cubes[id(neighbour)] === undefined) {
                 trapped = false;
