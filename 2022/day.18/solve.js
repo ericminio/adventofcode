@@ -7,6 +7,41 @@ const { spaceAsHash } = require('../../lib/3d/space');
 const { setWall } = require('../../lib/walls');
 const { gps } = require('../../lib/gps');
 
+const solve1 = (file) => {
+    let cubes = lavaDropplets(file);
+
+    return exposed(cubes);
+};
+
+const solve2 = (file) => {
+    let cubes = lavaDropplets(file);
+    let trappedDropplets = airTrappedDropplets(cubes);
+    let count = 0;
+    trappedDropplets.forEach(airDropplet => {
+        let neighbours = around(airDropplet);
+        neighbours.forEach(neighbour => {
+            if (cubes[id(neighbour)] !== undefined) {
+                count ++;
+            }
+        });
+    });
+
+    return exposed(cubes) - count;
+};
+
+const touchingCount = (trappedDropplets, cubes) => {
+    let count = 0;
+    trappedDropplets.forEach(airDropplet => {
+        let neighbours = around(airDropplet);
+        neighbours.forEach(neighbour => {
+            if (cubes[id(neighbour)] !== undefined) {
+                count ++;
+            }
+        });
+    });
+    return count;
+};
+
 const lavaDropplets = (file) => {
     return lines(file).reduce((cubes, line) => {
         let cube = parse(line);
@@ -52,28 +87,6 @@ const airTrappedDropplets = (cubes) => {
         }
     });
     return trappedDropplets;
-};
-
-const solve1 = (file) => {
-    let cubes = lavaDropplets(file);
-
-    return exposed(cubes);
-};
-
-const solve2 = (file) => {
-    let cubes = lavaDropplets(file);
-    let trappedDropplets = airTrappedDropplets(cubes);
-    let count = 0;
-    trappedDropplets.forEach(airDropplet => {
-        let neighbours = around(airDropplet);
-        neighbours.forEach(neighbour => {
-            if (cubes[id(neighbour)] !== undefined) {
-                count ++;
-            }
-        });
-    });
-
-    return exposed(cubes) - count;
 };
 
 module.exports = { solve1, solve2, lavaDropplets, neighbours, airTrappedDropplets };
