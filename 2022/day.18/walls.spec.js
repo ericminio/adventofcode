@@ -10,7 +10,7 @@ const setWall = (id, map) => {
         }
     });
 };
-describe.only('walls', () => {
+describe.only('wall', () => {
 
     let map;
     beforeEach(() => {
