@@ -13,7 +13,7 @@ const boundaries = (positions) => {
     };
 };
 
-describe.only('boundaries', () => {
+describe.only('map', () => {
 
     let map;
     beforeEach(() => {
