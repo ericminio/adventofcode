@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { around } = require('./cube');
 const { exposed } = require('./exposed');
 
-describe.only('exploring cube touching', () => {
+describe('exploring cube touching', () => {
 
     it('is fun', () => {
         let total = exposed({
