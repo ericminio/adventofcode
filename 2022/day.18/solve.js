@@ -16,15 +16,6 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     let cubes = lavaDropplets(file);
     let trappedDropplets = airTrappedDropplets(cubes);
-    let count = 0;
-    trappedDropplets.forEach(airDropplet => {
-        let neighbours = around(airDropplet);
-        neighbours.forEach(neighbour => {
-            if (cubes[id(neighbour)] !== undefined) {
-                count ++;
-            }
-        });
-    });
 
     return exposed(cubes) - touchingCount(trappedDropplets, cubes);
 };
