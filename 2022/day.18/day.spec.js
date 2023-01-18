@@ -6,7 +6,7 @@ const { gps } = require('../../lib/gps');
 const { setWall } = require('../../lib/walls');
 const { boundaries } = require('./boundaries');
 const { id, around } = require('./cube');
-const { solve1, solve2 } = require('./solve');
+const { solve1, solve2, airTrappedDropplets } = require('./solve');
 const { lavaDropplets, neighbours } = require('./solve');
 
 describe.only('2022.18', () => {
@@ -52,28 +52,7 @@ describe.only('2022.18', () => {
 
         it('is promising', () => {
             let cubes = lavaDropplets(example);
-            let airTrappedCandidates = neighbours(cubes);
-            let bounds = boundaries(airTrappedCandidates.map(candidate => candidate.position));
-            let minimum = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
-            let maximum = { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  };
-            let space = spaceAsHash({ minimum, maximum });
-            Object.values(cubes).forEach(cube => {
-                setWall(cube.id, space);
-            });
-            Object.keys(space).forEach(key => {
-                space[key].value = 1;
-            });
-            let trapped = [];
-            let request = { origin: { id: id(minimum) }};
-            airTrappedCandidates.forEach(candidate => {
-                request.target = { id: candidate.id };
-                try {
-                    gps(request, space);
-                }
-                catch (error) {
-                    trapped.push(candidate.position);
-                }
-            });
+            let trapped = airTrappedDropplets(cubes);
             let count = 0;
             trapped.forEach(airDropplet => {
                 let neighbours = around(airDropplet);

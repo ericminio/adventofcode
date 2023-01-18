@@ -28,6 +28,31 @@ const neighbours = (cubes) => {
         }, {});
     return Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
 };
+const airTrappedDropplets = (cubes) => {
+    let airTrappedCandidates = neighbours(cubes);
+    let bounds = boundaries(airTrappedCandidates.map(candidate => candidate.position));
+    let minimum = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
+    let maximum = { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  };
+    let space = spaceAsHash({ minimum, maximum });
+    Object.values(cubes).forEach(cube => {
+        setWall(cube.id, space);
+    });
+    Object.keys(space).forEach(key => {
+        space[key].value = 1;
+    });
+    let trappedDropplets = [];
+    let request = { origin: { id: id(minimum) }};
+    airTrappedCandidates.forEach(candidate => {
+        request.target = { id: candidate.id };
+        try {
+            gps(request, space);
+        }
+        catch (error) {
+            trappedDropplets.push(candidate.position);
+        }
+    });
+    return trappedDropplets;
+};
 
 const solve1 = (file) => {
     let cubes = lavaDropplets(file);
@@ -72,4 +97,4 @@ const solve2 = (file) => {
     return exposed(cubes) - count;
 };
 
-module.exports = { solve1, solve2, lavaDropplets, neighbours };
+module.exports = { solve1, solve2, lavaDropplets, neighbours, airTrappedDropplets };
