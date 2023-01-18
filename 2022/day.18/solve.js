@@ -26,6 +26,8 @@ const solve2 = (file) => {
         }, {});
     let candidates = Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
 
+    let map = buildMap(candidates, cubes);
+
     return exposed(cubes) - 6 * countTrappedAssumingIsolatedAirBubbles(candidates, cubes);
 };
 
@@ -43,6 +45,10 @@ const countTrappedAssumingIsolatedAirBubbles = (candidates, cubes) => {
         }
     });
     return count;
+};
+
+const buildMap = (candidates, cubes) => {
+
 };
 
 module.exports = { solve1, solve2 };
