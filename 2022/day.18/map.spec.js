@@ -14,7 +14,7 @@ const boundaries = (cubes) => {
     };
 };
 
-describe.only('map', () => {
+describe.only('boundaries', () => {
 
     let map;
     beforeEach(() => {
