@@ -35,16 +35,24 @@ const solve2 = (file) => {
             return neighbours;
         }, {});
     let candidates = Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
+    // console.log(candidates.length);
 
-    let bounds = boundaries(Object.values(cubes).map(cube => cube.position));
-    let space = spaceAsHash(bounds);
+    let bounds = boundaries(candidates.map(candidate => candidate.position));
+    // console.log(bounds);
+    let minimumPosition = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
+    let maximumPosition = { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  };
+
+    let space = spaceAsHash({
+        minimum: minimumPosition,
+        maximum: maximumPosition,
+    });
     Object.values(cubes).forEach(cube => {
         setWall(cube.id, space);
     });
-    let request = { origin: { id: '0x0x0' }};
+    // console.log(space);
+
+    let request = { origin: { id: id(minimumPosition) }};
     let count = 0;
-    console.log(space);
-    console.log(candidates.length);
     candidates.forEach(candidate => {
         request.target = { id: candidate.id };
         try {
