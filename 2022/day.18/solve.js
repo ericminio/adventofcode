@@ -9,7 +9,8 @@ const { gps } = require('../../lib/gps');
 
 const solve1 = (file) => {
     let cubes = lines(file).reduce((cubes, line) => {
-        cubes[line] = parse(line);
+        let cube = parse(line);
+        cubes[cube.id] = parse(line);
         return cubes;
     }, {});
 
@@ -18,7 +19,8 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     let cubes = lines(file).reduce((cubes, line) => {
-        cubes[line] = parse(line);
+        let cube = parse(line);
+        cubes[cube.id] = parse(line);
         return cubes;
     }, {});
     let neighbours = Object.values(cubes)
