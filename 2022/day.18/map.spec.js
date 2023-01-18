@@ -3,15 +3,15 @@ const { lines } = require('../support/index.js');
 const { parse } = require('./parser.js');
 const example = `${__dirname}/data/example.txt`;
 
-const parseMap = (cubes) => {
-    let map = {};
+const boundaries = (cubes) => {
     const positions = Object.values(cubes).map(cube => cube.position);
     const xs = positions.map(position => position.x);
     const ys = positions.map(position => position.y);
     const zs = positions.map(position => position.z);
-    map.minimum = { x: Math.min(...xs), y: Math.min(...ys), z: Math.min(...zs) };
-    map.maximum = { x: Math.max(...xs), y: Math.max(...ys), z: Math.max(...zs) };
-    return map;
+    return {
+        minimum: { x: Math.min(...xs), y: Math.min(...ys), z: Math.min(...zs) },
+        maximum: { x: Math.max(...xs), y: Math.max(...ys), z: Math.max(...zs) }
+    };
 };
 
 describe.only('map', () => {
@@ -22,7 +22,7 @@ describe.only('map', () => {
             cubes[line] = parse(line);
             return cubes;
         }, {});
-        map = parseMap(cubes);
+        map = boundaries(cubes);
     });
 
     it('exposes boundaries', () => {
