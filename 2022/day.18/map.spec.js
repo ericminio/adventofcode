@@ -15,10 +15,8 @@ describe.only('map', () => {
         map = parseMap(example);
     });
 
-    it('exposes the minimum', () => {
+    it('exposes boundaries', () => {
         expect(map.minimum).to.deep.equal({ x: 1, y: 1, z: 1 });
-    });
-    it('exposes the maximum', () => {
         expect(map.maximum).to.deep.equal({ x: 3, y: 3, z: 6 });
     });
 });
