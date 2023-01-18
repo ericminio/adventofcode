@@ -38,7 +38,7 @@ const solve2 = (file) => {
     Object.values(cubes).forEach(cube => {
         setWall(cube.id, space);
     });
-    let request = { origin: '0x0x0' };
+    let request = { origin: { id: '0x0x0' }};
     let count = 0;
     candidates.forEach(candidate => {
 
