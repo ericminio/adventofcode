@@ -23,19 +23,6 @@ describe.only('map', () => {
             cubes[line] = parse(line);
             return cubes;
         }, {});
-        let neighbours = Object.values(cubes)
-            .reduce((neighbours, cube) => {
-                cube.neighbours.forEach(neighbour => {
-                    neighbours[id(neighbour)] = {
-                        id: id(neighbour),
-                        position: neighbour,
-                        neighbours: around(neighbour)
-                    };
-                });
-                return neighbours;
-            }, {});
-        let candidates = Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
-
         map = parseMap(cubes);
     });
 
