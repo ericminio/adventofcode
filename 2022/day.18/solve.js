@@ -22,7 +22,7 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     let cubes = lavaDropplets(file);
-    let candidates = airTrappedCandidates(cubes);
+    let candidates = neighbours(cubes);
     // console.log(candidates.length);
 
     let bounds = boundaries(candidates.map(candidate => candidate.position));
@@ -72,7 +72,7 @@ const countTrappedAssumingIsolatedAirBubbles = (candidates, cubes) => {
     return count;
 };
 
-const airTrappedCandidates = (cubes) => {
+const neighbours = (cubes) => {
     let neighbours = Object.values(cubes)
         .reduce((neighbours, cube) => {
             cube.neighbours.forEach(neighbour => {
@@ -87,4 +87,4 @@ const airTrappedCandidates = (cubes) => {
     return Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
 };
 
-module.exports = { solve1, solve2, lavaDropplets, airTrappedCandidates };
+module.exports = { solve1, solve2, lavaDropplets, neighbours };

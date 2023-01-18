@@ -7,7 +7,7 @@ const { setWall } = require('../../lib/walls');
 const { boundaries } = require('./boundaries');
 const { id } = require('./cube');
 const { solve1, solve2 } = require('./solve');
-const { lavaDropplets, airTrappedCandidates } = require('./solve');
+const { lavaDropplets, neighbours } = require('./solve');
 
 describe.only('2022.18', () => {
 
@@ -39,8 +39,8 @@ describe.only('2022.18', () => {
         });
 
         it('exposes air trapped candidates', () => {
-            expect(airTrappedCandidates(lavaDropplets(example)).length).to.equal(35);
-            expect(airTrappedCandidates(lavaDropplets(input)).length).to.equal(1660);
+            expect(neighbours(lavaDropplets(example)).length).to.equal(35);
+            expect(neighbours(lavaDropplets(input)).length).to.equal(1660);
         });
     });
 
@@ -48,7 +48,7 @@ describe.only('2022.18', () => {
 
         it('is promising', () => {
             let cubes = lavaDropplets(example);
-            let candidates = airTrappedCandidates(cubes);
+            let candidates = neighbours(cubes);
             let bounds = boundaries(candidates.map(candidate => candidate.position));
             let minimum = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
             let maximum = { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  };
