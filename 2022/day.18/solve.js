@@ -84,4 +84,19 @@ const countTrappedAssumingIsolatedAirBubbles = (candidates, cubes) => {
     return count;
 };
 
+const airTrappedCandidates = (cubes) => {
+    let neighbours = Object.values(cubes)
+        .reduce((neighbours, cube) => {
+            cube.neighbours.forEach(neighbour => {
+                neighbours[id(neighbour)] = {
+                    id: id(neighbour),
+                    position: neighbour,
+                    neighbours: around(neighbour)
+                };
+            });
+            return neighbours;
+        }, {});
+    return Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
+};
+
 module.exports = { solve1, solve2 };
