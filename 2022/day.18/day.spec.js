@@ -26,5 +26,9 @@ describe.only('2022.18', () => {
     });
 
     describe('internals', () => {
+
+        it('exposes lava dropplets', () => {
+
+        });
     });
 });
