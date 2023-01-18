@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+const { boundaries } = require('./boundaries');
 const { solve1, solve2 } = require('./solve');
 const { lavaDropplets, airTrappedCandidates } = require('./solve');
 const example = `${__dirname}/data/example.txt`;
@@ -44,6 +45,7 @@ describe.only('2022.18', () => {
         it('is promising', () => {
             let cubes = lavaDropplets(example);
             let candidates = airTrappedCandidates(cubes);
+            let bounds = boundaries(candidates.map(candidate => candidate.position));
         });
     });
 });
