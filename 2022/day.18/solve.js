@@ -43,4 +43,20 @@ const solve2 = (file) => {
     return exposed(cubes) - 6 * count;
 };
 
+const countTrappedAssumingIsolatedAirBubbles = (candidates, cubes) => {
+    let count = 0;
+    candidates.forEach(candidate => {
+        let trapped = true;
+        candidate.neighbours.forEach(neighbour => {
+            if (cubes[id(neighbour)] === undefined) {
+                trapped = false;
+            }
+        });
+        if (trapped) {
+            count ++;
+        }
+    });
+    return count;
+};
+
 module.exports = { solve1, solve2 };
