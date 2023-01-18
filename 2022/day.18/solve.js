@@ -50,7 +50,7 @@ const solve2 = (file) => {
             count ++;
         }
     });
-    console.log(count);
+    console.log('via gps', count);
 
     return exposed(cubes) - 6 * countTrappedAssumingIsolatedAirBubbles(candidates, cubes);
 };
