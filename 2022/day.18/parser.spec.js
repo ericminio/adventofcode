@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { parse } = require('./parser');
 
-describe('parser', () => {
+describe.only('parser', () => {
 
     it('works', () => {
         expect(parse('1,2,3')).to.deep.equal({
