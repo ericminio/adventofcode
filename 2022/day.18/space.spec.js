@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { spaceAsHash } = require('./space.js');
 
-describe.only('map', () => {
+describe('map', () => {
 
     let map;
     beforeEach(() => {
