@@ -6,7 +6,7 @@ const setWall = (id, map) => {
         let neighbours = map[key].neighbours;
         let index = neighbours.indexOf(id);
         if (index !== -1) {
-            neighbours = neighbours.splice(index, 1);
+            neighbours.splice(index, 1);
         }
     });
 };
