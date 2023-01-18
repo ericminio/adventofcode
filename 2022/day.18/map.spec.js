@@ -5,7 +5,9 @@ const example = `${__dirname}/data/example.txt`;
 
 const parseMap = (cubes) => {
     let map = {};
-    map.minimum = { x: 1, y: 1, z: 1 };
+    const positions = Object.values(cubes).map(cube => cube.position);
+    const xs = positions.map(position => position.x);
+    map.minimum = { x: Math.min(...xs), y: 1, z: 1 };
     map.maximum = { x: 3, y: 3, z: 6 };
     return map;
 };
