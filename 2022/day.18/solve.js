@@ -4,6 +4,7 @@ const { parse } = require('./parser');
 const { around, id } = require('./cube');
 const { boundaries } = require('./boundaries.js');
 const { spaceAsHash } = require('../../lib/3d/space');
+const { setWall } = require('../../lib/walls');
 
 const solve1 = (file) => {
     let cubes = lines(file).reduce((cubes, line) => {
@@ -34,6 +35,9 @@ const solve2 = (file) => {
 
     let bounds = boundaries(Object.values(cubes).map(cube => cube.position));
     let space = spaceAsHash(bounds);
+    Object.values(cubes).forEach(cube => {
+        setWall(cube.id, space);
+    });
 
     return exposed(cubes) - 6 * countTrappedAssumingIsolatedAirBubbles(candidates, cubes);
 };
