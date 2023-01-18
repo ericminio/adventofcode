@@ -2,7 +2,6 @@ const { expect } = require('chai');
 const { spaceAsHash } = require('./space.js');
 
 const setWall = (id, map) => {
-    map['0x0x0'].neighbours = [ '0x1x0', '0x0x1' ];
     Object.keys(map).forEach(key => {
         let neighbours = map[key].neighbours;
         let index = neighbours.indexOf(id);
