@@ -5,6 +5,7 @@ const { around, id } = require('./cube');
 const { boundaries } = require('./boundaries.js');
 const { spaceAsHash } = require('../../lib/3d/space');
 const { setWall } = require('../../lib/walls');
+const { gps } = require('../../lib/gps');
 
 const solve1 = (file) => {
     let cubes = lines(file).reduce((cubes, line) => {
