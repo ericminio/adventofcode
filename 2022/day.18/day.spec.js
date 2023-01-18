@@ -1,11 +1,11 @@
 const { expect } = require('chai');
+const example = `${__dirname}/data/example.txt`;
+const input = `${__dirname}/data/input.txt`;
 const { spaceAsHash } = require('../../lib/3d/space');
 const { setWall } = require('../../lib/walls');
 const { boundaries } = require('./boundaries');
 const { solve1, solve2 } = require('./solve');
 const { lavaDropplets, airTrappedCandidates } = require('./solve');
-const example = `${__dirname}/data/example.txt`;
-const input = `${__dirname}/data/input.txt`;
 
 describe.only('2022.18', () => {
 
