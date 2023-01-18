@@ -1,5 +1,5 @@
 const id = (cube) => {
-    return `${cube.x},${cube.y},${cube.z}`;
+    return `${cube.x}x${cube.y}x${cube.z}`;
 };
 
 const around = (cube) => {
