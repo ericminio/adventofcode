@@ -36,11 +36,11 @@ describe.only('map', () => {
             }, {});
         let candidates = Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
 
-        map = parseMap(candidates);
+        map = parseMap(cubes);
     });
 
     it('exposes boundaries', () => {
-        expect(map.minimum).to.deep.equal({ x: 0, y: 0, z: 0 });
-        expect(map.maximum).to.deep.equal({ x: 4, y: 4, z: 7 });
+        expect(map.minimum).to.deep.equal({ x: 1, y: 1, z: 1 });
+        expect(map.maximum).to.deep.equal({ x: 3, y: 3, z: 6 });
     });
 });
