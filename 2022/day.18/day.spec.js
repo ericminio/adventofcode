@@ -9,7 +9,7 @@ const { id, around } = require('./cube');
 const { solve1, solve2 } = require('./solve');
 const { lavaDropplets, neighbours } = require('./solve');
 
-describe.only('2022.18', () => {
+describe('2022.18', () => {
 
     describe('figuring out the surface area of your scanned lava droplet', () => {
 
