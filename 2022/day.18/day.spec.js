@@ -33,7 +33,7 @@ describe.only('2022.18', () => {
             expect(Object.values(lavaDropplets(input)).length).to.equal(2090);
         });
 
-        it('exposes ai trapped candidates', () => {
+        it('exposes air trapped candidates', () => {
             expect(airTrappedCandidates(lavaDropplets(example)).length).to.equal(35);
             expect(airTrappedCandidates(lavaDropplets(input)).length).to.equal(1660);
         });
