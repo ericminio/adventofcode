@@ -62,28 +62,7 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     let cubes = lavaDropplets(file);
-    let airTrappedCandidates = neighbours(cubes);
-    let bounds = boundaries(airTrappedCandidates.map(candidate => candidate.position));
-    let minimum = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
-    let maximum = { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  };
-    let space = spaceAsHash({ minimum, maximum });
-    Object.values(cubes).forEach(cube => {
-        setWall(cube.id, space);
-    });
-    Object.keys(space).forEach(key => {
-        space[key].value = 1;
-    });
-    let trappedDropplets = [];
-    let request = { origin: { id: id(minimum) }};
-    airTrappedCandidates.forEach(candidate => {
-        request.target = { id: candidate.id };
-        try {
-            gps(request, space);
-        }
-        catch (error) {
-            trappedDropplets.push(candidate.position);
-        }
-    });
+    let trappedDropplets = airTrappedDropplets(cubes);
     let count = 0;
     trappedDropplets.forEach(airDropplet => {
         let neighbours = around(airDropplet);
