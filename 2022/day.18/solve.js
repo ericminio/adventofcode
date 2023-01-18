@@ -48,7 +48,7 @@ const solve2 = (file) => {
     Object.keys(space).forEach(key => {
         space[key].value = 1;
     });
-    let trapped = [];
+    let trappedDropplets = [];
     let request = { origin: { id: id(minimum) }};
     airTrappedCandidates.forEach(candidate => {
         request.target = { id: candidate.id };
@@ -56,11 +56,11 @@ const solve2 = (file) => {
             gps(request, space);
         }
         catch (error) {
-            trapped.push(candidate.position);
+            trappedDropplets.push(candidate.position);
         }
     });
     let count = 0;
-    trapped.forEach(airDropplet => {
+    trappedDropplets.forEach(airDropplet => {
         let neighbours = around(airDropplet);
         neighbours.forEach(neighbour => {
             if (cubes[id(neighbour)] !== undefined) {
