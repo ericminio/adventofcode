@@ -20,7 +20,11 @@ const solve2 = (file) => {
     let neighbours = Object.values(cubes)
         .reduce((neighbours, cube) => {
             cube.neighbours.forEach(neighbour => {
-                neighbours[id(neighbour)] = { id: id(neighbour), neighbours: around(neighbour) };
+                neighbours[id(neighbour)] = {
+                    id: id(neighbour),
+                    position: neighbour,
+                    neighbours: around(neighbour)
+                };
             });
             return neighbours;
         }, {});
