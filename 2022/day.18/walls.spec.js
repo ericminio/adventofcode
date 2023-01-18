@@ -9,6 +9,7 @@ const setWall = (id, map) => {
             neighbours.splice(index, 1);
         }
     });
+    delete map[id];
 };
 describe.only('wall', () => {
 
@@ -24,5 +25,10 @@ describe.only('wall', () => {
             position: { x: 0, y: 0, z: 0 },
             neighbours: [ '0x1x0', '0x0x1' ]
         });
+    });
+
+    it('is removed from space', () => {
+        setWall('1x0x0', map);
+        expect(map['1x0x0']).to.equal(undefined);
     });
 });
