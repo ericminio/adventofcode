@@ -26,7 +26,7 @@ const solve2 = (file) => {
         });
     });
 
-    return exposed(cubes) - count;
+    return exposed(cubes) - touchingCount(trappedDropplets, cubes);
 };
 
 const touchingCount = (trappedDropplets, cubes) => {
