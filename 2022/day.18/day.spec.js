@@ -38,7 +38,7 @@ describe.only('2022.18', () => {
             expect(Object.values(lavaDropplets(input)).length).to.equal(2090);
         });
 
-        it('exposes air trapped candidates', () => {
+        it('exposes air trapped airTrappedCandidates', () => {
             expect(neighbours(lavaDropplets(example)).length).to.equal(35);
             expect(neighbours(lavaDropplets(input)).length).to.equal(1660);
         });
@@ -48,8 +48,8 @@ describe.only('2022.18', () => {
 
         it('is promising', () => {
             let cubes = lavaDropplets(example);
-            let candidates = neighbours(cubes);
-            let bounds = boundaries(candidates.map(candidate => candidate.position));
+            let airTrappedCandidates = neighbours(cubes);
+            let bounds = boundaries(airTrappedCandidates.map(candidate => candidate.position));
             let minimum = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
             let maximum = { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  };
             let space = spaceAsHash({ minimum, maximum });
@@ -58,7 +58,7 @@ describe.only('2022.18', () => {
             });
             let trapped = [];
             let request = { origin: { id: id(minimum) }};
-            candidates.forEach(candidate => {
+            airTrappedCandidates.forEach(candidate => {
                 request.target = { id: candidate.id };
                 try {
                     gps(request, space);
