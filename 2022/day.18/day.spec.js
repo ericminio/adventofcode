@@ -38,4 +38,12 @@ describe.only('2022.18', () => {
             expect(airTrappedCandidates(lavaDropplets(input)).length).to.equal(1660);
         });
     });
+
+    describe('the gps way', () => {
+
+        it('is promising', () => {
+            let cubes = lavaDropplets(example);
+            let candidates = airTrappedCandidates(cubes);
+        });
+    });
 });
