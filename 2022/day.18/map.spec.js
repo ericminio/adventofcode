@@ -9,7 +9,7 @@ const parseMap = (cubes) => {
     const xs = positions.map(position => position.x);
     const ys = positions.map(position => position.y);
     const zs = positions.map(position => position.z);
-    map.minimum = { x: Math.min(...xs), y: 1, z: 1 };
+    map.minimum = { x: Math.min(...xs), y: Math.min(...ys), z: Math.min(...zs) };
     map.maximum = { x: Math.max(...xs), y: 3, z: 6 };
     return map;
 };
