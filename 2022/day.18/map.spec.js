@@ -30,4 +30,8 @@ describe.only('map', () => {
         expect(map.minimum).to.deep.equal({ x: 1, y: 1, z: 1 });
         expect(map.maximum).to.deep.equal({ x: 3, y: 3, z: 6 });
     });
+
+    it('exposes neighbours', () => {
+
+    });
 });
