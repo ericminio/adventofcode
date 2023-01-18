@@ -1,5 +1,6 @@
 const { expect } = require('chai');
 const { solve1, solve2 } = require('./solve');
+const { lavaDropplets, airTrappedCandidates } = require('./solve');
 const example = `${__dirname}/data/example.txt`;
 const input = `${__dirname}/data/input.txt`;
 
