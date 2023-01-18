@@ -27,20 +27,7 @@ const solve2 = (file) => {
         }, {});
     let candidates = Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
 
-    let count = 0;
-    candidates.forEach(candidate => {
-        let trapped = true;
-        candidate.neighbours.forEach(neighbour => {
-            if (cubes[id(neighbour)] === undefined) {
-                trapped = false;
-            }
-        });
-        if (trapped) {
-            count ++;
-        }
-    });
-
-    return exposed(cubes) - 6 * count;
+    return exposed(cubes) - 6 * countTrappedAssumingIsolatedAirBubbles(candidates, cubes);
 };
 
 const countTrappedAssumingIsolatedAirBubbles = (candidates, cubes) => {
