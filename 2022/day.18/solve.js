@@ -38,6 +38,8 @@ const solve2 = (file) => {
     Object.values(cubes).forEach(cube => {
         setWall(cube.id, space);
     });
+    let request = { origin: '0x0x0' };
+
 
     return exposed(cubes) - 6 * countTrappedAssumingIsolatedAirBubbles(candidates, cubes);
 };
