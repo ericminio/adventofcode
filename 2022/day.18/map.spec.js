@@ -1,6 +1,5 @@
 const { expect } = require('chai');
 const { lines } = require('../support/index.js');
-const { id, around } = require('./cube.js');
 const { parse } = require('./parser.js');
 const example = `${__dirname}/data/example.txt`;
 
