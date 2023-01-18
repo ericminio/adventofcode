@@ -35,6 +35,7 @@ describe.only('2022.18', () => {
 
         it('exposes ai trapped candidates', () => {
             expect(airTrappedCandidates(lavaDropplets(example)).length).to.equal(35);
+            expect(airTrappedCandidates(lavaDropplets(input)).length).to.equal(1660);
         });
     });
 });
