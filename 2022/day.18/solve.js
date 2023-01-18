@@ -7,12 +7,15 @@ const { spaceAsHash } = require('../../lib/3d/space');
 const { setWall } = require('../../lib/walls');
 const { gps } = require('../../lib/gps');
 
-const solve1 = (file) => {
-    let cubes = lines(file).reduce((cubes, line) => {
+const lavaDropplets = (file) => {
+    return lines(file).reduce((cubes, line) => {
         let cube = parse(line);
         cubes[cube.id] = parse(line);
         return cubes;
     }, {});
+};
+const solve1 = (file) => {
+    let cubes = lavaDropplets(file);
 
     return exposed(cubes);
 };
