@@ -3,8 +3,7 @@ const { lines } = require('../support/index.js');
 const { parse } = require('./parser.js');
 const example = `${__dirname}/data/example.txt`;
 
-const boundaries = (cubes) => {
-    const positions = Object.values(cubes).map(cube => cube.position);
+const boundaries = (positions) => {
     const xs = positions.map(position => position.x);
     const ys = positions.map(position => position.y);
     const zs = positions.map(position => position.z);
@@ -22,7 +21,7 @@ describe.only('boundaries', () => {
             cubes[line] = parse(line);
             return cubes;
         }, {});
-        map = boundaries(cubes);
+        map = boundaries(Object.values(cubes).map(cube => cube.position));
     });
 
     it('exposes boundaries', () => {
