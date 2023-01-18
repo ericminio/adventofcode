@@ -47,6 +47,7 @@ const solve2 = (file) => {
             gps(request, space);
         }
         catch (error) {
+            console.log(error.message);
             count ++;
         }
     });
