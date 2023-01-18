@@ -15,4 +15,12 @@ describe.only('map', () => {
             neighbours: [ '1x0x0', '0x1x0', '0x0x1' ]
         });
     });
+
+    it('computes six neighbours as expected', () => {
+        expect(map['1x1x1']).to.deep.equal({
+            id: '1x1x1',
+            position: { x: 1, y: 1, z: 1 },
+            neighbours: [ '2x1x1', '0x1x1', '1x2x1', '1x0x1', '1x1x2', '1x1x0' ]
+        });
+    });
 });
