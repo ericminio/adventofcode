@@ -22,8 +22,8 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     let cubes = lavaDropplets(file);
-    let candidates = neighbours(cubes);
-    let bounds = boundaries(candidates.map(candidate => candidate.position));
+    let airTrappedCandidates = neighbours(cubes);
+    let bounds = boundaries(airTrappedCandidates.map(candidate => candidate.position));
     let minimum = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
     let maximum = { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  };
     let space = spaceAsHash({ minimum, maximum });
@@ -33,22 +33,28 @@ const solve2 = (file) => {
     Object.keys(space).forEach(key => {
         space[key].value = 1;
     });
-
+    let trapped = [];
     let request = { origin: { id: id(minimum) }};
-    let count = 0;
-    candidates.forEach(candidate => {
+    airTrappedCandidates.forEach(candidate => {
         request.target = { id: candidate.id };
         try {
             gps(request, space);
         }
         catch (error) {
-            console.log(request);
-            count ++;
+            trapped.push(candidate.position);
         }
     });
-    console.log('via gps', count);
+    let count = 0;
+    trapped.forEach(airDropplet => {
+        let neighbours = around(airDropplet);
+        neighbours.forEach(neighbour => {
+            if (cubes[id(neighbour)] !== undefined) {
+                count ++;
+            }
+        });
+    });
 
-    return exposed(cubes) - 6 * countTrappedAssumingIsolatedAirBubbles(candidates, cubes);
+    return exposed(cubes) - count;
 };
 
 const countTrappedAssumingIsolatedAirBubbles = (candidates, cubes) => {
