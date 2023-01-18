@@ -23,18 +23,7 @@ const solve2 = (file) => {
         cubes[cube.id] = parse(line);
         return cubes;
     }, {});
-    let neighbours = Object.values(cubes)
-        .reduce((neighbours, cube) => {
-            cube.neighbours.forEach(neighbour => {
-                neighbours[id(neighbour)] = {
-                    id: id(neighbour),
-                    position: neighbour,
-                    neighbours: around(neighbour)
-                };
-            });
-            return neighbours;
-        }, {});
-    let candidates = Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
+    let candidates = airTrappedCandidates(cubes);
     // console.log(candidates.length);
 
     let bounds = boundaries(candidates.map(candidate => candidate.position));
