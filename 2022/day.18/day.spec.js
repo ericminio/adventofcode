@@ -22,4 +22,9 @@ describe.only('2022.18', () => {
         });
 
     });
+
+    describe('internals', () => {
+        const example = `${__dirname}/data/example.txt`;
+        const input = `${__dirname}/data/input.txt`;
+    });
 });
