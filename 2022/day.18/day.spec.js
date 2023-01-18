@@ -1,11 +1,6 @@
 const { expect } = require('chai');
 const example = `${__dirname}/data/example.txt`;
 const input = `${__dirname}/data/input.txt`;
-const { spaceAsHash } = require('../../lib/3d/space');
-const { gps } = require('../../lib/gps');
-const { setWall } = require('../../lib/walls');
-const { boundaries } = require('./boundaries');
-const { id, around } = require('./cube');
 const { solve1, solve2, airTrappedDropplets, touchingCount } = require('./solve');
 const { lavaDropplets, neighbours } = require('./solve');
 
