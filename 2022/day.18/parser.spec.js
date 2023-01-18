@@ -6,6 +6,7 @@ describe('parser', () => {
     it('works', () => {
         expect(parse('1,2,3')).to.deep.equal({
             id: '1,2,3',
+            position: { x: 1, y: 2, z: 3 },
             neighbours: [
                 { x: 2, y: 2, z: 3 },
                 { x: 0, y: 2, z: 3 },
