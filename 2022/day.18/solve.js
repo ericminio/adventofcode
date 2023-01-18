@@ -44,7 +44,6 @@ const solve2 = (file) => {
     candidates.forEach(candidate => {
         request.target = { id: candidate.id };
         try {
-            console.log(request);
             gps(request, space);
         }
         catch (error) {
