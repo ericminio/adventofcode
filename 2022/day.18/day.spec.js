@@ -73,6 +73,11 @@ describe.only('2022.18', () => {
             let count = 0;
             trapped.forEach(airDropplet => {
                 let neighbours = around(airDropplet);
+                neighbours.forEach(neighbour => {
+                    if (cubes[id(neighbour)] !== undefined) {
+                        count ++;
+                    }
+                });
             });
         });
     });
