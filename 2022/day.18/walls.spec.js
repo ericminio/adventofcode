@@ -1,16 +1,7 @@
 const { expect } = require('chai');
 const { spaceAsHash } = require('./space.js');
+const { setWall } = require('./walls.js');
 
-const setWall = (id, map) => {
-    Object.keys(map).forEach(key => {
-        let neighbours = map[key].neighbours;
-        let index = neighbours.indexOf(id);
-        if (index !== -1) {
-            neighbours.splice(index, 1);
-        }
-    });
-    delete map[id];
-};
 describe.only('wall', () => {
 
     let map;
