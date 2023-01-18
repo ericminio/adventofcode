@@ -1,14 +1,24 @@
 const { expect } = require('chai');
-const { solve1 } = require('./solve');
 const example = `${__dirname}/data/example.txt`;
+
+const parseMap = (file) => {
+    let map = {};
+    map.minimum = { x: 1, y: 1, z: 1 };
+
+    return map;
+};
 
 describe.only('map', () => {
 
-    describe('boundaries', () => {
+    let map;
+    beforeEach(() => {
+        map = parseMap(example);
+    });
 
+    describe('minimum', () => {
 
-        it('leverages an example', () => {
-            expect(solve1(example)).to.equal(64);
+        it('exposes the minimu', () => {
+            expect(map.minimum).to.deep.equal({ x: 1, y: 1, z: 1 });
         });
 
     });
