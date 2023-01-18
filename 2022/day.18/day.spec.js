@@ -56,6 +56,9 @@ describe.only('2022.18', () => {
             Object.values(cubes).forEach(cube => {
                 setWall(cube.id, space);
             });
+            Object.keys(space).forEach(key => {
+                space[key].value = 1;
+            });
             let trapped = [];
             let request = { origin: { id: id(minimum) }};
             airTrappedCandidates.forEach(candidate => {
