@@ -43,6 +43,7 @@ const solve2 = (file) => {
     });
     let request = { origin: { id: '0x0x0' }};
     let count = 0;
+    console.log(space);
     console.log(candidates.length);
     candidates.forEach(candidate => {
         request.target = { id: candidate.id };
