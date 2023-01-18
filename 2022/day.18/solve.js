@@ -14,6 +14,21 @@ const lavaDropplets = (file) => {
         return cubes;
     }, {});
 };
+const neighbours = (cubes) => {
+    let neighbours = Object.values(cubes)
+        .reduce((neighbours, cube) => {
+            cube.neighbours.forEach(neighbour => {
+                neighbours[id(neighbour)] = {
+                    id: id(neighbour),
+                    position: neighbour,
+                    neighbours: around(neighbour)
+                };
+            });
+            return neighbours;
+        }, {});
+    return Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
+};
+
 const solve1 = (file) => {
     let cubes = lavaDropplets(file);
 
@@ -55,21 +70,6 @@ const solve2 = (file) => {
     });
 
     return exposed(cubes) - count;
-};
-
-const neighbours = (cubes) => {
-    let neighbours = Object.values(cubes)
-        .reduce((neighbours, cube) => {
-            cube.neighbours.forEach(neighbour => {
-                neighbours[id(neighbour)] = {
-                    id: id(neighbour),
-                    position: neighbour,
-                    neighbours: around(neighbour)
-                };
-            });
-            return neighbours;
-        }, {});
-    return Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
 };
 
 module.exports = { solve1, solve2, lavaDropplets, neighbours };
