@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { spaceAsHash } = require('./space.js');
+const { spaceAsHash } = require('../../lib/3d/space.js');
 const { setWall } = require('./walls.js');
 
 describe.only('wall', () => {
