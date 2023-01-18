@@ -21,11 +21,7 @@ const solve1 = (file) => {
 };
 
 const solve2 = (file) => {
-    let cubes = lines(file).reduce((cubes, line) => {
-        let cube = parse(line);
-        cubes[cube.id] = parse(line);
-        return cubes;
-    }, {});
+    let cubes = lavaDropplets(file);
     let candidates = airTrappedCandidates(cubes);
     // console.log(candidates.length);
 
