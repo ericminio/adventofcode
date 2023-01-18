@@ -43,7 +43,14 @@ const solve2 = (file) => {
     let count = 0;
     candidates.forEach(candidate => {
         request.target = { id: candidate.id };
+        try {
+            gps(request, space);
+        }
+        catch (error) {
+            count ++;
+        }
     });
+    console.log(count);
 
     return exposed(cubes) - 6 * countTrappedAssumingIsolatedAirBubbles(candidates, cubes);
 };
