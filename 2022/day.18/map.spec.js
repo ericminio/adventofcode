@@ -1,9 +1,11 @@
 const { expect } = require('chai');
-const { lines } = require('../support/index.js');
-const { parse } = require('./parser.js');
-const example = `${__dirname}/data/example.txt`;
 
 const spaceAsHash = (boundaries) => {
+    let map = {};
+
+    map['0x0x0'] = { neighbours: [ '1x0x0', '0x1x0', '0x0x1' ] };
+
+    return map;
 };
 
 describe.only('map', () => {
@@ -13,7 +15,7 @@ describe.only('map', () => {
         map = spaceAsHash();
     });
 
-    it('exposes neighbours', () => {
-
+    it('computes two neighbours as expected', () => {
+        expect(map['0x0x0']).to.deep.equal({ neighbours: [ '1x0x0', '0x1x0', '0x0x1' ] });
     });
 });
