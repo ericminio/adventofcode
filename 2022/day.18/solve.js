@@ -87,4 +87,4 @@ const airTrappedCandidates = (cubes) => {
     return Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
 };
 
-module.exports = { solve1, solve2 };
+module.exports = { solve1, solve2, lavaDropplets, airTrappedCandidates };

@@ -29,7 +29,7 @@ describe.only('2022.18', () => {
     describe('internals', () => {
 
         it('exposes lava dropplets', () => {
-
+            expect(Object.values(lavaDropplets(example)).length).to.equal(13);
         });
     });
 });
