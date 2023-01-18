@@ -48,10 +48,9 @@ describe.only('2022.18', () => {
             let cubes = lavaDropplets(example);
             let candidates = airTrappedCandidates(cubes);
             let bounds = boundaries(candidates.map(candidate => candidate.position));
-            let space = spaceAsHash({
-                minimum: { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  },
-                maximum: { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  },
-            });
+            let minimum = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
+            let maximum = { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  };
+            let space = spaceAsHash({ minimum, maximum });
             Object.values(cubes).forEach(cube => {
                 setWall(cube.id, space);
             });
