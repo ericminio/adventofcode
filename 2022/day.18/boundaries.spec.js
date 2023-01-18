@@ -4,7 +4,7 @@ const { boundaries } = require('./boundaries.js');
 const { parse } = require('./parser.js');
 const example = `${__dirname}/data/example.txt`;
 
-describe.only('boundaries', () => {
+describe('boundaries', () => {
 
     let map;
     beforeEach(() => {
