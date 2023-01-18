@@ -6,7 +6,7 @@ const { gps } = require('../../lib/gps');
 const { setWall } = require('../../lib/walls');
 const { boundaries } = require('./boundaries');
 const { id, around } = require('./cube');
-const { solve1, solve2, airTrappedDropplets } = require('./solve');
+const { solve1, solve2, airTrappedDropplets, touchingCount } = require('./solve');
 const { lavaDropplets, neighbours } = require('./solve');
 
 describe.only('2022.18', () => {
@@ -53,15 +53,8 @@ describe.only('2022.18', () => {
         it('is promising', () => {
             let cubes = lavaDropplets(example);
             let trappedDropplets = airTrappedDropplets(cubes);
-            let count = 0;
-            trappedDropplets.forEach(airDropplet => {
-                let neighbours = around(airDropplet);
-                neighbours.forEach(neighbour => {
-                    if (cubes[id(neighbour)] !== undefined) {
-                        count ++;
-                    }
-                });
-            });
+            let count = touchingCount(trappedDropplets, cubes);
+
             expect(count).to.equal(6);
         });
     });

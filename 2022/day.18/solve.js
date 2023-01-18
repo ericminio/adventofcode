@@ -80,4 +80,4 @@ const airTrappedDropplets = (cubes) => {
     return trappedDropplets;
 };
 
-module.exports = { solve1, solve2, lavaDropplets, neighbours, airTrappedDropplets };
+module.exports = { solve1, solve2, lavaDropplets, neighbours, airTrappedDropplets, touchingCount };
