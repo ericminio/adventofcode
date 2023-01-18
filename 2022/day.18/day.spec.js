@@ -29,6 +29,10 @@ describe.only('2022.18', () => {
             expect(solve2(example)).to.equal(58);
         });
 
+        it('is done', () => {
+            expect(3466 - 1454).to.equal(2012);
+        });
+
     });
 
     describe('internals', () => {
