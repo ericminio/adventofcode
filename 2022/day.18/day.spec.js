@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+const { spaceAsHash } = require('../../lib/3d/space');
 const { boundaries } = require('./boundaries');
 const { solve1, solve2 } = require('./solve');
 const { lavaDropplets, airTrappedCandidates } = require('./solve');
@@ -46,6 +47,10 @@ describe.only('2022.18', () => {
             let cubes = lavaDropplets(example);
             let candidates = airTrappedCandidates(cubes);
             let bounds = boundaries(candidates.map(candidate => candidate.position));
+            let space = spaceAsHash({
+                minimum: { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  },
+                maximum: { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  },
+            });
         });
     });
 });
