@@ -52,9 +52,9 @@ describe.only('2022.18', () => {
 
         it('is promising', () => {
             let cubes = lavaDropplets(example);
-            let trapped = airTrappedDropplets(cubes);
+            let trappedDropplets = airTrappedDropplets(cubes);
             let count = 0;
-            trapped.forEach(airDropplet => {
+            trappedDropplets.forEach(airDropplet => {
                 let neighbours = around(airDropplet);
                 neighbours.forEach(neighbour => {
                     if (cubes[id(neighbour)] !== undefined) {
