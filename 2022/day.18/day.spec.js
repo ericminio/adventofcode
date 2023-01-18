@@ -68,6 +68,7 @@ describe.only('2022.18', () => {
                 }
             });
 
+            expect(trapped.length).to.equal(1);
             expect(trapped).to.deep.equal([ '2x2x5' ]);
         });
     });
