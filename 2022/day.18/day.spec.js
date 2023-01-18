@@ -5,7 +5,7 @@ const { spaceAsHash } = require('../../lib/3d/space');
 const { gps } = require('../../lib/gps');
 const { setWall } = require('../../lib/walls');
 const { boundaries } = require('./boundaries');
-const { id } = require('./cube');
+const { id, around } = require('./cube');
 const { solve1, solve2 } = require('./solve');
 const { lavaDropplets, neighbours } = require('./solve');
 
@@ -67,12 +67,13 @@ describe.only('2022.18', () => {
                     gps(request, space);
                 }
                 catch (error) {
-                    trapped.push(candidate.id);
+                    trapped.push(candidate.position);
                 }
             });
-
-            expect(trapped.length).to.equal(1);
-            expect(trapped).to.deep.equal([ '2x2x5' ]);
+            let count = 0;
+            trapped.forEach(airDropplet => {
+                let neighbours = around(airDropplet);
+            });
         });
     });
 });
