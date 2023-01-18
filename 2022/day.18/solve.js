@@ -23,23 +23,18 @@ const solve1 = (file) => {
 const solve2 = (file) => {
     let cubes = lavaDropplets(file);
     let candidates = neighbours(cubes);
-    // console.log(candidates.length);
-
     let bounds = boundaries(candidates.map(candidate => candidate.position));
-    // console.log(bounds);
-    let minimumPosition = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
-    let maximumPosition = { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  };
-
-    let space = spaceAsHash({
-        minimum: minimumPosition,
-        maximum: maximumPosition,
-    });
+    let minimum = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
+    let maximum = { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  };
+    let space = spaceAsHash({ minimum, maximum });
     Object.values(cubes).forEach(cube => {
         setWall(cube.id, space);
     });
-    // console.log(space);
+    Object.keys(space).forEach(key => {
+        space[key].value = 1;
+    });
 
-    let request = { origin: { id: id(minimumPosition) }};
+    let request = { origin: { id: id(minimum) }};
     let count = 0;
     candidates.forEach(candidate => {
         request.target = { id: candidate.id };
