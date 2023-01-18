@@ -2,8 +2,10 @@ const { expect } = require('chai');
 const example = `${__dirname}/data/example.txt`;
 const input = `${__dirname}/data/input.txt`;
 const { spaceAsHash } = require('../../lib/3d/space');
+const { gps } = require('../../lib/gps');
 const { setWall } = require('../../lib/walls');
 const { boundaries } = require('./boundaries');
+const { id } = require('./cube');
 const { solve1, solve2 } = require('./solve');
 const { lavaDropplets, airTrappedCandidates } = require('./solve');
 
@@ -54,6 +56,19 @@ describe.only('2022.18', () => {
             Object.values(cubes).forEach(cube => {
                 setWall(cube.id, space);
             });
+            let trapped = [];
+            let request = { origin: { id: id(minimum) }};
+            candidates.forEach(candidate => {
+                request.target = { id: candidate.id };
+                try {
+                    gps(request, space);
+                }
+                catch (error) {
+                    trapped.push(candidate.id);
+                }
+            });
+
+
         });
     });
 });
