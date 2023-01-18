@@ -79,6 +79,7 @@ describe.only('2022.18', () => {
                     }
                 });
             });
+            expect(count).to.equal(6);
         });
     });
 });
