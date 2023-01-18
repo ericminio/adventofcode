@@ -51,6 +51,7 @@ const neighbours = (cubes) => {
                 };
             });
             return neighbours;
+
         }, {});
     return Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
 };
