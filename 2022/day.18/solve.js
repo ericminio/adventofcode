@@ -39,7 +39,10 @@ const solve2 = (file) => {
         setWall(cube.id, space);
     });
     let request = { origin: '0x0x0' };
+    let count = 0;
+    candidates.forEach(candidate => {
 
+    });
 
     return exposed(cubes) - 6 * countTrappedAssumingIsolatedAirBubbles(candidates, cubes);
 };
