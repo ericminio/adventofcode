@@ -53,7 +53,7 @@ describe('2022.18', () => {
             expect(count).to.equal(6);
         });
 
-        it.skip('works', () => {
+        it('works', () => {
             let cubes = lavaDropplets(input);
             let trappedDropplets = trappedAirDropplets(cubes);
             let count = touchingCount(trappedDropplets, cubes);
