@@ -43,7 +43,7 @@ describe('2022.18', () => {
         });
     });
 
-    describe('the gps way', () => {
+    describe.only('the gps way', () => {
 
         it('is promising', () => {
             let cubes = lavaDropplets(example);
