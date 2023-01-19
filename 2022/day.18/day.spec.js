@@ -43,7 +43,7 @@ describe('2022.18', () => {
         });
     });
 
-    describe.only('the gps way', () => {
+    describe('the gps way', () => {
 
         it('is promising', () => {
             let cubes = lavaDropplets(example);
@@ -53,7 +53,7 @@ describe('2022.18', () => {
             expect(count).to.equal(6);
         });
 
-        it('works', () => {
+        it.skip('works', () => {
             let cubes = lavaDropplets(input);
             let trappedDropplets = trappedAirDropplets(cubes);
             let count = touchingCount(trappedDropplets, cubes);

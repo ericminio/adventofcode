@@ -4,7 +4,6 @@ const { parse } = require('./parser');
 const { around, id } = require('./cube');
 const { boundaries } = require('./boundaries.js');
 const { spaceAsHash } = require('../../lib/3d/space');
-const { setWall } = require('../../lib/walls');
 const { firstPath } = require('../../lib/gps');
 
 const solve1 = (file) => {
@@ -34,11 +33,12 @@ const touchingCount = (trappedDropplets, cubes) => {
 };
 
 const lavaDropplets = (file) => {
-    return lines(file).reduce((cubes, line) => {
+    let dropplets = lines(file).reduce((cubes, line) => {
         let cube = parse(line);
         cubes[cube.id] = parse(line);
         return cubes;
     }, {});
+    return dropplets;
 };
 const neighbours = (cubes) => {
     let neighbours = Object.values(cubes)
@@ -60,10 +60,7 @@ const trappedAirDropplets = (cubes) => {
     let bounds = boundaries(airTrappedCandidates.map(candidate => candidate.position));
     let minimum = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
     let maximum = { x: bounds.maximum.x + 1, y: bounds.maximum.y + 1, z: bounds.maximum.z + 1  };
-    let space = spaceAsHash({ minimum, maximum });
-    Object.values(cubes).forEach(cube => {
-        setWall(cube.id, space);
-    });
+    let space = spaceAsHash({ minimum, maximum, isWall: (id) => cubes[id] !== undefined });
     Object.keys(space).forEach(key => {
         space[key].value = 1;
     });
