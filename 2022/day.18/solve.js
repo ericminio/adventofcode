@@ -5,7 +5,7 @@ const { around, id } = require('./cube');
 const { boundaries } = require('./boundaries.js');
 const { spaceAsHash } = require('../../lib/3d/space');
 const { setWall } = require('../../lib/walls');
-const { gps } = require('../../lib/gps');
+const { firstPath } = require('../../lib/gps');
 
 const solve1 = (file) => {
     let cubes = lavaDropplets(file);
@@ -15,7 +15,7 @@ const solve1 = (file) => {
 
 const solve2 = (file) => {
     let cubes = lavaDropplets(file);
-    let trappedDropplets = airTrappedDropplets(cubes);
+    let trappedDropplets = trappedAirDropplets(cubes);
 
     return exposed(cubes) - touchingCount(trappedDropplets, cubes);
 };
@@ -55,7 +55,7 @@ const neighbours = (cubes) => {
         }, {});
     return Object.values(neighbours).filter(candidate => cubes[candidate.id] === undefined);
 };
-const airTrappedDropplets = (cubes) => {
+const trappedAirDropplets = (cubes) => {
     let airTrappedCandidates = neighbours(cubes);
     let bounds = boundaries(airTrappedCandidates.map(candidate => candidate.position));
     let minimum = { x: bounds.minimum.x - 1, y: bounds.minimum.y - 1, z: bounds.minimum.z - 1  };
@@ -72,7 +72,7 @@ const airTrappedDropplets = (cubes) => {
     airTrappedCandidates.forEach(candidate => {
         request.target = { id: candidate.id };
         try {
-            gps(request, space);
+            firstPath(request, space);
         }
         catch (error) {
             trappedDropplets.push(candidate.position);
@@ -83,5 +83,5 @@ const airTrappedDropplets = (cubes) => {
 
 module.exports = {
     solve1, solve2,
-    lavaDropplets, neighbours, airTrappedDropplets, touchingCount
+    lavaDropplets, neighbours, trappedAirDropplets, touchingCount
 };

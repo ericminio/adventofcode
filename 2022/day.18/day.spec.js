@@ -1,10 +1,10 @@
 const { expect } = require('chai');
 const example = `${__dirname}/data/example.txt`;
 const input = `${__dirname}/data/input.txt`;
-const { solve1, solve2, airTrappedDropplets, touchingCount } = require('./solve');
+const { solve1, solve2, trappedAirDropplets, touchingCount } = require('./solve');
 const { lavaDropplets, neighbours } = require('./solve');
 
-describe.only('2022.18', () => {
+describe('2022.18', () => {
 
     describe('figuring out the surface area of your scanned lava droplet', () => {
 
@@ -47,7 +47,7 @@ describe.only('2022.18', () => {
 
         it('is promising', () => {
             let cubes = lavaDropplets(example);
-            let trappedDropplets = airTrappedDropplets(cubes);
+            let trappedDropplets = trappedAirDropplets(cubes);
             let count = touchingCount(trappedDropplets, cubes);
 
             expect(count).to.equal(6);
@@ -55,7 +55,7 @@ describe.only('2022.18', () => {
 
         it.skip('works', () => {
             let cubes = lavaDropplets(input);
-            let trappedDropplets = airTrappedDropplets(cubes);
+            let trappedDropplets = trappedAirDropplets(cubes);
             let count = touchingCount(trappedDropplets, cubes);
 
             expect(count).to.equal(1454);
