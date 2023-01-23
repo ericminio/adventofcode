@@ -12,9 +12,9 @@ describe.only('2022.17', () => {
 
     });
 
-    describe('play', () => {
+    describe('rock movement', () => {
 
-        it('moves rock', () => {
+        it('first moves then falls', () => {
             const tower = { height: 0, size: 0 };
             const game = {
                 windIndex: 0,
