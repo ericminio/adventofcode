@@ -3,7 +3,7 @@ const { solve1, solve2 } = require('./solve');
 const example = `${__dirname}/data/example.txt`;
 const input = `${__dirname}/data/input.txt`;
 
-describe.only('2022.??', () => {
+describe('2022.??', () => {
 
     describe('part 1', () => {
 
