@@ -1,6 +1,8 @@
+const goal = 2022;
+
 const solve1 = () => {
     const tower = { height: 3068, size: 2025 };
-    while (tower.size < 2022) {
+    while (tower.size < goal) {
 
     }
     return tower.height;
