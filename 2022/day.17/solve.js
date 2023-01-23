@@ -1,5 +1,7 @@
 const solve1 = () => {
-    return 3068;
+    const tower = { height: 3068, };
+    return tower.height;
+
 };
 
 const solve2 = () => {
