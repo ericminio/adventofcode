@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { solve1, play } = require('./solve');
+const { solve1, play, right } = require('./solve');
 const example = `${__dirname}/data/example.txt`;
 
 describe.only('2022.17', () => {
@@ -16,7 +16,7 @@ describe.only('2022.17', () => {
 
         it('moves rock', () => {
             const tower = { height: 0, size: 0 };
-            const game = {};
+            const game = { windIndex: 0, wind: [ right ] };
             play({ tower, game });
         });
     });
