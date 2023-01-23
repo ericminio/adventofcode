@@ -4,8 +4,8 @@ const left = { dx: -1 };
 
 const solve1 = () => {
     const game = { goal };
-    const tower = { height: 3068, size: 2025 };
-    while (tower.size < game.goal) {
+    const tower = { height: 3068, fallenRocks: 2025 };
+    while (tower.fallenRocks < game.goal) {
         play({ game, tower });
     }
     return tower.height;
