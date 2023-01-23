@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { solve1 } = require('./solve');
+const { solve1, play } = require('./solve');
 const example = `${__dirname}/data/example.txt`;
 
 describe.only('2022.17', () => {
@@ -10,6 +10,15 @@ describe.only('2022.17', () => {
             expect(solve1(example)).to.equal(3068);
         });
 
+    });
+
+    describe('play', () => {
+
+        it('moves rock', () => {
+            const tower = { height: 0, size: 0 };
+            const game = {};
+            play({ tower, game });
+        });
     });
 
 });
