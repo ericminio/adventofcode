@@ -16,7 +16,10 @@ describe.only('2022.17', () => {
 
         it('moves rock', () => {
             const tower = { height: 0, size: 0 };
-            const game = { windIndex: 0, wind: [ right ] };
+            const game = {
+                windIndex: 0,
+                wind: [ right ]
+            };
             play({ tower, game });
         });
     });
