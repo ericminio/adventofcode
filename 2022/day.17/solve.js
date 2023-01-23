@@ -12,7 +12,7 @@ const solve1 = () => {
 };
 
 const play = ({ game, tower }) => {
-
+    game.rock.position = { x: 4, y: 3 };
 };
 
 module.exports = { solve1, play, left, right };

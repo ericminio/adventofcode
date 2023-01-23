@@ -18,9 +18,13 @@ describe.only('2022.17', () => {
             const tower = { height: 0, size: 0 };
             const game = {
                 windIndex: 0,
-                wind: [ right ]
+                wind: [ right ],
             };
+            const rock = { position: { x: 3, y: 4 }};
+            game.rock = rock;
             play({ tower, game });
+
+            expect(rock.position).to.deep.equal({ x: 4, y: 3 });
         });
     });
 
