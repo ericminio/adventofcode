@@ -13,4 +13,4 @@ const play = ({ game, tower }) => {
 
 };
 
-module.exports = { solve1 };
+module.exports = { solve1, play };
