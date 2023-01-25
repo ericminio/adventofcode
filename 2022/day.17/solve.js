@@ -12,12 +12,17 @@ const solve1 = () => {
 };
 
 const play = ({ game, tower }) => {
-    if (game.rock === undefined) {
-        game.rock = {};
-    }
+    spawn(game);
+
     game.rock.position = { x: 4, y: 3 };
     tower.fallenRocks = 2025;
     tower.height = 3068;
+};
+
+const spawn = (game) => {
+    if (game.rock === undefined) {
+        game.rock = {};
+    }
 };
 
 module.exports = { solve1, play, left, right };
