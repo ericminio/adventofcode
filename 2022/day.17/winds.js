@@ -7,6 +7,7 @@ class Winds {
                 return LEFT;
             }
         });
+        this.current = 0;
     }
 
     next() {
