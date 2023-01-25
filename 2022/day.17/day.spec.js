@@ -15,14 +15,15 @@ describe.only('2022.17', () => {
     describe('rock movement', () => {
 
         it('first moves then falls', () => {
-            const tower = { height: 0, size: 0 };
+            const tower = { height: 0, fallenRocks: 0 };
             const game = {
                 windIndex: 0,
                 wind: [ right ],
+                tower
             };
             const rock = { position: { x: 3, y: 4 }};
             game.rock = rock;
-            play({ game, tower });
+            play(game);
 
             expect(rock.position).to.deep.equal({ x: 4, y: 3 });
         });
