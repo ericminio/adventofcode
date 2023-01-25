@@ -16,7 +16,7 @@ describe.only('2022.17', () => {
     describe('rock movement', () => {
 
         it('first moves then falls', () => {
-            const game = init(new Winds('>'), 1);
+            const game = init({ goal: 1, winds: new Winds('>') });
             tic(game);
 
             expect(game.rock.position).to.deep.equal({ x: 4, y: 3 });

@@ -7,13 +7,13 @@ const left = { dx: -1 };
 
 const solve1 = (file) => {
     const winds = new Winds(input(file));
-    const game = init(winds, 2022);
+    const game = init({ goal: 2022, winds });
     play(game);
 
     return game.tower.height;
 };
 
-const init = (winds, goal) => {
+const init = ({ goal, winds }) => {
     return {
         goal,
         winds,
