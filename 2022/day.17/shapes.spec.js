@@ -11,9 +11,15 @@ describe.only('Shapes', () => {
 
     it('provides the four shapes in order and then loop', () => {
         const shapes = new Shapes();
-        const sequence = [ shapes.next(), shapes.next() ];
+        const sequence = [
+            shapes.next(), shapes.next(), shapes.next(), shapes.next(),
+            shapes.next()
+        ];
 
         expect(sequence).to.deep.equal([
+            HORIZONTAL,
+            HORIZONTAL,
+            HORIZONTAL,
             HORIZONTAL,
             HORIZONTAL
         ]);
