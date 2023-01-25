@@ -1,4 +1,5 @@
 const { input } = require('../support');
+const { Shapes } = require('./shapes');
 const { Winds } = require('./winds');
 
 const right = { dx: 1 };
@@ -17,7 +18,8 @@ const init = (winds, goal) => {
     return {
         goal,
         winds,
-        tower: { height: 0, fallenRocks: 0 }
+        tower: { height: 0, fallenRocks: 0 },
+        shapes: new Shapes()
     };
 };
 
@@ -33,11 +35,11 @@ const play = (game) => {
 
 const spawn = (game) => {
     if (game.rock === undefined) {
-        game.rock = {};
+        game.rock = game.shapes.next();
     }
 };
 const move = (game) => {
-
+    game.rock.position = { x: 4, y: 3 };
 };
 const fall = (game) => {
 
