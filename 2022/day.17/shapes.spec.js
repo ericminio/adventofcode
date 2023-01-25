@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { Shapes, HORIZONTAL, PLUS, EL, VERTICAL, SQUARE } = require('./shapes');
 
-describe.only('Shapes', () => {
+describe('Shapes', () => {
 
     it('provides bar first', () => {
         const shapes = new Shapes();
