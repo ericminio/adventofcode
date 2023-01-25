@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { Winds, LEFT, RIGHT } = require('./winds');
 
-describe.only('winds', () => {
+describe.only('Shapes', () => {
 
     it('can be left', () => {
         const winds = new Winds('<');
