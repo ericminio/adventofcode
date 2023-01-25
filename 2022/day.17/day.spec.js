@@ -21,7 +21,7 @@ describe.only('2022.17', () => {
             game.rock = rock;
             play(game);
 
-            expect(rock.position).to.deep.equal({ x: 4, y: 3 });
+            expect(game.rock.position).to.deep.equal({ x: 4, y: 3 });
         });
     });
 
