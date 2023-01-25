@@ -7,11 +7,11 @@ class Winds {
                 return LEFT;
             }
         });
-        this.current = 0;
+        this.current = -1;
     }
 
     next() {
-        return LEFT;
+        return this.directions[(this.current ++) % this.directions.length];
     }
 }
 
