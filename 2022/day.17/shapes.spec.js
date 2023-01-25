@@ -8,4 +8,11 @@ describe.only('Shapes', () => {
 
         expect(shapes.next()).to.equal(HORIZONTAL);
     });
+
+    it('provides the four shapes in order and then loop', () => {
+        const shapes = new Shapes();
+        const sequence = [ shapes.next(), shapes.next() ];
+
+        expect(shapes.next()).to.equal(HORIZONTAL);
+    });
 });
