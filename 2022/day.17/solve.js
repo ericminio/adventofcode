@@ -14,6 +14,7 @@ const solve1 = () => {
 const play = ({ game, tower }) => {
     spawn(game);
     move(game);
+    fall(game);
 
     game.rock.position = { x: 4, y: 3 };
     tower.fallenRocks = 2025;
@@ -26,6 +27,9 @@ const spawn = (game) => {
     }
 };
 const move = (game) => {
+
+};
+const fall = (game) => {
 
 };
 
