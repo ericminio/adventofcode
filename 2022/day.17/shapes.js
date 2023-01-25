@@ -1,4 +1,8 @@
 const HORIZONTAL = {};
+const PLUS = {};
+const EL = {};
+const VERTICAL = {};
+const SQUARE = {};
 
 class Shapes {
     constructor() {
@@ -12,4 +16,4 @@ class Shapes {
     }
 }
 
-module.exports = { Shapes, HORIZONTAL };
+module.exports = { Shapes, HORIZONTAL, PLUS, EL, VERTICAL, SQUARE };
