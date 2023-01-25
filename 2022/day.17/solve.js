@@ -13,6 +13,7 @@ const solve1 = () => {
 
 const play = ({ game, tower }) => {
     spawn(game);
+    move(game);
 
     game.rock.position = { x: 4, y: 3 };
     tower.fallenRocks = 2025;
@@ -23,6 +24,9 @@ const spawn = (game) => {
     if (game.rock === undefined) {
         game.rock = {};
     }
+};
+const move = (game) => {
+
 };
 
 module.exports = { solve1, play, left, right };
