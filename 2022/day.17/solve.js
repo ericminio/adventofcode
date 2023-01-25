@@ -5,9 +5,9 @@ const { Winds } = require('./winds');
 const right = { dx: 1 };
 const left = { dx: -1 };
 
-const solve1 = (file) => {
+const solve1 = (file, goal) => {
     const winds = new Winds(input(file));
-    const game = init({ goal: 2022, winds });
+    const game = init({ goal, winds });
     play(game);
 
     return game.tower.height;
