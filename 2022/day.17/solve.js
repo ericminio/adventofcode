@@ -1,13 +1,12 @@
 const { input } = require('../support');
 const { Winds } = require('./winds');
 
-const goal = 2022;
 const right = { dx: 1 };
 const left = { dx: -1 };
 
 const solve1 = (file) => {
     const winds = new Winds(input(file));
-    const game = init(winds, goal);
+    const game = init(winds, 2022);
     while (game.tower.fallenRocks < game.goal) {
         play(game);
     }
