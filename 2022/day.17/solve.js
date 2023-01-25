@@ -8,9 +8,7 @@ const left = { dx: -1 };
 const solve1 = (file) => {
     const winds = new Winds(input(file));
     const game = init(winds, 2022);
-    while (game.tower.fallenRocks < game.goal) {
-        tic(game);
-    }
+    play(game);
     return game.tower.height;
 };
 
@@ -21,6 +19,12 @@ const init = (winds, goal) => {
         tower: { height: 0, fallenRocks: 0 },
         shapes: new Shapes()
     };
+};
+
+const play = (game) => {
+    while (game.tower.fallenRocks < game.goal) {
+        tic(game);
+    }
 };
 
 const tic = (game) => {
