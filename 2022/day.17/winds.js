@@ -19,4 +19,4 @@ class Winds {
     }
 }
 
-module.exports = { Winds, LEFT };
+module.exports = { Winds, LEFT, RIGHT };

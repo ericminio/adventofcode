@@ -1,6 +1,5 @@
 const { expect } = require('chai');
-const { right } = require('./solve');
-const { Winds, LEFT } = require('./winds');
+const { Winds, LEFT, RIGHT } = require('./winds');
 
 describe.only('winds', () => {
 
@@ -13,6 +12,6 @@ describe.only('winds', () => {
     it('can be right', () => {
         const winds = new Winds('>');
 
-        expect(winds.next()).to.deep.equal(right);
+        expect(winds.next()).to.deep.equal(RIGHT);
     });
 });
