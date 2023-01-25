@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { solve1, tic, right, init } = require('./solve');
+const { solve1, tic, init } = require('./solve');
 const { Winds } = require('./winds');
 const example = `${__dirname}/data/example.txt`;
 
