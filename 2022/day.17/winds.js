@@ -1,8 +1,12 @@
 const LEFT = { dx: -1 };
 
 class Winds {
-    constructor(spec) {
-
+    constructor(specs) {
+        this.directions = specs.split('').map(spec => {
+            if (spec === '<') {
+                return LEFT;
+            }
+        });
     }
 
     next() {
