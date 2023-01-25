@@ -13,6 +13,9 @@ describe.only('Shapes', () => {
         const shapes = new Shapes();
         const sequence = [ shapes.next(), shapes.next() ];
 
-        expect(sequence).to.deep.equal([ HORIZONTAL, HORIZONTAL ]);
+        expect(sequence).to.deep.equal([
+            HORIZONTAL,
+            HORIZONTAL
+        ]);
     });
 });
