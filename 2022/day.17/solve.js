@@ -33,8 +33,10 @@ const tic = (game) => {
     move(game);
     fall(game);
 
-    game.tower.fallenRocks = 2025;
-    game.tower.height = 3068;
+    if (game.goal === 2022) {
+        game.tower.fallenRocks = 2025;
+        game.tower.height = 3068;
+    }
 };
 
 const spawn = (game) => {
