@@ -1,9 +1,9 @@
-const BAR = {};
+const HORIZONTAL = {};
 
 class Shapes {
     constructor() {
         this.current = -1;
-        this.collection = [ BAR ];
+        this.collection = [ HORIZONTAL ];
     }
 
     next() {
@@ -12,4 +12,4 @@ class Shapes {
     }
 }
 
-module.exports = { Shapes, BAR };
+module.exports = { Shapes, HORIZONTAL };
