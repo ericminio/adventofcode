@@ -9,6 +9,7 @@ const solve1 = (file) => {
     const winds = new Winds(input(file));
     const game = init(winds, 2022);
     play(game);
+
     return game.tower.height;
 };
 
