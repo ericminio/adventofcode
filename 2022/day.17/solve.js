@@ -28,7 +28,6 @@ const play = (game) => {
     move(game);
     fall(game);
 
-    game.rock.position = { x: 4, y: 3 };
     game.tower.fallenRocks = 2025;
     game.tower.height = 3068;
 };
