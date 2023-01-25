@@ -7,12 +7,19 @@ const left = { dx: -1 };
 
 const solve1 = (file) => {
     const winds = new Winds(input(file));
-    const tower = { height: 0, fallenRocks: 0 };
-    const game = { goal, tower };
-    while (tower.fallenRocks < game.goal) {
+    const game = init(winds, goal);
+    while (game.tower.fallenRocks < game.goal) {
         play(game);
     }
-    return tower.height;
+    return game.tower.height;
+};
+
+const init = (winds, goal) => {
+    return {
+        goal,
+        winds,
+        tower: { height: 0, fallenRocks: 0 }
+    };
 };
 
 const play = (game) => {
@@ -37,4 +44,4 @@ const fall = (game) => {
 
 };
 
-module.exports = { solve1, play, left, right };
+module.exports = { solve1, play, left, right, init };
