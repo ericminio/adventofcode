@@ -7,7 +7,7 @@ const SQUARE = {};
 class Shapes {
     constructor() {
         this.current = -1;
-        this.collection = [ HORIZONTAL ];
+        this.collection = [ HORIZONTAL, PLUS, EL, VERTICAL, SQUARE ];
     }
 
     next() {

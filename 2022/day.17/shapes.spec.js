@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { Shapes, HORIZONTAL } = require('./shapes');
+const { Shapes, HORIZONTAL, PLUS, EL, VERTICAL, SQUARE } = require('./shapes');
 
 describe.only('Shapes', () => {
 
@@ -12,15 +12,12 @@ describe.only('Shapes', () => {
     it('provides the four shapes in order and then loop', () => {
         const shapes = new Shapes();
         const sequence = [
-            shapes.next(), shapes.next(), shapes.next(), shapes.next(),
+            shapes.next(), shapes.next(), shapes.next(), shapes.next(), shapes.next(),
             shapes.next()
         ];
 
         expect(sequence).to.deep.equal([
-            HORIZONTAL,
-            HORIZONTAL,
-            HORIZONTAL,
-            HORIZONTAL,
+            HORIZONTAL, PLUS, EL, VERTICAL, SQUARE,
             HORIZONTAL
         ]);
     });
