@@ -15,7 +15,8 @@ class Winds {
     }
 
     next() {
-        return this.directions[(this.current ++) % this.directions.length];
+        this.current = (this.current + 1) % this.directions.length;
+        return this.directions[this.current];
     }
 }
 
