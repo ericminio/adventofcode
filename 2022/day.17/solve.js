@@ -48,7 +48,7 @@ const spawn = (game) => {
 const move = (game) => {
     const wind = game.winds.next();
     game.rock.position = {
-        x: game.rock.position.x + 1,
+        x: game.rock.position.x + wind.dx,
         y: 3
     };
 };
