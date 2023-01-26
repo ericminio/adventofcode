@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+const { render } = require('./rendering');
 const { solve1, tic, init } = require('./solve');
 const { Winds } = require('./winds');
 const example = `${__dirname}/data/example.txt`;
@@ -45,7 +46,12 @@ describe.only('2022.17', () => {
     describe('rendering', () => {
 
         it('is fun', () => {
+            const game = init({ goal: 1, winds: new Winds('>') });
+            tic(game);
+            tic(game);
+            tic(game);
 
+            render(game.tower);
         });
     });
 
