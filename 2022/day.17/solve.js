@@ -42,7 +42,7 @@ const tic = (game) => {
 const spawn = (game) => {
     if (game.rock === undefined) {
         game.rock = game.shapes.next();
-        game.rock.position = { x: 3, y: 3 };
+        game.rock.position = { x: 3, y: game.tower.height + 3 };
     }
 };
 const move = (game) => {
