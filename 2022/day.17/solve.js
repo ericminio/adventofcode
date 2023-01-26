@@ -56,10 +56,12 @@ const move = (game) => {
     }
 };
 const fall = (game) => {
-    game.rock.position = {
-        x: game.rock.position.x,
-        y: game.rock.position.y - 1
-    };
+    if (game.rock.canFall(game.tower)) {
+        game.rock.position = {
+            x: game.rock.position.x,
+            y: game.rock.position.y - 1
+        };
+    }
 };
 
 module.exports = { solve1, tic, left, right, init };
