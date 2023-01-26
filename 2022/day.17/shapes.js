@@ -13,13 +13,6 @@ const HORIZONTAL = class Horizontal {
             { x: this.position.x + 3, y: this.position.y - 1 }
         ];
     }
-    canMove(wind, tower) {
-        const points = wind.dx > 0 ? this.right() : this.left();
-        return tower.areFree(points);
-    }
-    canFall(tower) {
-        return tower.areFree(this.below());
-    }
 };
 const PLUS = class Plus {};
 const EL = class El{};
