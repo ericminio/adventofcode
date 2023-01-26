@@ -23,6 +23,11 @@ class Tower {
             .map(point => this.isFree(point))
             .every(check => check === true);
     }
+
+    settle(rock) {
+        this.height = 1;
+        this.fallenRocks = this.fallenRocks + 1;
+    }
 }
 
 module.exports = { Tower };

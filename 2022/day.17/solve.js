@@ -69,8 +69,7 @@ const fall = (game) => {
     }
 };
 const settle = (game) => {
-    game.tower.height = 1;
-    game.tower.fallenRocks = game.tower.fallenRocks + 1;
+    game.tower.settle(game.rock);
     game.rock = undefined;
 };
 
