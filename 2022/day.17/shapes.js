@@ -1,8 +1,8 @@
-const HORIZONTAL = {};
-const PLUS = {};
-const EL = {};
-const VERTICAL = {};
-const SQUARE = {};
+const HORIZONTAL = class Horizontal {};
+const PLUS = class Plus {};
+const EL = class El{};
+const VERTICAL = class Vertical {};
+const SQUARE = class Square {};
 
 class Shapes {
     constructor() {
