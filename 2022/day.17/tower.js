@@ -11,6 +11,9 @@ class Tower {
         if (point.x === 8) {
             return false;
         }
+        if (point.y === 0) {
+            return false;
+        }
 
         return true;
     }
