@@ -34,7 +34,6 @@ class Tower {
                 this.height = point.y;
             }
         });
-        this.height = 1;
     }
     id(point) {
         return `${point.x}x${point.y}`;
