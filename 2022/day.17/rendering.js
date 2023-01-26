@@ -1,7 +1,11 @@
 const render = (tower) => {
     const lines = [];
-    for (let i = 0; i <= tower.height; i++) {
-        let line = '.';
+    for (let y = 0; y <= tower.height; y++) {
+        let line = '';
+        for (let x = 0; x <= 8; x++) {
+            let cell = '.';
+            line += cell;
+        }
         lines.push(line);
     }
     console.log(lines.join('\n'));
