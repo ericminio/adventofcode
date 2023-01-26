@@ -1,5 +1,5 @@
 const HORIZONTAL = class Horizontal {
-    canMove(wind) {
+    canMove(wind, tower) {
         return this.position.x + wind.dx + 3 <= 7;
     }
 };
