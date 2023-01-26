@@ -11,7 +11,7 @@ const render = (tower) => {
         }
         lines.push(line);
     }
-    console.log(lines.join('\n'));
+    console.log(lines.reverse().join('\n'));
 };
 
 module.exports = { render };
