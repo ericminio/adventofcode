@@ -47,7 +47,7 @@ const spawn = (game) => {
 };
 const move = (game) => {
     const wind = game.winds.next();
-    if (game.rock.position.x + wind.dx + 3 <= 7) {
+    if (game.rock.canMove(wind)) {
         game.rock.position = {
             x: game.rock.position.x + wind.dx,
             y: game.rock.position.y

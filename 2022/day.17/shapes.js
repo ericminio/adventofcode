@@ -1,4 +1,8 @@
-const HORIZONTAL = class Horizontal {};
+const HORIZONTAL = class Horizontal {
+    canMove(wind) {
+        return this.position.x + wind.dx + 3 <= 7;
+    }
+};
 const PLUS = class Plus {};
 const EL = class El{};
 const VERTICAL = class Vertical {};
