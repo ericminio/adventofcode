@@ -1,6 +1,5 @@
 const { input } = require('../support');
 const { Shapes } = require('./shapes');
-const { Tower } = require('./tower.js');
 const { Winds } = require('./winds');
 
 const right = { dx: 1 };
@@ -18,7 +17,7 @@ const init = ({ goal, winds }) => {
     return {
         goal,
         winds,
-        tower: new Tower(),
+        tower: { height: 0, fallenRocks: 0 },
         shapes: new Shapes()
     };
 };
@@ -48,7 +47,7 @@ const spawn = (game) => {
 };
 const move = (game) => {
     const wind = game.winds.next();
-    if (game.rock.canMove(wind, tower)) {
+    if (game.rock.canMove(wind)) {
         game.rock.position = {
             x: game.rock.position.x + wind.dx,
             y: game.rock.position.y
