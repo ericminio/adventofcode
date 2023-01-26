@@ -1,6 +1,10 @@
 const HORIZONTAL = class Horizontal {
     canMove(wind, tower) {
-        return this.position.x + wind.dx + 3 <= 7;
+        let point = {
+            x: this.position.x + wind.dx + 3,
+            y: this.position.y
+        };
+        return tower.isFree(point);
     }
 };
 const PLUS = class Plus {};
