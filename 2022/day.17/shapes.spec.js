@@ -6,7 +6,7 @@ describe.only('Shapes', () => {
     it('provides bar first', () => {
         const shapes = new Shapes();
 
-        expect(shapes.next()).to.equal(HORIZONTAL);
+        expect(shapes.next()).to.be.instanceOf(HORIZONTAL);
     });
 
     it.skip('provides the four shapes in order and then loop', () => {
