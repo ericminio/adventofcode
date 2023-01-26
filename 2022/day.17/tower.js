@@ -29,7 +29,7 @@ class Tower {
         this.fallenRocks = this.fallenRocks + 1;
         const points = rock.points();
         points.forEach(point => {
-
+            this.settled[this.id(point)] = point;
         });
         this.height = 1;
     }
