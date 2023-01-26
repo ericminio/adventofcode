@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { Tower } = require('./tower.js');
 
-describe('tower', () => {
+describe.only('tower', () => {
 
     it('starts empty', () => {
         let tower = new Tower();
