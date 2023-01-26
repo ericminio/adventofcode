@@ -6,9 +6,9 @@ const HORIZONTAL = class Horizontal {
         return tower.isFree(point);
     }
     canFall(tower) {
-        let point = { x: this.position.x, y: this.position.y - 1 };
-
-        return tower.isFree(point);
+        return [ { x: this.position.x, y: this.position.y - 1 } ]
+            .map(point => tower.isFree(point))
+            .every(check => check === true);
     }
 };
 const PLUS = class Plus {};
