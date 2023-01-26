@@ -2,6 +2,9 @@ const HORIZONTAL = class Horizontal {
     left() {
         return [ { x: this.position.x + 4, y: this.position.y } ];
     }
+    right() {
+        return [ { x: this.position.x - 1, y: this.position.y } ];
+    }
     canMove(wind, tower) {
         let point = { y: this.position.y };
         point.x = wind.dx > 0 ? this.position.x + 4 : this.position.x - 1;
