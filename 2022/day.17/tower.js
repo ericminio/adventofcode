@@ -30,6 +30,9 @@ class Tower {
         const points = rock.points();
         points.forEach(point => {
             this.settled[this.id(point)] = point;
+            if (point.y > this.height) {
+                this.height = point.y;
+            }
         });
         this.height = 1;
     }
