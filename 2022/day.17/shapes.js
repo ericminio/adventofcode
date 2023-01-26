@@ -21,9 +21,7 @@ const HORIZONTAL = class Horizontal {
         return tower.isFree(point);
     }
     canFall(tower) {
-        return this.below()
-            .map(point => tower.isFree(point))
-            .every(check => check === true);
+        return tower.areFree(this.below());
     }
 };
 const PLUS = class Plus {};
