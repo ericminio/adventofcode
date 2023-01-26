@@ -15,10 +15,7 @@ const HORIZONTAL = class Horizontal {
     }
     canMove(wind, tower) {
         const points = wind.dx > 0 ? this.right() : this.left();
-        let point = { y: this.position.y };
-        point.x = wind.dx > 0 ? this.position.x + 4 : this.position.x - 1;
-
-        return tower.isFree(point);
+        return tower.areFree(points);
     }
     canFall(tower) {
         return tower.areFree(this.below());
