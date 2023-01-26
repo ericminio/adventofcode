@@ -25,8 +25,8 @@ class Tower {
     }
 
     settle(rock) {
-        this.height = 1;
         this.fallenRocks = this.fallenRocks + 1;
+        this.height = 1;
     }
 }
 
