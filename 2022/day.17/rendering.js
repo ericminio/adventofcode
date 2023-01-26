@@ -4,6 +4,9 @@ const render = (tower) => {
         let line = '';
         for (let x = 0; x <= 8; x++) {
             let cell = '.';
+            if (!tower.isFree({ x, y })) {
+                cell = '#';
+            }
             line += cell;
         }
         lines.push(line);
