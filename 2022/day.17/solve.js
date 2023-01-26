@@ -57,7 +57,8 @@ const move = (game) => {
     }
 };
 const fall = (game) => {
-    if (game.rock.canFall(game.tower)) {
+    const points = game.rock.below();
+    if (game.tower.areFree(points)) {
         game.rock.position = {
             x: game.rock.position.x,
             y: game.rock.position.y - 1
