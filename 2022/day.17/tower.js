@@ -17,6 +17,12 @@ class Tower {
 
         return true;
     }
+
+    areFree(points) {
+        return points
+            .map(point => this.isFree(point))
+            .every(check => check === true);
+    }
 }
 
 module.exports = { Tower };
