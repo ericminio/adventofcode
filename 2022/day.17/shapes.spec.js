@@ -9,16 +9,16 @@ describe.only('Shapes', () => {
         expect(shapes.next()).to.be.instanceOf(HORIZONTAL);
     });
 
-    it.skip('provides the four shapes in order and then loop', () => {
+    it('provides the four shapes in order and then loop', () => {
         const shapes = new Shapes();
         const sequence = [
             shapes.next(), shapes.next(), shapes.next(), shapes.next(), shapes.next(),
             shapes.next()
-        ];
+        ].map(o => o.constructor.name);
 
         expect(sequence).to.deep.equal([
-            HORIZONTAL, PLUS, EL, VERTICAL, SQUARE,
-            HORIZONTAL
+            'Horizontal', 'Plus', 'El', 'Vertical', 'Square',
+            'Horizontal'
         ]);
     });
 
