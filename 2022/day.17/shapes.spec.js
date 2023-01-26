@@ -25,5 +25,7 @@ describe.only('Shapes', () => {
     it('provides unique instances', () => {
         const shapes = new Shapes();
         const bar1 = shapes.next();
+        shapes.next(); shapes.next(); shapes.next(); shapes.next();
+        const bar2 = shapes.next();
     });
 });
