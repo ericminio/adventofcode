@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { Shapes, HORIZONTAL, PLUS, EL, VERTICAL, SQUARE } = require('./shapes');
+const { Shapes, HORIZONTAL } = require('./shapes');
 
 describe.only('Shapes', () => {
 
