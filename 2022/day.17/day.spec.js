@@ -21,6 +21,14 @@ describe.only('2022.17', () => {
 
             expect(game.rock.position).to.deep.equal({ x: 4, y: 2 });
         });
+
+        it('is stopped by the wall on the right', () => {
+            const game = init({ goal: 1, winds: new Winds('>') });
+            tic(game);
+            tic(game);
+
+            expect(game.rock.position).to.deep.equal({ x: 4, y: 1 });
+        });
     });
 
 });
