@@ -69,7 +69,7 @@ const fall = (game) => {
     }
 };
 const settle = (game) => {
-
+    game.rock = undefined;
 };
 
 module.exports = { solve1, tic, left, right, init };
