@@ -7,7 +7,10 @@ const HORIZONTAL = class Horizontal {
     }
     canFall(tower) {
         return [
-            { x: this.position.x, y: this.position.y - 1 }
+            { x: this.position.x, y: this.position.y - 1 },
+            { x: this.position.x + 1, y: this.position.y - 1 },
+            { x: this.position.x + 2, y: this.position.y - 1 },
+            { x: this.position.x + 3, y: this.position.y - 1 }
         ]
             .map(point => tower.isFree(point))
             .every(check => check === true);
