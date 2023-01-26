@@ -21,4 +21,9 @@ describe.only('Shapes', () => {
             HORIZONTAL
         ]);
     });
+
+    it('provides unique instances', () => {
+        const shapes = new Shapes();
+        const bar1 = shapes.next();
+    });
 });
