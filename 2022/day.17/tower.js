@@ -5,7 +5,14 @@ class Tower {
     }
 
     isFree(point) {
-        return point.x <= 7;
+        if (point.x === 0) {
+            return false;
+        }
+        if (point.x === 8) {
+            return false;
+        }
+
+        return true;
     }
 }
 
