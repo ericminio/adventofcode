@@ -1,5 +1,6 @@
 const { input } = require('../support');
 const { Shapes } = require('./shapes');
+const { Tower } = require('./tower.js');
 const { Winds } = require('./winds');
 
 const right = { dx: 1 };
@@ -17,7 +18,7 @@ const init = ({ goal, winds }) => {
     return {
         goal,
         winds,
-        tower: { height: 0, fallenRocks: 0 },
+        tower: new Tower(),
         shapes: new Shapes()
     };
 };
