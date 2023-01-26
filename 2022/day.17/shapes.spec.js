@@ -27,5 +27,7 @@ describe.only('Shapes', () => {
         const bar1 = shapes.next();
         shapes.next(); shapes.next(); shapes.next(); shapes.next();
         const bar2 = shapes.next();
+
+        expect(bar2).to.not.equal(bar1);
     });
 });
