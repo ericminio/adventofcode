@@ -38,6 +38,7 @@ describe.only('2022.17', () => {
 
             expect(game.rock).to.equal(undefined);
             expect(game.tower.fallenRocks).to.equal(1);
+            expect(game.tower.height).to.equal(1);
         });
     });
 

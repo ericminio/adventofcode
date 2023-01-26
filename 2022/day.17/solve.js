@@ -71,6 +71,7 @@ const fall = (game) => {
 const settle = (game) => {
     game.rock = undefined;
     game.tower.fallenRocks = game.tower.fallenRocks + 1;
+    game.tower.height = 1;
 };
 
 module.exports = { solve1, tic, left, right, init };
