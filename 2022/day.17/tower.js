@@ -2,6 +2,7 @@ class Tower {
     constructor() {
         this.fallenRocks = 0;
         this.height = 0;
+        this.settled = {};
     }
 
     isFree(point) {
@@ -26,8 +27,14 @@ class Tower {
 
     settle(rock) {
         this.fallenRocks = this.fallenRocks + 1;
-        let points = rock.points();
+        const points = rock.points();
+        points.forEach(point => {
+
+        });
         this.height = 1;
+    }
+    id(point) {
+        return `${point.x}x${point.y}`;
     }
 }
 
