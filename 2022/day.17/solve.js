@@ -49,7 +49,7 @@ const move = (game) => {
     const wind = game.winds.next();
     game.rock.position = {
         x: game.rock.position.x + wind.dx,
-        y: 3
+        y: game.rock.position.y
     };
 };
 const fall = (game) => {
