@@ -12,7 +12,7 @@ class Shapes {
 
     next() {
         this.current = (this.current + 1) % this.collection.length;
-        return new this.collection[this.current];
+        return new this.collection[this.current]();
     }
 }
 
