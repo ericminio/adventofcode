@@ -64,6 +64,12 @@ const fall = (game) => {
             y: game.rock.position.y - 1
         };
     }
+    else {
+        settle(game);
+    }
+};
+const settle = (game) => {
+
 };
 
 module.exports = { solve1, tic, left, right, init };
