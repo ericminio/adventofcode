@@ -15,6 +15,9 @@ class Tower {
         if (point.y === 0) {
             return false;
         }
+        if (this.settled[this.id(point)] !== undefined) {
+            return false;
+        }
 
         return true;
     }
