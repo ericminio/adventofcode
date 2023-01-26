@@ -15,7 +15,7 @@ describe.only('2022.17', () => {
 
     describe('rock movement', () => {
 
-        it('first moves then falls', () => {
+        it('moves and falls', () => {
             const game = init({ goal: 1, winds: new Winds('>') });
             tic(game);
 
