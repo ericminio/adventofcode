@@ -1,4 +1,12 @@
 const HORIZONTAL = class Horizontal {
+    points() {
+        return [
+            { x: this.position.x, y: this.position.y },
+            { x: this.position.x + 1, y: this.position.y },
+            { x: this.position.x + 2, y: this.position.y },
+            { x: this.position.x + 3, y: this.position.y }
+        ];
+    }
     right() {
         return [ { x: this.position.x + 4, y: this.position.y } ];
     }
