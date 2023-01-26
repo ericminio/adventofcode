@@ -16,4 +16,8 @@ describe.only('tower', () => {
     it('has vertical wall on the left', () => {
         expect(tower.isFree({ x: 0, y: 42 })).to.equal(false);
     });
+
+    it('has vertical wall on the right', () => {
+        expect(tower.isFree({ x: 8, y: 42 })).to.equal(false);
+    });
 });
