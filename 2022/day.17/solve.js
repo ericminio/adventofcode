@@ -48,7 +48,7 @@ const spawn = (game) => {
 };
 const move = (game) => {
     const wind = game.winds.next();
-    if (game.rock.canMove(wind)) {
+    if (game.rock.canMove(wind, game.tower)) {
         game.rock.position = {
             x: game.rock.position.x + wind.dx,
             y: game.rock.position.y
