@@ -1,8 +1,8 @@
 const HORIZONTAL = class Horizontal {
-    left() {
+    right() {
         return [ { x: this.position.x + 4, y: this.position.y } ];
     }
-    right() {
+    left() {
         return [ { x: this.position.x - 1, y: this.position.y } ];
     }
     below() {
