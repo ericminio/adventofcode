@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+const { leftOf } = require('./around.js');
 const { render } = require('./rendering');
 const { solve1, tic, init } = require('./solve');
 const { Winds } = require('./winds');
@@ -66,7 +67,7 @@ describe.only('2022.17', () => {
                 .map(point => ({ x: point.x - 1, y: point.y }))
                 .filter(candidate => !points.some(point => point.x == candidate.x && point.y == candidate.y));
 
-            expect(left).to.deep.equal([
+            expect(leftOf(points)).to.deep.equal([
                 { x: -1, y: 0 }, { x: -1, y: 1 }
             ]);
         });
