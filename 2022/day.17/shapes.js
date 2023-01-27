@@ -8,10 +8,34 @@ const HORIZONTAL = class Horizontal {
         ];
     }
 };
-const PLUS = class Plus {};
-const EL = class El{};
-const VERTICAL = class Vertical {};
-const SQUARE = class Square {};
+const PLUS = class Plus {
+    points() {
+        return [
+            { x: this.position.x, y: this.position.y },
+        ];
+    }
+};
+const EL = class El{
+    points() {
+        return [
+            { x: this.position.x, y: this.position.y },
+        ];
+    }
+};
+const VERTICAL = class Vertical {
+    points() {
+        return [
+            { x: this.position.x, y: this.position.y },
+        ];
+    }
+};
+const SQUARE = class Square {
+    points() {
+        return [
+            { x: this.position.x, y: this.position.y },
+        ];
+    }
+};
 
 class Shapes {
     constructor() {
