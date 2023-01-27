@@ -69,4 +69,4 @@ const settle = (game) => {
     game.rock = undefined;
 };
 
-module.exports = { solve1, tic, left, right, init };
+module.exports = { solve1, tic, left, right, init, play };
