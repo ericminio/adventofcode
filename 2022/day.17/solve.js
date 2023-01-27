@@ -2,7 +2,7 @@ const { input } = require('../support');
 const { leftOf, rightOf, belowOf } = require('./around.js');
 const { Shapes } = require('./shapes');
 const { Tower } = require('./tower.js');
-const { Winds } = require('./winds');
+const { Winds, RIGHT } = require('./winds');
 
 const right = { dx: 1 };
 const left = { dx: -1 };
@@ -49,7 +49,7 @@ const spawn = (game) => {
 };
 const move = (game) => {
     const wind = game.winds.next();
-    const points = wind.dx > 0 ? rightOf(game.rock.points()) : leftOf(game.rock.points());
+    const points = wind === RIGHT ? rightOf(game.rock.points()) : leftOf(game.rock.points());
     if (game.tower.areFree(points)) {
         game.rock.position = {
             x: game.rock.position.x + wind.dx,
