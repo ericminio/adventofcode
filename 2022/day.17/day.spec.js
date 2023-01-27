@@ -64,7 +64,7 @@ describe.only('2022.17', () => {
             ];
             const left = points
                 .map(point => ({ x: point.x - 1, y: point.y }))
-                .filter(candidate => !points.some(p => p.x == candidate.x && p.y == candidate.y));
+                .filter(candidate => !points.some(point => point.x == candidate.x && point.y == candidate.y));
 
             expect(left).to.deep.equal([
                 { x: -1, y: 0 }, { x: -1, y: 1 }
