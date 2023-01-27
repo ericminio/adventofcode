@@ -3,6 +3,7 @@ const { render } = require('./rendering');
 const { solve1, tic, init, play } = require('./solve');
 const { Winds } = require('./winds');
 const example = `${__dirname}/data/example.txt`;
+const input = `${__dirname}/data/input.txt`;
 
 describe.only('2022.17', () => {
 
