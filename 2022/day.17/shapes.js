@@ -11,7 +11,11 @@ const HORIZONTAL = class Horizontal {
 const PLUS = class Plus {
     points() {
         return [
-            { x: this.position.x, y: this.position.y },
+            { x: this.position.x + 1, y: this.position.y + 1 },
+            { x: this.position.x, y: this.position.y + 1 },
+            { x: this.position.x + 2, y: this.position.y + 1 },
+            { x: this.position.x + 1, y: this.position.y },
+            { x: this.position.x + 1, y: this.position.y + 2 },
         ];
     }
 };
