@@ -9,7 +9,7 @@ describe.only('2022.17', () => {
     describe('figuring out how many units tall will the tower of rocks be after 2022 rocks have stopped falling', () => {
 
         it('leverages an example', () => {
-            expect(solve1(example, 2)).to.equal(4);
+            expect(solve1(example, 2022)).to.equal(3068);
         });
 
     });
