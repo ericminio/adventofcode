@@ -6,7 +6,7 @@ const example = `${__dirname}/data/example.txt`;
 
 describe.only('2022.17', () => {
 
-    describe.only('figuring out how many units tall will the tower of rocks be after 2022 rocks have stopped falling', () => {
+    describe('figuring out how many units tall will the tower of rocks be after 2022 rocks have stopped falling', () => {
 
         it('leverages an example', () => {
             expect(solve1(example, 2)).to.equal(4);
@@ -20,7 +20,7 @@ describe.only('2022.17', () => {
             const game = init({ goal: 1, winds: new Winds('>') });
             tic(game);
 
-            expect(game.rock.position).to.deep.equal({ x: 4, y: 2 });
+            expect(game.rock.position).to.deep.equal({ x: 4, y: 3 });
         });
 
         it('is stopped by the wall on the right', () => {
@@ -28,11 +28,12 @@ describe.only('2022.17', () => {
             tic(game);
             tic(game);
 
-            expect(game.rock.position).to.deep.equal({ x: 4, y: 1 });
+            expect(game.rock.position).to.deep.equal({ x: 4, y: 2 });
         });
 
         it('eventually settles on the bottom', () => {
             const game = init({ goal: 1, winds: new Winds('>') });
+            tic(game);
             tic(game);
             tic(game);
             tic(game);
