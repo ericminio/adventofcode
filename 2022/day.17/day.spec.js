@@ -14,7 +14,7 @@ describe.only('2022.17', () => {
         });
 
         it('is done', () => {
-            expect(solve1(example, 2022)).to.equal(3068);
+            expect(solve1(input, 2022)).to.equal(3130);
         });
 
     });
