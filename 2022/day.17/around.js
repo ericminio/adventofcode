@@ -12,7 +12,7 @@ const rightOf = (points) => {
 
 const belowOf = (points) => {
     return points
-        .map(point => ({ x: point.x, y: point.y + 1 }))
+        .map(point => ({ x: point.x, y: point.y - 1 }))
         .filter(candidate => !points.some(point => point.x == candidate.x && point.y == candidate.y));
 };
 
