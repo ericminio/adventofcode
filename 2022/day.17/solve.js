@@ -1,6 +1,5 @@
 const { input } = require('../support');
 const { leftOf, rightOf, under } = require('./around.js');
-const { render } = require('./rendering.js');
 const { Shapes } = require('./shapes');
 const { Tower } = require('./tower.js');
 const { Winds, RIGHT } = require('./winds');
