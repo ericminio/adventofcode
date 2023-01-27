@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 const { Tower } = require('./tower.js');
 
-describe.only('tower', () => {
+describe('tower', () => {
     let tower;
 
     beforeEach(() => {
