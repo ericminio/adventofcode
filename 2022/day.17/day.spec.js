@@ -1,5 +1,4 @@
 const { expect } = require('chai');
-const { leftOf } = require('./around.js');
 const { render } = require('./rendering');
 const { solve1, tic, init } = require('./solve');
 const { Winds } = require('./winds');
