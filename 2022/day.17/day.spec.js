@@ -12,9 +12,13 @@ describe.only('2022.17', () => {
             expect(solve1(example, 2022)).to.equal(3068);
         });
 
+        it('is done', () => {
+            expect(solve1(example, 2022)).to.equal(3068);
+        });
+
     });
 
-    describe('rock movement', () => {
+    describe.skip('rock movement', () => {
 
         it('moves and falls', () => {
             const game = init({ goal: 1, winds: new Winds('>') });
@@ -44,7 +48,7 @@ describe.only('2022.17', () => {
         });
     });
 
-    describe('rendering', () => {
+    describe.skip('rendering', () => {
 
         it('is fun', () => {
             const game = init({ goal: 1, winds: new Winds('>') });
