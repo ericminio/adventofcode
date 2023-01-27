@@ -19,6 +19,12 @@ describe.only('2022.17', () => {
 
     });
 
+    describe('figuring out how many units tall will the tower of rocks be after 1000000000000 rocks have stopped falling', () => {
+
+
+
+    });
+
     describe.skip('rock movement', () => {
 
         it('moves and falls', () => {
