@@ -1,5 +1,5 @@
 const { input } = require('../support');
-const { leftOf } = require('./around.js');
+const { leftOf, rightOf } = require('./around.js');
 const { Shapes } = require('./shapes');
 const { Tower } = require('./tower.js');
 const { Winds } = require('./winds');
@@ -49,7 +49,7 @@ const spawn = (game) => {
 };
 const move = (game) => {
     const wind = game.winds.next();
-    const points = wind.dx > 0 ? game.rock.right() : leftOf(game.rock.points());
+    const points = wind.dx > 0 ? rightOf(game.rock.points()) : leftOf(game.rock.points());
     if (game.tower.areFree(points)) {
         game.rock.position = {
             x: game.rock.position.x + wind.dx,
