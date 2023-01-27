@@ -16,8 +16,7 @@ const under = (points) => {
         .filter(outside(points));
 };
 
-const outside = (points) => {
-    return (candidate) => !points.some(point => point.x == candidate.x && point.y == candidate.y);
-};
+const outside = (points) => (candidate) => !points.some(point => point.x == candidate.x && point.y == candidate.y);
+
 
 module.exports = { under, leftOf, rightOf };
