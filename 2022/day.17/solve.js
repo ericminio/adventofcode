@@ -13,7 +13,6 @@ const solve1 = (file, goal) => {
     const game = init({ goal, winds });
     play(game);
 
-    render(game.tower);
     return game.tower.height;
 };
 
