@@ -13,7 +13,7 @@ const rightOf = (points) => {
 const under = (points) => {
     return points
         .map(point => ({ x: point.x, y: point.y - 1 }))
-        .filter(candidate => !points.some(point => point.x == candidate.x && point.y == candidate.y));
+        .filter(outside(points));
 };
 
 const outside = (points) => {
