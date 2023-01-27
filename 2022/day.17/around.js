@@ -10,10 +10,10 @@ const rightOf = (points) => {
         .filter(candidate => !points.some(point => point.x == candidate.x && point.y == candidate.y));
 };
 
-const belowOf = (points) => {
+const under = (points) => {
     return points
         .map(point => ({ x: point.x, y: point.y - 1 }))
         .filter(candidate => !points.some(point => point.x == candidate.x && point.y == candidate.y));
 };
 
-module.exports = { belowOf, leftOf, rightOf };
+module.exports = { under, leftOf, rightOf };
