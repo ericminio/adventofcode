@@ -26,6 +26,9 @@ const VERTICAL = class Vertical {
     points() {
         return [
             { x: this.position.x, y: this.position.y },
+            { x: this.position.x, y: this.position.y + 1 },
+            { x: this.position.x, y: this.position.y + 2 },
+            { x: this.position.x, y: this.position.y + 3 },
         ];
     }
 };
