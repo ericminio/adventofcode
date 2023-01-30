@@ -73,25 +73,6 @@ describe.only('2022.17', () => {
         const base = { rocks: 2, height: 2 };
 
         const deltasSum = deltas.reduce(add);
-        const sumDeltasUpToGivenIndex = (deltas, index) => {
-            let total = 0;
-            for (var i = 0; i <= index; i++) {
-                total += deltas[i];
-            }
-            return total;
-        };
-        const totalHeight = (goal, base, deltas, deltasSum) => {
-            let total = base.height;
-            const target = goal - base.rocks - 1;
-            const loopCount = Math.floor(target / deltas.length);
-            if (loopCount > 0) {
-                total += loopCount * deltasSum;
-            }
-            const index = target % deltas.length;
-            total += sumDeltasUpToGivenIndex(deltas, index);
-
-            return total;
-        };
 
         expect(totalHeight(3, base, deltas, deltasSum)).to.equal(2 + 1);
         expect(totalHeight(4, base, deltas, deltasSum)).to.equal(2 + 1 + 2);
@@ -100,4 +81,23 @@ describe.only('2022.17', () => {
         expect(totalHeight(15, base, deltas, deltasSum)).to.equal(2 + 6 * 4 + 1);
     });
 
+    const sumDeltasUpToGivenIndex = (deltas, index) => {
+        let total = 0;
+        for (var i = 0; i <= index; i++) {
+            total += deltas[i];
+        }
+        return total;
+    };
+    const totalHeight = (goal, base, deltas, deltasSum) => {
+        let total = base.height;
+        const target = goal - base.rocks - 1;
+        const loopCount = Math.floor(target / deltas.length);
+        if (loopCount > 0) {
+            total += loopCount * deltasSum;
+        }
+        const index = target % deltas.length;
+        total += sumDeltasUpToGivenIndex(deltas, index);
+
+        return total;
+    };
 });
