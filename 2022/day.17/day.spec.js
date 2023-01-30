@@ -66,6 +66,10 @@ describe.only('2022.17', () => {
 
             render(game.tower);
         });
+
+        it('helps uncovering the loop of deltas', () => {
+
+        });
     });
 
     it.skip('loops', () => {
