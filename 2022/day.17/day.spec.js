@@ -73,6 +73,8 @@ describe.only('2022.17', () => {
 
             require('fs').writeFileSync(`${__dirname}/data/example-2022.heights`,
                 game.tower.heights.map(h => `${h.fallenRocks} ${h.height} ${h.delta}`).join('\n'));
+            require('fs').writeFileSync(`${__dirname}/data/example-2022.deltas`,
+                game.tower.heights.map(h => `${h.delta}`).join('\n'));
         });
     });
 
