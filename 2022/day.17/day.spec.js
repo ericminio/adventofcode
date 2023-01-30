@@ -71,9 +71,9 @@ describe.only('2022.17', () => {
         const deltas = [ 1, 2, 3 ];
         const base = { rocks: 2, height: 2 };
         const total = (goal, base, deltas) => {
-            const target = goal - base.rocks;
+            const index = (goal - base.rocks - 1) % deltas.length;
 
-            return base.height + deltas[target - 1];
+            return base.height + deltas[index];
         };
 
         expect(total(3, base, deltas)).to.equal(3);
