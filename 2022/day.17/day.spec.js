@@ -85,8 +85,9 @@ describe.only('2022.17', () => {
                 total += loopCount * 6;
             }
             const index = target % deltas.length;
+            total += sum(deltas, index);
 
-            return total + sum(deltas, index);
+            return total;
         };
 
         expect(total(3, base, deltas)).to.equal(3);
