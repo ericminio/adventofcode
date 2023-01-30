@@ -79,6 +79,8 @@ describe.only('2022.17', () => {
             const base = { rocks: 15, height: 25 };
             const deltas = lines(`${__dirname}/data/example-deltas`).map(numberOrZero);
             const total = totalHeight(1000000000000, base, deltas);
+
+            expect(total).to.equal(1514285714288);
         });
     });
 
