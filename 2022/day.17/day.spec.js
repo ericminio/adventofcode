@@ -75,6 +75,22 @@ describe.only('2022.17', () => {
                 game.tower.heights.map(h => `${h.fallenRocks} ${h.height} ${h.delta}`).join('\n'));
             require('fs').writeFileSync(`${__dirname}/data/example-2022.deltas`,
                 game.tower.heights.map(h => `${h.delta}`).join('\n'));
+
+            const start = [ 1,
+                3,
+                2,
+                1,
+                2,
+                1,
+                3,
+                2,
+                2,
+                0,
+                1,
+                3,
+                2,
+                0,
+                2 ];
         });
     });
 
