@@ -79,6 +79,7 @@ describe.only('2022.17', () => {
         };
         const total = (goal, base, deltas) => {
             const target = goal - base.rocks - 1;
+            const loopCount = Math.floor(target / deltas.length);
             const index = target % deltas.length;
 
             return base.height + sum(deltas, index);
