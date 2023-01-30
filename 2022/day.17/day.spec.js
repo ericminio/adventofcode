@@ -80,7 +80,7 @@ describe.only('2022.17', () => {
             }
             return total;
         };
-        const total = (goal, base, deltas, deltasSum) => {
+        const totalHeight = (goal, base, deltas, deltasSum) => {
             let total = base.height;
             const target = goal - base.rocks - 1;
             const loopCount = Math.floor(target / deltas.length);
@@ -93,11 +93,11 @@ describe.only('2022.17', () => {
             return total;
         };
 
-        expect(total(3, base, deltas, deltasSum)).to.equal(2 + 1);
-        expect(total(4, base, deltas, deltasSum)).to.equal(2 + 1 + 2);
-        expect(total(5, base, deltas, deltasSum)).to.equal(2 + 1 + 2 + 3);
-        expect(total(7, base, deltas, deltasSum)).to.equal(2 + 6 * 1 + 1 + 2);
-        expect(total(15, base, deltas, deltasSum)).to.equal(2 + 6 * 4 + 1);
+        expect(totalHeight(3, base, deltas, deltasSum)).to.equal(2 + 1);
+        expect(totalHeight(4, base, deltas, deltasSum)).to.equal(2 + 1 + 2);
+        expect(totalHeight(5, base, deltas, deltasSum)).to.equal(2 + 1 + 2 + 3);
+        expect(totalHeight(7, base, deltas, deltasSum)).to.equal(2 + 6 * 1 + 1 + 2);
+        expect(totalHeight(15, base, deltas, deltasSum)).to.equal(2 + 6 * 4 + 1);
     });
 
 });
