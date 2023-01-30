@@ -73,7 +73,7 @@ describe.only('2022.17', () => {
         const base = { rocks: 2, height: 2 };
 
         const deltasSum = deltas.reduce(add);
-        const sum = (deltas, index) => {
+        const sumDeltasUpToGivenIndex = (deltas, index) => {
             let total = 0;
             for (var i = 0; i <= index; i++) {
                 total += deltas[i];
@@ -88,7 +88,7 @@ describe.only('2022.17', () => {
                 total += loopCount * deltasSum;
             }
             const index = target % deltas.length;
-            total += sum(deltas, index);
+            total += sumDeltasUpToGivenIndex(deltas, index);
 
             return total;
         };
