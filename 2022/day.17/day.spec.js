@@ -78,11 +78,12 @@ describe.only('2022.17', () => {
             return total;
         };
         const total = (goal, base, deltas) => {
+            let total = base.height;
             const target = goal - base.rocks - 1;
             const loopCount = Math.floor(target / deltas.length);
             const index = target % deltas.length;
 
-            return base.height + sum(deltas, index);
+            return total + sum(deltas, index);
         };
 
         expect(total(3, base, deltas)).to.equal(3);
