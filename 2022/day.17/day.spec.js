@@ -76,13 +76,11 @@ describe.only('2022.17', () => {
         const deltas = [ 1, 2, 3 ];
         const base = { rocks: 2, height: 2 };
 
-        const deltasSum = deltas.reduce(add);
-
-        expect(totalHeight(3, base, deltas, deltasSum)).to.equal(2 + 1);
-        expect(totalHeight(4, base, deltas, deltasSum)).to.equal(2 + 1 + 2);
-        expect(totalHeight(5, base, deltas, deltasSum)).to.equal(2 + 1 + 2 + 3);
-        expect(totalHeight(7, base, deltas, deltasSum)).to.equal(2 + 6 * 1 + 1 + 2);
-        expect(totalHeight(15, base, deltas, deltasSum)).to.equal(2 + 6 * 4 + 1);
+        expect(totalHeight(3, base, deltas)).to.equal(2 + 1);
+        expect(totalHeight(4, base, deltas)).to.equal(2 + 1 + 2);
+        expect(totalHeight(5, base, deltas)).to.equal(2 + 1 + 2 + 3);
+        expect(totalHeight(7, base, deltas)).to.equal(2 + 6 * 1 + 1 + 2);
+        expect(totalHeight(15, base, deltas)).to.equal(2 + 6 * 4 + 1);
     });
 
     const sumDeltasUpToGivenIndex = (deltas, index) => {
@@ -92,7 +90,8 @@ describe.only('2022.17', () => {
         }
         return total;
     };
-    const totalHeight = (goal, base, deltas, deltasSum) => {
+    const totalHeight = (goal, base, deltas) => {
+        const deltasSum = deltas.reduce(add);
         let total = base.height;
         const target = goal - base.rocks - 1;
         const loopCount = Math.floor(target / deltas.length);
