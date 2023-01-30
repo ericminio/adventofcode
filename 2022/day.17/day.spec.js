@@ -93,7 +93,7 @@ describe.only('2022.17', () => {
         expect(total(3, base, deltas)).to.equal(3);
         expect(total(4, base, deltas)).to.equal(5);
         expect(total(5, base, deltas)).to.equal(2 + 6);
-        expect(total(7, base, deltas)).to.equal(2 + 6 + 3);
+        expect(total(7, base, deltas)).to.equal(2 + 6 + 1 + 2);
     });
 
 });
