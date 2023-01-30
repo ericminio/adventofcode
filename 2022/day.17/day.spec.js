@@ -71,7 +71,8 @@ describe.only('2022.17', () => {
             const game = init({ goal: 2022, winds: new Winds(input(example)) });
             play(game);
 
-            require('fs').writeFileSync(`${__dirname}/data/example-2022.heights`, game.tower.heights.join('\n'));
+            require('fs').writeFileSync(`${__dirname}/data/example-2022.heights`,
+                game.tower.heights.map(h => `${h.fallenRocks} ${h.height} ${h.delta}`).join('\n'));
         });
     });
 
