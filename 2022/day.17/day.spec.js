@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+const { add } = require('../support');
 const { render } = require('./rendering');
 const { solve1, tic, init, play } = require('./solve');
 const { Winds } = require('./winds');
@@ -78,7 +79,7 @@ describe.only('2022.17', () => {
             return total;
         };
         const total = (goal, base, deltas) => {
-            const deltasSum = 6;
+            const deltasSum = deltas.reduce(add);
             let total = base.height;
             const target = goal - base.rocks - 1;
             const loopCount = Math.floor(target / deltas.length);
