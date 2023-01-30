@@ -67,7 +67,7 @@ describe.only('2022.17', () => {
         });
     });
 
-    it.only('loop', () => {
+    it.only('loops', () => {
         const deltas = [ 1, 2, 3 ];
         const base = { rocks: 2, height: 2 };
 
