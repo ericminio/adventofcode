@@ -38,6 +38,7 @@ module.exports = {
     groupsOfNumbers,
     add,
     multiply,
+    numberOrZero,
     descending,
     ascending,
     extractor,
