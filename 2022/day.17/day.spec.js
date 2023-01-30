@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { add } = require('../support');
+const { add, input } = require('../support');
 const { render } = require('./rendering');
 const { solve1, tic, init, play } = require('./solve');
 const { Winds } = require('./winds');
@@ -68,7 +68,8 @@ describe.only('2022.17', () => {
         });
 
         it('helps uncovering the loop of deltas', () => {
-
+            const game = init({ goal: 2022, winds: new Winds(input(example)) });
+            play(game);
         });
     });
 
