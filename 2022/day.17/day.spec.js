@@ -70,13 +70,21 @@ describe.only('2022.17', () => {
     it.only('loops', () => {
         const deltas = [ 1, 2, 3 ];
         const base = { rocks: 2, height: 2 };
+        const sum = (deltas, index) => {
+            let total = 0;
+            for (var i = 0; i <= index; i++) {
+                total += deltas[i];
+            }
+            return total;
+        };
         const total = (goal, base, deltas) => {
             const index = (goal - base.rocks - 1) % deltas.length;
 
-            return base.height + deltas[index];
+            return base.height + sum(deltas, index);
         };
 
         expect(total(3, base, deltas)).to.equal(3);
+        expect(total(4, base, deltas)).to.equal(5);
     });
 
 });
