@@ -62,7 +62,7 @@ describe.only('2022.17', () => {
         });
     });
 
-    describe.skip('rendering', () => {
+    describe.only('rendering', () => {
 
         it('is fun', () => {
             const game = init({ goal: 1, winds: new Winds('>') });
