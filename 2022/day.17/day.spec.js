@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { add, input } = require('../support');
+const { add, input, numberOrZero, lines } = require('../support');
 const { render } = require('./rendering');
 const { solve1, tic, init, play } = require('./solve');
 const { Winds } = require('./winds');
@@ -77,7 +77,8 @@ describe.only('2022.17', () => {
                 game.tower.heights.map(h => `${h.delta}`).join('\n'));
 
             const base = { rocks: 15, height: 25 };
-
+            const deltas = lines(`${__dirname}/data/example-deltas`).map(numberOrZero);
+            const total = totalHeight(1000000000000, base, deltas);
         });
     });
 
