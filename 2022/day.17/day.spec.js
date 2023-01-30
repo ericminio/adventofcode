@@ -91,6 +91,9 @@ describe.only('2022.17', () => {
                 2,
                 0,
                 2 ];
+            expect(start.reduce(add)).to.equal(25);
+            const base = { rocks: 2, height: 25 };
+
         });
     });
 
