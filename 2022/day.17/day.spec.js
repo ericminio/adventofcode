@@ -22,8 +22,12 @@ describe.only('2022.17', () => {
 
     describe('figuring out how many units tall will the tower of rocks be after 1000000000000 rocks have stopped falling', () => {
 
-        it.skip('leverages an example', () => {
-            expect(solve1(example, 1000000000000)).to.equal(1514285714288);
+        it('leverages an example', () => {
+            const base = { rocks: 15, height: 25 };
+            const deltas = lines(`${__dirname}/data/example-deltas`).map(numberOrZero);
+            const total = totalHeight(1000000000000, base, deltas);
+
+            expect(total).to.equal(1514285714288);
         });
 
     });
@@ -58,7 +62,7 @@ describe.only('2022.17', () => {
         });
     });
 
-    describe('rendering', () => {
+    describe.skip('rendering', () => {
 
         it('is fun', () => {
             const game = init({ goal: 1, winds: new Winds('>') });
@@ -67,7 +71,7 @@ describe.only('2022.17', () => {
             render(game.tower);
         });
 
-        it.only('helps uncovering the loop of deltas', () => {
+        it('helps uncovering the loop of deltas', () => {
             const game = init({ goal: 2022, winds: new Winds(input(example)) });
             play(game);
 
@@ -75,12 +79,6 @@ describe.only('2022.17', () => {
                 game.tower.heights.map(h => `${h.fallenRocks} ${h.height} ${h.delta}`).join('\n'));
             require('fs').writeFileSync(`${__dirname}/data/example-2022.deltas`,
                 game.tower.heights.map(h => `${h.delta}`).join('\n'));
-
-            const base = { rocks: 15, height: 25 };
-            const deltas = lines(`${__dirname}/data/example-deltas`).map(numberOrZero);
-            const total = totalHeight(1000000000000, base, deltas);
-
-            expect(total).to.equal(1514285714288);
         });
     });
 
