@@ -76,23 +76,7 @@ describe.only('2022.17', () => {
             require('fs').writeFileSync(`${__dirname}/data/example-2022.deltas`,
                 game.tower.heights.map(h => `${h.delta}`).join('\n'));
 
-            const start = [ 1,
-                3,
-                2,
-                1,
-                2,
-                1,
-                3,
-                2,
-                2,
-                0,
-                1,
-                3,
-                2,
-                0,
-                2 ];
-            expect(start.reduce(add)).to.equal(25);
-            const base = { rocks: 2, height: 25 };
+            const base = { rocks: 15, height: 25 };
 
         });
     });
