@@ -71,7 +71,7 @@ describe.only('2022.17', () => {
             render(game.tower);
         });
 
-        it('helps uncovering the loop of deltas', () => {
+        it('helps uncovering the loop of deltas for the example', () => {
             const game = init({ goal: 2022, winds: new Winds(input(example)) });
             play(game);
 
