@@ -80,6 +80,16 @@ describe.only('2022.17', () => {
             require('fs').writeFileSync(`${__dirname}/data/example-2022.deltas`,
                 game.tower.heights.map(h => `${h.delta}`).join('\n'));
         });
+
+        it('helps uncovering the loop of deltas for the challenge', () => {
+            const game = init({ goal: 5000, winds: new Winds(input(challenge)) });
+            play(game);
+
+            require('fs').writeFileSync(`${__dirname}/data/challenge.heights`,
+                game.tower.heights.map(h => `${h.fallenRocks} ${h.height} ${h.delta}`).join('\n'));
+            require('fs').writeFileSync(`${__dirname}/data/challenge.deltas`,
+                game.tower.heights.map(h => `${h.delta}`).join('\n'));
+        });
     });
 
     it.skip('loops', () => {
