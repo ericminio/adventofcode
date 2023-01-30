@@ -78,7 +78,8 @@ describe.only('2022.17', () => {
             return total;
         };
         const total = (goal, base, deltas) => {
-            const index = (goal - base.rocks - 1) % deltas.length;
+            const target = goal - base.rocks - 1;
+            const index = target % deltas.length;
 
             return base.height + sum(deltas, index);
         };
