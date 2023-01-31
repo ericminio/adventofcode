@@ -1,10 +1,17 @@
 const { id } = require('../support/index.js');
 
+const xy = (x, y) => {
+    return { x, y };
+};
+
 describe.only('parsing the example', () => {
 
     it('has cell 9x1', () => {
         const map = {};
         const location = { x: 9, y: 1 };
-        map[id(location)] = { location };
+        map[id(location)] = {
+            location,
+            neighbours: []
+        };
     });
 });
