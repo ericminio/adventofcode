@@ -7,7 +7,7 @@ const xy = (x, y) => {
 
 describe.only('parsing the example', () => {
 
-    it('has cell 9x1', () => {
+    it('has expectations', () => {
         const map = {};
         map[id(xy(9, 1))] = {
             location: xy(9, 1),
