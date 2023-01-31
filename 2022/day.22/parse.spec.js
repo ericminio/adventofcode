@@ -41,7 +41,7 @@ const parse = (file) => {
         for (let j = 0; j < incoming[i].length; j++) {
             let column = j + 1;
             if (incoming[i][j] === '.') {
-                map[id(row, column)];
+                map[id(row, column)] = { location: xy(row, column) };
             }
         }
     }
