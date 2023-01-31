@@ -11,14 +11,17 @@ describe.only('parsing the example', () => {
 
         expect(map['1x9']).to.deep.equal({
             location: { row: 1, column: 9 },
-            neighbours: [ '1x10' ]
+            neighbours: [ '1x10', '2x9' ]
         });
     });
 });
 
 const parse = (file) => {
     const around = [
-        { row: 0, column: 1 }
+        { row: 0, column: 1 },
+        { row: 1, column: 0 },
+        { row: 0, column: -1 },
+        { row: -1, column: 0 },
     ];
     const map = {};
     const incoming = groups(file)[0];
