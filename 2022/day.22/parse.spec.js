@@ -50,7 +50,9 @@ const parse = (file) => {
                 const inverted = { row: -delta.row, column: -delta.column };
                 let step = 1;
                 let candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
-
+                if (map.corridors[candidate] !== undefined || map.walls[candidate] !== undefined) {
+                    step ++;
+                }
             }
         });
     });
