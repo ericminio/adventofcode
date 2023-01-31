@@ -12,7 +12,8 @@ describe.only('parsing the example', () => {
             location: xy(9, 1),
             neighbours: [
                 id(xy(10, 1)),
-                id(xy(9, 2))
+                id(xy(9, 2)),
+                id(xy(9, 12))
             ]
         };
     });
