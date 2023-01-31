@@ -47,5 +47,6 @@ const parse = (file) => {
             }
         }
     }
+    console.log(map);
     return map;
 };
