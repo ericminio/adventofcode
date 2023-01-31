@@ -34,4 +34,5 @@ describe.only('parsing the example', () => {
 
 const parse = (file) => {
     const incoming = groups(file)[0];
+    console.log(incoming);
 };
