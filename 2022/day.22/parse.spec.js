@@ -53,7 +53,7 @@ const parse = (file) => {
                 let candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
                 console.log(cell, candidate);
                 console.log(map.corridors[candidate] !== undefined || map.walls[candidate] !== undefined);
-                if (map.corridors[candidate] !== undefined || map.walls[candidate] !== undefined) {
+                while (map.corridors[candidate] !== undefined || map.walls[candidate] !== undefined) {
                     step ++;
                     candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
                 }
