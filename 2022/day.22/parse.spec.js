@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+const example = `${__dirname}/data/example.txt`;
 const { id } = require('../support/index.js');
 
 const xy = (x, y) => {
@@ -27,6 +28,10 @@ describe.only('parsing the example', () => {
     });
 
     it('can be explored', () => {
-
+        const map = parse(example);
     });
 });
+
+const parse = (file) => {
+
+};
