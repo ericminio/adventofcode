@@ -42,12 +42,13 @@ const parse = (file) => {
     }
     Object.values(map.corridors).forEach(cell => {
         around.forEach(delta => {
-            const candidate = id(cell.location.row + delta.row, cell.location.column + delta.column);
-            if (map.corridors[candidate]) {
-                cell.neighbours.push(candidate);
+            const neighbour = id(cell.location.row + delta.row, cell.location.column + delta.column);
+            if (map.corridors[neighbour]) {
+                cell.neighbours.push(neighbour);
             }
             else {
                 const inverted = { row: -delta.row, column: -delta.column };
+
             }
         });
     });
