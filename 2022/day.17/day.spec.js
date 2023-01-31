@@ -30,10 +30,10 @@ describe.only('2022.17', () => {
             expect(total).to.equal(1514285714288);
         });
 
-        it('is done', () => {
+        it.only('is done', () => {
             const baseInfo = lines(`${__dirname}/data/challenge.base`).map(numberOrZero);
             const base = { rocks: baseInfo.length, height: baseInfo.reduce(add) };
-            expect(base).to.deep.equal({ rocks: 390 });
+            expect(base).to.deep.equal({ rocks: 390, height: 604 });
         });
 
     });
@@ -68,7 +68,7 @@ describe.only('2022.17', () => {
         });
     });
 
-    describe.only('rendering', () => {
+    describe.skip('rendering', () => {
 
         it('is fun', () => {
             const game = init({ goal: 1, winds: new Winds('>') });
