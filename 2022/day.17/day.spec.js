@@ -31,6 +31,8 @@ describe.only('2022.17', () => {
         });
 
         it('is done', () => {
+            const baseInfo = lines(`${__dirname}/data/challenge.base`).map(numberOrZero);
+            expect(baseInfo.length).to.equal(390);
             const base = { rocks: 390 };
         });
 
