@@ -56,6 +56,7 @@ const parse = (file) => {
                 }
                 step --;
                 candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
+                console.log(cell, candidate);
                 if (map[candidate]) {
                     cell.neighbours.push(candidate);
                 }
