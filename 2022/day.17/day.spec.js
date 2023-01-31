@@ -37,6 +37,7 @@ describe.only('2022.17', () => {
 
             const deltas = lines(`${__dirname}/data/challenge.loop`).map(numberOrZero);
             const total = totalHeight(1000000000000, base, deltas);
+            expect(total).to.equal(1556521739139);
         });
 
     });
