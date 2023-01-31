@@ -43,6 +43,9 @@ const parse = (file) => {
             if (map[candidate]) {
                 cell.neighbours.push(candidate);
             }
+            else {
+
+            }
         });
     });
     return map;
