@@ -30,6 +30,10 @@ describe.only('2022.17', () => {
             expect(total).to.equal(1514285714288);
         });
 
+        it('is done', () => {
+            const base = { rocks: 390 };
+        });
+
     });
 
     describe.skip('rock movement', () => {
