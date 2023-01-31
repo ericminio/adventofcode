@@ -9,7 +9,7 @@ describe.only('parsing the example', () => {
     it('can be explored', () => {
         const map = parse(example);
 
-        expect(map.corridors['1x9']).to.deep.equal({
+        expect(map['1x9']).to.deep.equal({
             location: { row: 1, column: 9 },
             neighbours: [ '1x10', '2x9', '12x9' ]
         });
@@ -63,5 +63,5 @@ const parse = (file) => {
             }
         });
     });
-    return map;
+    return map.corridors;
 };
