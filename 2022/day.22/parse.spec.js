@@ -29,6 +29,8 @@ describe.only('parsing the example', () => {
 
     it('can be explored', () => {
         const map = parse(example);
+
+        // expect(map['9x1']).to.deep.equal({ location: { x: 9, y: 1 }});
     });
 });
 
@@ -41,8 +43,9 @@ const parse = (file) => {
         for (let j = 0; j < incoming[i].length; j++) {
             let column = j + 1;
             if (incoming[i][j] === '.') {
-                map[id(row, column)] = { location: xy(row, column) };
+                map[id({ x: row, y: column })] = { location: xy(row, column) };
             }
         }
     }
+    return map;
 };
