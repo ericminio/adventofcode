@@ -9,7 +9,7 @@ describe.only('parsing the example', () => {
     it('can be explored', () => {
         const map = parse(example);
 
-        // expect(map['1x9']).to.deep.equal({ location: { row: 1, column: 9 }});
+        expect(map['1x9']).to.deep.equal({ location: { row: 1, column: 9 }});
     });
 });
 
