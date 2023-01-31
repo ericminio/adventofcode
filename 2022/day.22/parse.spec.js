@@ -50,7 +50,7 @@ const parse = (file) => {
                 const inverted = { row: -1 * delta.row, column: -1 * delta.column };
                 const next = (step, cell, delta) => id(cell.location.row + delta.row * step, cell.location.column + delta.column * step);
                 let step = 1;
-                let candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
+                let candidate = next(step, cell, inverted);
                 while (map.corridors[candidate] || map.walls[candidate]) {
                     step ++;
                     candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
