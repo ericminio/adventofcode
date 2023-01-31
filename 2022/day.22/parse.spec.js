@@ -22,7 +22,7 @@ const parse = (file) => {
         for (let j = 0; j < incoming[i].length; j++) {
             let column = j + 1;
             if (incoming[i][j] === '.') {
-                map[id({ x: column, y: row })] = { location: { x: column, y: row  }};
+                map[id(row, column)] = { location: { row, column }};
             }
         }
     }
