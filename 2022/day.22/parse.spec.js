@@ -35,7 +35,10 @@ describe.only('parsing the example', () => {
 const parse = (file) => {
     const incoming = groups(file)[0];
     console.log(incoming);
-    for (let i = 0; i <= incoming.length; i++) {
+    for (let i = 0; i < incoming.length; i++) {
         let row = i + 1;
+        for (let j = 0; j < incoming[i].length; j++) {
+            let column = j + 1;
+        }
     }
 };
