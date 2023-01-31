@@ -11,7 +11,7 @@ describe.only('parsing the example', () => {
 
         expect(map.corridors['1x9']).to.deep.equal({
             location: { row: 1, column: 9 },
-            neighbours: [ '1x10', '2x9' ]
+            neighbours: [ '1x10', '2x9', '12x9' ]
         });
     });
 });
@@ -56,8 +56,7 @@ const parse = (file) => {
                 }
                 step --;
                 candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
-                console.log(cell, candidate);
-                if (map[candidate]) {
+                if (map.corridors[candidate]) {
                     cell.neighbours.push(candidate);
                 }
             }
