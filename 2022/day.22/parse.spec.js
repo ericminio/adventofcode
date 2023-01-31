@@ -53,10 +53,10 @@ const parse = (file) => {
                 let candidate = next(step, cell, inverted);
                 while (map.corridors[candidate] || map.walls[candidate]) {
                     step ++;
-                    candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
+                    candidate = next(step, cell, inverted);
                 }
                 step --;
-                candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
+                candidate = next(step, cell, inverted);
                 if (map.corridors[candidate]) {
                     cell.neighbours.push(candidate);
                 }
