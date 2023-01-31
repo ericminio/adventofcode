@@ -6,7 +6,7 @@ const { Winds } = require('./winds');
 const example = `${__dirname}/data/example.txt`;
 const challenge = `${__dirname}/data/input.txt`;
 
-describe.only('2022.17', () => {
+describe('2022.17', () => {
 
     describe('figuring out how many units tall will the tower of rocks be after 2022 rocks have stopped falling', () => {
 
