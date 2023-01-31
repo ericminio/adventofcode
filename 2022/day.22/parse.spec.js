@@ -9,7 +9,10 @@ describe.only('parsing the example', () => {
     it('can be explored', () => {
         const map = parse(example);
 
-        expect(map['1x9']).to.deep.equal({ location: { row: 1, column: 9 }});
+        expect(map['1x9']).to.deep.equal({
+            location: { row: 1, column: 9 },
+            neighbours: []
+        });
     });
 });
 
@@ -21,7 +24,10 @@ const parse = (file) => {
         for (let j = 0; j < incoming[i].length; j++) {
             let column = j + 1;
             if (incoming[i][j] === '.') {
-                map[id(row, column)] = { location: { row, column }};
+                map[id(row, column)] = {
+                    location: { row, column },
+                    neighbours: []
+                };
             }
         }
     }
