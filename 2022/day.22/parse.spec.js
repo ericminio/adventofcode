@@ -3,7 +3,7 @@ const example = `${__dirname}/data/example.txt`;
 const { id, groups } = require('../support/index.js');
 
 const xy = (x, y) => {
-    return { x, y };
+    return { x: x, y: y };
 };
 
 describe.only('parsing the example', () => {
@@ -41,7 +41,7 @@ const parse = (file) => {
         for (let j = 0; j < incoming[i].length; j++) {
             let column = j + 1;
             if (incoming[i][j] === '.') {
-
+                map[id(row, column)];
             }
         }
     }
