@@ -18,7 +18,7 @@ describe.only('parsing the example', () => {
 
 const parse = (file) => {
     const around = [
-        { deltaRow: 0, deltaColumn: 1 }
+        { row: 0, column: 1 }
     ];
     const map = {};
     const incoming = groups(file)[0];
@@ -35,7 +35,11 @@ const parse = (file) => {
         }
     }
     Object.values(map).forEach(cell => {
+        around.forEach(delta => {
+            if (map[id(cell.location.row + delta.row, cell.location.column + delta.column)]) {
 
+            }
+        });
     });
     return map;
 };
