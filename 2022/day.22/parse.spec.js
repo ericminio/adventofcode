@@ -1,6 +1,6 @@
 const { expect } = require('chai');
 const example = `${__dirname}/data/example.txt`;
-const { id } = require('../support/index.js');
+const { id, groups } = require('../support/index.js');
 
 const xy = (x, y) => {
     return { x, y };
@@ -33,5 +33,5 @@ describe.only('parsing the example', () => {
 });
 
 const parse = (file) => {
-
+    const incoming = groups(file)[0];
 };
