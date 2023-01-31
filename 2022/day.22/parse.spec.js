@@ -17,13 +17,13 @@ describe.only('parsing the example', () => {
 });
 
 const parse = (file) => {
+    const map = { corridors: {}, walls: {}};
     const around = [
         { row: 0, column: 1 },
         { row: 1, column: 0 },
         { row: 0, column: -1 },
         { row: -1, column: 0 },
     ];
-    const map = { corridors: {}, walls: {}};
     const incoming = groups(file)[0];
     for (let i = 0; i < incoming.length; i++) {
         let row = i + 1;
