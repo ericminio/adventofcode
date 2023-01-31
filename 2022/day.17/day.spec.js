@@ -32,7 +32,7 @@ describe.only('2022.17', () => {
 
         it('is done', () => {
             const baseInfo = lines(`${__dirname}/data/challenge.base`).map(numberOrZero);
-            const base = { rocks: baseInfo.length };
+            const base = { rocks: baseInfo.length, height: baseInfo.reduce(add) };
             expect(base).to.deep.equal({ rocks: 390 });
         });
 
