@@ -47,7 +47,7 @@ const parse = (file) => {
                 cell.neighbours.push(candidate);
             }
             else {
-
+                const inverted = { row: -delta.row, column: -delta.column };
             }
         });
     });
