@@ -52,6 +52,7 @@ const parse = (file) => {
                 let step = 1;
                 let candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
                 console.log(cell, candidate);
+                console.log(map.corridors[candidate] !== undefined || map.walls[candidate] !== undefined);
                 if (map.corridors[candidate] !== undefined || map.walls[candidate] !== undefined) {
                     step ++;
                 }
