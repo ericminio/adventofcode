@@ -47,7 +47,7 @@ const parse = (file) => {
                 cell.neighbours.push(neighbour);
             }
             else {
-                const inverted = { row: -delta.row, column: -delta.column };
+                const inverted = { row: -1 * delta.row, column: -1 * delta.column };
                 console.log(delta, inverted);
                 let step = 1;
                 let candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
