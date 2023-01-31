@@ -56,6 +56,9 @@ const parse = (file) => {
                 }
                 step --;
                 candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
+                if (map[candidate]) {
+                    cell.neighbours.push(candidate);
+                }
             }
         });
     });
