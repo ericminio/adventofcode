@@ -30,7 +30,7 @@ describe('2022.17', () => {
             expect(total).to.equal(1514285714288);
         });
 
-        it.only('is done', () => {
+        it('is done', () => {
             const baseInfo = lines(`${__dirname}/data/challenge.base`).map(numberOrZero);
             const base = { rocks: baseInfo.length, height: baseInfo.reduce(add) };
             expect(base).to.deep.equal({ rocks: 390, height: 604 });
