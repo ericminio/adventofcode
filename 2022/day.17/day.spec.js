@@ -34,6 +34,8 @@ describe.only('2022.17', () => {
             const baseInfo = lines(`${__dirname}/data/challenge.base`).map(numberOrZero);
             const base = { rocks: baseInfo.length, height: baseInfo.reduce(add) };
             expect(base).to.deep.equal({ rocks: 390, height: 604 });
+
+            const deltas = lines(`${__dirname}/data/challenge.loop`).map(numberOrZero);
         });
 
     });
