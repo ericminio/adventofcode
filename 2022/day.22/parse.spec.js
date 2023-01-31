@@ -40,7 +40,9 @@ const parse = (file) => {
         let row = i + 1;
         for (let j = 0; j < incoming[i].length; j++) {
             let column = j + 1;
+            if (incoming[i][j] === '.') {
 
+            }
         }
     }
 };
