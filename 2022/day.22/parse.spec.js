@@ -1,3 +1,4 @@
+const { expect } = require('chai');
 const { id } = require('../support/index.js');
 
 const xy = (x, y) => {
@@ -16,5 +17,12 @@ describe.only('parsing the example', () => {
                 id(xy(9, 12))
             ]
         };
+
+        expect(map['9x1']).to.deep.equal({
+            location: { x: 9, y: 1 },
+            neighbours: [
+                '10x1', '9x2', '9x12'
+            ]
+        });
     });
 });
