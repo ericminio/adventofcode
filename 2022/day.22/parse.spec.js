@@ -11,7 +11,7 @@ describe.only('parsing the example', () => {
 
         expect(map['1x9']).to.deep.equal({
             location: { row: 1, column: 9 },
-            neighbours: []
+            neighbours: [ '1x10' ]
         });
     });
 });
@@ -36,8 +36,9 @@ const parse = (file) => {
     }
     Object.values(map).forEach(cell => {
         around.forEach(delta => {
-            if (map[id(cell.location.row + delta.row, cell.location.column + delta.column)]) {
-
+            const candidate = id(cell.location.row + delta.row, cell.location.column + delta.column);
+            if (map[candidate]) {
+                cell.neighbours.push(candidate);
             }
         });
     });
