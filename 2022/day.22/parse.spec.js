@@ -1,6 +1,8 @@
 const { expect } = require('chai');
 const example = `${__dirname}/data/example.txt`;
-const { id, groups } = require('../support/index.js');
+const { groups } = require('../support/index.js');
+
+const id = (row, column) => `${row}x${column}`;
 
 describe.only('parsing the example', () => {
 
