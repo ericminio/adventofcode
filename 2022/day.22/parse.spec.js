@@ -54,6 +54,8 @@ const parse = (file) => {
                     step ++;
                     candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
                 }
+                step --;
+                candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
             }
         });
     });
