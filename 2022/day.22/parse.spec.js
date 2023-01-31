@@ -35,6 +35,9 @@ const parse = (file) => {
                     neighbours: []
                 };
             }
+            if (incoming[i][j] === '#') {
+                map.walls[id(row, column)] = { location: { row, column }};
+            }
         }
     }
     Object.values(map.corridors).forEach(cell => {
