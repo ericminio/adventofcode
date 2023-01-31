@@ -46,7 +46,7 @@ const parse = (file) => {
             if (map.corridors[neighbour]) {
                 cell.neighbours.push(neighbour);
             }
-            else {
+            else if (! map.walls[neighbour]){
                 const inverted = { row: -1 * delta.row, column: -1 * delta.column };
                 console.log(delta, inverted);
                 let step = 1;
