@@ -48,6 +48,7 @@ const parse = (file) => {
             }
             else {
                 const inverted = { row: -delta.row, column: -delta.column };
+                console.log(delta, inverted);
                 let step = 1;
                 let candidate = id(cell.location.row + inverted.row * step, cell.location.column + inverted.column * step);
                 if (map.corridors[candidate] !== undefined || map.walls[candidate] !== undefined) {
