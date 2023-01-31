@@ -10,7 +10,10 @@ describe.only('parsing the example', () => {
         const map = {};
         map[id(xy(9, 1))] = {
             location: xy(9, 1),
-            neighbours: []
+            neighbours: [
+                id(xy(10, 1)),
+                id(xy(9, 2))
+            ]
         };
     });
 });
