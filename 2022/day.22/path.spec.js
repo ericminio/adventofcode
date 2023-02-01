@@ -3,7 +3,7 @@ const { expect } = require('chai');
 describe.only('parsing the path', () => {
 
     it('can be explored', () => {
-        const path = parse('1R');
+        const path = parse('10R');
 
         expect(path).to.deep.equal([
             { move: 10 },
