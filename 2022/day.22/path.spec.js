@@ -6,6 +6,7 @@ describe.only('parsing the path', () => {
 
     it('can be explored', () => {
         const incoming = groups(example)[1];
+        console.log(incoming);
         const path = parse('10R');
 
         expect(path).to.deep.equal([
