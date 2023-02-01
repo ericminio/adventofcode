@@ -16,9 +16,13 @@ const parse = (spec) => {
     const data = spec.split(/[RL]/);
     console.log(data);
 
-    const path = [
-        { move: 10 },
-        { rotate: 'R' }
-    ];
+    const path = [];
+
+    let command = { move: 10 };
+    path.push(command);
+
+    command = { rotate: 'R' };
+    path.push(command);
+
     return path;
 };
