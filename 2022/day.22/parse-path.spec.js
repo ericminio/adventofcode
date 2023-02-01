@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { parsePath } = require('./parse-path.js');
 const example = `${__dirname}/data/example.txt`;
 
-describe.only('parsing the path', () => {
+describe('parsing the path', () => {
 
     it('can be explored', () => {
         const path = parsePath(example);
