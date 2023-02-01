@@ -27,7 +27,7 @@ const solve1 = (file) => {
         if (command.rotate) {
             direction = command.rotate(direction);
         }
-        // console.log(command, current);
+        console.log(current);
     });
 
     return 1000 * 6 + 4 * 8 + 0;
