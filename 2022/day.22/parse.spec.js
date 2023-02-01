@@ -4,7 +4,7 @@ const { groups } = require('../support/index.js');
 
 const id = (row, column) => `${row}x${column}`;
 
-describe.only('parsing the example', () => {
+describe.only('parsing the map', () => {
 
     it('can be explored', () => {
         const map = parse(example);
