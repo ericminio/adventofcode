@@ -8,7 +8,7 @@ const start = (map) => {
         .slice(0, 1)
         .reduce(add);
 
-    return { row: 1, column: 9 };
+    return { row: 1, column: first };
 };
 
 module.exports = { start };
