@@ -51,4 +51,4 @@ const parseMap = (file) => {
     return map.corridors;
 };
 
-module.exports = { parseMap };
+module.exports = { id, parseMap };
