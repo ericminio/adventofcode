@@ -50,4 +50,4 @@ const parseMap = (file) => {
     return map.corridors;
 };
 
-module.exports = { id, parseMap };
+module.exports = { id, parseMap, left, right, below, above };
