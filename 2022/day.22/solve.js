@@ -1,4 +1,4 @@
-const { parseMap } = require('./parse-map.js');
+const { id, parseMap } = require('./parse-map.js');
 const { start } = require('./start.js');
 const { parsePath } = require('./parse-path.js');
 
@@ -10,12 +10,24 @@ const solve1 = (file) => {
 
     let command = path[0];
     console.log(command);
+    let next = move(current, direction);
+    if (map[id(next)]) {
+        current = next;
+    }
+    console.log(next);
 
     return 1000 * 6 + 4 * 8 + 0;
 };
 
 const solve2 = () => {
     return 15;
+};
+
+const move = (current, direction) => {
+    return {
+        row: current.row + direction.row,
+        column: current.column + direction.column
+    };
 };
 
 module.exports = { solve1, solve2 };
