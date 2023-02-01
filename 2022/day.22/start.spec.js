@@ -4,7 +4,7 @@ const { start } = require('./start.js');
 
 const example = `${__dirname}/data/example.txt`;
 
-describe('start', () => {
+describe.only('start', () => {
 
     it('is known', () => {
         const map = parseMap(example);
