@@ -11,7 +11,7 @@ const solve1 = (file) => {
     let command = path[0];
     console.log(command);
     let next = move(current, direction);
-    if (map[id(next)]) {
+    while (map[id(next)]) {
         current = next;
         next = move(current, direction);
     }
