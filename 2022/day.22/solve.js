@@ -10,38 +10,24 @@ const solve1 = (file) => {
     let current = start(map);
     let direction = { row: 0, column: 1 };
 
-    let command = path[0];
-    if (command.move) {
-        let steps = command.move;
-        for (let step = 0; step < steps; step ++) {
-            let next = move(current, direction);
-            if (map[id(next)] !== undefined) {
-                current = next;
-            }
-            else {
-                break;
-            }
+    path.forEach(command => {
+        if (command.move) {
+            let steps = command.move;
+            for (let step = 0; step < steps; step ++) {
+                let next = move(current, direction);
+                if (map[id(next)] !== undefined) {
+                    current = next;
+                }
+                else {
+                    break;
+                }
 
-        }
-    }
-    command = path[1];
-    if (command.rotate) {
-        direction = command.rotate(direction);
-    }
-    command = path[2];
-    if (command.move) {
-        let steps = command.move;
-        for (let step = 0; step < steps; step ++) {
-            let next = move(current, direction);
-            if (map[id(next)] !== undefined) {
-                current = next;
             }
-            else {
-                break;
-            }
-
         }
-    }
+        if (command.rotate) {
+            direction = command.rotate(direction);
+        }
+    });
 
     console.log(current);
 
