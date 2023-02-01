@@ -30,7 +30,7 @@ const solve1 = (file) => {
         console.log(current);
     });
 
-    return 1000 * 6 + 4 * 8 + 0;
+    return 1000 * current.row + 4 * 8 + 0;
 };
 
 const solve2 = () => {
