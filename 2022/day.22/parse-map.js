@@ -1,9 +1,9 @@
 const { groups } = require('../support/index.js');
 const id = (row, column) => `${row}x${column}`;
-const left = { row: 0, column: 1 };
-const below = { row: 1, column: 0 };
-const right = { row: 0, column: -1 };
-const above = { row: -1, column: 0 };
+const left = { id: id(0, 1), row: 0, column: 1 };
+const below = { id: id(1, 0), row: 1, column: 0 };
+const right = { id: id(0, -1), row: 0, column: -1 };
+const above = { id: id(-1, 0), row: -1, column: 0 };
 const around = [ left, below, right, above ];
 
 const parseMap = (file) => {
@@ -16,7 +16,7 @@ const parseMap = (file) => {
             if (incoming[i][j] === '.') {
                 map.corridors[id(row, column)] = {
                     location: { row, column },
-                    neighbours: []
+                    neighbours: {}
                 };
             }
             if (incoming[i][j] === '#') {
@@ -28,7 +28,7 @@ const parseMap = (file) => {
         around.forEach(delta => {
             const neighbour = id(cell.location.row + delta.row, cell.location.column + delta.column);
             if (map.corridors[neighbour]) {
-                cell.neighbours.push(neighbour);
+                cell.neighbours[delta.id] = neighbour;
             }
             else if (! map.walls[neighbour]){
                 const inverted = { row: -1 * delta.row, column: -1 * delta.column };
@@ -42,7 +42,7 @@ const parseMap = (file) => {
                 step --;
                 candidate = next(step, cell, inverted);
                 if (map.corridors[candidate]) {
-                    cell.neighbours.push(candidate);
+                    cell.neighbours[delta.id] = candidate;
                 }
             }
         });
