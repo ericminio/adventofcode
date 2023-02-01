@@ -7,5 +7,6 @@ describe.only('rotation', () => {
         expect(turnLeft({ row: 0, column: 1 })).to.deep.equal({ row: -1, column: 0 });
         expect(turnLeft({ row: -1, column: 0 })).to.deep.equal({ row: -0, column: -1 });
         expect(turnLeft({ row: 0, column: -1 })).to.deep.equal({ row: 1, column: 0 });
+        expect(turnLeft({ row: 1, column: 0 })).to.deep.equal({ row: 0, column: 1 });
     });
 });
