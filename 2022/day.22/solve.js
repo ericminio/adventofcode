@@ -15,7 +15,7 @@ const solve1 = (file) => {
         current = next;
         next = move(current, direction);
     }
-    console.log(next);
+    console.log(current);
 
     return 1000 * 6 + 4 * 8 + 0;
 };
