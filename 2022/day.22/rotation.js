@@ -1,5 +1,5 @@
 const turnLeft = (location) => {
-    return { row: -1, column: 0 };
+    return { row: -location.column, column: location.row };
 };
 
 module.exports = { turnLeft };
