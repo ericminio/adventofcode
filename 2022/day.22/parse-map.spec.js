@@ -4,7 +4,7 @@ const example = `${__dirname}/data/example.txt`;
 
 describe.only('parsing the map', () => {
 
-    it('can be explored', () => {
+    it('works for 1x9', () => {
         const map = parseMap(example);
 
         expect(map['1x9']).to.deep.equal({
