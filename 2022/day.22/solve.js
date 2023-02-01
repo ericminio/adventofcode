@@ -1,9 +1,12 @@
 const { parseMap } = require('./parse-map.js');
 const { start } = require('./start.js');
+const { parsePath } = require('./parse-path.js');
 
 const solve1 = (file) => {
     const map = parseMap(file);
-    const current = start(map);
+    const path = parsePath(file);
+    let current = start(map);
+    let facing = 'R';
 
     return 1000 * 6 + 4 * 8 + 0;
 };
