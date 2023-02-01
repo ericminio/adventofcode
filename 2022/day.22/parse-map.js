@@ -1,14 +1,14 @@
 const { groups } = require('../support/index.js');
 const id = (row, column) => `${row}x${column}`;
+const around = [
+    { row: 0, column: 1 },
+    { row: 1, column: 0 },
+    { row: 0, column: -1 },
+    { row: -1, column: 0 },
+];
 
 const parseMap = (file) => {
     const map = { corridors: {}, walls: {}};
-    const around = [
-        { row: 0, column: 1 },
-        { row: 1, column: 0 },
-        { row: 0, column: -1 },
-        { row: -1, column: 0 },
-    ];
     const incoming = groups(file)[0];
     for (let i = 0; i < incoming.length; i++) {
         let row = i + 1;
