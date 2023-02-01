@@ -1,20 +1,5 @@
-const { expect } = require('chai');
-const example = `${__dirname}/data/example.txt`;
 const { groups } = require('../support/index.js');
-
 const id = (row, column) => `${row}x${column}`;
-
-describe.only('parsing the map', () => {
-
-    it('can be explored', () => {
-        const map = parseMap(example);
-
-        expect(map['1x9']).to.deep.equal({
-            location: { row: 1, column: 9 },
-            neighbours: [ '1x10', '2x9', '12x9' ]
-        });
-    });
-});
 
 const parseMap = (file) => {
     const map = { corridors: {}, walls: {}};
@@ -65,3 +50,5 @@ const parseMap = (file) => {
     });
     return map.corridors;
 };
+
+module.exports = { parseMap };
