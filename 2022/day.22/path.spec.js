@@ -5,7 +5,7 @@ const example = `${__dirname}/data/example.txt`;
 describe.only('parsing the path', () => {
 
     it('can be explored', () => {
-        const incoming = groups(example)[1];
+        const incoming = groups(example)[1][0];
         console.log(incoming);
         const path = parse('10R');
 
