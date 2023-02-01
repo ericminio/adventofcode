@@ -28,20 +28,16 @@ const solve1 = (file) => {
             direction = command.rotate(direction);
         }
     });
-    console.log(direction);
 
-    return 1000 * current.row + 4 * current.column + 0;
+    return 1000 * current.row + 4 * current.column + score(direction);
 };
 
 const solve2 = () => {
     return 15;
 };
 
-const move = (current, direction) => {
-    return {
-        row: current.row + direction.row,
-        column: current.column + direction.column
-    };
+const score = (direction) => {
+    return 0;
 };
 
 module.exports = { solve1, solve2 };
