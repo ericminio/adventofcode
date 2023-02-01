@@ -41,7 +41,7 @@ const scores = {
     '1x0': 1,
 };
 const score = (direction) => {
-    return 0;
+    return scores[id(direction)];
 };
 
 module.exports = { solve1, solve2 };
