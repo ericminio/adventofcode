@@ -7,7 +7,7 @@ const id = (row, column) => `${row}x${column}`;
 describe.only('parsing the map', () => {
 
     it('can be explored', () => {
-        const map = parse(example);
+        const map = parseMap(example);
 
         expect(map['1x9']).to.deep.equal({
             location: { row: 1, column: 9 },
@@ -16,7 +16,7 @@ describe.only('parsing the map', () => {
     });
 });
 
-const parse = (file) => {
+const parseMap = (file) => {
     const map = { corridors: {}, walls: {}};
     const around = [
         { row: 0, column: 1 },
