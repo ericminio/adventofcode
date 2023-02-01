@@ -1,8 +1,11 @@
 const { expect } = require('chai');
+const { groups } = require('../support/index.js');
+const example = `${__dirname}/data/example.txt`;
 
 describe.only('parsing the path', () => {
 
     it('can be explored', () => {
+        const incoming = groups(example)[1];
         const path = parse('10R');
 
         expect(path).to.deep.equal([
