@@ -31,3 +31,5 @@ const parsePath = (file) => {
 
     return path;
 };
+
+module.exports = { parsePath };
