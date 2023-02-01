@@ -39,6 +39,8 @@ const solve2 = () => {
 const scores = {
     '0x1': 0,
     '1x0': 1,
+    '0x-1': 2,
+    '-1x0': 3
 };
 const score = (direction) => {
     return scores[id(direction)];
