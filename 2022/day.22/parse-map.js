@@ -2,10 +2,11 @@ const { groups } = require('../support/index.js');
 const id = (row, column) => `${row}x${column}`;
 const left = { row: 0, column: 1 };
 const below = { row: 1, column: 0 };
+const right = { row: 0, column: -1 };
 const around = [
     left,
     below,
-    { row: 0, column: -1 },
+    right,
     { row: -1, column: 0 },
 ];
 
