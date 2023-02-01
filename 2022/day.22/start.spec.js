@@ -15,9 +15,9 @@ describe.only('start', () => {
     });
 
     it('is known for the challenge', () => {
-        const map = parseMap(example);
+        const map = parseMap(challenge);
         const location = start(map);
 
-        expect(location).to.deep.equal({ row: 1, column: 9 });
+        expect(location).to.deep.equal({ row: 1, column: 51 });
     });
 });
