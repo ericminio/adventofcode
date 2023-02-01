@@ -14,12 +14,27 @@ describe.only('parsing the path', () => {
 
 const parse = (spec) => {
     const path = [];
-
-    let command = { move: 10 };
-    path.push(command);
-
-    command = { rotate: 'R' };
-    path.push(command);
+    let move = '';
+    for (let i = 0; i < spec.length; i++) {
+        let char = spec[i];
+        if (char === 'R') {
+            if (move.length > 0) {
+                path.push({ move: parseInt(move, 10) });
+                move = '';
+            }
+            path.push({ rotate: 'R' });
+        }
+        else if (char === 'L') {
+            if (move.length > 0) {
+                path.push({ move: parseInt(move, 10) });
+                move = '';
+            }
+            path.push({ rotate: 'L' });
+        }
+        else {
+            move += char;
+        }
+    }
 
     return path;
 };
