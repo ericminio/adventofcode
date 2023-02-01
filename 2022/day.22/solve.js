@@ -8,6 +8,9 @@ const solve1 = (file) => {
     let current = start(map);
     let direction = { row: 0, column: 1 };
 
+    let command = path[0];
+    console.log(command);
+
     return 1000 * 6 + 4 * 8 + 0;
 };
 
