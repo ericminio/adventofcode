@@ -6,7 +6,7 @@ const example = `${__dirname}/data/example.txt`;
 
 describe.only('start', () => {
 
-    it('is known', () => {
+    it('is known for the example', () => {
         const map = parseMap(example);
         const location = start(map);
 
