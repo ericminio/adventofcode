@@ -7,6 +7,7 @@ const start = (map) => {
         .sort(ascending)
         .slice(0, 1)
         .reduce(add);
+
     return { row: 1, column: 9 };
 };
 
