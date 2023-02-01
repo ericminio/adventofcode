@@ -14,9 +14,9 @@ const solve1 = (file) => {
         if (command.move) {
             let steps = command.move;
             for (let step = 0; step < steps; step ++) {
-                let next = move(current, direction);
-                if (map[id(next)] !== undefined) {
-                    current = next;
+                let nextId = map[id(current)].neighbours[id(direction)];
+                if (nextId !== undefined) {
+                    current = map[nextId].location;
                 }
                 else {
                     break;
