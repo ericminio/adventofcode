@@ -6,12 +6,21 @@ describe.only('parsing the path', () => {
 
     it('can be explored', () => {
         const incoming = groups(example)[1][0];
-        console.log(incoming);
-        const path = parse('10R');
+        const path = parse(incoming);
 
         expect(path).to.deep.equal([
             { move: 10 },
-            { rotate: 'R' }
+            { rotate: 'R' },
+            { move: 5 },
+            { rotate: 'L' },
+            { move: 5 },
+            { rotate: 'R' },
+            { move: 10 },
+            { rotate: 'L' },
+            { move: 4 },
+            { rotate: 'R' },
+            { move: 5 },
+            { rotate: 'L' },
         ]);
     });
 });
