@@ -18,6 +18,19 @@ const solve1 = (file) => {
             next = move(current, direction);
         }
     }
+    command = path[1];
+    if (command.rotate) {
+        direction = command.rotate(direction);
+    }
+    command = path[2];
+    if (command.move) {
+        let next = move(current, direction);
+        while (map[id(next)] !== undefined) {
+            current = next;
+            next = move(current, direction);
+        }
+    }
+
     console.log(current);
 
     return 1000 * 6 + 4 * 8 + 0;
