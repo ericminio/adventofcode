@@ -6,7 +6,7 @@ const solve1 = (file) => {
     const map = parseMap(file);
     const path = parsePath(file);
     let current = start(map);
-    let facing = 'R';
+    let direction = { row: 0, column: 1 };
 
     return 1000 * 6 + 4 * 8 + 0;
 };
