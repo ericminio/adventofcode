@@ -1,6 +1,8 @@
-const { id, parseMap } = require('./parse-map.js');
+const { parseMap } = require('./parse-map.js');
 const { start } = require('./start.js');
 const { parsePath } = require('./parse-path.js');
+
+const id = (cell) => `${cell.row}x${cell.column}`;
 
 const solve1 = (file) => {
     const map = parseMap(file);
