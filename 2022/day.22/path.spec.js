@@ -21,6 +21,7 @@ describe.only('parsing the path', () => {
             { rotate: 'R' },
             { move: 5 },
             { rotate: 'L' },
+            { move: 5 },
         ]);
     });
 });
@@ -47,6 +48,10 @@ const parse = (spec) => {
         else {
             move += char;
         }
+    }
+    if (move.length > 0) {
+        path.push({ move: parseInt(move, 10) });
+        move = '';
     }
 
     return path;
