@@ -13,7 +13,6 @@ const solve1 = (file) => {
     let command = path[0];
     console.log(command);
     let next = move(current, direction);
-    console.log(next);
     while (map[id(next)] !== undefined) {
         current = next;
         next = move(current, direction);
