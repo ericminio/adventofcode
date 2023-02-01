@@ -5,8 +5,7 @@ const example = `${__dirname}/data/example.txt`;
 describe.only('parsing the path', () => {
 
     it('can be explored', () => {
-        const incoming = groups(example)[1][0];
-        const path = parse(incoming);
+        const path = parse(example);
 
         expect(path).to.deep.equal([
             { move: 10 },
@@ -26,7 +25,8 @@ describe.only('parsing the path', () => {
     });
 });
 
-const parse = (spec) => {
+const parse = (file) => {
+    const spec = groups(file)[1][0];
     const path = [];
     let move = '';
     for (let i = 0; i < spec.length; i++) {
