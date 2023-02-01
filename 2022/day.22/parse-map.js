@@ -4,12 +4,7 @@ const left = { row: 0, column: 1 };
 const below = { row: 1, column: 0 };
 const right = { row: 0, column: -1 };
 const above = { row: -1, column: 0 };
-const around = [
-    left,
-    below,
-    right,
-    above,
-];
+const around = [ left, below, right, above ];
 
 const parseMap = (file) => {
     const map = { corridors: {}, walls: {}};
