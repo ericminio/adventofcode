@@ -36,6 +36,10 @@ const solve2 = () => {
     return 15;
 };
 
+const scores = {
+    '0x1': 0,
+    '1x0': 1,
+};
 const score = (direction) => {
     return 0;
 };
