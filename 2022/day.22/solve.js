@@ -13,10 +13,15 @@ const solve1 = (file) => {
     let command = path[0];
     if (command.move) {
         let steps = command.move;
-        let next = move(current, direction);
-        while (map[id(next)] !== undefined) {
-            current = next;
-            next = move(current, direction);
+        for (let step = 0; step < steps; step ++) {
+            let next = move(current, direction);
+            if (map[id(next)] !== undefined) {
+                current = next;
+            }
+            else {
+                break;
+            }
+
         }
     }
     command = path[1];
