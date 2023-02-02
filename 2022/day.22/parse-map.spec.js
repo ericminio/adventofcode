@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const { parseMap } = require('./parse-map.js');
 const example = `${__dirname}/data/example.txt`;
 
-describe.only('parsing the map', () => {
+describe('parsing the map', () => {
 
     it('works for 1x9', () => {
         const map = parseMap(example);
