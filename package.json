@@ -12,7 +12,7 @@
     "sinon-chai": "latest"
   },
   "scripts": {
-    "test": "mocha 2022/**/*.spec.js --timeout 45000 --exit",
+    "test": "mocha lib/**/*.spec.js 2022/**/*.spec.js --timeout 45000 --exit",
     "lint": "eslint --fix --config ./yop-eslint/.eslintrc.json 2022"
   },
   "dependencies": {
