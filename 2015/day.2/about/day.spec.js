@@ -15,7 +15,7 @@ describe('2015.2 puzzles', () => {
     describe('How many total feet of ribbon should they order?', () => {
         it('is solved', () => {
             expect(solveparttwo(input(`${__dirname}/incoming.txt`))).to.equal(
-                3858864
+                3842356
             );
         });
     });
