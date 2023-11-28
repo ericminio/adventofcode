@@ -1,12 +1,7 @@
 {
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "eslint.validate": [
-        "javascript"
-    ],
-    "eslint.options": {
-        "overrideConfigFile": "./yop-eslint/.eslintrc.json"
-    },
-    "eslint.format.enable": true
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
