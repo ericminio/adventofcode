@@ -1,6 +1,7 @@
+const { expect } = require('chai');
+
 const { input } = require('../../../support');
 const { solvepartone, solveparttwo } = require('../solution');
-const { expect } = require('chai');
 
 describe('20??.? puzzles', () => {
     describe('part 1', () => {

@@ -5,5 +5,8 @@ module.exports = {
         const stufur = new Elf();
         return stufur.totalSurfaceForDimensions(input);
     },
-    solveparttwo: () => '?',
+    solveparttwo: (input) => {
+        const stufur = new Elf();
+        return stufur.totalRibonLength(input);
+    },
 };
