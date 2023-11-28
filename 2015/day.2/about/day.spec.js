@@ -1,5 +1,5 @@
 const { input } = require('../../../support');
-const { solvepartone } = require('../solution');
+const { solvepartone, solveparttwo } = require('../solution');
 const { expect } = require('chai');
 
 describe('2015.2 puzzles', () => {
@@ -7,6 +7,14 @@ describe('2015.2 puzzles', () => {
         it('is solved', () => {
             expect(solvepartone(input(`${__dirname}/incoming.txt`))).to.equal(
                 1606483
+            );
+        });
+    });
+
+    describe('How many total feet of ribbon should they order?', () => {
+        it('is solved', () => {
+            expect(solveparttwo(input(`${__dirname}/incoming.txt`))).to.equal(
+                '???'
             );
         });
     });

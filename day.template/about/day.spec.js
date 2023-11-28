@@ -6,7 +6,7 @@ describe('20??.? puzzles', () => {
     describe('part 1', () => {
         it('is solved', () => {
             expect(solvepartone(input(`${__dirname}/incoming.txt`))).to.equal(
-                42
+                '???'
             );
         });
     });
@@ -14,7 +14,7 @@ describe('20??.? puzzles', () => {
     describe('part 2', () => {
         it('is done', () => {
             expect(solveparttwo(input(`${__dirname}/incoming.txt`))).to.equal(
-                15
+                '???'
             );
         });
     });
