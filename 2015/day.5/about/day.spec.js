@@ -11,4 +11,10 @@ describe('2015.5 puzzles', () => {
             expect(solvepartone(incoming)).to.equal(238);
         });
     });
+
+    describe('How many strings are nice under these new rules?', () => {
+        it('is known', () => {
+            expect(solveparttwo(incoming)).to.equal('???');
+        });
+    });
 });
