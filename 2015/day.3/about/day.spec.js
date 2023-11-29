@@ -11,4 +11,12 @@ describe('2015.3 puzzles', () => {
             );
         });
     });
+
+    describe('With 2 delivery men, how many houses receive at least one present?', () => {
+        it('is solved', () => {
+            expect(solveparttwo(input(`${__dirname}/incoming.txt`))).to.equal(
+                2631
+            );
+        });
+    });
 });
