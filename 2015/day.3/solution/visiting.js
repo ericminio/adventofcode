@@ -15,18 +15,8 @@ const visiting = (input) => {
 
     const moves = input.split('');
     moves.forEach((move) => {
-        if (move === '>') {
-            position.x += 1;
-        }
-        if (move === '<') {
-            position.x -= 1;
-        }
-        if (move === '^') {
-            position.y += 1;
-        }
-        if (move === 'v') {
-            position.y -= 1;
-        }
+        position.x += move === '>' ? 1 : move === '<' ? -1 : 0;
+        position.y += move === '^' ? 1 : move === 'v' ? -1 : 0;
         track(position, houses);
     });
     return houses;
