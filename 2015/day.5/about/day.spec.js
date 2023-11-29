@@ -8,7 +8,7 @@ describe('2015.5 puzzles', () => {
 
     describe('How many strings are nice?', () => {
         it('is known', () => {
-            expect(solvepartone(incoming)).to.equal('?');
+            expect(solvepartone(incoming)).to.equal(238);
         });
     });
 });
