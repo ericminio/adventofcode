@@ -10,18 +10,17 @@ const numbers = [
     'nine',
 ];
 
-const firstDigit = new RegExp('(\\d|' + numbers.join('|') + ')');
-const lastDigit = new RegExp('.*(\\d|' + numbers.join('|') + ')');
+const firstDigitRegExp = new RegExp('(\\d|' + numbers.join('|') + ')');
+const lastDigitRegExp = new RegExp('.*(\\d|' + numbers.join('|') + ')');
+
+const firstDigit = (line) => firstDigitRegExp.exec(line)[1];
+const lastDigit = (line) => lastDigitRegExp.exec(line)[1];
+
+const value = (extracted) => {
+    const index = numbers.indexOf(extracted);
+    return index === -1 ? parseInt(extracted) : index + 1;
+};
 
 module.exports = (line) => {
-    const first = firstDigit.exec(line)[1];
-    const index = numbers.indexOf(first);
-    let value = 10 * (index === -1 ? parseInt(first) : index + 1);
-
-    const last = lastDigit.exec(line)[1];
-    const lastIndex = numbers.indexOf(last);
-
-    value += lastIndex === -1 ? parseInt(last) : lastIndex + 1;
-
-    return value;
+    return 10 * value(firstDigit(line)) + value(lastDigit(line));
 };
