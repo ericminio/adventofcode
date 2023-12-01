@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { naive } from '../../solution/value.js';
+import { naive } from '../../solution/naive-value.js';
 
 describe('value recovery', () => {
     it('works for 1abc2', () => {

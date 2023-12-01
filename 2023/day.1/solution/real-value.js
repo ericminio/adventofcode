@@ -1,6 +1,6 @@
+import { extract } from '../../../support/index.js';
 import { firstDigit } from './digit-or-letters.js';
 import { lastDigit } from './last-digit.js';
-import { extract } from './extract.js';
 import { numbers } from './numbers.js';
 
 const value = (number) => {

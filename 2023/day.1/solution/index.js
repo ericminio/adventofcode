@@ -1,6 +1,6 @@
 import { reduce } from '../../../support/index.js';
 import { real } from './real-value.js';
-import { naive } from './value.js';
+import { naive } from './naive-value.js';
 
 export const solvepartone = (lines) => reduce(lines, naive)
 
