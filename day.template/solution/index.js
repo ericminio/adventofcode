@@ -1,4 +1,3 @@
-export const solvepartone = () => '?'
+export const solvepartone = () => '?';
 
-export const solveparttwo= () => '?'
-
+export const solveparttwo = () => '?';

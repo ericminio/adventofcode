@@ -1,25 +1,21 @@
 {
-  "name": "adventofcode",
-  "version": "1.0.0",
-  "private": false,
-  "devDependencies": {
-    "chai": "latest",
-    "deep-equal": "latest",
-    "jsdom": "latest",
-    "mocha": "latest",
-    "request": "latest",
-    "sinon": "latest",
-    "sinon-chai": "latest"
-  },
-  "scripts": {
-    "test": "mocha $(find $AOC_YEAR -name '*.spec.js') --timeout 45000 --exit",
-    "lint": "eslint --fix --config ./yop-eslint/.eslintrc.json 2022"
-  },
-  "dependencies": {
-    "eslint": "^8.31.0",
-    "node-object-hash": "^1.3.0",
-    "object-hash": "^1.2.0",
-    "prettier": "^3.1.0"
-  },
-  "type": "module"
+    "name": "adventofcode",
+    "version": "1.0.0",
+    "private": false,
+    "devDependencies": {
+        "chai": "latest",
+        "deep-equal": "latest",
+        "mocha": "latest",
+        "sinon": "latest",
+        "sinon-chai": "latest"
+    },
+    "scripts": {
+        "test": "mocha $(find $AOC_YEAR -name '*.spec.js') --timeout 45000 --exit"
+    },
+    "dependencies": {
+        "node-object-hash": "^1.3.0",
+        "object-hash": "^1.2.0",
+        "prettier": "^3.1.0"
+    },
+    "type": "module"
 }

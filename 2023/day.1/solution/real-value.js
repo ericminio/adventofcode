@@ -9,4 +9,5 @@ const value = (number) => {
 };
 
 export const real = (line) =>
-    10 * value(extract(firstDigit, line)) + value(extract(lastDigit(firstDigit), line));
+    10 * value(extract(firstDigit, line)) +
+    value(extract(lastDigit(firstDigit), line));
