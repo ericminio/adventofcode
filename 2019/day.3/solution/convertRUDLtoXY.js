@@ -6,13 +6,17 @@ const pattern = /^(.)(.*)/;
 const convert = (line) => {
     const path = {};
     const current = { x: 0, y: 0 };
+    let steps = 0;
     line.split(',').forEach((code) => {
         const data = pattern.exec(code);
         const move = directions[data[1]];
-        const steps = parseInt(data[2]);
-        for (var count = 0; count < steps; count++) {
-            const position = { x: current.x + move.dx, y: current.y + move.dy };
-            path[id(position)] = position;
+        const stepCount = parseInt(data[2]);
+        for (var count = 0; count < stepCount; count++) {
+            steps += 1;
+            const position = { x: current.x + move.dx, y: current.y + move.dy, steps };
+            if (!path[id(position)]) {
+                path[id(position)] = position;
+            }
             current.x = position.x;
             current.y = position.y;
         }
