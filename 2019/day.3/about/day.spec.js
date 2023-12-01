@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { lines } from '../../../support/index.js';
 import { solvepartone, solveparttwo } from '../solution/index.js';
 
-describe.only('2019.3 puzzles', () => {
+describe('2019.3 puzzles', () => {
     const incoming = lines(new URL('./incoming.txt', import.meta.url));
 
     describe('What is the Manhattan distance from the central port to the closest intersection?', () => {
