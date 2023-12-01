@@ -1,25 +1,12 @@
-const numbers = [
-    'one',
-    'two',
-    'three',
-    'four',
-    'five',
-    'six',
-    'seven',
-    'eight',
-    'nine',
-];
+const firstDigit = require('./digit-or-letters.js');
+const lastDigit = require('./last-digit.js')(firstDigit);
+const extract = require('./extract.js');
+const numbers = require('./numbers');
 
-const firstDigitRegExp = new RegExp('(\\d|' + numbers.join('|') + ')');
-const lastDigitRegExp = new RegExp('.*' + firstDigitRegExp.source);
-
-const firstDigit = (line) => firstDigitRegExp.exec(line)[1];
-const lastDigit = (line) => lastDigitRegExp.exec(line)[1];
-
-const value = (digit) => {
-    const index = numbers.indexOf(digit);
-    return index === -1 ? parseInt(digit) : index + 1;
+const value = (number) => {
+    const index = numbers.indexOf(number);
+    return index === -1 ? parseInt(number) : index + 1;
 };
 
 module.exports = (line) =>
-    10 * value(firstDigit(line)) + value(lastDigit(line));
+    10 * value(extract(firstDigit, line)) + value(extract(lastDigit, line));
