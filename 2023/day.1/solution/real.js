@@ -11,7 +11,7 @@ const numbers = [
 ];
 
 const firstDigitRegExp = new RegExp('(\\d|' + numbers.join('|') + ')');
-const lastDigitRegExp = new RegExp('.*(\\d|' + numbers.join('|') + ')');
+const lastDigitRegExp = new RegExp('.*' + firstDigitRegExp.source);
 
 const firstDigit = (line) => firstDigitRegExp.exec(line)[1];
 const lastDigit = (line) => lastDigitRegExp.exec(line)[1];
