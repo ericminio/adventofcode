@@ -8,5 +8,9 @@ export const solvepartone = (lines) => {
     return manhattan(candidates[0], origin);
 }
 
-export const solveparttwo = () => '?';
+export const solveparttwo = (lines) => {
+    const candidates = intersections(lines);
+    candidates.sort((a, b) => a.steps - b.steps);
+    return candidates[0].steps
+};
 
