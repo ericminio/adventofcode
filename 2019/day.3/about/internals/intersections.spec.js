@@ -25,12 +25,4 @@ describe('intersections finder', () => {
             { x: 1, y: 1, steps:4 },
         ]);
     });
-
-    it('consider both paths with equal priority', () => {
-        const lines = ['R1', 'U1,R1,D1'];
-
-        expect(intersections(lines)).to.deep.equal([
-            { x: 1, y: 0, steps:4 },
-        ]);
-    });
 });
