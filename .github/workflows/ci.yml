@@ -12,19 +12,16 @@ jobs:
 
         steps:
             - name: checkout code
-              uses: actions/checkout@v2
-            - name: checkout code
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
             - name: install node
-              uses: actions/setup-node@v2
+              uses: actions/setup-node@v4
               with:
                 node-version-file: '.nvmrc'
-            - name: info
+            - name: node info
               run: |
                 node --version
                 npm --version
-            - name: install
-              run: |
-                npm install
-            - name: tests
+            - name: install dependencies
+              run: npm install
+            - name: run the tests
               run: AOC_YEAR=2023 npm test
