@@ -11,4 +11,10 @@ describe('2023.1 puzzles', () => {
             expect(solvepartone(incoming)).to.equal(54877);
         });
     });
+
+    describe('What is the sum of all of the real calibration values?', () => {
+        it('is solved', () => {
+            expect(solveparttwo(incoming)).to.equal(54100);
+        });
+    });
 });

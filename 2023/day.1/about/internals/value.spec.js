@@ -1,7 +1,8 @@
 const { expect } = require('chai');
+
 const value = require('../../solution/value.js');
 
-describe('calibration value recovery', () => {
+describe('value recovery', () => {
     it('works for 1abc2', () => {
         expect(value('1abc2')).to.equal(12);
     });
