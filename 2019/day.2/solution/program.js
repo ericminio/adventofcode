@@ -1,4 +1,4 @@
-class Program {
+export class Program {
     constructor(input) {
         this.values = input.split(',').map((e) => parseInt(e));
         this.cursor = 0;
@@ -25,5 +25,3 @@ class Program {
         return this.values;
     }
 }
-
-module.exports = Program;

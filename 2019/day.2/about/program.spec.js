@@ -1,6 +1,6 @@
-const { expect } = require('chai');
+import { expect } from 'chai';
 
-const Program = require('../solution/program');
+import { Program } from '../solution/program.js';
 
 describe('Program', () => {
     it('can add', () => {

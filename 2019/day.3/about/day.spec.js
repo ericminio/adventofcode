@@ -1,10 +1,10 @@
-const { expect } = require('chai');
+import { expect } from 'chai';
 
-const { lines } = require('../../../support');
-const { solvepartone, solveparttwo } = require('../solution');
+import { lines } from '../../../support/index.js';
+import { solvepartone, solveparttwo } from '../solution/index.js';
 
-describe('2019.3 puzzles', () => {
-    const incoming = lines(`${__dirname}/incoming.txt`);
+describe.only('2019.3 puzzles', () => {
+    const incoming = lines(new URL('./incoming.txt', import.meta.url));
 
     describe('What is the Manhattan distance from the central port to the closest intersection?', () => {
         it('is solved', () => {

@@ -1,10 +1,10 @@
 import fs from 'fs';
-const input = (file) => fs.readFileSync(file).toString();
+export const input = (file) => fs.readFileSync(file).toString();
 export const lines = (file) =>
     input(file)
         .split(/\n/)
         .filter((line) => line.length > 0);
-const numbers = (file) =>
+export const numbers = (file) =>
     input(file)
         .split(/\n/)
         .filter((line) => line.length > 0)
@@ -42,8 +42,8 @@ const isInside = (reference, candidate) =>
 const isOverlapping = (reference, candidate) =>
     candidate.end >= reference.start && candidate.start <= reference.end;
 
-const manhattan = (a, b) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
-const id = (location) => `${location.x}x${location.y}`;
+export const manhattan = (a, b) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+export const id = (location) => `${location.x}x${location.y}`;
 
 export const utils = {
     input,

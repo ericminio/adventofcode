@@ -1,5 +1,5 @@
-const { id } = require("../../../support");
-const directions = require('./rudlf.js');
+import { id } from '../../../support/index.js';
+import { directions } from './rudlf.js';
 
 const pattern = /^(.)(.*)/;
 
@@ -20,9 +20,9 @@ const convert = (line) => {
     return path;
 };
 
-module.exports = (lines) => {
+export const convertRUDLtoXY = (lines) => {
     const paths = [];
-    for (line of lines) {
+    for (const line of lines) {
         paths.push(convert(line));
     }
     return paths;

@@ -1,8 +1,8 @@
-const convertRULDtoXY = require('./convertRUDLtoXY.js');
+import { convertRUDLtoXY } from './convertRUDLtoXY.js';
 
-module.exports = (lines) => {
+export const intersections = (lines) => {
     const intersections = [];
-    const paths = convertRULDtoXY(lines);
+    const paths = convertRUDLtoXY(lines);
     const keys = Object.keys(paths[0]);
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i];

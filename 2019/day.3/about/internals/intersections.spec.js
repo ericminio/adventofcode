@@ -1,6 +1,6 @@
-const { expect } = require('chai');
+import { expect } from 'chai';
 
-const intersections = require('../../solution/intersections.js');
+import {intersections} from '../../solution/intersections.js';
 
 describe('intersections finder', () => {
     it('can find one intersection', () => {
