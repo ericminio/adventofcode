@@ -1,3 +1,5 @@
+const { id } = require("../../../support");
+
 const pattern = /^(.)(.*)/;
 const directions = {
     R: { dx: 1, dy: 0 },
@@ -7,7 +9,7 @@ const directions = {
 };
 
 const convert = (line) => {
-    const path = [];
+    const path = {};
     const current = { x: 0, y: 0 };
     line.split(',').forEach((code) => {
         const data = pattern.exec(code);
@@ -15,7 +17,7 @@ const convert = (line) => {
         const steps = parseInt(data[2]);
         for (var count = 0; count < steps; count++) {
             const position = { x: current.x + move.dx, y: current.y + move.dy };
-            path.push(position);
+            path[id(position)] = position;
             current.x = position.x;
             current.y = position.y;
         }
