@@ -1,12 +1,7 @@
 const { id } = require("../../../support");
+const directions = require('./rudlf.js');
 
 const pattern = /^(.)(.*)/;
-const directions = {
-    R: { dx: 1, dy: 0 },
-    U: { dx: 0, dy: 1 },
-    L: { dx: -1, dy: 0 },
-    D: { dx: 0, dy: -1 },
-};
 
 const convert = (line) => {
     const path = {};
