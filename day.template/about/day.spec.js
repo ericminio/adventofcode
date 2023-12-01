@@ -1,10 +1,10 @@
-const { expect } = require('chai');
+import { expect } from 'chai';
 
-const { input } = require('../../../support');
-const { solvepartone, solveparttwo } = require('../solution');
+import { lines } from '../../../support/index.js';
+import { solvepartone, solveparttwo } from '../solution/index.js';
 
 describe('20??.? puzzles', () => {
-    const incoming = input(`${__dirname}/incoming.txt`);
+    const incoming = lines(new URL('./incoming.txt', import.meta.url));
 
     describe('part 1', () => {
         it('is solved', () => {

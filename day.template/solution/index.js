@@ -1,1 +1,4 @@
-module.exports = { solvepartone: () => '?', solveparttwo: () => '?' };
+export const solvepartone = () => '?'
+
+export const solveparttwo= () => '?'
+
