@@ -16,11 +16,10 @@ const lastDigitRegExp = new RegExp('.*' + firstDigitRegExp.source);
 const firstDigit = (line) => firstDigitRegExp.exec(line)[1];
 const lastDigit = (line) => lastDigitRegExp.exec(line)[1];
 
-const value = (extracted) => {
-    const index = numbers.indexOf(extracted);
-    return index === -1 ? parseInt(extracted) : index + 1;
+const value = (digit) => {
+    const index = numbers.indexOf(digit);
+    return index === -1 ? parseInt(digit) : index + 1;
 };
 
-module.exports = (line) => {
-    return 10 * value(firstDigit(line)) + value(lastDigit(line));
-};
+module.exports = (line) =>
+    10 * value(firstDigit(line)) + value(lastDigit(line));
