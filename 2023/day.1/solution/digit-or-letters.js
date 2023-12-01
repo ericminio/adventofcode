@@ -1,3 +1,3 @@
-const numbers = require('./numbers');
+import { numbers } from './numbers.js';
 
-module.exports = new RegExp('(\\d|' + numbers.join('|') + ')');
+export const firstDigit = new RegExp('(\\d|' + numbers.join('|') + ')');

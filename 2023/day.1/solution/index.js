@@ -1,11 +1,12 @@
-const real = require('./real-value.js');
-const value = require('./value.js');
+import { real } from './real-value.js';
+import { naive } from './value.js';
 
-module.exports = {
-    solvepartone: (lines) => {
-        return lines.reduce((total, line) => total + value(line), 0);
-    },
-    solveparttwo: (lines) => {
-        return lines.reduce((total, line) => total + real(line), 0);
-    },
-};
+
+export const solvepartone = (lines) => {
+    return lines.reduce((total, line) => total + naive(line), 0);
+}
+
+export const solveparttwo= (lines) => {
+    return lines.reduce((total, line) => total + real(line), 0);
+}
+

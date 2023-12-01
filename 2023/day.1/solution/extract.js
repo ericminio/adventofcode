@@ -1,1 +1,1 @@
-module.exports = (regexp, line) => regexp.exec(line)[1];
+export const extract = (regexp, line) => regexp.exec(line)[1];

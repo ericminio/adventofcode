@@ -1,6 +1,6 @@
-const fs = require('fs');
+import fs from 'fs';
 const input = (file) => fs.readFileSync(file).toString();
-const lines = (file) =>
+export const lines = (file) =>
     input(file)
         .split(/\n/)
         .filter((line) => line.length > 0);
@@ -45,7 +45,7 @@ const isOverlapping = (reference, candidate) =>
 const manhattan = (a, b) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 const id = (location) => `${location.x}x${location.y}`;
 
-module.exports = {
+export const utils = {
     input,
     lines,
     numbers,

@@ -1,1 +1,1 @@
-module.exports = /(\d)/;
+export const firstDigit = /(\d)/;

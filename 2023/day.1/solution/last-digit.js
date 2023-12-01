@@ -1,1 +1,1 @@
-module.exports = (digit) => new RegExp('.*' + digit.source);
+export const lastDigit = (digit) => new RegExp('.*' + digit.source);
