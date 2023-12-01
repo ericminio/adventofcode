@@ -36,6 +36,7 @@ const multiply = (a, b) => a * b;
 const add = (a, b) => a + b;
 
 export const extractor = (pattern) => (line) => pattern.exec(line).splice(1);
+export const extract = (regexp, line) => extractor(regexp)(line)[0];
 
 const isInside = (reference, candidate) =>
     candidate.start >= reference.start && candidate.end <= reference.end;
@@ -46,7 +47,6 @@ export const manhattan = (a, b) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 export const id = (location) => `${location.x}x${location.y}`;
 
 export const reduce = (lines, value) => lines.reduce((total, line) => total + value(line), 0);
-export const extract = (regexp, line) => regexp.exec(line)[1];
 
 export const utils = {
     input,
