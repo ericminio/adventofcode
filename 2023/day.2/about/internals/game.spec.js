@@ -1,7 +1,8 @@
 import { expect } from 'chai';
+
 import { game } from '../../solution/game.js';
 
-describe.only('game parser', () => {
+describe('game parser', () => {
     it('can parse a game with 1 draw of 1 red', () => {
         const line = 'Game 1: 2 red';
 

@@ -8,11 +8,11 @@ describe('2023.2 puzzles', () => {
 
     describe('Determine which games would have been possible if the bag had been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes. What is the sum of the IDs of those games?', () => {
         it('is solved', () => {
-            expect(solvepartone(incoming)).to.equal('???');
+            expect(solvepartone(incoming)).to.equal(2716);
         });
     });
 
-    describe.only('part 1 example', () => {
+    describe('part 1 example', () => {
         it('is helpfull', () => {
             const lines = [
                 'Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green',

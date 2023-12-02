@@ -1,3 +1,12 @@
-export const isPossible = (game) => {
-    return [1, 2, 5].includes(game.id);
+export const isPossible = (game, bag) => {
+    for (const draw of game.draws) {
+        if (
+            draw.red > bag.red ||
+            draw.green > bag.green ||
+            draw.blue > bag.blue
+        ) {
+            return false;
+        }
+    }
+    return true;
 };
