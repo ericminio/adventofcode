@@ -6,23 +6,14 @@ export const game = (line) => {
         .substring(line.indexOf(':') + 1)
         .split(';')
         .map((draw) => {
-            let rgb = {};
-            try {
-                rgb.red = parseInt(extract(/\s(\d*)\sred/, draw));
-            } catch {
-                rgb.red = 0;
-            }
-            try {
-                rgb.green = parseInt(extract(/\s(\d*)\sgreen/, draw));
-            } catch {
-                rgb.green = 0;
-            }
-            try {
-                rgb.blue = parseInt(extract(/\s(\d*)\sblue/, draw));
-            } catch {
-                rgb.blue = 0;
-            }
-            return rgb;
+            const maybered = /\s(\d*)\sred/.exec(draw);
+            const maybegreen = /\s(\d*)\sgreen/.exec(draw);
+            const maybeblue = /\s(\d*)\sblue/.exec(draw);
+            return {
+                red: maybered ? parseInt(maybered[1]) : 0,
+                green: maybegreen ? parseInt(maybegreen[1]) : 0,
+                blue: maybeblue ? parseInt(maybeblue[1]) : 0,
+            };
         });
 
     return {

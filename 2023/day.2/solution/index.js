@@ -14,7 +14,7 @@ export const solveparttwo = (lines) =>
         lines
             .map((line) => game(line))
             .map((g) => {
-                let min = { red: 0, green: 0, blue: 0 };
+                const min = { red: 0, green: 0, blue: 0 };
                 g.draws.forEach((draw) => {
                     if (draw.red > min.red) {
                         min.red = draw.red;
