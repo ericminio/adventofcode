@@ -1,7 +1,7 @@
 import { extract } from '../../../support/index.js';
 
 export const game = (line) => {
-    const id = extract(/Game (.*):/, line);
+    const id = parseInt(extract(/Game (.*):/, line));
     const draws = line
         .substring(line.indexOf(':') + 1)
         .split(';')
@@ -17,7 +17,7 @@ export const game = (line) => {
         });
 
     return {
-        id: parseInt(id),
+        id,
         draws,
     };
 };
