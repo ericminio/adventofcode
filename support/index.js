@@ -46,7 +46,8 @@ const isOverlapping = (reference, candidate) =>
 export const manhattan = (a, b) => Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 export const id = (location) => `${location.x}x${location.y}`;
 
-export const reduce = (lines, value) => lines.reduce((total, line) => total + value(line), 0);
+export const reduce = (lines, value) =>
+    lines.reduce((total, line) => total + (value ? value(line) : line), 0);
 
 export const utils = {
     input,

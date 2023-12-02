@@ -13,15 +13,13 @@ export const solveparttwo = (lines) =>
     reduce(
         lines
             .map((line) => game(line))
-            .map((g) => {
-                const min = { red: 0, green: 0, blue: 0 };
-                g.draws.forEach((draw) => {
+            .map((g) =>
+                g.draws.reduce((min, draw) => {
                     min.red = Math.max(draw.red, min.red);
                     min.green = Math.max(draw.green, min.green);
                     min.blue = Math.max(draw.blue, min.blue);
-                });
-                return min;
-            })
+                    return min;
+                }),
+            )
             .map((min) => min.red * min.green * min.blue),
-        (v) => v,
     );
