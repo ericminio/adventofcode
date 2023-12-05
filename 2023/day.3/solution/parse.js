@@ -14,8 +14,8 @@ export const parse = (line) => {
                 const number = parseInt(acc);
                 numbers.push({
                     number,
-                    startIndex: line.indexOf(acc),
-                    endIndex: line.indexOf(acc) + acc.length - 1,
+                    startIndex: start,
+                    endIndex: start + acc.length - 1,
                 });
             }
             acc = '';
@@ -25,8 +25,8 @@ export const parse = (line) => {
         const number = parseInt(acc);
         numbers.push({
             number,
-            startIndex: line.indexOf(acc),
-            endIndex: line.indexOf(acc) + acc.length - 1,
+            startIndex: start,
+            endIndex: start + acc.length - 1,
         });
     }
 

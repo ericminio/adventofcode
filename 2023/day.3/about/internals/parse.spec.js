@@ -47,4 +47,34 @@ describe.only('parser', () => {
     it('resists line without number', () => {
         expect(parse('...$..*')).to.deep.equal([]);
     });
+
+    it('can parse the same number twice', () => {
+        expect(parse('...15...15..')).to.deep.equal([
+            {
+                number: 15,
+                startIndex: 3,
+                endIndex: 4,
+            },
+            {
+                number: 15,
+                startIndex: 8,
+                endIndex: 9,
+            },
+        ]);
+    });
+
+    it('can parse the same number twice when met at the end', () => {
+        expect(parse('...15...15')).to.deep.equal([
+            {
+                number: 15,
+                startIndex: 3,
+                endIndex: 4,
+            },
+            {
+                number: 15,
+                startIndex: 8,
+                endIndex: 9,
+            },
+        ]);
+    });
 });
