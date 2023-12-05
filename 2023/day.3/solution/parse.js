@@ -9,13 +9,26 @@ export const parse = (line) => {
                 start = i;
             }
             acc += c;
+        } else {
+            if (acc.length > 0) {
+                const number = parseInt(acc);
+                numbers.push({
+                    number,
+                    startIndex: line.indexOf(acc),
+                    endIndex: line.indexOf(acc) + acc.length - 1,
+                });
+            }
+            acc = '';
         }
     }
-    const number = parseInt(acc);
-    numbers.push({
-        number,
-        startIndex: line.indexOf(acc),
-        endIndex: line.indexOf(acc) + acc.length - 1,
-    });
+    if (acc.length > 0) {
+        const number = parseInt(acc);
+        numbers.push({
+            number,
+            startIndex: line.indexOf(acc),
+            endIndex: line.indexOf(acc) + acc.length - 1,
+        });
+    }
+
     return numbers;
 };
