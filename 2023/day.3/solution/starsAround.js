@@ -6,5 +6,5 @@ export const starsAround = (candidate, lines) => {
         .filter((p) => aroundNumber(p, lines))
         .map((p) => ({ ...p, value: lines[p.y][p.x] }))
         .filter((p) => p.value === '*')
-        .map((p) => ({ x: p.x, y: p.y, candidate }));
+        .map((p) => ({ x: p.x, y: p.y, number: candidate.number }));
 };

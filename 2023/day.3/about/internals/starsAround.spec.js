@@ -16,7 +16,7 @@ describe('starsAround', () => {
             {
                 x: 2,
                 y: 2,
-                candidate,
+                number: candidate.number,
             },
         ]);
     });
@@ -34,12 +34,12 @@ describe('starsAround', () => {
             {
                 x: 0,
                 y: 1,
-                candidate,
+                number: candidate.number,
             },
             {
                 x: 2,
                 y: 0,
-                candidate,
+                number: candidate.number,
             },
         ]);
     });

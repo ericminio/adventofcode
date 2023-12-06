@@ -1,6 +1,7 @@
-import { sumall } from '../../../support/index.js';
+import { id, sumall } from '../../../support/index.js';
 import { isPartNumber } from './isPartNumber.js';
 import { parse } from './parse.js';
+import { starsAround } from './starsAround.js';
 
 export const solvepartone = (lines) =>
     sumall(
@@ -16,25 +17,32 @@ export const solvepartone = (lines) =>
         (part) => part.number,
     );
 
-export const solveparttwo = () =>
-    sumall(
-        [
-            {
-                x: 3,
-                y: 1,
-                numbers: [467, 35],
-            },
-            {
-                x: 3,
-                y: 4,
-                numbers: [617],
-            },
-            {
-                x: 5,
-                y: 8,
-                numbers: [755, 598],
-            },
-        ]
-            .filter((g) => g.numbers.length === 2)
-            .map((g) => g.numbers.reduce((ratio, gear) => ratio * gear)),
+export const solveparttwo = (lines) => {
+    console.log(
+        Object.values(
+            lines
+                .map((line, index) =>
+                    parse(line).map((number) => ({
+                        ...number,
+                        lineIndex: index,
+                    })),
+                )
+                .reduce((candidates, numbers) => candidates.concat(numbers))
+                .map((candidate) => starsAround(candidate, lines))
+                .filter((candidate) => candidate.length > 0)
+                .reduce((candidates, candidate) => candidates.concat(candidate))
+                .reduce((candidates, candidate) => {
+                    if (!candidates[id(candidate)]) {
+                        candidates[id(candidate)] = [];
+                    }
+                    candidates[id(candidate)].push(candidate.number);
+                    return candidates;
+                }, {}),
+        ),
     );
+    return sumall(
+        [[467, 35], [617], [755, 598]]
+            .filter((g) => g.length === 2)
+            .map((g) => g.reduce((ratio, gear) => ratio * gear)),
+    );
+};
