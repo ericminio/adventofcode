@@ -22,4 +22,29 @@ export const solvepartone = (lines) =>
             .map((size) => Math.pow(2, size - 1)),
     );
 
-export const solveparttwo = () => '?';
+export const solveparttwo = (lines) => {
+    const cards = lines
+        .map((line) => {
+            const [cardId, winning, played] = extractor(pattern)(line);
+            return {
+                cardId,
+                winning: parse(winning),
+                played: parse(played),
+            };
+        })
+        .map((game) => ({
+            id: game.cardId,
+            winningNumbersCount: game.played.filter((c) =>
+                game.winning.includes(c),
+            ).length,
+            count: 1,
+        }));
+
+    for (let i = 0; i < cards.length; i++) {
+        for (let j = i + 1; j < i + 1 + cards[i].winningNumbersCount; j++) {
+            cards[j].count = cards[j].count + cards[i].count;
+        }
+    }
+
+    return sumall(cards.map((c) => c.count));
+};
