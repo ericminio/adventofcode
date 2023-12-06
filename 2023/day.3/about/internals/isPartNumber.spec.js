@@ -28,4 +28,30 @@ describe.only('isPartNumber', () => {
             expect(isPartNumber(candidate, lines)).to.equal(false);
         });
     });
+
+    describe('when number is starting the field', () => {
+        it('is a part number when touching a symbol', () => {
+            const candidate = {
+                number: 467,
+                lineIndex: 0,
+                startIndex: 0,
+                endIndex: 2,
+            };
+            const lines = ['467.', '...*'];
+
+            expect(isPartNumber(candidate, lines)).to.equal(true);
+        });
+
+        it('is not a part number when far from any symbol', () => {
+            const candidate = {
+                number: 467,
+                lineIndex: 0,
+                startIndex: 0,
+                endIndex: 2,
+            };
+            const lines = ['467.', '....'];
+
+            expect(isPartNumber(candidate, lines)).to.equal(false);
+        });
+    });
 });
