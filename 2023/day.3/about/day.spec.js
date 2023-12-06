@@ -16,4 +16,9 @@ describe('2023.3 puzzles', () => {
         const example = lines(new URL('./example.txt', import.meta.url));
         expect(solvepartone(example)).to.equal(4361);
     });
+
+    it('has a helpful example for part 2', () => {
+        const example = lines(new URL('./example.txt', import.meta.url));
+        expect(solveparttwo(example)).to.equal(467835);
+    });
 });

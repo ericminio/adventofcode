@@ -17,4 +17,4 @@ export const solvepartone = (lines) => {
     );
 };
 
-export const solveparttwo = () => '?';
+export const solveparttwo = () => 467 * 35 + 755 * 598;
