@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import { parse } from '../../solution/parse.js';
 
-describe.only('parser', () => {
+describe('parser', () => {
     it('leverages Number.isNaN', () => {
         expect(Number.isNaN(parseInt('1'))).to.equal(false);
         expect(Number.isNaN(parseInt('.'))).to.equal(true);

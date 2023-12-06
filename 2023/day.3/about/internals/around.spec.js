@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import { around } from '../../solution/around.js';
 
-describe.only('around', () => {
+describe('around', () => {
     it('returns the 8 positions around one digit number', () => {
         const candidate = {
             number: 7,

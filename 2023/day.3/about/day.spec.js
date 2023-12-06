@@ -8,11 +8,11 @@ describe('2023.3 puzzles', () => {
 
     describe('What is the sum of all of the part numbers in the engine schematic?', () => {
         it('is solved', () => {
-            expect(solvepartone(incoming)).to.equal('???');
+            expect(solvepartone(incoming)).to.equal(533784);
         });
     });
 
-    it.only('has a helpful example for part 1', () => {
+    it('has a helpful example for part 1', () => {
         const example = lines(new URL('./example.txt', import.meta.url));
         expect(solvepartone(example)).to.equal(4361);
     });

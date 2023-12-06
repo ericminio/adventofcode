@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import { isPartNumber } from '../../solution/isPartNumber.js';
 
-describe.only('isPartNumber', () => {
+describe('isPartNumber', () => {
     describe('when number is in the middle of the field', () => {
         it('is a part number when touching a symbol', () => {
             const candidate = {
