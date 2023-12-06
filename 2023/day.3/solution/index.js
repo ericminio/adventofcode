@@ -17,8 +17,8 @@ export const solvepartone = (lines) =>
         (part) => part.number,
     );
 
-export const solveparttwo = (lines) => {
-    console.log(
+export const solveparttwo = (lines) =>
+    sumall(
         Object.values(
             lines
                 .map((line, index) =>
@@ -38,11 +38,7 @@ export const solveparttwo = (lines) => {
                     candidates[id(candidate)].push(candidate.number);
                     return candidates;
                 }, {}),
-        ),
-    );
-    return sumall(
-        [[467, 35], [617], [755, 598]]
+        )
             .filter((g) => g.length === 2)
             .map((g) => g.reduce((ratio, gear) => ratio * gear)),
     );
-};

@@ -12,6 +12,12 @@ describe('2023.3 puzzles', () => {
         });
     });
 
+    describe('What is the sum of all of the gear ratios in your engine schematic?', () => {
+        it('is solved', () => {
+            expect(solveparttwo(incoming)).to.equal(78826761);
+        });
+    });
+
     it('has a helpful example for part 1', () => {
         const example = lines(new URL('./example.txt', import.meta.url));
         expect(solvepartone(example)).to.equal(4361);
