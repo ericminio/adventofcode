@@ -49,4 +49,32 @@ describe('transform', () => {
 
         expect(transform(100, mapping)).to.equal(200);
     });
+
+    it('can be used to chain mappings', () => {
+        const mappings = [
+            {
+                ranges: [
+                    {
+                        size: 5,
+                        source: 0,
+                        destination: 20,
+                    },
+                ],
+            },
+            {
+                ranges: [
+                    {
+                        size: 3,
+                        source: 20,
+                        destination: 40,
+                    },
+                ],
+            },
+        ];
+        const value = mappings.reduce((previous, mapping) => {
+            return transform(previous, mapping);
+        }, 2);
+
+        expect(value).to.equal(42);
+    });
 });

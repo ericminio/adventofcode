@@ -6,9 +6,9 @@ import { solvepartone, solveparttwo } from '../solution/index.js';
 describe('2023.5 puzzles', () => {
     const incoming = input(new URL('./incoming.txt', import.meta.url));
 
-    describe.skip('What is the lowest location number that corresponds to any of the initial seed numbers?', () => {
+    describe('What is the lowest location number that corresponds to any of the initial seed numbers?', () => {
         it('is solved', () => {
-            expect(solvepartone(incoming)).to.equal('???');
+            expect(solvepartone(incoming)).to.equal(174137457);
         });
     });
 
