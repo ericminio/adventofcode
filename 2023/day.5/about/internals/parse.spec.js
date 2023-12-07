@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { parse, parseRangeOfSeeds } from '../../solution/parse.js';
+import { parse } from '../../solution/parse.js';
 
 describe('parser', () => {
     it('can extract seeds', () => {
