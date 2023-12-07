@@ -12,6 +12,12 @@ describe('2023.5 puzzles', () => {
         });
     });
 
+    describe.skip('What is the lowest location number that corresponds to any of the initial seed numbers?', () => {
+        it('is solved', () => {
+            expect(solveparttwo(incoming)).to.equal(174137457);
+        });
+    });
+
     it('has an example for part 1', () => {
         const example = input(new URL('./example.txt', import.meta.url));
 

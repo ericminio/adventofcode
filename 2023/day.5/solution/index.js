@@ -18,7 +18,7 @@ export const solvepartone = (lines) => {
 
 export const solveparttwo = (lines) => {
     const garden = parse(lines);
-    const locations = [];
+    let min = 174137457;
     for (let i = 0; i < garden.seeds.length; i += 2) {
         for (let j = 0; j < garden.seeds[i + 1]; j++) {
             const seed = garden.seeds[i] + j;
@@ -26,9 +26,11 @@ export const solveparttwo = (lines) => {
                 (previous, mapping) => transform(previous, mapping),
                 seed,
             );
-            locations.push(location);
+            if (location < min) {
+                min = location;
+            }
         }
     }
 
-    return locations.sort(ascending)[0];
+    return min;
 };
