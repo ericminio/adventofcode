@@ -1,19 +1,13 @@
-export const seeds = (line) =>
+const seeds = (line) =>
     /seeds:\s(.*)/
         .exec(line)[1]
         .split(' ')
         .map((e) => parseInt(e));
 
-export const parse = (input) => {
-    const groups = input.split('\n\n');
-    const garden = {};
-    garden.seeds = seeds(groups[0]);
-    garden.mappings = [];
-
-    for (let i = 1; i < groups.length; i++) {
-        const group = groups[i];
+const mappings = (groups) =>
+    groups.map((group) => {
         const mapping = group.split('\n');
-        garden.mappings.push({
+        return {
             id: /(.*)\smap:/.exec(mapping[0].trim())[1],
             ranges: mapping
                 .splice(1)
@@ -27,8 +21,11 @@ export const parse = (input) => {
                         destination: parseInt(values[0]),
                     };
                 }),
-        });
-    }
+        };
+    });
 
-    return garden;
+export const parse = (input) => {
+    const groups = input.split('\n\n');
+
+    return { seeds: seeds(groups[0]), mappings: mappings(groups.splice(1)) };
 };
