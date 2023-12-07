@@ -30,4 +30,23 @@ describe('transform', () => {
 
         expect(transform(100, mapping)).to.equal(200);
     });
+
+    it('returns expected destination with two ranges', () => {
+        const mapping = {
+            ranges: [
+                {
+                    size: 1,
+                    source: 50,
+                    destination: 60,
+                },
+                {
+                    size: 1,
+                    source: 100,
+                    destination: 200,
+                },
+            ],
+        };
+
+        expect(transform(100, mapping)).to.equal(200);
+    });
 });
