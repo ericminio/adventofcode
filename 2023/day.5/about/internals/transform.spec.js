@@ -16,4 +16,18 @@ describe('transform', () => {
 
         expect(transform(42, mapping)).to.equal(42);
     });
+
+    it('returns expected destination with one range', () => {
+        const mapping = {
+            ranges: [
+                {
+                    size: 1,
+                    source: 100,
+                    destination: 200,
+                },
+            ],
+        };
+
+        expect(transform(100, mapping)).to.equal(200);
+    });
 });
