@@ -121,16 +121,4 @@ describe('parser', () => {
             },
         ]);
     });
-
-    it('can extract range of seeds', () => {
-        const input = `
-            seeds: 1 2 10 3
-
-            seed-to-soil map:
-            200 100 1
-        `;
-        const garden = parseRangeOfSeeds(input);
-
-        expect(garden.seeds).to.deep.equal([1, 2, 10, 11, 12]);
-    });
 });
