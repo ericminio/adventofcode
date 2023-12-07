@@ -10,22 +10,25 @@ export const parse = (input) => {
     garden.seeds = seeds(groups[0]);
     garden.mappings = [];
 
-    const mapping = groups[1].split('\n');
-    garden.mappings.push({
-        id: /(.*)\smap:/.exec(mapping[0].trim())[1],
-        ranges: mapping
-            .splice(1)
-            .map((e) => e.trim())
-            .filter((e) => e.length > 0)
-            .map((e) => {
-                const values = e.split(' ');
-                return {
-                    size: parseInt(values[2]),
-                    source: parseInt(values[1]),
-                    destination: parseInt(values[0]),
-                };
-            }),
-    });
+    for (let i = 1; i < groups.length; i++) {
+        const group = groups[i];
+        const mapping = group.split('\n');
+        garden.mappings.push({
+            id: /(.*)\smap:/.exec(mapping[0].trim())[1],
+            ranges: mapping
+                .splice(1)
+                .map((e) => e.trim())
+                .filter((e) => e.length > 0)
+                .map((e) => {
+                    const values = e.split(' ');
+                    return {
+                        size: parseInt(values[2]),
+                        source: parseInt(values[1]),
+                        destination: parseInt(values[0]),
+                    };
+                }),
+        });
+    }
 
     return garden;
 };
