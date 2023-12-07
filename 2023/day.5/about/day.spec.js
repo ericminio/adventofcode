@@ -12,7 +12,7 @@ describe('2023.5 puzzles', () => {
         });
     });
 
-    it.only('has an example for part 1', () => {
+    it('has an example for part 1', () => {
         const example = lines(new URL('./example.txt', import.meta.url));
 
         expect(solvepartone(example)).to.deep.equal(35);
