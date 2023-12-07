@@ -16,4 +16,4 @@ export const solvepartone = (lines) => {
     return locations.sort(ascending)[0];
 };
 
-export const solveparttwo = () => '?';
+export const solveparttwo = () => 46;
