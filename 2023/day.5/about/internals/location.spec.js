@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import { location } from '../../solution/location.js';
-import { transform } from '../../solution/transform.js';
+import { range } from '../../solution/range.js';
 
 describe('location', () => {
     it('returns the last value after going through all the mappings', () => {
@@ -31,7 +31,7 @@ describe('location', () => {
         };
         garden.board = {};
 
-        expect(location(100, garden, transform)).to.equal(300);
+        expect(location(100, garden, range)).to.equal(300);
     });
 
     it('keeps track of matching range', () => {
@@ -55,7 +55,7 @@ describe('location', () => {
             ],
         };
         garden.board = {};
-        expect(location(42, garden, transform)).to.equal(52);
+        expect(location(42, garden, range)).to.equal(52);
 
         expect(garden.board).to.deep.equal({
             'this-map': {
