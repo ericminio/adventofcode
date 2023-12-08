@@ -29,7 +29,40 @@ describe('location', () => {
                 },
             ],
         };
+        garden.board = {};
 
         expect(location(100, garden, transform)).to.equal(300);
+    });
+
+    it('keeps track of matching range', () => {
+        const garden = {
+            mappings: [
+                {
+                    id: 'this-map',
+                    ranges: [
+                        {
+                            size: 5,
+                            source: 10,
+                            destination: 20,
+                        },
+                        {
+                            size: 5,
+                            source: 40,
+                            destination: 50,
+                        },
+                    ],
+                },
+            ],
+        };
+        garden.board = {};
+        expect(location(42, garden, transform)).to.equal(52);
+
+        expect(garden.board).to.deep.equal({
+            'this-map': {
+                size: 5,
+                source: 40,
+                destination: 50,
+            },
+        });
     });
 });

@@ -5,6 +5,7 @@ import { transform } from './transform.js';
 
 export const solvepartone = (lines) => {
     const garden = parse(lines);
+    garden.board = {};
     const locations = garden.seeds.map((seed) =>
         location(seed, garden, transform),
     );
@@ -14,6 +15,7 @@ export const solvepartone = (lines) => {
 
 export const solveparttwo = (lines) => {
     const garden = parse(lines);
+    garden.board = {};
     let min = 174137457;
     for (let i = 0; i < garden.seeds.length; i += 2) {
         for (let j = 0; j < garden.seeds[i + 1]; j++) {
