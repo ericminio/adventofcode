@@ -6,10 +6,7 @@ import { transform } from './transform.js';
 export const solvepartone = (lines) => {
     const garden = parse(lines);
     const locations = garden.seeds.map((seed) =>
-        garden.mappings.reduce(
-            (previous, mapping) => transform(previous, mapping).destination,
-            seed,
-        ),
+        location(seed, garden, transform),
     );
 
     return locations.sort(ascending)[0];
