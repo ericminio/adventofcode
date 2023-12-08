@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { solvepartone, solveparttwo } from '../solution/index.js';
+import { solvepartone } from '../solution/index.js';
 
 describe('2023.6 puzzles', () => {
     describe('What do you get if you multiply number of ways you can beat the record?', () => {
@@ -16,6 +16,14 @@ describe('2023.6 puzzles', () => {
         });
     });
 
+    describe('How many ways can you beat the record in this one much longer race?', () => {
+        it('is solved', () => {
+            expect(
+                solvepartone([{ time: 46807866, record: 214117714021024 }]),
+            ).to.equal(36530883);
+        });
+    });
+
     it('has an example for part 1', () => {
         expect(
             solvepartone([
@@ -24,5 +32,11 @@ describe('2023.6 puzzles', () => {
                 { time: 30, record: 200 },
             ]),
         ).to.deep.equal(288);
+    });
+
+    it('has an example for part 2', () => {
+        expect(solvepartone([{ time: 71530, record: 940200 }])).to.deep.equal(
+            71503,
+        );
     });
 });

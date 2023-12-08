@@ -12,5 +12,3 @@ export const solvepartone = (races) => {
     }
     return count;
 };
-
-export const solveparttwo = () => '?';
