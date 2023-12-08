@@ -8,7 +8,7 @@ export const solvepartone = (lines) => {
     const garden = parse(lines);
     const locations = garden.seeds.map((seed) =>
         garden.mappings.reduce(
-            (previous, mapping) => transform(previous, mapping),
+            (previous, mapping) => transform(previous, mapping).destination,
             seed,
         ),
     );
@@ -23,7 +23,7 @@ export const solveparttwo = (lines) => {
         for (let j = 0; j < garden.seeds[i + 1]; j++) {
             const seed = garden.seeds[i] + j;
             const location = garden.mappings.reduce(
-                (previous, mapping) => transform(previous, mapping),
+                (previous, mapping) => transform(previous, mapping).destination,
                 seed,
             );
             if (location < min) {

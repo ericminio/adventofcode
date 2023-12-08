@@ -14,7 +14,7 @@ describe('transform', () => {
             ],
         };
 
-        expect(transform(42, mapping)).to.equal(42);
+        expect(transform(42, mapping).destination).to.equal(42);
     });
 
     it('returns expected destination with one range', () => {
@@ -28,7 +28,7 @@ describe('transform', () => {
             ],
         };
 
-        expect(transform(100, mapping)).to.equal(200);
+        expect(transform(100, mapping).destination).to.equal(200);
     });
 
     it('returns expected destination with two ranges', () => {
@@ -47,7 +47,7 @@ describe('transform', () => {
             ],
         };
 
-        expect(transform(100, mapping)).to.equal(200);
+        expect(transform(100, mapping).destination).to.equal(200);
     });
 
     it('can be used to chain mappings', () => {
@@ -72,7 +72,7 @@ describe('transform', () => {
             },
         ];
         const value = mappings.reduce((previous, mapping) => {
-            return transform(previous, mapping);
+            return transform(previous, mapping).destination;
         }, 2);
 
         expect(value).to.equal(42);
