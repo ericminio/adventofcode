@@ -1,9 +1,5 @@
 import { destination } from './destination.js';
-import { isMatchingRange } from './isMatchingRange.js';
-
-export const range = (source, mapping) =>
-    mapping.ranges.find((r) => isMatchingRange(source, r));
-
+import { range } from './range.js';
 export const transform = (source, mapping) => {
     const r = range(source, mapping);
 
