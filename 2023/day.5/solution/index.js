@@ -18,10 +18,13 @@ export const solveparttwo = (lines) => {
     for (let i = 0; i < garden.seeds.length; i += 2) {
         for (let j = 0; j < garden.seeds[i + 1]; j++) {
             const seed = garden.seeds[i] + j;
+            // console.log(`seed ${seed}`);
             const los = location(seed, garden, range);
             if (los < min) {
                 min = los;
             }
+            // console.log(`=> location ${los}`);
+            // console.log(garden.board);
         }
     }
 

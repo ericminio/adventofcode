@@ -65,4 +65,36 @@ describe('location', () => {
             },
         });
     });
+
+    it('reuses previous matching range when still matching', () => {
+        const garden = {
+            mappings: [
+                {
+                    id: 'this-map',
+                    ranges: [
+                        {
+                            size: 5,
+                            source: 10,
+                            destination: 20,
+                        },
+                        {
+                            size: 5,
+                            source: 40,
+                            destination: 50,
+                        },
+                    ],
+                },
+            ],
+        };
+        garden.board = {};
+        location(42, garden, range);
+        let called = false;
+        expect(
+            location(43, garden, () => {
+                called = true;
+            }),
+        ).to.equal(53);
+
+        expect(called).to.equal(false);
+    });
 });
