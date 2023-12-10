@@ -30,7 +30,7 @@ const numberOrZero = (item) =>
     Number.isNaN(parseInt(item)) ? 0 : parseInt(item);
 const groupsOfNumbers = (file) =>
     groups(file).map((items) => items.map((item) => numberOrZero(item)));
-const descending = (a, b) => b - a;
+export const descending = (a, b) => b - a;
 export const ascending = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const add = (a, b) => a + b;

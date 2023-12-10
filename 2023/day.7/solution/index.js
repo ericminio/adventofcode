@@ -1,16 +1,25 @@
 import { sumall } from '../../../support/index.js';
-import { parse } from './parse.js';
+import { count } from './counter.js';
+import { parse } from './parser.js';
+import { sortTwo } from './sorter.js';
+import { type } from './typer.js';
 
 export const solvepartone = (lines) => {
     const hands = parse(lines);
+    const handsWithCounts = hands.map((hand) => ({
+        ...hand,
+        counts: count(hand.cards),
+    }));
+    const handsWithTypes = handsWithCounts.map((hand) => ({
+        ...hand,
+        type: type(hand.counts),
+    }));
+    handsWithTypes.sort((a, b) =>
+        a.type !== b.type ? a.type - b.type : sortTwo(a.cards, b.cards),
+    );
+
     const total = sumall(
-        [
-            { cards: '32T3K', bid: 765 },
-            { cards: 'KTJJT', bid: 220 },
-            { cards: 'KK677', bid: 28 },
-            { cards: 'T55J5', bid: 684 },
-            { cards: 'QQQJA', bid: 483 },
-        ].map((hand, index) => (index + 1) * hand.bid),
+        handsWithTypes.map((hand, index) => (index + 1) * hand.bid),
     );
 
     return total;

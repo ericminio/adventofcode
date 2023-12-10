@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { parse } from '../../solution/parse.js';
+import { parse } from '../../solution/parser.js';
 
 describe('parser', () => {
     it('can parse one hand', () => {

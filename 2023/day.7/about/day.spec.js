@@ -6,9 +6,9 @@ import { solvepartone, solveparttwo } from '../solution/index.js';
 describe('2023.7 puzzles', () => {
     const incoming = lines(new URL('./incoming.txt', import.meta.url));
 
-    describe.skip('What are the total winnings?', () => {
+    describe('What are the total winnings?', () => {
         it('is solved', () => {
-            expect(solvepartone(incoming)).to.equal('???');
+            expect(solvepartone(incoming)).to.equal(250370104);
         });
     });
 
