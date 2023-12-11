@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { around, east, south, west } from '../../solution/around.js';
+import { around, east, north, south, west } from '../../solution/around.js';
 import { parse } from '../../solution/parser.js';
 import { connected } from '../../solution/connected.js';
 
@@ -101,6 +101,26 @@ describe('connected', () => {
 
             expect(candidates).to.deep.equal([
                 { id: '0x1', x: 0, y: 1, direction: south },
+            ]);
+        });
+    });
+
+    describe('north', () => {
+        it('is not a connection by default', () => {
+            const maze = parse(['.', 'S']);
+            const positions = around({ x: 0, y: 1 }, maze);
+            const candidates = connected(positions, maze);
+
+            expect(candidates).to.deep.equal([]);
+        });
+
+        it('can identify one connection north going straight', () => {
+            const maze = parse(['|', 'S']);
+            const positions = around({ x: 0, y: 1 }, maze);
+            const candidates = connected(positions, maze);
+
+            expect(candidates).to.deep.equal([
+                { id: '0x0', x: 0, y: 0, direction: north },
             ]);
         });
     });
