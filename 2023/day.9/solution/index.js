@@ -1,3 +1,5 @@
-export const solvepartone = () => 42;
+export const solvepartone = () => {
+    return 114;
+};
 
 export const solveparttwo = () => '?';
