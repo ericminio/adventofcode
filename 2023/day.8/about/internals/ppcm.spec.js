@@ -1,9 +1,17 @@
 import { expect } from 'chai';
 
-import { primes } from '../../solution/primes.js';
+import { ppcm } from '../../solution/ppcm.js';
 
-describe('primes', () => {
-    it('works for 42', () => {
-        expect(primes(42)).to.deep.equal([2, 3, 7]);
+describe('ppcm', () => {
+    it('works as expected', () => {
+        expect(ppcm([60, 168])).to.equal(840);
+    });
+
+    it('works as expected', () => {
+        expect(ppcm([3, 10, 15])).to.equal(30);
+    });
+
+    it('leverages Math.pow from string', () => {
+        expect(Math.pow('2', 3)).to.equal(8);
     });
 });

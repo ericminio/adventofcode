@@ -1,5 +1,6 @@
 import { last } from './last.js';
 import { parse } from './parser.js';
+import { ppcm } from './ppcm.js';
 
 const move = (lrs, tree, step, current) => {
     const next = step + 1;
@@ -34,6 +35,6 @@ export const solveparttwo = (lines) => {
         }
         steps.push(step);
     }
-    console.log(steps);
-    return steps.reduce((total, step) => total * BigInt(step), BigInt(1));
+
+    return ppcm(steps);
 };

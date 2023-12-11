@@ -14,9 +14,7 @@ describe('2023.8 puzzles', () => {
 
     describe('How many steps does it take before you are only on nodes that end with Z?', () => {
         it('is solved', () => {
-            expect(solveparttwo(incoming)).to.equal(
-                18498661492684967309242463n,
-            );
+            expect(solveparttwo(incoming)).to.equal(13133452426987);
         });
     });
 
@@ -29,6 +27,6 @@ describe('2023.8 puzzles', () => {
     it('has an example for part 2', () => {
         const example = lines(new URL('./example2.txt', import.meta.url));
 
-        expect(solveparttwo(example)).to.deep.equal(6n);
+        expect(solveparttwo(example)).to.deep.equal(6);
     });
 });
