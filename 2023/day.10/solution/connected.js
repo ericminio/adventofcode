@@ -1,4 +1,4 @@
-import { east, west } from './around.js';
+import { east, south, west } from './around.js';
 
 export const connected = (around, maze) =>
     around.filter((candidate) => {
@@ -7,6 +7,9 @@ export const connected = (around, maze) =>
         }
         if (candidate.direction === west) {
             return ['-', 'F', 'L'].includes(maze[candidate.id].value);
+        }
+        if (candidate.direction === south) {
+            return ['|'].includes(maze[candidate.id].value);
         }
         return false;
     });
