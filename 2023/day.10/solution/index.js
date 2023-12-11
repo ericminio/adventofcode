@@ -5,7 +5,7 @@ import { start } from './start.js';
 export const solvepartone = (lines) => {
     const maze = parse(lines);
     let current = start(maze);
-    let candidates = around(current);
+    let candidates = around(current, maze);
 
     console.log(current);
     return 4;
