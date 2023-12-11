@@ -10,13 +10,13 @@ export const solvepartone = (lines) => {
         tree[data[0]] = { L: data[1], R: data[2] };
     });
 
-    const start = extractor(pattern)(lines[1])[0];
-    let current = start;
+    let current = 'AAA';
     let step = 0;
     while (current !== 'ZZZ') {
         step += 1;
         const lr = lrs[(step - 1) % lrs.length];
         current = tree[current][lr];
+        // console.log(`${step} ${lr} ${current}`);
     }
 
     return step;

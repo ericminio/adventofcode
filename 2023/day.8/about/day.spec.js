@@ -6,9 +6,9 @@ import { solvepartone, solveparttwo } from '../solution/index.js';
 describe('2023.8 puzzles', () => {
     const incoming = lines(new URL('./incoming.txt', import.meta.url));
 
-    describe.skip('How many steps are required to reach ZZZ?', () => {
+    describe('How many steps are required to reach ZZZ?', () => {
         it('is solved', () => {
-            expect(solvepartone(incoming)).to.equal('???');
+            expect(solvepartone(incoming)).to.equal(12643);
         });
     });
 
