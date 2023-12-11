@@ -3,12 +3,12 @@ import { expect } from 'chai';
 import { lines } from '../../../support/index.js';
 import { solvepartone, solveparttwo } from '../solution/index.js';
 
-describe('20??.? puzzles', () => {
+describe('2023.9 puzzles', () => {
     const incoming = lines(new URL('./incoming.txt', import.meta.url));
 
-    describe.skip('What is the sum of these extrapolated values?', () => {
+    describe('What is the sum of these extrapolated values?', () => {
         it('is solved', () => {
-            expect(solvepartone(incoming)).to.equal('???');
+            expect(solvepartone(incoming)).to.equal(1725987467);
         });
     });
 
