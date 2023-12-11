@@ -6,7 +6,7 @@ import { solvepartone, solveparttwo } from '../solution/index.js';
 describe('20??.? puzzles', () => {
     const incoming = lines(new URL('./incoming.txt', import.meta.url));
 
-    describe.skip('part 1', () => {
+    describe.skip('What is the sum of these extrapolated values?', () => {
         it('is solved', () => {
             expect(solvepartone(incoming)).to.equal('???');
         });
