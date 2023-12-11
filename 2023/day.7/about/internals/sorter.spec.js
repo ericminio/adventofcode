@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import { sortTwo } from '../../solution/sorter.js';
+import { sortTwo, sortTwoWithJoker } from '../../solution/sorter.js';
 
 describe('sorter', () => {
     it('knows when a number card is weaker', () => {
@@ -46,5 +46,9 @@ describe('sorter', () => {
     it('has the Jack between Q and T', () => {
         expect(sortTwo('J', 'Q')).to.equal(-1);
         expect(sortTwo('J', 'T')).to.equal(1);
+    });
+
+    it('has the Joker as last', () => {
+        expect(sortTwoWithJoker('J', '2')).to.equal(-1);
     });
 });
