@@ -1,6 +1,6 @@
+import { ppcm } from '../../../lib/ppcm.js';
 import { last } from './last.js';
 import { parse } from './parser.js';
-import { ppcm } from './ppcm.js';
 
 const move = (lrs, tree, step, current) => {
     const next = step + 1;
