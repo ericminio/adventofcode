@@ -27,4 +27,8 @@ describe('joker', () => {
         expect(joker(count('KTJJT'))).to.equal(6);
         expect(joker(count('QQQJA'))).to.equal(6);
     });
+
+    it('resists JJJJJ', () => {
+        expect(joker({ J: 5 })).to.equal(7);
+    });
 });

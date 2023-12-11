@@ -4,6 +4,7 @@ export const joker = (distribution) => {
     const adjusted = { ...distribution };
     const jokerCount = adjusted['J'];
     if (!jokerCount) return type(adjusted);
+    if (jokerCount === 5) return 7;
 
     delete adjusted['J'];
     let keyWithMaxValue;
