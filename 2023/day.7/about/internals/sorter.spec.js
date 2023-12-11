@@ -42,4 +42,9 @@ describe('sorter', () => {
             { cards: 'QQQJA', type: 4 },
         ]);
     });
+
+    it('has the Jack between Q and T', () => {
+        expect(sortTwo('J', 'Q')).to.equal(-1);
+        expect(sortTwo('J', 'T')).to.equal(1);
+    });
 });
