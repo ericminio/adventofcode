@@ -4,8 +4,8 @@ import { parse } from './parser.js';
 export const solvepartone = (lines) => {
     const { lrs, tree } = parse(lines);
 
-    let step = 0;
     let current = 'AAA';
+    let step = 0;
     while (current !== 'ZZZ') {
         step += 1;
         const lr = lrs[(step - 1) % lrs.length];
@@ -18,13 +18,17 @@ export const solvepartone = (lines) => {
 export const solveparttwo = (lines) => {
     const { lrs, tree } = parse(lines);
 
-    let step = 0;
+    const steps = [];
     let currents = Object.keys(tree).filter((key) => last(key) === 'A');
-    while (currents.some((current) => last(current) !== 'Z')) {
-        step += 1;
-        const lr = lrs[(step - 1) % lrs.length];
-        currents = currents.map((current) => tree[current][lr]);
+    for (let current of currents) {
+        let step = 0;
+        while (last(current) !== 'Z') {
+            step += 1;
+            const lr = lrs[(step - 1) % lrs.length];
+            current = tree[current][lr];
+        }
+        steps.push(step);
     }
-
-    return step;
+    console.log(steps);
+    return steps.reduce((total, step) => total * BigInt(step), BigInt(1));
 };
