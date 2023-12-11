@@ -63,5 +63,25 @@ describe('connected', () => {
                 { id: '0x0', x: 0, y: 0, direction: west },
             ]);
         });
+
+        it('can identify one connection west going south', () => {
+            const maze = parse(['FS']);
+            const positions = around({ x: 1, y: 0 }, maze);
+            const candidates = connected(positions, maze);
+
+            expect(candidates).to.deep.equal([
+                { id: '0x0', x: 0, y: 0, direction: west },
+            ]);
+        });
+
+        it('can identify one connection west going north', () => {
+            const maze = parse(['LS']);
+            const positions = around({ x: 1, y: 0 }, maze);
+            const candidates = connected(positions, maze);
+
+            expect(candidates).to.deep.equal([
+                { id: '0x0', x: 0, y: 0, direction: west },
+            ]);
+        });
     });
 });
