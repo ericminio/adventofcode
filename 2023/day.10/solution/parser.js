@@ -7,7 +7,8 @@ export const parse = (lines) => {
         for (let x = 0; x < line.length; x++) {
             const value = line[x];
             const position = { x, y };
-            maze[id(position)] = { ...position, value };
+            const positionId = id(position);
+            maze[positionId] = { ...position, id: positionId, value };
         }
     });
 

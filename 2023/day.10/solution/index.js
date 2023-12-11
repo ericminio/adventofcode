@@ -7,6 +7,7 @@ export const solvepartone = (lines) => {
     let current = start(maze);
     let candidates = around(current);
 
+    console.log(current);
     return 4;
 };
 
