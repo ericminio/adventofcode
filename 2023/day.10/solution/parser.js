@@ -1,3 +1,15 @@
+import { id } from '../../../support/index.js';
+
 export const parser = (lines) => {
-    return { '0x0': { x: 0, y: 0, value: 'S' } };
+    const maze = {};
+
+    lines.forEach((line, y) => {
+        for (let x = 0; x < line.length; x++) {
+            const value = line[x];
+            const position = { x, y };
+            maze[id(position)] = { ...position, value };
+        }
+    });
+
+    return maze;
 };
