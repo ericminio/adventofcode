@@ -12,9 +12,21 @@ describe('2023.7 puzzles', () => {
         });
     });
 
+    describe.skip('What are the total winnings with J considered a joker?', () => {
+        it('is solved', () => {
+            expect(solveparttwo(incoming)).to.equal('???');
+        });
+    });
+
     it('has an example for part 1', () => {
         const example = lines(new URL('./example.txt', import.meta.url));
 
         expect(solvepartone(example)).to.deep.equal(6440);
+    });
+
+    it('has an example for part 2', () => {
+        const example = lines(new URL('./example.txt', import.meta.url));
+
+        expect(solveparttwo(example)).to.deep.equal(5902);
     });
 });
