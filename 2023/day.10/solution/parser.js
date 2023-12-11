@@ -1,7 +1,7 @@
 import { id } from '../../../support/index.js';
 
 export const parse = (lines) => {
-    const maze = {};
+    const maze = { width: lines[0].length, height: lines.length };
 
     lines.forEach((line, y) => {
         for (let x = 0; x < line.length; x++) {
