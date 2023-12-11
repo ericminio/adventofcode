@@ -1,6 +1,6 @@
 import { id } from '../../../support/index.js';
 
-export const parser = (lines) => {
+export const parse = (lines) => {
     const maze = {};
 
     lines.forEach((line, y) => {
