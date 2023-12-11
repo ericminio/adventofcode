@@ -7,7 +7,7 @@ export const solvepartone = (lines) => {
     const maze = parse(lines);
     let current = start(maze);
     let positions = around(current, maze);
-    let candidates = connected(positions, current, maze);
+    let candidates = connected(positions, maze);
 
     console.log(current);
     console.log(candidates);
