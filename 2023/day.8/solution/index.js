@@ -1,14 +1,7 @@
-import { extractor } from '../../../support/index.js';
-
-const pattern = /(.*) = \((.*), (.*)\)/;
+import { parse } from './parser.js';
 
 export const solvepartone = (lines) => {
-    const lrs = lines[0];
-    const tree = {};
-    lines.slice(1).forEach((line) => {
-        const data = extractor(pattern)(line);
-        tree[data[0]] = { L: data[1], R: data[2] };
-    });
+    const { lrs, tree } = parse(lines);
 
     let current = 'AAA';
     let step = 0;
@@ -22,4 +15,8 @@ export const solvepartone = (lines) => {
     return step;
 };
 
-export const solveparttwo = () => 6;
+export const solveparttwo = (lines) => {
+    const { lrs, tree } = parse(lines);
+
+    return 6;
+};
