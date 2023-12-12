@@ -12,7 +12,7 @@ export const connected = (around, maze) =>
             return ['|', 'L', 'J'].includes(maze[candidate.id].value);
         }
         if (candidate.direction === north) {
-            return ['|'].includes(maze[candidate.id].value);
+            return ['|', 'F', '7'].includes(maze[candidate.id].value);
         }
         return false;
     });
