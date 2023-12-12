@@ -16,6 +16,9 @@ describe('2023.10 puzzles', () => {
         expect(
             solvepartone(lines(new URL('./example1-0.txt', import.meta.url))),
         ).to.deep.equal(4);
+        expect(
+            solvepartone(lines(new URL('./example1-1.txt', import.meta.url))),
+        ).to.deep.equal(4);
     });
 
     it('explore', () => {
