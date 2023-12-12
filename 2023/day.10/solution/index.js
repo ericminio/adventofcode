@@ -8,10 +8,19 @@ export const solvepartone = (lines) => {
     let current = start(maze);
     let positions = around(current, maze);
     let candidates = connected(positions, maze);
+    let previous = current;
+    let next = candidates.find((c) => c.id !== previous.id);
+    let count = 0;
+    while (!!next) {
+        count += 1;
+        positions = around(current, maze);
+        candidates = connected(positions, maze);
+        next = candidates.find((c) => c.id !== previous.id);
+        previous = current;
+        current = next;
+    }
 
-    console.log(current);
-    console.log(candidates);
-    return 4;
+    return count / 2;
 };
 
 export const solveparttwo = () => '?';
