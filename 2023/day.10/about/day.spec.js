@@ -6,9 +6,9 @@ import { solvepartone, solveparttwo } from '../solution/index.js';
 describe('2023.10 puzzles', () => {
     const incoming = lines(new URL('./incoming.txt', import.meta.url));
 
-    describe.skip('How many steps along the loop does it take to get from the starting position to the point farthest from the starting position?', () => {
+    describe('How many steps along the loop does it take to get from the starting position to the point farthest from the starting position?', () => {
         it('is solved', () => {
-            expect(solvepartone(incoming)).to.equal('???');
+            expect(solvepartone(incoming)).to.equal(7102);
         });
     });
 
