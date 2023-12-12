@@ -18,9 +18,9 @@ export const solvepartone = (lines) => {
         next = candidates.find((c) => c.id !== previous.id);
         previous = current;
         current = next;
-        console.log(current);
+        // console.log(current);
     }
-    console.log(count);
+    // console.log(count);
 
     return count / 2;
 };
