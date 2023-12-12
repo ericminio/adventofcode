@@ -9,7 +9,7 @@ export const connected = (around, maze) =>
             return ['-', 'F', 'L'].includes(maze[candidate.id].value);
         }
         if (candidate.direction === south) {
-            return ['|'].includes(maze[candidate.id].value);
+            return ['|', 'L', 'J'].includes(maze[candidate.id].value);
         }
         if (candidate.direction === north) {
             return ['|'].includes(maze[candidate.id].value);
