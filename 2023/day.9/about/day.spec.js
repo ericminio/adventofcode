@@ -12,9 +12,21 @@ describe('2023.9 puzzles', () => {
         });
     });
 
+    describe('What is the sum of these extrapolated values?', () => {
+        it('is solved', () => {
+            expect(solveparttwo(incoming)).to.equal(971);
+        });
+    });
+
     it('has an example for part 1', () => {
         const example = lines(new URL('./example.txt', import.meta.url));
 
         expect(solvepartone(example)).to.deep.equal(114);
+    });
+
+    it('has an example for part 2', () => {
+        const example = lines(new URL('./example.txt', import.meta.url));
+
+        expect(solveparttwo(example)).to.deep.equal(2);
     });
 });
