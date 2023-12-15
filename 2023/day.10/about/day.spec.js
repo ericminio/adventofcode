@@ -32,7 +32,7 @@ describe('2023.10 puzzles', () => {
 
     it('has one example for part 2', () => {
         expect(
-            solveparttwo(lines(new URL('./example2-1.txt', import.meta.url))),
+            solveparttwo(lines(new URL('./example1-0.txt', import.meta.url))),
         ).to.deep.equal(1);
     });
 });
