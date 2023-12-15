@@ -21,12 +21,18 @@ describe('2023.10 puzzles', () => {
         ).to.deep.equal(4);
     });
 
-    it('has one mor ecomplex example for part 1', () => {
+    it('has one more complex example for part 1', () => {
         expect(
             solvepartone(lines(new URL('./example2-0.txt', import.meta.url))),
         ).to.deep.equal(8);
         expect(
             solvepartone(lines(new URL('./example2-1.txt', import.meta.url))),
         ).to.deep.equal(8);
+    });
+
+    it('has one example for part 2', () => {
+        expect(
+            solveparttwo(lines(new URL('./example2-1.txt', import.meta.url))),
+        ).to.deep.equal(1);
     });
 });

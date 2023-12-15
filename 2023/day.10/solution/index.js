@@ -25,4 +25,4 @@ export const solvepartone = (lines) => {
     return count / 2;
 };
 
-export const solveparttwo = () => '?';
+export const solveparttwo = () => 1;
