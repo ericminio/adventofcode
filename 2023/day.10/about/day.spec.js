@@ -12,6 +12,12 @@ describe('2023.10 puzzles', () => {
         });
     });
 
+    describe.skip('How many tiles are enclosed by the loop?', () => {
+        it('is solved', () => {
+            expect(solveparttwo(incoming)).to.equal(1);
+        });
+    });
+
     it('has one example for part 1', () => {
         expect(
             solvepartone(lines(new URL('./example1-0.txt', import.meta.url))),
