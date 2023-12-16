@@ -3,11 +3,11 @@ import { expect } from 'chai';
 import { boundaries } from '../../solution/boundaries.js';
 
 describe('loop boundaries', () => {
-    const loop = [
-        { x: 1, y: 3 },
-        { x: 2, y: 10 },
-        { x: -10, y: 15 },
-    ];
+    const loop = {
+        '1x3': { x: 1, y: 3 },
+        '2x10': { x: 2, y: 10 },
+        '-10x15': { x: -10, y: 15 },
+    };
     it('include left-top corner', () => {
         const rectangle = boundaries(loop);
 

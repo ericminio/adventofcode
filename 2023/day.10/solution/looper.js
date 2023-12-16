@@ -6,7 +6,8 @@ import { start } from './start.js';
 export const looper = (lines) => {
     const maze = parse(lines);
     let current = start(maze);
-    let loop = [current];
+    let loop = {};
+    loop[current.id] = current;
     let positions = around(current, maze);
     let candidates = connected(positions, current, maze);
     let previous = current;
@@ -14,7 +15,7 @@ export const looper = (lines) => {
     current = next;
     let count = 0;
     while (!!next) {
-        loop.push(next);
+        loop[next.id] = next;
         count += 1;
         positions = around(current, maze);
         candidates = connected(positions, current, maze);

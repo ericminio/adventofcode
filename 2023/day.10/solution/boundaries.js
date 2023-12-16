@@ -1,11 +1,12 @@
 export const boundaries = (loop) => {
+    const values = Object.values(loop);
     const rectangle = {
-        x1: loop[0].x,
-        y1: loop[0].y,
-        x2: loop[0].x,
-        y2: loop[0].y,
+        x1: values[0].x,
+        y1: values[0].y,
+        x2: values[0].x,
+        y2: values[0].y,
     };
-    for (const p of loop) {
+    for (const p of values) {
         if (p.x < rectangle.x1) {
             rectangle.x1 = p.x;
         }
