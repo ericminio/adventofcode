@@ -11,6 +11,5 @@ export const solveparttwo = (lines) => {
     const loop = looper(lines);
     const points = candidates(loop);
 
-    console.log(points.length);
     return 1;
 };

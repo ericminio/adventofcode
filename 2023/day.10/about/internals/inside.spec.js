@@ -17,7 +17,7 @@ describe('inside loop', () => {
         it('can be found', () => {
             const points = candidates(loop);
 
-            expect(points).to.deep.equal([{ x: 2, y: 2 }]);
+            expect(points).to.deep.equal({ '2x2': { x: 2, y: 2 } });
         });
     });
 });
