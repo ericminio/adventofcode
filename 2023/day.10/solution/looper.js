@@ -6,22 +6,34 @@ import { start } from './start.js';
 export const looper = (lines) => {
     const maze = parse(lines);
     let current = start(maze);
+    let startId = current.id;
     let loop = {};
-    loop[current.id] = current;
-    let positions = around(current, maze);
-    let candidates = connected(positions, current, maze);
-    let previous = current;
-    let next = candidates.find((c) => c.id !== previous.id);
-    current = next;
-    let count = 0;
-    while (!!next) {
-        loop[next.id] = next;
-        count += 1;
-        positions = around(current, maze);
-        candidates = connected(positions, current, maze);
-        next = candidates.find((c) => c.id !== previous.id);
-        previous = current;
-        current = next;
+    loop[current.id] = {
+        id: startId,
+        x: current.x,
+        y: current.y,
+        value: maze[current.id].value,
+    };
+    let previousId = current.id;
+    let more = true;
+    while (more) {
+        let positions = around(current, maze);
+        let candidates = connected(positions, current, maze);
+        let next = candidates.find((c) => c.id !== previousId);
+        more = !!next;
+        if (more) {
+            loop[next.id] = {
+                id: next.id,
+                x: next.x,
+                y: next.y,
+                value: maze[next.id].value,
+                previous: current.id,
+            };
+            previousId = current.id;
+            current = next;
+        }
     }
+    loop[startId].previous = current.id;
+
     return loop;
 };
