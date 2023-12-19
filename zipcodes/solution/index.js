@@ -1,4 +1,8 @@
-export const solvepartone = () => {
+import { parse } from './parser.js';
+
+export const solvepartone = (input) => {
+    const incoming = parse(input);
+    console.log(incoming);
     const clusters = [
         {
             count: 5,
