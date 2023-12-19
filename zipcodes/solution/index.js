@@ -2,7 +2,16 @@ import { parse } from './parser.js';
 
 export const solvepartone = (input) => {
     const incoming = parse(input);
-    console.log(incoming);
+
+    const distribution = incoming.signatures.reduce((dist, signature) => {
+        if (!dist[signature]) {
+            dist[signature] = 0;
+        }
+        dist[signature] += 1;
+        return dist;
+    }, {});
+    console.log(distribution);
+
     const clusters = [
         {
             count: 5,
