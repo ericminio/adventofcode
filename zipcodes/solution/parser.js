@@ -3,11 +3,11 @@ export const parse = (input) => {
     const zipcodes = groups[0]
         .split('\n')
         .map((line) => {
-            const data = /(.*),(\d+),\s(\d+)/.exec(line);
+            const data = /(.*),(-?\d+),\s(-?\d+)/.exec(line);
             return {
                 zipcode: data[1],
                 x: parseInt(data[2]),
-                y: parseInt(data[2]),
+                y: parseInt(data[3]),
             };
         })
         .reduce((codes, code) => {
