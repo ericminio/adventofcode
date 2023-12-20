@@ -1,16 +1,11 @@
 import { distances } from './distances.js';
+import { signatureCountByZipcode } from './signatures.js';
 
 export const clusters = (
     { zipcodes, signatures },
     { maxDistanceToBeInCluster, minSignaturePercentageToBeACluster },
 ) => {
-    const distribution = signatures.reduce((dist, signature) => {
-        if (!dist[signature]) {
-            dist[signature] = 0;
-        }
-        dist[signature] += 1;
-        return dist;
-    }, {});
+    const distribution = signatureCountByZipcode(signatures);
     const nodes = distances(distribution, zipcodes);
     const spies = Object.keys(distribution).reduce((reduced, z) => {
         reduced[z] = {
