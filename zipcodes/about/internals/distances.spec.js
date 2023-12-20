@@ -8,8 +8,8 @@ describe('distances', () => {
         const zipcodes = { 111: { x: 1, y: 1 }, 222: { x: 10, y: 10 } };
 
         expect(distances(distribution, zipcodes)).to.deep.equal({
-            111: { distances: { 222: 18 } },
-            222: { distances: { 111: 18 } },
+            111: { 222: 18 },
+            222: { 111: 18 },
         });
     });
 });
