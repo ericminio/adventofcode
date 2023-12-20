@@ -19,21 +19,19 @@ const removeDuplicates = (candidates) => {
 };
 
 export const group = (nodes, { max }) => {
-    console.log(nodes);
-    Object.keys(nodes).forEach((a) => {
-        const distances = nodes[a];
+    const incoming = { ...nodes };
+    Object.keys(incoming).forEach((a) => {
+        const distances = incoming[a];
         const around = Object.keys(distances).filter(
             (b) => distances[b] <= max,
         );
-        nodes[a] = around;
+        incoming[a] = around;
     });
-    console.log(nodes);
-    const candidates = Object.keys(nodes).map((a) => {
-        nodes[a].push(a);
-        nodes[a].sort();
-        return nodes[a];
+    const candidates = Object.keys(incoming).map((a) => {
+        incoming[a].push(a);
+        incoming[a].sort();
+        return incoming[a];
     });
-    console.log(candidates);
 
     const keep = removeDuplicates(candidates);
 

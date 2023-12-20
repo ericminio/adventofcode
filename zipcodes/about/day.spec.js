@@ -7,6 +7,9 @@ describe('zipcode puzzles', () => {
     it('has an example', () => {
         const example = input(new URL('./example.txt', import.meta.url));
 
-        expect(solvepartone(example)).to.deep.equal(15);
+        expect(solvepartone(example)).to.deep.equal([
+            { count: 5, contributors: ['AAAAA', 'BBBBB'] },
+            { count: 5, contributors: ['EEEEE'] },
+        ]);
     });
 });
