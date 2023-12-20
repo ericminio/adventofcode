@@ -1,19 +1,5 @@
 const checksum = (array) => array.join('-');
-
-export const group = (nodes, { max }) => {
-    Object.keys(nodes).forEach((a) => {
-        const distances = nodes[a];
-        const around = Object.keys(distances).filter(
-            (b) => distances[b] <= max,
-        );
-        nodes[a] = around;
-    });
-    const candidates = Object.keys(nodes).map((a) => {
-        nodes[a].push(a);
-        nodes[a].sort();
-        return nodes[a];
-    });
-
+const removeDuplicates = (candidates) => {
     const keep = [];
     candidates.forEach((candidate, i) => {
         let existing = false;
@@ -28,6 +14,28 @@ export const group = (nodes, { max }) => {
             keep.push(candidate);
         }
     });
+
+    return keep;
+};
+
+export const group = (nodes, { max }) => {
+    console.log(nodes);
+    Object.keys(nodes).forEach((a) => {
+        const distances = nodes[a];
+        const around = Object.keys(distances).filter(
+            (b) => distances[b] <= max,
+        );
+        nodes[a] = around;
+    });
+    console.log(nodes);
+    const candidates = Object.keys(nodes).map((a) => {
+        nodes[a].push(a);
+        nodes[a].sort();
+        return nodes[a];
+    });
+    console.log(candidates);
+
+    const keep = removeDuplicates(candidates);
 
     return keep;
 };

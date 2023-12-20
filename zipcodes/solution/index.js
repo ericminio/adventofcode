@@ -12,10 +12,10 @@ export const solvepartone = (input) => {
         dist[signature] += 1;
         return dist;
     }, {});
-    // console.log(distribution);
+    console.log(distribution);
     const nodes = distances(distribution, incoming.zipcodes);
     const groups = group(nodes, { max: 2 });
-    // console.log(groups);
+    console.log(groups);
 
     const counts = groups.map((g) => {
         return {
@@ -23,7 +23,7 @@ export const solvepartone = (input) => {
             contributors: g,
         };
     });
-    // console.log(counts);
+    console.log(counts);
 
     const clusters = counts.filter(
         (e) => e.count >= 0.2 * incoming.signatures.length,
