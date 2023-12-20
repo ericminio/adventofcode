@@ -12,21 +12,22 @@ export const solvepartone = (input) => {
         dist[signature] += 1;
         return dist;
     }, {});
-    console.log(distribution);
+    // console.log(distribution);
     const nodes = distances(distribution, incoming.zipcodes);
-    const keep = group(nodes, { max: 2 });
-    console.log(keep);
+    const groups = group(nodes, { max: 2 });
+    // console.log(groups);
 
-    const clusters = [
-        {
-            count: 5,
-            contributors: ['AAAAA', 'BBBBB'],
-        },
-        {
-            count: 5,
-            contributors: ['EEEEE'],
-        },
-    ];
+    const counts = groups.map((g) => {
+        return {
+            count: g.reduce((total, z) => total + distribution[z], 0),
+            contributors: g,
+        };
+    });
+    // console.log(counts);
+
+    const clusters = counts.filter(
+        (e) => e.count >= 0.2 * incoming.signatures.length,
+    );
     return clusters.reduce(
         (total, cluster) => total + cluster.contributors.length * cluster.count,
         0,
