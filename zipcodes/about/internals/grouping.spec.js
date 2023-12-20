@@ -10,10 +10,6 @@ describe('grouping', () => {
         };
         const groups = group(nodes, { max: 5 });
 
-        expect(groups).to.deep.equal([
-            {
-                contributors: [1, 2],
-            },
-        ]);
+        expect(groups).to.deep.equal([['1', '2']]);
     });
 });
