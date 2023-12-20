@@ -8,7 +8,7 @@ describe('grouping', () => {
             1: { 2: 3, 20: 20 },
             2: { 1: 3 },
         };
-        const groups = group(nodes, { max: 5 });
+        const groups = group(nodes, { maxDistanceToBeInCluster: 5 });
 
         expect(groups).to.deep.equal([['1', '2']]);
     });

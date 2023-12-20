@@ -1,16 +1,19 @@
 import { distances } from './distances.js';
 import { group } from './group.js';
 
-export const clusters = (incoming) => {
-    const distribution = incoming.signatures.reduce((dist, signature) => {
+export const clusters = (
+    { zipcodes, signatures },
+    { maxDistanceToBeInCluster, minSignaturePercentageToBeACluster },
+) => {
+    const distribution = signatures.reduce((dist, signature) => {
         if (!dist[signature]) {
             dist[signature] = 0;
         }
         dist[signature] += 1;
         return dist;
     }, {});
-    const nodes = distances(distribution, incoming.zipcodes);
-    const groups = group(nodes, { max: 2 });
+    const nodes = distances(distribution, zipcodes);
+    const groups = group(nodes, { maxDistanceToBeInCluster });
 
     const counts = groups.map((g) => {
         return {
@@ -19,5 +22,8 @@ export const clusters = (incoming) => {
         };
     });
 
-    return counts.filter((e) => e.count >= 0.2 * incoming.signatures.length);
+    return counts.filter(
+        (e) =>
+            e.count >= minSignaturePercentageToBeACluster * signatures.length,
+    );
 };

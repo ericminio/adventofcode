@@ -18,12 +18,12 @@ const removeDuplicates = (candidates) => {
     return keep;
 };
 
-export const group = (nodes, { max }) => {
+export const group = (nodes, { maxDistanceToBeInCluster }) => {
     const incoming = { ...nodes };
     Object.keys(incoming).forEach((a) => {
         const distances = incoming[a];
         const around = Object.keys(distances).filter(
-            (b) => distances[b] <= max,
+            (b) => distances[b] <= maxDistanceToBeInCluster,
         );
         incoming[a] = around;
     });
