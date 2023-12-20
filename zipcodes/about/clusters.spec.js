@@ -24,7 +24,7 @@ describe('clusters', () => {
             maxDistanceToBeInCluster: 5,
             minSignaturePercentageToBeACluster: 0.2,
         });
-        console.log(actual);
+
         expect(actual).to.deep.equal([
             { count: 2, contributors: ['AAAAA', 'BBBBB'] },
             { count: 1, contributors: ['CCCCC'] },

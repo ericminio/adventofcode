@@ -20,8 +20,7 @@ export const clusters = (
         };
         return reduced;
     }, {});
-    console.log(spies);
-    console.log(nodes);
+
     const cs = [];
     Object.keys(spies).forEach((zipcode) => {
         const used = spies[zipcode].used;
@@ -36,7 +35,6 @@ export const clusters = (
                 spies[b].used = true;
                 c.push(b);
             });
-            console.log(c);
             cs.push(c);
         }
     });
