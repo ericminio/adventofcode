@@ -1,3 +1,4 @@
+import { distances } from './distances.js';
 import { parse } from './parser.js';
 
 export const solvepartone = (input) => {
@@ -11,6 +12,7 @@ export const solvepartone = (input) => {
         return dist;
     }, {});
     console.log(distribution);
+    console.log(distances(distribution, incoming.zipcodes));
 
     const clusters = [
         {

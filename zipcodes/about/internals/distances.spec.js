@@ -1,14 +1,6 @@
 import { expect } from 'chai';
 
-export const distances = (distribution, zipcodes) => {
-    return Object.keys(distribution).map((a) => {
-        return Object.keys(distribution).map((b) => {
-            return (
-                zipcodes[b].x - zipcodes[a].x + zipcodes[b].y - zipcodes[a].y
-            );
-        });
-    });
-};
+import { distances } from '../../solution/distances.js';
 
 describe('distances', () => {
     it('works for two nodes', () => {
