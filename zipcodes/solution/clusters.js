@@ -1,3 +1,4 @@
+import { circles } from './circles.js';
 import { distances } from './distances.js';
 import { signatureCountByZipcode } from './signatures.js';
 
@@ -7,26 +8,8 @@ export const clusters = (
 ) => {
     const signatureCounts = signatureCountByZipcode(signatures);
     const zipcodeDistances = distances(signatureCounts, zipcodes);
-    const spies = {};
-    const cs = [];
-    Object.keys(signatureCounts).forEach((zipcode) => {
-        const used = spies[zipcode];
-        if (!used) {
-            spies[zipcode] = true;
-            const c = [zipcode];
-            const ds = zipcodeDistances[zipcode];
-            const around = Object.keys(ds).filter(
-                (b) => ds[b] <= maxDistanceToBeInCluster && !spies[b],
-            );
-            around.forEach((b) => {
-                spies[b] = true;
-                c.push(b);
-            });
-            cs.push(c);
-        }
-    });
 
-    return cs
+    return circles(maxDistanceToBeInCluster, zipcodeDistances)
         .map((g) => {
             return {
                 count: g.reduce((total, z) => total + signatureCounts[z], 0),
