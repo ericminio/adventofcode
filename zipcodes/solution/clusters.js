@@ -1,5 +1,4 @@
 import { distances } from './distances.js';
-import { group } from './group.js';
 
 export const clusters = (
     { zipcodes, signatures },
@@ -13,9 +12,36 @@ export const clusters = (
         return dist;
     }, {});
     const nodes = distances(distribution, zipcodes);
-    const groups = group(nodes, { maxDistanceToBeInCluster });
+    const spies = Object.keys(distribution).reduce((reduced, z) => {
+        reduced[z] = {
+            zipcode: z,
+            count: distribution[z],
+            used: false,
+        };
+        return reduced;
+    }, {});
+    console.log(spies);
+    console.log(nodes);
+    const cs = [];
+    Object.keys(spies).forEach((zipcode) => {
+        const used = spies[zipcode].used;
+        if (!used) {
+            spies[zipcode].used = true;
+            const c = [zipcode];
+            const ds = nodes[zipcode];
+            const around = Object.keys(ds).filter(
+                (b) => ds[b] <= maxDistanceToBeInCluster && !spies[b].used,
+            );
+            around.forEach((b) => {
+                spies[b].used = true;
+                c.push(b);
+            });
+            console.log(c);
+            cs.push(c);
+        }
+    });
 
-    const counts = groups.map((g) => {
+    const counts = cs.map((g) => {
         return {
             count: g.reduce((total, z) => total + distribution[z], 0),
             contributors: g,
