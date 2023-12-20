@@ -21,7 +21,7 @@ describe('clusters', () => {
         );
         const incoming = parse(example);
         const actual = clusters(incoming, {
-            maxDistanceToBeInCluster: 5,
+            diameter: 5,
             minSignaturePercentageToBeACluster: 0.2,
         });
 

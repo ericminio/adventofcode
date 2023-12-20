@@ -4,7 +4,7 @@ import { parse } from './parser.js';
 export const solvepartone = (input) => {
     const incoming = parse(input);
     return clusters(incoming, {
-        maxDistanceToBeInCluster: 2,
+        diameter: 2,
         minSignaturePercentageToBeACluster: 0.2,
     });
 };

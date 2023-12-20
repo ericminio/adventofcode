@@ -4,12 +4,12 @@ import { signatureCountByZipcode } from './signatures.js';
 
 export const clusters = (
     { zipcodes, signatures },
-    { maxDistanceToBeInCluster, minSignaturePercentageToBeACluster },
+    { diameter, minSignaturePercentageToBeACluster },
 ) => {
     const signatureCounts = signatureCountByZipcode(signatures);
     const zipcodeDistances = distances(signatureCounts, zipcodes);
 
-    return circles(maxDistanceToBeInCluster, zipcodeDistances)
+    return circles(diameter, zipcodeDistances)
         .map((g) => {
             return {
                 count: g.reduce((total, z) => total + signatureCounts[z], 0),
