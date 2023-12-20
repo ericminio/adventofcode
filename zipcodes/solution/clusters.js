@@ -5,12 +5,12 @@ export const clusters = (
     { zipcodes, signatures },
     { maxDistanceToBeInCluster, minSignaturePercentageToBeACluster },
 ) => {
-    const distribution = signatureCountByZipcode(signatures);
-    const nodes = distances(distribution, zipcodes);
-    const spies = Object.keys(distribution).reduce((reduced, z) => {
+    const signatureCounts = signatureCountByZipcode(signatures);
+    const zipcodeDistances = distances(signatureCounts, zipcodes);
+    const spies = Object.keys(signatureCounts).reduce((reduced, z) => {
         reduced[z] = {
             zipcode: z,
-            count: distribution[z],
+            count: signatureCounts[z],
             used: false,
         };
         return reduced;
@@ -22,7 +22,7 @@ export const clusters = (
         if (!used) {
             spies[zipcode].used = true;
             const c = [zipcode];
-            const ds = nodes[zipcode];
+            const ds = zipcodeDistances[zipcode];
             const around = Object.keys(ds).filter(
                 (b) => ds[b] <= maxDistanceToBeInCluster && !spies[b].used,
             );
@@ -34,15 +34,16 @@ export const clusters = (
         }
     });
 
-    const counts = cs.map((g) => {
-        return {
-            count: g.reduce((total, z) => total + distribution[z], 0),
-            contributors: g,
-        };
-    });
-
-    return counts.filter(
-        (e) =>
-            e.count >= minSignaturePercentageToBeACluster * signatures.length,
-    );
+    return cs
+        .map((g) => {
+            return {
+                count: g.reduce((total, z) => total + signatureCounts[z], 0),
+                contributors: g,
+            };
+        })
+        .filter(
+            (e) =>
+                e.count >=
+                minSignaturePercentageToBeACluster * signatures.length,
+        );
 };
