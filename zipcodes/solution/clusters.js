@@ -7,27 +7,19 @@ export const clusters = (
 ) => {
     const signatureCounts = signatureCountByZipcode(signatures);
     const zipcodeDistances = distances(signatureCounts, zipcodes);
-    const spies = Object.keys(signatureCounts).reduce((reduced, z) => {
-        reduced[z] = {
-            zipcode: z,
-            count: signatureCounts[z],
-            used: false,
-        };
-        return reduced;
-    }, {});
-
+    const spies = {};
     const cs = [];
-    Object.keys(spies).forEach((zipcode) => {
-        const used = spies[zipcode].used;
+    Object.keys(signatureCounts).forEach((zipcode) => {
+        const used = spies[zipcode];
         if (!used) {
-            spies[zipcode].used = true;
+            spies[zipcode] = true;
             const c = [zipcode];
             const ds = zipcodeDistances[zipcode];
             const around = Object.keys(ds).filter(
-                (b) => ds[b] <= maxDistanceToBeInCluster && !spies[b].used,
+                (b) => ds[b] <= maxDistanceToBeInCluster && !spies[b],
             );
             around.forEach((b) => {
-                spies[b].used = true;
+                spies[b] = true;
                 c.push(b);
             });
             cs.push(c);
