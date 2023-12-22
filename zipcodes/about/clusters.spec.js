@@ -10,8 +10,12 @@ describe('clusters', () => {
         const example = input(new URL('./example.txt', import.meta.url));
 
         expect(solvepartone(example)).to.deep.equal([
-            { count: 5, contributors: ['AAAAA', 'BBBBB'] },
-            { count: 5, contributors: ['EEEEE'] },
+            {
+                count: 5,
+                contributors: ['AAAAA', 'BBBBB'],
+                center: { x: 1, y: 1.5 },
+            },
+            { count: 5, contributors: ['EEEEE'], center: { x: 20, y: 2 } },
         ]);
     });
 
@@ -26,8 +30,12 @@ describe('clusters', () => {
         });
 
         expect(actual).to.deep.equal([
-            { count: 2, contributors: ['AAAAA', 'BBBBB'] },
-            { count: 1, contributors: ['CCCCC'] },
+            {
+                count: 2,
+                contributors: ['AAAAA', 'BBBBB'],
+                center: { x: 1, y: 3.5 },
+            },
+            { count: 1, contributors: ['CCCCC'], center: { x: 1, y: 11 } },
         ]);
     });
 });

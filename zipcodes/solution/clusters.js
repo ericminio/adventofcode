@@ -1,3 +1,4 @@
+import { average } from './average.js';
 import { circles } from './circles.js';
 import { distances } from './distances.js';
 import { signatureCountByZipcode } from './signatures.js';
@@ -20,5 +21,6 @@ export const clusters = (
             (e) =>
                 e.count >=
                 minSignaturePercentageToBeACluster * signatures.length,
-        );
+        )
+        .map((e) => ({ ...e, center: average(e.contributors, zipcodes) }));
 };
