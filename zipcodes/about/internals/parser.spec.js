@@ -15,6 +15,14 @@ describe('parser', () => {
 
         expect(incoming.zipcodes).to.deep.equal({ 12345: { x: -1, y: -2 } });
     });
+    it('resists floating coordinates', () => {
+        const input = '12345,-1.2, -2.3\n\nanything';
+        const incoming = parse(input);
+
+        expect(incoming.zipcodes).to.deep.equal({
+            12345: { x: -1.2, y: -2.3 },
+        });
+    });
 
     it('parses the signatures', () => {
         const input = '12345,1, -2\n\none\ntwo';
