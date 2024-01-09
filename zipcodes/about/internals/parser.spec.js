@@ -30,4 +30,21 @@ describe('parser', () => {
 
         expect(incoming.signatures).to.deep.equal(['one', 'two']);
     });
+
+    it('can digest a 2d representation', () => {
+        const input = `
+            ...
+            .23
+            ...
+        `;
+        const incoming = parse(input);
+        expect(incoming.zipcodes).to.deep.equal({
+            z1: { x: 1, y: 1 },
+            z2: { x: 2, y: 1 },
+        });
+        expect(incoming.signatures).to.deep.equal({
+            count: 5,
+            distribution: { z1: 2, z2: 3 },
+        });
+    });
 });
