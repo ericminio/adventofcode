@@ -69,4 +69,34 @@ describe('clusters', () => {
             { count: 1, contributors: ['z3'], center: { x: 11, y: 1 } },
         ]);
     });
+
+    it('choose best cluster', () => {
+        const incoming = parse(`
+            .....
+            .111.
+            .....
+        `);
+        const spec = {
+            diameter: 2,
+            minSignaturePercentageToBeACluster: 0.1,
+        };
+        const actual = clusters(
+            {
+                ...incoming,
+                distances: distances(
+                    incoming.signatures.distribution,
+                    incoming.zipcodes,
+                ),
+            },
+            spec,
+        );
+
+        expect(actual).to.deep.equal([
+            {
+                count: 3,
+                contributors: ['z1', 'z2', 'z3'],
+                center: { x: 2, y: 1 },
+            },
+        ]);
+    });
 });
