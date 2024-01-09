@@ -28,7 +28,10 @@ describe('parser', () => {
         const input = '12345,1, -2\n\none\ntwo';
         const incoming = parse(input);
 
-        expect(incoming.signatures).to.deep.equal(['one', 'two']);
+        expect(incoming.signatures).to.deep.equal({
+            count: 2,
+            distribution: { one: 1, two: 1 },
+        });
     });
 
     it('can digest a 2d representation', () => {

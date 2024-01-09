@@ -1,3 +1,5 @@
+import { signatureCountByZipcode } from './signatures.js';
+
 const parseDistribution = (input) => {
     const lines = input
         .split('\n')
@@ -51,5 +53,11 @@ export const parse = (input) => {
         }, {});
     const signatures = groups[1].split('\n');
 
-    return { zipcodes, signatures };
+    return {
+        zipcodes,
+        signatures: {
+            count: signatures.length,
+            distribution: signatureCountByZipcode(signatures),
+        },
+    };
 };
