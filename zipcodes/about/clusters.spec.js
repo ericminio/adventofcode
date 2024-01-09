@@ -1,9 +1,10 @@
 import { expect } from 'chai';
 
 import { input } from '../../support/index.js';
-import { solvepartone, solveparttwo } from '../solution/index.js';
+import { solvepartone } from '../solution/index.js';
 import { parse } from '../solution/parser.js';
 import { clusters } from '../solution/clusters.js';
+import { distances } from '../solution/distances.js';
 
 describe('clusters', () => {
     it('can be identified', () => {
@@ -24,10 +25,17 @@ describe('clusters', () => {
             new URL('./example-in-between.txt', import.meta.url),
         );
         const incoming = parse(example);
-        const actual = clusters(incoming, {
-            diameter: 5,
-            minSignaturePercentageToBeACluster: 0.2,
-        });
+        const signatureDistances = distances(
+            incoming.signatures.distribution,
+            incoming.zipcodes,
+        );
+        const actual = clusters(
+            { signatures: incoming.signatures, distances: signatureDistances },
+            {
+                diameter: 5,
+                minSignaturePercentageToBeACluster: 0.2,
+            },
+        );
 
         expect(actual).to.deep.equal([
             {
@@ -49,8 +57,17 @@ describe('clusters', () => {
             diameter: 1,
             minSignaturePercentageToBeACluster: 0.1,
         };
-        expect(clusters(incoming, spec)).to.deep.equal([
-            { count: 5, contributors: ['z1', 'z2'] },
-        ]);
+        expect(
+            clusters(
+                {
+                    signatures: incoming.signatures,
+                    distances: distances(
+                        incoming.signatures.distribution,
+                        incoming.zipcodes,
+                    ),
+                },
+                spec,
+            ),
+        ).to.deep.equal([{ count: 5, contributors: ['z1', 'z2'] }]);
     });
 });
