@@ -2,7 +2,7 @@ import { average } from './average.js';
 import { circles } from './circles.js';
 
 export const clusters = (
-    { distances, signatures: { distribution, count } },
+    { zipcodes, distances, signatures: { distribution, count } },
     { diameter, minSignaturePercentageToBeACluster },
 ) => {
     return circles(diameter, distances)

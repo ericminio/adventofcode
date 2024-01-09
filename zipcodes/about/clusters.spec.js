@@ -33,7 +33,7 @@ describe('clusters', () => {
         expect(
             clusters(
                 {
-                    signatures: incoming.signatures,
+                    ...incoming,
                     distances: distances(
                         incoming.signatures.distribution,
                         incoming.zipcodes,
@@ -41,7 +41,9 @@ describe('clusters', () => {
                 },
                 spec,
             ),
-        ).to.deep.equal([{ count: 5, contributors: ['z1', 'z2'] }]);
+        ).to.deep.equal([
+            { count: 5, contributors: ['z1', 'z2'], center: { x: 1.5, y: 1 } },
+        ]);
     });
 
     it('assign a zipcode to a single cluster', () => {
@@ -55,7 +57,7 @@ describe('clusters', () => {
             incoming.zipcodes,
         );
         const actual = clusters(
-            { signatures: incoming.signatures, distances: signatureDistances },
+            { ...incoming, distances: signatureDistances },
             {
                 diameter: 5,
                 minSignaturePercentageToBeACluster: 0.2,
@@ -63,8 +65,8 @@ describe('clusters', () => {
         );
 
         expect(actual).to.deep.equal([
-            { count: 2, contributors: ['z1', 'z2'] },
-            { count: 1, contributors: ['z3'] },
+            { count: 2, contributors: ['z1', 'z2'], center: { x: 3.5, y: 1 } },
+            { count: 1, contributors: ['z3'], center: { x: 11, y: 1 } },
         ]);
     });
 });

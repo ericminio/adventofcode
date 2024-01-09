@@ -9,7 +9,7 @@ export const solvepartone = (input) => {
         incoming.zipcodes,
     );
     return clusters(
-        { signatures: incoming.signatures, distances: signatureDistances },
+        { ...incoming, distances: signatureDistances },
         {
             diameter: 2,
             minSignaturePercentageToBeACluster: 0.2,
