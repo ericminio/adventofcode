@@ -38,4 +38,19 @@ describe('clusters', () => {
             { count: 1, contributors: ['CCCCC'], center: { x: 1, y: 11 } },
         ]);
     });
+
+    it('can digest 2d representation', () => {
+        const incoming = parse(`
+            ...
+            .23
+            ...
+        `);
+        const spec = {
+            diameter: 1,
+            minSignaturePercentageToBeACluster: 0.1,
+        };
+        expect(clusters(incoming, spec)).to.deep.equal([
+            { count: 5, contributors: ['z1', 'z2'] },
+        ]);
+    });
 });
