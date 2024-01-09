@@ -20,33 +20,6 @@ describe('clusters', () => {
         ]);
     });
 
-    it('assign a zipcode to a single cluster', () => {
-        const example = input(
-            new URL('./example-in-between.txt', import.meta.url),
-        );
-        const incoming = parse(example);
-        const signatureDistances = distances(
-            incoming.signatures.distribution,
-            incoming.zipcodes,
-        );
-        const actual = clusters(
-            { signatures: incoming.signatures, distances: signatureDistances },
-            {
-                diameter: 5,
-                minSignaturePercentageToBeACluster: 0.2,
-            },
-        );
-
-        expect(actual).to.deep.equal([
-            {
-                count: 2,
-                contributors: ['AAAAA', 'BBBBB'],
-                center: { x: 1, y: 3.5 },
-            },
-            { count: 1, contributors: ['CCCCC'], center: { x: 1, y: 11 } },
-        ]);
-    });
-
     it('can digest 2d representation', () => {
         const incoming = parse(`
             ...
@@ -69,5 +42,29 @@ describe('clusters', () => {
                 spec,
             ),
         ).to.deep.equal([{ count: 5, contributors: ['z1', 'z2'] }]);
+    });
+
+    it('assign a zipcode to a single cluster', () => {
+        const incoming = parse(`
+            ............
+            .1....1....1
+            ............
+        `);
+        const signatureDistances = distances(
+            incoming.signatures.distribution,
+            incoming.zipcodes,
+        );
+        const actual = clusters(
+            { signatures: incoming.signatures, distances: signatureDistances },
+            {
+                diameter: 5,
+                minSignaturePercentageToBeACluster: 0.2,
+            },
+        );
+
+        expect(actual).to.deep.equal([
+            { count: 2, contributors: ['z1', 'z2'] },
+            { count: 1, contributors: ['z3'] },
+        ]);
     });
 });
