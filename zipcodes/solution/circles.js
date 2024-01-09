@@ -1,4 +1,4 @@
-export const circles = (diameter, zipcodeDistances) => {
+export const circles = (size, zipcodeDistances) => {
     const spies = {};
     const cs = [];
     Object.keys(zipcodeDistances).forEach((zipcode) => {
@@ -8,7 +8,7 @@ export const circles = (diameter, zipcodeDistances) => {
             const c = [zipcode];
             const ds = zipcodeDistances[zipcode];
             const around = Object.keys(ds).filter(
-                (b) => ds[b] <= diameter && !spies[b],
+                (b) => ds[b] <= size && !spies[b],
             );
             around.forEach((b) => {
                 spies[b] = true;

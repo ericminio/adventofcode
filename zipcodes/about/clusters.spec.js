@@ -27,7 +27,7 @@ describe('clusters', () => {
             ...
         `);
         const spec = {
-            diameter: 1,
+            size: 1,
             minSignaturePercentageToBeACluster: 0.1,
         };
         expect(
@@ -59,7 +59,7 @@ describe('clusters', () => {
         const actual = clusters(
             { ...incoming, distances: signatureDistances },
             {
-                diameter: 5,
+                size: 5,
                 minSignaturePercentageToBeACluster: 0.2,
             },
         );
@@ -77,7 +77,7 @@ describe('clusters', () => {
             .....
         `);
         const spec = {
-            diameter: 2,
+            size: 2,
             minSignaturePercentageToBeACluster: 0.1,
         };
         const actual = clusters(

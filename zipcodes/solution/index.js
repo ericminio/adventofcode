@@ -11,7 +11,7 @@ export const solvepartone = (input) => {
     return clusters(
         { ...incoming, distances: signatureDistances },
         {
-            diameter: 2,
+            size: 2,
             minSignaturePercentageToBeACluster: 0.2,
         },
     );

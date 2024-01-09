@@ -3,9 +3,9 @@ import { circles } from './circles.js';
 
 export const clusters = (
     { zipcodes, distances, signatures: { distribution, count } },
-    { diameter, minSignaturePercentageToBeACluster },
+    { size, minSignaturePercentageToBeACluster },
 ) => {
-    return circles(diameter, distances)
+    return circles(size, distances)
         .map((g) => {
             return {
                 count: g.reduce((total, z) => total + distribution[z], 0),
