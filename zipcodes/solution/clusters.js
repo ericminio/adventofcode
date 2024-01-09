@@ -2,10 +2,9 @@ import { average } from './average.js';
 import { circles } from './circles.js';
 import { distances } from './distances.js';
 export const clusters = (
-    { zipcodes, signatures },
+    { zipcodes, signatures: { distribution, count } },
     { diameter, minSignaturePercentageToBeACluster },
 ) => {
-    const distribution = signatures.distribution;
     const zipcodeDistances = distances(distribution, zipcodes);
 
     return circles(diameter, zipcodeDistances)
@@ -15,10 +14,6 @@ export const clusters = (
                 contributors: g,
             };
         })
-        .filter(
-            (e) =>
-                e.count >=
-                minSignaturePercentageToBeACluster * signatures.count,
-        )
+        .filter((e) => e.count >= minSignaturePercentageToBeACluster * count)
         .map((e) => ({ ...e, center: average(e.contributors, zipcodes) }));
 };
