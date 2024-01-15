@@ -4,6 +4,11 @@ export const lines = (file) =>
     input(file)
         .split(/\n/)
         .filter((line) => line.length > 0);
+export const raw = (input) =>
+    input
+        .split(/\n/)
+        .map((line) => line.trim())
+        .filter((line) => line.length > 0);
 export const numbers = (file) =>
     input(file)
         .split(/\n/)

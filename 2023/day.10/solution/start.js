@@ -1,4 +1,4 @@
-import { directions } from './around.js';
+import { move } from './move.js';
 
 export const start = (maze) => Object.values(maze).find((p) => p.value === 'S');
 
@@ -25,19 +25,4 @@ export const decodeStart = (loop, startId) => {
     if (moves === 'south,west') {
         return '7';
     }
-};
-
-const move = (start, before, after) => {
-    return [
-        directions.find(
-            (direction) =>
-                direction.dx === before.x - start.x &&
-                direction.dy === before.y - start.y,
-        ).name,
-        directions.find(
-            (direction) =>
-                direction.dx === after.x - start.x &&
-                direction.dy === after.y - start.y,
-        ).name,
-    ];
 };
