@@ -29,11 +29,13 @@ export const looper = (lines) => {
                 value: maze[next.id].value,
                 previous: current.id,
             };
+            loop[current.id].next = next.id;
             previousId = current.id;
             current = next;
         }
     }
     loop[startId].previous = current.id;
+    loop[current.id].next = startId;
 
     return loop;
 };

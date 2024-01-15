@@ -14,6 +14,7 @@ describe('looper', () => {
             y: 1,
             value: 'S',
             previous: '1x2',
+            next: '2x1',
         });
     });
 
@@ -24,6 +25,7 @@ describe('looper', () => {
             y: 1,
             value: '-',
             previous: '1x1',
+            next: '3x1',
         });
     });
 
@@ -34,6 +36,7 @@ describe('looper', () => {
             y: 2,
             value: '|',
             previous: '1x3',
+            next: '1x1',
         });
     });
 });
