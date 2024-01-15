@@ -12,7 +12,7 @@ describe('looper', () => {
             id: '1x1',
             x: 1,
             y: 1,
-            value: 'S',
+            value: 'F',
             previous: '1x2',
             next: '2x1',
         });

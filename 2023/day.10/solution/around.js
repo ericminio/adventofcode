@@ -1,11 +1,11 @@
 import { id } from '../../../support/index.js';
 
-export const east = { dx: 1, dy: 0 };
-export const south = { dx: 0, dy: 1 };
-export const west = { dx: -1, dy: 0 };
-export const north = { dx: 0, dy: -1 };
+export const east = { dx: 1, dy: 0, name: 'east' };
+export const south = { dx: 0, dy: 1, name: 'south' };
+export const west = { dx: -1, dy: 0, name: 'west' };
+export const north = { dx: 0, dy: -1, name: 'north' };
 
-const directions = [east, south, west, north];
+export const directions = [east, south, west, north];
 
 export const around = (p, map) =>
     directions

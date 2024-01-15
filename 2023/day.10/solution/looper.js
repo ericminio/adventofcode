@@ -1,7 +1,7 @@
-import { around } from './around.js';
+import { around, directions, east, north } from './around.js';
 import { connected } from './connected.js';
 import { parse } from './parser.js';
-import { start } from './start.js';
+import { decodeStart, start } from './start.js';
 
 export const looper = (lines) => {
     const maze = parse(lines);
@@ -36,6 +36,8 @@ export const looper = (lines) => {
     }
     loop[startId].previous = current.id;
     loop[current.id].next = startId;
+
+    loop[startId].value = decodeStart(loop, startId);
 
     return loop;
 };
