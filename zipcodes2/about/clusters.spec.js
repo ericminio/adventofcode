@@ -17,11 +17,8 @@ describe('clusters', () => {
             size: 1,
             minSignaturePercentageToBeACluster: 0.1,
         };
-        const distributionWithDistances = distances(distribution);
 
-        expect(
-            clusters({ distributionWithDistances, count }, spec),
-        ).to.deep.equal([
+        expect(clusters({ distribution, count }, spec)).to.deep.equal([
             { count: 5, contributors: ['z2', 'z1'], center: { x: 2, y: 1 } },
         ]);
     });
@@ -34,9 +31,8 @@ describe('clusters', () => {
             .1....1....1
             ............
         `);
-        const distributionWithDistances = distances(distribution);
         const actual = clusters(
-            { distributionWithDistances, count },
+            { distribution, count },
             {
                 size: 5,
                 minSignaturePercentageToBeACluster: 0.2,

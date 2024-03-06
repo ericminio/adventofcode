@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 
 import { parse } from '../../solution/parser.js';
-import { distances } from '../../solution/distances.js';
 import { circles } from '../../solution/circles.js';
 
 describe('circles', () => {
@@ -13,14 +12,12 @@ describe('circles', () => {
             .23
             ...
         `);
-        const spec = {
-            size: 1,
-            minSignaturePercentageToBeACluster: 0.1,
-        };
-        const distributionWithDistances = distances(distribution);
 
-        expect(circles(1, distributionWithDistances)).to.deep.equal([
-            ['z2', 'z1'],
+        expect(circles(1, distribution)).to.deep.equal([
+            [
+                { postalCode: 'z2', count: 3, position: { x: 2, y: 1 } },
+                { postalCode: 'z1', count: 2, position: { x: 1, y: 1 } },
+            ],
         ]);
     });
 });

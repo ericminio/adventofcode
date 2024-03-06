@@ -1,17 +1,20 @@
-export const circles = (size, distributionWithDistances) => {
+export const circles = (size, distribution) => {
     const spies = {};
     const cs = [];
-    distributionWithDistances.forEach(({ postalCode, distances }) => {
-        const used = spies[postalCode];
+    distribution.forEach((a) => {
+        const used = spies[a.postalCode];
         if (!used) {
-            spies[postalCode] = true;
-            const c = [postalCode];
-            const around = distances.filter(
-                (b) => b.distance <= size && !spies[b.postalCode],
-            );
+            spies[a.postalCode] = true;
+            const c = [a];
+            const around = distribution.filter((b) => {
+                const distance =
+                    Math.abs(b.position.x - a.position.x) +
+                    Math.abs(b.position.y - a.position.y);
+                return distance <= size && !spies[b.postalCode];
+            });
             around.forEach((b) => {
                 spies[b.postalCode] = true;
-                c.push(b.postalCode);
+                c.push(b);
             });
             cs.push(c);
         }
